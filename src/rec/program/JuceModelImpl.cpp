@@ -72,7 +72,10 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
 
   for (auto& i: commandMap_)
     program_->getCallback(i.first);
+  logMaps();
+}
 
+void JuceModelImpl::logMaps() {
   LOG(INFO) << "There are " << commandMap_.size() << " callbacks.";
   LOG(INFO) << "There are " << layoutMap_.size() << " layouts.";
   LOG(INFO) << "There are " << componentMap_.size() << " components.";
@@ -86,7 +89,8 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
     for (auto& entry: i.second.entry()) {
       auto& name = entry.name();
       total += 1;
-      if (not (componentMap_.count(name) or layoutMap_.count(name))) {
+      if (not (entry.has_resizer() or
+               componentMap_.count(name) or layoutMap_.count(name))) {
         DLOG(INFO) << "undeclared: " << name;
         undeclared += 1;
       }

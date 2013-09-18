@@ -1186,6 +1186,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.cc">
       <Filter>SlowGold\genfiles\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Binary.pb.cc">
+      <Filter>SlowGold\genfiles\rec\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
       <Filter>SlowGold\genfiles\rec\util\file</Filter>
     </ClCompile>
@@ -3452,6 +3455,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.h">
       <Filter>SlowGold\genfiles\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Binary.pb.h">
+      <Filter>SlowGold\genfiles\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">
       <Filter>SlowGold\genfiles\rec\util\file</Filter>

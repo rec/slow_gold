@@ -67,6 +67,8 @@ bool copy(const string& from, string* to, Style r = DEFAULT_STYLE);
 // templates won't downcast for you (for example, to Message if you're trying
 // to copy a protocol buffer).
 
+bool merge(const string& from, Message* to, Style r = DEFAULT_STYLE);
+
 }  // namespace copy
 }  // namespace rec
 

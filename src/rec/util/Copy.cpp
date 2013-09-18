@@ -50,6 +50,7 @@ bool proto(const Message& f, string* t, Style readable) {
   try {
     return readable ? TextFormat::PrintToString(f, t) : f.SerializeToString(t);
   } catch (...) {
+    LOG(ERROR) << "Error saving protocol buffer " << f.ShortDebugString();
     return false;
   }
 }
@@ -58,6 +59,8 @@ bool proto(const string& f, Message* t, Style readable) {
   try {
     return readable ? TextFormat::ParseFromString(f, t) : t->ParseFromString(f);
   } catch (...) {
+    LOG(ERROR) << "Error loading protocol buffer " << f;
+    LOG(ERROR) << "Type was " << t->GetTypeName();
     return false;
   }
 }
@@ -187,6 +190,18 @@ bool copy(const string &f,  const File &t, Style s) { return file(f, t, s); }
 bool copy(const String &f,  const File &t, Style s) { return through(f, t, s); }
 bool copy(const Message &f, const File &t, Style s) { return through(f, t, s); }
 bool copy(const Memory &f,  const File &t, Style s) { return through(f, t, s); }
+
+
+bool merge(const string &f,  Message *t, Style s) {
+  if (s)
+    return TextFormat::MergeFromString(f, t);
+
+  unique_ptr<Message> m(t->New());
+  if (not m->ParseFromString(f))
+    return false;
+  t->MergeFrom(*m);
+  return true;
+}
 
 }  // namespace copy
 }  // namespace rec

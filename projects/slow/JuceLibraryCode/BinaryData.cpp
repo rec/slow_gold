@@ -1859,12 +1859,6 @@ static const unsigned char temp_binary_data_3[] =
 "    preferred: -0.6\n"
 "  }\n"
 "  entry {\n"
-"    name: \"navigation panel\"\n"
-"    min: 100.0\n"
-"    max: -1.0\n"
-"    preferred: -0.2\n"
-"  }\n"
-"  entry {\n"
 "    name: \"playback panel\"\n"
 "    min: 100.0\n"
 "  }\n"
@@ -2076,6 +2070,22 @@ static const unsigned char temp_binary_data_3[] =
 "}\n"
 "layout {\n"
 "  name: \"mode selector\"\n"
+"  entry {\n"
+"    name: \"drag mode button\"\n"
+"    min: 34\n"
+"  }\n"
+"  entry {\n"
+"    name: \"set time mode button\"\n"
+"    min: 34\n"
+"  }\n"
+"  entry {\n"
+"    name: \"zoom mode button\"\n"
+"    min: 34\n"
+"  }\n"
+"  entry {\n"
+"    name: \"add loop point mode button\"\n"
+"    min: 34\n"
+"  }\n"
 "}\n"
 "layout {\n"
 "  name: \"command bar\"\n"
@@ -13832,7 +13842,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x7f758dee:  numBytes = 29088; return Commands_def;
         case 0x1704877c:  numBytes = 0; return Components_def;
         case 0xdf58e54b:  numBytes = 6171; return KeyStrokeMap_def;
-        case 0x8b33e590:  numBytes = 3552; return Layout_def;
+        case 0x8b33e590:  numBytes = 3694; return Layout_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3007; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;

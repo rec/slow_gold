@@ -40,6 +40,9 @@ class JuceModelImpl {
   void addCommands(PopupMenu* popup, const MenuEntry& menuEntry);
   void addCommand(PopupMenu* popup, CommandID, bool hasIndex=false);
   void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry);
+
+  void logMaps();
+
   void makeRecentFiles(PopupMenu* menu);
   bool isRecentFiles(CommandID) const;
 

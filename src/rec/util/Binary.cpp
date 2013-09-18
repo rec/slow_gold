@@ -26,6 +26,20 @@ struct BinaryOrFile {
 
 }  // namespace
 
+void binaryProtoMerged(const string& s, Message* message) {
+  BinaryNames names;
+  copy::copy(s, &names);
+
+  for (auto& name: names.name())
+    copy::merge(getNamedResource(name), message);
+}
+
+string getNamedResource(const string& name) {
+  int dataSize;
+  const char* resource = BinaryData::getNamedResource(name.c_str(), dataSize);
+  return string(resource, dataSize);
+}
+
 template <>
 String* construct(const string& s) {
   return new String(str(s));

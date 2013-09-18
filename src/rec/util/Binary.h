@@ -2,11 +2,14 @@
 #define __REC_UTIL_BINARY__
 
 #include "BinaryData.h"
-
+#include "rec/util/Binary.pb.h"
 #include "rec/util/Copy.h"
 
 namespace rec {
 namespace util {
+
+string getBinaryString(const string&);
+void binaryProtoMerged(const string&, Message*);
 
 template <typename Type>
 Type* createBinary(const char* data, size_t len, const string& filename = "");
@@ -21,11 +24,16 @@ Proto binaryProto(const string& s) {
   return p;
 }
 
+template <typename Proto>
+Proto binaryProtoMerged(const string& s) {
+  Proto p;
+  binaryProtoMerged(s, &p);
+  return p;
+}
+
 template <typename Type>
 Type* constructName(const string& name) {
-  int dataSizeInBytes;
-  const char* resource = BinaryData::getNamedResource(name.c_str(), dataSizeInBytes);
-  return construct<Type>(string(resource, dataSizeInBytes));
+  return construct<Type>(getBinaryString(name));
 }
 
 #define BINARY_STRING(NAME) \
@@ -34,14 +42,11 @@ Type* constructName(const string& name) {
 #define BINARY_DATA(NAME, TYPE) \
   construct<TYPE>(BINARY_STRING(NAME))
 
-#define FILL_BINARY_PROTO(NAME, PROTO) \
-  copy::copy(BINARY_STRING(NAME), PROTO)
-
 #define BINARY_PROTO(NAME, PROTO) \
   binaryProto<PROTO>(BINARY_STRING(NAME ## _def))
 
-#define BINARY_FILL(NAME, PROTO) \
-  copy:copy(BINARY_STRING(NAME), PROTO)
+#define BINARY_PROTO_NAMES(NAME, TYPE) \
+  binaryProtoNames<TYPE>(BINARY_STRING(NAME))
 
 }  // namespace util
 }  // namespace rec
