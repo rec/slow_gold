@@ -1,9 +1,5 @@
 package rec.gui;
 
-import "rec/data/proto/Address.proto";
-
 message ResizerProto {
-  optional string size = 1;
-  optional string min_value = 2;
-  optional data.AddressProto address = 3;
+  optional string min_value = 1;
 };

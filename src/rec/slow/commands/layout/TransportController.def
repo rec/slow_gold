@@ -1,7 +1,9 @@
 layout {
   name: "TransportController"
   orientation: VERTICAL
-  min: "TRANSPORT_SIZE"
+  size {
+    min: "TRANSPORT_SIZE"
+  }
   component {
     name: "TransportButtonsPanel"
   }
@@ -14,7 +16,9 @@ layout {
 }
 layout {
   name: "TransportButtonsPanel"
-  min: "TRANSPORT_SIZE"
+  size {
+    min: "TRANSPORT_SIZE"
+  }
   component {
     name: "StartStopButton"
   }
@@ -35,7 +39,9 @@ layout {
   name: "GainPanel"
   component {
     name: "MuteButton"
-    min: "45"
+    size {
+      min: "45"
+    }
   }
   component {
     name: "LevelSlider"
@@ -45,10 +51,14 @@ layout {
   name: "TimeController"
   component {
     name: "SongTime"
-    min: "100"
+    size {
+      min: "100"
+    }
   }
   component {
     name: "SongDial"
-    min: "45"
+    size {
+      min: "45"
+    }
   }
 }

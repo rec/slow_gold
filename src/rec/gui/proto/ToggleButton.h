@@ -1,17 +1,18 @@
 #ifndef __REC_GUI_PROTO_TOGGLEBUTTON__
 #define __REC_GUI_PROTO_TOGGLEBUTTON__
 
-#include "rec/gui/SetterToggle.h"
-#include "rec/gui/proto/Constants.h"
-#include "rec/gui/proto/ToggleButton.pb.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace gui {
 
-unique_ptr<SetterToggle> makeToggleButton(const ToggleButtonProto&,
-                                          const Constants&);
+class ComponentProto;
+class Constants;
+
+unique_ptr<Component> makeToggleButton(const ComponentProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec
+
 
 #endif  // __REC_GUI_PROTO_TOGGLEBUTTON__

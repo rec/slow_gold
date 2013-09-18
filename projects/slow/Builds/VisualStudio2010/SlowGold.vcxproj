@@ -351,6 +351,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
@@ -1801,6 +1802,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
@@ -2270,6 +2272,7 @@
     <None Include="..\..\..\..\src\rec\slow\commands\component\Components.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\CommandBar.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Constants.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\HelpPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\Layout.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\MainPanel.def"/>

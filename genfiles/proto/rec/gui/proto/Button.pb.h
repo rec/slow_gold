@@ -25,8 +25,6 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/data/proto/Address.pb.h"
-#include "rec/gui/proto/Font.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -38,7 +36,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fButton_2eproto();
 
 class ButtonProto;
-class ButtonProto_HasState;
+class ButtonProto_State;
 
 enum ButtonProto_Style {
   ButtonProto_Style_ImageFitted = 0,
@@ -64,14 +62,14 @@ inline bool ButtonProto_Style_Parse(
 }
 // ===================================================================
 
-class ButtonProto_HasState : public ::google::protobuf::Message {
+class ButtonProto_State : public ::google::protobuf::Message {
  public:
-  ButtonProto_HasState();
-  virtual ~ButtonProto_HasState();
+  ButtonProto_State();
+  virtual ~ButtonProto_State();
 
-  ButtonProto_HasState(const ButtonProto_HasState& from);
+  ButtonProto_State(const ButtonProto_State& from);
 
-  inline ButtonProto_HasState& operator=(const ButtonProto_HasState& from) {
+  inline ButtonProto_State& operator=(const ButtonProto_State& from) {
     CopyFrom(from);
     return *this;
   }
@@ -85,17 +83,17 @@ class ButtonProto_HasState : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ButtonProto_HasState& default_instance();
+  static const ButtonProto_State& default_instance();
 
-  void Swap(ButtonProto_HasState* other);
+  void Swap(ButtonProto_State* other);
 
   // implements Message ----------------------------------------------
 
-  ButtonProto_HasState* New() const;
+  ButtonProto_State* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ButtonProto_HasState& from);
-  void MergeFrom(const ButtonProto_HasState& from);
+  void CopyFrom(const ButtonProto_State& from);
+  void MergeFrom(const ButtonProto_State& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -146,7 +144,7 @@ class ButtonProto_HasState : public ::google::protobuf::Message {
   inline bool disabled() const;
   inline void set_disabled(bool value);
 
-  // @@protoc_insertion_point(class_scope:rec.gui.ButtonProto.HasState)
+  // @@protoc_insertion_point(class_scope:rec.gui.ButtonProto.State)
  private:
   inline void set_has_normal();
   inline void clear_has_normal();
@@ -172,7 +170,7 @@ class ButtonProto_HasState : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_rec_2fgui_2fproto_2fButton_2eproto();
 
   void InitAsDefaultInstance();
-  static ButtonProto_HasState* default_instance_;
+  static ButtonProto_State* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -228,7 +226,7 @@ class ButtonProto : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef ButtonProto_HasState HasState;
+  typedef ButtonProto_State State;
 
   typedef ButtonProto_Style Style;
   static const Style ImageFitted = ButtonProto_Style_ImageFitted;
@@ -266,70 +264,28 @@ class ButtonProto : public ::google::protobuf::Message {
   inline ::rec::gui::ButtonProto_Style style() const;
   inline void set_style(::rec::gui::ButtonProto_Style value);
 
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
-  // optional string tooltip = 3;
-  inline bool has_tooltip() const;
-  inline void clear_tooltip();
-  static const int kTooltipFieldNumber = 3;
-  inline const ::std::string& tooltip() const;
-  inline void set_tooltip(const ::std::string& value);
-  inline void set_tooltip(const char* value);
-  inline void set_tooltip(const char* value, size_t size);
-  inline ::std::string* mutable_tooltip();
-  inline ::std::string* release_tooltip();
-  inline void set_allocated_tooltip(::std::string* tooltip);
-
-  // optional string image = 4;
-  inline bool has_image() const;
-  inline void clear_image();
-  static const int kImageFieldNumber = 4;
-  inline const ::std::string& image() const;
-  inline void set_image(const ::std::string& value);
-  inline void set_image(const char* value);
-  inline void set_image(const char* value, size_t size);
-  inline ::std::string* mutable_image();
-  inline ::std::string* release_image();
-  inline void set_allocated_image(::std::string* image);
-
-  // optional .rec.gui.ButtonProto.HasState state = 5;
+  // optional .rec.gui.ButtonProto.State state = 2;
   inline bool has_state() const;
   inline void clear_state();
-  static const int kStateFieldNumber = 5;
-  inline const ::rec::gui::ButtonProto_HasState& state() const;
-  inline ::rec::gui::ButtonProto_HasState* mutable_state();
-  inline ::rec::gui::ButtonProto_HasState* release_state();
-  inline void set_allocated_state(::rec::gui::ButtonProto_HasState* state);
+  static const int kStateFieldNumber = 2;
+  inline const ::rec::gui::ButtonProto_State& state() const;
+  inline ::rec::gui::ButtonProto_State* mutable_state();
+  inline ::rec::gui::ButtonProto_State* release_state();
+  inline void set_allocated_state(::rec::gui::ButtonProto_State* state);
 
-  // optional .rec.gui.ButtonProto.HasState state_on = 6;
+  // optional .rec.gui.ButtonProto.State state_on = 3;
   inline bool has_state_on() const;
   inline void clear_state_on();
-  static const int kStateOnFieldNumber = 6;
-  inline const ::rec::gui::ButtonProto_HasState& state_on() const;
-  inline ::rec::gui::ButtonProto_HasState* mutable_state_on();
-  inline ::rec::gui::ButtonProto_HasState* release_state_on();
-  inline void set_allocated_state_on(::rec::gui::ButtonProto_HasState* state_on);
+  static const int kStateOnFieldNumber = 3;
+  inline const ::rec::gui::ButtonProto_State& state_on() const;
+  inline ::rec::gui::ButtonProto_State* mutable_state_on();
+  inline ::rec::gui::ButtonProto_State* release_state_on();
+  inline void set_allocated_state_on(::rec::gui::ButtonProto_State* state_on);
 
   // @@protoc_insertion_point(class_scope:rec.gui.ButtonProto)
  private:
   inline void set_has_style();
   inline void clear_has_style();
-  inline void set_has_name();
-  inline void clear_has_name();
-  inline void set_has_tooltip();
-  inline void clear_has_tooltip();
-  inline void set_has_image();
-  inline void clear_has_image();
   inline void set_has_state();
   inline void clear_has_state();
   inline void set_has_state_on();
@@ -337,15 +293,12 @@ class ButtonProto : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* name_;
-  ::std::string* tooltip_;
-  ::std::string* image_;
-  ::rec::gui::ButtonProto_HasState* state_;
-  ::rec::gui::ButtonProto_HasState* state_on_;
+  ::rec::gui::ButtonProto_State* state_;
+  ::rec::gui::ButtonProto_State* state_on_;
   int style_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto();
@@ -359,92 +312,92 @@ class ButtonProto : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// ButtonProto_HasState
+// ButtonProto_State
 
 // optional bool normal = 1 [default = true];
-inline bool ButtonProto_HasState::has_normal() const {
+inline bool ButtonProto_State::has_normal() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ButtonProto_HasState::set_has_normal() {
+inline void ButtonProto_State::set_has_normal() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ButtonProto_HasState::clear_has_normal() {
+inline void ButtonProto_State::clear_has_normal() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ButtonProto_HasState::clear_normal() {
+inline void ButtonProto_State::clear_normal() {
   normal_ = true;
   clear_has_normal();
 }
-inline bool ButtonProto_HasState::normal() const {
+inline bool ButtonProto_State::normal() const {
   return normal_;
 }
-inline void ButtonProto_HasState::set_normal(bool value) {
+inline void ButtonProto_State::set_normal(bool value) {
   set_has_normal();
   normal_ = value;
 }
 
 // optional bool over = 2 [default = false];
-inline bool ButtonProto_HasState::has_over() const {
+inline bool ButtonProto_State::has_over() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ButtonProto_HasState::set_has_over() {
+inline void ButtonProto_State::set_has_over() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ButtonProto_HasState::clear_has_over() {
+inline void ButtonProto_State::clear_has_over() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ButtonProto_HasState::clear_over() {
+inline void ButtonProto_State::clear_over() {
   over_ = false;
   clear_has_over();
 }
-inline bool ButtonProto_HasState::over() const {
+inline bool ButtonProto_State::over() const {
   return over_;
 }
-inline void ButtonProto_HasState::set_over(bool value) {
+inline void ButtonProto_State::set_over(bool value) {
   set_has_over();
   over_ = value;
 }
 
 // optional bool down = 3 [default = true];
-inline bool ButtonProto_HasState::has_down() const {
+inline bool ButtonProto_State::has_down() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ButtonProto_HasState::set_has_down() {
+inline void ButtonProto_State::set_has_down() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ButtonProto_HasState::clear_has_down() {
+inline void ButtonProto_State::clear_has_down() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ButtonProto_HasState::clear_down() {
+inline void ButtonProto_State::clear_down() {
   down_ = true;
   clear_has_down();
 }
-inline bool ButtonProto_HasState::down() const {
+inline bool ButtonProto_State::down() const {
   return down_;
 }
-inline void ButtonProto_HasState::set_down(bool value) {
+inline void ButtonProto_State::set_down(bool value) {
   set_has_down();
   down_ = value;
 }
 
 // optional bool disabled = 4 [default = true];
-inline bool ButtonProto_HasState::has_disabled() const {
+inline bool ButtonProto_State::has_disabled() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void ButtonProto_HasState::set_has_disabled() {
+inline void ButtonProto_State::set_has_disabled() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void ButtonProto_HasState::clear_has_disabled() {
+inline void ButtonProto_State::clear_has_disabled() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void ButtonProto_HasState::clear_disabled() {
+inline void ButtonProto_State::clear_disabled() {
   disabled_ = true;
   clear_has_disabled();
 }
-inline bool ButtonProto_HasState::disabled() const {
+inline bool ButtonProto_State::disabled() const {
   return disabled_;
 }
-inline void ButtonProto_HasState::set_disabled(bool value) {
+inline void ButtonProto_State::set_disabled(bool value) {
   set_has_disabled();
   disabled_ = value;
 }
@@ -476,245 +429,35 @@ inline void ButtonProto::set_style(::rec::gui::ButtonProto_Style value) {
   style_ = value;
 }
 
-// optional string name = 2;
-inline bool ButtonProto::has_name() const {
+// optional .rec.gui.ButtonProto.State state = 2;
+inline bool ButtonProto::has_state() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ButtonProto::set_has_name() {
+inline void ButtonProto::set_has_state() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ButtonProto::clear_has_name() {
+inline void ButtonProto::clear_has_state() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ButtonProto::clear_name() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    name_->clear();
-  }
-  clear_has_name();
-}
-inline const ::std::string& ButtonProto::name() const {
-  return *name_;
-}
-inline void ButtonProto::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void ButtonProto::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void ButtonProto::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ButtonProto::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-inline ::std::string* ButtonProto::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ButtonProto::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (name) {
-    set_has_name();
-    name_ = name;
-  } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string tooltip = 3;
-inline bool ButtonProto::has_tooltip() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void ButtonProto::set_has_tooltip() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void ButtonProto::clear_has_tooltip() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void ButtonProto::clear_tooltip() {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    tooltip_->clear();
-  }
-  clear_has_tooltip();
-}
-inline const ::std::string& ButtonProto::tooltip() const {
-  return *tooltip_;
-}
-inline void ButtonProto::set_tooltip(const ::std::string& value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void ButtonProto::set_tooltip(const char* value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void ButtonProto::set_tooltip(const char* value, size_t size) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ButtonProto::mutable_tooltip() {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  return tooltip_;
-}
-inline ::std::string* ButtonProto::release_tooltip() {
-  clear_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = tooltip_;
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ButtonProto::set_allocated_tooltip(::std::string* tooltip) {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
-  if (tooltip) {
-    set_has_tooltip();
-    tooltip_ = tooltip;
-  } else {
-    clear_has_tooltip();
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string image = 4;
-inline bool ButtonProto::has_image() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void ButtonProto::set_has_image() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void ButtonProto::clear_has_image() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void ButtonProto::clear_image() {
-  if (image_ != &::google::protobuf::internal::kEmptyString) {
-    image_->clear();
-  }
-  clear_has_image();
-}
-inline const ::std::string& ButtonProto::image() const {
-  return *image_;
-}
-inline void ButtonProto::set_image(const ::std::string& value) {
-  set_has_image();
-  if (image_ == &::google::protobuf::internal::kEmptyString) {
-    image_ = new ::std::string;
-  }
-  image_->assign(value);
-}
-inline void ButtonProto::set_image(const char* value) {
-  set_has_image();
-  if (image_ == &::google::protobuf::internal::kEmptyString) {
-    image_ = new ::std::string;
-  }
-  image_->assign(value);
-}
-inline void ButtonProto::set_image(const char* value, size_t size) {
-  set_has_image();
-  if (image_ == &::google::protobuf::internal::kEmptyString) {
-    image_ = new ::std::string;
-  }
-  image_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ButtonProto::mutable_image() {
-  set_has_image();
-  if (image_ == &::google::protobuf::internal::kEmptyString) {
-    image_ = new ::std::string;
-  }
-  return image_;
-}
-inline ::std::string* ButtonProto::release_image() {
-  clear_has_image();
-  if (image_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = image_;
-    image_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ButtonProto::set_allocated_image(::std::string* image) {
-  if (image_ != &::google::protobuf::internal::kEmptyString) {
-    delete image_;
-  }
-  if (image) {
-    set_has_image();
-    image_ = image;
-  } else {
-    clear_has_image();
-    image_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional .rec.gui.ButtonProto.HasState state = 5;
-inline bool ButtonProto::has_state() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void ButtonProto::set_has_state() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void ButtonProto::clear_has_state() {
-  _has_bits_[0] &= ~0x00000010u;
-}
 inline void ButtonProto::clear_state() {
-  if (state_ != NULL) state_->::rec::gui::ButtonProto_HasState::Clear();
+  if (state_ != NULL) state_->::rec::gui::ButtonProto_State::Clear();
   clear_has_state();
 }
-inline const ::rec::gui::ButtonProto_HasState& ButtonProto::state() const {
+inline const ::rec::gui::ButtonProto_State& ButtonProto::state() const {
   return state_ != NULL ? *state_ : *default_instance_->state_;
 }
-inline ::rec::gui::ButtonProto_HasState* ButtonProto::mutable_state() {
+inline ::rec::gui::ButtonProto_State* ButtonProto::mutable_state() {
   set_has_state();
-  if (state_ == NULL) state_ = new ::rec::gui::ButtonProto_HasState;
+  if (state_ == NULL) state_ = new ::rec::gui::ButtonProto_State;
   return state_;
 }
-inline ::rec::gui::ButtonProto_HasState* ButtonProto::release_state() {
+inline ::rec::gui::ButtonProto_State* ButtonProto::release_state() {
   clear_has_state();
-  ::rec::gui::ButtonProto_HasState* temp = state_;
+  ::rec::gui::ButtonProto_State* temp = state_;
   state_ = NULL;
   return temp;
 }
-inline void ButtonProto::set_allocated_state(::rec::gui::ButtonProto_HasState* state) {
+inline void ButtonProto::set_allocated_state(::rec::gui::ButtonProto_State* state) {
   delete state_;
   state_ = state;
   if (state) {
@@ -724,35 +467,35 @@ inline void ButtonProto::set_allocated_state(::rec::gui::ButtonProto_HasState* s
   }
 }
 
-// optional .rec.gui.ButtonProto.HasState state_on = 6;
+// optional .rec.gui.ButtonProto.State state_on = 3;
 inline bool ButtonProto::has_state_on() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void ButtonProto::set_has_state_on() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void ButtonProto::clear_has_state_on() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void ButtonProto::clear_state_on() {
-  if (state_on_ != NULL) state_on_->::rec::gui::ButtonProto_HasState::Clear();
+  if (state_on_ != NULL) state_on_->::rec::gui::ButtonProto_State::Clear();
   clear_has_state_on();
 }
-inline const ::rec::gui::ButtonProto_HasState& ButtonProto::state_on() const {
+inline const ::rec::gui::ButtonProto_State& ButtonProto::state_on() const {
   return state_on_ != NULL ? *state_on_ : *default_instance_->state_on_;
 }
-inline ::rec::gui::ButtonProto_HasState* ButtonProto::mutable_state_on() {
+inline ::rec::gui::ButtonProto_State* ButtonProto::mutable_state_on() {
   set_has_state_on();
-  if (state_on_ == NULL) state_on_ = new ::rec::gui::ButtonProto_HasState;
+  if (state_on_ == NULL) state_on_ = new ::rec::gui::ButtonProto_State;
   return state_on_;
 }
-inline ::rec::gui::ButtonProto_HasState* ButtonProto::release_state_on() {
+inline ::rec::gui::ButtonProto_State* ButtonProto::release_state_on() {
   clear_has_state_on();
-  ::rec::gui::ButtonProto_HasState* temp = state_on_;
+  ::rec::gui::ButtonProto_State* temp = state_on_;
   state_on_ = NULL;
   return temp;
 }
-inline void ButtonProto::set_allocated_state_on(::rec::gui::ButtonProto_HasState* state_on) {
+inline void ButtonProto::set_allocated_state_on(::rec::gui::ButtonProto_State* state_on) {
   delete state_on_;
   state_on_ = state_on;
   if (state_on) {

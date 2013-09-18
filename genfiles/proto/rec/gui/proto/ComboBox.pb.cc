@@ -35,10 +35,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComboBox_2eproto() {
       "rec/gui/proto/ComboBox.proto");
   GOOGLE_CHECK(file != NULL);
   ComboBoxProto_descriptor_ = file->message_type(0);
-  static const int ComboBoxProto_offsets_[3] = {
+  static const int ComboBoxProto_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, item_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, tooltip_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, address_),
   };
   ComboBoxProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,12 +78,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\034rec/gui/proto/ComboBox.proto\022\007rec.gui\032"
-    "\034rec/data/proto/Address.proto\"W\n\rComboBo"
-    "xProto\022\014\n\004item\030\001 \003(\t\022\017\n\007tooltip\030\002 \001(\t\022\'\n"
-    "\007address\030\003 \001(\0132\026.rec.data.AddressProto", 158);
+    "\n\034rec/gui/proto/ComboBox.proto\022\007rec.gui\""
+    "\035\n\rComboBoxProto\022\014\n\004item\030\001 \003(\t", 70);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/ComboBox.proto", &protobuf_RegisterTypes);
   ComboBoxProto::default_instance_ = new ComboBoxProto();
@@ -104,8 +99,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fComboBox_2eproto {
 
 #ifndef _MSC_VER
 const int ComboBoxProto::kItemFieldNumber;
-const int ComboBoxProto::kTooltipFieldNumber;
-const int ComboBoxProto::kAddressFieldNumber;
 #endif  // !_MSC_VER
 
 ComboBoxProto::ComboBoxProto()
@@ -114,7 +107,6 @@ ComboBoxProto::ComboBoxProto()
 }
 
 void ComboBoxProto::InitAsDefaultInstance() {
-  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 ComboBoxProto::ComboBoxProto(const ComboBoxProto& from)
@@ -125,8 +117,6 @@ ComboBoxProto::ComboBoxProto(const ComboBoxProto& from)
 
 void ComboBoxProto::SharedCtor() {
   _cached_size_ = 0;
-  tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  address_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -135,11 +125,7 @@ ComboBoxProto::~ComboBoxProto() {
 }
 
 void ComboBoxProto::SharedDtor() {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
   if (this != default_instance_) {
-    delete address_;
   }
 }
 
@@ -165,16 +151,6 @@ ComboBoxProto* ComboBoxProto::New() const {
 }
 
 void ComboBoxProto::Clear() {
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (has_tooltip()) {
-      if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-        tooltip_->clear();
-      }
-    }
-    if (has_address()) {
-      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-    }
-  }
   item_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -201,37 +177,6 @@ bool ComboBoxProto::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_item;
-        if (input->ExpectTag(18)) goto parse_tooltip;
-        break;
-      }
-
-      // optional string tooltip = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_tooltip:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tooltip()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->tooltip().data(), this->tooltip().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_address;
-        break;
-      }
-
-      // optional .rec.data.AddressProto address = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_address:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_address()));
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -263,21 +208,6 @@ void ComboBoxProto::SerializeWithCachedSizes(
       1, this->item(i), output);
   }
 
-  // optional string tooltip = 2;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->tooltip(), output);
-  }
-
-  // optional .rec.data.AddressProto address = 3;
-  if (has_address()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->address(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -295,23 +225,6 @@ void ComboBoxProto::SerializeWithCachedSizes(
       WriteStringToArray(1, this->item(i), target);
   }
 
-  // optional string tooltip = 2;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->tooltip(), target);
-  }
-
-  // optional .rec.data.AddressProto address = 3;
-  if (has_address()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->address(), target);
-  }
-
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -322,22 +235,6 @@ void ComboBoxProto::SerializeWithCachedSizes(
 int ComboBoxProto::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional string tooltip = 2;
-    if (has_tooltip()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->tooltip());
-    }
-
-    // optional .rec.data.AddressProto address = 3;
-    if (has_address()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->address());
-    }
-
-  }
   // repeated string item = 1;
   total_size += 1 * this->item_size();
   for (int i = 0; i < this->item_size(); i++) {
@@ -371,14 +268,6 @@ void ComboBoxProto::MergeFrom(const ::google::protobuf::Message& from) {
 void ComboBoxProto::MergeFrom(const ComboBoxProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   item_.MergeFrom(from.item_);
-  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (from.has_tooltip()) {
-      set_tooltip(from.tooltip());
-    }
-    if (from.has_address()) {
-      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -402,8 +291,6 @@ bool ComboBoxProto::IsInitialized() const {
 void ComboBoxProto::Swap(ComboBoxProto* other) {
   if (other != this) {
     item_.Swap(&other->item_);
-    std::swap(tooltip_, other->tooltip_);
-    std::swap(address_, other->address_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -232,18 +232,6 @@ class SliderProto : public ::google::protobuf::Message {
   inline ::std::string* release_caption_size();
   inline void set_allocated_caption_size(::std::string* caption_size);
 
-  // optional string tooltip = 3;
-  inline bool has_tooltip() const;
-  inline void clear_tooltip();
-  static const int kTooltipFieldNumber = 3;
-  inline const ::std::string& tooltip() const;
-  inline void set_tooltip(const ::std::string& value);
-  inline void set_tooltip(const char* value);
-  inline void set_tooltip(const char* value, size_t size);
-  inline ::std::string* mutable_tooltip();
-  inline ::std::string* release_tooltip();
-  inline void set_allocated_tooltip(::std::string* tooltip);
-
   // optional string text_entry_box_width = 4 [default = "80"];
   inline bool has_text_entry_box_width() const;
   inline void clear_text_entry_box_width();
@@ -267,15 +255,6 @@ class SliderProto : public ::google::protobuf::Message {
   inline ::std::string* mutable_text_entry_box_height();
   inline ::std::string* release_text_entry_box_height();
   inline void set_allocated_text_entry_box_height(::std::string* text_entry_box_height);
-
-  // optional .rec.data.AddressProto address = 12;
-  inline bool has_address() const;
-  inline void clear_address();
-  static const int kAddressFieldNumber = 12;
-  inline const ::rec::data::AddressProto& address() const;
-  inline ::rec::data::AddressProto* mutable_address();
-  inline ::rec::data::AddressProto* release_address();
-  inline void set_allocated_address(::rec::data::AddressProto* address);
 
   // optional string detent = 6;
   inline bool has_detent() const;
@@ -369,14 +348,10 @@ class SliderProto : public ::google::protobuf::Message {
   inline void clear_has_caption();
   inline void set_has_caption_size();
   inline void clear_has_caption_size();
-  inline void set_has_tooltip();
-  inline void clear_has_tooltip();
   inline void set_has_text_entry_box_width();
   inline void clear_has_text_entry_box_width();
   inline void set_has_text_entry_box_height();
   inline void clear_has_text_entry_box_height();
-  inline void set_has_address();
-  inline void clear_has_address();
   inline void set_has_detent();
   inline void clear_has_detent();
   inline void set_has_detent_radius();
@@ -399,12 +374,10 @@ class SliderProto : public ::google::protobuf::Message {
   ::std::string* caption_;
   ::std::string* caption_size_;
   static ::std::string* _default_caption_size_;
-  ::std::string* tooltip_;
   ::std::string* text_entry_box_width_;
   static ::std::string* _default_text_entry_box_width_;
   ::std::string* text_entry_box_height_;
   static ::std::string* _default_text_entry_box_height_;
-  ::rec::data::AddressProto* address_;
   ::std::string* detent_;
   ::std::string* detent_radius_;
   ::std::string* text_suffix_;
@@ -415,7 +388,7 @@ class SliderProto : public ::google::protobuf::Message {
   int text_entry_box_position_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fSlider_2eproto();
@@ -571,85 +544,15 @@ inline void SliderProto::set_allocated_caption_size(::std::string* caption_size)
   }
 }
 
-// optional string tooltip = 3;
-inline bool SliderProto::has_tooltip() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SliderProto::set_has_tooltip() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SliderProto::clear_has_tooltip() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SliderProto::clear_tooltip() {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    tooltip_->clear();
-  }
-  clear_has_tooltip();
-}
-inline const ::std::string& SliderProto::tooltip() const {
-  return *tooltip_;
-}
-inline void SliderProto::set_tooltip(const ::std::string& value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void SliderProto::set_tooltip(const char* value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void SliderProto::set_tooltip(const char* value, size_t size) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* SliderProto::mutable_tooltip() {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  return tooltip_;
-}
-inline ::std::string* SliderProto::release_tooltip() {
-  clear_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = tooltip_;
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void SliderProto::set_allocated_tooltip(::std::string* tooltip) {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
-  if (tooltip) {
-    set_has_tooltip();
-    tooltip_ = tooltip;
-  } else {
-    clear_has_tooltip();
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
 // optional string text_entry_box_width = 4 [default = "80"];
 inline bool SliderProto::has_text_entry_box_width() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void SliderProto::set_has_text_entry_box_width() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void SliderProto::clear_has_text_entry_box_width() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void SliderProto::clear_text_entry_box_width() {
   if (text_entry_box_width_ != _default_text_entry_box_width_) {
@@ -713,13 +616,13 @@ inline void SliderProto::set_allocated_text_entry_box_width(::std::string* text_
 
 // optional string text_entry_box_height = 5 [default = "16"];
 inline bool SliderProto::has_text_entry_box_height() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void SliderProto::set_has_text_entry_box_height() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void SliderProto::clear_has_text_entry_box_height() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void SliderProto::clear_text_entry_box_height() {
   if (text_entry_box_height_ != _default_text_entry_box_height_) {
@@ -781,53 +684,15 @@ inline void SliderProto::set_allocated_text_entry_box_height(::std::string* text
   }
 }
 
-// optional .rec.data.AddressProto address = 12;
-inline bool SliderProto::has_address() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void SliderProto::set_has_address() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void SliderProto::clear_has_address() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void SliderProto::clear_address() {
-  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-  clear_has_address();
-}
-inline const ::rec::data::AddressProto& SliderProto::address() const {
-  return address_ != NULL ? *address_ : *default_instance_->address_;
-}
-inline ::rec::data::AddressProto* SliderProto::mutable_address() {
-  set_has_address();
-  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
-  return address_;
-}
-inline ::rec::data::AddressProto* SliderProto::release_address() {
-  clear_has_address();
-  ::rec::data::AddressProto* temp = address_;
-  address_ = NULL;
-  return temp;
-}
-inline void SliderProto::set_allocated_address(::rec::data::AddressProto* address) {
-  delete address_;
-  address_ = address;
-  if (address) {
-    set_has_address();
-  } else {
-    clear_has_address();
-  }
-}
-
 // optional string detent = 6;
 inline bool SliderProto::has_detent() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void SliderProto::set_has_detent() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void SliderProto::clear_has_detent() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void SliderProto::clear_detent() {
   if (detent_ != &::google::protobuf::internal::kEmptyString) {
@@ -891,13 +756,13 @@ inline void SliderProto::set_allocated_detent(::std::string* detent) {
 
 // optional string detent_radius = 7;
 inline bool SliderProto::has_detent_radius() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void SliderProto::set_has_detent_radius() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void SliderProto::clear_has_detent_radius() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void SliderProto::clear_detent_radius() {
   if (detent_radius_ != &::google::protobuf::internal::kEmptyString) {
@@ -961,13 +826,13 @@ inline void SliderProto::set_allocated_detent_radius(::std::string* detent_radiu
 
 // optional string text_suffix = 8;
 inline bool SliderProto::has_text_suffix() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void SliderProto::set_has_text_suffix() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void SliderProto::clear_has_text_suffix() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void SliderProto::clear_text_suffix() {
   if (text_suffix_ != &::google::protobuf::internal::kEmptyString) {
@@ -1031,13 +896,13 @@ inline void SliderProto::set_allocated_text_suffix(::std::string* text_suffix) {
 
 // optional string minimum = 9;
 inline bool SliderProto::has_minimum() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void SliderProto::set_has_minimum() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void SliderProto::clear_has_minimum() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void SliderProto::clear_minimum() {
   if (minimum_ != &::google::protobuf::internal::kEmptyString) {
@@ -1101,13 +966,13 @@ inline void SliderProto::set_allocated_minimum(::std::string* minimum) {
 
 // optional string maximum = 10;
 inline bool SliderProto::has_maximum() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void SliderProto::set_has_maximum() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void SliderProto::clear_has_maximum() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void SliderProto::clear_maximum() {
   if (maximum_ != &::google::protobuf::internal::kEmptyString) {
@@ -1171,13 +1036,13 @@ inline void SliderProto::set_allocated_maximum(::std::string* maximum) {
 
 // optional string interval = 11;
 inline bool SliderProto::has_interval() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void SliderProto::set_has_interval() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void SliderProto::clear_has_interval() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void SliderProto::clear_interval() {
   if (interval_ != &::google::protobuf::internal::kEmptyString) {
@@ -1241,13 +1106,13 @@ inline void SliderProto::set_allocated_interval(::std::string* interval) {
 
 // optional .rec.gui.SliderProto.Style style = 21;
 inline bool SliderProto::has_style() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void SliderProto::set_has_style() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void SliderProto::clear_has_style() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void SliderProto::clear_style() {
   style_ = 0;
@@ -1264,13 +1129,13 @@ inline void SliderProto::set_style(::rec::gui::SliderProto_Style value) {
 
 // optional .rec.gui.SliderProto.TextEntryBoxPosition text_entry_box_position = 22;
 inline bool SliderProto::has_text_entry_box_position() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void SliderProto::set_has_text_entry_box_position() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void SliderProto::clear_has_text_entry_box_position() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void SliderProto::clear_text_entry_box_position() {
   text_entry_box_position_ = 0;

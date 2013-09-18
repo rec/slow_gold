@@ -8,13 +8,12 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
-import rec.data.proto.Address_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/ComboBox.proto',
   package='rec.gui',
-  serialized_pb='\n\x1crec/gui/proto/ComboBox.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\"W\n\rComboBoxProto\x12\x0c\n\x04item\x18\x01 \x03(\t\x12\x0f\n\x07tooltip\x18\x02 \x01(\t\x12\'\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32\x16.rec.data.AddressProto')
+  serialized_pb='\n\x1crec/gui/proto/ComboBox.proto\x12\x07rec.gui\"\x1d\n\rComboBoxProto\x12\x0c\n\x04item\x18\x01 \x03(\t')
 
 
 
@@ -33,20 +32,6 @@ _COMBOBOXPROTO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='tooltip', full_name='rec.gui.ComboBoxProto.tooltip', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='address', full_name='rec.gui.ComboBoxProto.address', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -56,11 +41,10 @@ _COMBOBOXPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=71,
-  serialized_end=158,
+  serialized_start=41,
+  serialized_end=70,
 )
 
-_COMBOBOXPROTO.fields_by_name['address'].message_type = rec.data.proto.Address_pb2._ADDRESSPROTO
 DESCRIPTOR.message_types_by_name['ComboBoxProto'] = _COMBOBOXPROTO
 
 class ComboBoxProto(_message.Message):

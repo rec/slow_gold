@@ -1,6 +1,8 @@
 layout {
   name: "ModeSelector"
-  min: "MODE_SELECTOR_HEIGHT"
+  size {
+    min: "MODE_SELECTOR_HEIGHT"
+  }
   component {
     name: "DragModeButton"
   }

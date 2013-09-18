@@ -1,14 +1,15 @@
 #ifndef __REC_GUI_PROTO_SLIDER__
 #define __REC_GUI_PROTO_SLIDER__
 
-#include "rec/gui/DataSlider.h"
-#include "rec/gui/proto/Constants.h"
-#include "rec/gui/proto/Slider.pb.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace gui {
 
-unique_ptr<DataSlider> makeSlider(const SliderProto&, const Constants&);
+class ComponentProto;
+class Constants;
+
+unique_ptr<Component> makeSlider(const ComponentProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec

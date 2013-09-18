@@ -8,14 +8,12 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
-import rec.data.proto.Address_pb2
-import rec.gui.proto.Font_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Label.proto',
   package='rec.gui',
-  serialized_pb='\n\x19rec/gui/proto/Label.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x18rec/gui/proto/Font.proto\"[\n\nLabelProto\x12 \n\x04\x66ont\x18\x01 \x01(\x0b\x32\x12.rec.gui.FontProto\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x0f\n\x07tooltip\x18\x04 \x01(\t')
+  serialized_pb='\n\x19rec/gui/proto/Label.proto\x12\x07rec.gui\"\x1a\n\nLabelProto\x12\x0c\n\x04text\x18\x01 \x01(\t')
 
 
 
@@ -28,29 +26,8 @@ _LABELPROTO = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='font', full_name='rec.gui.LabelProto.font', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.LabelProto.name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='text', full_name='rec.gui.LabelProto.text', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='tooltip', full_name='rec.gui.LabelProto.tooltip', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='text', full_name='rec.gui.LabelProto.text', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -64,11 +41,10 @@ _LABELPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=94,
-  serialized_end=185,
+  serialized_start=38,
+  serialized_end=64,
 )
 
-_LABELPROTO.fields_by_name['font'].message_type = rec.gui.proto.Font_pb2._FONTPROTO
 DESCRIPTOR.message_types_by_name['LabelProto'] = _LABELPROTO
 
 class LabelProto(_message.Message):

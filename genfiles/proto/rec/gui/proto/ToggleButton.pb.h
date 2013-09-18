@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/data/proto/Address.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -93,56 +92,14 @@ class ToggleButtonProto : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional string name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
-  // optional string tooltip = 2;
-  inline bool has_tooltip() const;
-  inline void clear_tooltip();
-  static const int kTooltipFieldNumber = 2;
-  inline const ::std::string& tooltip() const;
-  inline void set_tooltip(const ::std::string& value);
-  inline void set_tooltip(const char* value);
-  inline void set_tooltip(const char* value, size_t size);
-  inline ::std::string* mutable_tooltip();
-  inline ::std::string* release_tooltip();
-  inline void set_allocated_tooltip(::std::string* tooltip);
-
-  // optional .rec.data.AddressProto address = 3;
-  inline bool has_address() const;
-  inline void clear_address();
-  static const int kAddressFieldNumber = 3;
-  inline const ::rec::data::AddressProto& address() const;
-  inline ::rec::data::AddressProto* mutable_address();
-  inline ::rec::data::AddressProto* release_address();
-  inline void set_allocated_address(::rec::data::AddressProto* address);
-
   // @@protoc_insertion_point(class_scope:rec.gui.ToggleButtonProto)
  private:
-  inline void set_has_name();
-  inline void clear_has_name();
-  inline void set_has_tooltip();
-  inline void clear_has_tooltip();
-  inline void set_has_address();
-  inline void clear_has_address();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* name_;
-  ::std::string* tooltip_;
-  ::rec::data::AddressProto* address_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[1];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
@@ -157,184 +114,6 @@ class ToggleButtonProto : public ::google::protobuf::Message {
 // ===================================================================
 
 // ToggleButtonProto
-
-// optional string name = 1;
-inline bool ToggleButtonProto::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void ToggleButtonProto::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void ToggleButtonProto::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void ToggleButtonProto::clear_name() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    name_->clear();
-  }
-  clear_has_name();
-}
-inline const ::std::string& ToggleButtonProto::name() const {
-  return *name_;
-}
-inline void ToggleButtonProto::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void ToggleButtonProto::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void ToggleButtonProto::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ToggleButtonProto::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-inline ::std::string* ToggleButtonProto::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ToggleButtonProto::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (name) {
-    set_has_name();
-    name_ = name;
-  } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string tooltip = 2;
-inline bool ToggleButtonProto::has_tooltip() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void ToggleButtonProto::set_has_tooltip() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void ToggleButtonProto::clear_has_tooltip() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void ToggleButtonProto::clear_tooltip() {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    tooltip_->clear();
-  }
-  clear_has_tooltip();
-}
-inline const ::std::string& ToggleButtonProto::tooltip() const {
-  return *tooltip_;
-}
-inline void ToggleButtonProto::set_tooltip(const ::std::string& value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void ToggleButtonProto::set_tooltip(const char* value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void ToggleButtonProto::set_tooltip(const char* value, size_t size) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ToggleButtonProto::mutable_tooltip() {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  return tooltip_;
-}
-inline ::std::string* ToggleButtonProto::release_tooltip() {
-  clear_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = tooltip_;
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ToggleButtonProto::set_allocated_tooltip(::std::string* tooltip) {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
-  if (tooltip) {
-    set_has_tooltip();
-    tooltip_ = tooltip;
-  } else {
-    clear_has_tooltip();
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional .rec.data.AddressProto address = 3;
-inline bool ToggleButtonProto::has_address() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void ToggleButtonProto::set_has_address() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void ToggleButtonProto::clear_has_address() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void ToggleButtonProto::clear_address() {
-  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-  clear_has_address();
-}
-inline const ::rec::data::AddressProto& ToggleButtonProto::address() const {
-  return address_ != NULL ? *address_ : *default_instance_->address_;
-}
-inline ::rec::data::AddressProto* ToggleButtonProto::mutable_address() {
-  set_has_address();
-  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
-  return address_;
-}
-inline ::rec::data::AddressProto* ToggleButtonProto::release_address() {
-  clear_has_address();
-  ::rec::data::AddressProto* temp = address_;
-  address_ = NULL;
-  return temp;
-}
-inline void ToggleButtonProto::set_allocated_address(::rec::data::AddressProto* address) {
-  delete address_;
-  address_ = address;
-  if (address) {
-    set_has_address();
-  } else {
-    clear_has_address();
-  }
-}
 
 
 // @@protoc_insertion_point(namespace_scope)

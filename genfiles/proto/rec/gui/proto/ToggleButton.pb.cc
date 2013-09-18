@@ -35,10 +35,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fToggleButton_2eproto() {
       "rec/gui/proto/ToggleButton.proto");
   GOOGLE_CHECK(file != NULL);
   ToggleButtonProto_descriptor_ = file->message_type(0);
-  static const int ToggleButtonProto_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, tooltip_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, address_),
+  static const int ToggleButtonProto_offsets_[1] = {
   };
   ToggleButtonProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,13 +77,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/gui/proto/ToggleButton.proto\022\007rec."
-    "gui\032\034rec/data/proto/Address.proto\"[\n\021Tog"
-    "gleButtonProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tooltip\030"
-    "\002 \001(\t\022\'\n\007address\030\003 \001(\0132\026.rec.data.Addres"
-    "sProto", 166);
+    "gui\"\023\n\021ToggleButtonProto", 64);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/ToggleButton.proto", &protobuf_RegisterTypes);
   ToggleButtonProto::default_instance_ = new ToggleButtonProto();
@@ -104,9 +97,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fToggleButton_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int ToggleButtonProto::kNameFieldNumber;
-const int ToggleButtonProto::kTooltipFieldNumber;
-const int ToggleButtonProto::kAddressFieldNumber;
 #endif  // !_MSC_VER
 
 ToggleButtonProto::ToggleButtonProto()
@@ -115,7 +105,6 @@ ToggleButtonProto::ToggleButtonProto()
 }
 
 void ToggleButtonProto::InitAsDefaultInstance() {
-  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 ToggleButtonProto::ToggleButtonProto(const ToggleButtonProto& from)
@@ -126,9 +115,6 @@ ToggleButtonProto::ToggleButtonProto(const ToggleButtonProto& from)
 
 void ToggleButtonProto::SharedCtor() {
   _cached_size_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  address_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -137,14 +123,7 @@ ToggleButtonProto::~ToggleButtonProto() {
 }
 
 void ToggleButtonProto::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
   if (this != default_instance_) {
-    delete address_;
   }
 }
 
@@ -170,21 +149,6 @@ ToggleButtonProto* ToggleButtonProto::New() const {
 }
 
 void ToggleButtonProto::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_name()) {
-      if (name_ != &::google::protobuf::internal::kEmptyString) {
-        name_->clear();
-      }
-    }
-    if (has_tooltip()) {
-      if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-        tooltip_->clear();
-      }
-    }
-    if (has_address()) {
-      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-    }
-  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -194,65 +158,12 @@ bool ToggleButtonProto::MergePartialFromCodedStream(
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string name = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_tooltip;
-        break;
-      }
-
-      // optional string tooltip = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_tooltip:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tooltip()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->tooltip().data(), this->tooltip().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_address;
-        break;
-      }
-
-      // optional .rec.data.AddressProto address = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_address:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_address()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
+    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      return true;
     }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
   }
   return true;
 #undef DO_
@@ -260,30 +171,6 @@ bool ToggleButtonProto::MergePartialFromCodedStream(
 
 void ToggleButtonProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string name = 1;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->name(), output);
-  }
-
-  // optional string tooltip = 2;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->tooltip(), output);
-  }
-
-  // optional .rec.data.AddressProto address = 3;
-  if (has_address()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->address(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -292,33 +179,6 @@ void ToggleButtonProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ToggleButtonProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional string name = 1;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
-  }
-
-  // optional string tooltip = 2;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->tooltip(), target);
-  }
-
-  // optional .rec.data.AddressProto address = 3;
-  if (has_address()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->address(), target);
-  }
-
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -329,29 +189,6 @@ void ToggleButtonProto::SerializeWithCachedSizes(
 int ToggleButtonProto::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string name = 1;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-
-    // optional string tooltip = 2;
-    if (has_tooltip()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->tooltip());
-    }
-
-    // optional .rec.data.AddressProto address = 3;
-    if (has_address()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->address());
-    }
-
-  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -377,17 +214,6 @@ void ToggleButtonProto::MergeFrom(const ::google::protobuf::Message& from) {
 
 void ToggleButtonProto::MergeFrom(const ToggleButtonProto& from) {
   GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_name()) {
-      set_name(from.name());
-    }
-    if (from.has_tooltip()) {
-      set_tooltip(from.tooltip());
-    }
-    if (from.has_address()) {
-      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -410,10 +236,6 @@ bool ToggleButtonProto::IsInitialized() const {
 
 void ToggleButtonProto::Swap(ToggleButtonProto* other) {
   if (other != this) {
-    std::swap(name_, other->name_);
-    std::swap(tooltip_, other->tooltip_);
-    std::swap(address_, other->address_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }

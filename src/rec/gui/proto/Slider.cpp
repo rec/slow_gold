@@ -1,14 +1,19 @@
 #include "rec/gui/proto/Slider.h"
 
+#include "rec/gui/DataSlider.h"
+#include "rec/gui/proto/Component.pb.h"
+#include "rec/gui/proto/Constants.h"
+
 namespace rec {
 namespace gui {
 
-unique_ptr<DataSlider> makeSlider(const SliderProto& slider,
+unique_ptr<Component> makeSlider(const ComponentProto& component,
                                   const Constants& constants) {
+  auto& slider = component.slider();
   unique_ptr<DataSlider> dataSlider(
       new DataSlider(slider.caption(),
-                     slider.tooltip(),
-                     slider.address(),
+                     component.tooltip(),
+                     component.address(),
                      constants(slider.caption_size()),
                      constants(slider.text_entry_box_width()),
                      constants(slider.text_entry_box_height())));
@@ -21,7 +26,7 @@ unique_ptr<DataSlider> makeSlider(const SliderProto& slider,
   dataSlider->setRange(constants(slider.minimum()),
                        constants(slider.maximum()),
                        constants(slider.interval()));
-  return std::move(dataSlider);
+  return unique_ptr<Component>(dataSlider.release());
 }
 
 }  // namespace gui

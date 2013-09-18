@@ -5,9 +5,9 @@ namespace rec {
 namespace gui {
 
 Panel::Panel(const String& name,
-               Orientation o,
-               bool resizeOther,
-               bool isMain)
+             Orientation o,
+             bool resizeOther,
+             bool isMain)
     : Component(name),
       SizeHintAccumulator(o),
       orientation_(o),
@@ -64,8 +64,9 @@ void Panel::clear(bool free) {
 unique_ptr<Panel> makePanel(const PanelProto& proto) {
   Orientation o = (proto.orientation() == PanelProto::HORIZONTAL) ?
     HORIZONTAL : VERTICAL;
+  string name = "TODO";
   return make_unique<Panel>(
-      proto.name(), o, proto.resize_other_dimension(), proto.is_main());
+      name, o, proto.resize_other_dimension(), proto.is_main());
 }
 
 }  // namespace gui

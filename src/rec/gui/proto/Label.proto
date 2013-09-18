@@ -1,11 +1,5 @@
 package rec.gui;
 
-import "rec/data/proto/Address.proto";
-import "rec/gui/proto/Font.proto";
-
 message LabelProto {
-  optional FontProto font = 1;
-  optional string name = 2;
-  optional string text = 3;
-  optional string tooltip = 4;
+  optional string text = 1;
 };

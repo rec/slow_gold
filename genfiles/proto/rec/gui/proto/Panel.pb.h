@@ -143,18 +143,6 @@ class PanelProto : public ::google::protobuf::Message {
   inline ::rec::gui::PanelProto_Orientation orientation() const;
   inline void set_orientation(::rec::gui::PanelProto_Orientation value);
 
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
   // optional bool resize_other_dimension = 3 [default = true];
   inline bool has_resize_other_dimension() const;
   inline void clear_resize_other_dimension();
@@ -173,8 +161,6 @@ class PanelProto : public ::google::protobuf::Message {
  private:
   inline void set_has_orientation();
   inline void clear_has_orientation();
-  inline void set_has_name();
-  inline void clear_has_name();
   inline void set_has_resize_other_dimension();
   inline void clear_has_resize_other_dimension();
   inline void set_has_is_main();
@@ -182,13 +168,12 @@ class PanelProto : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* name_;
   int orientation_;
   bool resize_other_dimension_;
   bool is_main_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fPanel_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fPanel_2eproto();
@@ -227,85 +212,15 @@ inline void PanelProto::set_orientation(::rec::gui::PanelProto_Orientation value
   orientation_ = value;
 }
 
-// optional string name = 2;
-inline bool PanelProto::has_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void PanelProto::set_has_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void PanelProto::clear_has_name() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void PanelProto::clear_name() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    name_->clear();
-  }
-  clear_has_name();
-}
-inline const ::std::string& PanelProto::name() const {
-  return *name_;
-}
-inline void PanelProto::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void PanelProto::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void PanelProto::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* PanelProto::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-inline ::std::string* PanelProto::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void PanelProto::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (name) {
-    set_has_name();
-    name_ = name;
-  } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
 // optional bool resize_other_dimension = 3 [default = true];
 inline bool PanelProto::has_resize_other_dimension() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void PanelProto::set_has_resize_other_dimension() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void PanelProto::clear_has_resize_other_dimension() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void PanelProto::clear_resize_other_dimension() {
   resize_other_dimension_ = true;
@@ -321,13 +236,13 @@ inline void PanelProto::set_resize_other_dimension(bool value) {
 
 // optional bool is_main = 4;
 inline bool PanelProto::has_is_main() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void PanelProto::set_has_is_main() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void PanelProto::clear_has_is_main() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void PanelProto::clear_is_main() {
   is_main_ = false;

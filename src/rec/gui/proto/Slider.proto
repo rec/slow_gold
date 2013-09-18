@@ -5,11 +5,9 @@ import "rec/data/proto/Address.proto";
 message SliderProto {
   optional string caption = 1;
   optional string caption_size = 2 [default = "45"];
-  optional string tooltip = 3;
   optional string text_entry_box_width = 4 [default = "80"];
   optional string text_entry_box_height = 5 [default = "16"];
 
-  optional rec.data.AddressProto address = 12;
   optional string detent = 6;
   optional string detent_radius = 7;
   optional string text_suffix = 8;
@@ -17,7 +15,7 @@ message SliderProto {
   optional string maximum = 10;
   optional string interval = 11;
 
-  // Note yet used.
+  // Not yet used.
   enum Style {
     LinearHorizontal = 0;
     LinearVertical = 1;

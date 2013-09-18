@@ -1,23 +1,22 @@
 layout {
   name: "CommandBar"
   padding: true
-  min: "COMMAND_BUTTON_HEIGHT"
-  component {
-    button {
-      tooltip: "Add Loop Point Button: Add a loop point at the current time."
-      image: "CreateNow"
-    }
+  size {
+    min: "COMMAND_BUTTON_HEIGHT"
   }
   component {
-    button {
-      tooltip: "Zoom Out Full Button: Zoom the waveform all the way out."
-      image: "ZoomOutFull"
-    }
+    name: "CreateNow"
+    tooltip: "Add Loop Point Button: Add a loop point at the current time."
+    button {}
   }
   component {
-    button {
-      image: "ZoomToSelection"
-      tooltip: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
-    }
+    name: "ZoomOutFull"
+    tooltip: "Zoom Out Full Button: Zoom the waveform all the way out."
+    button {}
+  }
+  component {
+    name: "ZoomToSelection"
+    tooltip: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
+    button {}
   }
 }

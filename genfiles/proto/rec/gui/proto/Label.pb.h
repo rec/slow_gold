@@ -24,8 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/data/proto/Address.pb.h"
-#include "rec/gui/proto/Font.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -94,31 +92,10 @@ class LabelProto : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.gui.FontProto font = 1;
-  inline bool has_font() const;
-  inline void clear_font();
-  static const int kFontFieldNumber = 1;
-  inline const ::rec::gui::FontProto& font() const;
-  inline ::rec::gui::FontProto* mutable_font();
-  inline ::rec::gui::FontProto* release_font();
-  inline void set_allocated_font(::rec::gui::FontProto* font);
-
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
-  // optional string text = 3;
+  // optional string text = 1;
   inline bool has_text() const;
   inline void clear_text();
-  static const int kTextFieldNumber = 3;
+  static const int kTextFieldNumber = 1;
   inline const ::std::string& text() const;
   inline void set_text(const ::std::string& value);
   inline void set_text(const char* value);
@@ -127,38 +104,17 @@ class LabelProto : public ::google::protobuf::Message {
   inline ::std::string* release_text();
   inline void set_allocated_text(::std::string* text);
 
-  // optional string tooltip = 4;
-  inline bool has_tooltip() const;
-  inline void clear_tooltip();
-  static const int kTooltipFieldNumber = 4;
-  inline const ::std::string& tooltip() const;
-  inline void set_tooltip(const ::std::string& value);
-  inline void set_tooltip(const char* value);
-  inline void set_tooltip(const char* value, size_t size);
-  inline ::std::string* mutable_tooltip();
-  inline ::std::string* release_tooltip();
-  inline void set_allocated_tooltip(::std::string* tooltip);
-
   // @@protoc_insertion_point(class_scope:rec.gui.LabelProto)
  private:
-  inline void set_has_font();
-  inline void clear_has_font();
-  inline void set_has_name();
-  inline void clear_has_name();
   inline void set_has_text();
   inline void clear_has_text();
-  inline void set_has_tooltip();
-  inline void clear_has_tooltip();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::rec::gui::FontProto* font_;
-  ::std::string* name_;
   ::std::string* text_;
-  ::std::string* tooltip_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLabel_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLabel_2eproto();
@@ -174,123 +130,15 @@ class LabelProto : public ::google::protobuf::Message {
 
 // LabelProto
 
-// optional .rec.gui.FontProto font = 1;
-inline bool LabelProto::has_font() const {
+// optional string text = 1;
+inline bool LabelProto::has_text() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void LabelProto::set_has_font() {
+inline void LabelProto::set_has_text() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void LabelProto::clear_has_font() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void LabelProto::clear_font() {
-  if (font_ != NULL) font_->::rec::gui::FontProto::Clear();
-  clear_has_font();
-}
-inline const ::rec::gui::FontProto& LabelProto::font() const {
-  return font_ != NULL ? *font_ : *default_instance_->font_;
-}
-inline ::rec::gui::FontProto* LabelProto::mutable_font() {
-  set_has_font();
-  if (font_ == NULL) font_ = new ::rec::gui::FontProto;
-  return font_;
-}
-inline ::rec::gui::FontProto* LabelProto::release_font() {
-  clear_has_font();
-  ::rec::gui::FontProto* temp = font_;
-  font_ = NULL;
-  return temp;
-}
-inline void LabelProto::set_allocated_font(::rec::gui::FontProto* font) {
-  delete font_;
-  font_ = font;
-  if (font) {
-    set_has_font();
-  } else {
-    clear_has_font();
-  }
-}
-
-// optional string name = 2;
-inline bool LabelProto::has_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void LabelProto::set_has_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void LabelProto::clear_has_name() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void LabelProto::clear_name() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    name_->clear();
-  }
-  clear_has_name();
-}
-inline const ::std::string& LabelProto::name() const {
-  return *name_;
-}
-inline void LabelProto::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void LabelProto::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void LabelProto::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* LabelProto::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-inline ::std::string* LabelProto::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void LabelProto::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (name) {
-    set_has_name();
-    name_ = name;
-  } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string text = 3;
-inline bool LabelProto::has_text() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void LabelProto::set_has_text() {
-  _has_bits_[0] |= 0x00000004u;
-}
 inline void LabelProto::clear_has_text() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void LabelProto::clear_text() {
   if (text_ != &::google::protobuf::internal::kEmptyString) {
@@ -349,76 +197,6 @@ inline void LabelProto::set_allocated_text(::std::string* text) {
   } else {
     clear_has_text();
     text_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string tooltip = 4;
-inline bool LabelProto::has_tooltip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void LabelProto::set_has_tooltip() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void LabelProto::clear_has_tooltip() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void LabelProto::clear_tooltip() {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    tooltip_->clear();
-  }
-  clear_has_tooltip();
-}
-inline const ::std::string& LabelProto::tooltip() const {
-  return *tooltip_;
-}
-inline void LabelProto::set_tooltip(const ::std::string& value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void LabelProto::set_tooltip(const char* value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void LabelProto::set_tooltip(const char* value, size_t size) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* LabelProto::mutable_tooltip() {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  return tooltip_;
-}
-inline ::std::string* LabelProto::release_tooltip() {
-  clear_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = tooltip_;
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void LabelProto::set_allocated_tooltip(::std::string* tooltip) {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
-  if (tooltip) {
-    set_has_tooltip();
-    tooltip_ = tooltip;
-  } else {
-    clear_has_tooltip();
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

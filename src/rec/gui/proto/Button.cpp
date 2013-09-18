@@ -1,4 +1,7 @@
 #include "rec/gui/proto/Button.h"
+#include "rec/gui/LanguageButton.h"
+#include "rec/gui/proto/Component.pb.h"
+#include "rec/gui/proto/Constants.h"
 #include "rec/util/Binary.h"
 
 using namespace juce;
@@ -14,15 +17,16 @@ void construct(unique_ptr<Drawable>* drawable, const string& name) {
 
 }  // namespace
 
-unique_ptr<LanguageButton> makeButton(const ButtonProto& proto,
-                                      const Constants&) {
+unique_ptr<Component> makeButton(const ComponentProto& component,
+                                 const Constants& constants) {
+  const ButtonProto& proto = component.button();
   auto style = static_cast<DrawableButton::ButtonStyle>(proto.style());
   unique_ptr<LanguageButton> button(
-      new LanguageButton(proto.name(), proto.tooltip(), style));
-  button->setTooltip(proto.tooltip());
+      new LanguageButton(component.name(), component.tooltip(), style));
+  button->setTooltip(component.tooltip());
 
-  const string& imageName = proto.image();
-  const ButtonProto::HasState& state = proto.state();
+  const string& imageName = component.name();
+  const ButtonProto::State& state = proto.state();
   unique_ptr<Drawable> normal, over, down, disabled;
   construct(&normal, imageName);
 
@@ -35,7 +39,7 @@ unique_ptr<LanguageButton> makeButton(const ButtonProto& proto,
   if (state.disabled())
     construct(&disabled, imageName + "Disabled");
 
-  const ButtonProto::HasState& stateOn = proto.state_on();
+  const ButtonProto::State& stateOn = proto.state_on();
   unique_ptr<Drawable> normalOn, overOn, downOn, disabledOn;
   if (stateOn.normal())
     construct(&overOn, imageName + "OnOver");
@@ -53,7 +57,7 @@ unique_ptr<LanguageButton> makeButton(const ButtonProto& proto,
       normal.get(), over.get(), down.get(), disabled.get(),
       normalOn.get(), overOn.get(), downOn.get(), disabledOn.get());
 
-  return std::move(button);
+  return unique_ptr<Component>(button.release());
 }
 
 }  // namespace gui

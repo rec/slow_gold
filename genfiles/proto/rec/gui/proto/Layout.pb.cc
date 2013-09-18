@@ -39,15 +39,13 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
       "rec/gui/proto/Layout.proto");
   GOOGLE_CHECK(file != NULL);
   Layout_descriptor_ = file->message_type(0);
-  static const int Layout_offsets_[9] = {
+  static const int Layout_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, orientation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_main_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, padding_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, preferred_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, min_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, max_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, component_),
   };
   Layout_reflection_ =
@@ -111,17 +109,19 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\035r"
-    "ec/gui/proto/Component.proto\"\226\002\n\006Layout\022"
-    "\014\n\004name\030\001 \001(\t\0220\n\013orientation\030\002 \001(\0162\033.rec"
-    ".gui.Layout.Orientation\022$\n\026resize_other_"
-    "dimension\030\003 \001(\010:\004true\022\017\n\007is_main\030\004 \001(\010\022\017"
-    "\n\007padding\030\005 \001(\010\022\021\n\tpreferred\030\006 \001(\t\022\013\n\003mi"
-    "n\030\007 \001(\t\022\013\n\003max\030\010 \001(\t\022*\n\tcomponent\030\t \003(\0132"
-    "\027.rec.gui.ComponentProto\"+\n\013Orientation\022"
-    "\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\"*\n\007Layouts"
-    "\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Layout", 393);
+    "ec/gui/proto/Component.proto\032\030rec/gui/pr"
+    "oto/Size.proto\"\206\002\n\006Layout\022\014\n\004name\030\001 \001(\t\022"
+    "0\n\013orientation\030\002 \001(\0162\033.rec.gui.Layout.Or"
+    "ientation\022$\n\026resize_other_dimension\030\003 \001("
+    "\010:\004true\022\017\n\007is_main\030\004 \001(\010\022\017\n\007padding\030\005 \001("
+    "\010\022\033\n\004size\030\006 \001(\0132\r.rec.gui.Size\022*\n\tcompon"
+    "ent\030\t \003(\0132\027.rec.gui.ComponentProto\"+\n\013Or"
+    "ientation\022\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\""
+    "*\n\007Layouts\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Lay"
+    "out", 403);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
   Layout::default_instance_ = new Layout();
@@ -167,9 +167,7 @@ const int Layout::kOrientationFieldNumber;
 const int Layout::kResizeOtherDimensionFieldNumber;
 const int Layout::kIsMainFieldNumber;
 const int Layout::kPaddingFieldNumber;
-const int Layout::kPreferredFieldNumber;
-const int Layout::kMinFieldNumber;
-const int Layout::kMaxFieldNumber;
+const int Layout::kSizeFieldNumber;
 const int Layout::kComponentFieldNumber;
 #endif  // !_MSC_VER
 
@@ -179,6 +177,7 @@ Layout::Layout()
 }
 
 void Layout::InitAsDefaultInstance() {
+  size_ = const_cast< ::rec::gui::Size*>(&::rec::gui::Size::default_instance());
 }
 
 Layout::Layout(const Layout& from)
@@ -194,9 +193,7 @@ void Layout::SharedCtor() {
   resize_other_dimension_ = true;
   is_main_ = false;
   padding_ = false;
-  preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  size_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -208,16 +205,8 @@ void Layout::SharedDtor() {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
-  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
-    delete preferred_;
-  }
-  if (min_ != &::google::protobuf::internal::kEmptyString) {
-    delete min_;
-  }
-  if (max_ != &::google::protobuf::internal::kEmptyString) {
-    delete max_;
-  }
   if (this != default_instance_) {
+    delete size_;
   }
 }
 
@@ -253,20 +242,8 @@ void Layout::Clear() {
     resize_other_dimension_ = true;
     is_main_ = false;
     padding_ = false;
-    if (has_preferred()) {
-      if (preferred_ != &::google::protobuf::internal::kEmptyString) {
-        preferred_->clear();
-      }
-    }
-    if (has_min()) {
-      if (min_ != &::google::protobuf::internal::kEmptyString) {
-        min_->clear();
-      }
-    }
-    if (has_max()) {
-      if (max_ != &::google::protobuf::internal::kEmptyString) {
-        max_->clear();
-      }
+    if (has_size()) {
+      if (size_ != NULL) size_->::rec::gui::Size::Clear();
     }
   }
   component_.Clear();
@@ -361,54 +338,17 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_preferred;
+        if (input->ExpectTag(50)) goto parse_size;
         break;
       }
 
-      // optional string preferred = 6;
+      // optional .rec.gui.Size size = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_preferred:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_preferred()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->preferred().data(), this->preferred().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(58)) goto parse_min;
-        break;
-      }
-
-      // optional string min = 7;
-      case 7: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_min:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_min()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->min().data(), this->min().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(66)) goto parse_max;
-        break;
-      }
-
-      // optional string max = 8;
-      case 8: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_max:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_max()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->max().data(), this->max().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+         parse_size:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_size()));
         } else {
           goto handle_uninterpreted;
         }
@@ -479,31 +419,10 @@ void Layout::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->padding(), output);
   }
 
-  // optional string preferred = 6;
-  if (has_preferred()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->preferred().data(), this->preferred().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      6, this->preferred(), output);
-  }
-
-  // optional string min = 7;
-  if (has_min()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->min().data(), this->min().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      7, this->min(), output);
-  }
-
-  // optional string max = 8;
-  if (has_max()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->max().data(), this->max().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      8, this->max(), output);
+  // optional .rec.gui.Size size = 6;
+  if (has_size()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->size(), output);
   }
 
   // repeated .rec.gui.ComponentProto component = 9;
@@ -551,34 +470,11 @@ void Layout::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->padding(), target);
   }
 
-  // optional string preferred = 6;
-  if (has_preferred()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->preferred().data(), this->preferred().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->preferred(), target);
-  }
-
-  // optional string min = 7;
-  if (has_min()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->min().data(), this->min().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->min(), target);
-  }
-
-  // optional string max = 8;
-  if (has_max()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->max().data(), this->max().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->max(), target);
+  // optional .rec.gui.Size size = 6;
+  if (has_size()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->size(), target);
   }
 
   // repeated .rec.gui.ComponentProto component = 9;
@@ -627,25 +523,11 @@ int Layout::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // optional string preferred = 6;
-    if (has_preferred()) {
+    // optional .rec.gui.Size size = 6;
+    if (has_size()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->preferred());
-    }
-
-    // optional string min = 7;
-    if (has_min()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->min());
-    }
-
-    // optional string max = 8;
-    if (has_max()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->max());
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->size());
     }
 
   }
@@ -699,14 +581,8 @@ void Layout::MergeFrom(const Layout& from) {
     if (from.has_padding()) {
       set_padding(from.padding());
     }
-    if (from.has_preferred()) {
-      set_preferred(from.preferred());
-    }
-    if (from.has_min()) {
-      set_min(from.min());
-    }
-    if (from.has_max()) {
-      set_max(from.max());
+    if (from.has_size()) {
+      mutable_size()->::rec::gui::Size::MergeFrom(from.size());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -736,9 +612,7 @@ void Layout::Swap(Layout* other) {
     std::swap(resize_other_dimension_, other->resize_other_dimension_);
     std::swap(is_main_, other->is_main_);
     std::swap(padding_, other->padding_);
-    std::swap(preferred_, other->preferred_);
-    std::swap(min_, other->min_);
-    std::swap(max_, other->max_);
+    std::swap(size_, other->size_);
     component_.Swap(&other->component_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

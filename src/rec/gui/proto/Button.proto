@@ -1,8 +1,5 @@
 package rec.gui;
 
-import "rec/data/proto/Address.proto";
-import "rec/gui/proto/Font.proto";
-
 message ButtonProto {
   enum Style {
     ImageFitted = 0;
@@ -12,7 +9,7 @@ message ButtonProto {
     ImageStretched = 4;
   };
 
-  message HasState {
+  message State {
     optional bool normal = 1 [default = true];
     optional bool over = 2 [default = false];
     optional bool down = 3 [default = true];
@@ -20,11 +17,7 @@ message ButtonProto {
   };
 
   optional Style style = 1;
-  optional string name = 2;
-  optional string tooltip = 3;
-  optional string image = 4;
-
-  optional HasState state = 5;
-  optional HasState state_on = 6;
+  optional State state = 2;
+  optional State state_on = 3;
 };
 

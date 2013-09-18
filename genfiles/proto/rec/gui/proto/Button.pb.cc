@@ -24,9 +24,9 @@ namespace {
 const ::google::protobuf::Descriptor* ButtonProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ButtonProto_reflection_ = NULL;
-const ::google::protobuf::Descriptor* ButtonProto_HasState_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* ButtonProto_State_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  ButtonProto_HasState_reflection_ = NULL;
+  ButtonProto_State_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ButtonProto_Style_descriptor_ = NULL;
 
 }  // namespace
@@ -39,11 +39,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto() {
       "rec/gui/proto/Button.proto");
   GOOGLE_CHECK(file != NULL);
   ButtonProto_descriptor_ = file->message_type(0);
-  static const int ButtonProto_offsets_[6] = {
+  static const int ButtonProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, style_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, tooltip_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, image_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, state_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, state_on_),
   };
@@ -58,24 +55,24 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ButtonProto));
-  ButtonProto_HasState_descriptor_ = ButtonProto_descriptor_->nested_type(0);
-  static const int ButtonProto_HasState_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_HasState, normal_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_HasState, over_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_HasState, down_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_HasState, disabled_),
+  ButtonProto_State_descriptor_ = ButtonProto_descriptor_->nested_type(0);
+  static const int ButtonProto_State_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, normal_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, over_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, down_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, disabled_),
   };
-  ButtonProto_HasState_reflection_ =
+  ButtonProto_State_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      ButtonProto_HasState_descriptor_,
-      ButtonProto_HasState::default_instance_,
-      ButtonProto_HasState_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_HasState, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_HasState, _unknown_fields_),
+      ButtonProto_State_descriptor_,
+      ButtonProto_State::default_instance_,
+      ButtonProto_State_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(ButtonProto_HasState));
+      sizeof(ButtonProto_State));
   ButtonProto_Style_descriptor_ = ButtonProto_descriptor_->enum_type(0);
 }
 
@@ -92,7 +89,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ButtonProto_descriptor_, &ButtonProto::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    ButtonProto_HasState_descriptor_, &ButtonProto_HasState::default_instance());
+    ButtonProto_State_descriptor_, &ButtonProto_State::default_instance());
 }
 
 }  // namespace
@@ -100,8 +97,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fButton_2eproto() {
   delete ButtonProto::default_instance_;
   delete ButtonProto_reflection_;
-  delete ButtonProto_HasState::default_instance_;
-  delete ButtonProto_HasState_reflection_;
+  delete ButtonProto_State::default_instance_;
+  delete ButtonProto_State_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto() {
@@ -110,28 +107,23 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fFont_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\032\034r"
-    "ec/data/proto/Address.proto\032\030rec/gui/pro"
-    "to/Font.proto\"\232\003\n\013ButtonProto\022)\n\005style\030\001"
-    " \001(\0162\032.rec.gui.ButtonProto.Style\022\014\n\004name"
-    "\030\002 \001(\t\022\017\n\007tooltip\030\003 \001(\t\022\r\n\005image\030\004 \001(\t\022,"
-    "\n\005state\030\005 \001(\0132\035.rec.gui.ButtonProto.HasS"
-    "tate\022/\n\010state_on\030\006 \001(\0132\035.rec.gui.ButtonP"
-    "roto.HasState\032a\n\010HasState\022\024\n\006normal\030\001 \001("
-    "\010:\004true\022\023\n\004over\030\002 \001(\010:\005false\022\022\n\004down\030\003 \001"
-    "(\010:\004true\022\026\n\010disabled\030\004 \001(\010:\004true\"p\n\005Styl"
-    "e\022\017\n\013ImageFitted\020\000\022\014\n\010ImageRaw\020\001\022\027\n\023Imag"
-    "eAboveTextLabel\020\002\022\033\n\027ImageOnButtonBackgr"
-    "ound\020\003\022\022\n\016ImageStretched\020\004", 506);
+    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\343\002"
+    "\n\013ButtonProto\022)\n\005style\030\001 \001(\0162\032.rec.gui.B"
+    "uttonProto.Style\022)\n\005state\030\002 \001(\0132\032.rec.gu"
+    "i.ButtonProto.State\022,\n\010state_on\030\003 \001(\0132\032."
+    "rec.gui.ButtonProto.State\032^\n\005State\022\024\n\006no"
+    "rmal\030\001 \001(\010:\004true\022\023\n\004over\030\002 \001(\010:\005false\022\022\n"
+    "\004down\030\003 \001(\010:\004true\022\026\n\010disabled\030\004 \001(\010:\004tru"
+    "e\"p\n\005Style\022\017\n\013ImageFitted\020\000\022\014\n\010ImageRaw\020"
+    "\001\022\027\n\023ImageAboveTextLabel\020\002\022\033\n\027ImageOnBut"
+    "tonBackground\020\003\022\022\n\016ImageStretched\020\004", 395);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Button.proto", &protobuf_RegisterTypes);
   ButtonProto::default_instance_ = new ButtonProto();
-  ButtonProto_HasState::default_instance_ = new ButtonProto_HasState();
+  ButtonProto_State::default_instance_ = new ButtonProto_State();
   ButtonProto::default_instance_->InitAsDefaultInstance();
-  ButtonProto_HasState::default_instance_->InitAsDefaultInstance();
+  ButtonProto_State::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fButton_2eproto);
 }
 
@@ -172,27 +164,27 @@ const ButtonProto_Style ButtonProto::Style_MAX;
 const int ButtonProto::Style_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
-const int ButtonProto_HasState::kNormalFieldNumber;
-const int ButtonProto_HasState::kOverFieldNumber;
-const int ButtonProto_HasState::kDownFieldNumber;
-const int ButtonProto_HasState::kDisabledFieldNumber;
+const int ButtonProto_State::kNormalFieldNumber;
+const int ButtonProto_State::kOverFieldNumber;
+const int ButtonProto_State::kDownFieldNumber;
+const int ButtonProto_State::kDisabledFieldNumber;
 #endif  // !_MSC_VER
 
-ButtonProto_HasState::ButtonProto_HasState()
+ButtonProto_State::ButtonProto_State()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void ButtonProto_HasState::InitAsDefaultInstance() {
+void ButtonProto_State::InitAsDefaultInstance() {
 }
 
-ButtonProto_HasState::ButtonProto_HasState(const ButtonProto_HasState& from)
+ButtonProto_State::ButtonProto_State(const ButtonProto_State& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void ButtonProto_HasState::SharedCtor() {
+void ButtonProto_State::SharedCtor() {
   _cached_size_ = 0;
   normal_ = true;
   over_ = false;
@@ -201,37 +193,37 @@ void ButtonProto_HasState::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-ButtonProto_HasState::~ButtonProto_HasState() {
+ButtonProto_State::~ButtonProto_State() {
   SharedDtor();
 }
 
-void ButtonProto_HasState::SharedDtor() {
+void ButtonProto_State::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void ButtonProto_HasState::SetCachedSize(int size) const {
+void ButtonProto_State::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* ButtonProto_HasState::descriptor() {
+const ::google::protobuf::Descriptor* ButtonProto_State::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return ButtonProto_HasState_descriptor_;
+  return ButtonProto_State_descriptor_;
 }
 
-const ButtonProto_HasState& ButtonProto_HasState::default_instance() {
+const ButtonProto_State& ButtonProto_State::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto();
   return *default_instance_;
 }
 
-ButtonProto_HasState* ButtonProto_HasState::default_instance_ = NULL;
+ButtonProto_State* ButtonProto_State::default_instance_ = NULL;
 
-ButtonProto_HasState* ButtonProto_HasState::New() const {
-  return new ButtonProto_HasState;
+ButtonProto_State* ButtonProto_State::New() const {
+  return new ButtonProto_State;
 }
 
-void ButtonProto_HasState::Clear() {
+void ButtonProto_State::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     normal_ = true;
     over_ = false;
@@ -242,7 +234,7 @@ void ButtonProto_HasState::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool ButtonProto_HasState::MergePartialFromCodedStream(
+bool ButtonProto_State::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -327,7 +319,7 @@ bool ButtonProto_HasState::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void ButtonProto_HasState::SerializeWithCachedSizes(
+void ButtonProto_State::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional bool normal = 1 [default = true];
   if (has_normal()) {
@@ -355,7 +347,7 @@ void ButtonProto_HasState::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* ButtonProto_HasState::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ButtonProto_State::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional bool normal = 1 [default = true];
   if (has_normal()) {
@@ -384,7 +376,7 @@ void ButtonProto_HasState::SerializeWithCachedSizes(
   return target;
 }
 
-int ButtonProto_HasState::ByteSize() const {
+int ButtonProto_State::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -420,10 +412,10 @@ int ButtonProto_HasState::ByteSize() const {
   return total_size;
 }
 
-void ButtonProto_HasState::MergeFrom(const ::google::protobuf::Message& from) {
+void ButtonProto_State::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const ButtonProto_HasState* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const ButtonProto_HasState*>(
+  const ButtonProto_State* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ButtonProto_State*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -432,7 +424,7 @@ void ButtonProto_HasState::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void ButtonProto_HasState::MergeFrom(const ButtonProto_HasState& from) {
+void ButtonProto_State::MergeFrom(const ButtonProto_State& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_normal()) {
@@ -451,24 +443,24 @@ void ButtonProto_HasState::MergeFrom(const ButtonProto_HasState& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void ButtonProto_HasState::CopyFrom(const ::google::protobuf::Message& from) {
+void ButtonProto_State::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void ButtonProto_HasState::CopyFrom(const ButtonProto_HasState& from) {
+void ButtonProto_State::CopyFrom(const ButtonProto_State& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ButtonProto_HasState::IsInitialized() const {
+bool ButtonProto_State::IsInitialized() const {
 
   return true;
 }
 
-void ButtonProto_HasState::Swap(ButtonProto_HasState* other) {
+void ButtonProto_State::Swap(ButtonProto_State* other) {
   if (other != this) {
     std::swap(normal_, other->normal_);
     std::swap(over_, other->over_);
@@ -480,11 +472,11 @@ void ButtonProto_HasState::Swap(ButtonProto_HasState* other) {
   }
 }
 
-::google::protobuf::Metadata ButtonProto_HasState::GetMetadata() const {
+::google::protobuf::Metadata ButtonProto_State::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ButtonProto_HasState_descriptor_;
-  metadata.reflection = ButtonProto_HasState_reflection_;
+  metadata.descriptor = ButtonProto_State_descriptor_;
+  metadata.reflection = ButtonProto_State_reflection_;
   return metadata;
 }
 
@@ -493,9 +485,6 @@ void ButtonProto_HasState::Swap(ButtonProto_HasState* other) {
 
 #ifndef _MSC_VER
 const int ButtonProto::kStyleFieldNumber;
-const int ButtonProto::kNameFieldNumber;
-const int ButtonProto::kTooltipFieldNumber;
-const int ButtonProto::kImageFieldNumber;
 const int ButtonProto::kStateFieldNumber;
 const int ButtonProto::kStateOnFieldNumber;
 #endif  // !_MSC_VER
@@ -506,8 +495,8 @@ ButtonProto::ButtonProto()
 }
 
 void ButtonProto::InitAsDefaultInstance() {
-  state_ = const_cast< ::rec::gui::ButtonProto_HasState*>(&::rec::gui::ButtonProto_HasState::default_instance());
-  state_on_ = const_cast< ::rec::gui::ButtonProto_HasState*>(&::rec::gui::ButtonProto_HasState::default_instance());
+  state_ = const_cast< ::rec::gui::ButtonProto_State*>(&::rec::gui::ButtonProto_State::default_instance());
+  state_on_ = const_cast< ::rec::gui::ButtonProto_State*>(&::rec::gui::ButtonProto_State::default_instance());
 }
 
 ButtonProto::ButtonProto(const ButtonProto& from)
@@ -519,9 +508,6 @@ ButtonProto::ButtonProto(const ButtonProto& from)
 void ButtonProto::SharedCtor() {
   _cached_size_ = 0;
   style_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  image_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   state_ = NULL;
   state_on_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -532,15 +518,6 @@ ButtonProto::~ButtonProto() {
 }
 
 void ButtonProto::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
-  if (image_ != &::google::protobuf::internal::kEmptyString) {
-    delete image_;
-  }
   if (this != default_instance_) {
     delete state_;
     delete state_on_;
@@ -571,26 +548,11 @@ ButtonProto* ButtonProto::New() const {
 void ButtonProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     style_ = 0;
-    if (has_name()) {
-      if (name_ != &::google::protobuf::internal::kEmptyString) {
-        name_->clear();
-      }
-    }
-    if (has_tooltip()) {
-      if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-        tooltip_->clear();
-      }
-    }
-    if (has_image()) {
-      if (image_ != &::google::protobuf::internal::kEmptyString) {
-        image_->clear();
-      }
-    }
     if (has_state()) {
-      if (state_ != NULL) state_->::rec::gui::ButtonProto_HasState::Clear();
+      if (state_ != NULL) state_->::rec::gui::ButtonProto_State::Clear();
     }
     if (has_state_on()) {
-      if (state_on_ != NULL) state_on_->::rec::gui::ButtonProto_HasState::Clear();
+      if (state_on_ != NULL) state_on_->::rec::gui::ButtonProto_State::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -619,63 +581,12 @@ bool ButtonProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_name;
+        if (input->ExpectTag(18)) goto parse_state;
         break;
       }
 
-      // optional string name = 2;
+      // optional .rec.gui.ButtonProto.State state = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_tooltip;
-        break;
-      }
-
-      // optional string tooltip = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_tooltip:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tooltip()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->tooltip().data(), this->tooltip().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_image;
-        break;
-      }
-
-      // optional string image = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_image:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_image()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->image().data(), this->image().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(42)) goto parse_state;
-        break;
-      }
-
-      // optional .rec.gui.ButtonProto.HasState state = 5;
-      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_state:
@@ -684,12 +595,12 @@ bool ButtonProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_state_on;
+        if (input->ExpectTag(26)) goto parse_state_on;
         break;
       }
 
-      // optional .rec.gui.ButtonProto.HasState state_on = 6;
-      case 6: {
+      // optional .rec.gui.ButtonProto.State state_on = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_state_on:
@@ -726,43 +637,16 @@ void ButtonProto::SerializeWithCachedSizes(
       1, this->style(), output);
   }
 
-  // optional string name = 2;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
-  }
-
-  // optional string tooltip = 3;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->tooltip(), output);
-  }
-
-  // optional string image = 4;
-  if (has_image()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->image().data(), this->image().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->image(), output);
-  }
-
-  // optional .rec.gui.ButtonProto.HasState state = 5;
+  // optional .rec.gui.ButtonProto.State state = 2;
   if (has_state()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->state(), output);
+      2, this->state(), output);
   }
 
-  // optional .rec.gui.ButtonProto.HasState state_on = 6;
+  // optional .rec.gui.ButtonProto.State state_on = 3;
   if (has_state_on()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->state_on(), output);
+      3, this->state_on(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -779,48 +663,18 @@ void ButtonProto::SerializeWithCachedSizes(
       1, this->style(), target);
   }
 
-  // optional string name = 2;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-
-  // optional string tooltip = 3;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->tooltip(), target);
-  }
-
-  // optional string image = 4;
-  if (has_image()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->image().data(), this->image().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->image(), target);
-  }
-
-  // optional .rec.gui.ButtonProto.HasState state = 5;
+  // optional .rec.gui.ButtonProto.State state = 2;
   if (has_state()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->state(), target);
+        2, this->state(), target);
   }
 
-  // optional .rec.gui.ButtonProto.HasState state_on = 6;
+  // optional .rec.gui.ButtonProto.State state_on = 3;
   if (has_state_on()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->state_on(), target);
+        3, this->state_on(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -840,35 +694,14 @@ int ButtonProto::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->style());
     }
 
-    // optional string name = 2;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-
-    // optional string tooltip = 3;
-    if (has_tooltip()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->tooltip());
-    }
-
-    // optional string image = 4;
-    if (has_image()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->image());
-    }
-
-    // optional .rec.gui.ButtonProto.HasState state = 5;
+    // optional .rec.gui.ButtonProto.State state = 2;
     if (has_state()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->state());
     }
 
-    // optional .rec.gui.ButtonProto.HasState state_on = 6;
+    // optional .rec.gui.ButtonProto.State state_on = 3;
     if (has_state_on()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -905,20 +738,11 @@ void ButtonProto::MergeFrom(const ButtonProto& from) {
     if (from.has_style()) {
       set_style(from.style());
     }
-    if (from.has_name()) {
-      set_name(from.name());
-    }
-    if (from.has_tooltip()) {
-      set_tooltip(from.tooltip());
-    }
-    if (from.has_image()) {
-      set_image(from.image());
-    }
     if (from.has_state()) {
-      mutable_state()->::rec::gui::ButtonProto_HasState::MergeFrom(from.state());
+      mutable_state()->::rec::gui::ButtonProto_State::MergeFrom(from.state());
     }
     if (from.has_state_on()) {
-      mutable_state_on()->::rec::gui::ButtonProto_HasState::MergeFrom(from.state_on());
+      mutable_state_on()->::rec::gui::ButtonProto_State::MergeFrom(from.state_on());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -944,9 +768,6 @@ bool ButtonProto::IsInitialized() const {
 void ButtonProto::Swap(ButtonProto* other) {
   if (other != this) {
     std::swap(style_, other->style_);
-    std::swap(name_, other->name_);
-    std::swap(tooltip_, other->tooltip_);
-    std::swap(image_, other->image_);
     std::swap(state_, other->state_);
     std::swap(state_on_, other->state_on_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

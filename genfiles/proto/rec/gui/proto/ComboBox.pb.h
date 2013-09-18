@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/data/proto/Address.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -109,42 +108,15 @@ class ComboBoxProto : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& item() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_item();
 
-  // optional string tooltip = 2;
-  inline bool has_tooltip() const;
-  inline void clear_tooltip();
-  static const int kTooltipFieldNumber = 2;
-  inline const ::std::string& tooltip() const;
-  inline void set_tooltip(const ::std::string& value);
-  inline void set_tooltip(const char* value);
-  inline void set_tooltip(const char* value, size_t size);
-  inline ::std::string* mutable_tooltip();
-  inline ::std::string* release_tooltip();
-  inline void set_allocated_tooltip(::std::string* tooltip);
-
-  // optional .rec.data.AddressProto address = 3;
-  inline bool has_address() const;
-  inline void clear_address();
-  static const int kAddressFieldNumber = 3;
-  inline const ::rec::data::AddressProto& address() const;
-  inline ::rec::data::AddressProto* mutable_address();
-  inline ::rec::data::AddressProto* release_address();
-  inline void set_allocated_address(::rec::data::AddressProto* address);
-
   // @@protoc_insertion_point(class_scope:rec.gui.ComboBoxProto)
  private:
-  inline void set_has_tooltip();
-  inline void clear_has_tooltip();
-  inline void set_has_address();
-  inline void clear_has_address();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::std::string> item_;
-  ::std::string* tooltip_;
-  ::rec::data::AddressProto* address_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
@@ -202,114 +174,6 @@ ComboBoxProto::item() const {
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 ComboBoxProto::mutable_item() {
   return &item_;
-}
-
-// optional string tooltip = 2;
-inline bool ComboBoxProto::has_tooltip() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void ComboBoxProto::set_has_tooltip() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void ComboBoxProto::clear_has_tooltip() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void ComboBoxProto::clear_tooltip() {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    tooltip_->clear();
-  }
-  clear_has_tooltip();
-}
-inline const ::std::string& ComboBoxProto::tooltip() const {
-  return *tooltip_;
-}
-inline void ComboBoxProto::set_tooltip(const ::std::string& value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void ComboBoxProto::set_tooltip(const char* value) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(value);
-}
-inline void ComboBoxProto::set_tooltip(const char* value, size_t size) {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  tooltip_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ComboBoxProto::mutable_tooltip() {
-  set_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    tooltip_ = new ::std::string;
-  }
-  return tooltip_;
-}
-inline ::std::string* ComboBoxProto::release_tooltip() {
-  clear_has_tooltip();
-  if (tooltip_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = tooltip_;
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ComboBoxProto::set_allocated_tooltip(::std::string* tooltip) {
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
-  if (tooltip) {
-    set_has_tooltip();
-    tooltip_ = tooltip;
-  } else {
-    clear_has_tooltip();
-    tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional .rec.data.AddressProto address = 3;
-inline bool ComboBoxProto::has_address() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void ComboBoxProto::set_has_address() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void ComboBoxProto::clear_has_address() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void ComboBoxProto::clear_address() {
-  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-  clear_has_address();
-}
-inline const ::rec::data::AddressProto& ComboBoxProto::address() const {
-  return address_ != NULL ? *address_ : *default_instance_->address_;
-}
-inline ::rec::data::AddressProto* ComboBoxProto::mutable_address() {
-  set_has_address();
-  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
-  return address_;
-}
-inline ::rec::data::AddressProto* ComboBoxProto::release_address() {
-  clear_has_address();
-  ::rec::data::AddressProto* temp = address_;
-  address_ = NULL;
-  return temp;
-}
-inline void ComboBoxProto::set_allocated_address(::rec::data::AddressProto* address) {
-  delete address_;
-  address_ = address;
-  if (address) {
-    set_has_address();
-  } else {
-    clear_has_address();
-  }
 }
 
 

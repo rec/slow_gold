@@ -37,13 +37,11 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
       "rec/gui/proto/Slider.proto");
   GOOGLE_CHECK(file != NULL);
   SliderProto_descriptor_ = file->message_type(0);
-  static const int SliderProto_offsets_[14] = {
+  static const int SliderProto_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, caption_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, caption_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, tooltip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, text_entry_box_width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, text_entry_box_height_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, address_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, detent_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, detent_radius_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, text_suffix_),
@@ -101,28 +99,26 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/gui/proto/Slider.proto\022\007rec.gui\032\034r"
-    "ec/data/proto/Address.proto\"\271\006\n\013SliderPr"
+    "ec/data/proto/Address.proto\"\377\005\n\013SliderPr"
     "oto\022\017\n\007caption\030\001 \001(\t\022\030\n\014caption_size\030\002 \001"
-    "(\t:\00245\022\017\n\007tooltip\030\003 \001(\t\022 \n\024text_entry_bo"
-    "x_width\030\004 \001(\t:\00280\022!\n\025text_entry_box_heig"
-    "ht\030\005 \001(\t:\00216\022\'\n\007address\030\014 \001(\0132\026.rec.data"
-    ".AddressProto\022\016\n\006detent\030\006 \001(\t\022\025\n\rdetent_"
-    "radius\030\007 \001(\t\022\023\n\013text_suffix\030\010 \001(\t\022\017\n\007min"
-    "imum\030\t \001(\t\022\017\n\007maximum\030\n \001(\t\022\020\n\010interval\030"
-    "\013 \001(\t\022)\n\005style\030\025 \001(\0162\032.rec.gui.SliderPro"
-    "to.Style\022J\n\027text_entry_box_position\030\026 \001("
-    "\0162).rec.gui.SliderProto.TextEntryBoxPosi"
-    "tion\"\252\002\n\005Style\022\024\n\020LinearHorizontal\020\000\022\022\n\016"
-    "LinearVertical\020\001\022\r\n\tLinearBar\020\002\022\025\n\021Linea"
-    "rBarVertical\020\003\022\n\n\006Rotary\020\004\022\030\n\024RotaryHori"
-    "zontalDrag\020\005\022\026\n\022RotaryVerticalDrag\020\006\022 \n\034"
-    "RotaryHorizontalVerticalDrag\020\007\022\021\n\rIncDec"
-    "Buttons\020\010\022\026\n\022TwoValueHorizontal\020\t\022\024\n\020Two"
-    "ValueVertical\020\n\022\030\n\024ThreeValueHorizontal\020"
-    "\013\022\026\n\022ThreeValueVertical\020\014\"l\n\024TextEntryBo"
-    "xPosition\022\r\n\tNoTextBox\020\000\022\017\n\013TextBoxLeft\020"
-    "\001\022\020\n\014TextBoxRight\020\002\022\020\n\014TextBoxAbove\020\003\022\020\n"
-    "\014TextBoxBelow\020\004", 895);
+    "(\t:\00245\022 \n\024text_entry_box_width\030\004 \001(\t:\00280"
+    "\022!\n\025text_entry_box_height\030\005 \001(\t:\00216\022\016\n\006d"
+    "etent\030\006 \001(\t\022\025\n\rdetent_radius\030\007 \001(\t\022\023\n\013te"
+    "xt_suffix\030\010 \001(\t\022\017\n\007minimum\030\t \001(\t\022\017\n\007maxi"
+    "mum\030\n \001(\t\022\020\n\010interval\030\013 \001(\t\022)\n\005style\030\025 \001"
+    "(\0162\032.rec.gui.SliderProto.Style\022J\n\027text_e"
+    "ntry_box_position\030\026 \001(\0162).rec.gui.Slider"
+    "Proto.TextEntryBoxPosition\"\252\002\n\005Style\022\024\n\020"
+    "LinearHorizontal\020\000\022\022\n\016LinearVertical\020\001\022\r"
+    "\n\tLinearBar\020\002\022\025\n\021LinearBarVertical\020\003\022\n\n\006"
+    "Rotary\020\004\022\030\n\024RotaryHorizontalDrag\020\005\022\026\n\022Ro"
+    "taryVerticalDrag\020\006\022 \n\034RotaryHorizontalVe"
+    "rticalDrag\020\007\022\021\n\rIncDecButtons\020\010\022\026\n\022TwoVa"
+    "lueHorizontal\020\t\022\024\n\020TwoValueVertical\020\n\022\030\n"
+    "\024ThreeValueHorizontal\020\013\022\026\n\022ThreeValueVer"
+    "tical\020\014\"l\n\024TextEntryBoxPosition\022\r\n\tNoTex"
+    "tBox\020\000\022\017\n\013TextBoxLeft\020\001\022\020\n\014TextBoxRight\020"
+    "\002\022\020\n\014TextBoxAbove\020\003\022\020\n\014TextBoxBelow\020\004", 837);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Slider.proto", &protobuf_RegisterTypes);
   SliderProto::_default_caption_size_ =
@@ -221,10 +217,8 @@ const int SliderProto::TextEntryBoxPosition_ARRAYSIZE;
 #ifndef _MSC_VER
 const int SliderProto::kCaptionFieldNumber;
 const int SliderProto::kCaptionSizeFieldNumber;
-const int SliderProto::kTooltipFieldNumber;
 const int SliderProto::kTextEntryBoxWidthFieldNumber;
 const int SliderProto::kTextEntryBoxHeightFieldNumber;
-const int SliderProto::kAddressFieldNumber;
 const int SliderProto::kDetentFieldNumber;
 const int SliderProto::kDetentRadiusFieldNumber;
 const int SliderProto::kTextSuffixFieldNumber;
@@ -241,7 +235,6 @@ SliderProto::SliderProto()
 }
 
 void SliderProto::InitAsDefaultInstance() {
-  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 SliderProto::SliderProto(const SliderProto& from)
@@ -254,10 +247,8 @@ void SliderProto::SharedCtor() {
   _cached_size_ = 0;
   caption_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   caption_size_ = const_cast< ::std::string*>(_default_caption_size_);
-  tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   text_entry_box_width_ = const_cast< ::std::string*>(_default_text_entry_box_width_);
   text_entry_box_height_ = const_cast< ::std::string*>(_default_text_entry_box_height_);
-  address_ = NULL;
   detent_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   detent_radius_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   text_suffix_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -279,9 +270,6 @@ void SliderProto::SharedDtor() {
   }
   if (caption_size_ != _default_caption_size_) {
     delete caption_size_;
-  }
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
   }
   if (text_entry_box_width_ != _default_text_entry_box_width_) {
     delete text_entry_box_width_;
@@ -308,7 +296,6 @@ void SliderProto::SharedDtor() {
     delete interval_;
   }
   if (this != default_instance_) {
-    delete address_;
   }
 }
 
@@ -345,11 +332,6 @@ void SliderProto::Clear() {
         caption_size_->assign(*_default_caption_size_);
       }
     }
-    if (has_tooltip()) {
-      if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-        tooltip_->clear();
-      }
-    }
     if (has_text_entry_box_width()) {
       if (text_entry_box_width_ != _default_text_entry_box_width_) {
         text_entry_box_width_->assign(*_default_text_entry_box_width_);
@@ -359,9 +341,6 @@ void SliderProto::Clear() {
       if (text_entry_box_height_ != _default_text_entry_box_height_) {
         text_entry_box_height_->assign(*_default_text_entry_box_height_);
       }
-    }
-    if (has_address()) {
-      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
     }
     if (has_detent()) {
       if (detent_ != &::google::protobuf::internal::kEmptyString) {
@@ -373,8 +352,6 @@ void SliderProto::Clear() {
         detent_radius_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_text_suffix()) {
       if (text_suffix_ != &::google::protobuf::internal::kEmptyString) {
         text_suffix_->clear();
@@ -385,6 +362,8 @@ void SliderProto::Clear() {
         minimum_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_maximum()) {
       if (maximum_ != &::google::protobuf::internal::kEmptyString) {
         maximum_->clear();
@@ -433,23 +412,6 @@ bool SliderProto::MergePartialFromCodedStream(
                 input, this->mutable_caption_size()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->caption_size().data(), this->caption_size().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_tooltip;
-        break;
-      }
-
-      // optional string tooltip = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_tooltip:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tooltip()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->tooltip().data(), this->tooltip().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -590,20 +552,6 @@ bool SliderProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(98)) goto parse_address;
-        break;
-      }
-
-      // optional .rec.data.AddressProto address = 12;
-      case 12: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_address:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_address()));
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectTag(168)) goto parse_style;
         break;
       }
@@ -686,15 +634,6 @@ void SliderProto::SerializeWithCachedSizes(
       2, this->caption_size(), output);
   }
 
-  // optional string tooltip = 3;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->tooltip(), output);
-  }
-
   // optional string text_entry_box_width = 4 [default = "80"];
   if (has_text_entry_box_width()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -767,12 +706,6 @@ void SliderProto::SerializeWithCachedSizes(
       11, this->interval(), output);
   }
 
-  // optional .rec.data.AddressProto address = 12;
-  if (has_address()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      12, this->address(), output);
-  }
-
   // optional .rec.gui.SliderProto.Style style = 21;
   if (has_style()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
@@ -811,16 +744,6 @@ void SliderProto::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->caption_size(), target);
-  }
-
-  // optional string tooltip = 3;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->tooltip(), target);
   }
 
   // optional string text_entry_box_width = 4 [default = "80"];
@@ -903,13 +826,6 @@ void SliderProto::SerializeWithCachedSizes(
         11, this->interval(), target);
   }
 
-  // optional .rec.data.AddressProto address = 12;
-  if (has_address()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        12, this->address(), target);
-  }
-
   // optional .rec.gui.SliderProto.Style style = 21;
   if (has_style()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
@@ -947,13 +863,6 @@ int SliderProto::ByteSize() const {
           this->caption_size());
     }
 
-    // optional string tooltip = 3;
-    if (has_tooltip()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->tooltip());
-    }
-
     // optional string text_entry_box_width = 4 [default = "80"];
     if (has_text_entry_box_width()) {
       total_size += 1 +
@@ -966,13 +875,6 @@ int SliderProto::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->text_entry_box_height());
-    }
-
-    // optional .rec.data.AddressProto address = 12;
-    if (has_address()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->address());
     }
 
     // optional string detent = 6;
@@ -989,8 +891,6 @@ int SliderProto::ByteSize() const {
           this->detent_radius());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional string text_suffix = 8;
     if (has_text_suffix()) {
       total_size += 1 +
@@ -1005,6 +905,8 @@ int SliderProto::ByteSize() const {
           this->minimum());
     }
 
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional string maximum = 10;
     if (has_maximum()) {
       total_size += 1 +
@@ -1064,17 +966,11 @@ void SliderProto::MergeFrom(const SliderProto& from) {
     if (from.has_caption_size()) {
       set_caption_size(from.caption_size());
     }
-    if (from.has_tooltip()) {
-      set_tooltip(from.tooltip());
-    }
     if (from.has_text_entry_box_width()) {
       set_text_entry_box_width(from.text_entry_box_width());
     }
     if (from.has_text_entry_box_height()) {
       set_text_entry_box_height(from.text_entry_box_height());
-    }
-    if (from.has_address()) {
-      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
     }
     if (from.has_detent()) {
       set_detent(from.detent());
@@ -1082,14 +978,14 @@ void SliderProto::MergeFrom(const SliderProto& from) {
     if (from.has_detent_radius()) {
       set_detent_radius(from.detent_radius());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_text_suffix()) {
       set_text_suffix(from.text_suffix());
     }
     if (from.has_minimum()) {
       set_minimum(from.minimum());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_maximum()) {
       set_maximum(from.maximum());
     }
@@ -1127,10 +1023,8 @@ void SliderProto::Swap(SliderProto* other) {
   if (other != this) {
     std::swap(caption_, other->caption_);
     std::swap(caption_size_, other->caption_size_);
-    std::swap(tooltip_, other->tooltip_);
     std::swap(text_entry_box_width_, other->text_entry_box_width_);
     std::swap(text_entry_box_height_, other->text_entry_box_height_);
-    std::swap(address_, other->address_);
     std::swap(detent_, other->detent_);
     std::swap(detent_radius_, other->detent_radius_);
     std::swap(text_suffix_, other->text_suffix_);

@@ -35,11 +35,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLabel_2eproto() {
       "rec/gui/proto/Label.proto");
   GOOGLE_CHECK(file != NULL);
   LabelProto_descriptor_ = file->message_type(0);
-  static const int LabelProto_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, font_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, name_),
+  static const int LabelProto_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, text_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, tooltip_),
   };
   LabelProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -81,14 +78,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLabel_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fFont_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/gui/proto/Label.proto\022\007rec.gui\032\034re"
-    "c/data/proto/Address.proto\032\030rec/gui/prot"
-    "o/Font.proto\"[\n\nLabelProto\022 \n\004font\030\001 \001(\013"
-    "2\022.rec.gui.FontProto\022\014\n\004name\030\002 \001(\t\022\014\n\004te"
-    "xt\030\003 \001(\t\022\017\n\007tooltip\030\004 \001(\t", 185);
+    "\n\031rec/gui/proto/Label.proto\022\007rec.gui\"\032\n\n"
+    "LabelProto\022\014\n\004text\030\001 \001(\t", 64);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Label.proto", &protobuf_RegisterTypes);
   LabelProto::default_instance_ = new LabelProto();
@@ -106,10 +98,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fLabel_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int LabelProto::kFontFieldNumber;
-const int LabelProto::kNameFieldNumber;
 const int LabelProto::kTextFieldNumber;
-const int LabelProto::kTooltipFieldNumber;
 #endif  // !_MSC_VER
 
 LabelProto::LabelProto()
@@ -118,7 +107,6 @@ LabelProto::LabelProto()
 }
 
 void LabelProto::InitAsDefaultInstance() {
-  font_ = const_cast< ::rec::gui::FontProto*>(&::rec::gui::FontProto::default_instance());
 }
 
 LabelProto::LabelProto(const LabelProto& from)
@@ -129,10 +117,7 @@ LabelProto::LabelProto(const LabelProto& from)
 
 void LabelProto::SharedCtor() {
   _cached_size_ = 0;
-  font_ = NULL;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   text_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -141,17 +126,10 @@ LabelProto::~LabelProto() {
 }
 
 void LabelProto::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
   if (text_ != &::google::protobuf::internal::kEmptyString) {
     delete text_;
   }
-  if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-    delete tooltip_;
-  }
   if (this != default_instance_) {
-    delete font_;
   }
 }
 
@@ -178,22 +156,9 @@ LabelProto* LabelProto::New() const {
 
 void LabelProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_font()) {
-      if (font_ != NULL) font_->::rec::gui::FontProto::Clear();
-    }
-    if (has_name()) {
-      if (name_ != &::google::protobuf::internal::kEmptyString) {
-        name_->clear();
-      }
-    }
     if (has_text()) {
       if (text_ != &::google::protobuf::internal::kEmptyString) {
         text_->clear();
-      }
-    }
-    if (has_tooltip()) {
-      if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
-        tooltip_->clear();
       }
     }
   }
@@ -207,62 +172,14 @@ bool LabelProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.FontProto font = 1;
+      // optional string text = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_font()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_name;
-        break;
-      }
-
-      // optional string name = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_text;
-        break;
-      }
-
-      // optional string text = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_text:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_text()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->text().data(), this->text().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_tooltip;
-        break;
-      }
-
-      // optional string tooltip = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_tooltip:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tooltip()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->tooltip().data(), this->tooltip().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -289,37 +206,13 @@ bool LabelProto::MergePartialFromCodedStream(
 
 void LabelProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.FontProto font = 1;
-  if (has_font()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->font(), output);
-  }
-
-  // optional string name = 2;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
-  }
-
-  // optional string text = 3;
+  // optional string text = 1;
   if (has_text()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->text().data(), this->text().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->text(), output);
-  }
-
-  // optional string tooltip = 4;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->tooltip(), output);
+      1, this->text(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -330,41 +223,14 @@ void LabelProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LabelProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.FontProto font = 1;
-  if (has_font()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->font(), target);
-  }
-
-  // optional string name = 2;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-
-  // optional string text = 3;
+  // optional string text = 1;
   if (has_text()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->text().data(), this->text().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->text(), target);
-  }
-
-  // optional string tooltip = 4;
-  if (has_tooltip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->tooltip().data(), this->tooltip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->tooltip(), target);
+        1, this->text(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -378,32 +244,11 @@ int LabelProto::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.FontProto font = 1;
-    if (has_font()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->font());
-    }
-
-    // optional string name = 2;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-
-    // optional string text = 3;
+    // optional string text = 1;
     if (has_text()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->text());
-    }
-
-    // optional string tooltip = 4;
-    if (has_tooltip()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->tooltip());
     }
 
   }
@@ -433,17 +278,8 @@ void LabelProto::MergeFrom(const ::google::protobuf::Message& from) {
 void LabelProto::MergeFrom(const LabelProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_font()) {
-      mutable_font()->::rec::gui::FontProto::MergeFrom(from.font());
-    }
-    if (from.has_name()) {
-      set_name(from.name());
-    }
     if (from.has_text()) {
       set_text(from.text());
-    }
-    if (from.has_tooltip()) {
-      set_tooltip(from.tooltip());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -468,10 +304,7 @@ bool LabelProto::IsInitialized() const {
 
 void LabelProto::Swap(LabelProto* other) {
   if (other != this) {
-    std::swap(font_, other->font_);
-    std::swap(name_, other->name_);
     std::swap(text_, other->text_);
-    std::swap(tooltip_, other->tooltip_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

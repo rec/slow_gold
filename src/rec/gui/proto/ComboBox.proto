@@ -1,9 +1,5 @@
 package rec.gui;
 
-import "rec/data/proto/Address.proto";
-
 message ComboBoxProto {
   repeated string item = 1;
-  optional string tooltip = 2;
-  optional data.AddressProto address = 3;
 };

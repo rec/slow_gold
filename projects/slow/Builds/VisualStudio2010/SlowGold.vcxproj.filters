@@ -1165,6 +1165,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
@@ -3444,6 +3447,9 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
@@ -4845,6 +4851,9 @@
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\CommandBar.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Constants.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\HelpPanel.def">

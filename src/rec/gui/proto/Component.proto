@@ -1,20 +1,25 @@
 package rec.gui;
 
+import "rec/data/proto/Address.proto";
 import "rec/gui/proto/Button.proto";
 import "rec/gui/proto/ComboBox.proto";
+import "rec/gui/proto/Font.proto";
 import "rec/gui/proto/Label.proto";
 import "rec/gui/proto/Resizer.proto";
+import "rec/gui/proto/Size.proto";
 import "rec/gui/proto/Slider.proto";
 import "rec/gui/proto/ToggleButton.proto";
 import "rec/gui/Color.proto";
 
 message ComponentProto {
   optional string name = 1;
-  optional string preferred = 2;
-  optional string min = 3;
-  optional string max = 4;
+  optional string tooltip = 2;
+  optional Size size = 3;
+  optional data.AddressProto address = 4;
 
   repeated Color color = 5;
+
+  optional FontProto font = 13;
 
   // Shorthand for a resizer and address.
   optional string resizer = 12;

@@ -36,9 +36,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fPanel_2eproto() {
       "rec/gui/proto/Panel.proto");
   GOOGLE_CHECK(file != NULL);
   PanelProto_descriptor_ = file->message_type(0);
-  static const int PanelProto_offsets_[4] = {
+  static const int PanelProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, orientation_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, is_main_),
   };
@@ -84,12 +83,12 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fPanel_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/gui/proto/Panel.proto\022\007rec.gui\"\264\001\n"
+    "\n\031rec/gui/proto/Panel.proto\022\007rec.gui\"\246\001\n"
     "\nPanelProto\0224\n\013orientation\030\001 \001(\0162\037.rec.g"
-    "ui.PanelProto.Orientation\022\014\n\004name\030\002 \001(\t\022"
-    "$\n\026resize_other_dimension\030\003 \001(\010:\004true\022\017\n"
-    "\007is_main\030\004 \001(\010\"+\n\013Orientation\022\016\n\nHORIZON"
-    "TAL\020\000\022\014\n\010VERTICAL\020\001", 219);
+    "ui.PanelProto.Orientation\022$\n\026resize_othe"
+    "r_dimension\030\003 \001(\010:\004true\022\017\n\007is_main\030\004 \001(\010"
+    "\"+\n\013Orientation\022\016\n\nHORIZONTAL\020\000\022\014\n\010VERTI"
+    "CAL\020\001", 205);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Panel.proto", &protobuf_RegisterTypes);
   PanelProto::default_instance_ = new PanelProto();
@@ -129,7 +128,6 @@ const int PanelProto::Orientation_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int PanelProto::kOrientationFieldNumber;
-const int PanelProto::kNameFieldNumber;
 const int PanelProto::kResizeOtherDimensionFieldNumber;
 const int PanelProto::kIsMainFieldNumber;
 #endif  // !_MSC_VER
@@ -151,7 +149,6 @@ PanelProto::PanelProto(const PanelProto& from)
 void PanelProto::SharedCtor() {
   _cached_size_ = 0;
   orientation_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   resize_other_dimension_ = true;
   is_main_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -162,9 +159,6 @@ PanelProto::~PanelProto() {
 }
 
 void PanelProto::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
   if (this != default_instance_) {
   }
 }
@@ -193,11 +187,6 @@ PanelProto* PanelProto::New() const {
 void PanelProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     orientation_ = 0;
-    if (has_name()) {
-      if (name_ != &::google::protobuf::internal::kEmptyString) {
-        name_->clear();
-      }
-    }
     resize_other_dimension_ = true;
     is_main_ = false;
   }
@@ -224,23 +213,6 @@ bool PanelProto::MergePartialFromCodedStream(
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_name;
-        break;
-      }
-
-      // optional string name = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -304,15 +276,6 @@ void PanelProto::SerializeWithCachedSizes(
       1, this->orientation(), output);
   }
 
-  // optional string name = 2;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
-  }
-
   // optional bool resize_other_dimension = 3 [default = true];
   if (has_resize_other_dimension()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->resize_other_dimension(), output);
@@ -335,16 +298,6 @@ void PanelProto::SerializeWithCachedSizes(
   if (has_orientation()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->orientation(), target);
-  }
-
-  // optional string name = 2;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
   }
 
   // optional bool resize_other_dimension = 3 [default = true];
@@ -372,13 +325,6 @@ int PanelProto::ByteSize() const {
     if (has_orientation()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->orientation());
-    }
-
-    // optional string name = 2;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
     }
 
     // optional bool resize_other_dimension = 3 [default = true];
@@ -421,9 +367,6 @@ void PanelProto::MergeFrom(const PanelProto& from) {
     if (from.has_orientation()) {
       set_orientation(from.orientation());
     }
-    if (from.has_name()) {
-      set_name(from.name());
-    }
     if (from.has_resize_other_dimension()) {
       set_resize_other_dimension(from.resize_other_dimension());
     }
@@ -454,7 +397,6 @@ bool PanelProto::IsInitialized() const {
 void PanelProto::Swap(PanelProto* other) {
   if (other != this) {
     std::swap(orientation_, other->orientation_);
-    std::swap(name_, other->name_);
     std::swap(resize_other_dimension_, other->resize_other_dimension_);
     std::swap(is_main_, other->is_main_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

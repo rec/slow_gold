@@ -1,6 +1,7 @@
 package rec.gui;
 
 import "rec/gui/proto/Component.proto";
+import "rec/gui/proto/Size.proto";
 
 message Layout {
   enum Orientation {
@@ -20,10 +21,7 @@ message Layout {
   // full size of the layout.
   optional bool padding = 5;
 
-  optional string preferred = 6;
-  optional string min = 7;
-  optional string max = 8;
-
+  optional Size size = 6;
   repeated ComponentProto component = 9;
 };
 

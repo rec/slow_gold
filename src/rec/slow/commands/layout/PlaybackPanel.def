@@ -2,26 +2,32 @@ layout {
   name: "PlaybackPanel"
   component {
     name: "HelpPanel"
-    min: "200"
-    max: "-1.0"
-    preferred: "-0.2"
+    size {
+      min: "200"
+      max: "-1.0"
+      preferred: "-0.2"
+    }
   }
   component {
     resizer: "help_x"
   }
   component {
     name: "TransformController"
-    min: "250"
-    max: "-1.0"
-    preferred: "-0.75"
+    size {
+      min: "250"
+      max: "-1.0"
+      preferred: "-0.75"
+    }
   }
   component {
     resizer: "transform_x"
   }
   component {
     name: "TransportController"
-    min: "300"
-    max: "-1.0"
-    preferred: "-0.20"
+    size {
+      min: "300"
+      max: "-1.0"
+      preferred: "-0.20"
+    }
   }
 }
