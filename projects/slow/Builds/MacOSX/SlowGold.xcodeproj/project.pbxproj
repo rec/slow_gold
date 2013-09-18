@@ -319,6 +319,7 @@
 		06CFE90AEF7A716594C570A4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FileType.cpp; path = ../../../../src/rec/util/file/FileType.cpp; sourceTree = "SOURCE_ROOT"; };
 		06D520677E64BE979EFA4598 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Widget.h; path = ../../../../src/rec/widget/Widget.h; sourceTree = "SOURCE_ROOT"; };
 		06F667D765958660CC0B0D46 = { isa = PBXFileReference; lastKnownFileType = file.svg; name = PlayButtonDisabled.svg; path = ../../art/icon/PlayButtonDisabled.svg; sourceTree = "SOURCE_ROOT"; };
+		070B9F95151380F588B4E4C8 = { isa = PBXFileReference; lastKnownFileType = file.def; name = Layout.def; path = ../../../../src/rec/slow/commands/layout/Layout.def; sourceTree = "SOURCE_ROOT"; };
 		072A0F637275D2F30B3E6E9B = { isa = PBXFileReference; lastKnownFileType = file.svg; name = PlayButton.svg; path = ../../art/icon/PlayButton.svg; sourceTree = "SOURCE_ROOT"; };
 		073DC5801462D576CE8178B5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageField.h; path = ../../../../src/rec/data/proto/MessageField.h; sourceTree = "SOURCE_ROOT"; };
 		073F13CDF351E77D18D712E9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_cryptography.mm"; path = "../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm"; sourceTree = "SOURCE_ROOT"; };
@@ -407,7 +408,6 @@
 		15EF18EDE164EAA02D289990 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableController.h; path = ../../../../src/rec/gui/TableController.h; sourceTree = "SOURCE_ROOT"; };
 		15F56896D9D10FE5E7542F0F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_audio_basics.mm"; path = "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm"; sourceTree = "SOURCE_ROOT"; };
 		160BDE8CEC9CA33CEB2AECB6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_StretchableObjectResizer.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_StretchableObjectResizer.cpp"; sourceTree = "SOURCE_ROOT"; };
-		16144B2A8806E4291AA28566 = { isa = PBXFileReference; lastKnownFileType = file.def; name = Layout.def; path = ../../../../src/rec/slow/commands/gui/Layout.def; sourceTree = "SOURCE_ROOT"; };
 		162DC2111988D6DF82E16AF9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.pb.h; path = ../../../../genfiles/proto/rec/util/LoopPoint.pb.h; sourceTree = "SOURCE_ROOT"; };
 		16D7ACC65A6C6B6661981EAB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StripLines.h; path = ../../../../src/rec/util/cd/StripLines.h; sourceTree = "SOURCE_ROOT"; };
 		1715CD2E1D7DAB240F00EAB0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JuceModel.cpp; path = ../../../../src/rec/program/JuceModel.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -462,6 +462,7 @@
 		1FD47CD20F9E72A61DA1C921 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Atomic.h"; path = "../../JuceLibraryCode/modules/juce_core/memory/juce_Atomic.h"; sourceTree = "SOURCE_ROOT"; };
 		208B6E62912E6DDD8CA2FA24 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LegacyDatabase.pb.cc; path = ../../../../genfiles/proto/rec/slow/LegacyDatabase.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		20C50EEA50C95D47D6583881 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_BufferingAudioSource.h"; path = "../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_BufferingAudioSource.h"; sourceTree = "SOURCE_ROOT"; };
+		20D06E985CFDDD94959A8516 = { isa = PBXFileReference; lastKnownFileType = file.def; name = MenuCollection.def; path = ../../../../src/rec/slow/commands/MenuCollection.def; sourceTree = "SOURCE_ROOT"; };
 		20E2358975702A1332D55072 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_audio_utils.h"; path = "../../JuceLibraryCode/modules/juce_audio_utils/juce_audio_utils.h"; sourceTree = "SOURCE_ROOT"; };
 		2149A19ACEBD10AAC5B88497 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Fillable.h; path = ../../../../src/rec/util/range/Fillable.h; sourceTree = "SOURCE_ROOT"; };
 		21C0D6B60050AFB7D33A3D00 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ModifierKeys.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/keyboard/juce_ModifierKeys.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -590,14 +591,12 @@
 		37E5E29ED9156AA5A85C3886 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileType.h; path = ../../../../src/rec/util/file/FileType.h; sourceTree = "SOURCE_ROOT"; };
 		380D3E23A46171058815DC15 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_MP3AudioFormat.cpp"; path = "../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_MP3AudioFormat.cpp"; sourceTree = "SOURCE_ROOT"; };
 		383F38332BA02A64976CEDFB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Operation.pb.h; path = ../../../../genfiles/proto/rec/data/Operation.pb.h; sourceTree = "SOURCE_ROOT"; };
-		38D68E7B7B4BAC0C83D86D3B = { isa = PBXFileReference; lastKnownFileType = file.def; name = SongData.def; path = ../../../../src/rec/slow/commands/gui/SongData.def; sourceTree = "SOURCE_ROOT"; };
 		3928C379CD16E871634D0171 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		39447CB86D465481760F2F1C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DataMapImpl.cpp; path = ../../../../src/rec/data/DataMapImpl.cpp; sourceTree = "SOURCE_ROOT"; };
 		395B712A88B5A0E87E16EF9E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_LowLevelGraphicsSoftwareRenderer.h"; path = "../../JuceLibraryCode/modules/juce_graphics/contexts/juce_LowLevelGraphicsSoftwareRenderer.h"; sourceTree = "SOURCE_ROOT"; };
 		3961DE96D3D1E89D07FA75BA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_DrawableShape.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/drawables/juce_DrawableShape.h"; sourceTree = "SOURCE_ROOT"; };
 		398B34F1187718A57D15DB8F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_OpenGL_linux.h"; path = "../../JuceLibraryCode/modules/juce_opengl/native/juce_OpenGL_linux.h"; sourceTree = "SOURCE_ROOT"; };
 		399804886A6224F787CBE48D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_mac_CoreGraphicsContext.h"; path = "../../JuceLibraryCode/modules/juce_graphics/native/juce_mac_CoreGraphicsContext.h"; sourceTree = "SOURCE_ROOT"; };
-		39AA40C404FE01ABF6468714 = { isa = PBXFileReference; lastKnownFileType = file.def; name = Components.def; path = ../../../../src/rec/slow/commands/gui/Components.def; sourceTree = "SOURCE_ROOT"; };
 		39E2C0690E1AEF43CF97D3E7 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		39E36AF0EA18F8A1A75B798E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_Desktop.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/components/juce_Desktop.cpp"; sourceTree = "SOURCE_ROOT"; };
 		3A1B88630693EEC7D15DADC3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Thread.pb.cc; path = ../../../../genfiles/proto/rec/util/thread/Thread.pb.cc; sourceTree = "SOURCE_ROOT"; };
@@ -641,7 +640,6 @@
 		405AB1E42CDCCEC3CDDE2316 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualFile.h; path = ../../../../src/rec/util/file/VirtualFile.h; sourceTree = "SOURCE_ROOT"; };
 		40A66AA7E90B8F20D6396786 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ImageConvolutionKernel.h"; path = "../../JuceLibraryCode/modules/juce_graphics/images/juce_ImageConvolutionKernel.h"; sourceTree = "SOURCE_ROOT"; };
 		40B23D6A4FE3087130F8960C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = "SOURCE_ROOT"; };
-		40C04EACB01D7C29D0BBF2F3 = { isa = PBXFileReference; lastKnownFileType = file.def; name = Waveform.def; path = ../../../../src/rec/slow/commands/gui/Waveform.def; sourceTree = "SOURCE_ROOT"; };
 		40C07F2A9BFECFA325D708DF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_DirectoryContentsDisplayComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsDisplayComponent.h"; sourceTree = "SOURCE_ROOT"; };
 		40CE8F68809C01D500C6F0C9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ThreadWithProgressWindow.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_ThreadWithProgressWindow.cpp"; sourceTree = "SOURCE_ROOT"; };
 		413195D8BE6863A9B0C1F697 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_FileFilter.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_FileFilter.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -702,6 +700,7 @@
 		49623545B1B556F812D2D0EA = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_graphics.mm"; path = "../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm"; sourceTree = "SOURCE_ROOT"; };
 		49640FA39ABC19AFD8C6F048 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RandomSelfInverseFunction.h; path = ../../../../src/rec/util/unused/RandomSelfInverseFunction.h; sourceTree = "SOURCE_ROOT"; };
 		496708A0ABB5882842D8C2FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NavigatorConfig.pb.h; path = ../../../../genfiles/proto/rec/widget/tree/NavigatorConfig.pb.h; sourceTree = "SOURCE_ROOT"; };
+		4990FB9F029D3ACBCD57305E = { isa = PBXFileReference; lastKnownFileType = file.def; name = TransportController.def; path = ../../../../src/rec/slow/commands/layout/TransportController.def; sourceTree = "SOURCE_ROOT"; };
 		49BE80009BF05314E8E42FFD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ComboBox.pb.h; path = ../../../../genfiles/proto/rec/gui/proto/ComboBox.pb.h; sourceTree = "SOURCE_ROOT"; };
 		49E82A6CC9A348C46EAD03FC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_StretchableLayoutManager.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_StretchableLayoutManager.cpp"; sourceTree = "SOURCE_ROOT"; };
 		4A242E7C55740CB9C92DBAB8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AudioDataConverters.h"; path = "../../JuceLibraryCode/modules/juce_audio_basics/buffers/juce_AudioDataConverters.h"; sourceTree = "SOURCE_ROOT"; };
@@ -760,7 +759,7 @@
 		51F9FD87905D4C78A570E2C8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AudioThumbnailBase.h"; path = "../../JuceLibraryCode/modules/juce_audio_utils/gui/juce_AudioThumbnailBase.h"; sourceTree = "SOURCE_ROOT"; };
 		520CC4A64C4429E430934674 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_URL.h"; path = "../../JuceLibraryCode/modules/juce_core/network/juce_URL.h"; sourceTree = "SOURCE_ROOT"; };
 		521DC95A7ADF83A344983BD4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BufferManager.h; path = ../../../../src/rec/audio/util/BufferManager.h; sourceTree = "SOURCE_ROOT"; };
-		527976B652736C37BD38E70E = { isa = PBXFileReference; lastKnownFileType = file.def; name = ModeSelector.def; path = ../../../../src/rec/slow/commands/gui/ModeSelector.def; sourceTree = "SOURCE_ROOT"; };
+		526047C920C236113B193D2A = { isa = PBXFileReference; lastKnownFileType = file.def; name = PlaybackPanel.def; path = ../../../../src/rec/slow/commands/layout/PlaybackPanel.def; sourceTree = "SOURCE_ROOT"; };
 		52B9F40B840F26055E8DE14E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.pb.h; path = ../../../../genfiles/proto/rec/slow/commands/Command.pb.h; sourceTree = "SOURCE_ROOT"; };
 		52CC23147004DAF1F4984067 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_MidiMessageCollector.h"; path = "../../JuceLibraryCode/modules/juce_audio_devices/midi_io/juce_MidiMessageCollector.h"; sourceTree = "SOURCE_ROOT"; };
 		52D7BCA0300CA32872944E6F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Slider.h; path = ../../../../src/rec/gui/proto/Slider.h; sourceTree = "SOURCE_ROOT"; };
@@ -821,6 +820,7 @@
 		5D29298AC3A2748783ED4C0F = { isa = PBXFileReference; lastKnownFileType = file.svg; name = JumpForwardButtonPressed.svg; path = ../../art/icon/JumpForwardButtonPressed.svg; sourceTree = "SOURCE_ROOT"; };
 		5D2E4E209FEEA62AC2102377 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = port.h; path = ../../../../src/rec/base/port.h; sourceTree = "SOURCE_ROOT"; };
 		5D5817668D03AB9111774155 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_audio_processors.h"; path = "../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.h"; sourceTree = "SOURCE_ROOT"; };
+		5DE1C3D0E3FF519BFFA5488D = { isa = PBXFileReference; lastKnownFileType = file.def; name = MainPanel.def; path = ../../../../src/rec/slow/commands/layout/MainPanel.def; sourceTree = "SOURCE_ROOT"; };
 		5DF070BB6F6A850C6FF63359 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_gui_basics.mm"; path = "../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm"; sourceTree = "SOURCE_ROOT"; };
 		5E172572EB391FA567C54855 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BufferManager.pb.cc; path = ../../../../genfiles/proto/rec/audio/util/BufferManager.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		5E21AC279A2EF0E6BF69D516 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AnimatedPositionBehaviours.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_AnimatedPositionBehaviours.h"; sourceTree = "SOURCE_ROOT"; };
@@ -910,11 +910,12 @@
 		6E16EDADBB3AF4A2320856C5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_PluginDescription.cpp"; path = "../../JuceLibraryCode/modules/juce_audio_processors/processors/juce_PluginDescription.cpp"; sourceTree = "SOURCE_ROOT"; };
 		6E5EFCE88B185E304DC38B90 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Difference.h; path = ../../../../src/rec/util/range/Difference.h; sourceTree = "SOURCE_ROOT"; };
 		6F08CEF19AEA00BB24E3D79A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Shard.h; path = ../../../../src/rec/widget/tree/Shard.h; sourceTree = "SOURCE_ROOT"; };
+		6F0A0B900F49041442E05C4C = { isa = PBXFileReference; lastKnownFileType = file.def; name = NavigationPanel.def; path = ../../../../src/rec/slow/commands/layout/NavigationPanel.def; sourceTree = "SOURCE_ROOT"; };
 		6F2A06C6BCAA152206004389 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_android_Windowing.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/native/juce_android_Windowing.cpp"; sourceTree = "SOURCE_ROOT"; };
 		6F419ACBC49AED4AB03D95CC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_linux_Threads.cpp"; path = "../../JuceLibraryCode/modules/juce_core/native/juce_linux_Threads.cpp"; sourceTree = "SOURCE_ROOT"; };
-		6FA5000EB9B2A30B958EE81F = { isa = PBXFileReference; lastKnownFileType = file.def; name = NavigationPanel.def; path = ../../../../src/rec/slow/commands/gui/NavigationPanel.def; sourceTree = "SOURCE_ROOT"; };
 		6FD686718E87B4FAFBC880F3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_mac_NSViewComponent.mm"; path = "../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_NSViewComponent.mm"; sourceTree = "SOURCE_ROOT"; };
 		703211C3B7F72BA44BEE4B81 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_mac_FileChooser.mm"; path = "../../JuceLibraryCode/modules/juce_gui_basics/native/juce_mac_FileChooser.mm"; sourceTree = "SOURCE_ROOT"; };
+		704CA22D54BEB2AD82969969 = { isa = PBXFileReference; lastKnownFileType = file.def; name = Menus.def; path = ../../../../src/rec/slow/commands/Menus.def; sourceTree = "SOURCE_ROOT"; };
 		7083D1CAEDE296011E2B33E3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TypedTyper.cpp; path = ../../../../src/rec/data/proto/TypedTyper.cpp; sourceTree = "SOURCE_ROOT"; };
 		70CB07C7B0DD902421B76BEB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ScrollBar.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_ScrollBar.h"; sourceTree = "SOURCE_ROOT"; };
 		70D0965A6EC78D6700AF58B3 = { isa = PBXFileReference; lastKnownFileType = file.svg; name = AddLoopPointButtonPressed.svg; path = ../../art/icon/AddLoopPointButtonPressed.svg; sourceTree = "SOURCE_ROOT"; };
@@ -987,7 +988,6 @@
 		7C67357AD0D36EA4F5FF853C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Compare.h; path = ../../../../src/rec/util/Compare.h; sourceTree = "SOURCE_ROOT"; };
 		7C9FA1E9213FFED3D4B9D8F9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_win32_Fonts.cpp"; path = "../../JuceLibraryCode/modules/juce_graphics/native/juce_win32_Fonts.cpp"; sourceTree = "SOURCE_ROOT"; };
 		7CEBB9E6DBCE08C1CF48CC36 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_win32_SystemTrayIcon.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_extra/native/juce_win32_SystemTrayIcon.cpp"; sourceTree = "SOURCE_ROOT"; };
-		7D14A05B2CCDE7E3AC07E772 = { isa = PBXFileReference; lastKnownFileType = file.def; name = TransportController.def; path = ../../../../src/rec/slow/commands/gui/TransportController.def; sourceTree = "SOURCE_ROOT"; };
 		7D44B55745AD829B3F2A0085 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_OpenGLContext.cpp"; path = "../../JuceLibraryCode/modules/juce_opengl/opengl/juce_OpenGLContext.cpp"; sourceTree = "SOURCE_ROOT"; };
 		7D4E809885A2DF829D19A9E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Variant.h"; path = "../../JuceLibraryCode/modules/juce_core/containers/juce_Variant.h"; sourceTree = "SOURCE_ROOT"; };
 		7D7977536DD47E590AA55162 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ReadWriteLock.h"; path = "../../JuceLibraryCode/modules/juce_core/threads/juce_ReadWriteLock.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1089,7 +1089,6 @@
 		8D2A12F0E85417C72E5E2033 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ToolbarItemComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/widgets/juce_ToolbarItemComponent.h"; sourceTree = "SOURCE_ROOT"; };
 		8D6894F1B0223E6B1F36F91E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_String.h"; path = "../../JuceLibraryCode/modules/juce_core/text/juce_String.h"; sourceTree = "SOURCE_ROOT"; };
 		8DA8EA950EE05F8C7C036910 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Files.cpp; path = ../../../../src/rec/app/Files.cpp; sourceTree = "SOURCE_ROOT"; };
-		8DDA166610225CE5E5CC1E02 = { isa = PBXFileReference; lastKnownFileType = file.def; name = Menus.def; path = ../../../../src/rec/slow/commands/gui/Menus.def; sourceTree = "SOURCE_ROOT"; };
 		8DE48437DACB33D91141358F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NewHandle.cpp; path = ../../../../src/rec/audio/format/mpg123/NewHandle.cpp; sourceTree = "SOURCE_ROOT"; };
 		8DF13C3050DF3D6F1D0324E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_AbstractFifo.cpp"; path = "../../JuceLibraryCode/modules/juce_core/containers/juce_AbstractFifo.cpp"; sourceTree = "SOURCE_ROOT"; };
 		8DFD4D82B44190382113AEE8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_osx_MessageQueue.h"; path = "../../JuceLibraryCode/modules/juce_events/native/juce_osx_MessageQueue.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1102,6 +1101,7 @@
 		8F7D691D1B84920DF369A8D4 = { isa = PBXFileReference; lastKnownFileType = file.svg; name = StopButtonDisabled.svg; path = ../../art/icon/StopButtonDisabled.svg; sourceTree = "SOURCE_ROOT"; };
 		8FBAE62D5C3BD3B4F1F6C117 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UndoStack.cpp; path = ../../../../src/rec/data/UndoStack.cpp; sourceTree = "SOURCE_ROOT"; };
 		8FEE357B8A65A82182FA7819 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_PropertiesFile.cpp"; path = "../../JuceLibraryCode/modules/juce_data_structures/app_properties/juce_PropertiesFile.cpp"; sourceTree = "SOURCE_ROOT"; };
+		9029953DB6B4771636C2931F = { isa = PBXFileReference; lastKnownFileType = file.def; name = Components.def; path = ../../../../src/rec/slow/commands/component/Components.def; sourceTree = "SOURCE_ROOT"; };
 		904F6AC26F7CE6BE2E8EFCE5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_InputStream.cpp"; path = "../../JuceLibraryCode/modules/juce_core/streams/juce_InputStream.cpp"; sourceTree = "SOURCE_ROOT"; };
 		9050888414BA5476A0E40830 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_PlatformDefs.h"; path = "../../JuceLibraryCode/modules/juce_core/system/juce_PlatformDefs.h"; sourceTree = "SOURCE_ROOT"; };
 		9053F4C3E1578C76E34A94A7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = ../../../../src/rec/data/Value.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1115,8 +1115,8 @@
 		911F1575C6048364558F6F7E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Level.h; path = ../../../../src/rec/audio/source/Level.h; sourceTree = "SOURCE_ROOT"; };
 		912593E49C21ABC843E4F6E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_BufferingAudioSource.cpp"; path = "../../JuceLibraryCode/modules/juce_audio_basics/sources/juce_BufferingAudioSource.cpp"; sourceTree = "SOURCE_ROOT"; };
 		9166433E4496027FA634E043 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_SHA256.h"; path = "../../JuceLibraryCode/modules/juce_cryptography/hashing/juce_SHA256.h"; sourceTree = "SOURCE_ROOT"; };
+		919043C6872FDCEF65F69D0A = { isa = PBXFileReference; lastKnownFileType = file.def; name = TransformController.def; path = ../../../../src/rec/slow/commands/layout/TransformController.def; sourceTree = "SOURCE_ROOT"; };
 		91D6E458EB9DDB81EC7B5AD4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_FileDragAndDropTarget.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_FileDragAndDropTarget.h"; sourceTree = "SOURCE_ROOT"; };
-		91E0999BC6B6A5BD0F553309 = { isa = PBXFileReference; lastKnownFileType = file.def; name = TransformController.def; path = ../../../../src/rec/slow/commands/gui/TransformController.def; sourceTree = "SOURCE_ROOT"; };
 		920E601BAD9791733EE64AC8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ComponentDragger.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_ComponentDragger.cpp"; sourceTree = "SOURCE_ROOT"; };
 		922AD181A257F19E6FC7E705 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_SHA256.cpp"; path = "../../JuceLibraryCode/modules/juce_cryptography/hashing/juce_SHA256.cpp"; sourceTree = "SOURCE_ROOT"; };
 		923249D885EAB054087E9108 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConvertSample.h; path = ../../../../src/rec/audio/util/ConvertSample.h; sourceTree = "SOURCE_ROOT"; };
@@ -1126,7 +1126,6 @@
 		92C38AF7BBE4AC26DC0C3C08 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_RectanglePlacement.cpp"; path = "../../JuceLibraryCode/modules/juce_graphics/placement/juce_RectanglePlacement.cpp"; sourceTree = "SOURCE_ROOT"; };
 		92FF176C27D7B2A2305633E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Resizer.pb.cc; path = ../../../../genfiles/proto/rec/gui/proto/Resizer.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		936F23F9AEFAB8A1A5D5D294 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_RenderingHelpers.h"; path = "../../JuceLibraryCode/modules/juce_graphics/native/juce_RenderingHelpers.h"; sourceTree = "SOURCE_ROOT"; };
-		9382E05679ABE2CDED5065FB = { isa = PBXFileReference; lastKnownFileType = file.def; name = MenuCollection.def; path = ../../../../src/rec/slow/commands/gui/MenuCollection.def; sourceTree = "SOURCE_ROOT"; };
 		938545EF1B44AF06507FFD1F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LevelMeter.cpp; path = ../../../../src/rec/gui/audio/LevelMeter.cpp; sourceTree = "SOURCE_ROOT"; };
 		938F4AAD43FC21ECB6994673 = { isa = PBXFileReference; lastKnownFileType = file.svg; name = AddLoopPointModeDisabled.svg; path = ../../art/icon/AddLoopPointModeDisabled.svg; sourceTree = "SOURCE_ROOT"; };
 		93967E565F8B0A6B03501A10 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ModeSelector.cpp; path = ../../../../src/rec/gui/audio/ModeSelector.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1191,6 +1190,7 @@
 		9E3CA24E259ADD03D3B43D0A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RegisterProtos.h; path = ../../../../src/rec/slow/RegisterProtos.h; sourceTree = "SOURCE_ROOT"; };
 		9E713225F174268730DA226F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowPosition.pb.h; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.h; sourceTree = "SOURCE_ROOT"; };
 		9E8CB36B9AF89F514758725C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_TextEditor.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/widgets/juce_TextEditor.cpp"; sourceTree = "SOURCE_ROOT"; };
+		9F631D06F2FEE8F581D8463D = { isa = PBXFileReference; lastKnownFileType = file.def; name = Waveform.def; path = ../../../../src/rec/slow/commands/layout/Waveform.def; sourceTree = "SOURCE_ROOT"; };
 		9FFB950A564B70F8EE71D06E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_SelectedItemSet.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_SelectedItemSet.h"; sourceTree = "SOURCE_ROOT"; };
 		A008A883AC0F3029D679DC81 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_TreeView.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/widgets/juce_TreeView.cpp"; sourceTree = "SOURCE_ROOT"; };
 		A028535715AC32EEFBA0C71B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Node.pb.cc; path = ../../../../genfiles/proto/rec/widget/tree/Node.pb.cc; sourceTree = "SOURCE_ROOT"; };
@@ -1199,7 +1199,6 @@
 		A0D48B97E349904DDCDD4873 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/Listener.h; sourceTree = "SOURCE_ROOT"; };
 		A0DB3CB4D524B2938708CF14 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_MP3AudioFormat.h"; path = "../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_MP3AudioFormat.h"; sourceTree = "SOURCE_ROOT"; };
 		A144CDDE154B7E4195DE408B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_win32_QuickTimeMovieComponent.cpp"; path = "../../JuceLibraryCode/modules/juce_video/native/juce_win32_QuickTimeMovieComponent.cpp"; sourceTree = "SOURCE_ROOT"; };
-		A1899B5D8D19AE6AC352081B = { isa = PBXFileReference; lastKnownFileType = file.def; name = CommandBar.def; path = ../../../../src/rec/slow/commands/gui/CommandBar.def; sourceTree = "SOURCE_ROOT"; };
 		A19FC8C300E04DBBB240AFB9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_AudioIODevice.cpp"; path = "../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODevice.cpp"; sourceTree = "SOURCE_ROOT"; };
 		A1C3359E3CFCACD3526C7026 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Random.h"; path = "../../JuceLibraryCode/modules/juce_core/maths/juce_Random.h"; sourceTree = "SOURCE_ROOT"; };
 		A1F63987FBBAD9E33BDFB3F7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformPainter.h; path = ../../../../src/rec/widget/waveform/WaveformPainter.h; sourceTree = "SOURCE_ROOT"; };
@@ -1255,6 +1254,7 @@
 		AB3A9076EB7291BCB8A17928 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_MouseInactivityDetector.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_MouseInactivityDetector.cpp"; sourceTree = "SOURCE_ROOT"; };
 		AB524523B98508E9EDF99449 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_OwnedArray.h"; path = "../../JuceLibraryCode/modules/juce_core/containers/juce_OwnedArray.h"; sourceTree = "SOURCE_ROOT"; };
 		AB55E4CBE8C690F9B62B6681 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentFile.h; path = ../../../../src/rec/slow/CurrentFile.h; sourceTree = "SOURCE_ROOT"; };
+		AB674AB7CDE74FE9D4FDBBC4 = { isa = PBXFileReference; lastKnownFileType = file.def; name = CommandBar.def; path = ../../../../src/rec/slow/commands/layout/CommandBar.def; sourceTree = "SOURCE_ROOT"; };
 		AB77FE13F4728568922B9FAC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_FileFilter.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_FileFilter.h"; sourceTree = "SOURCE_ROOT"; };
 		ABB963E4661A0500A9A59DAC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ApplicationCommandInfo.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/commands/juce_ApplicationCommandInfo.cpp"; sourceTree = "SOURCE_ROOT"; };
 		ABC4358166F46DD68A8BD9D8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Clear.h; path = ../../../../src/rec/audio/util/Clear.h; sourceTree = "SOURCE_ROOT"; };
@@ -1327,6 +1327,7 @@
 		B7DE41A73563838D42B14AE9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Format.cpp; path = ../../../../src/rec/audio/format/mpg123/Format.cpp; sourceTree = "SOURCE_ROOT"; };
 		B8049416D23B3339B6911D14 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Waveform.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Waveform.pb.h; sourceTree = "SOURCE_ROOT"; };
 		B808431BF78332510CB85DE4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AudioUnitPluginFormat.h"; path = "../../JuceLibraryCode/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.h"; sourceTree = "SOURCE_ROOT"; };
+		B81154895CE826A8C0B68DCC = { isa = PBXFileReference; lastKnownFileType = file.def; name = SongData.def; path = ../../../../src/rec/slow/commands/layout/SongData.def; sourceTree = "SOURCE_ROOT"; };
 		B81E72BC775A8D7FA4A7616C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Album.cpp; path = ../../../../src/rec/util/cd/Album.cpp; sourceTree = "SOURCE_ROOT"; };
 		B8BF98D26E50300455B338C1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiEditor.cpp; path = ../../../../src/rec/command/map/MidiEditor.cpp; sourceTree = "SOURCE_ROOT"; };
 		B8C5575F180A51F2D3628938 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_WildcardFileFilter.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_WildcardFileFilter.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1426,6 +1427,7 @@
 		C73E14E8635C1BA2BC83C04C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentTimeBase.h; path = ../../../../src/rec/audio/util/CurrentTimeBase.h; sourceTree = "SOURCE_ROOT"; };
 		C74526376773CB949FAAE12B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.cpp; path = ../../../../src/rec/util/LoopPoint.cpp; sourceTree = "SOURCE_ROOT"; };
 		C7C18C5E8F7215022BEE1687 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DownloadVersion.h; path = ../../../../src/rec/app/DownloadVersion.h; sourceTree = "SOURCE_ROOT"; };
+		C7C20714BFD82D9FFE8EE66C = { isa = PBXFileReference; lastKnownFileType = file.def; name = ModeSelector.def; path = ../../../../src/rec/slow/commands/layout/ModeSelector.def; sourceTree = "SOURCE_ROOT"; };
 		C7C8A9D9103074FE1975A3B1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterListener.h; path = ../../../../src/rec/program/SetterListener.h; sourceTree = "SOURCE_ROOT"; };
 		C7DCC47E2BDC32704FA562AE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_UndoManager.h"; path = "../../JuceLibraryCode/modules/juce_data_structures/undomanager/juce_UndoManager.h"; sourceTree = "SOURCE_ROOT"; };
 		C7EA93B16B807C1FD0E08FA0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_MenuBarComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/menus/juce_MenuBarComponent.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1482,7 +1484,6 @@
 		CE99CD4880DD1DC6B46D6598 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.h; path = ../../../../src/rec/gui/menu/RecentFiles.h; sourceTree = "SOURCE_ROOT"; };
 		CEC881EB39CF11214EEA7CCD = { isa = PBXFileReference; lastKnownFileType = file.svg; name = ZoomToSelectionButtonDisabled.svg; path = ../../art/icon/ZoomToSelectionButtonDisabled.svg; sourceTree = "SOURCE_ROOT"; };
 		CEDC3033378A0583085EF0D2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_FileBasedDocument.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_extra/documents/juce_FileBasedDocument.cpp"; sourceTree = "SOURCE_ROOT"; };
-		CEE0616EB2CE71F5948376C7 = { isa = PBXFileReference; lastKnownFileType = file.def; name = MainPanel.def; path = ../../../../src/rec/slow/commands/gui/MainPanel.def; sourceTree = "SOURCE_ROOT"; };
 		CEE7F270ED533A03928FE69A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ChoicePropertyComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/properties/juce_ChoicePropertyComponent.h"; sourceTree = "SOURCE_ROOT"; };
 		CF340127B8E51989F61E7EEA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberBand.h; path = ../../../../src/rec/audio/stretch/RubberBand.h; sourceTree = "SOURCE_ROOT"; };
 		CF729940EEDD2068AFDD44D6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_DialogWindow.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_DialogWindow.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1592,6 +1593,7 @@
 		E08E624616E2F30BDC5ACB6E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_TargetPlatform.h"; path = "../../JuceLibraryCode/modules/juce_core/system/juce_TargetPlatform.h"; sourceTree = "SOURCE_ROOT"; };
 		E0965C1783503CC406F432B9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_events.mm"; path = "../../JuceLibraryCode/modules/juce_events/juce_events.mm"; sourceTree = "SOURCE_ROOT"; };
 		E098408B7A4FBC5D4625D218 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_AudioProcessorEditor.cpp"; path = "../../JuceLibraryCode/modules/juce_audio_processors/processors/juce_AudioProcessorEditor.cpp"; sourceTree = "SOURCE_ROOT"; };
+		E0A47A13984967C1A5D48E36 = { isa = PBXFileReference; lastKnownFileType = file.def; name = HelpPanel.def; path = ../../../../src/rec/slow/commands/layout/HelpPanel.def; sourceTree = "SOURCE_ROOT"; };
 		E0FC82E9F6F49406CCBE67F6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Switcher.h; path = ../../../../src/rec/util/unused/Switcher.h; sourceTree = "SOURCE_ROOT"; };
 		E0FDDE3970E62D8F94ED5072 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_PropertiesFile.h"; path = "../../JuceLibraryCode/modules/juce_data_structures/app_properties/juce_PropertiesFile.h"; sourceTree = "SOURCE_ROOT"; };
 		E1024E754F2A5110BCC28D37 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panel.cpp; path = ../../../../src/rec/gui/proto/Panel.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1619,7 +1621,6 @@
 		E50DE06122D568FC99D55730 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AudioFormatReader.h"; path = "../../JuceLibraryCode/modules/juce_audio_formats/format/juce_AudioFormatReader.h"; sourceTree = "SOURCE_ROOT"; };
 		E5110ACBDA85391F91F748CD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LanguageButton.cpp; path = ../../../../src/rec/gui/LanguageButton.cpp; sourceTree = "SOURCE_ROOT"; };
 		E51ED497BC2AC525527E56AC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ScopedPointer.h"; path = "../../JuceLibraryCode/modules/juce_core/memory/juce_ScopedPointer.h"; sourceTree = "SOURCE_ROOT"; };
-		E54638095DF1E8A8DB8A9FA3 = { isa = PBXFileReference; lastKnownFileType = file.def; name = PlaybackPanel.def; path = ../../../../src/rec/slow/commands/gui/PlaybackPanel.def; sourceTree = "SOURCE_ROOT"; };
 		E54FE6E3500731432322939D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Component.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/components/juce_Component.h"; sourceTree = "SOURCE_ROOT"; };
 		E557508CCC476573A3D9E17A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_DirectoryContentsList.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsList.h"; sourceTree = "SOURCE_ROOT"; };
 		E61866070E553F1495B7287E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RegisterInstance.cpp; path = ../../../../src/rec/app/RegisterInstance.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1691,7 +1692,6 @@
 		EFF2B1395A9F80086C2A3846 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CD.cpp; path = ../../../../src/rec/widget/tree/CD.cpp; sourceTree = "SOURCE_ROOT"; };
 		F00A3FF483631DA813E8C40A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ActiveXControlComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_extra/embedding/juce_ActiveXControlComponent.h"; sourceTree = "SOURCE_ROOT"; };
 		F01270CABCF1833CC8897CAD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_BubbleMessageComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_extra/misc/juce_BubbleMessageComponent.h"; sourceTree = "SOURCE_ROOT"; };
-		F025934F84D217C54E4BADBC = { isa = PBXFileReference; lastKnownFileType = file.def; name = HelpPanel.def; path = ../../../../src/rec/slow/commands/gui/HelpPanel.def; sourceTree = "SOURCE_ROOT"; };
 		F04C912722B2F77500AE3D01 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_OpenGLTexture.h"; path = "../../JuceLibraryCode/modules/juce_opengl/opengl/juce_OpenGLTexture.h"; sourceTree = "SOURCE_ROOT"; };
 		F08AF1831E9C0C876B8F2CA4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_android_CameraDevice.cpp"; path = "../../JuceLibraryCode/modules/juce_video/native/juce_android_CameraDevice.cpp"; sourceTree = "SOURCE_ROOT"; };
 		F08E75A7F9DDAFFBA2348D0E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ThreadPool.h"; path = "../../JuceLibraryCode/modules/juce_core/threads/juce_ThreadPool.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1797,7 +1797,7 @@
 		FF6F1290F7E99FFBBF9B26D7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AudioSourcePlayer.h"; path = "../../JuceLibraryCode/modules/juce_audio_devices/sources/juce_AudioSourcePlayer.h"; sourceTree = "SOURCE_ROOT"; };
 		FFA00535AB1AA5FE9CD5A9CF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_MouseInputSource.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_MouseInputSource.h"; sourceTree = "SOURCE_ROOT"; };
 		FFBB69628FB46D690B360299 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_UndoManager.cpp"; path = "../../JuceLibraryCode/modules/juce_data_structures/undomanager/juce_UndoManager.cpp"; sourceTree = "SOURCE_ROOT"; };
-		743F80CB6F58D21DEACBDC2E = { isa = PBXGroup; children = (
+		9EC11F5CE91D7F40F2FFBC01 = { isa = PBXGroup; children = (
 				B9836A4E425C0236FBF98410,
 				B02BC6B81A7018E4EE63B71E,
 				C7C18C5E8F7215022BEE1687,
@@ -1813,7 +1813,7 @@
 				D13AC0EE496B98B5D857CCAB,
 				3302C14F54E38BEFAA806B48,
 				741CD5C7291017434F73C518 ); name = app; sourceTree = "<group>"; };
-		1D072F5B797C01E821A49068 = { isa = PBXGroup; children = (
+		1CCAF63A4EAD8B4A76BEE390 = { isa = PBXGroup; children = (
 				64D5AE76A39B0CF0F6BF087D,
 				1B81CF6E9E1D743E8CC35FD4,
 				EE5AFAE644D41DDD87718563,
@@ -1831,22 +1831,22 @@
 				8A1F80591122B53C6BC903B0,
 				F9A0847AA2EC948C75D0919B,
 				CAA9BE5EAAFFE69C36F7633C ); name = mpg123; sourceTree = "<group>"; };
-		E2D51AE43199AC9F9E781DC0 = { isa = PBXGroup; children = (
+		AD81EC872EC8AE29BF64BC91 = { isa = PBXGroup; children = (
 				D2F9A9C3DD801E62BFAC5A5F,
 				DDCDA1B0BF0F7EA9FB767580,
 				7FA876E11B9E944FA74B84FB,
 				9B05DE2921CB1B0B6BD7329C ); name = raw; sourceTree = "<group>"; };
-		38EA4DF1B5C08B175D930249 = { isa = PBXGroup; children = (
+		068C185342E58C8967CF8BE8 = { isa = PBXGroup; children = (
 				D91C965DFCA5042AA78A6F0D,
 				C5F8CF4DA72AE74CD8B83368,
 				F8F4990045F1E65358C4E891,
-				1D072F5B797C01E821A49068,
-				E2D51AE43199AC9F9E781DC0,
+				1CCAF63A4EAD8B4A76BEE390,
+				AD81EC872EC8AE29BF64BC91,
 				6B9B895687ED012D1F215F6C,
 				A2FE788911201F8E198D6E25 ); name = format; sourceTree = "<group>"; };
-		2E0E1E3BBACB976F13A85E9D = { isa = PBXGroup; children = (
+		6DEB52F64816A13CE7DA6A22 = { isa = PBXGroup; children = (
 				DAE152A291924CF1E60B6234 ); name = infinite; sourceTree = "<group>"; };
-		EBBADC323BAFFF267B363D30 = { isa = PBXGroup; children = (
+		302E98D6563F12BF49005F2A = { isa = PBXGroup; children = (
 				61C070BCA3E41A3E477121DE,
 				1E2CAF51D7C8B7FB7D046047,
 				911F1575C6048364558F6F7E,
@@ -1860,7 +1860,7 @@
 				00DAEAB2D252905256874FFB,
 				EDF300B9EE6A9030FBF01CD1,
 				6D7C87D47B0AD8FAE02668F5 ); name = source; sourceTree = "<group>"; };
-		97109CFECF3B9BB6D4F25794 = { isa = PBXGroup; children = (
+		C9BAEE340F514956BEF69473 = { isa = PBXGroup; children = (
 				9584DE05C99CF5A1BEDBCB78,
 				0564A54109379589DCDDC912,
 				8BA5D2333B395B918C5FDCBD,
@@ -1869,7 +1869,7 @@
 				8054064E5022AE846F15A464,
 				A802422E9A7CF5828BAA8977,
 				1A23A37FFBB8FBE20FF24724 ); name = stretch; sourceTree = "<group>"; };
-		08A3C0C855221D6BDB0E4BDC = { isa = PBXGroup; children = (
+		EC208A39E6C6AD5CF053EF17 = { isa = PBXGroup; children = (
 				9BCC7B1E01DFFBE86674FB40,
 				3B80121073EDBB06B8087FB4,
 				BCB49DB8A37AA3495B09A99B,
@@ -1894,18 +1894,18 @@
 				3BA4AE6E7DD8554C146D2E8D,
 				14F6CF845C05DE9D8DCA4796,
 				F7CB5DAB1AEC359934CFD9B3 ); name = util; sourceTree = "<group>"; };
-		5D4CF0F200242E7D2B723D64 = { isa = PBXGroup; children = (
+		B3B295AC206513542FA9DA0F = { isa = PBXGroup; children = (
 				1C0F4E92880569CC06C3C4AB,
 				9CB1D56719A88D59CF373F56,
 				4F8046C306C91BDD0FD030CD,
-				38EA4DF1B5C08B175D930249,
-				2E0E1E3BBACB976F13A85E9D,
+				068C185342E58C8967CF8BE8,
+				6DEB52F64816A13CE7DA6A22,
 				1E2BB8E5F6512583768E70AC,
 				D9541786FE981A5C533296FC,
-				EBBADC323BAFFF267B363D30,
-				97109CFECF3B9BB6D4F25794,
-				08A3C0C855221D6BDB0E4BDC ); name = audio; sourceTree = "<group>"; };
-		E3D6C27DC762BBD5D1A35B76 = { isa = PBXGroup; children = (
+				302E98D6563F12BF49005F2A,
+				C9BAEE340F514956BEF69473,
+				EC208A39E6C6AD5CF053EF17 ); name = audio; sourceTree = "<group>"; };
+		C3E6C2CC5AED9D2E922018FC = { isa = PBXGroup; children = (
 				EF1EF37EF2FE3F2D09C7EBDA,
 				17D2D530812E59649F15C2B4,
 				5ED2A5FBB039F0AC774447FC,
@@ -1928,7 +1928,7 @@
 				438E42DC4703022C86591458,
 				FE6683E696C1FBBD52B833E8,
 				18960369757C611E7C840369 ); name = base; sourceTree = "<group>"; };
-		E480217DB191CE5AA88A0C52 = { isa = PBXGroup; children = (
+		6A447920A97EED8A5EF3A910 = { isa = PBXGroup; children = (
 				9D00FE6722A48A42C78FE19F,
 				C624F08ACB2C799BA71F4820,
 				E11E4CFC5011AEBE46A38FB5,
@@ -1945,13 +1945,13 @@
 				089061C1833F37657E9CD00B,
 				C181B224C4759A79C8216BEF,
 				C416DDD80E17A52743F38F7B ); name = map; sourceTree = "<group>"; };
-		7693AF6FC7B421C8868ABF05 = { isa = PBXGroup; children = (
+		27BE4B67F645C1B2C77F55D6 = { isa = PBXGroup; children = (
 				8AB830C54357EAA2F9F07971,
 				7A6D1D281C9BB464301A7C9D,
 				05736AFA69C327AC098B98AE,
 				F578790D94DFCE86D6C3EB09,
-				E480217DB191CE5AA88A0C52 ); name = command; sourceTree = "<group>"; };
-		4C8EB49CDB8C06E6985F7093 = { isa = PBXGroup; children = (
+				6A447920A97EED8A5EF3A910 ); name = command; sourceTree = "<group>"; };
+		DC6102B11C60F98EE2860330 = { isa = PBXGroup; children = (
 				F58584FBFCF6365CD28E4C2A,
 				BAF51EAD91D21AD3A8D541C4,
 				979CCB3765FC7F73FF3875A0,
@@ -1969,12 +1969,12 @@
 				BD14BDD3E2C6D561E72E81EE,
 				B98DCEE6296C4DE6BD1FCE82,
 				60D3C74B5683A31385DD67C5 ); name = proto; sourceTree = "<group>"; };
-		99473BCA4E5BB2A9CF33648E = { isa = PBXGroup; children = (
+		E5A44EF721A02A92056CFEC4 = { isa = PBXGroup; children = (
 				BC92DA2A3982F69940E9EF31,
 				531B8EC44A1179D2DA8C08E9,
 				15CE4B99C046364CB01B3D2A,
 				DB9A3891491E505BAC32C508 ); name = yaml; sourceTree = "<group>"; };
-		8E4F8DCDF5E8B490DE309525 = { isa = PBXGroup; children = (
+		7BFFEEBD3C1DF366592A4C76 = { isa = PBXGroup; children = (
 				4D22EBB7C627468046BB8F84,
 				870B91D2E9C85AE17F0C5901,
 				7642D0D714A73274CCAF74B2,
@@ -1998,7 +1998,7 @@
 				6333BF3F454D5678C672F176,
 				85BB238DA57F053CF751160D,
 				828D646A39EB1DA745799246,
-				4C8EB49CDB8C06E6985F7093,
+				DC6102B11C60F98EE2860330,
 				3B341CC03FB032CA1BDFC58A,
 				8FBAE62D5C3BD3B4F1F6C117,
 				0CC3BCEE8198A8B19D791120,
@@ -2006,10 +2006,10 @@
 				65EADCC316DBAFF3A486F0B4,
 				9053F4C3E1578C76E34A94A7,
 				493EA0274509C767E0A183A0,
-				99473BCA4E5BB2A9CF33648E,
+				E5A44EF721A02A92056CFEC4,
 				A6A9324A4AD3FFBD40DEDBCA,
 				283FB2ACEBFE60F383AEE48C ); name = data; sourceTree = "<group>"; };
-		9D96D363A01456ABBDF7BA53 = { isa = PBXGroup; children = (
+		4344C58CC13C07F253E12C7A = { isa = PBXGroup; children = (
 				E3450C53465F895C4E89AF31,
 				07480EFB47535AEF269D702C,
 				938545EF1B44AF06507FFD1F,
@@ -2028,10 +2028,10 @@
 				F875D3877203A37A46D5FB6E,
 				C1C93F8AC97C06F913B703C4,
 				8D1A97FAB320262D4FEDEF12 ); name = audio; sourceTree = "<group>"; };
-		17BC6F5267D12F95B8ED42EB = { isa = PBXGroup; children = (
+		674662BDB66002A60632E086 = { isa = PBXGroup; children = (
 				CFC85FEA00B767C49514D965,
 				CE99CD4880DD1DC6B46D6598 ); name = menu; sourceTree = "<group>"; };
-		4999D002C69DA1C0DD904F84 = { isa = PBXGroup; children = (
+		CFBCE93956E1B8893CD8AE8C = { isa = PBXGroup; children = (
 				DF64E22555373348B1553540,
 				0D785636BF7840D16D164FEE,
 				E81DF25451EAD9AEC7CC9FCB,
@@ -2048,8 +2048,8 @@
 				52D7BCA0300CA32872944E6F,
 				AA039F1B25EE2CD304797CCB,
 				BDD5C44C75233AD7049D5D47 ); name = proto; sourceTree = "<group>"; };
-		43DFEE67AE845AC9A9341DC8 = { isa = PBXGroup; children = (
-				9D96D363A01456ABBDF7BA53,
+		B201D6CBB58A6413EC2CC9F5 = { isa = PBXGroup; children = (
+				4344C58CC13C07F253E12C7A,
 				CBC7414ECF1EE57C1EDD3411,
 				4C0C3BE1120C9B3488AFE5F6,
 				05967A6619DCF98A50EAE17B,
@@ -2073,10 +2073,10 @@
 				D882907D0557E67120D6B564,
 				78D301E2BF3F6647650525E8,
 				9BEB554F53182AB4872D93ED,
-				17BC6F5267D12F95B8ED42EB,
+				674662BDB66002A60632E086,
 				A698B3943C0C6495A72156D9,
 				2B905D4909A86632E97C7868,
-				4999D002C69DA1C0DD904F84,
+				CFBCE93956E1B8893CD8AE8C,
 				3DF7C7217B625BF2EB969C27,
 				3A8350AC0003CFBA7DEC80C2,
 				5743C7068DFB147AE0F83DA3,
@@ -2090,14 +2090,14 @@
 				0E8B99F138CAB90CF13C9F44,
 				F588686E2678D0477EB07D3C,
 				15EF18EDE164EAA02D289990 ); name = gui; sourceTree = "<group>"; };
-		F0FB1CABA72BDEFA177BE76E = { isa = PBXGroup; children = (
+		979DD17A9272C6ACF97022AD = { isa = PBXGroup; children = (
 				F8D8A432400C15FDFFF52EC7,
 				CE7E4DEFBDC3DA3DB021E627,
 				4AEA01741CC436D76938F594,
 				55D2FEAF5A10D29FCCD5DB7E,
 				9B2EE030A9515F04EA763664,
 				E32E0D0ACD1FB45324E40876 ); name = music; sourceTree = "<group>"; };
-		B9282F1D764F248129D415CC = { isa = PBXGroup; children = (
+		E122F6CD42E0857CDFF7ED79 = { isa = PBXGroup; children = (
 				1715CD2E1D7DAB240F00EAB0,
 				F733311E72B052A4B97E818B,
 				AE0C2011E3B249BBF86A9CAA,
@@ -2111,7 +2111,7 @@
 				A837A36D5728AFA55284371B,
 				C7C8A9D9103074FE1975A3B1,
 				3CFB91D459F9FBED9939FD44 ); name = program; sourceTree = "<group>"; };
-		5D3F819C950C51C9788C3F07 = { isa = PBXGroup; children = (
+		802B6871A74C1013E6EA0F21 = { isa = PBXGroup; children = (
 				F1A62FEBDB6E1BA6693089CB,
 				82ACA9FBFAE4751BAA2F4B0B,
 				4F4C7D8EAB14808A7C97970A,
@@ -2127,33 +2127,35 @@
 				983955C0F60B1A2D01D7CF51,
 				7D843A7D3F6D2DBA12B2516C,
 				89F84EA17DD8BA9C09C5DD09 ); name = callbacks; sourceTree = "<group>"; };
-		6FD96C83D32B2A57BB9C4A9F = { isa = PBXGroup; children = (
-				A1899B5D8D19AE6AC352081B,
-				39AA40C404FE01ABF6468714,
-				F025934F84D217C54E4BADBC,
-				16144B2A8806E4291AA28566,
-				CEE0616EB2CE71F5948376C7,
-				9382E05679ABE2CDED5065FB,
-				8DDA166610225CE5E5CC1E02,
-				527976B652736C37BD38E70E,
-				6FA5000EB9B2A30B958EE81F,
-				E54638095DF1E8A8DB8A9FA3,
-				38D68E7B7B4BAC0C83D86D3B,
-				91E0999BC6B6A5BD0F553309,
-				7D14A05B2CCDE7E3AC07E772,
-				40C04EACB01D7C29D0BBF2F3 ); name = gui; sourceTree = "<group>"; };
-		CF21B2A7D726E224D63D295A = { isa = PBXGroup; children = (
+		AB4F0458E6CFCE338F871941 = { isa = PBXGroup; children = (
+				9029953DB6B4771636C2931F ); name = component; sourceTree = "<group>"; };
+		B3E196A95270B852989266C6 = { isa = PBXGroup; children = (
+				AB674AB7CDE74FE9D4FDBBC4,
+				E0A47A13984967C1A5D48E36,
+				070B9F95151380F588B4E4C8,
+				5DE1C3D0E3FF519BFFA5488D,
+				C7C20714BFD82D9FFE8EE66C,
+				6F0A0B900F49041442E05C4C,
+				526047C920C236113B193D2A,
+				B81154895CE826A8C0B68DCC,
+				919043C6872FDCEF65F69D0A,
+				4990FB9F029D3ACBCD57305E,
+				9F631D06F2FEE8F581D8463D ); name = layout; sourceTree = "<group>"; };
+		A7B361FB0F2B18A8A2CCC7B1 = { isa = PBXGroup; children = (
 				C1A9ED0AA51E93F8E3D191E1,
-				6FD96C83D32B2A57BB9C4A9F,
+				AB4F0458E6CFCE338F871941,
 				BD409CD70B88458AB78556CC,
+				B3E196A95270B852989266C6,
+				20D06E985CFDDD94959A8516,
+				704CA22D54BEB2AD82969969,
 				CA514AF63B59B9DA1607F4FC,
 				01820A566F0E100206C2C983,
 				482ECBEC809FE85F2636424A ); name = commands; sourceTree = "<group>"; };
-		DA61EF37026C61FA923F843B = { isa = PBXGroup; children = (
+		E16295C6C97864B57F03E687 = { isa = PBXGroup; children = (
 				CB222B595410F9239997CB53,
 				377A515D0F7C7D76E9B2D2E2,
-				5D3F819C950C51C9788C3F07,
-				CF21B2A7D726E224D63D295A,
+				802B6871A74C1013E6EA0F21,
+				A7B361FB0F2B18A8A2CCC7B1,
 				FBE7B9FF67949B764B464ED9,
 				9A9F398EAAE5ED427FC18209,
 				CFCA020CB532BE8B0DA8A298,
@@ -2176,15 +2178,15 @@
 				9E3CA24E259ADD03D3B43D0A,
 				E16E890C678DB828F6A96001,
 				3EF4E8F641C6078AAF22E0CE ); name = slow; sourceTree = "<group>"; };
-		714DF2E3A26341A09D6A1823 = { isa = PBXGroup; children = (
+		6E65A260DD5E138A57B10BD5 = { isa = PBXGroup; children = (
 				CB1E536F8679053C1828B53E,
 				08A9E275194E9D86767F35C5,
 				57A66523591260B80942946D,
 				9C4044AE00388EBEC9A0C5D0 ); name = support; sourceTree = "<group>"; };
-		FF6764B31949B2C69835FE58 = { isa = PBXGroup; children = (
+		1E788CEB6F2C5B535ABA4685 = { isa = PBXGroup; children = (
 				DA921FEFEF6987E427D006E3,
 				DCDCF6FF3673A8386C85EBBF ); name = translation; sourceTree = "<group>"; };
-		B7CC5C33E9BFC3881C52465A = { isa = PBXGroup; children = (
+		4F0EB3FED28397584A6A35B2 = { isa = PBXGroup; children = (
 				B81E72BC775A8D7FA4A7616C,
 				4AAC39B9D30E7707A606E132,
 				0EF56F4E2C21BF7B4B512E49,
@@ -2199,7 +2201,7 @@
 				14A58E3DD76090AE44CDEBD2,
 				35029B4C425DA1EFADE775C7,
 				16D7ACC65A6C6B6661981EAB ); name = cd; sourceTree = "<group>"; };
-		56E69BFA25EF358930753339 = { isa = PBXGroup; children = (
+		5A272C0A4A6E849584291193 = { isa = PBXGroup; children = (
 				75A24F8202F96910E924598D,
 				53C87D87025FA35445143FFE,
 				0FBE15185FBB2AE3421FC658,
@@ -2227,12 +2229,12 @@
 				7359A14221C8B014FF4D1F9D,
 				609EA4FC3B8D91FF4038D659,
 				90B7931C45DB8B00EF1D66D9 ); name = file; sourceTree = "<group>"; };
-		D79EEBF93D81D84698C4EB02 = { isa = PBXGroup; children = (
+		1AB2B6B18A75235E6842E49F = { isa = PBXGroup; children = (
 				76D7FE5873C8CD56E0E5992C,
 				9D84D4A86A4F1C26AA01A984,
 				AAC9A27C1B25F904FACC1654,
 				6BE6F1380B9C3999CCCB8919 ); name = partition; sourceTree = "<group>"; };
-		7A7CE0A9BDF524A86C5145A5 = { isa = PBXGroup; children = (
+		A3DB8F82F019E62B198D6F6D = { isa = PBXGroup; children = (
 				43295B877C5F6070B68EEB25,
 				ECDA81E8ACE34B0C06FDDA9A,
 				EB6846E049C805B18A94E42A,
@@ -2244,7 +2246,7 @@
 				344253E274AD1AA03212AB2B,
 				D026C3431FE14BEAF63CAE6C,
 				855CF74D77E4F1ADC840EC5E ); name = proto; sourceTree = "<group>"; };
-		233EEB1F30D2511CB5861AFA = { isa = PBXGroup; children = (
+		D36231A34F7CB64A8B314C5D = { isa = PBXGroup; children = (
 				5F71FF057D39FB1DEA792345,
 				F42785CC460B24C48064C519,
 				C93A94258FA1D04E749EBF8B,
@@ -2262,7 +2264,7 @@
 				69215451B922C63D574BBFB9,
 				E11632CB2DFA059607E3F131,
 				4C973F529D4B680E0CAEA42F ); name = range; sourceTree = "<group>"; };
-		6B6B9FC23F80985EF67F4839 = { isa = PBXGroup; children = (
+		1CA03C78E7E34206FE11AE75 = { isa = PBXGroup; children = (
 				8E5F605EB95E8B0D8671E618,
 				C10822E2524115785ED7F33B,
 				1C7F54A59C8A1B6C2D659BF9,
@@ -2282,7 +2284,7 @@
 				E3B5D72DCB799AB46DBCE8A5,
 				B1BA8637B68E07E9D1B63242,
 				7620BC8B8249E1813A3D40F1 ); name = thread; sourceTree = "<group>"; };
-		684DA01FA7A036847EC5E5E2 = { isa = PBXGroup; children = (
+		2CCBBB2FAC483B013B2BFAFA = { isa = PBXGroup; children = (
 				CB074B0123FF849EC65F66B0,
 				8C9470CDA3EAA27F940EFF09,
 				3263F115B320087908822DAC,
@@ -2290,10 +2292,10 @@
 				49640FA39ABC19AFD8C6F048,
 				2CB196FA9D5126E81E9DF770,
 				E0FC82E9F6F49406CCBE67F6 ); name = unused; sourceTree = "<group>"; };
-		0D504042AE98D627DCA5D32C = { isa = PBXGroup; children = (
+		77A4F4F4EC03D520DCE4D9E7 = { isa = PBXGroup; children = (
 				0C299C6149C8F150D05F6C46,
 				5AB13F6187617C84B0F87C0D,
-				B7CC5C33E9BFC3881C52465A,
+				4F0EB3FED28397584A6A35B2,
 				ED8AB83B1A9CC3460D333C2D,
 				7C67357AD0D36EA4F5FF853C,
 				C6A7865BA0979123F0FCB222,
@@ -2302,7 +2304,7 @@
 				3F893D22E3EB1BA9E55E20E8,
 				C05AF1268D1547737A3B43E1,
 				361084732E5B6DEF76C34550,
-				56E69BFA25EF358930753339,
+				5A272C0A4A6E849584291193,
 				A278F48B47651D96AE043ECB,
 				CE0B421092F69F467EE98190,
 				47515E20811B826BDF862EE3,
@@ -2318,24 +2320,24 @@
 				36E0346E47A58BD39B2959EC,
 				E35E072C144DDE6A060C5CCC,
 				519D9C21B92AB2727A9D1DF0,
-				D79EEBF93D81D84698C4EB02,
+				1AB2B6B18A75235E6842E49F,
 				EEEC60E6D22D80D07D80119E,
-				7A7CE0A9BDF524A86C5145A5,
-				233EEB1F30D2511CB5861AFA,
+				A3DB8F82F019E62B198D6F6D,
+				D36231A34F7CB64A8B314C5D,
 				BDA83B75FF6DA5FED019BB2B,
 				70EE5B7A5DF6ACD006E8C049,
 				426C493916F0B9ABB4DFCA85,
 				41F09B2E6A5ABAEEABBF9018,
-				6B6B9FC23F80985EF67F4839,
+				1CA03C78E7E34206FE11AE75,
 				45B30002EB0C6A133F3B6E0F,
 				2E6980C30E05151564453B84,
-				684DA01FA7A036847EC5E5E2 ); name = util; sourceTree = "<group>"; };
-		8264043558D2BBCD7062F494 = { isa = PBXGroup; children = (
+				2CCBBB2FAC483B013B2BFAFA ); name = util; sourceTree = "<group>"; };
+		CDB51BF0F45F6092EF8838FC = { isa = PBXGroup; children = (
 				1ED0B1F501AFDB94314F0A59,
 				0FC97BC5F121B51F13CFF3A4,
 				93AD7EC88811E158E196B6E4,
 				D204E3BCAB8C95C0C780B854 ); name = status; sourceTree = "<group>"; };
-		036A0E49D0179BFE3939F771 = { isa = PBXGroup; children = (
+		7CFB48004D3277F4042B132F = { isa = PBXGroup; children = (
 				EFF2B1395A9F80086C2A3846,
 				00F966285F47602664E170E1,
 				4585738D1F8EA58A32077580,
@@ -2348,7 +2350,7 @@
 				6F08CEF19AEA00BB24E3D79A,
 				BC401961598B326839AC20BE,
 				1BD2F22CD3B05538EC76488C ); name = tree; sourceTree = "<group>"; };
-		5508B365D2258E77061B6D8D = { isa = PBXGroup; children = (
+		AAB1B858E843E3E0882FCE26 = { isa = PBXGroup; children = (
 				4CCC6B55A03032DB3C2C19CD,
 				56235C929E233ACA707202D6,
 				E960AB7CB1DC9159BD92B6D9,
@@ -2365,72 +2367,72 @@
 				A1F63987FBBAD9E33BDFB3F7,
 				1D01959CF715923B37E10C38,
 				031E8A78B8AC889106976863 ); name = waveform; sourceTree = "<group>"; };
-		FC01BCDB5C10910EFC68BAA5 = { isa = PBXGroup; children = (
+		B88D2D17CF4F9F7F21F9D68A = { isa = PBXGroup; children = (
 				459B9BFA5A83FBA1B7EFED6E,
-				8264043558D2BBCD7062F494,
-				036A0E49D0179BFE3939F771,
-				5508B365D2258E77061B6D8D,
+				CDB51BF0F45F6092EF8838FC,
+				7CFB48004D3277F4042B132F,
+				AAB1B858E843E3E0882FCE26,
 				35B5D42A96E201AA8BD6C258,
 				06D520677E64BE979EFA4598 ); name = widget; sourceTree = "<group>"; };
 		AB71BB66BF381F19CE788C19 = { isa = PBXGroup; children = (
-				743F80CB6F58D21DEACBDC2E,
-				5D4CF0F200242E7D2B723D64,
-				E3D6C27DC762BBD5D1A35B76,
-				7693AF6FC7B421C8868ABF05,
-				8E4F8DCDF5E8B490DE309525,
-				43DFEE67AE845AC9A9341DC8,
-				F0FB1CABA72BDEFA177BE76E,
-				B9282F1D764F248129D415CC,
-				DA61EF37026C61FA923F843B,
-				714DF2E3A26341A09D6A1823,
-				FF6764B31949B2C69835FE58,
-				0D504042AE98D627DCA5D32C,
-				FC01BCDB5C10910EFC68BAA5 ); name = src; sourceTree = "<group>"; };
-		F1DC11B57527698E3D24C735 = { isa = PBXGroup; children = (
+				9EC11F5CE91D7F40F2FFBC01,
+				B3B295AC206513542FA9DA0F,
+				C3E6C2CC5AED9D2E922018FC,
+				27BE4B67F645C1B2C77F55D6,
+				7BFFEEBD3C1DF366592A4C76,
+				B201D6CBB58A6413EC2CC9F5,
+				979DD17A9272C6ACF97022AD,
+				E122F6CD42E0857CDFF7ED79,
+				E16295C6C97864B57F03E687,
+				6E65A260DD5E138A57B10BD5,
+				1E788CEB6F2C5B535ABA4685,
+				77A4F4F4EC03D520DCE4D9E7,
+				B88D2D17CF4F9F7F21F9D68A ); name = src; sourceTree = "<group>"; };
+		CADC18A4771BF86F65A6B667 = { isa = PBXGroup; children = (
 				23BA1FF4D7F71BB2522F33D3,
 				0DC5FB2451162BE85596CF56 ); name = app; sourceTree = "<group>"; };
-		4EF5A900906E126157919DC0 = { isa = PBXGroup; children = (
+		04D7ED373945C0379A530050 = { isa = PBXGroup; children = (
 				1D9F3E23B6A2131F8203E399,
 				D0A2645A34246ED915285619 ); name = source; sourceTree = "<group>"; };
-		48198250FA4C9D1E04A6A5B8 = { isa = PBXGroup; children = (
+		360C1EBC76023353319309AC = { isa = PBXGroup; children = (
 				A9F5F463F116A1AADBC7101E,
 				CC3F3BCE39C093914F3A16EE ); name = stretch; sourceTree = "<group>"; };
-		790FB736EA2BD3235B1A685B = { isa = PBXGroup; children = (
+		A94161E52338D4CF15BC617F = { isa = PBXGroup; children = (
 				5E172572EB391FA567C54855,
 				9064FBD1AE1988FDB822B874,
 				3277021F42B3CD8E74284E5A,
 				0C8F5A1BF72A00FF7BEA1E14 ); name = util; sourceTree = "<group>"; };
-		FD688BA75796C084CF2ADC05 = { isa = PBXGroup; children = (
+		AAE007E9FAFE24EF0C416A1D = { isa = PBXGroup; children = (
 				D8EC75634C62AA9A3A850E43,
 				BF802C94EB39F4517CBDB334,
-				4EF5A900906E126157919DC0,
-				48198250FA4C9D1E04A6A5B8,
-				790FB736EA2BD3235B1A685B ); name = audio; sourceTree = "<group>"; };
-		E1DB70C219615999F122B076 = { isa = PBXGroup; children = (
+				04D7ED373945C0379A530050,
+				360C1EBC76023353319309AC,
+				A94161E52338D4CF15BC617F ); name = audio; sourceTree = "<group>"; };
+		069724C612F03CC110725BA1 = { isa = PBXGroup; children = (
 				FAE9731FDAA58708E71E65B9,
 				4AADFA0BE8AC89187AD9CD96 ); name = base; sourceTree = "<group>"; };
-		FCC9158B27EBA9F380E3C647 = { isa = PBXGroup; children = (
+		170BE7EC51D953E0128E3EEF = { isa = PBXGroup; children = (
 				4A9A64F9832AB209210AC65D,
 				BA0F15D4D8D9E74EDB31E55C ); name = map; sourceTree = "<group>"; };
-		2BD50A7DAE15957527B16BC3 = { isa = PBXGroup; children = (
+		6E5491D93E182C0445A5F574 = { isa = PBXGroup; children = (
 				531B68C8FB47A624A7B7B40D,
 				5ECB5D088678F924DD44883A,
-				FCC9158B27EBA9F380E3C647 ); name = command; sourceTree = "<group>"; };
-		E0B3F4400924A3ABBBBB168E = { isa = PBXGroup; children = (
+				170BE7EC51D953E0128E3EEF ); name = command; sourceTree = "<group>"; };
+		B8A37B78A048F35262FFC7C0 = { isa = PBXGroup; children = (
 				459B765417C36DEC48A4DAF4,
 				7876D5F62FB9DD049FD91298,
 				B44CB9C9AACD34A4B4ECA41F,
 				E4C9FF3F4D812A40899CDD46,
 				ECACB642D481A97ECFE43E87,
 				EB57046FFF2332992BF4E4D3 ); name = proto; sourceTree = "<group>"; };
-		48034C4CCB47896CD1784035 = { isa = PBXGroup; children = (
+		DF3CD43D780C73C047D51FD6 = { isa = PBXGroup; children = (
 				ECE3185470BFAD0698E1DE39,
 				383F38332BA02A64976CEDFB,
-				E0B3F4400924A3ABBBBB168E ); name = data; sourceTree = "<group>"; };
-		81BB9E4F52AAAB3B5B0D81EC = { isa = PBXGroup; children = (
+				B8A37B78A048F35262FFC7C0 ); name = data; sourceTree = "<group>"; };
+		63B4996C7F653F092D829026 = { isa = PBXGroup; children = (
 				8E55A236B48409D0BCBE3B1F,
 				480CF0D502B192F153424B41 ); name = menu; sourceTree = "<group>"; };
-		F6BD03C0889FB7AFE9007B38 = { isa = PBXGroup; children = (
+		38454E71BE12F27C4CB462CF = { isa = PBXGroup; children = (
 				67651D7719876A3EE309F930,
 				CDF2C503FFEAE421BCC3AA0B,
 				E64AA6C9A28C9F9370B59755,
@@ -2451,7 +2453,7 @@
 				2893313598F3A42E0A7FC809,
 				87F70A3DC6FC2EAC00A38A77,
 				D225E4B97039D4317973057E ); name = proto; sourceTree = "<group>"; };
-		15BCD9CC45972E5DBF7000F6 = { isa = PBXGroup; children = (
+		2388C5ED7917047EB1FA899B = { isa = PBXGroup; children = (
 				DCB3D4ACFE8C84408FDBAB6A,
 				8807608C46DC0DC0C03E664D,
 				80519C9163A335032BD19884,
@@ -2460,59 +2462,59 @@
 				DE3B5C35AC285155EA24110F,
 				C084637937A901026F39BB26,
 				7FAF0D7D5AD7CF43D7001705,
-				81BB9E4F52AAAB3B5B0D81EC,
-				F6BD03C0889FB7AFE9007B38,
+				63B4996C7F653F092D829026,
+				38454E71BE12F27C4CB462CF,
 				29F2B9094FA3F82833D41452,
 				0C748F1D2726F95FA685351A,
 				CFFD26D065ED8000D199C851,
 				9E713225F174268730DA226F ); name = gui; sourceTree = "<group>"; };
-		3EA6A06FB26AFFE08112F66C = { isa = PBXGroup; children = (
+		689212DAF31EC81AC9FF96B0 = { isa = PBXGroup; children = (
 				33A7CE0CDDC85C64455FC794,
 				26429EF120CA608CB6D4A18B ); name = music; sourceTree = "<group>"; };
-		EA56279E3DB49783548D99DE = { isa = PBXGroup; children = (
+		1234C3E6536574D7FC5A73FE = { isa = PBXGroup; children = (
 				C9574789F9A5E6C0C49C9B7F,
 				71C05D85B535D6793067F5FD,
 				A4D2874FCC59060D6AB046B6,
 				CC9D1344951F69831E990E46 ); name = program; sourceTree = "<group>"; };
-		F02E71A0C13B72F01D30644D = { isa = PBXGroup; children = (
+		9DC84CC031533B292BADE902 = { isa = PBXGroup; children = (
 				46B3FFF02E6049D194407029,
 				52B9F40B840F26055E8DE14E ); name = commands; sourceTree = "<group>"; };
-		E47EA0BA1BECB8871C757026 = { isa = PBXGroup; children = (
+		838035BBB0CA269829AE26CC = { isa = PBXGroup; children = (
 				7110F2F28A01752761B0F270,
 				36F15C058A3D5BA05FCA827D,
-				F02E71A0C13B72F01D30644D,
+				9DC84CC031533B292BADE902,
 				2AC73BCA090D8A1DB4B4C4A5,
 				B5F0EEE610A868084A6DA7A0,
 				208B6E62912E6DDD8CA2FA24,
 				0F7B8A8B05F5A7B8DD9D5384 ); name = slow; sourceTree = "<group>"; };
-		239260AF2C3ADE486A60FDB4 = { isa = PBXGroup; children = (
+		C9CD4D7936BEF42D909BB434 = { isa = PBXGroup; children = (
 				4EDFE273D2179230E7AE0EAF,
 				C5A44393DDDF33B25AAD7ADB ); name = file; sourceTree = "<group>"; };
-		B8DBC2B2B3D717191E4E4024 = { isa = PBXGroup; children = (
+		4DAA90EF10BD32EB282E7C6C = { isa = PBXGroup; children = (
 				3A1B88630693EEC7D15DADC3,
 				15BE2F94C36E4E317417BACA ); name = thread; sourceTree = "<group>"; };
-		84731A55DDE93D32E83B0186 = { isa = PBXGroup; children = (
+		445E14522FF7873D5BB6FFE4 = { isa = PBXGroup; children = (
 				FCEE433797B7D17BC6CE2950,
 				F3470526799897F7DF9962FF,
-				239260AF2C3ADE486A60FDB4,
+				C9CD4D7936BEF42D909BB434,
 				431C8FF26F7E294616D59DFA,
 				162DC2111988D6DF82E16AF9,
 				9522AA5F8086248A5C3A372D,
 				053A533A811DBA7FECAFE15F,
 				833E299A209CBFBC01883152,
 				26EE7CCACCEE38048C53AADE,
-				B8DBC2B2B3D717191E4E4024 ); name = util; sourceTree = "<group>"; };
-		5D390A8E2D1C1682019A98E0 = { isa = PBXGroup; children = (
+				4DAA90EF10BD32EB282E7C6C ); name = util; sourceTree = "<group>"; };
+		8248C52779081875560741F2 = { isa = PBXGroup; children = (
 				BC022FD43CBBFFA2DD5720E6,
 				48540991ED8DEA819CDC7EA3 ); name = status; sourceTree = "<group>"; };
-		91ECC9D83D780ACC4731E717 = { isa = PBXGroup; children = (
+		1B417314026436652240B827 = { isa = PBXGroup; children = (
 				9D9EC0429FDE38896F471322,
 				496708A0ABB5882842D8C2FB,
 				A028535715AC32EEFBA0C71B,
 				792BFEB4CBE746571649A678,
 				19939CED4FEB6043763BDBD1,
 				C0D8C53C6F5A641D7B87BFDF ); name = tree; sourceTree = "<group>"; };
-		59AE73DA4B3DE4EA88185EC0 = { isa = PBXGroup; children = (
+		E7FB079F32BB312E360AE69E = { isa = PBXGroup; children = (
 				B6DDAAAFF971D211D0E97444,
 				828F578E29D7535EDD2BF717,
 				3A2795723B1C9E91F3A16B1E,
@@ -2521,29 +2523,29 @@
 				B8049416D23B3339B6911D14,
 				AF6D10012174CC035761FF73,
 				D68EC5C4C346B3781B8153C3 ); name = waveform; sourceTree = "<group>"; };
-		5CCA2DA9A3E9C596F12973DA = { isa = PBXGroup; children = (
+		F137871C2BB737C9F8C38D34 = { isa = PBXGroup; children = (
 				CAFF404473885E88E59D16B5,
 				13F7B7AD43145BB4E6A3E469,
-				5D390A8E2D1C1682019A98E0,
-				91ECC9D83D780ACC4731E717,
-				59AE73DA4B3DE4EA88185EC0,
+				8248C52779081875560741F2,
+				1B417314026436652240B827,
+				E7FB079F32BB312E360AE69E,
 				AC669C4ECEB1CDBE0CDCCF65,
 				35D72977B3AD45BE00082568 ); name = widget; sourceTree = "<group>"; };
-		AA2F0FE1E6B5DF19312ACF9C = { isa = PBXGroup; children = (
-				F1DC11B57527698E3D24C735,
-				FD688BA75796C084CF2ADC05,
-				E1DB70C219615999F122B076,
-				2BD50A7DAE15957527B16BC3,
-				48034C4CCB47896CD1784035,
-				15BCD9CC45972E5DBF7000F6,
-				3EA6A06FB26AFFE08112F66C,
-				EA56279E3DB49783548D99DE,
-				E47EA0BA1BECB8871C757026,
-				84731A55DDE93D32E83B0186,
-				5CCA2DA9A3E9C596F12973DA ); name = rec; sourceTree = "<group>"; };
+		C5A7B5A96D0E68C29668A894 = { isa = PBXGroup; children = (
+				CADC18A4771BF86F65A6B667,
+				AAE007E9FAFE24EF0C416A1D,
+				069724C612F03CC110725BA1,
+				6E5491D93E182C0445A5F574,
+				DF3CD43D780C73C047D51FD6,
+				2388C5ED7917047EB1FA899B,
+				689212DAF31EC81AC9FF96B0,
+				1234C3E6536574D7FC5A73FE,
+				838035BBB0CA269829AE26CC,
+				445E14522FF7873D5BB6FFE4,
+				F137871C2BB737C9F8C38D34 ); name = rec; sourceTree = "<group>"; };
 		5B385263DC867861BFE1528D = { isa = PBXGroup; children = (
-				AA2F0FE1E6B5DF19312ACF9C ); name = genfiles; sourceTree = "<group>"; };
-		3C8CF95C5C317A5740851BD8 = { isa = PBXGroup; children = (
+				C5A7B5A96D0E68C29668A894 ); name = genfiles; sourceTree = "<group>"; };
+		989E4B5968E2EE76028CCD34 = { isa = PBXGroup; children = (
 				5A73A825DE7C33B7E136874B,
 				CF87D486A5BF64127B959E0E,
 				70D0965A6EC78D6700AF58B3,
@@ -2577,19 +2579,19 @@
 				FA8F4E8BDDCA36393C9608A0,
 				CEC881EB39CF11214EEA7CCD,
 				2A1C8E4534637598FCC04664 ); name = icon; sourceTree = "<group>"; };
-		9A72B3D29A519550F50DD44F = { isa = PBXGroup; children = (
+		A71C7A510E769CB358EFEF64 = { isa = PBXGroup; children = (
 				90B704609EC2A01AEF224321,
 				DFCE8024B22EB09831C8FEA2 ); name = program; sourceTree = "<group>"; };
 		684948472D66446E5E346849 = { isa = PBXGroup; children = (
-				3C8CF95C5C317A5740851BD8,
-				9A72B3D29A519550F50DD44F ); name = art; sourceTree = "<group>"; };
+				989E4B5968E2EE76028CCD34,
+				A71C7A510E769CB358EFEF64 ); name = art; sourceTree = "<group>"; };
 		43DE7693AC922D284A89F7CE = { isa = PBXGroup; children = (
 				D96E1B00E230A5E66E74587D,
 				7FA56128650D8E059974D684,
 				10A6C995033842D2645A40A6,
 				A8E003984624C8DE0A32378B,
 				B0C8C1B1E70C86475306A4CA ); name = text; sourceTree = "<group>"; };
-		CE30BC8C21360FCBA35B817F = { isa = PBXGroup; children = (
+		8BD9DF2F23FDA148FD5053B4 = { isa = PBXGroup; children = (
 				AB71BB66BF381F19CE788C19,
 				5B385263DC867861BFE1528D,
 				684948472D66446E5E346849,
@@ -3658,7 +3660,7 @@
 		15D5B9524ABD37A7B5D2F73D = { isa = PBXGroup; children = (
 				57A179F92CC94E9DAF17FBF5 ); name = Products; sourceTree = "<group>"; };
 		7D19445674B4E0F8BA4B6FDC = { isa = PBXGroup; children = (
-				CE30BC8C21360FCBA35B817F,
+				8BD9DF2F23FDA148FD5053B4,
 				FAD54DA50567E027AD0C5740,
 				BF92DDB8D6E2065CE205851B,
 				05C24AFFDB64894F0FC02514,

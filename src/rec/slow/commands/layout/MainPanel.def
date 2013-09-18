@@ -1,14 +1,14 @@
 layout {
-  name: "main panel"
+  name: "MainPanel"
   orientation: VERTICAL
   entry {
-    name: "navigation panel"
+    name: "NavigationPanel"
     min: 100.0
     max: -1.0
     preferred: -0.2
   }
   entry {
-    name: "navigation resizer"
+    name: "NavigationResizer"
     min: 7.0
     resizer {
       data_address {
@@ -16,13 +16,13 @@ layout {
     }
   }
   entry {
-    name: "waveform"
+    name: "Waveform"
     min: 150.0
     max: -1.0
     preferred: -0.6
   }
   entry {
-    name: "playback panel"
+    name: "PlaybackPanel
     min: 100.0
   }
 }

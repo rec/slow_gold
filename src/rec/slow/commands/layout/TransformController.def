@@ -1,47 +1,47 @@
 layout {
-  name: "transform controller"
+  name: "TransformController"
   entry {
-    name: "left transform panel"
+    name: "LeftTransformPanel"
     min: 67
   }
   entry {
-    name: "right transform panel"
+    name: "RightTransformPanel"
     min: 150
     max: -1.0
     preferred: -250
   }
 }
 layout {
-  name: "left transform panel"
+  name: "LeftTransformPanel"
   orientation: VERTICAL
   padding: true
   entry {
-    name: "enable button"
+    name: "EnableButton"
     min: 30
   }
   entry {
-    name: "stereo combo"
+    name: "StereoCombo"
     min: 30
   }
 }
 layout {
-  name: "right transform panel"
+  name: "RightTransformPanel"
   padding: true
   orientation: VERTICAL
   entry {
-    name: "speed slider"
+    name: "SpeedSlider"
     min: 30
   }
   entry {
-    name: "pitch slider"
+    name: "PitchSlider"
     min: 30
   }
   entry {
-    name: "fine pitch slider"
+    name: "FinePitchSlider"
     min: 30
   }
   entry {
-    name: "master tune slider"
+    name: "MasterTuneSlider"
     min: 30
   }
 }

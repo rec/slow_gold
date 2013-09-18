@@ -1,0 +1,59 @@
+layout {
+  name: "TransportController"
+  orientation: VERTICAL
+  entry {
+    name: "TransportButtonsPanel"
+    min: 40
+  }
+  entry {
+    name: "GainPanel"
+    min: 40
+  }
+  entry {
+    name: "LevelMeter"
+    min: 20
+  }
+}
+layout {
+  name: "TransportButtonsPanel"
+  entry {
+    name: "StartStopButton"
+    min: 40
+  }
+  entry {
+    name: "JumpStartButton"
+    min: 40
+  }
+  entry {
+    name: "JumpBackButton"
+    min: 40
+  }
+  entry {
+    name: "JumpForwardButton"
+    min: 40
+  }
+  entry {
+    name: "TimeController"
+  }
+}
+layout {
+  name: "GainPanel"
+  entry {
+    name: "MuteButton"
+    min: 45
+  }
+  entry {
+    name: "LevelSlider"
+  }
+}
+layout {
+  name: "TimeController"
+  entry {
+    name: "SongTime"
+    min: 100
+  }
+  entry {
+    name: "SongDial"
+    min: 45
+  }
+}

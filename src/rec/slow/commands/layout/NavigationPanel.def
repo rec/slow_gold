@@ -1,13 +1,13 @@
 layout {
-  name: "playback panel"
+  name: "NavigationPanel"
   entry {
-    name: "help panel"
-    min: 200
+    name: "TreeView"
+    min: 75.0
     max: -1.0
     preferred: -0.2
   }
   entry {
-    name: "help resizer"
+    name: "DirectoryResizer"
     min: 7.0
     resizer {
       data_address {
@@ -15,13 +15,13 @@ layout {
     }
   }
   entry {
-    name: "transform controller"
-    min: 250
+    name: "SongData"
+    min: 150.0
     max: -1.0
-    preferred: -0.75
+    preferred: -0.30
   }
   entry {
-    name: "transform resizer"
+    name: "MetadataResizer"
     min: 7.0
     resizer {
       data_address {
@@ -29,9 +29,9 @@ layout {
     }
   }
   entry {
-    name: "transport controller"
-    min: 300
+    name: "Loops"
+    min: 250.0
     max: -1.0
-    preferred: -0.20
+    preferred: -0.30
   }
 }

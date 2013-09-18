@@ -1,0 +1,16 @@
+layout {
+  name: "CommandBar"
+  padding: true
+  entry {
+    name: "AddLoopPointButton"
+    min: 39
+  }
+  entry {
+    name: "ZoomOutFullButton"
+    min: 39
+  }
+  entry {
+    name: "ZoomToSelectionButton"
+    min: 39
+  }
+}

@@ -2268,21 +2268,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\src\rec\slow\commands\Commands.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\CommandBar.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Components.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\HelpPanel.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Layout.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\MainPanel.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\MenuCollection.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Menus.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\ModeSelector.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\NavigationPanel.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\PlaybackPanel.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\SongData.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\TransformController.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\TransportController.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Waveform.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\component\Components.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\CommandBar.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\HelpPanel.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Layout.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\MainPanel.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\ModeSelector.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\NavigationPanel.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\PlaybackPanel.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\SongData.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\TransformController.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\TransportController.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Waveform.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\MenuCollection.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\Menus.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\Threads.def"/>
     <None Include="..\..\art\icon\AddLoopPointButton.svg"/>
     <None Include="..\..\art\icon\AddLoopPointButtonDisabled.svg"/>

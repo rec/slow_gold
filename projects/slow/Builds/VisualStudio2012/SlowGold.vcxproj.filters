@@ -80,8 +80,11 @@
     <Filter Include="SlowGold\src\slow\commands">
       <UniqueIdentifier>{EFED5E19-1661-9CCD-2982-F81B9D77FAB3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\src\slow\commands\gui">
-      <UniqueIdentifier>{59B0EEE4-45F9-2505-6054-FD63EB82EAF1}</UniqueIdentifier>
+    <Filter Include="SlowGold\src\slow\commands\component">
+      <UniqueIdentifier>{8F82150A-2D18-967C-7AC8-7F38B6D0AC91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\src\slow\commands\layout">
+      <UniqueIdentifier>{5AC2DD56-B91E-27B2-2C95-AFBD84ADD73E}</UniqueIdentifier>
     </Filter>
     <Filter Include="SlowGold\src\support">
       <UniqueIdentifier>{87919DF4-5B63-0084-2525-B5A6E0538BFA}</UniqueIdentifier>
@@ -4820,49 +4823,49 @@
     <None Include="..\..\..\..\src\rec\slow\commands\Commands.def">
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\CommandBar.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Components.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\HelpPanel.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Layout.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\MainPanel.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\MenuCollection.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Menus.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\ModeSelector.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\NavigationPanel.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\PlaybackPanel.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\SongData.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\TransformController.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\TransportController.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\gui\Waveform.def">
-      <Filter>SlowGold\src\slow\commands\gui</Filter>
+    <None Include="..\..\..\..\src\rec\slow\commands\component\Components.def">
+      <Filter>SlowGold\src\slow\commands\component</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def">
+      <Filter>SlowGold\src\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\CommandBar.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\HelpPanel.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Layout.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\MainPanel.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\ModeSelector.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\NavigationPanel.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\PlaybackPanel.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\SongData.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\TransformController.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\TransportController.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Waveform.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\MenuCollection.def">
+      <Filter>SlowGold\src\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\Menus.def">
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\Threads.def">

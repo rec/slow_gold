@@ -1,0 +1,19 @@
+layout {
+  name: "ModeSelector"
+  entry {
+    name: "DragModeButton"
+    min: 34
+  }
+  entry {
+    name: "SetTimeModeButton"
+    min: 34
+  }
+  entry {
+    name: "ZoomModeButton"
+    min: 34
+  }
+  entry {
+    name: "AddLoopPointModeButton"
+    min: 34
+  }
+}
