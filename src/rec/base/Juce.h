@@ -33,6 +33,7 @@ typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::CharPointer_UTF8 CharPointer_UTF8;
 typedef juce::Colour Colour;
+typedef juce::Colours Colours;
 typedef juce::CommandID CommandID;
 typedef juce::Component Component;
 

@@ -3,7 +3,6 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/Widget.pb.h"
-#include "rec/gui/Color.h"
 
 namespace rec {
 namespace widget {
@@ -14,7 +13,7 @@ typedef Colors StateColors[State::MouseState_ARRAYSIZE][2];
 
 const Colors& getColors(const State& state,
                         const StateColors* stateColors,
-                        const Colors& dflt = gui::color::getDefaultColors());
+                        const Colors& dflt);
 
 }  // namespace widget
 }  // namespace rec
