@@ -9,6 +9,10 @@ namespace color {
 
 namespace {
 
+uint32 nameToARGB(const string& name, const juce::Colour& dflt) {
+  return juce::Colours::findColourForName(str(name), dflt).getARGB();
+}
+
 std::pair<Colour*, Colour*> getColours() {
   static Colour COLORS[] = {
     Colours::white,
@@ -38,12 +42,6 @@ const Colors& getDefaultColors() {
   return colors;
 }
 
-}  // namespace
-
-uint32 nameToARGB(const string& name, const juce::Colour& dflt) {
-  return juce::Colours::findColourForName(str(name), dflt).getARGB();
-}
-
 uint32 makeARGB(const Color& c) {
   if (c.has_name()) {
     int argb = nameToARGB(c.name(), juce::Colour());
@@ -61,6 +59,8 @@ uint32 makeARGB(const Color& c) {
     return (c.alpha() << 24) | (c.red() << 16) | (c.green() << 8) | c.blue();
 }
 
+}  // namespace
+
 Colour makeColour(const Color& color) {
   return Colour(makeARGB(color));
 }
@@ -75,14 +75,8 @@ Colour get(int i) {
 };
 
 
-
 Colour get(const Colors& colors, int i) {
   return i < colors.color_size() ? makeColour(colors.color(i)) : get(i);
-}
-
-void prepare(const Colors& colors, Graphics* g) {
-  g->fillAll(get(colors, 0));
-  g->setColour(get(colors, 1));
 }
 
 Colour makeColour(const Color& c, const ColourMap& map) {

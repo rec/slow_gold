@@ -14,11 +14,6 @@ typedef std::unordered_map<string, Colour> ColourMap;
 
 Colour get(const Colors& colors, int index);
 
-void prepare(const Colors& colors, juce::Graphics* g);
-
-uint32 makeARGB(const Color& c);
-uint32 nameToARGB(const string& name, const juce::Colour& dflt);
-
 Colour makeColour(const Color&, const ColourMap&);
 
 }  // namespace color
