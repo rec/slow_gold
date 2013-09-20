@@ -4,6 +4,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataUpdater.h"
+#include "rec/gui/proto/Constants.h"
 #include "rec/music/Metadata.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -18,6 +19,7 @@
 #include "rec/util/thread/Result.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Viewport.pb.h"
+#include "rec/widget/waveform/Waveform.h"
 
 using namespace rec::data;
 using namespace rec::widget::waveform;
@@ -137,6 +139,14 @@ const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
 
 void SlowProgram::registerAllCallbacks() {
   slow::addSlowCallbacks(this);
+}
+
+unique_ptr<Component> makeWaveform(const string&) {
+  return make_unique<Waveform>();
+}
+
+void SlowProgram::registerCustomComponents(gui::Constants* constants) const {
+  constants->addMaker("Waveform", &makeWaveform);
 }
 
 VirtualFile SlowProgram::getCurrentFile() const {

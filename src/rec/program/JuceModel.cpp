@@ -71,5 +71,9 @@ const command::CommandMapProto& JuceModel::keyMap() const {
   return impl_->keyMap();
 }
 
+const gui::Constants& JuceModel::constants() const {
+  return impl_->constants();
+}
+
 }  // namespace program
 }  // namespace rec

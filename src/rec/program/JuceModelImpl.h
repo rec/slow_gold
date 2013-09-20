@@ -2,6 +2,7 @@
 #define __REC_APP_PROGRAMINSTANCEIMPL__
 
 #include "rec/command/map/CommandMap.pb.h"
+#include "rec/gui/proto/Constants.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/SetterListener.h"
 #include "rec/program/Types.h"
@@ -34,6 +35,7 @@ class JuceModelImpl {
   void stopThreads();
   Thread* getThread(const string&);
   const command::CommandMapProto& keyMap() const { return keyMap_; }
+  const gui::Constants& constants() const { return constants_; }
 
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;
@@ -59,6 +61,7 @@ class JuceModelImpl {
   const MenuBarMap menuBarMap_;
   const LayoutMap layoutMap_;
   ThreadMap threadMap_;
+  gui::Constants constants_;
 
   DataListeners dataListeners_;
   CommandID recentFiles_;

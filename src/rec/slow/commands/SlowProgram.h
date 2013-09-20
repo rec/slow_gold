@@ -28,6 +28,7 @@ class SlowProgram : public program::ProgramBase {
   void beforeCommand(CommandID id) override;
 
   void registerAllCallbacks() override;
+  void registerCustomComponents(gui::Constants*) const override;
   string idToName(CommandID) const override;
   CommandID nameToId(const string&) const override;
 

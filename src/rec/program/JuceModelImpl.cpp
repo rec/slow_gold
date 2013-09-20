@@ -63,6 +63,7 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       threadMap_(makeThreadMap(*p)),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
+  program_->registerCustomComponents(&constants_);
   mergeKeysIntoCommands(keyMap_, &commandMap_);
   for (auto& i: commandMap_) {
     Command& cmd = i.second;

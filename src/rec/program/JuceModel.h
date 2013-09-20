@@ -6,6 +6,7 @@
 #include "rec/util/Listener.h"
 
 namespace rec { namespace command { class CommandMapProto; }}
+namespace rec { namespace gui { class Constants; }}
 
 namespace rec {
 namespace program {
@@ -39,6 +40,8 @@ class JuceModel : public ApplicationCommandTarget,
   ApplicationCommandManager* applicationCommandManager() {
     return &applicationCommandManager_;
   }
+
+  const gui::Constants& constants() const;
 
   void startThreads();
   void stopThreads();

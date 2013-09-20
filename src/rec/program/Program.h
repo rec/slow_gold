@@ -12,6 +12,8 @@
 #include "rec/util/thread/Looper.h"
 #include "rec/command/CallbackTable.h"
 
+namespace rec { namespace gui { class Constants; }}
+
 namespace rec {
 namespace program {
 
@@ -36,6 +38,7 @@ class Program : public command::CallbackTable{
   virtual void beforeCommand(CommandID id) = 0;
 
   virtual void registerAllCallbacks() = 0;
+  virtual void registerCustomComponents(gui::Constants*) const = 0;
   virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
   virtual Callback* getCallback(CommandID) const = 0;
   virtual VirtualFile getCurrentFile() const = 0;
