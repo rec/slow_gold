@@ -1641,7 +1641,6 @@ const char* HelpPanel_def = (const char*) temp_binary_data_12;
 //================== Layout.def ==================
 static const unsigned char temp_binary_data_13[] =
 "name: \"CommandBar\"\n"
-"name: \"HelpPanel\"\n"
 "name: \"MainPanel\"\n"
 "name: \"ModeSelector\"\n"
 "name: \"NavigationPanel\"\n"
@@ -1661,7 +1660,7 @@ static const unsigned char temp_binary_data_14[] =
 "    max: \"-1.0\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"NavigationPanel\"\n"
+"    layout: \"NavigationPanel\"\n"
 "    size {\n"
 "      preferred: \"-0.2\"\n"
 "    }\n"
@@ -1670,14 +1669,16 @@ static const unsigned char temp_binary_data_14[] =
 "    resizer: \"navigation_y\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"Waveform\"\n"
 "    size {\n"
 "      min: \"150.0\"\n"
 "      preferred: \"-0.6\"\n"
 "    }\n"
+"    custom {\n"
+"      type_name: \"Waveform\"\n"
+"    }\n"
 "  }\n"
 "  component {\n"
-"    name: \"PlaybackPanel\"\n"
+"    layout: \"PlaybackPanel\"\n"
 "  }\n"
 "}\n";
 
@@ -1712,7 +1713,9 @@ static const unsigned char temp_binary_data_16[] =
 "layout {\n"
 "  name: \"NavigationPanel\"\n"
 "  component {\n"
-"    name: \"TreeView\"\n"
+"    custom {\n"
+"      type_name: \"TreeView\"\n"
+"    }\n"
 "    size {\n"
 "      min: \"75.0\"\n"
 "      max: \"-1.0\"\n"
@@ -1723,7 +1726,7 @@ static const unsigned char temp_binary_data_16[] =
 "    resizer: \"directory_x\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"SongData\"\n"
+"    layout: \"SongData\"\n"
 "    size {\n"
 "      min: \"150.0\"\n"
 "      max: \"-1.0\"\n"
@@ -1734,7 +1737,9 @@ static const unsigned char temp_binary_data_16[] =
 "    resizer: \"metadata_x\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"Loops\"\n"
+"    custom {\n"
+"      type_name: \"Loops\"\n"
+"    }\n"
 "    size {\n"
 "      min: \"250.0\"\n"
 "      max: \"-1.0\"\n"
@@ -1750,18 +1755,27 @@ static const unsigned char temp_binary_data_17[] =
 "layout {\n"
 "  name: \"PlaybackPanel\"\n"
 "  component {\n"
-"    name: \"HelpPanel\"\n"
+"    name: \"Help\"\n"
 "    size {\n"
 "      min: \"200\"\n"
-"      max: \"-1.0\"\n"
 "      preferred: \"-0.2\"\n"
+"    }\n"
+"    help {\n"
+"      caption_size {\n"
+"        min: \"28\"\n"
+"        preferred: \"-0.2\"\n"
+"      }\n"
+"      body_size {\n"
+"        min: \"-0.1\"\n"
+"        preferred: \"-0.2\"\n"
+"      }\n"
 "    }\n"
 "  }\n"
 "  component {\n"
 "    resizer: \"help_x\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"TransformController\"\n"
+"    layout: \"TransformController\"\n"
 "    size {\n"
 "      min: \"250\"\n"
 "      max: \"-1.0\"\n"
@@ -1772,7 +1786,7 @@ static const unsigned char temp_binary_data_17[] =
 "    resizer: \"transform_x\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"TransportController\"\n"
+"    layout: \"TransportController\"\n"
 "    size {\n"
 "      min: \"300\"\n"
 "      max: \"-1.0\"\n"
@@ -13758,11 +13772,11 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
         case 0xeda734e9:  numBytes = 394; return HelpPanel_def;
-        case 0x8b33e590:  numBytes = 178; return Layout_def;
-        case 0xd02ec571:  numBytes = 377; return MainPanel_def;
+        case 0x8b33e590:  numBytes = 160; return Layout_def;
+        case 0xd02ec571:  numBytes = 407; return MainPanel_def;
         case 0xd66a1508:  numBytes = 271; return ModeSelector_def;
-        case 0x75b00f76:  numBytes = 475; return NavigationPanel_def;
-        case 0x334c534f:  numBytes = 490; return PlaybackPanel_def;
+        case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
+        case 0x334c534f:  numBytes = 633; return PlaybackPanel_def;
         case 0x1b5b8645:  numBytes = 1580; return SongData_def;
         case 0x29238b4e:  numBytes = 726; return TransformController_def;
         case 0x4bd6484b:  numBytes = 877; return TransportController_def;

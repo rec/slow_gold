@@ -46,19 +46,19 @@ namespace BinaryData
     const int            HelpPanel_defSize = 394;
 
     extern const char*   Layout_def;
-    const int            Layout_defSize = 178;
+    const int            Layout_defSize = 160;
 
     extern const char*   MainPanel_def;
-    const int            MainPanel_defSize = 377;
+    const int            MainPanel_defSize = 407;
 
     extern const char*   ModeSelector_def;
     const int            ModeSelector_defSize = 271;
 
     extern const char*   NavigationPanel_def;
-    const int            NavigationPanel_defSize = 475;
+    const int            NavigationPanel_defSize = 529;
 
     extern const char*   PlaybackPanel_def;
-    const int            PlaybackPanel_defSize = 490;
+    const int            PlaybackPanel_defSize = 633;
 
     extern const char*   SongData_def;
     const int            SongData_defSize = 1580;

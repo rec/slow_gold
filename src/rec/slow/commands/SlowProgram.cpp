@@ -18,7 +18,7 @@
 #include "rec/util/LoopPoint.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Result.h"
-#include "rec/widget/tree/Root.h"
+#include "rec/widget/tree/TreeView.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.h"
 
@@ -147,7 +147,7 @@ unique_ptr<Component> makeWaveform(const string&) {
 }
 
 unique_ptr<Component> makeTreeView(const string&) {
-  return unique_ptr<Component>();  // new widget::tree::Root);
+  return unique_ptr<Component>(new widget::tree::TreeView);
 }
 
 unique_ptr<Component> makeLoops(const string&) {
