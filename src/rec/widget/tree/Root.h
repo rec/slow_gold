@@ -18,12 +18,13 @@ class Root : public Broadcaster<const VirtualFile&>,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:
-  Root(const NodeDesc& desc = NodeDesc::default_instance());
+  Root(TreeViewDropAll* treeView = nullptr,
+       const NodeDesc& desc = NodeDesc::default_instance());
   virtual ~Root();
 
   void checkVolumes();
   void mergeNewIntoOld(util::file::VirtualFileList volumes);
-  TreeViewDropAll* treeView() { return tree_.get(); }
+  TreeViewDropAll* treeView() { return tree_; }
 
   virtual void operator()(const VirtualFile&);
   virtual void operator()(const file::VirtualFileList&);
@@ -50,7 +51,8 @@ class Root : public Broadcaster<const VirtualFile&>,
   NodeDesc desc_;
   RootNode root_;
 
-  unique_ptr<TreeViewDropAll> tree_;  // This is our actual Component!
+  unique_ptr<TreeViewDropAll> treeDeleter_;
+  TreeViewDropAll* tree_;  // This is our actual Component!
   file::VirtualFileList volumes_;
 
   CriticalSection lock_;

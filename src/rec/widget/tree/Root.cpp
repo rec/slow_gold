@@ -38,12 +38,17 @@ const bool USE_OPENNESS_FILE = false;
 
 }  // namespace
 
-Root::Root(const NodeDesc& desc)
+Root::Root(TreeViewDropAll* tree, const NodeDesc& desc)
   : desc_(desc),
-    tree_(new TreeViewDropAll),
+    tree_(tree),
     addDialogOpen_(false),
     opennessRead_(false),
     opennessStarted_(false) {
+  if (not tree_) {
+    treeDeleter_.reset(new TreeViewDropAll);
+    tree_ = treeDeleter_.get();
+  }
+
   const Colors& colors = desc_.widget().colors();
   tree_->setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_->addMouseListener(this, false);
