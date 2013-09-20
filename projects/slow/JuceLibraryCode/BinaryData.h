@@ -34,7 +34,7 @@ namespace BinaryData
     const int            Components_defSize = 0;
 
     extern const char*   KeyStrokeMap_def;
-    const int            KeyStrokeMap_defSize = 6873;
+    const int            KeyStrokeMap_defSize = 5474;
 
     extern const char*   Colors_def;
     const int            Colors_defSize = 219;

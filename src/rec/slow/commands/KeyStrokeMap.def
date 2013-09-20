@@ -1,511 +1,355 @@
 entry {
   id_string: "ABOUT_THIS_PROGRAM"
-  entry {
-    key: "shift + ?"
-  }
+  key: "shift + ?"
 }
 entry {
   id_string: "ADD_LOOP_POINT"
-  entry {
-    key: "l"
-    key: "command + l"
-  }
+  key: "l"
+  key: "command + l"
 }
 entry {
   id_string: "AUDIO_PREFERENCES"
-  entry {
-    key: "command + ;"
-  }
+  key: "command + ;"
 }
 entry {
   id_string: "CLEAR_LOOPS"
-  entry {
-    key: "command + b"
-  }
+  key: "command + b"
 }
 entry {
   id_string: "CLOSE_FILE"
-  entry {
-    key: "command + w"
-  }
+  key: "command + w"
 }
 entry {
   id_string: "COPY"
-  entry {
-    key: "command + c"
-  }
+  key: "command + c"
 }
 entry {
   id_string: "COPY_ALL_LOOP_POINTS"
-  entry {
-    key: "command + c"
-  }
+  key: "command + c"
 }
 entry {
   id_string: "CUT"
-  entry {
-    key: "command + x"
-  }
+  key: "command + x"
 }
 entry {
   id_string: "DEL"
-  entry {
-    key: "delete"
-  }
+  key: "delete"
 }
 entry {
   id_string: "DESELECT_ALL"
-  entry {
-    key: "command + d"
-  }
+  key: "command + d"
 }
 entry {
   id_string: "EJECT_CDS"
-  entry {
-    key: "command + e"
-  }
+  key: "command + e"
 }
 entry {
   id_string: "INVERT_LOOP_SELECTION"
-  entry {
-    key: "command + i"
-  }
+  key: "command + i"
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "1"
-    index: 5
-  }
+  key: "1"
+  index: 5
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "2"
-    index: 6
-  }
+  key: "2"
+  index: 6
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "3"
-    index: 7
-  }
+  key: "3"
+  index: 7
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "4"
-    index: 8
-  }
+  key: "4"
+  index: 8
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "5"
-    index: 9
-  }
+  key: "5"
+  index: 9
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "6"
-    index: 10
-  }
+  key: "6"
+  index: 10
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "7"
-    index: 11
-  }
+  key: "7"
+  index: 11
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "8"
-    index: 12
-  }
+  key: "8"
+  index: 12
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "9"
-    index: 13
-  }
+  key: "9"
+  index: 13
 }
 entry {
   id_string: "JUMP"
-  entry {
-    key: "0"
-    index: 14
-  }
+  key: "0"
+   index: 14
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "command + cursor left"
     index: 0
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "command + cursor right"
     index: 4
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + !"
     index: 5
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + @"
     index: 6
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + #"
     index: 7
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + $"
     index: 8
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + %"
     index: 9
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + ^"
     index: 10
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + &"
     index: 11
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + *"
     index: 12
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + ("
     index: 13
-  }
 }
 entry {
   id_string: "JUMP_SELECTED"
-  entry {
     key: "shift + )"
     index: 14
-  }
 }
 entry {
   id_string: "LOOP_NEXT_SEGMENT"
-  entry {
     key: "n"
-  }
 }
 entry {
   id_string: "KEYBOARD_MAPPINGS"
-  entry {
     key: "command + k"
-  }
 }
 entry {
   id_string: "MIDI_MAPPINGS"
-  entry {
     key: "command + m"
-  }
 }
 entry {
   id_string: "MODE_ADD_LOOP_POINT"
-  entry {
     key: "option + a"
-  }
 }
 entry {
   id_string: "MODE_DRAG"
-  entry {
     key: "option + d"
-  }
 }
 entry {
   id_string: "MODE_SET_TIME"
-  entry {
     key: "option + t"
-  }
 }
 entry {
   id_string: "MODE_ZOOM_IN"
-  entry {
     key: "option + z"
-  }
 }
 entry {
   id_string: "MUTE_VOLUME_TOGGLE"
-  entry {
     key: "."
-  }
 }
 entry {
   id_string: "NUDGE_BACKWARD"
-  entry {
     key: "cursor left"
-  }
 }
 entry {
   id_string: "NUDGE_FORWARD"
-  entry {
     key: "cursor right"
-  }
 }
 entry {
   id_string: "NUDGE_VOLUME_DOWN"
-  entry {
     key: "cursor down"
-  }
 }
 entry {
   id_string: "NUDGE_VOLUME_UP"
-  entry {
     key: "cursor up"
-  }
 }
 entry {
   id_string: "NUDGE_SPEED_DOWN"
-  entry {
     key: "_"
     key: "shift + _"
     key: "-"
-  }
 }
 entry {
   id_string: "NUDGE_SPEED_UP"
-  entry {
     key: "+"
     key: "shift + +"
     key: "="
-  }
 }
 entry {
   id_string: "OPEN"
-  entry {
     key: "command + o"
-  }
 }
 entry {
   id_string: "OPEN_PREVIOUS_FILE"
-  entry {
     key: "command + r"
-  }
 }
 entry {
   id_string: "PASTE"
-  entry {
     key: "command + v"
-  }
 }
 entry {
   id_string: "PASTE_OVER_LOOP_POINTS"
-  entry {
-    key: "command + v"
-  }
+  key: "command + v"
 }
 entry {
   id_string: "QUIT"
-  entry {
-    key: "command + q"
-  }
+  key: "command + q"
 }
 entry {
   id_string: "REDO"
-  entry {
-    key: "shift + command + z"
-  }
+  key: "shift + command + z"
 }
 entry {
   id_string: "SAVE_FILE"
-  entry {
-    key: "command + s"
-  }
+  key: "command + s"
 }
 entry {
   id_string: "SAVE_FILE_SELECTION"
-  entry {
-    key: "command + shift + s"
-  }
+  key: "command + shift + s"
 }
 entry {
   id_string: "SELECT_ALL"
-  entry {
-    key: "command + a"
-  }
+  key: "command + a"
 }
 entry {
   id_string: "SELECT_ONLY"
-  entry {
-    key: "ctrl + command + cursor left"
-    index: 0
-  }
+  key: "ctrl + command + cursor left"
+  index: 0
 }
 entry {
   id_string: "SELECT_ONLY"
-  entry {
-    key: "ctrl + cursor left"
-    index: 1
-  }
+  key: "ctrl + cursor left"
+  index: 1
 }
 entry {
   id_string: "SELECT_ONLY"
-  entry {
-    key: "ctrl + cursor right"
-    index: 3
-  }
+  key: "ctrl + cursor right"
+  index: 3
 }
 entry {
   id_string: "SELECT_ONLY"
-  entry {
-    key: "ctrl + command + cursor right"
-    index: 4
-  }
+  key: "ctrl + command + cursor right"
+  index: 4
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 1"
-    index: 5
-  }
+  key: "command + 1"
+  index: 5
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 2"
-    index: 6
-  }
+  key: "command + 2"
+  index: 6
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 3"
-    index: 7
-  }
+  key: "command + 3"
+  index: 7
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 4"
-    index: 8
-  }
+  key: "command + 4"
+  index: 8
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 5"
-    index: 9
-  }
+  key: "command + 5"
+  index: 9
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 6"
-    index: 10
-  }
+  key: "command + 6"
+  index: 10
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 7"
-    index: 11
-  }
+  key: "command + 7"
+  index: 11
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 8"
-    index: 12
-  }
+  key: "command + 8"
+  index: 12
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 9"
-    index: 13
-  }
+  key: "command + 9"
+  index: 13
 }
 entry {
   id_string: "TOGGLE_SELECTION"
-  entry {
-    key: "command + 0"
-    index: 14
-  }
+  key: "command + 0"
+  index: 14
 }
 entry {
   id_string: "TOGGLE_START_STOP"
-  entry {
-    key: "spacebar"
-    key: "return"
-  }
+  key: "spacebar"
+  key: "return"
 }
 entry {
   id_string: "TOGGLE_STRETCH_ENABLE"
-  entry {
-    key: "s"
-  }
+  key: "s"
 }
 entry {
   id_string: "TOGGLE_WHOLE_SONG_LOOP"
-  entry {
-    key: "w"
-  }
+  key: "w"
 }
 entry {
   id_string: "UNDO"
-  entry {
-    key: "command + z"
-  }
+  key: "command + z"
 }
 entry {
   id_string: "ZOOM_OUT"
-  entry {
-    key: "command + -"
-  }
+  key: "command + -"
 }
 entry {
   id_string: "ZOOM_OUT_FULL"
-  entry {
-    key: "command + shift + -"
-  }
+  key: "command + shift + -"
 }
 entry {
   id_string: "ZOOM_TO_SELECTION"
-  entry {
-    key: "command  + \'"
-    key: "numpad *"
-  }
+  key: "command  + \'"
+  key: "numpad *"
 }

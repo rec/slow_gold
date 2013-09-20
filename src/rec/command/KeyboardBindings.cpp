@@ -31,7 +31,7 @@ CommandMapProto getKeyboardBindings() {
   if (d->fileReadSuccess())
     return getProto<KeyStrokeCommandMapProto>(d).map();
   else
-    return BINARY_PROTO_MERGED(KeyStrokeMap, CommandMapProto);
+    return BINARY_PROTO(KeyStrokeMap, CommandMapProto);
 }
 
 void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
