@@ -12,6 +12,7 @@
 #include "rec/widget/tree/CD.h"
 #include "rec/widget/tree/Directory.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 
 using namespace juce;
 using namespace rec::thread;
@@ -39,15 +40,18 @@ const bool USE_OPENNESS_FILE = false;
 
 Root::Root(const NodeDesc& desc)
   : desc_(desc),
+    tree_(new TreeViewDropAll),
     addDialogOpen_(false),
     opennessRead_(false),
     opennessStarted_(false) {
   const Colors& colors = desc_.widget().colors();
-  tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
-  tree_.addMouseListener(this, false);
-  tree_.setRootItem(&root_);
-  tree_.setRootItemVisible(false);
+  tree_->setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
+  tree_->addMouseListener(this, false);
+  tree_->setRootItem(&root_);
+  tree_->setRootItemVisible(false);
 }
+
+Root::~Root() {}
 
 void Root::checkVolumes() {
   Lock l(lock_);
@@ -83,7 +87,7 @@ void Root::readOpenness() {
   ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
   if (openness) {
     restoreOpenness(&root_, *openness);
-    tree_.restoreOpennessState(*openness, true);
+    tree_->restoreOpennessState(*openness, true);
   } else {
     LOG(WARNING) << "Couldn't find openness file " << str(getOpennessFile());
   }
@@ -92,7 +96,7 @@ void Root::readOpenness() {
 
 void Root::writeOpenness() {
   if (USE_OPENNESS_FILE && opennessRead_) {
-    ptr<XmlElement> openness(tree_.getOpennessState(true));
+    ptr<XmlElement> openness(tree_->getOpennessState(true));
     if (!(openness && openness->writeToFile(getOpennessFile(), "")))
       LOG(DFATAL) << "Couldn't write openness file";
   } else {
@@ -115,26 +119,30 @@ void Root::refreshNode(const VirtualFile& f) {
 }
 
 void Root::mouseDoubleClick(const juce::MouseEvent&) {
-  if (addDialogOpen_ || !data::getProto<NavigatorConfig>(data::global()).allow_file_drop())
+  if (addDialogOpen_ ||
+      not data::getProto<NavigatorConfig>(data::global()).allow_file_drop()) {
     return;
+  }
 
   addDialogOpen_ = true;
-  juce::FileChooser chooser("Please choose files or directories to add", File::nonexistent,
-                            file::audioFilePatterns(), true);
+  juce::FileChooser chooser(
+      "Please choose files or directories to add", File::nonexistent,
+      file::audioFilePatterns(), true);
 
   if (chooser.browseForMultipleFilesOrDirectories()) {
     StringArray s;
     juce::Array<File> results = chooser.getResults();
     for (int i = 0; i < results.size(); ++i)
       s.add(results[i].getFullPathName());
-    tree_.filesDropped(s, 0, 0);
+    tree_->filesDropped(s, 0, 0);
   }
   addDialogOpen_ = false;
 }
 
 void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
-    const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : nullptr;
+    const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) :
+        nullptr;
     const Node* n = (j < getNumNodes()) ? getNode(j) : nullptr;
     const VirtualFile* v2 = n ? &(n->virtualFile()) : nullptr;
 

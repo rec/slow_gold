@@ -1,7 +1,9 @@
 layout {
   name: "NavigationPanel"
   component {
-    name: "TreeView"
+    custom {
+      type_name: "TreeView"
+    }
     size {
       min: "75.0"
       max: "-1.0"
@@ -12,7 +14,7 @@ layout {
     resizer: "directory_x"
   }
   component {
-    name: "SongData"
+    layout: "SongData"
     size {
       min: "150.0"
       max: "-1.0"
@@ -23,7 +25,9 @@ layout {
     resizer: "metadata_x"
   }
   component {
-    name: "Loops"
+    custom {
+      type_name: "Loops"
+    }
     size {
       min: "250.0"
       max: "-1.0"

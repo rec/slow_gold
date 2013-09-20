@@ -6,24 +6,24 @@
 #include "rec/data/DataListener.h"
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
-#include "rec/widget/tree/TreeViewDropAll.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
+
+class TreeViewDropAll;
 
 class Root : public Broadcaster<const VirtualFile&>,
              public data::GlobalDataListener<VirtualFileList>,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:
-  explicit Root(const NodeDesc& desc = NodeDesc::default_instance());
-
-  virtual ~Root() {}
+  Root(const NodeDesc& desc = NodeDesc::default_instance());
+  virtual ~Root();
 
   void checkVolumes();
   void mergeNewIntoOld(util::file::VirtualFileList volumes);
-  TreeViewDropAll* treeView() { return &tree_; }
+  TreeViewDropAll* treeView() { return tree_.get(); }
 
   virtual void operator()(const VirtualFile&);
   virtual void operator()(const file::VirtualFileList&);
@@ -50,7 +50,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   NodeDesc desc_;
   RootNode root_;
 
-  TreeViewDropAll tree_;  // This is our actual Component!
+  unique_ptr<TreeViewDropAll> tree_;  // This is our actual Component!
   file::VirtualFileList volumes_;
 
   CriticalSection lock_;

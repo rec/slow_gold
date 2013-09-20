@@ -6,7 +6,7 @@ layout {
     max: "-1.0"
   }
   component {
-    name: "NavigationPanel"
+    layout: "NavigationPanel"
     size {
       preferred: "-0.2"
     }
@@ -15,13 +15,15 @@ layout {
     resizer: "navigation_y"
   }
   component {
-    name: "Waveform"
     size {
       min: "150.0"
       preferred: "-0.6"
     }
+    custom {
+      type_name: "Waveform"
+    }
   }
   component {
-    name: "PlaybackPanel"
+    layout: "PlaybackPanel"
   }
 }

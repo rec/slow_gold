@@ -168,6 +168,18 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::rec::gui::FontProto* release_font();
   inline void set_allocated_font(::rec::gui::FontProto* font);
 
+  // optional string layout = 17;
+  inline bool has_layout() const;
+  inline void clear_layout();
+  static const int kLayoutFieldNumber = 17;
+  inline const ::std::string& layout() const;
+  inline void set_layout(const ::std::string& value);
+  inline void set_layout(const char* value);
+  inline void set_layout(const char* value, size_t size);
+  inline ::std::string* mutable_layout();
+  inline ::std::string* release_layout();
+  inline void set_allocated_layout(::std::string* layout);
+
   // optional string resizer = 7;
   inline bool has_resizer() const;
   inline void clear_resizer();
@@ -273,6 +285,8 @@ class ComponentProto : public ::google::protobuf::Message {
   inline void clear_has_address();
   inline void set_has_font();
   inline void clear_has_font();
+  inline void set_has_layout();
+  inline void clear_has_layout();
   inline void set_has_resizer();
   inline void clear_has_resizer();
   inline void set_has_button();
@@ -302,6 +316,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::data::AddressProto* address_;
   ::google::protobuf::RepeatedPtrField< ::rec::gui::Color > color_;
   ::rec::gui::FontProto* font_;
+  ::std::string* layout_;
   ::std::string* resizer_;
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
@@ -314,7 +329,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(17 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -609,15 +624,85 @@ inline void ComponentProto::set_allocated_font(::rec::gui::FontProto* font) {
   }
 }
 
-// optional string resizer = 7;
-inline bool ComponentProto::has_resizer() const {
+// optional string layout = 17;
+inline bool ComponentProto::has_layout() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void ComponentProto::set_has_resizer() {
+inline void ComponentProto::set_has_layout() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void ComponentProto::clear_has_resizer() {
+inline void ComponentProto::clear_has_layout() {
   _has_bits_[0] &= ~0x00000040u;
+}
+inline void ComponentProto::clear_layout() {
+  if (layout_ != &::google::protobuf::internal::kEmptyString) {
+    layout_->clear();
+  }
+  clear_has_layout();
+}
+inline const ::std::string& ComponentProto::layout() const {
+  return *layout_;
+}
+inline void ComponentProto::set_layout(const ::std::string& value) {
+  set_has_layout();
+  if (layout_ == &::google::protobuf::internal::kEmptyString) {
+    layout_ = new ::std::string;
+  }
+  layout_->assign(value);
+}
+inline void ComponentProto::set_layout(const char* value) {
+  set_has_layout();
+  if (layout_ == &::google::protobuf::internal::kEmptyString) {
+    layout_ = new ::std::string;
+  }
+  layout_->assign(value);
+}
+inline void ComponentProto::set_layout(const char* value, size_t size) {
+  set_has_layout();
+  if (layout_ == &::google::protobuf::internal::kEmptyString) {
+    layout_ = new ::std::string;
+  }
+  layout_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::mutable_layout() {
+  set_has_layout();
+  if (layout_ == &::google::protobuf::internal::kEmptyString) {
+    layout_ = new ::std::string;
+  }
+  return layout_;
+}
+inline ::std::string* ComponentProto::release_layout() {
+  clear_has_layout();
+  if (layout_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = layout_;
+    layout_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ComponentProto::set_allocated_layout(::std::string* layout) {
+  if (layout_ != &::google::protobuf::internal::kEmptyString) {
+    delete layout_;
+  }
+  if (layout) {
+    set_has_layout();
+    layout_ = layout;
+  } else {
+    clear_has_layout();
+    layout_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string resizer = 7;
+inline bool ComponentProto::has_resizer() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ComponentProto::set_has_resizer() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ComponentProto::clear_has_resizer() {
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void ComponentProto::clear_resizer() {
   if (resizer_ != &::google::protobuf::internal::kEmptyString) {
@@ -681,13 +766,13 @@ inline void ComponentProto::set_allocated_resizer(::std::string* resizer) {
 
 // optional .rec.gui.ButtonProto button = 8;
 inline bool ComponentProto::has_button() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void ComponentProto::set_has_button() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void ComponentProto::clear_has_button() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void ComponentProto::clear_button() {
   if (button_ != NULL) button_->::rec::gui::ButtonProto::Clear();
@@ -719,13 +804,13 @@ inline void ComponentProto::set_allocated_button(::rec::gui::ButtonProto* button
 
 // optional .rec.gui.ComboBoxProto combo_box = 9;
 inline bool ComponentProto::has_combo_box() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void ComponentProto::set_has_combo_box() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void ComponentProto::clear_has_combo_box() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void ComponentProto::clear_combo_box() {
   if (combo_box_ != NULL) combo_box_->::rec::gui::ComboBoxProto::Clear();
@@ -757,13 +842,13 @@ inline void ComponentProto::set_allocated_combo_box(::rec::gui::ComboBoxProto* c
 
 // optional .rec.gui.CustomProto custom = 10;
 inline bool ComponentProto::has_custom() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void ComponentProto::set_has_custom() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void ComponentProto::clear_has_custom() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void ComponentProto::clear_custom() {
   if (custom_ != NULL) custom_->::rec::gui::CustomProto::Clear();
@@ -795,13 +880,13 @@ inline void ComponentProto::set_allocated_custom(::rec::gui::CustomProto* custom
 
 // optional .rec.gui.HelpProto help = 16;
 inline bool ComponentProto::has_help() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void ComponentProto::set_has_help() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void ComponentProto::clear_has_help() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void ComponentProto::clear_help() {
   if (help_ != NULL) help_->::rec::gui::HelpProto::Clear();
@@ -833,13 +918,13 @@ inline void ComponentProto::set_allocated_help(::rec::gui::HelpProto* help) {
 
 // optional .rec.gui.LabelProto label = 11;
 inline bool ComponentProto::has_label() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void ComponentProto::set_has_label() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void ComponentProto::clear_has_label() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void ComponentProto::clear_label() {
   if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
@@ -871,13 +956,13 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
 
 // optional .rec.gui.ResizerProto full_resizer = 12;
 inline bool ComponentProto::has_full_resizer() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void ComponentProto::set_has_full_resizer() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void ComponentProto::clear_has_full_resizer() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void ComponentProto::clear_full_resizer() {
   if (full_resizer_ != NULL) full_resizer_->::rec::gui::ResizerProto::Clear();
@@ -909,13 +994,13 @@ inline void ComponentProto::set_allocated_full_resizer(::rec::gui::ResizerProto*
 
 // optional .rec.gui.SliderProto slider = 13;
 inline bool ComponentProto::has_slider() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void ComponentProto::set_has_slider() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void ComponentProto::clear_has_slider() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void ComponentProto::clear_slider() {
   if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
@@ -947,13 +1032,13 @@ inline void ComponentProto::set_allocated_slider(::rec::gui::SliderProto* slider
 
 // optional .rec.gui.TextProto text = 14;
 inline bool ComponentProto::has_text() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void ComponentProto::set_has_text() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void ComponentProto::clear_has_text() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void ComponentProto::clear_text() {
   if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
@@ -985,13 +1070,13 @@ inline void ComponentProto::set_allocated_text(::rec::gui::TextProto* text) {
 
 // optional .rec.gui.ToggleButtonProto toggle_button = 15;
 inline bool ComponentProto::has_toggle_button() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void ComponentProto::set_has_toggle_button() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void ComponentProto::clear_has_toggle_button() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();

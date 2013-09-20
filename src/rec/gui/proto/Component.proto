@@ -24,6 +24,9 @@ message ComponentProto {
 
   optional FontProto font = 6;
 
+  // A reference to the item in the Layout Table.
+  optional string layout = 17;
+
   // Shorthand for a resizer and address.
   optional string resizer = 7;
 

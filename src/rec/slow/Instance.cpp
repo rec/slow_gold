@@ -43,6 +43,7 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 #include "rec/widget/waveform/Cursor.h"
 
 namespace rec {

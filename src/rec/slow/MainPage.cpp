@@ -15,6 +15,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 #include "rec/widget/waveform/Zoom.h"
 
 using namespace juce;

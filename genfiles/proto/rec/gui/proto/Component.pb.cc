@@ -35,13 +35,14 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
       "rec/gui/proto/Component.proto");
   GOOGLE_CHECK(file != NULL);
   ComponentProto_descriptor_ = file->message_type(0);
-  static const int ComponentProto_offsets_[16] = {
+  static const int ComponentProto_offsets_[17] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, tooltip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, address_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, color_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, font_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, layout_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, resizer_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, button_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, combo_box_),
@@ -117,20 +118,21 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "Size.proto\032\032rec/gui/proto/Slider.proto\032\030"
     "rec/gui/proto/Text.proto\032 rec/gui/proto/"
     "ToggleButton.proto\032\023rec/gui/Color.proto\""
-    "\254\004\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
+    "\274\004\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
     "tip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\'"
     "\n\007address\030\004 \001(\0132\026.rec.data.AddressProto\022"
     "\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 \n\004font\030\006"
-    " \001(\0132\022.rec.gui.FontProto\022\017\n\007resizer\030\007 \001("
-    "\t\022$\n\006button\030\010 \001(\0132\024.rec.gui.ButtonProto\022"
-    ")\n\tcombo_box\030\t \001(\0132\026.rec.gui.ComboBoxPro"
-    "to\022$\n\006custom\030\n \001(\0132\024.rec.gui.CustomProto"
-    "\022 \n\004help\030\020 \001(\0132\022.rec.gui.HelpProto\022\"\n\005la"
-    "bel\030\013 \001(\0132\023.rec.gui.LabelProto\022+\n\014full_r"
-    "esizer\030\014 \001(\0132\025.rec.gui.ResizerProto\022$\n\006s"
-    "lider\030\r \001(\0132\024.rec.gui.SliderProto\022 \n\004tex"
-    "t\030\016 \001(\0132\022.rec.gui.TextProto\0221\n\rtoggle_bu"
-    "tton\030\017 \001(\0132\032.rec.gui.ToggleButtonProto", 958);
+    " \001(\0132\022.rec.gui.FontProto\022\016\n\006layout\030\021 \001(\t"
+    "\022\017\n\007resizer\030\007 \001(\t\022$\n\006button\030\010 \001(\0132\024.rec."
+    "gui.ButtonProto\022)\n\tcombo_box\030\t \001(\0132\026.rec"
+    ".gui.ComboBoxProto\022$\n\006custom\030\n \001(\0132\024.rec"
+    ".gui.CustomProto\022 \n\004help\030\020 \001(\0132\022.rec.gui"
+    ".HelpProto\022\"\n\005label\030\013 \001(\0132\023.rec.gui.Labe"
+    "lProto\022+\n\014full_resizer\030\014 \001(\0132\025.rec.gui.R"
+    "esizerProto\022$\n\006slider\030\r \001(\0132\024.rec.gui.Sl"
+    "iderProto\022 \n\004text\030\016 \001(\0132\022.rec.gui.TextPr"
+    "oto\0221\n\rtoggle_button\030\017 \001(\0132\032.rec.gui.Tog"
+    "gleButtonProto", 974);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::default_instance_ = new ComponentProto();
@@ -154,6 +156,7 @@ const int ComponentProto::kSizeFieldNumber;
 const int ComponentProto::kAddressFieldNumber;
 const int ComponentProto::kColorFieldNumber;
 const int ComponentProto::kFontFieldNumber;
+const int ComponentProto::kLayoutFieldNumber;
 const int ComponentProto::kResizerFieldNumber;
 const int ComponentProto::kButtonFieldNumber;
 const int ComponentProto::kComboBoxFieldNumber;
@@ -199,6 +202,7 @@ void ComponentProto::SharedCtor() {
   size_ = NULL;
   address_ = NULL;
   font_ = NULL;
+  layout_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   resizer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   button_ = NULL;
   combo_box_ = NULL;
@@ -222,6 +226,9 @@ void ComponentProto::SharedDtor() {
   }
   if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
     delete tooltip_;
+  }
+  if (layout_ != &::google::protobuf::internal::kEmptyString) {
+    delete layout_;
   }
   if (resizer_ != &::google::protobuf::internal::kEmptyString) {
     delete resizer_;
@@ -284,16 +291,21 @@ void ComponentProto::Clear() {
     if (has_font()) {
       if (font_ != NULL) font_->::rec::gui::FontProto::Clear();
     }
+    if (has_layout()) {
+      if (layout_ != &::google::protobuf::internal::kEmptyString) {
+        layout_->clear();
+      }
+    }
     if (has_resizer()) {
       if (resizer_ != &::google::protobuf::internal::kEmptyString) {
         resizer_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_button()) {
       if (button_ != NULL) button_->::rec::gui::ButtonProto::Clear();
     }
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_combo_box()) {
       if (combo_box_ != NULL) combo_box_->::rec::gui::ComboBoxProto::Clear();
     }
@@ -315,6 +327,8 @@ void ComponentProto::Clear() {
     if (has_text()) {
       if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
     }
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (has_toggle_button()) {
       if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();
     }
@@ -559,6 +573,23 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(138)) goto parse_layout;
+        break;
+      }
+
+      // optional string layout = 17;
+      case 17: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_layout:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_layout()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->layout().data(), this->layout().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -684,6 +715,15 @@ void ComponentProto::SerializeWithCachedSizes(
   if (has_help()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       16, this->help(), output);
+  }
+
+  // optional string layout = 17;
+  if (has_layout()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->layout().data(), this->layout().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      17, this->layout(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -815,6 +855,16 @@ void ComponentProto::SerializeWithCachedSizes(
         16, this->help(), target);
   }
 
+  // optional string layout = 17;
+  if (has_layout()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->layout().data(), this->layout().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        17, this->layout(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -861,6 +911,13 @@ int ComponentProto::ByteSize() const {
           this->font());
     }
 
+    // optional string layout = 17;
+    if (has_layout()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->layout());
+    }
+
     // optional string resizer = 7;
     if (has_resizer()) {
       total_size += 1 +
@@ -868,6 +925,8 @@ int ComponentProto::ByteSize() const {
           this->resizer());
     }
 
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .rec.gui.ButtonProto button = 8;
     if (has_button()) {
       total_size += 1 +
@@ -875,8 +934,6 @@ int ComponentProto::ByteSize() const {
           this->button());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .rec.gui.ComboBoxProto combo_box = 9;
     if (has_combo_box()) {
       total_size += 1 +
@@ -926,6 +983,8 @@ int ComponentProto::ByteSize() const {
           this->text());
     }
 
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional .rec.gui.ToggleButtonProto toggle_button = 15;
     if (has_toggle_button()) {
       total_size += 1 +
@@ -984,14 +1043,17 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
     if (from.has_font()) {
       mutable_font()->::rec::gui::FontProto::MergeFrom(from.font());
     }
+    if (from.has_layout()) {
+      set_layout(from.layout());
+    }
     if (from.has_resizer()) {
       set_resizer(from.resizer());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_button()) {
       mutable_button()->::rec::gui::ButtonProto::MergeFrom(from.button());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_combo_box()) {
       mutable_combo_box()->::rec::gui::ComboBoxProto::MergeFrom(from.combo_box());
     }
@@ -1013,6 +1075,8 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
     if (from.has_text()) {
       mutable_text()->::rec::gui::TextProto::MergeFrom(from.text());
     }
+  }
+  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_toggle_button()) {
       mutable_toggle_button()->::rec::gui::ToggleButtonProto::MergeFrom(from.toggle_button());
     }
@@ -1045,6 +1109,7 @@ void ComponentProto::Swap(ComponentProto* other) {
     std::swap(address_, other->address_);
     color_.Swap(&other->color_);
     std::swap(font_, other->font_);
+    std::swap(layout_, other->layout_);
     std::swap(resizer_, other->resizer_);
     std::swap(button_, other->button_);
     std::swap(combo_box_, other->combo_box_);

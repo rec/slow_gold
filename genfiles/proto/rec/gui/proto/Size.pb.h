@@ -116,7 +116,7 @@ class Size : public ::google::protobuf::Message {
   inline ::std::string* release_min();
   inline void set_allocated_min(::std::string* min);
 
-  // optional string max = 3;
+  // optional string max = 3 [default = "-1.0"];
   inline bool has_max() const;
   inline void clear_max();
   static const int kMaxFieldNumber = 3;
@@ -142,6 +142,7 @@ class Size : public ::google::protobuf::Message {
   ::std::string* preferred_;
   ::std::string* min_;
   ::std::string* max_;
+  static ::std::string* _default_max_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
@@ -300,7 +301,7 @@ inline void Size::set_allocated_min(::std::string* min) {
   }
 }
 
-// optional string max = 3;
+// optional string max = 3 [default = "-1.0"];
 inline bool Size::has_max() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -311,8 +312,8 @@ inline void Size::clear_has_max() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Size::clear_max() {
-  if (max_ != &::google::protobuf::internal::kEmptyString) {
-    max_->clear();
+  if (max_ != _default_max_) {
+    max_->assign(*_default_max_);
   }
   clear_has_max();
 }
@@ -321,44 +322,44 @@ inline const ::std::string& Size::max() const {
 }
 inline void Size::set_max(const ::std::string& value) {
   set_has_max();
-  if (max_ == &::google::protobuf::internal::kEmptyString) {
+  if (max_ == _default_max_) {
     max_ = new ::std::string;
   }
   max_->assign(value);
 }
 inline void Size::set_max(const char* value) {
   set_has_max();
-  if (max_ == &::google::protobuf::internal::kEmptyString) {
+  if (max_ == _default_max_) {
     max_ = new ::std::string;
   }
   max_->assign(value);
 }
 inline void Size::set_max(const char* value, size_t size) {
   set_has_max();
-  if (max_ == &::google::protobuf::internal::kEmptyString) {
+  if (max_ == _default_max_) {
     max_ = new ::std::string;
   }
   max_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Size::mutable_max() {
   set_has_max();
-  if (max_ == &::google::protobuf::internal::kEmptyString) {
-    max_ = new ::std::string;
+  if (max_ == _default_max_) {
+    max_ = new ::std::string(*_default_max_);
   }
   return max_;
 }
 inline ::std::string* Size::release_max() {
   clear_has_max();
-  if (max_ == &::google::protobuf::internal::kEmptyString) {
+  if (max_ == _default_max_) {
     return NULL;
   } else {
     ::std::string* temp = max_;
-    max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    max_ = const_cast< ::std::string*>(_default_max_);
     return temp;
   }
 }
 inline void Size::set_allocated_max(::std::string* max) {
-  if (max_ != &::google::protobuf::internal::kEmptyString) {
+  if (max_ != _default_max_) {
     delete max_;
   }
   if (max) {
@@ -366,7 +367,7 @@ inline void Size::set_allocated_max(::std::string* max) {
     max_ = max;
   } else {
     clear_has_max();
-    max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    max_ = const_cast< ::std::string*>(_default_max_);
   }
 }
 

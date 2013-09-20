@@ -4,6 +4,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataUpdater.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/music/Metadata.h"
 #include "rec/slow/Components.h"
@@ -142,11 +143,21 @@ void SlowProgram::registerAllCallbacks() {
 }
 
 unique_ptr<Component> makeWaveform(const string&) {
-  return make_unique<Waveform>();
+  return unique_ptr<Component>(new Waveform);
+}
+
+unique_ptr<Component> makeTreeView(const string&) {
+  return unique_ptr<Component>();  // new widget::tree::Root);
+}
+
+unique_ptr<Component> makeLoops(const string&) {
+  return unique_ptr<Component>(new gui::audio::Loops);
 }
 
 void SlowProgram::registerCustomComponents(gui::Constants* constants) const {
   constants->addMaker("Waveform", &makeWaveform);
+  constants->addMaker("TreeView", &makeTreeView);
+  constants->addMaker("Loops", &makeLoops);
 }
 
 VirtualFile SlowProgram::getCurrentFile() const {
