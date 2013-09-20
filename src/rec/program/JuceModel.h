@@ -5,6 +5,8 @@
 
 #include "rec/util/Listener.h"
 
+namespace rec { namespace command { class CommandMapProto; }}
+
 namespace rec {
 namespace program {
 
@@ -41,6 +43,8 @@ class JuceModel : public ApplicationCommandTarget,
   void startThreads();
   void stopThreads();
   Thread* getThread(const string&);
+
+  const command::CommandMapProto& keyMap() const;
 
  private:
   unique_ptr<JuceModelImpl> impl_;

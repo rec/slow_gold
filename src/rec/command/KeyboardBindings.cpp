@@ -2,8 +2,9 @@
 
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Editor.h"
-#include "rec/slow/commands/Command.pb.h"
 #include "rec/data/DataOps.h"
+#include "rec/slow/commands/Command.pb.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/BinaryMacros.h"
 
 namespace rec {
@@ -17,8 +18,10 @@ namespace {
 void fillKeyPressMappingSet(const CommandMapProto& commandMap,
                             KeyPressMappingSet* mappings) {
   mappings->clearAllKeyPresses();
+  DLOG(INFO) << "!!!!!! " << commandMap.entry_size();
   for (int i = 0; i < commandMap.entry_size(); ++i) {
     const CommandMapEntry& m = commandMap.entry(i);
+    DLOG(INFO) << m.key_size() << ": " << m.id();
     for (int j = 0; j < m.key_size(); ++j)
       mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
   }
@@ -35,7 +38,9 @@ CommandMapProto getKeyboardBindings() {
 }
 
 void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
-  fillKeyPressMappingSet(getKeyboardBindings(),
+  // getKeyboardBindings(),
+
+  fillKeyPressMappingSet(program::juceModel()->keyMap(),
                          commandManager->getKeyMappings());
 }
 

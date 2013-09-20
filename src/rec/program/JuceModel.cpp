@@ -67,5 +67,9 @@ Thread* JuceModel::getThread(const string& name) {
   return impl_->getThread(name);
 }
 
+const command::CommandMapProto& JuceModel::keyMap() const {
+  return impl_->keyMap();
+}
+
 }  // namespace program
 }  // namespace rec

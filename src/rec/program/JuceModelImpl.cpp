@@ -56,12 +56,14 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
     : program_(p),
       juceModel_(juceModel),
       commandMap_(makeCommandMap(*p)),
+      keyMap_(makeKeyMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)),
       layoutMap_(makeLayoutMap(*p)),
       threadMap_(makeThreadMap(*p)),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
+  mergeKeysIntoCommands(keyMap_, &commandMap_);
   for (auto& i: commandMap_) {
     Command& cmd = i.second;
     if (cmd.has_setter()) {

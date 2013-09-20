@@ -67,19 +67,29 @@ CommandMap makeCommandMap(const Program& program) {
     }
   }
 
+  return commandMap;
+}
+
+command::CommandMapProto makeKeyMap(const Program& program) {
   CommandMapProto keys = BINARY_PROTO(KeyStrokeMap, CommandMapProto);
-  for (auto& entry: *keys.mutable_entry()) {
-    CommandID id = fixId(program, &entry);
+  for (auto& entry: *keys.mutable_entry())
+    fixId(program, &entry);
+  return keys;
+}
+
+void mergeKeysIntoCommands(const CommandMapProto& keys, CommandMap* map) {
+  for (auto& entry: keys.entry()) {
+    CommandID id = entry.id();
     if (entry.has_index())
       id += entry.index() - CommandIDs::FIRST;
     try {
-      *commandMap.at(id).mutable_keypress() = entry.key();
+      auto& commandEntry = map->at(id);
+      DCHECK(not commandEntry.keypress_size());
+      *commandEntry.mutable_keypress() = entry.key();
     } catch (const std::out_of_range&) {
-      LOG(ERROR) << "Out of range keypress command." << program.idToName(id);
+      LOG(ERROR) << "Out of range keypress command." << id;
     }
   }
-
-  return commandMap;
 }
 
 MenuMap makeMenuMap(const Program& program) {
@@ -125,7 +135,6 @@ LayoutMap makeLayoutMap(const Program& program) {
     layoutMap[layout.name()] = layout;
   return layoutMap;
 }
-
 
 }  // namespace program
 }  // namespace rec
