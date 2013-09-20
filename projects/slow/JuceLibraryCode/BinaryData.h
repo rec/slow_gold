@@ -6,17 +6,41 @@
 
 namespace BinaryData
 {
+    extern const char*   Audio_def;
+    const int            Audio_defSize = 1593;
+
     extern const char*   Commands_def;
-    const int            Commands_defSize = 29132;
+    const int            Commands_defSize = 111;
+
+    extern const char*   File_def;
+    const int            File_defSize = 2081;
+
+    extern const char*   Gui_def;
+    const int            Gui_defSize = 5703;
+
+    extern const char*   LoopPoints_def;
+    const int            LoopPoints_defSize = 1737;
+
+    extern const char*   Selection_def;
+    const int            Selection_defSize = 5765;
+
+    extern const char*   Settings_def;
+    const int            Settings_defSize = 5281;
+
+    extern const char*   Transport_def;
+    const int            Transport_defSize = 3530;
 
     extern const char*   Components_def;
     const int            Components_defSize = 0;
 
     extern const char*   KeyStrokeMap_def;
-    const int            KeyStrokeMap_defSize = 6171;
+    const int            KeyStrokeMap_defSize = 6873;
+
+    extern const char*   Colors_def;
+    const int            Colors_defSize = 219;
 
     extern const char*   CommandBar_def;
-    const int            CommandBar_defSize = 510;
+    const int            CommandBar_defSize = 623;
 
     extern const char*   Constants_def;
     const int            Constants_defSize = 56;
@@ -25,22 +49,22 @@ namespace BinaryData
     const int            HelpPanel_defSize = 394;
 
     extern const char*   Layout_def;
-    const int            Layout_defSize = 170;
+    const int            Layout_defSize = 178;
 
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 377;
 
     extern const char*   ModeSelector_def;
-    const int            ModeSelector_defSize = 270;
+    const int            ModeSelector_defSize = 271;
 
     extern const char*   NavigationPanel_def;
-    const int            NavigationPanel_defSize = 388;
+    const int            NavigationPanel_defSize = 475;
 
     extern const char*   PlaybackPanel_def;
     const int            PlaybackPanel_defSize = 490;
 
     extern const char*   SongData_def;
-    const int            SongData_defSize = 30;
+    const int            SongData_defSize = 1580;
 
     extern const char*   TransformController_def;
     const int            TransformController_defSize = 726;
@@ -48,14 +72,11 @@ namespace BinaryData
     extern const char*   TransportController_def;
     const int            TransportController_defSize = 877;
 
-    extern const char*   Waveform_def;
-    const int            Waveform_defSize = 114;
-
     extern const char*   MenuCollection_def;
     const int            MenuCollection_defSize = 373;
 
     extern const char*   Menus_def;
-    const int            Menus_defSize = 3007;
+    const int            Menus_defSize = 3790;
 
     extern const char*   Threads_def;
     const int            Threads_defSize = 351;

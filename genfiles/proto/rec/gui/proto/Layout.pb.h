@@ -25,6 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "rec/data/proto/Address.pb.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Size.pb.h"
 // @@protoc_insertion_point(includes)

@@ -102,6 +102,18 @@ class CommandMapEntry : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 id() const;
   inline void set_id(::google::protobuf::uint32 value);
 
+  // optional string id_string = 4;
+  inline bool has_id_string() const;
+  inline void clear_id_string();
+  static const int kIdStringFieldNumber = 4;
+  inline const ::std::string& id_string() const;
+  inline void set_id_string(const ::std::string& value);
+  inline void set_id_string(const char* value);
+  inline void set_id_string(const char* value, size_t size);
+  inline ::std::string* mutable_id_string();
+  inline ::std::string* release_id_string();
+  inline void set_allocated_id_string(::std::string* id_string);
+
   // optional int32 index = 2;
   inline bool has_index() const;
   inline void clear_index();
@@ -129,17 +141,20 @@ class CommandMapEntry : public ::google::protobuf::Message {
  private:
   inline void set_has_id();
   inline void clear_has_id();
+  inline void set_has_id_string();
+  inline void clear_has_id_string();
   inline void set_has_index();
   inline void clear_has_index();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* id_string_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::int32 index_;
   ::google::protobuf::RepeatedPtrField< ::std::string> key_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
@@ -430,15 +445,85 @@ inline void CommandMapEntry::set_id(::google::protobuf::uint32 value) {
   id_ = value;
 }
 
-// optional int32 index = 2;
-inline bool CommandMapEntry::has_index() const {
+// optional string id_string = 4;
+inline bool CommandMapEntry::has_id_string() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CommandMapEntry::set_has_index() {
+inline void CommandMapEntry::set_has_id_string() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CommandMapEntry::clear_has_index() {
+inline void CommandMapEntry::clear_has_id_string() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void CommandMapEntry::clear_id_string() {
+  if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+    id_string_->clear();
+  }
+  clear_has_id_string();
+}
+inline const ::std::string& CommandMapEntry::id_string() const {
+  return *id_string_;
+}
+inline void CommandMapEntry::set_id_string(const ::std::string& value) {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  id_string_->assign(value);
+}
+inline void CommandMapEntry::set_id_string(const char* value) {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  id_string_->assign(value);
+}
+inline void CommandMapEntry::set_id_string(const char* value, size_t size) {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  id_string_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* CommandMapEntry::mutable_id_string() {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  return id_string_;
+}
+inline ::std::string* CommandMapEntry::release_id_string() {
+  clear_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = id_string_;
+    id_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void CommandMapEntry::set_allocated_id_string(::std::string* id_string) {
+  if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+    delete id_string_;
+  }
+  if (id_string) {
+    set_has_id_string();
+    id_string_ = id_string;
+  } else {
+    clear_has_id_string();
+    id_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional int32 index = 2;
+inline bool CommandMapEntry::has_index() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CommandMapEntry::set_has_index() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CommandMapEntry::clear_has_index() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void CommandMapEntry::clear_index() {
   index_ = 0;

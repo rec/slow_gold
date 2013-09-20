@@ -1,7 +1,6 @@
 #include "rec/slow/commands/SlowProgram.h"
 
 #include "rec/audio/source/Player.h"
-#include "rec/command/CommandData.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataUpdater.h"
@@ -105,40 +104,6 @@ SlowProgram::SlowProgram(Instance* instance) : instance_(instance) {
   threadFunctions_["timer"] = timer;
 }
 
-command::Commands SlowProgram::commands() const {
-  return command::convertCommands<slow::Commands>();
-}
-
-command::KeyStrokeCommandMapProto SlowProgram::keypresses() const {
-  return command::convertKeyBindings<slow::CommandMapProto>();
-}
-
-program::Menus SlowProgram::menus() const {
-  Menus slowMenus = BINARY_PROTO(Menus, Menus);
-  program::Menus menus;
-  for (auto& slowMenu: slowMenus.menu()) {
-    program::Menu* menu = menus.add_menu();
-    menu->mutable_description()->CopyFrom(slowMenu.description());
-    if (slowMenu.has_extends())
-      menu->set_extends(slowMenu.extends());
-    for (auto& slowEntry: slowMenu.entry()) {
-      program::MenuEntry* menuEntry = menu->add_entry();
-      for (auto& id: slowEntry.id())
-        menuEntry->add_id(id);
-      if (slowEntry.has_submenu())
-        menuEntry->set_submenu(slowEntry.submenu());
-      if (slowEntry.has_callout_function())
-        menuEntry->set_callout_function(slowEntry.callout_function());
-    }
-  }
-
-  return menus;
-}
-
-program::MenuCollection SlowProgram::menuCollection() const {
-  return BINARY_PROTO(MenuCollection, program::MenuCollection);
-}
-
 string SlowProgram::menuBarName() const {
   return data::getProto<GuiSettings>().advanced_menus() ? "advanced" : "basic";
 }
@@ -185,11 +150,7 @@ void SlowProgram::beforeCommand(CommandID id) {
 
 const int MARGIN = 10;
 
-string SlowProgram::commandName(CommandID id) const {
-  return rec::slow::commandName(id);
-}
-
-string commandName(CommandID id) {
+string SlowProgram::idToName(CommandID id) const {
   bool isCompound = id > command::Command::BANK_SIZE - MARGIN;
   int mod;
   if (isCompound) {
@@ -200,6 +161,13 @@ string commandName(CommandID id) {
   if (isCompound)
     name += str(":" + String(mod));
   return name;
+}
+
+CommandID SlowProgram::nameToId(const string& name) const {
+  slow::Command::Id id = slow::Command::NONE;
+  if (not Command_Id_Parse(name, &id))
+    LOG(DFATAL) << "Didn't understand Command ID " << name;
+  return id;
 }
 
 }  // namespace slow

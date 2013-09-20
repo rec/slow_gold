@@ -1,6 +1,12 @@
 package rec.gui;
 
 message ButtonProto {
+  enum Behavior {
+    CLICK = 0;
+    TOGGLE = 1;
+    MODE = 2;
+  };
+
   enum Style {
     ImageFitted = 0;
     ImageRaw = 1;
@@ -16,8 +22,10 @@ message ButtonProto {
     optional bool disabled = 4 [default = true];
   };
 
-  optional Style style = 1;
-  optional State state = 2;
-  optional State state_on = 3;
+  optional Behavior behavior = 1;
+  optional Style style = 2;
+  optional State state = 3;
+  optional State state_on = 4;
+  optional string command = 5;
 };
 

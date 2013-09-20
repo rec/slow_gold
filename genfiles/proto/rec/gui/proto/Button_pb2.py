@@ -13,9 +13,34 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Button.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Button.proto\x12\x07rec.gui\"\xe3\x02\n\x0b\x42uttonProto\x12)\n\x05style\x18\x01 \x01(\x0e\x32\x1a.rec.gui.ButtonProto.Style\x12)\n\x05state\x18\x02 \x01(\x0b\x32\x1a.rec.gui.ButtonProto.State\x12,\n\x08state_on\x18\x03 \x01(\x0b\x32\x1a.rec.gui.ButtonProto.State\x1a^\n\x05State\x12\x14\n\x06normal\x18\x01 \x01(\x08:\x04true\x12\x13\n\x04over\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\x12\n\x04\x64own\x18\x03 \x01(\x08:\x04true\x12\x16\n\x08\x64isabled\x18\x04 \x01(\x08:\x04true\"p\n\x05Style\x12\x0f\n\x0bImageFitted\x10\x00\x12\x0c\n\x08ImageRaw\x10\x01\x12\x17\n\x13ImageAboveTextLabel\x10\x02\x12\x1b\n\x17ImageOnButtonBackground\x10\x03\x12\x12\n\x0eImageStretched\x10\x04')
+  serialized_pb='\n\x1arec/gui/proto/Button.proto\x12\x07rec.gui\"\xd2\x03\n\x0b\x42uttonProto\x12/\n\x08\x62\x65havior\x18\x01 \x01(\x0e\x32\x1d.rec.gui.ButtonProto.Behavior\x12)\n\x05style\x18\x02 \x01(\x0e\x32\x1a.rec.gui.ButtonProto.Style\x12)\n\x05state\x18\x03 \x01(\x0b\x32\x1a.rec.gui.ButtonProto.State\x12,\n\x08state_on\x18\x04 \x01(\x0b\x32\x1a.rec.gui.ButtonProto.State\x12\x0f\n\x07\x63ommand\x18\x05 \x01(\t\x1a^\n\x05State\x12\x14\n\x06normal\x18\x01 \x01(\x08:\x04true\x12\x13\n\x04over\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\x12\n\x04\x64own\x18\x03 \x01(\x08:\x04true\x12\x16\n\x08\x64isabled\x18\x04 \x01(\x08:\x04true\"+\n\x08\x42\x65havior\x12\t\n\x05\x43LICK\x10\x00\x12\n\n\x06TOGGLE\x10\x01\x12\x08\n\x04MODE\x10\x02\"p\n\x05Style\x12\x0f\n\x0bImageFitted\x10\x00\x12\x0c\n\x08ImageRaw\x10\x01\x12\x17\n\x13ImageAboveTextLabel\x10\x02\x12\x1b\n\x17ImageOnButtonBackground\x10\x03\x12\x12\n\x0eImageStretched\x10\x04')
 
 
+
+_BUTTONPROTO_BEHAVIOR = _descriptor.EnumDescriptor(
+  name='Behavior',
+  full_name='rec.gui.ButtonProto.Behavior',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CLICK', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='TOGGLE', index=1, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MODE', index=2, number=2,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=349,
+  serialized_end=392,
+)
 
 _BUTTONPROTO_STYLE = _descriptor.EnumDescriptor(
   name='Style',
@@ -46,8 +71,8 @@ _BUTTONPROTO_STYLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=283,
-  serialized_end=395,
+  serialized_start=394,
+  serialized_end=506,
 )
 
 
@@ -95,8 +120,8 @@ _BUTTONPROTO_STATE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=187,
-  serialized_end=281,
+  serialized_start=253,
+  serialized_end=347,
 )
 
 _BUTTONPROTO = _descriptor.Descriptor(
@@ -107,23 +132,37 @@ _BUTTONPROTO = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='style', full_name='rec.gui.ButtonProto.style', index=0,
+      name='behavior', full_name='rec.gui.ButtonProto.behavior', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='state', full_name='rec.gui.ButtonProto.state', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='style', full_name='rec.gui.ButtonProto.style', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='state', full_name='rec.gui.ButtonProto.state', index=2,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='state_on', full_name='rec.gui.ButtonProto.state_on', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='state_on', full_name='rec.gui.ButtonProto.state_on', index=3,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='command', full_name='rec.gui.ButtonProto.command', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -132,19 +171,22 @@ _BUTTONPROTO = _descriptor.Descriptor(
   ],
   nested_types=[_BUTTONPROTO_STATE, ],
   enum_types=[
+    _BUTTONPROTO_BEHAVIOR,
     _BUTTONPROTO_STYLE,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
   serialized_start=40,
-  serialized_end=395,
+  serialized_end=506,
 )
 
 _BUTTONPROTO_STATE.containing_type = _BUTTONPROTO;
+_BUTTONPROTO.fields_by_name['behavior'].enum_type = _BUTTONPROTO_BEHAVIOR
 _BUTTONPROTO.fields_by_name['style'].enum_type = _BUTTONPROTO_STYLE
 _BUTTONPROTO.fields_by_name['state'].message_type = _BUTTONPROTO_STATE
 _BUTTONPROTO.fields_by_name['state_on'].message_type = _BUTTONPROTO_STATE
+_BUTTONPROTO_BEHAVIOR.containing_type = _BUTTONPROTO;
 _BUTTONPROTO_STYLE.containing_type = _BUTTONPROTO;
 DESCRIPTOR.message_types_by_name['ButtonProto'] = _BUTTONPROTO
 

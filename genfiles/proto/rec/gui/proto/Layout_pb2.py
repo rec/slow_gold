@@ -8,6 +8,7 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import rec.data.proto.Address_pb2
 import rec.gui.proto.Component_pb2
 import rec.gui.proto.Size_pb2
 
@@ -15,7 +16,7 @@ import rec.gui.proto.Size_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Layout.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1drec/gui/proto/Component.proto\x1a\x18rec/gui/proto/Size.proto\"\x86\x02\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x30\n\x0borientation\x18\x02 \x01(\x0e\x32\x1b.rec.gui.Layout.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\x12\x0f\n\x07padding\x18\x05 \x01(\x08\x12\x1b\n\x04size\x18\x06 \x01(\x0b\x32\r.rec.gui.Size\x12*\n\tcomponent\x18\t \x03(\x0b\x32\x17.rec.gui.ComponentProto\"+\n\x0bOrientation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
+  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x1drec/gui/proto/Component.proto\x1a\x18rec/gui/proto/Size.proto\"\x86\x02\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x30\n\x0borientation\x18\x02 \x01(\x0e\x32\x1b.rec.gui.Layout.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\x12\x0f\n\x07padding\x18\x05 \x01(\x08\x12\x1b\n\x04size\x18\x06 \x01(\x0b\x32\r.rec.gui.Size\x12*\n\tcomponent\x18\t \x03(\x0b\x32\x17.rec.gui.ComponentProto\"+\n\x0bOrientation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
 
 
 
@@ -36,8 +37,8 @@ _LAYOUT_ORIENTATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=316,
-  serialized_end=359,
+  serialized_start=346,
+  serialized_end=389,
 )
 
 
@@ -107,8 +108,8 @@ _LAYOUT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=97,
-  serialized_end=359,
+  serialized_start=127,
+  serialized_end=389,
 )
 
 
@@ -135,8 +136,8 @@ _LAYOUTS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=361,
-  serialized_end=403,
+  serialized_start=391,
+  serialized_end=433,
 )
 
 _LAYOUT.fields_by_name['orientation'].enum_type = _LAYOUT_ORIENTATION

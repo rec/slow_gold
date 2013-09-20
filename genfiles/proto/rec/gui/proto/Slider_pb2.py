@@ -8,13 +8,12 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
-import rec.data.proto.Address_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Slider.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Slider.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\"\xff\x05\n\x0bSliderProto\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t\x12\x18\n\x0c\x63\x61ption_size\x18\x02 \x01(\t:\x02\x34\x35\x12 \n\x14text_entry_box_width\x18\x04 \x01(\t:\x02\x38\x30\x12!\n\x15text_entry_box_height\x18\x05 \x01(\t:\x02\x31\x36\x12\x0e\n\x06\x64\x65tent\x18\x06 \x01(\t\x12\x15\n\rdetent_radius\x18\x07 \x01(\t\x12\x13\n\x0btext_suffix\x18\x08 \x01(\t\x12\x0f\n\x07minimum\x18\t \x01(\t\x12\x0f\n\x07maximum\x18\n \x01(\t\x12\x10\n\x08interval\x18\x0b \x01(\t\x12)\n\x05style\x18\x15 \x01(\x0e\x32\x1a.rec.gui.SliderProto.Style\x12J\n\x17text_entry_box_position\x18\x16 \x01(\x0e\x32).rec.gui.SliderProto.TextEntryBoxPosition\"\xaa\x02\n\x05Style\x12\x14\n\x10LinearHorizontal\x10\x00\x12\x12\n\x0eLinearVertical\x10\x01\x12\r\n\tLinearBar\x10\x02\x12\x15\n\x11LinearBarVertical\x10\x03\x12\n\n\x06Rotary\x10\x04\x12\x18\n\x14RotaryHorizontalDrag\x10\x05\x12\x16\n\x12RotaryVerticalDrag\x10\x06\x12 \n\x1cRotaryHorizontalVerticalDrag\x10\x07\x12\x11\n\rIncDecButtons\x10\x08\x12\x16\n\x12TwoValueHorizontal\x10\t\x12\x14\n\x10TwoValueVertical\x10\n\x12\x18\n\x14ThreeValueHorizontal\x10\x0b\x12\x16\n\x12ThreeValueVertical\x10\x0c\"l\n\x14TextEntryBoxPosition\x12\r\n\tNoTextBox\x10\x00\x12\x0f\n\x0bTextBoxLeft\x10\x01\x12\x10\n\x0cTextBoxRight\x10\x02\x12\x10\n\x0cTextBoxAbove\x10\x03\x12\x10\n\x0cTextBoxBelow\x10\x04')
+  serialized_pb='\n\x1arec/gui/proto/Slider.proto\x12\x07rec.gui\"\xff\x05\n\x0bSliderProto\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t\x12\x18\n\x0c\x63\x61ption_size\x18\x02 \x01(\t:\x02\x34\x35\x12 \n\x14text_entry_box_width\x18\x04 \x01(\t:\x02\x38\x30\x12!\n\x15text_entry_box_height\x18\x05 \x01(\t:\x02\x31\x36\x12\x0e\n\x06\x64\x65tent\x18\x06 \x01(\t\x12\x15\n\rdetent_radius\x18\x07 \x01(\t\x12\x13\n\x0btext_suffix\x18\x08 \x01(\t\x12\x0f\n\x07minimum\x18\t \x01(\t\x12\x0f\n\x07maximum\x18\n \x01(\t\x12\x10\n\x08interval\x18\x0b \x01(\t\x12)\n\x05style\x18\x15 \x01(\x0e\x32\x1a.rec.gui.SliderProto.Style\x12J\n\x17text_entry_box_position\x18\x16 \x01(\x0e\x32).rec.gui.SliderProto.TextEntryBoxPosition\"\xaa\x02\n\x05Style\x12\x14\n\x10LinearHorizontal\x10\x00\x12\x12\n\x0eLinearVertical\x10\x01\x12\r\n\tLinearBar\x10\x02\x12\x15\n\x11LinearBarVertical\x10\x03\x12\n\n\x06Rotary\x10\x04\x12\x18\n\x14RotaryHorizontalDrag\x10\x05\x12\x16\n\x12RotaryVerticalDrag\x10\x06\x12 \n\x1cRotaryHorizontalVerticalDrag\x10\x07\x12\x11\n\rIncDecButtons\x10\x08\x12\x16\n\x12TwoValueHorizontal\x10\t\x12\x14\n\x10TwoValueVertical\x10\n\x12\x18\n\x14ThreeValueHorizontal\x10\x0b\x12\x16\n\x12ThreeValueVertical\x10\x0c\"l\n\x14TextEntryBoxPosition\x12\r\n\tNoTextBox\x10\x00\x12\x0f\n\x0bTextBoxLeft\x10\x01\x12\x10\n\x0cTextBoxRight\x10\x02\x12\x10\n\x0cTextBoxAbove\x10\x03\x12\x10\n\x0cTextBoxBelow\x10\x04')
 
 
 
@@ -79,8 +78,8 @@ _SLIDERPROTO_STYLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=429,
-  serialized_end=727,
+  serialized_start=399,
+  serialized_end=697,
 )
 
 _SLIDERPROTO_TEXTENTRYBOXPOSITION = _descriptor.EnumDescriptor(
@@ -112,8 +111,8 @@ _SLIDERPROTO_TEXTENTRYBOXPOSITION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=729,
-  serialized_end=837,
+  serialized_start=699,
+  serialized_end=807,
 )
 
 
@@ -219,8 +218,8 @@ _SLIDERPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=70,
-  serialized_end=837,
+  serialized_start=40,
+  serialized_end=807,
 )
 
 _SLIDERPROTO.fields_by_name['style'].enum_type = _SLIDERPROTO_STYLE

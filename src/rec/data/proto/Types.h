@@ -9,7 +9,6 @@
 namespace rec {
 namespace data {
 
-typedef Operation::Command Command;
 typedef uint32 Tag;
 
 // Make fictitious types to correspond to the Google proto types that aren't

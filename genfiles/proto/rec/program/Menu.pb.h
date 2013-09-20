@@ -109,6 +109,22 @@ class MenuEntry : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_id();
 
+  // repeated string id_string = 4;
+  inline int id_string_size() const;
+  inline void clear_id_string();
+  static const int kIdStringFieldNumber = 4;
+  inline const ::std::string& id_string(int index) const;
+  inline ::std::string* mutable_id_string(int index);
+  inline void set_id_string(int index, const ::std::string& value);
+  inline void set_id_string(int index, const char* value);
+  inline void set_id_string(int index, const char* value, size_t size);
+  inline ::std::string* add_id_string();
+  inline void add_id_string(const ::std::string& value);
+  inline void add_id_string(const char* value);
+  inline void add_id_string(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& id_string() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_id_string();
+
   // optional string submenu = 2;
   inline bool has_submenu() const;
   inline void clear_submenu();
@@ -143,11 +159,12 @@ class MenuEntry : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > id_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> id_string_;
   ::std::string* submenu_;
   ::std::string* callout_function_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fprogram_2fMenu_2eproto();
   friend void protobuf_AssignDesc_rec_2fprogram_2fMenu_2eproto();
@@ -583,15 +600,59 @@ MenuEntry::mutable_id() {
   return &id_;
 }
 
+// repeated string id_string = 4;
+inline int MenuEntry::id_string_size() const {
+  return id_string_.size();
+}
+inline void MenuEntry::clear_id_string() {
+  id_string_.Clear();
+}
+inline const ::std::string& MenuEntry::id_string(int index) const {
+  return id_string_.Get(index);
+}
+inline ::std::string* MenuEntry::mutable_id_string(int index) {
+  return id_string_.Mutable(index);
+}
+inline void MenuEntry::set_id_string(int index, const ::std::string& value) {
+  id_string_.Mutable(index)->assign(value);
+}
+inline void MenuEntry::set_id_string(int index, const char* value) {
+  id_string_.Mutable(index)->assign(value);
+}
+inline void MenuEntry::set_id_string(int index, const char* value, size_t size) {
+  id_string_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MenuEntry::add_id_string() {
+  return id_string_.Add();
+}
+inline void MenuEntry::add_id_string(const ::std::string& value) {
+  id_string_.Add()->assign(value);
+}
+inline void MenuEntry::add_id_string(const char* value) {
+  id_string_.Add()->assign(value);
+}
+inline void MenuEntry::add_id_string(const char* value, size_t size) {
+  id_string_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MenuEntry::id_string() const {
+  return id_string_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+MenuEntry::mutable_id_string() {
+  return &id_string_;
+}
+
 // optional string submenu = 2;
 inline bool MenuEntry::has_submenu() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MenuEntry::set_has_submenu() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MenuEntry::clear_has_submenu() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MenuEntry::clear_submenu() {
   if (submenu_ != &::google::protobuf::internal::kEmptyString) {
@@ -655,13 +716,13 @@ inline void MenuEntry::set_allocated_submenu(::std::string* submenu) {
 
 // optional string callout_function = 3;
 inline bool MenuEntry::has_callout_function() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MenuEntry::set_has_callout_function() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MenuEntry::clear_has_callout_function() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MenuEntry::clear_callout_function() {
   if (callout_function_ != &::google::protobuf::internal::kEmptyString) {

@@ -27,6 +27,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ButtonProto_State_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ButtonProto_State_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* ButtonProto_Behavior_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ButtonProto_Style_descriptor_ = NULL;
 
 }  // namespace
@@ -39,10 +40,12 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto() {
       "rec/gui/proto/Button.proto");
   GOOGLE_CHECK(file != NULL);
   ButtonProto_descriptor_ = file->message_type(0);
-  static const int ButtonProto_offsets_[3] = {
+  static const int ButtonProto_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, behavior_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, style_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, state_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, state_on_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, command_),
   };
   ButtonProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -73,7 +76,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ButtonProto_State));
-  ButtonProto_Style_descriptor_ = ButtonProto_descriptor_->enum_type(0);
+  ButtonProto_Behavior_descriptor_ = ButtonProto_descriptor_->enum_type(0);
+  ButtonProto_Style_descriptor_ = ButtonProto_descriptor_->enum_type(1);
 }
 
 namespace {
@@ -108,16 +112,19 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\343\002"
-    "\n\013ButtonProto\022)\n\005style\030\001 \001(\0162\032.rec.gui.B"
-    "uttonProto.Style\022)\n\005state\030\002 \001(\0132\032.rec.gu"
-    "i.ButtonProto.State\022,\n\010state_on\030\003 \001(\0132\032."
-    "rec.gui.ButtonProto.State\032^\n\005State\022\024\n\006no"
-    "rmal\030\001 \001(\010:\004true\022\023\n\004over\030\002 \001(\010:\005false\022\022\n"
-    "\004down\030\003 \001(\010:\004true\022\026\n\010disabled\030\004 \001(\010:\004tru"
-    "e\"p\n\005Style\022\017\n\013ImageFitted\020\000\022\014\n\010ImageRaw\020"
-    "\001\022\027\n\023ImageAboveTextLabel\020\002\022\033\n\027ImageOnBut"
-    "tonBackground\020\003\022\022\n\016ImageStretched\020\004", 395);
+    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\322\003"
+    "\n\013ButtonProto\022/\n\010behavior\030\001 \001(\0162\035.rec.gu"
+    "i.ButtonProto.Behavior\022)\n\005style\030\002 \001(\0162\032."
+    "rec.gui.ButtonProto.Style\022)\n\005state\030\003 \001(\013"
+    "2\032.rec.gui.ButtonProto.State\022,\n\010state_on"
+    "\030\004 \001(\0132\032.rec.gui.ButtonProto.State\022\017\n\007co"
+    "mmand\030\005 \001(\t\032^\n\005State\022\024\n\006normal\030\001 \001(\010:\004tr"
+    "ue\022\023\n\004over\030\002 \001(\010:\005false\022\022\n\004down\030\003 \001(\010:\004t"
+    "rue\022\026\n\010disabled\030\004 \001(\010:\004true\"+\n\010Behavior\022"
+    "\t\n\005CLICK\020\000\022\n\n\006TOGGLE\020\001\022\010\n\004MODE\020\002\"p\n\005Styl"
+    "e\022\017\n\013ImageFitted\020\000\022\014\n\010ImageRaw\020\001\022\027\n\023Imag"
+    "eAboveTextLabel\020\002\022\033\n\027ImageOnButtonBackgr"
+    "ound\020\003\022\022\n\016ImageStretched\020\004", 506);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Button.proto", &protobuf_RegisterTypes);
   ButtonProto::default_instance_ = new ButtonProto();
@@ -136,6 +143,29 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fButton_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* ButtonProto_Behavior_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ButtonProto_Behavior_descriptor_;
+}
+bool ButtonProto_Behavior_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const ButtonProto_Behavior ButtonProto::CLICK;
+const ButtonProto_Behavior ButtonProto::TOGGLE;
+const ButtonProto_Behavior ButtonProto::MODE;
+const ButtonProto_Behavior ButtonProto::Behavior_MIN;
+const ButtonProto_Behavior ButtonProto::Behavior_MAX;
+const int ButtonProto::Behavior_ARRAYSIZE;
+#endif  // _MSC_VER
 const ::google::protobuf::EnumDescriptor* ButtonProto_Style_descriptor() {
   protobuf_AssignDescriptorsOnce();
   return ButtonProto_Style_descriptor_;
@@ -484,9 +514,11 @@ void ButtonProto_State::Swap(ButtonProto_State* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
+const int ButtonProto::kBehaviorFieldNumber;
 const int ButtonProto::kStyleFieldNumber;
 const int ButtonProto::kStateFieldNumber;
 const int ButtonProto::kStateOnFieldNumber;
+const int ButtonProto::kCommandFieldNumber;
 #endif  // !_MSC_VER
 
 ButtonProto::ButtonProto()
@@ -507,9 +539,11 @@ ButtonProto::ButtonProto(const ButtonProto& from)
 
 void ButtonProto::SharedCtor() {
   _cached_size_ = 0;
+  behavior_ = 0;
   style_ = 0;
   state_ = NULL;
   state_on_ = NULL;
+  command_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -518,6 +552,9 @@ ButtonProto::~ButtonProto() {
 }
 
 void ButtonProto::SharedDtor() {
+  if (command_ != &::google::protobuf::internal::kEmptyString) {
+    delete command_;
+  }
   if (this != default_instance_) {
     delete state_;
     delete state_on_;
@@ -547,12 +584,18 @@ ButtonProto* ButtonProto::New() const {
 
 void ButtonProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    behavior_ = 0;
     style_ = 0;
     if (has_state()) {
       if (state_ != NULL) state_->::rec::gui::ButtonProto_State::Clear();
     }
     if (has_state_on()) {
       if (state_on_ != NULL) state_on_->::rec::gui::ButtonProto_State::Clear();
+    }
+    if (has_command()) {
+      if (command_ != &::google::protobuf::internal::kEmptyString) {
+        command_->clear();
+      }
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -565,7 +608,7 @@ bool ButtonProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.ButtonProto.Style style = 1;
+      // optional .rec.gui.ButtonProto.Behavior behavior = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -573,20 +616,41 @@ bool ButtonProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::gui::ButtonProto_Style_IsValid(value)) {
-            set_style(static_cast< ::rec::gui::ButtonProto_Style >(value));
+          if (::rec::gui::ButtonProto_Behavior_IsValid(value)) {
+            set_behavior(static_cast< ::rec::gui::ButtonProto_Behavior >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_state;
+        if (input->ExpectTag(16)) goto parse_style;
         break;
       }
 
-      // optional .rec.gui.ButtonProto.State state = 2;
+      // optional .rec.gui.ButtonProto.Style style = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_style:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::gui::ButtonProto_Style_IsValid(value)) {
+            set_style(static_cast< ::rec::gui::ButtonProto_Style >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_state;
+        break;
+      }
+
+      // optional .rec.gui.ButtonProto.State state = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_state:
@@ -595,17 +659,34 @@ bool ButtonProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_state_on;
+        if (input->ExpectTag(34)) goto parse_state_on;
         break;
       }
 
-      // optional .rec.gui.ButtonProto.State state_on = 3;
-      case 3: {
+      // optional .rec.gui.ButtonProto.State state_on = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_state_on:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_state_on()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_command;
+        break;
+      }
+
+      // optional string command = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_command:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_command()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->command().data(), this->command().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -631,22 +712,37 @@ bool ButtonProto::MergePartialFromCodedStream(
 
 void ButtonProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.ButtonProto.Style style = 1;
+  // optional .rec.gui.ButtonProto.Behavior behavior = 1;
+  if (has_behavior()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->behavior(), output);
+  }
+
+  // optional .rec.gui.ButtonProto.Style style = 2;
   if (has_style()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->style(), output);
+      2, this->style(), output);
   }
 
-  // optional .rec.gui.ButtonProto.State state = 2;
+  // optional .rec.gui.ButtonProto.State state = 3;
   if (has_state()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->state(), output);
+      3, this->state(), output);
   }
 
-  // optional .rec.gui.ButtonProto.State state_on = 3;
+  // optional .rec.gui.ButtonProto.State state_on = 4;
   if (has_state_on()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->state_on(), output);
+      4, this->state_on(), output);
+  }
+
+  // optional string command = 5;
+  if (has_command()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->command().data(), this->command().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->command(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -657,24 +753,40 @@ void ButtonProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ButtonProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.ButtonProto.Style style = 1;
-  if (has_style()) {
+  // optional .rec.gui.ButtonProto.Behavior behavior = 1;
+  if (has_behavior()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->style(), target);
+      1, this->behavior(), target);
   }
 
-  // optional .rec.gui.ButtonProto.State state = 2;
+  // optional .rec.gui.ButtonProto.Style style = 2;
+  if (has_style()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->style(), target);
+  }
+
+  // optional .rec.gui.ButtonProto.State state = 3;
   if (has_state()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->state(), target);
+        3, this->state(), target);
   }
 
-  // optional .rec.gui.ButtonProto.State state_on = 3;
+  // optional .rec.gui.ButtonProto.State state_on = 4;
   if (has_state_on()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->state_on(), target);
+        4, this->state_on(), target);
+  }
+
+  // optional string command = 5;
+  if (has_command()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->command().data(), this->command().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->command(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -688,24 +800,37 @@ int ButtonProto::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.ButtonProto.Style style = 1;
+    // optional .rec.gui.ButtonProto.Behavior behavior = 1;
+    if (has_behavior()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->behavior());
+    }
+
+    // optional .rec.gui.ButtonProto.Style style = 2;
     if (has_style()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->style());
     }
 
-    // optional .rec.gui.ButtonProto.State state = 2;
+    // optional .rec.gui.ButtonProto.State state = 3;
     if (has_state()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->state());
     }
 
-    // optional .rec.gui.ButtonProto.State state_on = 3;
+    // optional .rec.gui.ButtonProto.State state_on = 4;
     if (has_state_on()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->state_on());
+    }
+
+    // optional string command = 5;
+    if (has_command()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->command());
     }
 
   }
@@ -735,6 +860,9 @@ void ButtonProto::MergeFrom(const ::google::protobuf::Message& from) {
 void ButtonProto::MergeFrom(const ButtonProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_behavior()) {
+      set_behavior(from.behavior());
+    }
     if (from.has_style()) {
       set_style(from.style());
     }
@@ -743,6 +871,9 @@ void ButtonProto::MergeFrom(const ButtonProto& from) {
     }
     if (from.has_state_on()) {
       mutable_state_on()->::rec::gui::ButtonProto_State::MergeFrom(from.state_on());
+    }
+    if (from.has_command()) {
+      set_command(from.command());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -767,9 +898,11 @@ bool ButtonProto::IsInitialized() const {
 
 void ButtonProto::Swap(ButtonProto* other) {
   if (other != this) {
+    std::swap(behavior_, other->behavior_);
     std::swap(style_, other->style_);
     std::swap(state_, other->state_);
     std::swap(state_on_, other->state_on_);
+    std::swap(command_, other->command_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

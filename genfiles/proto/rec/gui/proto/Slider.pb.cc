@@ -96,29 +96,28 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Slider.proto\022\007rec.gui\032\034r"
-    "ec/data/proto/Address.proto\"\377\005\n\013SliderPr"
-    "oto\022\017\n\007caption\030\001 \001(\t\022\030\n\014caption_size\030\002 \001"
-    "(\t:\00245\022 \n\024text_entry_box_width\030\004 \001(\t:\00280"
-    "\022!\n\025text_entry_box_height\030\005 \001(\t:\00216\022\016\n\006d"
-    "etent\030\006 \001(\t\022\025\n\rdetent_radius\030\007 \001(\t\022\023\n\013te"
-    "xt_suffix\030\010 \001(\t\022\017\n\007minimum\030\t \001(\t\022\017\n\007maxi"
-    "mum\030\n \001(\t\022\020\n\010interval\030\013 \001(\t\022)\n\005style\030\025 \001"
-    "(\0162\032.rec.gui.SliderProto.Style\022J\n\027text_e"
-    "ntry_box_position\030\026 \001(\0162).rec.gui.Slider"
-    "Proto.TextEntryBoxPosition\"\252\002\n\005Style\022\024\n\020"
-    "LinearHorizontal\020\000\022\022\n\016LinearVertical\020\001\022\r"
-    "\n\tLinearBar\020\002\022\025\n\021LinearBarVertical\020\003\022\n\n\006"
-    "Rotary\020\004\022\030\n\024RotaryHorizontalDrag\020\005\022\026\n\022Ro"
-    "taryVerticalDrag\020\006\022 \n\034RotaryHorizontalVe"
-    "rticalDrag\020\007\022\021\n\rIncDecButtons\020\010\022\026\n\022TwoVa"
-    "lueHorizontal\020\t\022\024\n\020TwoValueVertical\020\n\022\030\n"
-    "\024ThreeValueHorizontal\020\013\022\026\n\022ThreeValueVer"
-    "tical\020\014\"l\n\024TextEntryBoxPosition\022\r\n\tNoTex"
-    "tBox\020\000\022\017\n\013TextBoxLeft\020\001\022\020\n\014TextBoxRight\020"
-    "\002\022\020\n\014TextBoxAbove\020\003\022\020\n\014TextBoxBelow\020\004", 837);
+    "\n\032rec/gui/proto/Slider.proto\022\007rec.gui\"\377\005"
+    "\n\013SliderProto\022\017\n\007caption\030\001 \001(\t\022\030\n\014captio"
+    "n_size\030\002 \001(\t:\00245\022 \n\024text_entry_box_width"
+    "\030\004 \001(\t:\00280\022!\n\025text_entry_box_height\030\005 \001("
+    "\t:\00216\022\016\n\006detent\030\006 \001(\t\022\025\n\rdetent_radius\030\007"
+    " \001(\t\022\023\n\013text_suffix\030\010 \001(\t\022\017\n\007minimum\030\t \001"
+    "(\t\022\017\n\007maximum\030\n \001(\t\022\020\n\010interval\030\013 \001(\t\022)\n"
+    "\005style\030\025 \001(\0162\032.rec.gui.SliderProto.Style"
+    "\022J\n\027text_entry_box_position\030\026 \001(\0162).rec."
+    "gui.SliderProto.TextEntryBoxPosition\"\252\002\n"
+    "\005Style\022\024\n\020LinearHorizontal\020\000\022\022\n\016LinearVe"
+    "rtical\020\001\022\r\n\tLinearBar\020\002\022\025\n\021LinearBarVert"
+    "ical\020\003\022\n\n\006Rotary\020\004\022\030\n\024RotaryHorizontalDr"
+    "ag\020\005\022\026\n\022RotaryVerticalDrag\020\006\022 \n\034RotaryHo"
+    "rizontalVerticalDrag\020\007\022\021\n\rIncDecButtons\020"
+    "\010\022\026\n\022TwoValueHorizontal\020\t\022\024\n\020TwoValueVer"
+    "tical\020\n\022\030\n\024ThreeValueHorizontal\020\013\022\026\n\022Thr"
+    "eeValueVertical\020\014\"l\n\024TextEntryBoxPositio"
+    "n\022\r\n\tNoTextBox\020\000\022\017\n\013TextBoxLeft\020\001\022\020\n\014Tex"
+    "tBoxRight\020\002\022\020\n\014TextBoxAbove\020\003\022\020\n\014TextBox"
+    "Below\020\004", 807);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Slider.proto", &protobuf_RegisterTypes);
   SliderProto::_default_caption_size_ =

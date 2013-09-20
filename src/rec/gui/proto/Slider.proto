@@ -1,7 +1,5 @@
 package rec.gui;
 
-import "rec/data/proto/Address.proto";
-
 message SliderProto {
   optional string caption = 1;
   optional string caption_size = 2 [default = "45"];

@@ -40,6 +40,7 @@ message Command {
   };
 
   optional uint32 id = 1;
+  optional string id_string = 15;  // For serializing ids.
   optional sint32 index = 2;  // For repeating commands.
 
   optional string category = 3;  // English language name of the JUCE category.

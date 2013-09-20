@@ -15,17 +15,17 @@ using namespace rec::util::thread;
 namespace rec {
 namespace program {
 
-SetterListener::SetterListener(const command::Command& command,
+SetterListener::SetterListener(CommandID id,
+                               const command::Command& command,
                                JuceModel* model)
     : AddressListener(command.setter().address()),
       model_(model) {
   Program* p = model->program();
-  CommandID id = command.id();
   if (command.setter().type() == Setter::TOGGLE) {
     p->addCallback(id, methodCallback(this, &SetterListener::toggle));
   } else {
-    for (int i = 0; i < command.index(); ++i)
-      p->addCallback(id + i, methodCallback(this, &SetterListener::select, i));
+    CommandID index = id - command.id();
+    p->addCallback(id, methodCallback(this, &SetterListener::select, index));
   }
 }
 

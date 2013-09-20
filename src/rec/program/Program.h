@@ -9,24 +9,16 @@
 #include "rec/program/Threads.pb.h"
 #include "rec/program/Types.h"
 #include "rec/util/thread/Callback.h"
+#include "rec/util/thread/Looper.h"
 #include "rec/command/CallbackTable.h"
 
 namespace rec {
 namespace program {
 
-typedef int32 (*ThreadFunction)(Thread*);
-
 class Program : public command::CallbackTable{
  public:
   Program() {}
   virtual ~Program() {}
-
-  virtual command::Commands commands() const = 0;
-  virtual command::KeyStrokeCommandMapProto keypresses() const = 0;
-  virtual Menus menus() const = 0;
-  virtual MenuCollection menuCollection() const = 0;
-  virtual ThreadProtos threads() const = 0;
-  virtual gui::Layouts layouts() const = 0;
 
   virtual string menuBarName() const = 0;
 
@@ -48,10 +40,11 @@ class Program : public command::CallbackTable{
   virtual Callback* getCallback(CommandID) const = 0;
   virtual VirtualFile getCurrentFile() const = 0;
   virtual CallbackMap* getCallbackMap() = 0;
-  virtual string commandName(CommandID) const = 0;
+  virtual string idToName(CommandID) const = 0;
+  virtual CommandID nameToId(const string&) const = 0;
   virtual bool isEnabled() const = 0;
   virtual void setEnabled(bool) = 0;
-  virtual ThreadFunction threadFunction(const string&) const = 0;
+  virtual thread::Looper::Function threadFunction(const string&) const = 0;
 };
 
 void registerProgram(Program*);

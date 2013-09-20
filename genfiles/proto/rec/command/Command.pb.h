@@ -438,6 +438,18 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 id() const;
   inline void set_id(::google::protobuf::uint32 value);
 
+  // optional string id_string = 15;
+  inline bool has_id_string() const;
+  inline void clear_id_string();
+  static const int kIdStringFieldNumber = 15;
+  inline const ::std::string& id_string() const;
+  inline void set_id_string(const ::std::string& value);
+  inline void set_id_string(const char* value);
+  inline void set_id_string(const char* value, size_t size);
+  inline ::std::string* mutable_id_string();
+  inline ::std::string* release_id_string();
+  inline void set_allocated_id_string(::std::string* id_string);
+
   // optional sint32 index = 2;
   inline bool has_index() const;
   inline void clear_index();
@@ -588,6 +600,8 @@ class Command : public ::google::protobuf::Message {
  private:
   inline void set_has_id();
   inline void clear_has_id();
+  inline void set_has_id_string();
+  inline void clear_has_id_string();
   inline void set_has_index();
   inline void clear_has_index();
   inline void set_has_category();
@@ -607,6 +621,7 @@ class Command : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* id_string_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::int32 index_;
   ::std::string* category_;
@@ -623,7 +638,7 @@ class Command : public ::google::protobuf::Message {
   bool callout_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(15 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -1043,15 +1058,85 @@ inline void Command::set_id(::google::protobuf::uint32 value) {
   id_ = value;
 }
 
-// optional sint32 index = 2;
-inline bool Command::has_index() const {
+// optional string id_string = 15;
+inline bool Command::has_id_string() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Command::set_has_index() {
+inline void Command::set_has_id_string() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Command::clear_has_index() {
+inline void Command::clear_has_id_string() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void Command::clear_id_string() {
+  if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+    id_string_->clear();
+  }
+  clear_has_id_string();
+}
+inline const ::std::string& Command::id_string() const {
+  return *id_string_;
+}
+inline void Command::set_id_string(const ::std::string& value) {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  id_string_->assign(value);
+}
+inline void Command::set_id_string(const char* value) {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  id_string_->assign(value);
+}
+inline void Command::set_id_string(const char* value, size_t size) {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  id_string_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::mutable_id_string() {
+  set_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    id_string_ = new ::std::string;
+  }
+  return id_string_;
+}
+inline ::std::string* Command::release_id_string() {
+  clear_has_id_string();
+  if (id_string_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = id_string_;
+    id_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Command::set_allocated_id_string(::std::string* id_string) {
+  if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+    delete id_string_;
+  }
+  if (id_string) {
+    set_has_id_string();
+    id_string_ = id_string;
+  } else {
+    clear_has_id_string();
+    id_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional sint32 index = 2;
+inline bool Command::has_index() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Command::set_has_index() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Command::clear_has_index() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Command::clear_index() {
   index_ = 0;
@@ -1067,13 +1152,13 @@ inline void Command::set_index(::google::protobuf::int32 value) {
 
 // optional string category = 3;
 inline bool Command::has_category() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Command::set_has_category() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Command::clear_has_category() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Command::clear_category() {
   if (category_ != &::google::protobuf::internal::kEmptyString) {
@@ -1137,13 +1222,13 @@ inline void Command::set_allocated_category(::std::string* category) {
 
 // optional string submenu_name = 4;
 inline bool Command::has_submenu_name() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void Command::set_has_submenu_name() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void Command::clear_has_submenu_name() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void Command::clear_submenu_name() {
   if (submenu_name_ != &::google::protobuf::internal::kEmptyString) {
@@ -1232,13 +1317,13 @@ Command::mutable_submenu_separator() {
 
 // optional .rec.command.Description desc = 5;
 inline bool Command::has_desc() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void Command::set_has_desc() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void Command::clear_has_desc() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void Command::clear_desc() {
   if (desc_ != NULL) desc_->::rec::command::Description::Clear();
@@ -1314,13 +1399,13 @@ Command::mutable_keypress() {
 
 // optional uint32 flags = 7;
 inline bool Command::has_flags() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void Command::set_has_flags() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void Command::clear_has_flags() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void Command::clear_flags() {
   flags_ = 0u;
@@ -1336,13 +1421,13 @@ inline void Command::set_flags(::google::protobuf::uint32 value) {
 
 // optional .rec.command.Setter setter = 8;
 inline bool Command::has_setter() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void Command::set_has_setter() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void Command::clear_has_setter() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void Command::clear_setter() {
   if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
@@ -1374,13 +1459,13 @@ inline void Command::set_allocated_setter(::rec::command::Setter* setter) {
 
 // optional uint32 size = 9;
 inline bool Command::has_size() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void Command::set_has_size() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void Command::clear_has_size() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void Command::clear_size() {
   size_ = 0u;
@@ -1396,13 +1481,13 @@ inline void Command::set_size(::google::protobuf::uint32 value) {
 
 // optional bool callout = 10;
 inline bool Command::has_callout() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void Command::set_has_callout() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void Command::clear_has_callout() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void Command::clear_callout() {
   callout_ = false;

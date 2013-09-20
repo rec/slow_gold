@@ -20,16 +20,13 @@ class ProgramBase : public Program {
   bool isEnabled() const override;
   void setEnabled(bool) override;
 
-  ThreadProtos threads() const override;
-  gui::Layouts layouts() const override;
-
-  ThreadFunction threadFunction(const string& name) const override {
+  thread::Looper::Function threadFunction(const string& name) const override {
     return threadFunctions_.at(name);
   }
 
  protected:
   CriticalSection lock_;
-  std::unordered_map<string, ThreadFunction> threadFunctions_;
+  std::unordered_map<string, thread::Looper::Function> threadFunctions_;
 
  private:
   bool enabled_;

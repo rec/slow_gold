@@ -108,20 +108,21 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\035r"
-    "ec/gui/proto/Component.proto\032\030rec/gui/pr"
-    "oto/Size.proto\"\206\002\n\006Layout\022\014\n\004name\030\001 \001(\t\022"
-    "0\n\013orientation\030\002 \001(\0162\033.rec.gui.Layout.Or"
-    "ientation\022$\n\026resize_other_dimension\030\003 \001("
-    "\010:\004true\022\017\n\007is_main\030\004 \001(\010\022\017\n\007padding\030\005 \001("
-    "\010\022\033\n\004size\030\006 \001(\0132\r.rec.gui.Size\022*\n\tcompon"
-    "ent\030\t \003(\0132\027.rec.gui.ComponentProto\"+\n\013Or"
-    "ientation\022\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\""
-    "*\n\007Layouts\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Lay"
-    "out", 403);
+    "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\034r"
+    "ec/data/proto/Address.proto\032\035rec/gui/pro"
+    "to/Component.proto\032\030rec/gui/proto/Size.p"
+    "roto\"\206\002\n\006Layout\022\014\n\004name\030\001 \001(\t\0220\n\013orienta"
+    "tion\030\002 \001(\0162\033.rec.gui.Layout.Orientation\022"
+    "$\n\026resize_other_dimension\030\003 \001(\010:\004true\022\017\n"
+    "\007is_main\030\004 \001(\010\022\017\n\007padding\030\005 \001(\010\022\033\n\004size\030"
+    "\006 \001(\0132\r.rec.gui.Size\022*\n\tcomponent\030\t \003(\0132"
+    "\027.rec.gui.ComponentProto\"+\n\013Orientation\022"
+    "\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\"*\n\007Layouts"
+    "\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Layout", 433);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
   Layout::default_instance_ = new Layout();

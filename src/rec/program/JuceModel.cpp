@@ -48,7 +48,7 @@ PopupMenu JuceModel::getMenuForIndex(int menuIndex, const String&) {
 
 void JuceModel::invokeAndCheck(CommandID id) {
   if (not invokeDirectly(id, false))
-    LOG(DFATAL) << "Failed to invoke " << program_->commandName(id);
+    LOG(DFATAL) << "Failed to invoke " << program_->idToName(id);
 }
 
 void JuceModel::operator()(Enable enable) {

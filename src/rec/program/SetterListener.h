@@ -13,7 +13,7 @@ class JuceModel;
 
 class SetterListener : public data::AddressListener {
  public:
-  SetterListener(const command::Command&, JuceModel*);
+  SetterListener(CommandID, const command::Command&, JuceModel*);
 
   void toggle();
   void select(int index);

@@ -2,6 +2,7 @@ package rec.command;
 
 message CommandMapEntry {
   optional uint32 id = 1;
+  optional string id_string = 4;
   optional int32 index = 2;
   repeated bytes key = 3;  // TODO: this needs to be the same as the field in Command.
 };

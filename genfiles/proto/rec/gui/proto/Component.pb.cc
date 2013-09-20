@@ -35,7 +35,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
       "rec/gui/proto/Component.proto");
   GOOGLE_CHECK(file != NULL);
   ComponentProto_descriptor_ = file->message_type(0);
-  static const int ComponentProto_offsets_[13] = {
+  static const int ComponentProto_offsets_[14] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, tooltip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, size_),
@@ -48,6 +48,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, label_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, full_resizer_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, slider_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, text_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, toggle_button_),
   };
   ComponentProto_reflection_ =
@@ -98,6 +99,7 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fText_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
@@ -107,20 +109,21 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "ox.proto\032\030rec/gui/proto/Font.proto\032\031rec/"
     "gui/proto/Label.proto\032\033rec/gui/proto/Res"
     "izer.proto\032\030rec/gui/proto/Size.proto\032\032re"
-    "c/gui/proto/Slider.proto\032 rec/gui/proto/"
-    "ToggleButton.proto\032\023rec/gui/Color.proto\""
-    "\302\003\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
-    "tip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\'"
-    "\n\007address\030\004 \001(\0132\026.rec.data.AddressProto\022"
-    "\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 \n\004font\030\r"
-    " \001(\0132\022.rec.gui.FontProto\022\017\n\007resizer\030\014 \001("
-    "\t\022$\n\006button\030\006 \001(\0132\024.rec.gui.ButtonProto\022"
-    ")\n\tcombo_box\030\007 \001(\0132\026.rec.gui.ComboBoxPro"
-    "to\022\"\n\005label\030\010 \001(\0132\023.rec.gui.LabelProto\022+"
-    "\n\014full_resizer\030\t \001(\0132\025.rec.gui.ResizerPr"
-    "oto\022$\n\006slider\030\n \001(\0132\024.rec.gui.SliderProt"
-    "o\0221\n\rtoggle_button\030\013 \001(\0132\032.rec.gui.Toggl"
-    "eButtonProto", 772);
+    "c/gui/proto/Slider.proto\032\030rec/gui/proto/"
+    "Text.proto\032 rec/gui/proto/ToggleButton.p"
+    "roto\032\023rec/gui/Color.proto\"\344\003\n\016ComponentP"
+    "roto\022\014\n\004name\030\001 \001(\t\022\017\n\007tooltip\030\002 \001(\t\022\033\n\004s"
+    "ize\030\003 \001(\0132\r.rec.gui.Size\022\'\n\007address\030\004 \001("
+    "\0132\026.rec.data.AddressProto\022\035\n\005color\030\005 \003(\013"
+    "2\016.rec.gui.Color\022 \n\004font\030\006 \001(\0132\022.rec.gui"
+    ".FontProto\022\017\n\007resizer\030\007 \001(\t\022$\n\006button\030\010 "
+    "\001(\0132\024.rec.gui.ButtonProto\022)\n\tcombo_box\030\t"
+    " \001(\0132\026.rec.gui.ComboBoxProto\022\"\n\005label\030\n "
+    "\001(\0132\023.rec.gui.LabelProto\022+\n\014full_resizer"
+    "\030\013 \001(\0132\025.rec.gui.ResizerProto\022$\n\006slider\030"
+    "\014 \001(\0132\024.rec.gui.SliderProto\022 \n\004text\030\r \001("
+    "\0132\022.rec.gui.TextProto\0221\n\rtoggle_button\030\016"
+    " \001(\0132\032.rec.gui.ToggleButtonProto", 832);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::default_instance_ = new ComponentProto();
@@ -150,6 +153,7 @@ const int ComponentProto::kComboBoxFieldNumber;
 const int ComponentProto::kLabelFieldNumber;
 const int ComponentProto::kFullResizerFieldNumber;
 const int ComponentProto::kSliderFieldNumber;
+const int ComponentProto::kTextFieldNumber;
 const int ComponentProto::kToggleButtonFieldNumber;
 #endif  // !_MSC_VER
 
@@ -167,6 +171,7 @@ void ComponentProto::InitAsDefaultInstance() {
   label_ = const_cast< ::rec::gui::LabelProto*>(&::rec::gui::LabelProto::default_instance());
   full_resizer_ = const_cast< ::rec::gui::ResizerProto*>(&::rec::gui::ResizerProto::default_instance());
   slider_ = const_cast< ::rec::gui::SliderProto*>(&::rec::gui::SliderProto::default_instance());
+  text_ = const_cast< ::rec::gui::TextProto*>(&::rec::gui::TextProto::default_instance());
   toggle_button_ = const_cast< ::rec::gui::ToggleButtonProto*>(&::rec::gui::ToggleButtonProto::default_instance());
 }
 
@@ -189,6 +194,7 @@ void ComponentProto::SharedCtor() {
   label_ = NULL;
   full_resizer_ = NULL;
   slider_ = NULL;
+  text_ = NULL;
   toggle_button_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -216,6 +222,7 @@ void ComponentProto::SharedDtor() {
     delete label_;
     delete full_resizer_;
     delete slider_;
+    delete text_;
     delete toggle_button_;
   }
 }
@@ -283,6 +290,9 @@ void ComponentProto::Clear() {
     }
     if (has_slider()) {
       if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
+    }
+    if (has_text()) {
+      if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
     }
     if (has_toggle_button()) {
       if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();
@@ -371,96 +381,26 @@ bool ComponentProto::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(42)) goto parse_color;
-        if (input->ExpectTag(50)) goto parse_button;
+        if (input->ExpectTag(50)) goto parse_font;
         break;
       }
 
-      // optional .rec.gui.ButtonProto button = 6;
+      // optional .rec.gui.FontProto font = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_button:
+         parse_font:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_button()));
+               input, mutable_font()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(58)) goto parse_combo_box;
+        if (input->ExpectTag(58)) goto parse_resizer;
         break;
       }
 
-      // optional .rec.gui.ComboBoxProto combo_box = 7;
+      // optional string resizer = 7;
       case 7: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_combo_box:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_combo_box()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(66)) goto parse_label;
-        break;
-      }
-
-      // optional .rec.gui.LabelProto label = 8;
-      case 8: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_label:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_label()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(74)) goto parse_full_resizer;
-        break;
-      }
-
-      // optional .rec.gui.ResizerProto full_resizer = 9;
-      case 9: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_full_resizer:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_full_resizer()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(82)) goto parse_slider;
-        break;
-      }
-
-      // optional .rec.gui.SliderProto slider = 10;
-      case 10: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_slider:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_slider()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(90)) goto parse_toggle_button;
-        break;
-      }
-
-      // optional .rec.gui.ToggleButtonProto toggle_button = 11;
-      case 11: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_toggle_button:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_toggle_button()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(98)) goto parse_resizer;
-        break;
-      }
-
-      // optional string resizer = 12;
-      case 12: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_resizer:
@@ -472,17 +412,101 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(106)) goto parse_font;
+        if (input->ExpectTag(66)) goto parse_button;
         break;
       }
 
-      // optional .rec.gui.FontProto font = 13;
+      // optional .rec.gui.ButtonProto button = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_button:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_button()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_combo_box;
+        break;
+      }
+
+      // optional .rec.gui.ComboBoxProto combo_box = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_combo_box:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_combo_box()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(82)) goto parse_label;
+        break;
+      }
+
+      // optional .rec.gui.LabelProto label = 10;
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_label:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_label()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(90)) goto parse_full_resizer;
+        break;
+      }
+
+      // optional .rec.gui.ResizerProto full_resizer = 11;
+      case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_full_resizer:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_full_resizer()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(98)) goto parse_slider;
+        break;
+      }
+
+      // optional .rec.gui.SliderProto slider = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_slider:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_slider()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(106)) goto parse_text;
+        break;
+      }
+
+      // optional .rec.gui.TextProto text = 13;
       case 13: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_font:
+         parse_text:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_font()));
+               input, mutable_text()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(114)) goto parse_toggle_button;
+        break;
+      }
+
+      // optional .rec.gui.ToggleButtonProto toggle_button = 14;
+      case 14: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_toggle_button:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_toggle_button()));
         } else {
           goto handle_uninterpreted;
         }
@@ -544,55 +568,61 @@ void ComponentProto::SerializeWithCachedSizes(
       5, this->color(i), output);
   }
 
-  // optional .rec.gui.ButtonProto button = 6;
-  if (has_button()) {
+  // optional .rec.gui.FontProto font = 6;
+  if (has_font()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->button(), output);
+      6, this->font(), output);
   }
 
-  // optional .rec.gui.ComboBoxProto combo_box = 7;
-  if (has_combo_box()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->combo_box(), output);
-  }
-
-  // optional .rec.gui.LabelProto label = 8;
-  if (has_label()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, this->label(), output);
-  }
-
-  // optional .rec.gui.ResizerProto full_resizer = 9;
-  if (has_full_resizer()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->full_resizer(), output);
-  }
-
-  // optional .rec.gui.SliderProto slider = 10;
-  if (has_slider()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      10, this->slider(), output);
-  }
-
-  // optional .rec.gui.ToggleButtonProto toggle_button = 11;
-  if (has_toggle_button()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      11, this->toggle_button(), output);
-  }
-
-  // optional string resizer = 12;
+  // optional string resizer = 7;
   if (has_resizer()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->resizer().data(), this->resizer().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      12, this->resizer(), output);
+      7, this->resizer(), output);
   }
 
-  // optional .rec.gui.FontProto font = 13;
-  if (has_font()) {
+  // optional .rec.gui.ButtonProto button = 8;
+  if (has_button()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      13, this->font(), output);
+      8, this->button(), output);
+  }
+
+  // optional .rec.gui.ComboBoxProto combo_box = 9;
+  if (has_combo_box()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->combo_box(), output);
+  }
+
+  // optional .rec.gui.LabelProto label = 10;
+  if (has_label()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, this->label(), output);
+  }
+
+  // optional .rec.gui.ResizerProto full_resizer = 11;
+  if (has_full_resizer()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      11, this->full_resizer(), output);
+  }
+
+  // optional .rec.gui.SliderProto slider = 12;
+  if (has_slider()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      12, this->slider(), output);
+  }
+
+  // optional .rec.gui.TextProto text = 13;
+  if (has_text()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      13, this->text(), output);
+  }
+
+  // optional .rec.gui.ToggleButtonProto toggle_button = 14;
+  if (has_toggle_button()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      14, this->toggle_button(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -644,63 +674,70 @@ void ComponentProto::SerializeWithCachedSizes(
         5, this->color(i), target);
   }
 
-  // optional .rec.gui.ButtonProto button = 6;
-  if (has_button()) {
+  // optional .rec.gui.FontProto font = 6;
+  if (has_font()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->button(), target);
+        6, this->font(), target);
   }
 
-  // optional .rec.gui.ComboBoxProto combo_box = 7;
-  if (has_combo_box()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        7, this->combo_box(), target);
-  }
-
-  // optional .rec.gui.LabelProto label = 8;
-  if (has_label()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        8, this->label(), target);
-  }
-
-  // optional .rec.gui.ResizerProto full_resizer = 9;
-  if (has_full_resizer()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        9, this->full_resizer(), target);
-  }
-
-  // optional .rec.gui.SliderProto slider = 10;
-  if (has_slider()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        10, this->slider(), target);
-  }
-
-  // optional .rec.gui.ToggleButtonProto toggle_button = 11;
-  if (has_toggle_button()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        11, this->toggle_button(), target);
-  }
-
-  // optional string resizer = 12;
+  // optional string resizer = 7;
   if (has_resizer()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->resizer().data(), this->resizer().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        12, this->resizer(), target);
+        7, this->resizer(), target);
   }
 
-  // optional .rec.gui.FontProto font = 13;
-  if (has_font()) {
+  // optional .rec.gui.ButtonProto button = 8;
+  if (has_button()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        13, this->font(), target);
+        8, this->button(), target);
+  }
+
+  // optional .rec.gui.ComboBoxProto combo_box = 9;
+  if (has_combo_box()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->combo_box(), target);
+  }
+
+  // optional .rec.gui.LabelProto label = 10;
+  if (has_label()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, this->label(), target);
+  }
+
+  // optional .rec.gui.ResizerProto full_resizer = 11;
+  if (has_full_resizer()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        11, this->full_resizer(), target);
+  }
+
+  // optional .rec.gui.SliderProto slider = 12;
+  if (has_slider()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        12, this->slider(), target);
+  }
+
+  // optional .rec.gui.TextProto text = 13;
+  if (has_text()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        13, this->text(), target);
+  }
+
+  // optional .rec.gui.ToggleButtonProto toggle_button = 14;
+  if (has_toggle_button()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        14, this->toggle_button(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -742,21 +779,21 @@ int ComponentProto::ByteSize() const {
           this->address());
     }
 
-    // optional .rec.gui.FontProto font = 13;
+    // optional .rec.gui.FontProto font = 6;
     if (has_font()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->font());
     }
 
-    // optional string resizer = 12;
+    // optional string resizer = 7;
     if (has_resizer()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->resizer());
     }
 
-    // optional .rec.gui.ButtonProto button = 6;
+    // optional .rec.gui.ButtonProto button = 8;
     if (has_button()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -765,35 +802,42 @@ int ComponentProto::ByteSize() const {
 
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional .rec.gui.ComboBoxProto combo_box = 7;
+    // optional .rec.gui.ComboBoxProto combo_box = 9;
     if (has_combo_box()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->combo_box());
     }
 
-    // optional .rec.gui.LabelProto label = 8;
+    // optional .rec.gui.LabelProto label = 10;
     if (has_label()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->label());
     }
 
-    // optional .rec.gui.ResizerProto full_resizer = 9;
+    // optional .rec.gui.ResizerProto full_resizer = 11;
     if (has_full_resizer()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->full_resizer());
     }
 
-    // optional .rec.gui.SliderProto slider = 10;
+    // optional .rec.gui.SliderProto slider = 12;
     if (has_slider()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->slider());
     }
 
-    // optional .rec.gui.ToggleButtonProto toggle_button = 11;
+    // optional .rec.gui.TextProto text = 13;
+    if (has_text()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->text());
+    }
+
+    // optional .rec.gui.ToggleButtonProto toggle_button = 14;
     if (has_toggle_button()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -871,6 +915,9 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
     if (from.has_slider()) {
       mutable_slider()->::rec::gui::SliderProto::MergeFrom(from.slider());
     }
+    if (from.has_text()) {
+      mutable_text()->::rec::gui::TextProto::MergeFrom(from.text());
+    }
     if (from.has_toggle_button()) {
       mutable_toggle_button()->::rec::gui::ToggleButtonProto::MergeFrom(from.toggle_button());
     }
@@ -909,6 +956,7 @@ void ComponentProto::Swap(ComponentProto* other) {
     std::swap(label_, other->label_);
     std::swap(full_resizer_, other->full_resizer_);
     std::swap(slider_, other->slider_);
+    std::swap(text_, other->text_);
     std::swap(toggle_button_, other->toggle_button_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

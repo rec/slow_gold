@@ -13,10 +13,6 @@ class SlowProgram : public program::ProgramBase {
  public:
   explicit SlowProgram(Instance*);
 
-  command::Commands commands() const override;
-  command::KeyStrokeCommandMapProto keypresses() const override;
-  program::Menus menus() const override;
-  program::MenuCollection menuCollection() const override;
   string menuBarName() const override;
 
   bool hasProperty(const string& name) const override;
@@ -32,15 +28,14 @@ class SlowProgram : public program::ProgramBase {
   void beforeCommand(CommandID id) override;
 
   void registerAllCallbacks() override;
-  string commandName(CommandID) const override;
+  string idToName(CommandID) const override;
+  CommandID nameToId(const string&) const override;
 
  private:
   Instance* const instance_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowProgram);
 };
-
-string commandName(CommandID);
 
 }  // namespace slow
 }  // namespace rec

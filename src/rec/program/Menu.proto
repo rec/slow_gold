@@ -4,6 +4,7 @@ import "rec/command/Command.proto";
 
 message MenuEntry {
   repeated uint32 id = 1;
+  repeated string id_string = 4;
   optional string submenu = 2;
   optional string callout_function = 3;
 };

@@ -7,16 +7,22 @@ layout {
   component {
     name: "CreateNow"
     tooltip: "Add Loop Point Button: Add a loop point at the current time."
-    button {}
+    button {
+      command: "ADD_LOOP_POINT"
+    }
   }
   component {
     name: "ZoomOutFull"
     tooltip: "Zoom Out Full Button: Zoom the waveform all the way out."
-    button {}
+    button {
+      command: "ZOOM_OUT_FULL"
+    }
   }
   component {
     name: "ZoomToSelection"
     tooltip: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
-    button {}
+    button {
+      command: "ZOOM_TO_SELECTION"
+    }
   }
 }

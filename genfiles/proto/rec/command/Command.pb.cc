@@ -81,8 +81,9 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       sizeof(Setter));
   Setter_Type_descriptor_ = Setter_descriptor_->enum_type(0);
   Command_descriptor_ = file->message_type(2);
-  static const int Command_offsets_[14] = {
+  static const int Command_offsets_[15] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, id_string_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, submenu_name_),
@@ -173,20 +174,20 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\204\001\n\006Setter\022.\n\004type"
     "\030\001 \001(\0162\030.rec.command.Setter.Type:\006TOGGLE"
     "\022\'\n\007address\030\002 \001(\0132\026.rec.data.AddressProt"
-    "o\"!\n\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001\"\301\003\n"
-    "\007Command\022\n\n\002id\030\001 \001(\r\022\r\n\005index\030\002 \001(\021\022\020\n\010c"
-    "ategory\030\003 \001(\t\022\024\n\014submenu_name\030\004 \001(\t\022\031\n\021s"
-    "ubmenu_separator\030\016 \003(\r\022&\n\004desc\030\005 \001(\0132\030.r"
-    "ec.command.Description\022\020\n\010keypress\030\006 \003(\t"
-    "\022\r\n\005flags\030\007 \001(\r\022#\n\006setter\030\010 \001(\0132\023.rec.co"
-    "mmand.Setter\022\014\n\004size\030\t \001(\r\022\017\n\007callout\030\n "
-    "\001(\010\022\016\n\006hidden\030\013 \003(\t\022\020\n\010disabled\030\014 \003(\t\022\016\n"
-    "\006ticked\030\r \003(\t\"\230\001\n\002Id\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201"
-    " \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PAST"
-    "E\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 "
-    "\022\017\n\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\016\n\tBANK"
-    "_SIZE\020\220N\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024."
-    "rec.command.Command", 779);
+    "o\"!\n\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001\"\324\003\n"
+    "\007Command\022\n\n\002id\030\001 \001(\r\022\021\n\tid_string\030\017 \001(\t\022"
+    "\r\n\005index\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022\024\n\014subm"
+    "enu_name\030\004 \001(\t\022\031\n\021submenu_separator\030\016 \003("
+    "\r\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descriptio"
+    "n\022\020\n\010keypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n\006se"
+    "tter\030\010 \001(\0132\023.rec.command.Setter\022\014\n\004size\030"
+    "\t \001(\r\022\017\n\007callout\030\n \001(\010\022\016\n\006hidden\030\013 \003(\t\022\020"
+    "\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\230\001\n\002Id\022"
+    "\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 "
+    "\022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 "
+    "\022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010"
+    "JUCE_END\020\210 \022\016\n\tBANK_SIZE\020\220N\"1\n\010Commands\022"
+    "%\n\007command\030\001 \003(\0132\024.rec.command.Command", 798);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -908,6 +909,7 @@ const int Command::Id_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int Command::kIdFieldNumber;
+const int Command::kIdStringFieldNumber;
 const int Command::kIndexFieldNumber;
 const int Command::kCategoryFieldNumber;
 const int Command::kSubmenuNameFieldNumber;
@@ -942,6 +944,7 @@ Command::Command(const Command& from)
 void Command::SharedCtor() {
   _cached_size_ = 0;
   id_ = 0u;
+  id_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   index_ = 0;
   category_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   submenu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -958,6 +961,9 @@ Command::~Command() {
 }
 
 void Command::SharedDtor() {
+  if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+    delete id_string_;
+  }
   if (category_ != &::google::protobuf::internal::kEmptyString) {
     delete category_;
   }
@@ -994,6 +1000,11 @@ Command* Command::New() const {
 void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     id_ = 0u;
+    if (has_id_string()) {
+      if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+        id_string_->clear();
+      }
+    }
     index_ = 0;
     if (has_category()) {
       if (category_ != &::google::protobuf::internal::kEmptyString) {
@@ -1008,9 +1019,9 @@ void Command::Clear() {
     if (has_desc()) {
       if (desc_ != NULL) desc_->::rec::command::Description::Clear();
     }
-    flags_ = 0u;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    flags_ = 0u;
     if (has_setter()) {
       if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
     }
@@ -1267,6 +1278,23 @@ bool Command::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(112)) goto parse_submenu_separator;
+        if (input->ExpectTag(122)) goto parse_id_string;
+        break;
+      }
+
+      // optional string id_string = 15;
+      case 15: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_id_string:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id_string()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->id_string().data(), this->id_string().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1386,6 +1414,15 @@ void Command::SerializeWithCachedSizes(
       14, this->submenu_separator(i), output);
   }
 
+  // optional string id_string = 15;
+  if (has_id_string()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->id_string().data(), this->id_string().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      15, this->id_string(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1495,6 +1532,16 @@ void Command::SerializeWithCachedSizes(
       WriteUInt32ToArray(14, this->submenu_separator(i), target);
   }
 
+  // optional string id_string = 15;
+  if (has_id_string()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->id_string().data(), this->id_string().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        15, this->id_string(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1511,6 +1558,13 @@ int Command::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->id());
+    }
+
+    // optional string id_string = 15;
+    if (has_id_string()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->id_string());
     }
 
     // optional sint32 index = 2;
@@ -1541,6 +1595,8 @@ int Command::ByteSize() const {
           this->desc());
     }
 
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional uint32 flags = 7;
     if (has_flags()) {
       total_size += 1 +
@@ -1548,8 +1604,6 @@ int Command::ByteSize() const {
           this->flags());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .rec.command.Setter setter = 8;
     if (has_setter()) {
       total_size += 1 +
@@ -1642,6 +1696,9 @@ void Command::MergeFrom(const Command& from) {
     if (from.has_id()) {
       set_id(from.id());
     }
+    if (from.has_id_string()) {
+      set_id_string(from.id_string());
+    }
     if (from.has_index()) {
       set_index(from.index());
     }
@@ -1654,11 +1711,11 @@ void Command::MergeFrom(const Command& from) {
     if (from.has_desc()) {
       mutable_desc()->::rec::command::Description::MergeFrom(from.desc());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_flags()) {
       set_flags(from.flags());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_setter()) {
       mutable_setter()->::rec::command::Setter::MergeFrom(from.setter());
     }
@@ -1692,6 +1749,7 @@ bool Command::IsInitialized() const {
 void Command::Swap(Command* other) {
   if (other != this) {
     std::swap(id_, other->id_);
+    std::swap(id_string_, other->id_string_);
     std::swap(index_, other->index_);
     std::swap(category_, other->category_);
     std::swap(submenu_name_, other->submenu_name_);

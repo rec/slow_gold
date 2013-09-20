@@ -62,10 +62,12 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       threadMap_(makeThreadMap(*p)),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
-  auto commands = program_->commands().command();
-  for (auto& cmd: commands) {
-    if (cmd.has_setter())
-      dataListeners_.push_back(make_unique<SetterListener>(cmd, juceModel));
+  for (auto& i: commandMap_) {
+    Command& cmd = i.second;
+    if (cmd.has_setter()) {
+      dataListeners_.push_back(make_unique<SetterListener>(
+          i.first, cmd, juceModel));
+    }
   }
   program_->registerAllCallbacks();
 
@@ -119,7 +121,7 @@ void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {
   try {
     command = &commandMap_.at(id);
   } catch (const std::out_of_range&) {
-    LOG(DFATAL) << "No command for id " << program_->commandName(id);
+    LOG(DFATAL) << "No command for id " << program_->idToName(id);
     return;
   }
   if (not command->index()) {

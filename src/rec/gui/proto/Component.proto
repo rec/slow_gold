@@ -8,6 +8,7 @@ import "rec/gui/proto/Label.proto";
 import "rec/gui/proto/Resizer.proto";
 import "rec/gui/proto/Size.proto";
 import "rec/gui/proto/Slider.proto";
+import "rec/gui/proto/Text.proto";
 import "rec/gui/proto/ToggleButton.proto";
 import "rec/gui/Color.proto";
 
@@ -19,16 +20,17 @@ message ComponentProto {
 
   repeated Color color = 5;
 
-  optional FontProto font = 13;
+  optional FontProto font = 6;
 
   // Shorthand for a resizer and address.
-  optional string resizer = 12;
+  optional string resizer = 7;
 
-  optional ButtonProto button = 6;
-  optional ComboBoxProto combo_box = 7;
-  optional LabelProto label = 8;
-  optional ResizerProto full_resizer = 9;
-  optional SliderProto slider = 10;
-  optional ToggleButtonProto toggle_button = 11;
+  optional ButtonProto button = 8;
+  optional ComboBoxProto combo_box = 9;
+  optional LabelProto label = 10;
+  optional ResizerProto full_resizer = 11;
+  optional SliderProto slider = 12;
+  optional TextProto text = 13;
+  optional ToggleButtonProto toggle_button = 14;
 };
 

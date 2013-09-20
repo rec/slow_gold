@@ -25,11 +25,15 @@ TARGETS := $(TARGETS_H) $(TARGETS_CC)
 all: debug # release
 	echo "*** Make complete. ***"
 
+binary:
+	/development/rec/scripts/makeJucerBinary.sh
+
+binary_proto: proto binary
+
 proto: $(TARGETS_H)
-	echo "*** Protocol buffers made. ***"
 
 clean_proto:
-	find $(GENFILES) \( -name \*.h -or -name \*.cc \)  | xargs rm -f
+	find $(GENFILES) \( -name \*.h -or -name \*.cc -or -name \*.py \)  | xargs rm -f
 
 release: proto
 	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Release

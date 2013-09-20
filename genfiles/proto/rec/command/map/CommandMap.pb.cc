@@ -44,8 +44,9 @@ void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
       "rec/command/map/CommandMap.proto");
   GOOGLE_CHECK(file != NULL);
   CommandMapEntry_descriptor_ = file->message_type(0);
-  static const int CommandMapEntry_offsets_[3] = {
+  static const int CommandMapEntry_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, id_string_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, key_),
   };
@@ -148,13 +149,14 @@ void protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/command/map/CommandMap.proto\022\013rec."
-    "command\"9\n\017CommandMapEntry\022\n\n\002id\030\001 \001(\r\022\r"
-    "\n\005index\030\002 \001(\005\022\013\n\003key\030\003 \003(\014\">\n\017CommandMap"
-    "Proto\022+\n\005entry\030\001 \003(\0132\034.rec.command.Comma"
-    "ndMapEntry\"E\n\030KeyStrokeCommandMapProto\022)"
-    "\n\003map\030\001 \001(\0132\034.rec.command.CommandMapProt"
-    "o\"@\n\023MidiCommandMapProto\022)\n\003map\030\001 \001(\0132\034."
-    "rec.command.CommandMapProto", 307);
+    "command\"L\n\017CommandMapEntry\022\n\n\002id\030\001 \001(\r\022\021"
+    "\n\tid_string\030\004 \001(\t\022\r\n\005index\030\002 \001(\005\022\013\n\003key\030"
+    "\003 \003(\014\">\n\017CommandMapProto\022+\n\005entry\030\001 \003(\0132"
+    "\034.rec.command.CommandMapEntry\"E\n\030KeyStro"
+    "keCommandMapProto\022)\n\003map\030\001 \001(\0132\034.rec.com"
+    "mand.CommandMapProto\"@\n\023MidiCommandMapPr"
+    "oto\022)\n\003map\030\001 \001(\0132\034.rec.command.CommandMa"
+    "pProto", 326);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/map/CommandMap.proto", &protobuf_RegisterTypes);
   CommandMapEntry::default_instance_ = new CommandMapEntry();
@@ -179,6 +181,7 @@ struct StaticDescriptorInitializer_rec_2fcommand_2fmap_2fCommandMap_2eproto {
 
 #ifndef _MSC_VER
 const int CommandMapEntry::kIdFieldNumber;
+const int CommandMapEntry::kIdStringFieldNumber;
 const int CommandMapEntry::kIndexFieldNumber;
 const int CommandMapEntry::kKeyFieldNumber;
 #endif  // !_MSC_VER
@@ -200,6 +203,7 @@ CommandMapEntry::CommandMapEntry(const CommandMapEntry& from)
 void CommandMapEntry::SharedCtor() {
   _cached_size_ = 0;
   id_ = 0u;
+  id_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   index_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -209,6 +213,9 @@ CommandMapEntry::~CommandMapEntry() {
 }
 
 void CommandMapEntry::SharedDtor() {
+  if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+    delete id_string_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -237,6 +244,11 @@ CommandMapEntry* CommandMapEntry::New() const {
 void CommandMapEntry::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     id_ = 0u;
+    if (has_id_string()) {
+      if (id_string_ != &::google::protobuf::internal::kEmptyString) {
+        id_string_->clear();
+      }
+    }
     index_ = 0;
   }
   key_.Clear();
@@ -292,6 +304,23 @@ bool CommandMapEntry::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(26)) goto parse_key;
+        if (input->ExpectTag(34)) goto parse_id_string;
+        break;
+      }
+
+      // optional string id_string = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_id_string:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id_string()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->id_string().data(), this->id_string().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -330,6 +359,15 @@ void CommandMapEntry::SerializeWithCachedSizes(
       3, this->key(i), output);
   }
 
+  // optional string id_string = 4;
+  if (has_id_string()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->id_string().data(), this->id_string().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->id_string(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -354,6 +392,16 @@ void CommandMapEntry::SerializeWithCachedSizes(
       WriteBytesToArray(3, this->key(i), target);
   }
 
+  // optional string id_string = 4;
+  if (has_id_string()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->id_string().data(), this->id_string().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->id_string(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -370,6 +418,13 @@ int CommandMapEntry::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->id());
+    }
+
+    // optional string id_string = 4;
+    if (has_id_string()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->id_string());
     }
 
     // optional int32 index = 2;
@@ -417,6 +472,9 @@ void CommandMapEntry::MergeFrom(const CommandMapEntry& from) {
     if (from.has_id()) {
       set_id(from.id());
     }
+    if (from.has_id_string()) {
+      set_id_string(from.id_string());
+    }
     if (from.has_index()) {
       set_index(from.index());
     }
@@ -444,6 +502,7 @@ bool CommandMapEntry::IsInitialized() const {
 void CommandMapEntry::Swap(CommandMapEntry* other) {
   if (other != this) {
     std::swap(id_, other->id_);
+    std::swap(id_string_, other->id_string_);
     std::swap(index_, other->index_);
     key_.Swap(&other->key_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

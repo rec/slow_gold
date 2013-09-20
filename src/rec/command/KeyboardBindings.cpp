@@ -3,9 +3,8 @@
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Editor.h"
 #include "rec/slow/commands/Command.pb.h"
-#include "rec/command/CommandData.h"
 #include "rec/data/DataOps.h"
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 
 namespace rec {
 namespace command {
@@ -31,10 +30,8 @@ CommandMapProto getKeyboardBindings() {
   data::Data* d = data::getData<KeyStrokeCommandMapProto>(data::global());
   if (d->fileReadSuccess())
     return getProto<KeyStrokeCommandMapProto>(d).map();
-
-  static const KeyStrokeCommandMapProto mp =
-    command::convertKeyBindings<slow::CommandMapProto>();
-  return mp.map();
+  else
+    return BINARY_PROTO_MERGED(KeyStrokeMap, CommandMapProto);
 }
 
 void loadKeyboardBindings(ApplicationCommandManager* commandManager) {

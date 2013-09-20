@@ -14,7 +14,7 @@ void ProgramBase::addCallback(CommandID command, unique_ptr<Callback> callback) 
   if (loc == callbackMap_.end())
     callbackMap_.insert(loc, std::make_pair(command, std::move(callback)));
   else
-    LOG(DFATAL) << "Duplicate command CommandID " << commandName(command);
+    LOG(DFATAL) << "Duplicate command CommandID " << idToName(command);
 }
 
 Callback* ProgramBase::getCallback(CommandID command) const {
@@ -22,7 +22,7 @@ Callback* ProgramBase::getCallback(CommandID command) const {
   auto loc = callbackMap_.find(command);
   if (loc != callbackMap_.end())
     callback = loc->second.get();
-  LOG_IF(ERROR, not callback) << "No callback for " << commandName(command);
+  LOG_IF(ERROR, not callback) << "No callback for " << idToName(command);
   return callback;
 }
 
@@ -64,14 +64,6 @@ bool ProgramBase::isEnabled() const {
 void ProgramBase::setEnabled(bool enabled) {
   Lock l(lock_);
   enabled_ = enabled;
-}
-
-ThreadProtos ProgramBase::threads() const {
-  return BINARY_PROTO(Threads, ThreadProtos);
-}
-
-gui::Layouts ProgramBase::layouts() const {
-  return BINARY_PROTO_MERGED(Layout, gui::Layouts);
 }
 
 }  // namespace program

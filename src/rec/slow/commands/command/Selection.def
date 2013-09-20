@@ -1,0 +1,197 @@
+command {
+  id_string: "DESELECT_ALL"
+  category: "Selection"
+  desc {
+    menu: "Select None"
+    full: "Select none of the file"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "INVERT_LOOP_SELECTION"
+  category: "Selection"
+  desc {
+    menu: "Invert Selection"
+    full: "Unselect everything selected and vice-versa."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "SELECT"
+  index: 15
+  submenu_name: "Select"
+  submenu_separator: 5
+  category: "Selection"
+  desc {
+    menu: "Select First Segment"
+    menu: "Select Previous Segment"
+    menu: "Select Current Segment"
+    menu: "Select Next Segment"
+    menu: "Select Last Segment"
+    menu: "Select Segment 1"
+    menu: "Select Segment 2"
+    menu: "Select Segment 3"
+    menu: "Select Segment 4"
+    menu: "Select Segment 5"
+    menu: "Select Segment 6"
+    menu: "Select Segment 7"
+    menu: "Select Segment 8"
+    menu: "Select Segment 9"
+    menu: "Select Segment 10"
+    full: "Select First Segment"
+    full: "Select Previous Segment"
+    full: "Select Current Segment"
+    full: "Select Next Segment"
+    full: "Select Last Segment"
+    full: "Select Segment 1"
+    full: "Select Segment 2"
+    full: "Select Segment 3"
+    full: "Select Segment 4"
+    full: "Select Segment 5"
+    full: "Select Segment 6"
+    full: "Select Segment 7"
+    full: "Select Segment 8"
+    full: "Select Segment 9"
+    full: "Select Segment 10"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "SELECT_ALL"
+  category: "Transport"
+  desc {
+    menu: "Select All"
+    full: "Select all of the file"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "SELECT_ONLY"
+  index: 15
+  submenu_name: "Select Only"
+  submenu_separator: 5
+  category: "Selection"
+  desc {
+    menu: "Select First Segment Only"
+    menu: "Select Previous Segment Only"
+    menu: "Select Current Segment Only"
+    menu: "Select Next Segment Only"
+    menu: "Select Last Segment Only"
+    menu: "Select Segment 1 Only"
+    menu: "Select Segment 2 Only"
+    menu: "Select Segment 3 Only"
+    menu: "Select Segment 4 Only"
+    menu: "Select Segment 5 Only"
+    menu: "Select Segment 6 Only"
+    menu: "Select Segment 7 Only"
+    menu: "Select Segment 8 Only"
+    menu: "Select Segment 9 Only"
+    menu: "Select Segment 10 Only"
+    full: "Select First Segment Only"
+    full: "Select Previous Segment Only"
+    full: "Select Current Segment Only"
+    full: "Select Next Segment Only"
+    full: "Select Last Segment Only"
+    full: "Select Segment 1 Only"
+    full: "Select Segment 2 Only"
+    full: "Select Segment 3 Only"
+    full: "Select Segment 4 Only"
+    full: "Select Segment 5 Only"
+    full: "Select Segment 6 Only"
+    full: "Select Segment 7 Only"
+    full: "Select Segment 8 Only"
+    full: "Select Segment 9 Only"
+    full: "Select Segment 10 Only"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "TOGGLE_SELECTION"
+  index: 15
+  submenu_name: "Toggle Selection"
+  submenu_separator: 5
+  category: "Selection"
+  desc {
+    menu: "Toggle First Segment Selection"
+    menu: "Toggle Previous Segment Selection"
+    menu: "Toggle Current Segment Selection"
+    menu: "Toggle Next Segment Selection"
+    menu: "Toggle Last Segment Selection"
+    menu: "Toggle Segment Selection 1"
+    menu: "Toggle Segment Selection 2"
+    menu: "Toggle Segment Selection 3"
+    menu: "Toggle Segment Selection 4"
+    menu: "Toggle Segment Selection 5"
+    menu: "Toggle Segment Selection 6"
+    menu: "Toggle Segment Selection 7"
+    menu: "Toggle Segment Selection 8"
+    menu: "Toggle Segment Selection 9"
+    menu: "Toggle Segment Selection 10"
+    full: "Toggle First Segment Selection"
+    full: "Toggle Previous Segment Selection"
+    full: "Toggle Current Segment Selection"
+    full: "Toggle Next Segment Selection"
+    full: "Toggle Last Segment Selection"
+    full: "Toggle Segment Selection 1"
+    full: "Toggle Segment Selection 2"
+    full: "Toggle Segment Selection 3"
+    full: "Toggle Segment Selection 4"
+    full: "Toggle Segment Selection 5"
+    full: "Toggle Segment Selection 6"
+    full: "Toggle Segment Selection 7"
+    full: "Toggle Segment Selection 8"
+    full: "Toggle Segment Selection 9"
+    full: "Toggle Segment Selection 10"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "TOGGLE_WHOLE_SONG_LOOP"
+  category: "Selection"
+  desc {
+    menu: "Loop This Segment"
+    full: "Toggle selection between the current segment and the whole song."
+  }
+  disabled: "one_or_fewer_segments"
+  callout: true
+}
+command {
+  id_string: "UNSELECT"
+  index: 15
+  category: "Selection"
+  submenu_separator: 5
+  submenu_name: "Unselect"
+  desc {
+    menu: "Unselect First Segment"
+    menu: "Unselect Previous Segment"
+    menu: "Unselect Current Segment"
+    menu: "Unselect Next Segment"
+    menu: "Unselect Last Segment"
+    menu: "Unselect Segment 1"
+    menu: "Unselect Segment 2"
+    menu: "Unselect Segment 3"
+    menu: "Unselect Segment 4"
+    menu: "Unselect Segment 5"
+    menu: "Unselect Segment 6"
+    menu: "Unselect Segment 7"
+    menu: "Unselect Segment 8"
+    menu: "Unselect Segment 9"
+    menu: "Unselect Segment 10"
+    full: "Unselect First Segment"
+    full: "Unselect Previous Segment"
+    full: "Unselect Current Segment"
+    full: "Unselect Next Segment"
+    full: "Unselect Last Segment"
+    full: "Unselect Segment 1"
+    full: "Unselect Segment 2"
+    full: "Unselect Segment 3"
+    full: "Unselect Segment 4"
+    full: "Unselect Segment 5"
+    full: "Unselect Segment 6"
+    full: "Unselect Segment 7"
+    full: "Unselect Segment 8"
+    full: "Unselect Segment 9"
+    full: "Unselect Segment 10"
+  }
+  disabled: "empty"
+}

@@ -16,6 +16,7 @@ import rec.gui.proto.Label_pb2
 import rec.gui.proto.Resizer_pb2
 import rec.gui.proto.Size_pb2
 import rec.gui.proto.Slider_pb2
+import rec.gui.proto.Text_pb2
 import rec.gui.proto.ToggleButton_pb2
 import rec.gui.Color_pb2
 
@@ -23,7 +24,7 @@ import rec.gui.Color_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Component.proto',
   package='rec.gui',
-  serialized_pb='\n\x1drec/gui/proto/Component.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x1arec/gui/proto/Button.proto\x1a\x1crec/gui/proto/ComboBox.proto\x1a\x18rec/gui/proto/Font.proto\x1a\x19rec/gui/proto/Label.proto\x1a\x1brec/gui/proto/Resizer.proto\x1a\x18rec/gui/proto/Size.proto\x1a\x1arec/gui/proto/Slider.proto\x1a rec/gui/proto/ToggleButton.proto\x1a\x13rec/gui/Color.proto\"\xc2\x03\n\x0e\x43omponentProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07tooltip\x18\x02 \x01(\t\x12\x1b\n\x04size\x18\x03 \x01(\x0b\x32\r.rec.gui.Size\x12\'\n\x07\x61\x64\x64ress\x18\x04 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x1d\n\x05\x63olor\x18\x05 \x03(\x0b\x32\x0e.rec.gui.Color\x12 \n\x04\x66ont\x18\r \x01(\x0b\x32\x12.rec.gui.FontProto\x12\x0f\n\x07resizer\x18\x0c \x01(\t\x12$\n\x06\x62utton\x18\x06 \x01(\x0b\x32\x14.rec.gui.ButtonProto\x12)\n\tcombo_box\x18\x07 \x01(\x0b\x32\x16.rec.gui.ComboBoxProto\x12\"\n\x05label\x18\x08 \x01(\x0b\x32\x13.rec.gui.LabelProto\x12+\n\x0c\x66ull_resizer\x18\t \x01(\x0b\x32\x15.rec.gui.ResizerProto\x12$\n\x06slider\x18\n \x01(\x0b\x32\x14.rec.gui.SliderProto\x12\x31\n\rtoggle_button\x18\x0b \x01(\x0b\x32\x1a.rec.gui.ToggleButtonProto')
+  serialized_pb='\n\x1drec/gui/proto/Component.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x1arec/gui/proto/Button.proto\x1a\x1crec/gui/proto/ComboBox.proto\x1a\x18rec/gui/proto/Font.proto\x1a\x19rec/gui/proto/Label.proto\x1a\x1brec/gui/proto/Resizer.proto\x1a\x18rec/gui/proto/Size.proto\x1a\x1arec/gui/proto/Slider.proto\x1a\x18rec/gui/proto/Text.proto\x1a rec/gui/proto/ToggleButton.proto\x1a\x13rec/gui/Color.proto\"\xe4\x03\n\x0e\x43omponentProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07tooltip\x18\x02 \x01(\t\x12\x1b\n\x04size\x18\x03 \x01(\x0b\x32\r.rec.gui.Size\x12\'\n\x07\x61\x64\x64ress\x18\x04 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x1d\n\x05\x63olor\x18\x05 \x03(\x0b\x32\x0e.rec.gui.Color\x12 \n\x04\x66ont\x18\x06 \x01(\x0b\x32\x12.rec.gui.FontProto\x12\x0f\n\x07resizer\x18\x07 \x01(\t\x12$\n\x06\x62utton\x18\x08 \x01(\x0b\x32\x14.rec.gui.ButtonProto\x12)\n\tcombo_box\x18\t \x01(\x0b\x32\x16.rec.gui.ComboBoxProto\x12\"\n\x05label\x18\n \x01(\x0b\x32\x13.rec.gui.LabelProto\x12+\n\x0c\x66ull_resizer\x18\x0b \x01(\x0b\x32\x15.rec.gui.ResizerProto\x12$\n\x06slider\x18\x0c \x01(\x0b\x32\x14.rec.gui.SliderProto\x12 \n\x04text\x18\r \x01(\x0b\x32\x12.rec.gui.TextProto\x12\x31\n\rtoggle_button\x18\x0e \x01(\x0b\x32\x1a.rec.gui.ToggleButtonProto')
 
 
 
@@ -72,56 +73,63 @@ _COMPONENTPROTO = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='font', full_name='rec.gui.ComponentProto.font', index=5,
-      number=13, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='resizer', full_name='rec.gui.ComponentProto.resizer', index=6,
-      number=12, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='button', full_name='rec.gui.ComponentProto.button', index=7,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='combo_box', full_name='rec.gui.ComponentProto.combo_box', index=8,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='resizer', full_name='rec.gui.ComponentProto.resizer', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='label', full_name='rec.gui.ComponentProto.label', index=9,
+      name='button', full_name='rec.gui.ComponentProto.button', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='full_resizer', full_name='rec.gui.ComponentProto.full_resizer', index=10,
+      name='combo_box', full_name='rec.gui.ComponentProto.combo_box', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='slider', full_name='rec.gui.ComponentProto.slider', index=11,
+      name='label', full_name='rec.gui.ComponentProto.label', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='toggle_button', full_name='rec.gui.ComponentProto.toggle_button', index=12,
+      name='full_resizer', full_name='rec.gui.ComponentProto.full_resizer', index=10,
       number=11, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='slider', full_name='rec.gui.ComponentProto.slider', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='text', full_name='rec.gui.ComponentProto.text', index=12,
+      number=13, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='toggle_button', full_name='rec.gui.ComponentProto.toggle_button', index=13,
+      number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -135,8 +143,8 @@ _COMPONENTPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=322,
-  serialized_end=772,
+  serialized_start=348,
+  serialized_end=832,
 )
 
 _COMPONENTPROTO.fields_by_name['size'].message_type = rec.gui.proto.Size_pb2._SIZE
@@ -148,6 +156,7 @@ _COMPONENTPROTO.fields_by_name['combo_box'].message_type = rec.gui.proto.ComboBo
 _COMPONENTPROTO.fields_by_name['label'].message_type = rec.gui.proto.Label_pb2._LABELPROTO
 _COMPONENTPROTO.fields_by_name['full_resizer'].message_type = rec.gui.proto.Resizer_pb2._RESIZERPROTO
 _COMPONENTPROTO.fields_by_name['slider'].message_type = rec.gui.proto.Slider_pb2._SLIDERPROTO
+_COMPONENTPROTO.fields_by_name['text'].message_type = rec.gui.proto.Text_pb2._TEXTPROTO
 _COMPONENTPROTO.fields_by_name['toggle_button'].message_type = rec.gui.proto.ToggleButton_pb2._TOGGLEBUTTONPROTO
 DESCRIPTOR.message_types_by_name['ComponentProto'] = _COMPONENTPROTO
 

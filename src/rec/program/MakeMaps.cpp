@@ -1,65 +1,23 @@
 #include <unordered_set>
 
 #include "rec/program/MakeMaps.h"
+#include "rec/command/Command.pb.h"
 #include "rec/program/Program.h"
-#include "rec/util/thread/Result.h"
+#include "rec/util/BinaryMacros.h"
+#include "rec/util/thread/Looper.h"
+
+using namespace rec::command;
 
 namespace rec {
 namespace program {
 
 namespace {
 
-class ThreadLooper : public Thread {
- public:
-  explicit ThreadLooper(const string& name, ThreadFunction f, uint32 period)
-      : Thread(str(name)), function_(f), period_(period) {
-  }
-
-  void run() override {
-    while (!threadShouldExit()) {
-      int32 r = function_(this);
-      switch (r) {
-       case thread::CONTINUE:  break;
-       case thread::YIELD:     yield(); break;
-       case thread::DONE:      return;
-       default:                wait(static_cast<int>(r)); break;
-      }
-    }
-  }
-
- private:
-  ThreadFunction const function_;
-  int32 const period_;
-};
-
-}
-
-CommandMap makeCommandMap(const Program& program) {
-  CommandMap commandMap;
-  auto commands = program.commands().command();
-
-  for (auto& command: commands) {
-    CommandID id = command.id();
-    commandMap[id] = command;
-    if (command.has_index()) {
-      for (int i = 0; i < command.index(); ++i)
-        commandMap[id + i] = command;
-    }
-  }
-
-  auto map = program.keypresses().map();
-  for (auto& entry: map.entry()) {
-    CommandID id = entry.id();
-    if (entry.has_index())
-      id += entry.index() - CommandIDs::FIRST;
-    try {
-      *commandMap.at(id).mutable_keypress() = entry.key();
-    } catch (const std::out_of_range&) {
-      LOG(ERROR) << "Out of range keypress command." << program.commandName(id);
-    }
-  }
-
-  return commandMap;
+template <typename Type>
+CommandID fixId(const Program& program, Type* item) {
+  if (not item->has_id())
+    item->set_id(program.nameToId(item->id_string()));
+  return item->id();
 }
 
 typedef std::unordered_set<string> StringSet;
@@ -94,11 +52,46 @@ static void fixExtends(Menu* menu, MenuMap* map, StringSet* seen = nullptr) {
   }
 }
 
+}  // namespace
+
+CommandMap makeCommandMap(const Program& program) {
+  CommandMap commandMap;
+  command::Commands commands = BINARY_PROTO_MERGED(Commands, command::Commands);
+
+  for (auto& command: *commands.mutable_command()) {
+    CommandID id = fixId(program, &command);
+    commandMap[id] = command;
+    if (command.has_index()) {
+      for (int i = 0; i < command.index(); ++i)
+        commandMap[id + i] = command;
+    }
+  }
+
+  CommandMapProto keys = BINARY_PROTO(KeyStrokeMap, CommandMapProto);
+  for (auto& entry: *keys.mutable_entry()) {
+    CommandID id = fixId(program, &entry);
+    if (entry.has_index())
+      id += entry.index() - CommandIDs::FIRST;
+    try {
+      *commandMap.at(id).mutable_keypress() = entry.key();
+    } catch (const std::out_of_range&) {
+      LOG(ERROR) << "Out of range keypress command." << program.idToName(id);
+    }
+  }
+
+  return commandMap;
+}
+
 MenuMap makeMenuMap(const Program& program) {
   MenuMap menuMap;
-  auto menus = program.menus();
-  for (auto& menu: menus.menu())
+  Menus menus = BINARY_PROTO(Menus, Menus);
+  for (auto& menu: *menus.mutable_menu()) {
+    for (auto& entry: *menu.mutable_entry()) {
+      for (auto& id_string: entry.id_string())
+        entry.add_id(program.nameToId(id_string));
+    }
     menuMap[menu.description().name()] = menu;
+  }
 
   for (auto& i: menuMap)
     fixExtends(&i.second, &menuMap);
@@ -107,18 +100,18 @@ MenuMap makeMenuMap(const Program& program) {
 
 MenuBarMap makeMenuBarMap(const Program& program) {
   MenuBarMap menuBarMap;
-  auto menuBars = program.menuCollection().menu_bar();
-  for (auto& menuBar: menuBars)
+  MenuCollection menuCollection = BINARY_PROTO(MenuCollection, MenuCollection);
+  for (auto& menuBar: menuCollection.menu_bar())
     menuBarMap[menuBar.description().name()] = menuBar;
   return menuBarMap;
 }
 
 ThreadMap makeThreadMap(const Program& program) {
   ThreadMap threadMap;
-  auto threads = program.threads();
+  ThreadProtos threads = BINARY_PROTO(Threads, ThreadProtos);
   for (auto& thread: threads.thread()) {
-    ThreadFunction f = program.threadFunction(thread.name());
-    unique_ptr<Thread> t(new ThreadLooper(thread.name(), f, thread.period()));
+    auto f = program.threadFunction(thread.name());
+    unique_ptr<Thread> t(new thread::Looper(thread.name(), f, thread.period()));
     t->setPriority(thread.priority());
     threadMap[thread.name()] = std::move(t);
   }
@@ -127,11 +120,12 @@ ThreadMap makeThreadMap(const Program& program) {
 
 LayoutMap makeLayoutMap(const Program& program) {
   LayoutMap layoutMap;
-  auto layouts = program.layouts();
+  gui::Layouts layouts = BINARY_PROTO_MERGED(Layout, gui::Layouts);
   for (auto& layout: layouts.layout())
     layoutMap[layout.name()] = layout;
   return layoutMap;
 }
+
 
 }  // namespace program
 }  // namespace rec
