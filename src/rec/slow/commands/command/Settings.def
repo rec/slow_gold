@@ -1,0 +1,253 @@
+command {
+  id_string: "ABOUT_THIS_PROGRAM"
+  category: "Help"
+  desc {
+    menu: "About SlowGold 8"
+    full: "Bring up a window describing SlowGold 8."
+  }
+}
+command {
+  id_string: "AUDIO_PREFERENCES"
+  category: "Audio"
+  desc {
+    menu: "Audio Preferences..."
+    full: "Open the Audio Preferences pane."
+  }
+}
+command {
+  id_string: "CHECK_FOR_UPDATES"
+  category: "Help"
+  desc {
+    menu: "Check For Updates"
+    full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
+  }
+}
+command {
+  id_string: "CLEAR_ALL_SETTINGS"
+  category: "Loops"
+  desc {
+    menu: "Clear All Settings And Quit"
+    full: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "CLEAR_KEYBOARD_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Clear Keyboard Mappings"
+    full: "Clear all keyboard command mappings to program default."
+  }
+}
+command {
+  id_string: "CLEAR_MIDI_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Clear MIDI Mappings"
+    full: "Clear all MIDI command mappings."
+  }
+}
+command {
+  id_string: "CLEAR_SETTINGS_FOR_THIS_TRACK"
+  category: "Loops"
+  desc {
+    menu: "Clear Settings For This Track And Quit"
+    full: "Clear all SlowGold settings for this track only and quit the program."
+  }
+}
+command {
+  id_string: "EXPORT_KEYBOARD_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Export Keyboard Command Mappings..."
+    full: "Export keyboard command mappings."
+  }
+}
+command {
+  id_string: "EXPORT_MIDI_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Export MIDI Command Mappings..."
+    full: "Export MIDI command mappings."
+  }
+}
+command {
+  id_string: "EXPORT_SETTINGS"
+  category: "File"
+  desc {
+    menu: "Export SlowGold Settings..."
+    full: "Export all SlowGold Settings to a .zip file."
+  }
+}
+command {
+  id_string: "IMPORT_KEYBOARD_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Import Keyboard Command Mappings..."
+    full: "Import SlowGold keyboard command mappings."
+  }
+}
+command {
+  id_string: "IMPORT_MIDI_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Import MIDI Command Mappings"
+    full: "Import SlowGold MIDI command mappings."
+  }
+}
+command {
+  id_string: "IMPORT_SETTINGS"
+  category: "File"
+  desc {
+    menu: "Import SlowGold Settings..."
+    full: "Import SlowGold Settings from a .zip file and merge with current settings."
+  }
+}
+command {
+  id_string: "KEYBOARD_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Edit Keyboard Mappings..."
+    full: "Edit keyboard mappings for commands."
+  }
+}
+command {
+  id_string: "MIDI_MAPPINGS"
+  category: "File"
+  desc {
+    menu: "Edit Midi Mappings..."
+    full: "Edit midi mappings for commands."
+  }
+}
+command {
+  id_string: "MODE_ADD_LOOP_POINT"
+  category: "Edit"
+  desc {
+    menu: "Add Loop Point Mode"
+    full: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "MODE_DRAG"
+  category: "Edit"
+  desc {
+    menu: "Drag Mode"
+    full: "Enter drag mode, where you can drag the waveform back and forth."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "MODE_SET_TIME"
+  category: "Edit"
+  desc {
+    menu: "Set Time Mode"
+    full: "Enter Set Time Mode, where clicking in the waveform sets the time."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "MODE_ZOOM_IN"
+  category: "Edit"
+  desc {
+    menu: "Zoom In Mode"
+    full: "Enter Zoom In Mode, where clicking on the waveform zooms in."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "REQUEST_SUPPORT"
+  category: "Help"
+  desc {
+    menu: "Request Technical Support"
+    full: "Make a request for technical support to World Wide Woodshed."
+  }
+}
+command {
+  id_string: "SET_SAVE_FORMAT"
+  index: 4
+  submenu_name: "Set File Format For Saved Audio"
+  category: "(None)"
+  setter {
+    type: SELECTION
+    address {
+      type_name: "rec.audio.AudioSettings"
+      part {
+        name: "file_type_for_save"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+  desc {
+    menu: "AIFF"
+    menu: "FLAC"
+    menu: "Ogg Vorbis"
+    menu: "WAV"
+    full: "..."
+    full: "..."
+    full: "..."
+    full: "..."
+  }
+}
+command {
+  id_string: "SET_LANGUAGE"
+  index: 5
+  submenu_name: "Set Language"
+  category: "(None)"
+  setter {
+    type: SELECTION
+    address {
+      type_name: "rec.app.AppSettings"
+      part {
+        name: "language"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+  desc {
+    menu: "German"
+    menu: "English"
+    menu: "Spanish"
+    menu: "French"
+    menu: "Indonesian"
+    full: "..."
+    full: "..."
+    full: "..."
+    full: "..."
+    full: "..."
+  }
+}
+command {
+  id_string: "TOGGLE_ADVANCED_MENUS"
+  category: "File"
+  desc {
+    menu: "Show Advanced Menus"
+    full: "Toggle show/hide of advanced menus."
+  }
+  setter {
+    address {
+      type_name: "rec.slow.GuiSettings"
+      part {
+        name: "advanced_menus"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_AUTOMATIC_UPDATES"
+  category: "Help"
+  desc {
+    menu: "Enable Automatic Updates"
+    full: "Enable or disabled automatic updates of SlowGold 8."
+  }
+  setter {
+    address {
+      type_name: "rec.slow.GuiSettings"
+      part {
+        name: "auto_check_for_updates"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}

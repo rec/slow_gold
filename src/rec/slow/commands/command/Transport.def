@@ -1,0 +1,123 @@
+command {
+  id_string: "JUMP"
+  index: 15
+  submenu_name: "Jump To"
+  submenu_separator: 5
+  category: "Transport"
+  desc {
+    menu: "Jump To First Segment"
+    menu: "Jump To Previous Segment"
+    menu: "Jump To Current Segment"
+    menu: "Jump To Next Segment"
+    menu: "Jump To Last Segment"
+    menu: "Jump To Segment 1"
+    menu: "Jump To Segment 2"
+    menu: "Jump To Segment 3"
+    menu: "Jump To Segment 4"
+    menu: "Jump To Segment 5"
+    menu: "Jump To Segment 6"
+    menu: "Jump To Segment 7"
+    menu: "Jump To Segment 8"
+    menu: "Jump To Segment 9"
+    menu: "Jump To Segment 10"
+    full: "Jump to the start of the first segment."
+    full: "Jump to the start of the previous segment."
+    full: "Jump to the start of the current segment."
+    full: "Jump to the start of the next segment."
+    full: "Jump to the start of the last segment."
+    full: "Jump to the start of segment 1."
+    full: "Jump to the start of segment 2."
+    full: "Jump to the start of segment 3."
+    full: "Jump to the start of segment 4."
+    full: "Jump to the start of segment 5."
+    full: "Jump to the start of segment 6."
+    full: "Jump to the start of segment 7."
+    full: "Jump to the start of segment 8."
+    full: "Jump to the start of segment 9."
+    full: "Jump to the start of segment 10."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "JUMP_SELECTED"
+  index: 15
+  submenu_name: "Jump To Selected"
+  submenu_separator: 5
+  category: "Transport"
+  desc {
+    menu: "Jump To First Selected Segment"
+    menu: "Jump To Previous Selected Segment"
+    menu: "Jump To Current Selected Segment"
+    menu: "Jump To Next Selected Segment"
+    menu: "Jump To Last Selected Segment"
+    menu: "Jump To Selected Segment 1"
+    menu: "Jump To Selected Segment 2"
+    menu: "Jump To Selected Segment 3"
+    menu: "Jump To Selected Segment 4"
+    menu: "Jump To Selected Segment 5"
+    menu: "Jump To Selected Segment 6"
+    menu: "Jump To Selected Segment 7"
+    menu: "Jump To Selected Segment 8"
+    menu: "Jump To Selected Segment 9"
+    menu: "Jump To Selected Segment 10"
+    full: "Jump To First Selected Segment"
+    full: "Jump To Previous Selected Segment"
+    full: "Jump To Current Selected Segment"
+    full: "Jump To Next Selected Segment"
+    full: "Jump To Last Selected Segment"
+    full: "Jump To Selected Segment 1"
+    full: "Jump To Selected Segment 2"
+    full: "Jump To Selected Segment 3"
+    full: "Jump To Selected Segment 4"
+    full: "Jump To Selected Segment 5"
+    full: "Jump To Selected Segment 6"
+    full: "Jump To Selected Segment 7"
+    full: "Jump To Selected Segment 8"
+    full: "Jump To Selected Segment 9"
+    full: "Jump To Selected Segment 10"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "LOOP_NEXT_SEGMENT"
+  category: "Loops"
+  desc {
+    menu: "Loop Next Segment"
+    full: "Finish the current segment, then start looping the next segment."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "NUDGE_BACKWARD"
+  category: "Audio"
+  desc {
+    menu: "Nudge Backward"
+    full: "Nudge Backward One Segment Or 10 Seconds"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "NUDGE_FORWARD"
+  category: "Audio"
+  desc {
+    menu: "Nudge Forward"
+    full: "Nudge Forward One Segment Or 10 Seconds"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "NUDGE_SPEED_DOWN"
+  category: "Audio"
+  desc {
+    menu: "Nudge speed down"
+    full: "Nudge speed down"
+  }
+}
+command {
+  id_string: "NUDGE_SPEED_UP"
+  category: "Audio"
+  desc {
+    menu: "Nudge speed up"
+    full: "Nudge speed up"
+  }
+}

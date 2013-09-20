@@ -1,0 +1,86 @@
+command {
+  id_string: "DIM_VOLUME_TOGGLE"
+  category: "Audio"
+  desc {
+    menu: "Toggle audio dim"
+    full: "Toggle audio dim on and off."
+ }
+}
+command {
+  id_string: "MUTE_VOLUME_TOGGLE"
+  category: "Audio"
+  desc {
+    menu: "Toggle audio mute"
+    full: "Toggle audio mute on and off."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "NUDGE_VOLUME_DOWN"
+  category: "Audio"
+  desc {
+    menu: "Nudge volume down"
+    full: "Nudge volume down by 2dB"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "NUDGE_VOLUME_UP"
+  category: "Audio"
+  desc {
+    menu: "Nudge volume up"
+    full: "Nudge volume up by 2dB"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "RESET_GAIN_TO_UNITY"
+  category: "Audio"
+  desc {
+    menu: "Reset Volume"
+    full: "Reset volume to 0 dB"
+  }
+}
+command {
+  id_string: "TOGGLE_START_STOP"
+  category: "Transport"
+  desc {
+    menu: "Toggle Start/Stop"
+    full: "Start or pause"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "TOGGLE_STRETCH_ENABLE"
+  category: "Audio"
+  desc {
+    menu: "Enable Stretch"
+    full: "Toggle between stretched and real-time playback."
+  }
+  setter {
+    address {
+      type_name: "rec.audio.stretch.Stretch"
+      part {
+        name: "time_enabled"
+      }
+      scope: FILE_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_TRANSFORM_ENABLE"
+  category: "Audio"
+  desc {
+    menu: "Enable Transforms"
+    full: "Toggle pitch, time and stereo transforms of the sound."
+  }
+  setter {
+    address {
+      type_name: "rec.audio.stretch.Stretch"
+      part {
+        name: "enabled"
+      }
+      scope: FILE_SCOPE
+    }
+  }
+}

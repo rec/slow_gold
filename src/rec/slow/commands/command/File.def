@@ -1,0 +1,99 @@
+command {
+  id_string: "CLOSE_FILE"
+  category: "File"
+  desc {
+    menu: "Close"
+    full: "Close the current file"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "EJECT_CDS"
+  category: "File"
+  desc {
+    menu: "Eject All"
+    full: "Eject all CDs and DVDs"
+  }
+}
+command {
+  id_string: "OPEN"
+  category: "File"
+  desc {
+    menu: "Open..."
+    full: "Open a dialog to select a new audio file for looping."
+  }
+}
+command {
+  id_string: "OPEN_MANUAL"
+  category: "Help"
+  desc {
+    menu: "Download SlowGold 8 User Manual"
+    full: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
+  }
+}
+command {
+  id_string: "OPEN_PREVIOUS_FILE"
+  category: "File"
+  desc {
+    menu: "Re-Open Most Recent Closed File"
+    full: "Re-open the file that was most recently closed."
+  }
+  disabled: "recent_empty"
+}
+command {
+  id_string: "OPEN_SLOWGOLD_DIRECTORY"
+  category: "Help"
+  desc {
+    menu: "Open SlowGold Preferences Directory"
+    full: "Open the directory where all the SlowGold Preferences Files are located."
+  }
+}
+command {
+  id_string: "QUIT"
+  category: "(None)"
+  desc {
+    menu: "Quit"
+    full: "Quit SlowGold"
+  }
+}
+command {
+  id_string: "RECENT_FILES"
+  category: "(None)"
+  index: 31
+  submenu_separator: 5
+  submenu_separator: 10
+  submenu_separator: 15
+  submenu_separator: 20
+  submenu_separator: 25
+  submenu_separator: 30
+  submenu_name: "Open Recent File"
+  desc {
+    full: "Recent files menu"
+  }
+}
+command {
+  id_string: "SAVE_FILE"
+  category: "File"
+  desc {
+    menu: "Save..."
+    full: "Save the full transformed file in the default save format."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "SAVE_FILE_SELECTION"
+  category: "File"
+  desc {
+    menu: "Save Selection..."
+    full: "Save just the selected portion of the transformed file in the default save format."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "WHATS_NEW_PAGE"
+  category: "Help"
+  desc {
+    menu: "What\'s New In This Release?"
+    full: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
+  }
+}

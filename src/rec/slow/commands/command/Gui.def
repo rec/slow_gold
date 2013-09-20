@@ -1,0 +1,280 @@
+command {
+  id_string: "TOGGLE_COMMAND_BAR_AT_LEFT"
+  category: "Display"
+  desc {
+    menu: "Command Bar At Left Side"
+    full: "Lay the Command Bar out on the left side of the Waveform Display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "command_bar_at_left"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_COMMAND_BAR_AT_TOP"
+  category: "Display"
+  desc {
+    menu: "Command Bar At Top"
+    full: "Lay the Command Bar out on the top of the Waveform Display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "command_bar_at_top"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_FILE_OPEN_TREE_DISPLAY"
+  category: "Display"
+  desc {
+    menu: "Use Tree Display In File Save Dialog"
+    full: "Use Tree Display In File Save Dialog"
+  }
+  setter {
+    address {
+      type_name: "rec.slow.GuiSettings"
+      part {
+        name: "use_tree_view_in_file_dialogs"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_FOLLOW_CURSOR"
+  category: "Display"
+  desc {
+    menu: "Follow Cursor"
+    full: "Always keep the time cursor in the window."
+  }
+  setter {
+    address {
+      type_name: "rec.slow.GuiSettings"
+      part {
+        name: "follow_cursor"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_GRID_DISPLAY"
+  category: "Display"
+  desc {
+    menu: "Show Time Gridlines"
+    full: "Toggle display of the time grid."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "show_grid"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_MODES_AT_LEFT"
+  category: "Display"
+  desc {
+    menu: "Modes At Left Side"
+    full: "Lay the Modes display out on the left side of the Waveform Display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "modes_at_left"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_MODES_AT_TOP"
+  category: "Display"
+  desc {
+    menu: "Modes At Top"
+    full: "Lay the Modes display out on the top of the Waveform Display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "modes_at_top"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_PARALLEL_WAVEFORMS"
+  category: "Display"
+  desc {
+    menu: "Show Stacked Waveform"
+    full: "Toggle parallel/stacked waveform display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "parallel_waveforms"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_PREFADER_LEVELS"
+  category: "Audio"
+  desc {
+    menu: "Show Pre-Fader Levels"
+    full: "Toggle level display between pre- and post-fader."
+  }
+  setter {
+    address {
+      type_name: "rec.audio.Gain"
+      part {
+        name: "prefader_levels"
+      }
+      scope: FILE_SCOPE
+    }
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP"
+  category: "Help"
+  desc {
+    menu: "Show About Window At Startup"
+    full: "Toggle whether we show the About Window every time we start up."
+  }
+  setter {
+    address {
+      type_name: "rec.slow.GuiSettings"
+      part {
+        name: "show_about_on_startup"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_SHOW_CURSOR_LABELS"
+  category: "Display"
+  desc {
+    menu: "Show Loop Point Labels"
+    full: "Show draggable labels for the loop points on the waveform display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "show_cursor_labels"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_SHOW_LABELS_AT_TOP"
+  category: "Display"
+  desc {
+    menu: "Show Loop Point Labels At Top"
+    full: "Show the loop point labels at the top of the waveform display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "show_labels_at_top"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_SHOW_MASTER_TUNE"
+  category: "Display"
+  desc {
+    menu: "Show Master Tune Slider"
+    full: "Show the Master Tune Slider in the Transform Panel."
+  }
+  setter {
+    address {
+      type_name: "rec.slow.GuiSettings"
+      part {
+        name: "show_master_tune"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_SHOW_SELECTION_BUTTONS"
+  category: "Display"
+  desc {
+    menu: "Show Loop Point Selection Buttons"
+    full: "Show help in help pane."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "show_selection_buttons"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "TOGGLE_SHOW_TIMES_AT_TOP"
+  category: "Display"
+  desc {
+    menu: "Show Grid Times At Top"
+    full: "Show the grid times for the grid at the top of the waveform display."
+  }
+  setter {
+    address {
+      type_name: "rec.widget.waveform.WaveformProto"
+      part {
+        name: "show_times_at_top"
+      }
+      scope: GLOBAL_SCOPE
+    }
+  }
+}
+command {
+  id_string: "ZOOM_OUT"
+  category: "Audio"
+  desc {
+    menu: "Zoom Out"
+    full: "Zoom out."
+  }
+}
+command {
+  id_string: "ZOOM_OUT_FULL"
+  category: "Audio"
+  desc {
+    menu: "Zoom Out Completely"
+    full: "Zoom out as far as possible."
+  }
+}
+command {
+  id_string: "ZOOM_TO_SELECTION"
+  category: "Audio"
+  desc {
+    menu: "Zoom To Selection"
+    full: "Zoom to selection."
+  }
+}

@@ -1,0 +1,89 @@
+command {
+  id_string: "ADD_LOOP_POINT"
+  category: "Loops"
+  desc {
+    menu: "Add Loop Point At Current Time"
+    full: "Add a loop point at the current time."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "CLEAR_LOOPS"
+  category: "Loops"
+  desc {
+    menu: "Clear Loops"
+    full: "Delete all loop points"
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "COPY"
+  category: "Edit"
+  desc {
+    menu: "Copy"
+    full: "Copy the current selection to the clipboard."
+  }
+  disabled: "cant_copy"
+}
+command {
+  id_string: "COPY_ALL_LOOP_POINTS"
+  category: "Edit"
+  desc {
+    menu: "Copy All Loop Points"
+    full: "Copy both selected and unselected loop points to the clipboard."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "CUT"
+  category: "Edit"
+  desc {
+    menu: "Cut"
+    full: "Copy the current selection to the clipboard and clear the selection."
+  }
+  disabled: "cant_cut"
+}
+command {
+  id_string: "DEL"
+  category: "Edit"
+  desc {
+    menu: "Delete"
+    full: "Delete the current selection without changing the clipboard."
+  }
+}
+command {
+  id_string: "PASTE"
+  category: "Edit"
+  desc {
+    menu: "Paste"
+    full: "Replace the current selection with a copy of the clipboard."
+  }
+  disabled: "cant_paste"
+}
+command {
+  id_string: "PASTE_OVER_LOOP_POINTS"
+  category: "Edit"
+  desc {
+    menu: "Paste Over Loop Points"
+    full: "Replace all loop points with the loop points on the clipboard."
+  }
+  disabled: "empty"
+}
+command {
+  id_string: "REDO"
+  category: "Edit"
+  desc {
+    menu: "Redo"
+    full: "Redoes a previously undone command."
+  }
+  disabled: "cant_redo"
+}
+command {
+  id_string: "UNDO"
+  category: "Edit"
+  desc {
+    menu: "Undo"
+    full: "Undoes a previous command."
+  }
+  disabled: "cant_undo"
+}

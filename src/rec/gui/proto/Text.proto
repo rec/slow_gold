@@ -1,0 +1,5 @@
+package rec.gui;
+
+message TextProto {
+  optional bool multiline = 1;
+};
