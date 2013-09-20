@@ -287,7 +287,7 @@
 		4014E39E609FD6AF19B787B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = FAA8BABFED12036303AFB9DB /* Build configuration list for PBXProject "rubberband" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -409,6 +409,7 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = rubberband;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;

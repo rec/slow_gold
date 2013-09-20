@@ -19,19 +19,33 @@ bool isNumber(const string& s) {
 
 Constants::Constants(const ConstantProtos& protos) {
   for (auto& constant: protos.constant())
-    map_[constant.name()] = constant.value();
+    doubleMap_[constant.name()] = constant.value();
 }
 
-double Constants::operator()(const string& name) const {
+double Constants::getDouble(const string& name) const {
   if (isNumber(name))
     return str(name).getDoubleValue();
 
   try {
-    return map_.at(name);
+    return doubleMap_.at(name);
   } catch (std::out_of_range&) {
     LOG(ERROR) << "Don't understand constant " << name;
     return 0.0;
   }
+}
+
+Constants::ComponentMaker Constants::getMaker(const string& name) const {
+  try {
+    return componentMakerMap_.at(name);
+  } catch (std::out_of_range&) {
+    LOG(ERROR) << "Don't understand maker " << name;
+    return nullptr;
+  }
+}
+
+void Constants::addMaker(const string& name, ComponentMaker maker) {
+  DCHECK(not componentMakerMap_.count(name)) << "Duplicate maker for " << name;
+  componentMakerMap_[name] = maker;
 }
 
 }  // namespace gui

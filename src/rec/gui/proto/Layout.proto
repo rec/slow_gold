@@ -23,7 +23,11 @@ message Layout {
   optional bool padding = 5;
 
   optional Size size = 6;
-  repeated ComponentProto component = 9;
+
+  // If container is present, then no layout is created - instead the container
+  // component is created and used as a parent for the remaining components.
+  optional ComponentProto container = 7;
+  repeated ComponentProto component = 8;
 };
 
 message Layouts {

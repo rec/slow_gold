@@ -39,13 +39,14 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
       "rec/gui/proto/Layout.proto");
   GOOGLE_CHECK(file != NULL);
   Layout_descriptor_ = file->message_type(0);
-  static const int Layout_offsets_[7] = {
+  static const int Layout_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, orientation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_main_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, padding_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, container_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, component_),
   };
   Layout_reflection_ =
@@ -115,14 +116,15 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
     "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\034r"
     "ec/data/proto/Address.proto\032\035rec/gui/pro"
     "to/Component.proto\032\030rec/gui/proto/Size.p"
-    "roto\"\206\002\n\006Layout\022\014\n\004name\030\001 \001(\t\0220\n\013orienta"
+    "roto\"\262\002\n\006Layout\022\014\n\004name\030\001 \001(\t\0220\n\013orienta"
     "tion\030\002 \001(\0162\033.rec.gui.Layout.Orientation\022"
     "$\n\026resize_other_dimension\030\003 \001(\010:\004true\022\017\n"
     "\007is_main\030\004 \001(\010\022\017\n\007padding\030\005 \001(\010\022\033\n\004size\030"
-    "\006 \001(\0132\r.rec.gui.Size\022*\n\tcomponent\030\t \003(\0132"
-    "\027.rec.gui.ComponentProto\"+\n\013Orientation\022"
-    "\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\"*\n\007Layouts"
-    "\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Layout", 433);
+    "\006 \001(\0132\r.rec.gui.Size\022*\n\tcontainer\030\007 \001(\0132"
+    "\027.rec.gui.ComponentProto\022*\n\tcomponent\030\010 "
+    "\003(\0132\027.rec.gui.ComponentProto\"+\n\013Orientat"
+    "ion\022\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\"*\n\007Lay"
+    "outs\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Layout", 477);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
   Layout::default_instance_ = new Layout();
@@ -169,6 +171,7 @@ const int Layout::kResizeOtherDimensionFieldNumber;
 const int Layout::kIsMainFieldNumber;
 const int Layout::kPaddingFieldNumber;
 const int Layout::kSizeFieldNumber;
+const int Layout::kContainerFieldNumber;
 const int Layout::kComponentFieldNumber;
 #endif  // !_MSC_VER
 
@@ -179,6 +182,7 @@ Layout::Layout()
 
 void Layout::InitAsDefaultInstance() {
   size_ = const_cast< ::rec::gui::Size*>(&::rec::gui::Size::default_instance());
+  container_ = const_cast< ::rec::gui::ComponentProto*>(&::rec::gui::ComponentProto::default_instance());
 }
 
 Layout::Layout(const Layout& from)
@@ -195,6 +199,7 @@ void Layout::SharedCtor() {
   is_main_ = false;
   padding_ = false;
   size_ = NULL;
+  container_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -208,6 +213,7 @@ void Layout::SharedDtor() {
   }
   if (this != default_instance_) {
     delete size_;
+    delete container_;
   }
 }
 
@@ -245,6 +251,9 @@ void Layout::Clear() {
     padding_ = false;
     if (has_size()) {
       if (size_ != NULL) size_->::rec::gui::Size::Clear();
+    }
+    if (has_container()) {
+      if (container_ != NULL) container_->::rec::gui::ComponentProto::Clear();
     }
   }
   component_.Clear();
@@ -353,12 +362,26 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(74)) goto parse_component;
+        if (input->ExpectTag(58)) goto parse_container;
         break;
       }
 
-      // repeated .rec.gui.ComponentProto component = 9;
-      case 9: {
+      // optional .rec.gui.ComponentProto container = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_container:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_container()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(66)) goto parse_component;
+        break;
+      }
+
+      // repeated .rec.gui.ComponentProto component = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_component:
@@ -367,7 +390,7 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(74)) goto parse_component;
+        if (input->ExpectTag(66)) goto parse_component;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -426,10 +449,16 @@ void Layout::SerializeWithCachedSizes(
       6, this->size(), output);
   }
 
-  // repeated .rec.gui.ComponentProto component = 9;
+  // optional .rec.gui.ComponentProto container = 7;
+  if (has_container()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->container(), output);
+  }
+
+  // repeated .rec.gui.ComponentProto component = 8;
   for (int i = 0; i < this->component_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->component(i), output);
+      8, this->component(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -478,11 +507,18 @@ void Layout::SerializeWithCachedSizes(
         6, this->size(), target);
   }
 
-  // repeated .rec.gui.ComponentProto component = 9;
+  // optional .rec.gui.ComponentProto container = 7;
+  if (has_container()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->container(), target);
+  }
+
+  // repeated .rec.gui.ComponentProto component = 8;
   for (int i = 0; i < this->component_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        9, this->component(i), target);
+        8, this->component(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -531,8 +567,15 @@ int Layout::ByteSize() const {
           this->size());
     }
 
+    // optional .rec.gui.ComponentProto container = 7;
+    if (has_container()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->container());
+    }
+
   }
-  // repeated .rec.gui.ComponentProto component = 9;
+  // repeated .rec.gui.ComponentProto component = 8;
   total_size += 1 * this->component_size();
   for (int i = 0; i < this->component_size(); i++) {
     total_size +=
@@ -585,6 +628,9 @@ void Layout::MergeFrom(const Layout& from) {
     if (from.has_size()) {
       mutable_size()->::rec::gui::Size::MergeFrom(from.size());
     }
+    if (from.has_container()) {
+      mutable_container()->::rec::gui::ComponentProto::MergeFrom(from.container());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -614,6 +660,7 @@ void Layout::Swap(Layout* other) {
     std::swap(is_main_, other->is_main_);
     std::swap(padding_, other->padding_);
     std::swap(size_, other->size_);
+    std::swap(container_, other->container_);
     component_.Swap(&other->component_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

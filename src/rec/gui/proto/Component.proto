@@ -3,6 +3,7 @@ package rec.gui;
 import "rec/data/proto/Address.proto";
 import "rec/gui/proto/Button.proto";
 import "rec/gui/proto/ComboBox.proto";
+import "rec/gui/proto/Custom.proto";
 import "rec/gui/proto/Font.proto";
 import "rec/gui/proto/Label.proto";
 import "rec/gui/proto/Resizer.proto";
@@ -27,10 +28,11 @@ message ComponentProto {
 
   optional ButtonProto button = 8;
   optional ComboBoxProto combo_box = 9;
-  optional LabelProto label = 10;
-  optional ResizerProto full_resizer = 11;
-  optional SliderProto slider = 12;
-  optional TextProto text = 13;
-  optional ToggleButtonProto toggle_button = 14;
+  optional CustomProto custom = 10;
+  optional LabelProto label = 11;
+  optional ResizerProto full_resizer = 12;
+  optional SliderProto slider = 13;
+  optional TextProto text = 14;
+  optional ToggleButtonProto toggle_button = 15;
 };
 

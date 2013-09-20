@@ -6,6 +6,9 @@
 
 namespace BinaryData
 {
+    extern const char*   Colors_def;
+    const int            Colors_defSize = 219;
+
     extern const char*   Audio_def;
     const int            Audio_defSize = 1593;
 
@@ -30,14 +33,8 @@ namespace BinaryData
     extern const char*   Transport_def;
     const int            Transport_defSize = 3530;
 
-    extern const char*   Components_def;
-    const int            Components_defSize = 0;
-
     extern const char*   KeyStrokeMap_def;
     const int            KeyStrokeMap_defSize = 5474;
-
-    extern const char*   Colors_def;
-    const int            Colors_defSize = 219;
 
     extern const char*   CommandBar_def;
     const int            CommandBar_defSize = 623;
@@ -71,6 +68,9 @@ namespace BinaryData
 
     extern const char*   TransportController_def;
     const int            TransportController_defSize = 877;
+
+    extern const char*   Waveform_def;
+    const int            Waveform_defSize = 151;
 
     extern const char*   MenuCollection_def;
     const int            MenuCollection_defSize = 373;

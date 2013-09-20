@@ -7,8 +7,37 @@
 namespace BinaryData
 {
 
-//================== Audio.def ==================
+//================== Colors.def ==================
 static const unsigned char temp_binary_data_0[] =
+"color {\n"
+"  name: \"white\"\n"
+"}\n"
+"color {\n"
+"  name: \"lightblue\"\n"
+"}\n"
+"color {\n"
+"  name: \"seagreen\"\n"
+"}\n"
+"color {\n"
+"  rgb: 0xffd3d3d3\n"
+"}\n"
+"color {\n"
+"  rgb: 0xffd3d3d3\n"
+"}\n"
+"color {\n"
+"  name: \"red\"\n"
+"}\n"
+"color {\n"
+"  name: \"black\"\n"
+"}\n"
+"color {\n"
+"  rgb: 0xff607070\n"
+"}\n";
+
+const char* Colors_def = (const char*) temp_binary_data_0;
+
+//================== Audio.def ==================
+static const unsigned char temp_binary_data_1[] =
 "command {\n"
 "  id_string: \"DIM_VOLUME_TOGGLE\"\n"
 "  category: \"Audio\"\n"
@@ -96,10 +125,10 @@ static const unsigned char temp_binary_data_0[] =
 "  }\n"
 "}\n";
 
-const char* Audio_def = (const char*) temp_binary_data_0;
+const char* Audio_def = (const char*) temp_binary_data_1;
 
 //================== Commands.def ==================
-static const unsigned char temp_binary_data_1[] =
+static const unsigned char temp_binary_data_2[] =
 "name: \"Audio\"\n"
 "name: \"File\"\n"
 "name: \"Gui\"\n"
@@ -108,10 +137,10 @@ static const unsigned char temp_binary_data_1[] =
 "name: \"Settings\"\n"
 "name: \"Transport\"\n";
 
-const char* Commands_def = (const char*) temp_binary_data_1;
+const char* Commands_def = (const char*) temp_binary_data_2;
 
 //================== File.def ==================
-static const unsigned char temp_binary_data_2[] =
+static const unsigned char temp_binary_data_3[] =
 "command {\n"
 "  id_string: \"CLOSE_FILE\"\n"
 "  category: \"File\"\n"
@@ -212,10 +241,10 @@ static const unsigned char temp_binary_data_2[] =
 "  }\n"
 "}\n";
 
-const char* File_def = (const char*) temp_binary_data_2;
+const char* File_def = (const char*) temp_binary_data_3;
 
 //================== Gui.def ==================
-static const unsigned char temp_binary_data_3[] =
+static const unsigned char temp_binary_data_4[] =
 "command {\n"
 "  id_string: \"TOGGLE_COMMAND_BAR_AT_LEFT\"\n"
 "  category: \"Display\"\n"
@@ -497,10 +526,10 @@ static const unsigned char temp_binary_data_3[] =
 "  }\n"
 "}\n";
 
-const char* Gui_def = (const char*) temp_binary_data_3;
+const char* Gui_def = (const char*) temp_binary_data_4;
 
 //================== LoopPoints.def ==================
-static const unsigned char temp_binary_data_4[] =
+static const unsigned char temp_binary_data_5[] =
 "command {\n"
 "  id_string: \"ADD_LOOP_POINT\"\n"
 "  category: \"Loops\"\n"
@@ -591,10 +620,10 @@ static const unsigned char temp_binary_data_4[] =
 "  disabled: \"cant_undo\"\n"
 "}\n";
 
-const char* LoopPoints_def = (const char*) temp_binary_data_4;
+const char* LoopPoints_def = (const char*) temp_binary_data_5;
 
 //================== Selection.def ==================
-static const unsigned char temp_binary_data_5[] =
+static const unsigned char temp_binary_data_6[] =
 "command {\r\n"
 "  id_string: \"DESELECT_ALL\"\r\n"
 "  category: \"Selection\"\r\n"
@@ -793,10 +822,10 @@ static const unsigned char temp_binary_data_5[] =
 "  disabled: \"empty\"\r\n"
 "}\r\n";
 
-const char* Selection_def = (const char*) temp_binary_data_5;
+const char* Selection_def = (const char*) temp_binary_data_6;
 
 //================== Settings.def ==================
-static const unsigned char temp_binary_data_6[] =
+static const unsigned char temp_binary_data_7[] =
 "command {\n"
 "  id_string: \"ABOUT_THIS_PROGRAM\"\n"
 "  category: \"Help\"\n"
@@ -1051,10 +1080,10 @@ static const unsigned char temp_binary_data_6[] =
 "  }\n"
 "}\n";
 
-const char* Settings_def = (const char*) temp_binary_data_6;
+const char* Settings_def = (const char*) temp_binary_data_7;
 
 //================== Transport.def ==================
-static const unsigned char temp_binary_data_7[] =
+static const unsigned char temp_binary_data_8[] =
 "command {\n"
 "  id_string: \"JUMP\"\n"
 "  index: 15\n"
@@ -1179,13 +1208,7 @@ static const unsigned char temp_binary_data_7[] =
 "  }\n"
 "}\n";
 
-const char* Transport_def = (const char*) temp_binary_data_7;
-
-//================== Components.def ==================
-static const unsigned char temp_binary_data_8[] =
-"";
-
-const char* Components_def = (const char*) temp_binary_data_8;
+const char* Transport_def = (const char*) temp_binary_data_8;
 
 //================== KeyStrokeMap.def ==================
 static const unsigned char temp_binary_data_9[] =
@@ -1547,37 +1570,8 @@ static const unsigned char temp_binary_data_9[] =
 
 const char* KeyStrokeMap_def = (const char*) temp_binary_data_9;
 
-//================== Colors.def ==================
-static const unsigned char temp_binary_data_10[] =
-"color {\n"
-"  name: \"white\"\n"
-"}\n"
-"color {\n"
-"  name: \"lightblue\"\n"
-"}\n"
-"color {\n"
-"  name: \"seagreen\"\n"
-"}\n"
-"color {\n"
-"  rgb: 0xffd3d3d3\n"
-"}\n"
-"color {\n"
-"  rgb: 0xffd3d3d3\n"
-"}\n"
-"color {\n"
-"  name: \"red\"\n"
-"}\n"
-"color {\n"
-"  name: \"black\"\n"
-"}\n"
-"color {\n"
-"  rgb: 0xff607070\n"
-"}\n";
-
-const char* Colors_def = (const char*) temp_binary_data_10;
-
 //================== CommandBar.def ==================
-static const unsigned char temp_binary_data_11[] =
+static const unsigned char temp_binary_data_10[] =
 "layout {\n"
 "  name: \"CommandBar\"\n"
 "  padding: true\n"
@@ -1607,19 +1601,19 @@ static const unsigned char temp_binary_data_11[] =
 "  }\n"
 "}\n";
 
-const char* CommandBar_def = (const char*) temp_binary_data_11;
+const char* CommandBar_def = (const char*) temp_binary_data_10;
 
 //================== Constants.def ==================
-static const unsigned char temp_binary_data_12[] =
+static const unsigned char temp_binary_data_11[] =
 "constant {\n"
 "  name: \"COMMAND_BUTTON_HEIGHT\"\n"
 "  value: 39\n"
 "}";
 
-const char* Constants_def = (const char*) temp_binary_data_12;
+const char* Constants_def = (const char*) temp_binary_data_11;
 
 //================== HelpPanel.def ==================
-static const unsigned char temp_binary_data_13[] =
+static const unsigned char temp_binary_data_12[] =
 "layout {\n"
 "  name: \"HelpPanel\"\n"
 "  component {\n"
@@ -1642,10 +1636,10 @@ static const unsigned char temp_binary_data_13[] =
 "  }\n"
 "}\n";
 
-const char* HelpPanel_def = (const char*) temp_binary_data_13;
+const char* HelpPanel_def = (const char*) temp_binary_data_12;
 
 //================== Layout.def ==================
-static const unsigned char temp_binary_data_14[] =
+static const unsigned char temp_binary_data_13[] =
 "name: \"CommandBar\"\n"
 "name: \"HelpPanel\"\n"
 "name: \"MainPanel\"\n"
@@ -1655,10 +1649,10 @@ static const unsigned char temp_binary_data_14[] =
 "name: \"TransformController\"\n"
 "name: \"TransportController\"\n";
 
-const char* Layout_def = (const char*) temp_binary_data_14;
+const char* Layout_def = (const char*) temp_binary_data_13;
 
 //================== MainPanel.def ==================
-static const unsigned char temp_binary_data_15[] =
+static const unsigned char temp_binary_data_14[] =
 "layout {\n"
 "  name: \"MainPanel\"\n"
 "  orientation: VERTICAL\n"
@@ -1687,10 +1681,10 @@ static const unsigned char temp_binary_data_15[] =
 "  }\n"
 "}\n";
 
-const char* MainPanel_def = (const char*) temp_binary_data_15;
+const char* MainPanel_def = (const char*) temp_binary_data_14;
 
 //================== ModeSelector.def ==================
-static const unsigned char temp_binary_data_16[] =
+static const unsigned char temp_binary_data_15[] =
 "layout {\n"
 "  name: \"ModeSelector\"\n"
 "  size {\n"
@@ -1711,10 +1705,10 @@ static const unsigned char temp_binary_data_16[] =
 "  }\n"
 "}\n";
 
-const char* ModeSelector_def = (const char*) temp_binary_data_16;
+const char* ModeSelector_def = (const char*) temp_binary_data_15;
 
 //================== NavigationPanel.def ==================
-static const unsigned char temp_binary_data_17[] =
+static const unsigned char temp_binary_data_16[] =
 "layout {\n"
 "  name: \"NavigationPanel\"\n"
 "  component {\n"
@@ -1749,10 +1743,10 @@ static const unsigned char temp_binary_data_17[] =
 "  }\n"
 "}\n";
 
-const char* NavigationPanel_def = (const char*) temp_binary_data_17;
+const char* NavigationPanel_def = (const char*) temp_binary_data_16;
 
 //================== PlaybackPanel.def ==================
-static const unsigned char temp_binary_data_18[] =
+static const unsigned char temp_binary_data_17[] =
 "layout {\n"
 "  name: \"PlaybackPanel\"\n"
 "  component {\n"
@@ -1787,10 +1781,10 @@ static const unsigned char temp_binary_data_18[] =
 "  }\n"
 "}\n";
 
-const char* PlaybackPanel_def = (const char*) temp_binary_data_18;
+const char* PlaybackPanel_def = (const char*) temp_binary_data_17;
 
 //================== SongData.def ==================
-static const unsigned char temp_binary_data_19[] =
+static const unsigned char temp_binary_data_18[] =
 "layout {\n"
 "  name: \"SongData\"\n"
 "  component {\n"
@@ -1874,10 +1868,10 @@ static const unsigned char temp_binary_data_19[] =
 "  }\n"
 "}\n";
 
-const char* SongData_def = (const char*) temp_binary_data_19;
+const char* SongData_def = (const char*) temp_binary_data_18;
 
 //================== TransformController.def ==================
-static const unsigned char temp_binary_data_20[] =
+static const unsigned char temp_binary_data_19[] =
 "layout {\n"
 "  name: \"TransformController\"\n"
 "  component {\n"
@@ -1930,10 +1924,10 @@ static const unsigned char temp_binary_data_20[] =
 "  }\n"
 "}\n";
 
-const char* TransformController_def = (const char*) temp_binary_data_20;
+const char* TransformController_def = (const char*) temp_binary_data_19;
 
 //================== TransportController.def ==================
-static const unsigned char temp_binary_data_21[] =
+static const unsigned char temp_binary_data_20[] =
 "layout {\n"
 "  name: \"TransportController\"\n"
 "  orientation: VERTICAL\n"
@@ -1999,7 +1993,24 @@ static const unsigned char temp_binary_data_21[] =
 "  }\n"
 "}\n";
 
-const char* TransportController_def = (const char*) temp_binary_data_21;
+const char* TransportController_def = (const char*) temp_binary_data_20;
+
+//================== Waveform.def ==================
+static const unsigned char temp_binary_data_21[] =
+"layout {\n"
+"  name: \"Waveform\"\n"
+"  container {\n"
+"    name: \"Waveform\n"
+"  }\n"
+"  component {\n"
+"    name: \"ModeSelector\"\n"
+"  }\n"
+"  component {\n"
+"    name: \"CommandBar\"\n"
+"  }\n"
+"}";
+
+const char* Waveform_def = (const char*) temp_binary_data_21;
 
 //================== MenuCollection.def ==================
 static const unsigned char temp_binary_data_22[] =
@@ -13734,6 +13745,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
 
     switch (hash)
     {
+        case 0xc4c114d6:  numBytes = 219; return Colors_def;
         case 0x82ae93fc:  numBytes = 1593; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
         case 0xd807eee2:  numBytes = 2081; return File_def;
@@ -13742,9 +13754,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x6d98aeb2:  numBytes = 5765; return Selection_def;
         case 0x29a9fa09:  numBytes = 5281; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3530; return Transport_def;
-        case 0x1704877c:  numBytes = 0; return Components_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
-        case 0xc4c114d6:  numBytes = 219; return Colors_def;
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
         case 0xeda734e9:  numBytes = 394; return HelpPanel_def;
@@ -13756,6 +13766,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x1b5b8645:  numBytes = 1580; return SongData_def;
         case 0x29238b4e:  numBytes = 726; return TransformController_def;
         case 0x4bd6484b:  numBytes = 877; return TransportController_def;
+        case 0x3d219c23:  numBytes = 151; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3790; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;

@@ -15,7 +15,7 @@ unique_ptr<Component> makeResizer(const ComponentProto& component,
       new SetterResizer(component.address(),
                         nullptr, // TODO
                         -1, // TODO
-                        constants(proto.min_value())));
+                        constants.getDouble(proto.min_value())));
 
 }
 

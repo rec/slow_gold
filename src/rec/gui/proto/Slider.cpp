@@ -14,18 +14,18 @@ unique_ptr<Component> makeSlider(const ComponentProto& component,
       new DataSlider(slider.caption(),
                      component.tooltip(),
                      component.address(),
-                     constants(slider.caption_size()),
-                     constants(slider.text_entry_box_width()),
-                     constants(slider.text_entry_box_height())));
+                     constants.getDouble(slider.caption_size()),
+                     constants.getDouble(slider.text_entry_box_width()),
+                     constants.getDouble(slider.text_entry_box_height())));
   if (slider.has_detent())
-    dataSlider->setDetent(constants(slider.detent()));
+    dataSlider->setDetent(constants.getDouble(slider.detent()));
 
   if (slider.has_detent_radius())
-    dataSlider->setDetentRadius(constants(slider.detent_radius()));
+    dataSlider->setDetentRadius(constants.getDouble(slider.detent_radius()));
 
-  dataSlider->setRange(constants(slider.minimum()),
-                       constants(slider.maximum()),
-                       constants(slider.interval()));
+  dataSlider->setRange(constants.getDouble(slider.minimum()),
+                       constants.getDouble(slider.maximum()),
+                       constants.getDouble(slider.interval()));
   return unique_ptr<Component>(dataSlider.release());
 }
 

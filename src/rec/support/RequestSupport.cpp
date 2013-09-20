@@ -28,7 +28,7 @@ const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
 const char* const VOWELS = "aeiouy";
 const char* const CONSONANTS = "bdfgjlmnprsvwxz";
 const char* const LETTERS[] = {VOWELS, CONSONANTS};
-const uint32 LENGTHS[] = {strlen(VOWELS), strlen(CONSONANTS)};
+const size_t LENGTHS[] = {strlen(VOWELS), strlen(CONSONANTS)};
 
 const int LENGTH = 10;
 

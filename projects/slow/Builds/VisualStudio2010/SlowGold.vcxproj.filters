@@ -83,9 +83,6 @@
     <Filter Include="SlowGold\src\slow\commands\command">
       <UniqueIdentifier>{02BFBEEE-EE51-B766-29BC-EABFF79F0CFC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\src\slow\commands\component">
-      <UniqueIdentifier>{8F82150A-2D18-967C-7AC8-7F38B6D0AC91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SlowGold\src\slow\commands\layout">
       <UniqueIdentifier>{5AC2DD56-B91E-27B2-2C95-AFBD84ADD73E}</UniqueIdentifier>
     </Filter>
@@ -799,6 +796,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Constants.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Custom.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Font.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1151,6 +1151,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Custom.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.cc">
@@ -2676,9 +2679,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CallbackTable.h">
       <Filter>SlowGold\src\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
-      <Filter>SlowGold\src\command</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\src\command</Filter>
     </ClInclude>
@@ -2890,6 +2890,9 @@
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Constants.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Custom.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Font.h">
@@ -3442,6 +3445,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Custom.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.h">
@@ -4856,6 +4862,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\src\rec\slow\commands\Colors.def">
+      <Filter>SlowGold\src\slow\commands</Filter>
+    </None>
     <None Include="..\..\..\..\src\rec\slow\commands\command\Audio.def">
       <Filter>SlowGold\src\slow\commands\command</Filter>
     </None>
@@ -4880,14 +4889,8 @@
     <None Include="..\..\..\..\src\rec\slow\commands\command\Transport.def">
       <Filter>SlowGold\src\slow\commands\command</Filter>
     </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\component\Components.def">
-      <Filter>SlowGold\src\slow\commands\component</Filter>
-    </None>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def">
       <Filter>SlowGold\src\slow\commands</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\layout\Colors.def">
-      <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\CommandBar.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
@@ -4920,6 +4923,9 @@
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\TransportController.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\Waveform.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\MenuCollection.def">

@@ -189,10 +189,19 @@ class Layout : public ::google::protobuf::Message {
   inline ::rec::gui::Size* release_size();
   inline void set_allocated_size(::rec::gui::Size* size);
 
-  // repeated .rec.gui.ComponentProto component = 9;
+  // optional .rec.gui.ComponentProto container = 7;
+  inline bool has_container() const;
+  inline void clear_container();
+  static const int kContainerFieldNumber = 7;
+  inline const ::rec::gui::ComponentProto& container() const;
+  inline ::rec::gui::ComponentProto* mutable_container();
+  inline ::rec::gui::ComponentProto* release_container();
+  inline void set_allocated_container(::rec::gui::ComponentProto* container);
+
+  // repeated .rec.gui.ComponentProto component = 8;
   inline int component_size() const;
   inline void clear_component();
-  static const int kComponentFieldNumber = 9;
+  static const int kComponentFieldNumber = 8;
   inline const ::rec::gui::ComponentProto& component(int index) const;
   inline ::rec::gui::ComponentProto* mutable_component(int index);
   inline ::rec::gui::ComponentProto* add_component();
@@ -215,6 +224,8 @@ class Layout : public ::google::protobuf::Message {
   inline void clear_has_padding();
   inline void set_has_size();
   inline void clear_has_size();
+  inline void set_has_container();
+  inline void clear_has_container();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -224,10 +235,11 @@ class Layout : public ::google::protobuf::Message {
   bool is_main_;
   bool padding_;
   ::rec::gui::Size* size_;
+  ::rec::gui::ComponentProto* container_;
   ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto > component_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
@@ -525,7 +537,45 @@ inline void Layout::set_allocated_size(::rec::gui::Size* size) {
   }
 }
 
-// repeated .rec.gui.ComponentProto component = 9;
+// optional .rec.gui.ComponentProto container = 7;
+inline bool Layout::has_container() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void Layout::set_has_container() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void Layout::clear_has_container() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void Layout::clear_container() {
+  if (container_ != NULL) container_->::rec::gui::ComponentProto::Clear();
+  clear_has_container();
+}
+inline const ::rec::gui::ComponentProto& Layout::container() const {
+  return container_ != NULL ? *container_ : *default_instance_->container_;
+}
+inline ::rec::gui::ComponentProto* Layout::mutable_container() {
+  set_has_container();
+  if (container_ == NULL) container_ = new ::rec::gui::ComponentProto;
+  return container_;
+}
+inline ::rec::gui::ComponentProto* Layout::release_container() {
+  clear_has_container();
+  ::rec::gui::ComponentProto* temp = container_;
+  container_ = NULL;
+  return temp;
+}
+inline void Layout::set_allocated_container(::rec::gui::ComponentProto* container) {
+  delete container_;
+  container_ = container;
+  if (container) {
+    set_has_container();
+  } else {
+    clear_has_container();
+  }
+}
+
+// repeated .rec.gui.ComponentProto component = 8;
 inline int Layout::component_size() const {
   return component_.size();
 }

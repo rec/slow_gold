@@ -18,10 +18,8 @@ namespace {
 void fillKeyPressMappingSet(const CommandMapProto& commandMap,
                             KeyPressMappingSet* mappings) {
   mappings->clearAllKeyPresses();
-  DLOG(INFO) << "!!!!!! " << commandMap.entry_size();
   for (int i = 0; i < commandMap.entry_size(); ++i) {
     const CommandMapEntry& m = commandMap.entry(i);
-    DLOG(INFO) << m.key_size() << ": " << m.id();
     for (int j = 0; j < m.key_size(); ++j)
       mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
   }
