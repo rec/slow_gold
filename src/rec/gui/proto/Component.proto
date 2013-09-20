@@ -5,6 +5,7 @@ import "rec/gui/proto/Button.proto";
 import "rec/gui/proto/ComboBox.proto";
 import "rec/gui/proto/Custom.proto";
 import "rec/gui/proto/Font.proto";
+import "rec/gui/proto/Help.proto";
 import "rec/gui/proto/Label.proto";
 import "rec/gui/proto/Resizer.proto";
 import "rec/gui/proto/Size.proto";
@@ -29,6 +30,7 @@ message ComponentProto {
   optional ButtonProto button = 8;
   optional ComboBoxProto combo_box = 9;
   optional CustomProto custom = 10;
+  optional HelpProto help = 16;
   optional LabelProto label = 11;
   optional ResizerProto full_resizer = 12;
   optional SliderProto slider = 13;

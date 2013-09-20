@@ -8,6 +8,9 @@
 namespace rec {
 namespace gui {
 
+class Constants;
+class Size;
+
 class Panel : public Component,
               public SizeHintAccumulator,
               public SettableTooltipClient {
@@ -27,6 +30,10 @@ class Panel : public Component,
   void addToPanel(Component* c);
   void addToPanel(Component* c, double m) { addToPanel(c, m, m, m); }
   void addToPanel(Component* c, double min, double max, double pref);
+  void addToPanel(Component*, const Constants&, const Size&);
+
+  // Second size overrides the first one.
+  void addToPanel(Component*, const Constants&, const Size&, const Size&);
 
   int size() const { return components_.size(); }
 
@@ -46,7 +53,7 @@ class Panel : public Component,
 
  protected:
   StretchableLayoutManager layoutManager_;
-  vector <Component*> components_;
+  vector<Component*> components_;
   Orientation orientation_;
   const bool resizeOtherDimension_;
   SizeAccumulator sizeHints_[LAST];

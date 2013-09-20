@@ -29,6 +29,7 @@
 #include "rec/gui/proto/ComboBox.pb.h"
 #include "rec/gui/proto/Custom.pb.h"
 #include "rec/gui/proto/Font.pb.h"
+#include "rec/gui/proto/Help.pb.h"
 #include "rec/gui/proto/Label.pb.h"
 #include "rec/gui/proto/Resizer.pb.h"
 #include "rec/gui/proto/Size.pb.h"
@@ -206,6 +207,15 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::rec::gui::CustomProto* release_custom();
   inline void set_allocated_custom(::rec::gui::CustomProto* custom);
 
+  // optional .rec.gui.HelpProto help = 16;
+  inline bool has_help() const;
+  inline void clear_help();
+  static const int kHelpFieldNumber = 16;
+  inline const ::rec::gui::HelpProto& help() const;
+  inline ::rec::gui::HelpProto* mutable_help();
+  inline ::rec::gui::HelpProto* release_help();
+  inline void set_allocated_help(::rec::gui::HelpProto* help);
+
   // optional .rec.gui.LabelProto label = 11;
   inline bool has_label() const;
   inline void clear_label();
@@ -271,6 +281,8 @@ class ComponentProto : public ::google::protobuf::Message {
   inline void clear_has_combo_box();
   inline void set_has_custom();
   inline void clear_has_custom();
+  inline void set_has_help();
+  inline void clear_has_help();
   inline void set_has_label();
   inline void clear_has_label();
   inline void set_has_full_resizer();
@@ -294,6 +306,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::CustomProto* custom_;
+  ::rec::gui::HelpProto* help_;
   ::rec::gui::LabelProto* label_;
   ::rec::gui::ResizerProto* full_resizer_;
   ::rec::gui::SliderProto* slider_;
@@ -301,7 +314,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(15 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -780,15 +793,53 @@ inline void ComponentProto::set_allocated_custom(::rec::gui::CustomProto* custom
   }
 }
 
-// optional .rec.gui.LabelProto label = 11;
-inline bool ComponentProto::has_label() const {
+// optional .rec.gui.HelpProto help = 16;
+inline bool ComponentProto::has_help() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
-inline void ComponentProto::set_has_label() {
+inline void ComponentProto::set_has_help() {
   _has_bits_[0] |= 0x00000400u;
 }
-inline void ComponentProto::clear_has_label() {
+inline void ComponentProto::clear_has_help() {
   _has_bits_[0] &= ~0x00000400u;
+}
+inline void ComponentProto::clear_help() {
+  if (help_ != NULL) help_->::rec::gui::HelpProto::Clear();
+  clear_has_help();
+}
+inline const ::rec::gui::HelpProto& ComponentProto::help() const {
+  return help_ != NULL ? *help_ : *default_instance_->help_;
+}
+inline ::rec::gui::HelpProto* ComponentProto::mutable_help() {
+  set_has_help();
+  if (help_ == NULL) help_ = new ::rec::gui::HelpProto;
+  return help_;
+}
+inline ::rec::gui::HelpProto* ComponentProto::release_help() {
+  clear_has_help();
+  ::rec::gui::HelpProto* temp = help_;
+  help_ = NULL;
+  return temp;
+}
+inline void ComponentProto::set_allocated_help(::rec::gui::HelpProto* help) {
+  delete help_;
+  help_ = help;
+  if (help) {
+    set_has_help();
+  } else {
+    clear_has_help();
+  }
+}
+
+// optional .rec.gui.LabelProto label = 11;
+inline bool ComponentProto::has_label() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void ComponentProto::set_has_label() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void ComponentProto::clear_has_label() {
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void ComponentProto::clear_label() {
   if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
@@ -820,13 +871,13 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
 
 // optional .rec.gui.ResizerProto full_resizer = 12;
 inline bool ComponentProto::has_full_resizer() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void ComponentProto::set_has_full_resizer() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void ComponentProto::clear_has_full_resizer() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void ComponentProto::clear_full_resizer() {
   if (full_resizer_ != NULL) full_resizer_->::rec::gui::ResizerProto::Clear();
@@ -858,13 +909,13 @@ inline void ComponentProto::set_allocated_full_resizer(::rec::gui::ResizerProto*
 
 // optional .rec.gui.SliderProto slider = 13;
 inline bool ComponentProto::has_slider() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void ComponentProto::set_has_slider() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void ComponentProto::clear_has_slider() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void ComponentProto::clear_slider() {
   if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
@@ -896,13 +947,13 @@ inline void ComponentProto::set_allocated_slider(::rec::gui::SliderProto* slider
 
 // optional .rec.gui.TextProto text = 14;
 inline bool ComponentProto::has_text() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void ComponentProto::set_has_text() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void ComponentProto::clear_has_text() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void ComponentProto::clear_text() {
   if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
@@ -934,13 +985,13 @@ inline void ComponentProto::set_allocated_text(::rec::gui::TextProto* text) {
 
 // optional .rec.gui.ToggleButtonProto toggle_button = 15;
 inline bool ComponentProto::has_toggle_button() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void ComponentProto::set_has_toggle_button() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void ComponentProto::clear_has_toggle_button() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();

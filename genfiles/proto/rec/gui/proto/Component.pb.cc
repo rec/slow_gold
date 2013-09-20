@@ -35,7 +35,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
       "rec/gui/proto/Component.proto");
   GOOGLE_CHECK(file != NULL);
   ComponentProto_descriptor_ = file->message_type(0);
-  static const int ComponentProto_offsets_[15] = {
+  static const int ComponentProto_offsets_[16] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, tooltip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, size_),
@@ -46,6 +46,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, button_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, combo_box_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, custom_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, help_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, label_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, full_resizer_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, slider_),
@@ -97,6 +98,7 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fCustom_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fFont_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fHelp_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fLabel_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
@@ -109,25 +111,26 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "\032\034rec/data/proto/Address.proto\032\032rec/gui/"
     "proto/Button.proto\032\034rec/gui/proto/ComboB"
     "ox.proto\032\032rec/gui/proto/Custom.proto\032\030re"
-    "c/gui/proto/Font.proto\032\031rec/gui/proto/La"
-    "bel.proto\032\033rec/gui/proto/Resizer.proto\032\030"
-    "rec/gui/proto/Size.proto\032\032rec/gui/proto/"
-    "Slider.proto\032\030rec/gui/proto/Text.proto\032 "
-    "rec/gui/proto/ToggleButton.proto\032\023rec/gu"
-    "i/Color.proto\"\212\004\n\016ComponentProto\022\014\n\004name"
-    "\030\001 \001(\t\022\017\n\007tooltip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r."
-    "rec.gui.Size\022\'\n\007address\030\004 \001(\0132\026.rec.data"
-    ".AddressProto\022\035\n\005color\030\005 \003(\0132\016.rec.gui.C"
-    "olor\022 \n\004font\030\006 \001(\0132\022.rec.gui.FontProto\022\017"
-    "\n\007resizer\030\007 \001(\t\022$\n\006button\030\010 \001(\0132\024.rec.gu"
-    "i.ButtonProto\022)\n\tcombo_box\030\t \001(\0132\026.rec.g"
-    "ui.ComboBoxProto\022$\n\006custom\030\n \001(\0132\024.rec.g"
-    "ui.CustomProto\022\"\n\005label\030\013 \001(\0132\023.rec.gui."
-    "LabelProto\022+\n\014full_resizer\030\014 \001(\0132\025.rec.g"
-    "ui.ResizerProto\022$\n\006slider\030\r \001(\0132\024.rec.gu"
-    "i.SliderProto\022 \n\004text\030\016 \001(\0132\022.rec.gui.Te"
-    "xtProto\0221\n\rtoggle_button\030\017 \001(\0132\032.rec.gui"
-    ".ToggleButtonProto", 898);
+    "c/gui/proto/Font.proto\032\030rec/gui/proto/He"
+    "lp.proto\032\031rec/gui/proto/Label.proto\032\033rec"
+    "/gui/proto/Resizer.proto\032\030rec/gui/proto/"
+    "Size.proto\032\032rec/gui/proto/Slider.proto\032\030"
+    "rec/gui/proto/Text.proto\032 rec/gui/proto/"
+    "ToggleButton.proto\032\023rec/gui/Color.proto\""
+    "\254\004\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
+    "tip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\'"
+    "\n\007address\030\004 \001(\0132\026.rec.data.AddressProto\022"
+    "\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 \n\004font\030\006"
+    " \001(\0132\022.rec.gui.FontProto\022\017\n\007resizer\030\007 \001("
+    "\t\022$\n\006button\030\010 \001(\0132\024.rec.gui.ButtonProto\022"
+    ")\n\tcombo_box\030\t \001(\0132\026.rec.gui.ComboBoxPro"
+    "to\022$\n\006custom\030\n \001(\0132\024.rec.gui.CustomProto"
+    "\022 \n\004help\030\020 \001(\0132\022.rec.gui.HelpProto\022\"\n\005la"
+    "bel\030\013 \001(\0132\023.rec.gui.LabelProto\022+\n\014full_r"
+    "esizer\030\014 \001(\0132\025.rec.gui.ResizerProto\022$\n\006s"
+    "lider\030\r \001(\0132\024.rec.gui.SliderProto\022 \n\004tex"
+    "t\030\016 \001(\0132\022.rec.gui.TextProto\0221\n\rtoggle_bu"
+    "tton\030\017 \001(\0132\032.rec.gui.ToggleButtonProto", 958);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::default_instance_ = new ComponentProto();
@@ -155,6 +158,7 @@ const int ComponentProto::kResizerFieldNumber;
 const int ComponentProto::kButtonFieldNumber;
 const int ComponentProto::kComboBoxFieldNumber;
 const int ComponentProto::kCustomFieldNumber;
+const int ComponentProto::kHelpFieldNumber;
 const int ComponentProto::kLabelFieldNumber;
 const int ComponentProto::kFullResizerFieldNumber;
 const int ComponentProto::kSliderFieldNumber;
@@ -174,6 +178,7 @@ void ComponentProto::InitAsDefaultInstance() {
   button_ = const_cast< ::rec::gui::ButtonProto*>(&::rec::gui::ButtonProto::default_instance());
   combo_box_ = const_cast< ::rec::gui::ComboBoxProto*>(&::rec::gui::ComboBoxProto::default_instance());
   custom_ = const_cast< ::rec::gui::CustomProto*>(&::rec::gui::CustomProto::default_instance());
+  help_ = const_cast< ::rec::gui::HelpProto*>(&::rec::gui::HelpProto::default_instance());
   label_ = const_cast< ::rec::gui::LabelProto*>(&::rec::gui::LabelProto::default_instance());
   full_resizer_ = const_cast< ::rec::gui::ResizerProto*>(&::rec::gui::ResizerProto::default_instance());
   slider_ = const_cast< ::rec::gui::SliderProto*>(&::rec::gui::SliderProto::default_instance());
@@ -198,6 +203,7 @@ void ComponentProto::SharedCtor() {
   button_ = NULL;
   combo_box_ = NULL;
   custom_ = NULL;
+  help_ = NULL;
   label_ = NULL;
   full_resizer_ = NULL;
   slider_ = NULL;
@@ -227,6 +233,7 @@ void ComponentProto::SharedDtor() {
     delete button_;
     delete combo_box_;
     delete custom_;
+    delete help_;
     delete label_;
     delete full_resizer_;
     delete slider_;
@@ -292,6 +299,9 @@ void ComponentProto::Clear() {
     }
     if (has_custom()) {
       if (custom_ != NULL) custom_->::rec::gui::CustomProto::Clear();
+    }
+    if (has_help()) {
+      if (help_ != NULL) help_->::rec::gui::HelpProto::Clear();
     }
     if (has_label()) {
       if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
@@ -535,6 +545,20 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(130)) goto parse_help;
+        break;
+      }
+
+      // optional .rec.gui.HelpProto help = 16;
+      case 16: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_help:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_help()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -654,6 +678,12 @@ void ComponentProto::SerializeWithCachedSizes(
   if (has_toggle_button()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       15, this->toggle_button(), output);
+  }
+
+  // optional .rec.gui.HelpProto help = 16;
+  if (has_help()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      16, this->help(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -778,6 +808,13 @@ void ComponentProto::SerializeWithCachedSizes(
         15, this->toggle_button(), target);
   }
 
+  // optional .rec.gui.HelpProto help = 16;
+  if (has_help()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        16, this->help(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -852,6 +889,13 @@ int ComponentProto::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->custom());
+    }
+
+    // optional .rec.gui.HelpProto help = 16;
+    if (has_help()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->help());
     }
 
     // optional .rec.gui.LabelProto label = 11;
@@ -954,6 +998,9 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
     if (from.has_custom()) {
       mutable_custom()->::rec::gui::CustomProto::MergeFrom(from.custom());
     }
+    if (from.has_help()) {
+      mutable_help()->::rec::gui::HelpProto::MergeFrom(from.help());
+    }
     if (from.has_label()) {
       mutable_label()->::rec::gui::LabelProto::MergeFrom(from.label());
     }
@@ -1002,6 +1049,7 @@ void ComponentProto::Swap(ComponentProto* other) {
     std::swap(button_, other->button_);
     std::swap(combo_box_, other->combo_box_);
     std::swap(custom_, other->custom_);
+    std::swap(help_, other->help_);
     std::swap(label_, other->label_);
     std::swap(full_resizer_, other->full_resizer_);
     std::swap(slider_, other->slider_);

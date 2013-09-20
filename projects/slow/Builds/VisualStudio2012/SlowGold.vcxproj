@@ -236,6 +236,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Constants.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Custom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Font.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Help.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
@@ -355,6 +356,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Custom.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Help.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.cc"/>
@@ -1625,6 +1627,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Constants.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Custom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Font.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Help.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
@@ -1810,6 +1813,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Custom.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Help.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.h"/>

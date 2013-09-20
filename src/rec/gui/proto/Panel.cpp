@@ -1,4 +1,7 @@
 #include "rec/gui/proto/Panel.h"
+
+#include "rec/gui/proto/Constants.h"
+#include "rec/gui/proto/Size.pb.h"
 #include "rec/util/STL.h"
 
 namespace rec {
@@ -29,6 +32,31 @@ void Panel::addToPanel(Component* c, double min, double max, double pref) {
   components_.push_back(c);
 
   addAndMakeVisible(c);
+}
+
+void Panel::addToPanel(
+    Component* c, const Constants& constants, const Size& size) {
+  addToPanel(c, constants, size, Size());
+}
+
+void Panel::addToPanel(
+    Component* c, const Constants& constants, const Size& s1, const Size& s2) {
+  float min = DEFAULT_MIN, max = DEFAULT_MAX, preferred = DEFAULT_PREF;
+  if (s2.has_min())
+    min = constants.getDouble(s2.min());
+  else if (s1.has_min())
+    min = constants.getDouble(s2.min());
+
+  if (s2.has_max())
+    max = constants.getDouble(s2.max());
+  else if (s1.has_max())
+    max = constants.getDouble(s2.max());
+
+  if (s2.has_preferred())
+    preferred = constants.getDouble(s2.preferred());
+  else if (s1.has_preferred())
+    preferred = constants.getDouble(s2.preferred());
+  addToPanel(c, min, max, preferred);
 }
 
 void Panel::resized() {
