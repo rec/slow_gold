@@ -1,8 +1,7 @@
 #ifndef __REC_UTIL_MESSAGEREGISTRARANDMAKER__
 #define __REC_UTIL_MESSAGEREGISTRARANDMAKER__
 
-#include <map>
-
+#include "rec/data/proto/Address.pb.h"
 #include "rec/util/proto/MessageMaker.h"
 #include "rec/util/proto/MessageRegistrar.h"
 
@@ -11,19 +10,17 @@ namespace util {
 
 class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
  public:
-  MessageRegistrarAndMaker() {}
+  MessageRegistrarAndMaker();
   virtual ~MessageRegistrarAndMaker();
 
-  virtual Message* makeMessage(const string& typeName) const;
-
-  virtual void registerInstance(const Message& m, bool copy = true);
+  unique_ptr<Message> makeMessage(const string& typeName) const override;
+  void registerInstance(
+      const Message& m, bool copy, data::AddressProto::Scope) override;
+  data::AddressProto::Scope scope(const string& typeName) const override;
 
  private:
-  class Entry;
-  typedef std::map<string, Entry*> Registry;
-
-  Registry registry_;
-
+  struct Impl;
+  unique_ptr<Impl> impl_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MessageRegistrarAndMaker);
 };
 

@@ -2,6 +2,7 @@
 #define __REC_DATA_MESSAGEMAKER__
 
 #include "rec/base/base.h"
+#include "rec/data/proto/Address.pb.h"
 
 namespace rec {
 namespace util {
@@ -11,7 +12,8 @@ class MessageMaker {
   MessageMaker() {}
   virtual ~MessageMaker() {}
 
-  virtual Message* makeMessage(const string& typeName) const = 0;
+  virtual unique_ptr<Message> makeMessage(const string& typeName) const = 0;
+  virtual data::AddressProto::Scope scope(const string& typeName) const = 0;
 };
 
 }  // namespace util

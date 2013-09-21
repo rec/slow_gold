@@ -1,56 +1,73 @@
+#include <unordered_map>
+
 #include <google/protobuf/message.h>
 
-#include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/proto/MessageRegistrarAndMaker.h"
 #include "rec/util/proto/Proto.h"
 
+using namespace rec::data;
+
 namespace rec {
 namespace util {
 
-class MessageRegistrarAndMaker::Entry {
- public:
-  Entry(const Message& m, bool c) { initialize(m, c); }
-  Entry(const Entry& e) { initialize(*e.message_, e.copyFrom_); }
+namespace {
 
-  Message* makeMessage() const { return Entry(*this).message_.release(); }
-
- private:
-  void initialize(const Message& m, bool c) {
-    copyFrom_ = c;
+struct Entry {
+  Entry(const Message& m, bool c, AddressProto::Scope scope)
+      : copyFrom_(c), scope_(scope) {
     message_.reset(m.New());
-    if (copyFrom_)
-      message_->CopyFrom(m);
   }
 
-  ptr<Message> message_;
-  bool copyFrom_;
+  unique_ptr<Message> makeMessage() const {
+    unique_ptr<Message> m(message_->New());
+    if (copyFrom_)
+      m->CopyFrom(*message_);
+    return std::move(m);
+  }
 
+  unique_ptr<Message> message_;
+  bool copyFrom_;
+  AddressProto::Scope scope_;
 };
 
-MessageRegistrarAndMaker::~MessageRegistrarAndMaker() {
-  stl::deleteMapPointers(&registry_);
-}
+}  // namespace
 
-void MessageRegistrarAndMaker::registerInstance(const Message& m, bool copy) {
+
+struct MessageRegistrarAndMaker::Impl {
+  std::unordered_map<string, unique_ptr<Entry>> registry_;
+};
+
+MessageRegistrarAndMaker::MessageRegistrarAndMaker() : impl_(new Impl) {}
+MessageRegistrarAndMaker::~MessageRegistrarAndMaker() {}
+
+void MessageRegistrarAndMaker::registerInstance(
+    const Message& m, bool copy, AddressProto::Scope scope) {
   const string& typeName = getTypeName(m);
   DCHECK_LT(typeName.size(), file::MAX_FILENANE_LENGTH);
-  Registry::iterator i = registry_.find(typeName);
-  if (i != registry_.end()) {
+  if (impl_->registry_.count(typeName)) {
     LOG(DFATAL) << "Tried to register the same type twice: " << typeName;
     return;
   }
-
-  registry_.insert(i, std::make_pair(typeName, new Entry(m, copy)));
+  impl_->registry_[typeName] = make_unique<Entry>(m, copy, scope);
 }
 
-Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) const {
-  Registry::const_iterator i = registry_.find(typeName);
-  if (i != registry_.end())
-    return i->second->makeMessage();
+unique_ptr<Message> MessageRegistrarAndMaker::makeMessage(const string& tn) const {
+  try {
+    return impl_->registry_.at(tn)->makeMessage();
+  } catch (std::out_of_range&) {
+    LOG(DFATAL) << "Couldn't find data type " << tn;
+    return unique_ptr<Message>();
+  }
+}
 
-  LOG(DFATAL) << "Couldn't find data type " << typeName;
-  return nullptr;
+AddressProto::Scope MessageRegistrarAndMaker::scope(const string& tn) const {
+  try {
+    return impl_->registry_.at(tn)->scope_;
+  } catch (std::out_of_range&) {
+    LOG(DFATAL) << "Couldn't find data type " << tn;
+    return AddressProto::FILE_SCOPE;
+  }
 }
 
 }  // namespace util

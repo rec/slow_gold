@@ -20,18 +20,6 @@ void deletePointers(Container* c) {
   c->clear();
 }
 
-template <typename Iterator>
-void deleteMapPointers(Iterator begin, Iterator end) {
-  for (; begin != end; ++begin)
-    delete begin->second;
-}
-
-template <typename Container>
-void deleteMapPointers(Container* c) {
-  deleteMapPointers(c->begin(), c->end());
-  c->clear();
-}
-
 template <typename Container>
 void clear(Container* c) {
   deletePointers(c);
