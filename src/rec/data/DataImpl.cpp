@@ -44,6 +44,7 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 
 bool DataImpl::writeToFile() {
 #ifndef SLOWGOLD_SAVE_DISABLED
+
   if (isEmpty_) {
     LOG(DFATAL) << "Tried to write an empty value.";
     return false;

@@ -62,7 +62,7 @@ static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
 
 int navigator(Thread*) {
   getInstance()->components_->directoryTree_->checkVolumes();
-  return thread::WAIT;
+  return thread::CONTINUE;
 }
 
 int writeGui(Thread* thread) {
@@ -70,12 +70,12 @@ int writeGui(Thread* thread) {
   if (!l.lockWasGained())
     return thread::DONE;
   getInstance()->updateGui();
-  return thread::WAIT;
+  return thread::CONTINUE;
 }
 
 int writeData(Thread*) {
   data::getDataCenter().updater_->write();
-  return thread::WAIT;
+  return thread::CONTINUE;
 }
 
 int updateData(Thread* thread) {
@@ -88,12 +88,12 @@ int updateData(Thread* thread) {
 
 int directory(Thread*) {
   return getInstance()->components_->directoryTree_->run() ? thread::YIELD :
-    thread::WAIT;
+    thread::CONTINUE;
 }
 
 int timer(Thread*) {
   getInstance()->player_->timer()->broadcastTime();
-  return thread::WAIT;
+  return thread::CONTINUE;
 }
 
 }  // namespace

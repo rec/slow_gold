@@ -27,6 +27,7 @@ bool DataUpdater::update() {
   ptr<DataSet::Set> updates(update_->release());
   if (!updates)
     return false;
+
   for (DataSet::Set::iterator i = updates->begin(); i != updates->end(); ++i)
     (*i)->update();
 

@@ -19,10 +19,10 @@ class Looper : public Thread {
     while (!threadShouldExit()) {
       int32 r = function_(this);
       switch (r) {
-       case thread::CONTINUE:  break;
-       case thread::YIELD:     yield(); break;
-       case thread::DONE:      return;
-       default:                wait(static_cast<int>(r)); break;
+        case thread::CONTINUE:  wait(period_); break;
+        case thread::YIELD:     yield(); break;
+        case thread::DONE:      return;
+        default:                wait(static_cast<int>(r)); break;
       }
     }
   }
