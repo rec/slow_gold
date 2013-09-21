@@ -18,7 +18,6 @@
 #include "rec/util/Mode.pb.h"
 #include "rec/util/SystemStats.pb.h"
 #include "rec/util/proto/MessageRegistrar.h"
-#include "rec/util/proto/MessageRegistrarAndMaker.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
@@ -29,7 +28,7 @@ namespace slow {
 
 void registerProtos() {
   using namespace rec::data;
-  MessageRegistrar* r = getDataCenter().registry_.get();
+  MessageRegistrar* r = getDataCenter()->messageRegistrar();
 
   registerClass<app::AppSettings>(r);
   registerClass<audio::AudioSettings>(r);

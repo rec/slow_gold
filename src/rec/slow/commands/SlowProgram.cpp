@@ -74,7 +74,7 @@ int writeGui(Thread* thread) {
 }
 
 int writeData(Thread*) {
-  data::getDataCenter().updater_->write();
+  data::getDataCenter()->updater()->write();
   return thread::CONTINUE;
 }
 
@@ -82,7 +82,7 @@ int updateData(Thread* thread) {
   MessageManagerLock l(thread);
   if (!l.lockWasGained())
     return thread::DONE;
-  data::getDataCenter().updater_->update();
+  data::getDataCenter()->updater()->update();
   return thread::WAIT;
 }
 

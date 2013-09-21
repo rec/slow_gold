@@ -28,8 +28,8 @@ void CurrentFileBase::operator()(const VirtualFile& vf) {
 }
 
 void CurrentFileBase::setVirtualFile(const VirtualFile& f, bool showError) {
-  data::getDataCenter().waitTillClear();
-  data::getDataCenter().clearUndoes();
+  data::getDataCenter()->waitTillClear();
+  data::getDataCenter()->clearUndoes();
 
   suspend();
 

@@ -7,8 +7,19 @@ layout {
   }
   component {
     name: "EnableButton"
+    tooltip: "Enable Speed Slider: Disable or enable speed changes to the track."
+    address {
+      type_name: "rec.audio.stretch.Stretch"
+      parts {
+        name: "time_enabled"
+      }
+    }
+    toggle_button {
+      caption: "Enable"
+    }
   }
   component {
+    tooltip: ""Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
     address {
       type_name: "rec.audio.source.StereoProto"
       part {

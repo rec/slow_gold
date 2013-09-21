@@ -76,11 +76,11 @@ static const bool FIX = true;
 void OutlinedCursorLabel::editorShown(TextEditor*) {
   if (showSelectionButtons_)
     removeChildComponent(&selectButton_);
-  data::getDataCenter().undoStack()->startGroup();
+  data::getDataCenter()->undoStack()->startGroup();
 }
 
 void OutlinedCursorLabel::editorAboutToBeHidden(TextEditor*) {
-  data::getDataCenter().undoStack()->stopGroup();
+  data::getDataCenter()->undoStack()->stopGroup();
   if (showSelectionButtons_)
     addAndMakeVisible(&selectButton_);
 }

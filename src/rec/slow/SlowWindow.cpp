@@ -94,7 +94,7 @@ void SlowWindow::doStartup() {
 void SlowWindow::gotoNextFile() {
   if (nextFile_ != File::nonexistent) {
     if (nextFile_.hasFileExtension(WOODSHED_SUFFIX)) {
-      const MessageMaker& maker = data::getDataCenter().getMessageMaker();
+      const MessageMaker& maker = data::getDataCenter()->messageMaker();
       ptr<Message> msg(readProtoFile(nextFile_, maker));
       if (!msg)
         LOG(DFATAL) << "Couldn't read woodshed file " << str(nextFile_);

@@ -1,4 +1,5 @@
 package rec.gui;
 
 message ToggleButtonProto {
+  optional string caption = 1;
 };

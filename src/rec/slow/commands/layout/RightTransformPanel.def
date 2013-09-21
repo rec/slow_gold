@@ -7,14 +7,55 @@ layout {
   }
   component {
     name: "SpeedSlider"
+    tooltip: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+    address {
+      data_name: "rec.audio.stretch.Stretch"
+      item {
+        name: "time_percent"
+      }
+    }
+    slider {
+      caption: "Stretch"
+    }
   }
   component {
     name: "PitchSlider"
+    tooltip: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
+    address {
+      data_name: "rec.audio.stretch.Stretch"
+      item {
+        name: "semitone_shift"
+      }
+    }
+    slider {
+      caption: "Pitch"
+    }
   }
   component {
     name: "FinePitchSlider"
+    tooltip: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
+    address {
+      data_name: "rec.audio.stretch.Stretch"
+      item {
+        name: "detune_cents_shift"
+      }
+    }
+    slider {
+      caption: "Tune"
+    }
   }
   component {
     name: "MasterTuneSlider"
+    tooltip: "Master Tune Slider: Master tune is a global detune over all tracks."
+    address {
+      data_name: "rec.audio.AudioSettings"
+      scope: GLOBAL_SCOPE
+      item {
+        name: "master_tune"
+      }
+    }
+    slider {
+      caption: "Master"
+    }
   }
 }

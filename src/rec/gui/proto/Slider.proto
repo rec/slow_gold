@@ -9,6 +9,7 @@ message SliderProto {
   optional string detent = 6;
   optional string detent_radius = 7;
   optional string text_suffix = 8;
+  optional string suffix_spacing = 12;
   optional string minimum = 9;
   optional string maximum = 10;
   optional string interval = 11;

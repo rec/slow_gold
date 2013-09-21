@@ -1669,12 +1669,10 @@ static const unsigned char temp_binary_data_14[] =
 "    resizer: \"navigation_y\"\n"
 "  }\n"
 "  component {\n"
+"    layout: \"Waveform\"\n"
 "    size {\n"
 "      min: \"150.0\"\n"
 "      preferred: \"-0.6\"\n"
-"    }\n"
-"    custom {\n"
-"      type_name: \"Waveform\"\n"
 "    }\n"
 "  }\n"
 "  component {\n"
@@ -1754,20 +1752,20 @@ const char* NavigationPanel_def = (const char*) temp_binary_data_16;
 static const unsigned char temp_binary_data_17[] =
 "layout {\n"
 "  name: \"PlaybackPanel\"\n"
+"  size {\n"
+"    preferred: \"-0.20\"\n"
+"  }\n"
 "  component {\n"
 "    name: \"Help\"\n"
 "    size {\n"
 "      min: \"200\"\n"
-"      preferred: \"-0.2\"\n"
 "    }\n"
 "    help {\n"
 "      caption_size {\n"
 "        min: \"28\"\n"
-"        preferred: \"-0.2\"\n"
 "      }\n"
 "      body_size {\n"
 "        min: \"-0.1\"\n"
-"        preferred: \"-0.2\"\n"
 "      }\n"
 "    }\n"
 "  }\n"
@@ -1778,7 +1776,6 @@ static const unsigned char temp_binary_data_17[] =
 "    layout: \"TransformController\"\n"
 "    size {\n"
 "      min: \"250\"\n"
-"      max: \"-1.0\"\n"
 "      preferred: \"-0.75\"\n"
 "    }\n"
 "  }\n"
@@ -1789,8 +1786,6 @@ static const unsigned char temp_binary_data_17[] =
 "    layout: \"TransportController\"\n"
 "    size {\n"
 "      min: \"300\"\n"
-"      max: \"-1.0\"\n"
-"      preferred: \"-0.20\"\n"
 "    }\n"
 "  }\n"
 "}\n";
@@ -1889,52 +1884,17 @@ static const unsigned char temp_binary_data_19[] =
 "layout {\n"
 "  name: \"TransformController\"\n"
 "  component {\n"
-"    name: \"LeftTransformPanel\"\n"
+"    layout: \"LeftTransformPanel\"\n"
 "    size {\n"
 "      min: \"67\"\n"
 "    }\n"
 "  }\n"
 "  component {\n"
-"    name: \"RightTransformPanel\"\n"
+"    layout: \"RightTransformPanel\"\n"
 "    size {\n"
 "      min: \"150\"\n"
-"      max: \"-1.0\"\n"
 "      preferred: \"-250\"\n"
 "    }\n"
-"  }\n"
-"}\n"
-"layout {\n"
-"  name: \"LeftTransformPanel\"\n"
-"  orientation: VERTICAL\n"
-"  padding: true\n"
-"  size {\n"
-"    min: \"30\"\n"
-"  }\n"
-"  component {\n"
-"    name: \"EnableButton\"\n"
-"  }\n"
-"  component {\n"
-"    name: \"StereoCombo\"\n"
-"  }\n"
-"}\n"
-"layout {\n"
-"  name: \"RightTransformPanel\"\n"
-"  padding: true\n"
-"  orientation: VERTICAL\n"
-"  size {\n"
-"    min: \"30\"\n"
-"  }\n"
-"  component {\n"
-"    name: \"SpeedSlider\"\n"
-"  }\n"
-"  component {\n"
-"    name: \"PitchSlider\"\n"
-"  }\n"
-"  component {\n"
-"    name: \"FinePitchSlider\"\n"
-"  }\n"
-"  component {\n"
-"    name: \"MasterTuneSlider\"\n"
 "  }\n"
 "}\n";
 
@@ -2014,13 +1974,17 @@ static const unsigned char temp_binary_data_21[] =
 "layout {\n"
 "  name: \"Waveform\"\n"
 "  container {\n"
-"    name: \"Waveform\n"
+"    component {\n"
+"      custom {\n"
+"        type_name: \"Waveform\"\n"
+"      }\n"
+"    }\n"
 "  }\n"
 "  component {\n"
-"    name: \"ModeSelector\"\n"
+"    layout: \"ModeSelector\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"CommandBar\"\n"
+"    layout: \"CommandBar\"\n"
 "  }\n"
 "}";
 
@@ -13773,14 +13737,14 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
         case 0xeda734e9:  numBytes = 394; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 160; return Layout_def;
-        case 0xd02ec571:  numBytes = 407; return MainPanel_def;
+        case 0xd02ec571:  numBytes = 383; return MainPanel_def;
         case 0xd66a1508:  numBytes = 271; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
-        case 0x334c534f:  numBytes = 633; return PlaybackPanel_def;
+        case 0x334c534f:  numBytes = 532; return PlaybackPanel_def;
         case 0x1b5b8645:  numBytes = 1580; return SongData_def;
-        case 0x29238b4e:  numBytes = 726; return TransformController_def;
+        case 0x29238b4e:  numBytes = 235; return TransformController_def;
         case 0x4bd6484b:  numBytes = 877; return TransportController_def;
-        case 0x3d219c23:  numBytes = 151; return Waveform_def;
+        case 0x3d219c23:  numBytes = 210; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3790; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;

@@ -16,15 +16,10 @@ class DataMap;
 class DataUpdater;
 class UndoStack;
 
-struct DataCenter {
+class DataCenter {
+ public:
   DataCenter();
   ~DataCenter();
-
-  ptr<MessageRegistrarAndMaker> registry_;
-  ptr<DataUpdater> updater_;
-  ptr<UndoStack> undo_;
-  ptr<DataMaker> maker_;
-  ptr<DataMap> map_;
 
   void clearUndoes() const;
   bool hasUpdates() const;
@@ -33,11 +28,22 @@ struct DataCenter {
 
   void waitTillClear() const;
 
-  const MessageRegistrar& getMessageRegistrar() const;
-  const MessageMaker& getMessageMaker() const;
+  MessageRegistrar* messageRegistrar();
+  DataMap* dataMap() { return map_.get(); }
+  DataUpdater* updater() { return updater_.get(); }
+  const MessageMaker& messageMaker() const;
+
+ private:
+  unique_ptr<MessageRegistrarAndMaker> registry_;
+  unique_ptr<DataUpdater> updater_;
+  unique_ptr<UndoStack> undo_;
+  unique_ptr<DataMaker> maker_;
+  unique_ptr<DataMap> map_;
+
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DataCenter);
 };
 
-const DataCenter& getDataCenter();
+DataCenter* getDataCenter();
 void deleteDataCenter();
 
 }  // namespace data

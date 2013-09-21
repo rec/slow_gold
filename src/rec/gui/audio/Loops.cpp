@@ -191,7 +191,7 @@ void Loops::editViewport(const widget::waveform::Viewport& viewport) {
 }
 
 void Loops::setEditing(bool editing) {
-  data::UndoStack* stack = data::getDataCenter().undoStack();
+  data::UndoStack* stack = data::getDataCenter()->undoStack();
   if (editing)
     stack->startGroup();
   else

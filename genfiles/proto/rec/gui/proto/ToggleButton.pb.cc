@@ -36,6 +36,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fToggleButton_2eproto() {
   GOOGLE_CHECK(file != NULL);
   ToggleButtonProto_descriptor_ = file->message_type(0);
   static const int ToggleButtonProto_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, caption_),
   };
   ToggleButtonProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,7 +80,8 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/gui/proto/ToggleButton.proto\022\007rec."
-    "gui\"\023\n\021ToggleButtonProto", 64);
+    "gui\"$\n\021ToggleButtonProto\022\017\n\007caption\030\001 \001("
+    "\t", 81);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/ToggleButton.proto", &protobuf_RegisterTypes);
   ToggleButtonProto::default_instance_ = new ToggleButtonProto();
@@ -97,6 +99,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fToggleButton_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int ToggleButtonProto::kCaptionFieldNumber;
 #endif  // !_MSC_VER
 
 ToggleButtonProto::ToggleButtonProto()
@@ -115,6 +118,7 @@ ToggleButtonProto::ToggleButtonProto(const ToggleButtonProto& from)
 
 void ToggleButtonProto::SharedCtor() {
   _cached_size_ = 0;
+  caption_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -123,6 +127,9 @@ ToggleButtonProto::~ToggleButtonProto() {
 }
 
 void ToggleButtonProto::SharedDtor() {
+  if (caption_ != &::google::protobuf::internal::kEmptyString) {
+    delete caption_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -149,6 +156,13 @@ ToggleButtonProto* ToggleButtonProto::New() const {
 }
 
 void ToggleButtonProto::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_caption()) {
+      if (caption_ != &::google::protobuf::internal::kEmptyString) {
+        caption_->clear();
+      }
+    }
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -158,12 +172,34 @@ bool ToggleButtonProto::MergePartialFromCodedStream(
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
-    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      return true;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string caption = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_caption()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->caption().data(), this->caption().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
   }
   return true;
 #undef DO_
@@ -171,6 +207,15 @@ bool ToggleButtonProto::MergePartialFromCodedStream(
 
 void ToggleButtonProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string caption = 1;
+  if (has_caption()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->caption().data(), this->caption().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->caption(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -179,6 +224,16 @@ void ToggleButtonProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ToggleButtonProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
+  // optional string caption = 1;
+  if (has_caption()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->caption().data(), this->caption().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->caption(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -189,6 +244,15 @@ void ToggleButtonProto::SerializeWithCachedSizes(
 int ToggleButtonProto::ByteSize() const {
   int total_size = 0;
 
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string caption = 1;
+    if (has_caption()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->caption());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -214,6 +278,11 @@ void ToggleButtonProto::MergeFrom(const ::google::protobuf::Message& from) {
 
 void ToggleButtonProto::MergeFrom(const ToggleButtonProto& from) {
   GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_caption()) {
+      set_caption(from.caption());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -236,6 +305,8 @@ bool ToggleButtonProto::IsInitialized() const {
 
 void ToggleButtonProto::Swap(ToggleButtonProto* other) {
   if (other != this) {
+    std::swap(caption_, other->caption_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }

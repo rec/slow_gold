@@ -92,14 +92,29 @@ class ToggleButtonProto : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional string caption = 1;
+  inline bool has_caption() const;
+  inline void clear_caption();
+  static const int kCaptionFieldNumber = 1;
+  inline const ::std::string& caption() const;
+  inline void set_caption(const ::std::string& value);
+  inline void set_caption(const char* value);
+  inline void set_caption(const char* value, size_t size);
+  inline ::std::string* mutable_caption();
+  inline ::std::string* release_caption();
+  inline void set_allocated_caption(::std::string* caption);
+
   // @@protoc_insertion_point(class_scope:rec.gui.ToggleButtonProto)
  private:
+  inline void set_has_caption();
+  inline void clear_has_caption();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* caption_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[1];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
@@ -114,6 +129,76 @@ class ToggleButtonProto : public ::google::protobuf::Message {
 // ===================================================================
 
 // ToggleButtonProto
+
+// optional string caption = 1;
+inline bool ToggleButtonProto::has_caption() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ToggleButtonProto::set_has_caption() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ToggleButtonProto::clear_has_caption() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ToggleButtonProto::clear_caption() {
+  if (caption_ != &::google::protobuf::internal::kEmptyString) {
+    caption_->clear();
+  }
+  clear_has_caption();
+}
+inline const ::std::string& ToggleButtonProto::caption() const {
+  return *caption_;
+}
+inline void ToggleButtonProto::set_caption(const ::std::string& value) {
+  set_has_caption();
+  if (caption_ == &::google::protobuf::internal::kEmptyString) {
+    caption_ = new ::std::string;
+  }
+  caption_->assign(value);
+}
+inline void ToggleButtonProto::set_caption(const char* value) {
+  set_has_caption();
+  if (caption_ == &::google::protobuf::internal::kEmptyString) {
+    caption_ = new ::std::string;
+  }
+  caption_->assign(value);
+}
+inline void ToggleButtonProto::set_caption(const char* value, size_t size) {
+  set_has_caption();
+  if (caption_ == &::google::protobuf::internal::kEmptyString) {
+    caption_ = new ::std::string;
+  }
+  caption_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ToggleButtonProto::mutable_caption() {
+  set_has_caption();
+  if (caption_ == &::google::protobuf::internal::kEmptyString) {
+    caption_ = new ::std::string;
+  }
+  return caption_;
+}
+inline ::std::string* ToggleButtonProto::release_caption() {
+  clear_has_caption();
+  if (caption_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = caption_;
+    caption_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ToggleButtonProto::set_allocated_caption(::std::string* caption) {
+  if (caption_ != &::google::protobuf::internal::kEmptyString) {
+    delete caption_;
+  }
+  if (caption) {
+    set_has_caption();
+    caption_ = caption;
+  } else {
+    clear_has_caption();
+    caption_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
 
 
 // @@protoc_insertion_point(namespace_scope)

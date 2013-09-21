@@ -80,7 +80,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform) {
-    data::getDataCenter().undoStack()->startGroup();
+    data::getDataCenter()->undoStack()->startGroup();
     groupingUndoEvents_ = true;
     clickWaveform(e, waveform);
   }
@@ -112,7 +112,7 @@ void MouseListener::mouseUp(const MouseEvent&) {
     components()->waveform_->setIsDraggingCursor(false);
 
   if (groupingUndoEvents_)
-    data::getDataCenter().undoStack()->stopGroup();
+    data::getDataCenter()->undoStack()->stopGroup();
 }
 
 Mode::Action MouseListener::getClickAction() {

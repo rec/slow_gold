@@ -239,7 +239,7 @@ void Instance::startup() {
 }
 
 void Instance::postStartup() {
-  data::getDataCenter().undoStack()->setEnabled();
+  data::getDataCenter()->undoStack()->setEnabled();
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 

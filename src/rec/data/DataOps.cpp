@@ -9,7 +9,7 @@ namespace rec {
 namespace data {
 
 Data* getData(const string& typeName, const VirtualFile& vf) {
-  return getDataCenter().map_->getData(typeName, vf);
+  return getDataCenter()->dataMap()->getData(typeName, vf);
 }
 
 const VirtualFile& global() {

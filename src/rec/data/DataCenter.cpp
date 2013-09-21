@@ -36,12 +36,11 @@ void DataCenter::waitTillClear() const {
     Thread::sleep(10);
 }
 
-
-const MessageRegistrar& DataCenter::getMessageRegistrar() const {
-  return *registry_;
+MessageRegistrar* DataCenter::messageRegistrar() {
+  return registry_.get();
 }
 
-const MessageMaker& DataCenter::getMessageMaker() const {
+const MessageMaker& DataCenter::messageMaker() const {
   return *registry_;
 }
 
@@ -55,8 +54,8 @@ void deleteDataCenter() {
   *getDC() = nullptr;
 }
 
-const DataCenter& getDataCenter() {
-  return **getDC();
+DataCenter* getDataCenter() {
+  return *getDC();
 }
 
 }  // namespace data

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/ToggleButton.proto',
   package='rec.gui',
-  serialized_pb='\n rec/gui/proto/ToggleButton.proto\x12\x07rec.gui\"\x13\n\x11ToggleButtonProto')
+  serialized_pb='\n rec/gui/proto/ToggleButton.proto\x12\x07rec.gui\"$\n\x11ToggleButtonProto\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t')
 
 
 
@@ -25,6 +25,13 @@ _TOGGLEBUTTONPROTO = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='caption', full_name='rec.gui.ToggleButtonProto.caption', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -35,7 +42,7 @@ _TOGGLEBUTTONPROTO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=45,
-  serialized_end=64,
+  serialized_end=81,
 )
 
 DESCRIPTOR.message_types_by_name['ToggleButtonProto'] = _TOGGLEBUTTONPROTO
