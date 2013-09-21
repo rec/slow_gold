@@ -15,6 +15,17 @@ message StereoProto {
     CENTER_ELIMINATION_MONO = 4;
   };
 
+  enum Value {
+    UNCHANGED = 0;
+    LEFT_ONLY = 1;
+    RIGHT_ONLY = 2;
+    LEFT_AND_RIGHT = 3;
+    FLIP_POLARITY = 4;
+    ELIMINATE_CENTER = 5;
+    ELIMINATE_CENTER_MONO = 6;
+  };
+
   optional Type type = 1;
   optional Side side = 2;
+  optional Value value = 3;
 };

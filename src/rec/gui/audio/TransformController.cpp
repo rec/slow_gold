@@ -1,5 +1,7 @@
 #include "rec/gui/audio/TransformController.h"
 
+#include "rec/audio/AudioSettings.pb.h"
+#include "rec/audio/source/Stereo.h"
 #include "rec/util/thread/CallAsync.h"
 
 using namespace rec::audio::source;
@@ -57,8 +59,7 @@ TransformController::TransformController()
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),
       showMasterTune_(true),
-      rightPanelCreated_(false),
-      sides_(STEREO) {
+      rightPanelCreated_(false) {
   playbackSpeed_.slider()->setRange(5.0, 200.0, 0.1);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 0.1);
@@ -77,10 +78,10 @@ TransformController::TransformController()
   stereoComboBox_.setJustificationType(Justification::centredLeft);
   stereoComboBox_.addListener(this);
 
-  stereoComboBox_.addItem(Trans("Stereo"), STEREO);
-  stereoComboBox_.addItem(Trans("Left"), LEFT);
-  stereoComboBox_.addItem(Trans("Right"), RIGHT);
-  stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
+  stereoComboBox_.addItem(Trans("Stereo"), 1);
+  stereoComboBox_.addItem(Trans("Left"), 2);
+  stereoComboBox_.addItem(Trans("Right"), 3);
+  stereoComboBox_.addItem(Trans("L + R"), 4);
 
   leftPanel_.addToPanel(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToPanel(&stereoComboBox_, COMBO_BOX_HEIGHT);
@@ -130,12 +131,12 @@ void TransformController::languageChanged() {
   stereoComboBox_.setTextWhenNothingSelected(Trans("Stereo"));
   stereoComboBox_.setTextWhenNoChoicesAvailable(Trans("Stereo"));
 
-  stereoComboBox_.changeItemText(STEREO, Trans("Stereo"));
-  stereoComboBox_.changeItemText(LEFT, Trans("Left"));
-  stereoComboBox_.changeItemText(RIGHT, Trans("Right"));
-  stereoComboBox_.changeItemText(LEFT_PLUS_RIGHT, Trans("L + R"));
+  stereoComboBox_.changeItemText(1, Trans("Stereo"));
+  stereoComboBox_.changeItemText(2, Trans("Left"));
+  stereoComboBox_.changeItemText(3, Trans("Right"));
+  stereoComboBox_.changeItemText(4, Trans("L + R"));
 
-  stereoComboBox_.setSelectedId(sides_, juce::dontSendNotification);
+  stereoComboBox_.setSelectedId(1, juce::dontSendNotification);
 }
 
 void TransformController::setStretch(const Stretch& s) {
@@ -151,23 +152,16 @@ void TransformController::setStretch(const Stretch& s) {
 }
 
 void TransformController::operator()(const StereoProto& stereo) {
-  sides_ = STEREO;
-  if (stereo.type())
-    sides_ = static_cast<Sides>(2 + stereo.side());
-
-  stereoComboBox_.setSelectedId(sides_, juce::dontSendNotification);
+  stereo_ = stereo;
+  rec::audio::source::fixStereo(&stereo_);
+  stereoComboBox_.setSelectedId(stereo.value() + 1, juce::dontSendNotification);
 }
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
     if (int id = stereoComboBox_.getSelectedId()) {
-      Sides sides = static_cast<Sides>(id);
-      StereoProto stereo;
-      if (sides != STEREO) {
-        stereo.set_type(StereoProto::SINGLE);
-        stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
-      }
-      DataListener<StereoProto>::setProto(stereo);
+      stereo_.set_value(static_cast<StereoProto::Value>(id - 1));
+      DataListener<StereoProto>::setProto(stereo_);
     }
   }
 }

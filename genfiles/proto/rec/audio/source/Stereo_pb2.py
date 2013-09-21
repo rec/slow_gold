@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/audio/source/Stereo.proto',
   package='rec.audio.source',
-  serialized_pb='\n\x1drec/audio/source/Stereo.proto\x12\x10rec.audio.source\"\x87\x02\n\x0bStereoProto\x12\x30\n\x04type\x18\x01 \x01(\x0e\x32\".rec.audio.source.StereoProto.Type\x12\x30\n\x04side\x18\x02 \x01(\x0e\x32\".rec.audio.source.StereoProto.Side\"0\n\x04Side\x12\x08\n\x04LEFT\x10\x00\x12\t\n\x05RIGHT\x10\x01\x12\x13\n\x0fLEFT_PLUS_RIGHT\x10\x02\"b\n\x04Type\x12\x0f\n\x0bPASSTHROUGH\x10\x00\x12\n\n\x06SINGLE\x10\x01\x12\x08\n\x04\x46LIP\x10\x02\x12\x16\n\x12\x43\x45NTER_ELIMINATION\x10\x03\x12\x1b\n\x17\x43\x45NTER_ELIMINATION_MONO\x10\x04')
+  serialized_pb='\n\x1drec/audio/source/Stereo.proto\x12\x10rec.audio.source\"\xcb\x03\n\x0bStereoProto\x12\x30\n\x04type\x18\x01 \x01(\x0e\x32\".rec.audio.source.StereoProto.Type\x12\x30\n\x04side\x18\x02 \x01(\x0e\x32\".rec.audio.source.StereoProto.Side\x12\x32\n\x05value\x18\x03 \x01(\x0e\x32#.rec.audio.source.StereoProto.Value\"0\n\x04Side\x12\x08\n\x04LEFT\x10\x00\x12\t\n\x05RIGHT\x10\x01\x12\x13\n\x0fLEFT_PLUS_RIGHT\x10\x02\"b\n\x04Type\x12\x0f\n\x0bPASSTHROUGH\x10\x00\x12\n\n\x06SINGLE\x10\x01\x12\x08\n\x04\x46LIP\x10\x02\x12\x16\n\x12\x43\x45NTER_ELIMINATION\x10\x03\x12\x1b\n\x17\x43\x45NTER_ELIMINATION_MONO\x10\x04\"\x8d\x01\n\x05Value\x12\r\n\tUNCHANGED\x10\x00\x12\r\n\tLEFT_ONLY\x10\x01\x12\x0e\n\nRIGHT_ONLY\x10\x02\x12\x12\n\x0eLEFT_AND_RIGHT\x10\x03\x12\x11\n\rFLIP_POLARITY\x10\x04\x12\x14\n\x10\x45LIMINATE_CENTER\x10\x05\x12\x19\n\x15\x45LIMINATE_CENTER_MONO\x10\x06')
 
 
 
@@ -38,8 +38,8 @@ _STEREOPROTO_SIDE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=167,
-  serialized_end=215,
+  serialized_start=219,
+  serialized_end=267,
 )
 
 _STEREOPROTO_TYPE = _descriptor.EnumDescriptor(
@@ -71,8 +71,49 @@ _STEREOPROTO_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=217,
-  serialized_end=315,
+  serialized_start=269,
+  serialized_end=367,
+)
+
+_STEREOPROTO_VALUE = _descriptor.EnumDescriptor(
+  name='Value',
+  full_name='rec.audio.source.StereoProto.Value',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='UNCHANGED', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LEFT_ONLY', index=1, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RIGHT_ONLY', index=2, number=2,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LEFT_AND_RIGHT', index=3, number=3,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FLIP_POLARITY', index=4, number=4,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ELIMINATE_CENTER', index=5, number=5,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ELIMINATE_CENTER_MONO', index=6, number=6,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=370,
+  serialized_end=511,
 )
 
 
@@ -97,6 +138,13 @@ _STEREOPROTO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='rec.audio.source.StereoProto.value', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -104,18 +152,21 @@ _STEREOPROTO = _descriptor.Descriptor(
   enum_types=[
     _STEREOPROTO_SIDE,
     _STEREOPROTO_TYPE,
+    _STEREOPROTO_VALUE,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
   serialized_start=52,
-  serialized_end=315,
+  serialized_end=511,
 )
 
 _STEREOPROTO.fields_by_name['type'].enum_type = _STEREOPROTO_TYPE
 _STEREOPROTO.fields_by_name['side'].enum_type = _STEREOPROTO_SIDE
+_STEREOPROTO.fields_by_name['value'].enum_type = _STEREOPROTO_VALUE
 _STEREOPROTO_SIDE.containing_type = _STEREOPROTO;
 _STEREOPROTO_TYPE.containing_type = _STEREOPROTO;
+_STEREOPROTO_VALUE.containing_type = _STEREOPROTO;
 DESCRIPTOR.message_types_by_name['StereoProto'] = _STEREOPROTO
 
 class StereoProto(_message.Message):

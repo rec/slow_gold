@@ -80,6 +80,30 @@ inline bool StereoProto_Type_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<StereoProto_Type>(
     StereoProto_Type_descriptor(), name, value);
 }
+enum StereoProto_Value {
+  StereoProto_Value_UNCHANGED = 0,
+  StereoProto_Value_LEFT_ONLY = 1,
+  StereoProto_Value_RIGHT_ONLY = 2,
+  StereoProto_Value_LEFT_AND_RIGHT = 3,
+  StereoProto_Value_FLIP_POLARITY = 4,
+  StereoProto_Value_ELIMINATE_CENTER = 5,
+  StereoProto_Value_ELIMINATE_CENTER_MONO = 6
+};
+bool StereoProto_Value_IsValid(int value);
+const StereoProto_Value StereoProto_Value_Value_MIN = StereoProto_Value_UNCHANGED;
+const StereoProto_Value StereoProto_Value_Value_MAX = StereoProto_Value_ELIMINATE_CENTER_MONO;
+const int StereoProto_Value_Value_ARRAYSIZE = StereoProto_Value_Value_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* StereoProto_Value_descriptor();
+inline const ::std::string& StereoProto_Value_Name(StereoProto_Value value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    StereoProto_Value_descriptor(), value);
+}
+inline bool StereoProto_Value_Parse(
+    const ::std::string& name, StereoProto_Value* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<StereoProto_Value>(
+    StereoProto_Value_descriptor(), name, value);
+}
 // ===================================================================
 
 class StereoProto : public ::google::protobuf::Message {
@@ -186,6 +210,35 @@ class StereoProto : public ::google::protobuf::Message {
     return StereoProto_Type_Parse(name, value);
   }
 
+  typedef StereoProto_Value Value;
+  static const Value UNCHANGED = StereoProto_Value_UNCHANGED;
+  static const Value LEFT_ONLY = StereoProto_Value_LEFT_ONLY;
+  static const Value RIGHT_ONLY = StereoProto_Value_RIGHT_ONLY;
+  static const Value LEFT_AND_RIGHT = StereoProto_Value_LEFT_AND_RIGHT;
+  static const Value FLIP_POLARITY = StereoProto_Value_FLIP_POLARITY;
+  static const Value ELIMINATE_CENTER = StereoProto_Value_ELIMINATE_CENTER;
+  static const Value ELIMINATE_CENTER_MONO = StereoProto_Value_ELIMINATE_CENTER_MONO;
+  static inline bool Value_IsValid(int value) {
+    return StereoProto_Value_IsValid(value);
+  }
+  static const Value Value_MIN =
+    StereoProto_Value_Value_MIN;
+  static const Value Value_MAX =
+    StereoProto_Value_Value_MAX;
+  static const int Value_ARRAYSIZE =
+    StereoProto_Value_Value_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Value_descriptor() {
+    return StereoProto_Value_descriptor();
+  }
+  static inline const ::std::string& Value_Name(Value value) {
+    return StereoProto_Value_Name(value);
+  }
+  static inline bool Value_Parse(const ::std::string& name,
+      Value* value) {
+    return StereoProto_Value_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   // optional .rec.audio.source.StereoProto.Type type = 1;
@@ -202,20 +255,30 @@ class StereoProto : public ::google::protobuf::Message {
   inline ::rec::audio::source::StereoProto_Side side() const;
   inline void set_side(::rec::audio::source::StereoProto_Side value);
 
+  // optional .rec.audio.source.StereoProto.Value value = 3;
+  inline bool has_value() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 3;
+  inline ::rec::audio::source::StereoProto_Value value() const;
+  inline void set_value(::rec::audio::source::StereoProto_Value value);
+
   // @@protoc_insertion_point(class_scope:rec.audio.source.StereoProto)
  private:
   inline void set_has_type();
   inline void clear_has_type();
   inline void set_has_side();
   inline void clear_has_side();
+  inline void set_has_value();
+  inline void clear_has_value();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   int type_;
   int side_;
+  int value_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2faudio_2fsource_2fStereo_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fsource_2fStereo_2eproto();
@@ -277,6 +340,29 @@ inline void StereoProto::set_side(::rec::audio::source::StereoProto_Side value) 
   side_ = value;
 }
 
+// optional .rec.audio.source.StereoProto.Value value = 3;
+inline bool StereoProto::has_value() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void StereoProto::set_has_value() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void StereoProto::clear_has_value() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void StereoProto::clear_value() {
+  value_ = 0;
+  clear_has_value();
+}
+inline ::rec::audio::source::StereoProto_Value StereoProto::value() const {
+  return static_cast< ::rec::audio::source::StereoProto_Value >(value_);
+}
+inline void StereoProto::set_value(::rec::audio::source::StereoProto_Value value) {
+  assert(::rec::audio::source::StereoProto_Value_IsValid(value));
+  set_has_value();
+  value_ = value;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -295,6 +381,10 @@ inline const EnumDescriptor* GetEnumDescriptor< ::rec::audio::source::StereoProt
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::rec::audio::source::StereoProto_Type>() {
   return ::rec::audio::source::StereoProto_Type_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::audio::source::StereoProto_Value>() {
+  return ::rec::audio::source::StereoProto_Value_descriptor();
 }
 
 }  // namespace google

@@ -11,9 +11,7 @@ namespace source {
 class Stereo : public Wrappy {
  public:
   Stereo(PositionableAudioSource* source,
-         const StereoProto& desc = StereoProto::default_instance())
-      : Wrappy(source), desc_(desc) {
-  }
+         const StereoProto& desc = StereoProto::default_instance());
 
   void setStereo(const StereoProto&);
   StereoProto getStereo() const;
@@ -25,6 +23,8 @@ class Stereo : public Wrappy {
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stereo);
 };
+
+void fixStereo(StereoProto*);
 
 }  // namespace source
 }  // namespace audio

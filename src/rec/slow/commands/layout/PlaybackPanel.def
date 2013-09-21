@@ -1,19 +1,19 @@
 layout {
   name: "PlaybackPanel"
+  size {
+    preferred: "-0.20"
+  }
   component {
     name: "Help"
     size {
       min: "200"
-      preferred: "-0.2"
     }
     help {
       caption_size {
         min: "28"
-        preferred: "-0.2"
       }
       body_size {
         min: "-0.1"
-        preferred: "-0.2"
       }
     }
   }
@@ -24,7 +24,6 @@ layout {
     layout: "TransformController"
     size {
       min: "250"
-      max: "-1.0"
       preferred: "-0.75"
     }
   }
@@ -35,8 +34,6 @@ layout {
     layout: "TransportController"
     size {
       min: "300"
-      max: "-1.0"
-      preferred: "-0.20"
     }
   }
 }

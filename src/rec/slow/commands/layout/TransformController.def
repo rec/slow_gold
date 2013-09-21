@@ -1,51 +1,16 @@
 layout {
   name: "TransformController"
   component {
-    name: "LeftTransformPanel"
+    layout: "LeftTransformPanel"
     size {
       min: "67"
     }
   }
   component {
-    name: "RightTransformPanel"
+    layout: "RightTransformPanel"
     size {
       min: "150"
-      max: "-1.0"
       preferred: "-250"
     }
-  }
-}
-layout {
-  name: "LeftTransformPanel"
-  orientation: VERTICAL
-  padding: true
-  size {
-    min: "30"
-  }
-  component {
-    name: "EnableButton"
-  }
-  component {
-    name: "StereoCombo"
-  }
-}
-layout {
-  name: "RightTransformPanel"
-  padding: true
-  orientation: VERTICAL
-  size {
-    min: "30"
-  }
-  component {
-    name: "SpeedSlider"
-  }
-  component {
-    name: "PitchSlider"
-  }
-  component {
-    name: "FinePitchSlider"
-  }
-  component {
-    name: "MasterTuneSlider"
   }
 }

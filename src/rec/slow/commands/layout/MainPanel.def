@@ -15,12 +15,10 @@ layout {
     resizer: "navigation_y"
   }
   component {
+    layout: "Waveform"
     size {
       min: "150.0"
       preferred: "-0.6"
-    }
-    custom {
-      type_name: "Waveform"
     }
   }
   component {

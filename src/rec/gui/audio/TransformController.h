@@ -4,7 +4,7 @@
 #include "rec/app/LanguageListener.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
-#include "rec/audio/AudioSettings.pb.h"
+#include "rec/audio/source/Stereo.pb.h"
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/gui/proto/Panel.h"
@@ -35,10 +35,6 @@ class TransformController : public Panel,
   void showMasterTune(bool);
 
  private:
-  enum Sides {
-    STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
-  };
-
   void setStretch(const rec::audio::stretch::Stretch&);
 
   DataSlider playbackSpeed_;
@@ -57,7 +53,7 @@ class TransformController : public Panel,
 
   bool showMasterTune_;
   bool rightPanelCreated_;
-  Sides sides_;
+  rec::audio::source::StereoProto stereo_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransformController);
 };

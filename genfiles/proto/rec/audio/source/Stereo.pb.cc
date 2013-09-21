@@ -27,6 +27,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
   StereoProto_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* StereoProto_Side_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* StereoProto_Type_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* StereoProto_Value_descriptor_ = NULL;
 
 }  // namespace
 
@@ -38,9 +39,10 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fStereo_2eproto() {
       "rec/audio/source/Stereo.proto");
   GOOGLE_CHECK(file != NULL);
   StereoProto_descriptor_ = file->message_type(0);
-  static const int StereoProto_offsets_[2] = {
+  static const int StereoProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StereoProto, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StereoProto, side_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StereoProto, value_),
   };
   StereoProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -55,6 +57,7 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fStereo_2eproto() {
       sizeof(StereoProto));
   StereoProto_Side_descriptor_ = StereoProto_descriptor_->enum_type(0);
   StereoProto_Type_descriptor_ = StereoProto_descriptor_->enum_type(1);
+  StereoProto_Value_descriptor_ = StereoProto_descriptor_->enum_type(2);
 }
 
 namespace {
@@ -86,13 +89,18 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fStereo_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/audio/source/Stereo.proto\022\020rec.aud"
-    "io.source\"\207\002\n\013StereoProto\0220\n\004type\030\001 \001(\0162"
+    "io.source\"\313\003\n\013StereoProto\0220\n\004type\030\001 \001(\0162"
     "\".rec.audio.source.StereoProto.Type\0220\n\004s"
     "ide\030\002 \001(\0162\".rec.audio.source.StereoProto"
-    ".Side\"0\n\004Side\022\010\n\004LEFT\020\000\022\t\n\005RIGHT\020\001\022\023\n\017LE"
-    "FT_PLUS_RIGHT\020\002\"b\n\004Type\022\017\n\013PASSTHROUGH\020\000"
-    "\022\n\n\006SINGLE\020\001\022\010\n\004FLIP\020\002\022\026\n\022CENTER_ELIMINA"
-    "TION\020\003\022\033\n\027CENTER_ELIMINATION_MONO\020\004", 315);
+    ".Side\0222\n\005value\030\003 \001(\0162#.rec.audio.source."
+    "StereoProto.Value\"0\n\004Side\022\010\n\004LEFT\020\000\022\t\n\005R"
+    "IGHT\020\001\022\023\n\017LEFT_PLUS_RIGHT\020\002\"b\n\004Type\022\017\n\013P"
+    "ASSTHROUGH\020\000\022\n\n\006SINGLE\020\001\022\010\n\004FLIP\020\002\022\026\n\022CE"
+    "NTER_ELIMINATION\020\003\022\033\n\027CENTER_ELIMINATION"
+    "_MONO\020\004\"\215\001\n\005Value\022\r\n\tUNCHANGED\020\000\022\r\n\tLEFT"
+    "_ONLY\020\001\022\016\n\nRIGHT_ONLY\020\002\022\022\n\016LEFT_AND_RIGH"
+    "T\020\003\022\021\n\rFLIP_POLARITY\020\004\022\024\n\020ELIMINATE_CENT"
+    "ER\020\005\022\031\n\025ELIMINATE_CENTER_MONO\020\006", 511);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Stereo.proto", &protobuf_RegisterTypes);
   StereoProto::default_instance_ = new StereoProto();
@@ -159,9 +167,41 @@ const StereoProto_Type StereoProto::Type_MIN;
 const StereoProto_Type StereoProto::Type_MAX;
 const int StereoProto::Type_ARRAYSIZE;
 #endif  // _MSC_VER
+const ::google::protobuf::EnumDescriptor* StereoProto_Value_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return StereoProto_Value_descriptor_;
+}
+bool StereoProto_Value_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const StereoProto_Value StereoProto::UNCHANGED;
+const StereoProto_Value StereoProto::LEFT_ONLY;
+const StereoProto_Value StereoProto::RIGHT_ONLY;
+const StereoProto_Value StereoProto::LEFT_AND_RIGHT;
+const StereoProto_Value StereoProto::FLIP_POLARITY;
+const StereoProto_Value StereoProto::ELIMINATE_CENTER;
+const StereoProto_Value StereoProto::ELIMINATE_CENTER_MONO;
+const StereoProto_Value StereoProto::Value_MIN;
+const StereoProto_Value StereoProto::Value_MAX;
+const int StereoProto::Value_ARRAYSIZE;
+#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int StereoProto::kTypeFieldNumber;
 const int StereoProto::kSideFieldNumber;
+const int StereoProto::kValueFieldNumber;
 #endif  // !_MSC_VER
 
 StereoProto::StereoProto()
@@ -182,6 +222,7 @@ void StereoProto::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
   side_ = 0;
+  value_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -219,6 +260,7 @@ void StereoProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
     side_ = 0;
+    value_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -267,6 +309,27 @@ bool StereoProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_value;
+        break;
+      }
+
+      // optional .rec.audio.source.StereoProto.Value value = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_value:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::audio::source::StereoProto_Value_IsValid(value)) {
+            set_value(static_cast< ::rec::audio::source::StereoProto_Value >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(3, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -301,6 +364,12 @@ void StereoProto::SerializeWithCachedSizes(
       2, this->side(), output);
   }
 
+  // optional .rec.audio.source.StereoProto.Value value = 3;
+  if (has_value()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->value(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -319,6 +388,12 @@ void StereoProto::SerializeWithCachedSizes(
   if (has_side()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->side(), target);
+  }
+
+  // optional .rec.audio.source.StereoProto.Value value = 3;
+  if (has_value()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      3, this->value(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -342,6 +417,12 @@ int StereoProto::ByteSize() const {
     if (has_side()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->side());
+    }
+
+    // optional .rec.audio.source.StereoProto.Value value = 3;
+    if (has_value()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->value());
     }
 
   }
@@ -377,6 +458,9 @@ void StereoProto::MergeFrom(const StereoProto& from) {
     if (from.has_side()) {
       set_side(from.side());
     }
+    if (from.has_value()) {
+      set_value(from.value());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -402,6 +486,7 @@ void StereoProto::Swap(StereoProto* other) {
   if (other != this) {
     std::swap(type_, other->type_);
     std::swap(side_, other->side_);
+    std::swap(value_, other->value_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
