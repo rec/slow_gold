@@ -1,0 +1,20 @@
+layout {
+  name: "RightTransformPanel"
+  padding: true
+  orientation: VERTICAL
+  size {
+    min: "30"
+  }
+  component {
+    name: "SpeedSlider"
+  }
+  component {
+    name: "PitchSlider"
+  }
+  component {
+    name: "FinePitchSlider"
+  }
+  component {
+    name: "MasterTuneSlider"
+  }
+}

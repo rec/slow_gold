@@ -1,0 +1,25 @@
+layout {
+  name: "LeftTransformPanel"
+  orientation: VERTICAL
+  padding: true
+  size {
+    min: "30"
+  }
+  component {
+    name: "EnableButton"
+  }
+  component {
+    address {
+      type_name: "rec.audio.source.StereoProto"
+      part {
+        name: "value"
+      }
+    }
+    combo_box {
+      item: "Stereo"
+      item: "Left"
+      item: "Right"
+      item: "L + R"
+    }
+  }
+}
