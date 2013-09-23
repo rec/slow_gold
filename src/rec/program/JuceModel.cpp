@@ -75,5 +75,9 @@ const gui::Constants& JuceModel::constants() const {
   return impl_->constants();
 }
 
+const gui::Layout& JuceModel::getLayout(const string& name) const {
+  return impl_->getLayout(name);
+}
+
 }  // namespace program
 }  // namespace rec

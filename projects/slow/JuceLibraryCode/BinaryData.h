@@ -48,6 +48,9 @@ namespace BinaryData
     extern const char*   Layout_def;
     const int            Layout_defSize = 160;
 
+    extern const char*   LeftTransformPanel_def;
+    const int            LeftTransformPanel_defSize = 785;
+
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 383;
 
@@ -59,6 +62,9 @@ namespace BinaryData
 
     extern const char*   PlaybackPanel_def;
     const int            PlaybackPanel_defSize = 532;
+
+    extern const char*   RightTransformPanel_def;
+    const int            RightTransformPanel_defSize = 1354;
 
     extern const char*   SongData_def;
     const int            SongData_defSize = 1580;

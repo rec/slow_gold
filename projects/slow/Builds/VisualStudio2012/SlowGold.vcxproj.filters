@@ -808,6 +808,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -2910,6 +2913,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
@@ -4919,6 +4925,9 @@
     <None Include="..\..\..\..\src\rec\slow\commands\layout\Layout.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\LeftTransformPanel.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\MainPanel.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
@@ -4929,6 +4938,9 @@
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\PlaybackPanel.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\RightTransformPanel.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\SongData.def">

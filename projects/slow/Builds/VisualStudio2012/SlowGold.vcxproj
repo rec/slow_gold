@@ -238,6 +238,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Font.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Help.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
@@ -1629,6 +1630,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Font.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Help.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
@@ -2300,10 +2302,12 @@
     <None Include="..\..\..\..\src\rec\slow\commands\layout\Constants.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\HelpPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\Layout.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\LeftTransformPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\MainPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\ModeSelector.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\NavigationPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\PlaybackPanel.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\RightTransformPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\SongData.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\TransformController.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\TransportController.def"/>

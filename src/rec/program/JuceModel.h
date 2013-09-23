@@ -7,6 +7,7 @@
 
 namespace rec { namespace command { class CommandMapProto; }}
 namespace rec { namespace gui { class Constants; }}
+namespace rec { namespace gui { class Layout; }}
 
 namespace rec {
 namespace program {
@@ -41,6 +42,8 @@ class JuceModel : public ApplicationCommandTarget,
     return &applicationCommandManager_;
   }
 
+  // @throws std::out_of_range
+  const gui::Layout& getLayout(const string&) const;
   const gui::Constants& constants() const;
 
   void startThreads();
