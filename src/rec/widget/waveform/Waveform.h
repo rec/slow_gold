@@ -82,6 +82,10 @@ class Waveform : public Component,
   void setLoading(bool loading);
   void setSampleRate(SampleRate);
 
+  virtual void childrenChanged() override {
+    // TODO.
+  }
+
  private:
   void layout();
   void viewportChanged();

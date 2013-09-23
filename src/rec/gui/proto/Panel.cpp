@@ -10,13 +10,23 @@ namespace gui {
 Panel::Panel(const String& name,
              Orientation o,
              bool resizeOther,
-             bool isMain)
+             bool isMain,
+             bool ownComponents)
     : Component(name),
       SizeHintAccumulator(o),
       orientation_(o),
       resizeOtherDimension_(resizeOther),
       cache_(nullptr),
-      isMain_(isMain) {
+      isMain_(isMain),
+      ownComponents_(ownComponents) {
+}
+
+Panel::~Panel() {
+  // TODO: make Panel always own its components and use unique_ptr.
+  if (ownComponents_) {
+    for (auto& component: components_)
+      delete component;
+  }
 }
 
 void Panel::addToPanel(Component* c) {

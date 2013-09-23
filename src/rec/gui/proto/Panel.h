@@ -20,9 +20,12 @@ class Panel : public Component,
   static const int DEFAULT_PREF = -1;
 
   Panel(const String& name = String::empty,
-         Orientation o = HORIZONTAL,
-         bool resizeOther = true,
-         bool isMain = false);
+        Orientation o = HORIZONTAL,
+        bool resizeOther = true,
+        bool isMain = false,
+        bool ownComponents = false);
+
+  ~Panel();
 
   void setOrientation(Orientation o) { orientation_ = o; }
   Orientation orientation() const { return orientation_; }
@@ -40,6 +43,7 @@ class Panel : public Component,
   virtual void resized();
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
   virtual void layout();
+
   void clear(bool free = false);
 
   #if JUCE_WINDOWS
@@ -59,6 +63,7 @@ class Panel : public Component,
   SizeAccumulator sizeHints_[LAST];
   juce::CachedComponentImage *cache_;
   bool const isMain_;
+  bool const ownComponents_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Panel);
