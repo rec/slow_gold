@@ -48,7 +48,7 @@ class AboutPane : public Component {
       : displayOnStartup_(
             str(t_DISPLAY_ON_STARTUP),
             str(t_DISPLAY_ON_STARTUP_TOOLTIP),
-            data::makeGlobalAddress<GuiSettings>("show_about_on_startup")) {
+            data::makeAddress<GuiSettings>("show_about_on_startup")) {
 #if 0
     // FIX JUCE BUG!
     right_.setJustification(Justification::bottomRight);

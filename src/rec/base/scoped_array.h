@@ -92,5 +92,4 @@ class scoped_array {
   void operator=(const scoped_array&);
 };
 
-
 #endif  // __REC_BASE_SCOPED_ARRAY__

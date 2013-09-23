@@ -55,23 +55,6 @@ const Address makeAddress(const Address::Part& x, const Address::Part& y) {
   return a;
 }
 
-template <typename Type>
-const Address makeGlobalAddress(const Address::Part& x) {
-  Address a(x);
-  a.set_type_name(getTypeName<Type>());
-  a.set_scope(AddressProto::GLOBAL_SCOPE);
-  return a;
-}
-
-template <typename Type>
-const Address makeGlobalAddress(const Address::Part& x,
-                                const Address::Part& y) {
-  Address a(x, y);
-  a.set_type_name(getTypeName<Type>());
-  a.set_scope(AddressProto::GLOBAL_SCOPE);
-  return a;
-}
-
 // Isn't perhaps only the first one necessary?
 inline const Address operator+(const Address& x, const Address& y) {
   Address result = x;
