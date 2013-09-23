@@ -49,7 +49,6 @@ layout {
     tooltip: "Master Tune Slider: Master tune is a global detune over all tracks."
     address {
       data_name: "rec.audio.AudioSettings"
-      scope: GLOBAL_SCOPE
       item {
         name: "master_tune"
       }

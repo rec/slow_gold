@@ -291,6 +291,18 @@ class SliderProto : public ::google::protobuf::Message {
   inline ::std::string* release_text_suffix();
   inline void set_allocated_text_suffix(::std::string* text_suffix);
 
+  // optional string suffix_spacing = 12;
+  inline bool has_suffix_spacing() const;
+  inline void clear_suffix_spacing();
+  static const int kSuffixSpacingFieldNumber = 12;
+  inline const ::std::string& suffix_spacing() const;
+  inline void set_suffix_spacing(const ::std::string& value);
+  inline void set_suffix_spacing(const char* value);
+  inline void set_suffix_spacing(const char* value, size_t size);
+  inline ::std::string* mutable_suffix_spacing();
+  inline ::std::string* release_suffix_spacing();
+  inline void set_allocated_suffix_spacing(::std::string* suffix_spacing);
+
   // optional string minimum = 9;
   inline bool has_minimum() const;
   inline void clear_minimum();
@@ -357,6 +369,8 @@ class SliderProto : public ::google::protobuf::Message {
   inline void clear_has_detent_radius();
   inline void set_has_text_suffix();
   inline void clear_has_text_suffix();
+  inline void set_has_suffix_spacing();
+  inline void clear_has_suffix_spacing();
   inline void set_has_minimum();
   inline void clear_has_minimum();
   inline void set_has_maximum();
@@ -380,6 +394,7 @@ class SliderProto : public ::google::protobuf::Message {
   ::std::string* detent_;
   ::std::string* detent_radius_;
   ::std::string* text_suffix_;
+  ::std::string* suffix_spacing_;
   ::std::string* minimum_;
   ::std::string* maximum_;
   ::std::string* interval_;
@@ -387,7 +402,7 @@ class SliderProto : public ::google::protobuf::Message {
   int text_entry_box_position_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fSlider_2eproto();
@@ -893,15 +908,85 @@ inline void SliderProto::set_allocated_text_suffix(::std::string* text_suffix) {
   }
 }
 
-// optional string minimum = 9;
-inline bool SliderProto::has_minimum() const {
+// optional string suffix_spacing = 12;
+inline bool SliderProto::has_suffix_spacing() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
-inline void SliderProto::set_has_minimum() {
+inline void SliderProto::set_has_suffix_spacing() {
   _has_bits_[0] |= 0x00000080u;
 }
-inline void SliderProto::clear_has_minimum() {
+inline void SliderProto::clear_has_suffix_spacing() {
   _has_bits_[0] &= ~0x00000080u;
+}
+inline void SliderProto::clear_suffix_spacing() {
+  if (suffix_spacing_ != &::google::protobuf::internal::kEmptyString) {
+    suffix_spacing_->clear();
+  }
+  clear_has_suffix_spacing();
+}
+inline const ::std::string& SliderProto::suffix_spacing() const {
+  return *suffix_spacing_;
+}
+inline void SliderProto::set_suffix_spacing(const ::std::string& value) {
+  set_has_suffix_spacing();
+  if (suffix_spacing_ == &::google::protobuf::internal::kEmptyString) {
+    suffix_spacing_ = new ::std::string;
+  }
+  suffix_spacing_->assign(value);
+}
+inline void SliderProto::set_suffix_spacing(const char* value) {
+  set_has_suffix_spacing();
+  if (suffix_spacing_ == &::google::protobuf::internal::kEmptyString) {
+    suffix_spacing_ = new ::std::string;
+  }
+  suffix_spacing_->assign(value);
+}
+inline void SliderProto::set_suffix_spacing(const char* value, size_t size) {
+  set_has_suffix_spacing();
+  if (suffix_spacing_ == &::google::protobuf::internal::kEmptyString) {
+    suffix_spacing_ = new ::std::string;
+  }
+  suffix_spacing_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SliderProto::mutable_suffix_spacing() {
+  set_has_suffix_spacing();
+  if (suffix_spacing_ == &::google::protobuf::internal::kEmptyString) {
+    suffix_spacing_ = new ::std::string;
+  }
+  return suffix_spacing_;
+}
+inline ::std::string* SliderProto::release_suffix_spacing() {
+  clear_has_suffix_spacing();
+  if (suffix_spacing_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = suffix_spacing_;
+    suffix_spacing_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SliderProto::set_allocated_suffix_spacing(::std::string* suffix_spacing) {
+  if (suffix_spacing_ != &::google::protobuf::internal::kEmptyString) {
+    delete suffix_spacing_;
+  }
+  if (suffix_spacing) {
+    set_has_suffix_spacing();
+    suffix_spacing_ = suffix_spacing;
+  } else {
+    clear_has_suffix_spacing();
+    suffix_spacing_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string minimum = 9;
+inline bool SliderProto::has_minimum() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void SliderProto::set_has_minimum() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void SliderProto::clear_has_minimum() {
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void SliderProto::clear_minimum() {
   if (minimum_ != &::google::protobuf::internal::kEmptyString) {
@@ -965,13 +1050,13 @@ inline void SliderProto::set_allocated_minimum(::std::string* minimum) {
 
 // optional string maximum = 10;
 inline bool SliderProto::has_maximum() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void SliderProto::set_has_maximum() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void SliderProto::clear_has_maximum() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void SliderProto::clear_maximum() {
   if (maximum_ != &::google::protobuf::internal::kEmptyString) {
@@ -1035,13 +1120,13 @@ inline void SliderProto::set_allocated_maximum(::std::string* maximum) {
 
 // optional string interval = 11;
 inline bool SliderProto::has_interval() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void SliderProto::set_has_interval() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void SliderProto::clear_has_interval() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void SliderProto::clear_interval() {
   if (interval_ != &::google::protobuf::internal::kEmptyString) {
@@ -1105,13 +1190,13 @@ inline void SliderProto::set_allocated_interval(::std::string* interval) {
 
 // optional .rec.gui.SliderProto.Style style = 21;
 inline bool SliderProto::has_style() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void SliderProto::set_has_style() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void SliderProto::clear_has_style() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void SliderProto::clear_style() {
   style_ = 0;
@@ -1128,13 +1213,13 @@ inline void SliderProto::set_style(::rec::gui::SliderProto_Style value) {
 
 // optional .rec.gui.SliderProto.TextEntryBoxPosition text_entry_box_position = 22;
 inline bool SliderProto::has_text_entry_box_position() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void SliderProto::set_has_text_entry_box_position() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void SliderProto::clear_has_text_entry_box_position() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void SliderProto::clear_text_entry_box_position() {
   text_entry_box_position_ = 0;

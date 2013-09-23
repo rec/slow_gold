@@ -175,7 +175,6 @@ command {
       part {
         name: "file_type_for_save"
       }
-      scope: GLOBAL_SCOPE
     }
   }
   desc {
@@ -201,7 +200,6 @@ command {
       part {
         name: "language"
       }
-      scope: GLOBAL_SCOPE
     }
   }
   desc {
@@ -230,7 +228,6 @@ command {
       part {
         name: "advanced_menus"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -247,7 +244,6 @@ command {
       part {
         name: "auto_check_for_updates"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }

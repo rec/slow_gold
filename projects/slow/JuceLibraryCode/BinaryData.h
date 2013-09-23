@@ -10,7 +10,7 @@ namespace BinaryData
     const int            Colors_defSize = 219;
 
     extern const char*   Audio_def;
-    const int            Audio_defSize = 1593;
+    const int            Audio_defSize = 1545;
 
     extern const char*   Commands_def;
     const int            Commands_defSize = 111;
@@ -19,7 +19,7 @@ namespace BinaryData
     const int            File_defSize = 2081;
 
     extern const char*   Gui_def;
-    const int            Gui_defSize = 5703;
+    const int            Gui_defSize = 5315;
 
     extern const char*   LoopPoints_def;
     const int            LoopPoints_defSize = 1737;
@@ -28,7 +28,7 @@ namespace BinaryData
     const int            Selection_defSize = 5765;
 
     extern const char*   Settings_def;
-    const int            Settings_defSize = 5281;
+    const int            Settings_defSize = 5177;
 
     extern const char*   Transport_def;
     const int            Transport_defSize = 3530;

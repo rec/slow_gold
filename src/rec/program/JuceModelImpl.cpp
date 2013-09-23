@@ -208,7 +208,7 @@ void JuceModelImpl::getCommandInfo(CommandID id,
         shortName = recentFiles[fileIndex];
     } else if (command.has_setter()) {
       const Setter& setter = command.setter();
-      bool isGlobal = (setter.address().scope() ==
+      bool isGlobal = (getScope(setter.address()) ==
                        data::AddressProto::GLOBAL_SCOPE);
       VirtualFile file = isGlobal ? global() : program_->getCurrentFile();
       Data* data = getData(setter.address().type_name(), file);

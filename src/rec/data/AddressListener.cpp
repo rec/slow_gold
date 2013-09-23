@@ -1,7 +1,9 @@
 #include "rec/data/AddressListener.h"
 
 #include "rec/data/Address.h"
+#include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/util/proto/MessageMaker.h"
 #include "rec/data/Opener.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/FieldOps.h"
@@ -27,7 +29,7 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 
 AddressListener::AddressListener(const Address& a)
     : address_(a), failOnError_(true) {
-  untypedListener_.reset(new UntypedListener(this, a.type_name(), a.scope()));
+  untypedListener_.reset(new UntypedListener(this, a.type_name(), getScope(a)));
 }
 
 AddressListener::~AddressListener() {}

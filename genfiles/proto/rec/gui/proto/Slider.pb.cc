@@ -37,7 +37,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
       "rec/gui/proto/Slider.proto");
   GOOGLE_CHECK(file != NULL);
   SliderProto_descriptor_ = file->message_type(0);
-  static const int SliderProto_offsets_[12] = {
+  static const int SliderProto_offsets_[13] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, caption_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, caption_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, text_entry_box_width_),
@@ -45,6 +45,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, detent_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, detent_radius_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, text_suffix_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, suffix_spacing_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, minimum_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, maximum_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SliderProto, interval_),
@@ -97,27 +98,27 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Slider.proto\022\007rec.gui\"\377\005"
+    "\n\032rec/gui/proto/Slider.proto\022\007rec.gui\"\227\006"
     "\n\013SliderProto\022\017\n\007caption\030\001 \001(\t\022\030\n\014captio"
     "n_size\030\002 \001(\t:\00245\022 \n\024text_entry_box_width"
     "\030\004 \001(\t:\00280\022!\n\025text_entry_box_height\030\005 \001("
     "\t:\00216\022\016\n\006detent\030\006 \001(\t\022\025\n\rdetent_radius\030\007"
-    " \001(\t\022\023\n\013text_suffix\030\010 \001(\t\022\017\n\007minimum\030\t \001"
-    "(\t\022\017\n\007maximum\030\n \001(\t\022\020\n\010interval\030\013 \001(\t\022)\n"
-    "\005style\030\025 \001(\0162\032.rec.gui.SliderProto.Style"
-    "\022J\n\027text_entry_box_position\030\026 \001(\0162).rec."
-    "gui.SliderProto.TextEntryBoxPosition\"\252\002\n"
-    "\005Style\022\024\n\020LinearHorizontal\020\000\022\022\n\016LinearVe"
-    "rtical\020\001\022\r\n\tLinearBar\020\002\022\025\n\021LinearBarVert"
-    "ical\020\003\022\n\n\006Rotary\020\004\022\030\n\024RotaryHorizontalDr"
-    "ag\020\005\022\026\n\022RotaryVerticalDrag\020\006\022 \n\034RotaryHo"
-    "rizontalVerticalDrag\020\007\022\021\n\rIncDecButtons\020"
-    "\010\022\026\n\022TwoValueHorizontal\020\t\022\024\n\020TwoValueVer"
-    "tical\020\n\022\030\n\024ThreeValueHorizontal\020\013\022\026\n\022Thr"
-    "eeValueVertical\020\014\"l\n\024TextEntryBoxPositio"
-    "n\022\r\n\tNoTextBox\020\000\022\017\n\013TextBoxLeft\020\001\022\020\n\014Tex"
-    "tBoxRight\020\002\022\020\n\014TextBoxAbove\020\003\022\020\n\014TextBox"
-    "Below\020\004", 807);
+    " \001(\t\022\023\n\013text_suffix\030\010 \001(\t\022\026\n\016suffix_spac"
+    "ing\030\014 \001(\t\022\017\n\007minimum\030\t \001(\t\022\017\n\007maximum\030\n "
+    "\001(\t\022\020\n\010interval\030\013 \001(\t\022)\n\005style\030\025 \001(\0162\032.r"
+    "ec.gui.SliderProto.Style\022J\n\027text_entry_b"
+    "ox_position\030\026 \001(\0162).rec.gui.SliderProto."
+    "TextEntryBoxPosition\"\252\002\n\005Style\022\024\n\020Linear"
+    "Horizontal\020\000\022\022\n\016LinearVertical\020\001\022\r\n\tLine"
+    "arBar\020\002\022\025\n\021LinearBarVertical\020\003\022\n\n\006Rotary"
+    "\020\004\022\030\n\024RotaryHorizontalDrag\020\005\022\026\n\022RotaryVe"
+    "rticalDrag\020\006\022 \n\034RotaryHorizontalVertical"
+    "Drag\020\007\022\021\n\rIncDecButtons\020\010\022\026\n\022TwoValueHor"
+    "izontal\020\t\022\024\n\020TwoValueVertical\020\n\022\030\n\024Three"
+    "ValueHorizontal\020\013\022\026\n\022ThreeValueVertical\020"
+    "\014\"l\n\024TextEntryBoxPosition\022\r\n\tNoTextBox\020\000"
+    "\022\017\n\013TextBoxLeft\020\001\022\020\n\014TextBoxRight\020\002\022\020\n\014T"
+    "extBoxAbove\020\003\022\020\n\014TextBoxBelow\020\004", 831);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Slider.proto", &protobuf_RegisterTypes);
   SliderProto::_default_caption_size_ =
@@ -221,6 +222,7 @@ const int SliderProto::kTextEntryBoxHeightFieldNumber;
 const int SliderProto::kDetentFieldNumber;
 const int SliderProto::kDetentRadiusFieldNumber;
 const int SliderProto::kTextSuffixFieldNumber;
+const int SliderProto::kSuffixSpacingFieldNumber;
 const int SliderProto::kMinimumFieldNumber;
 const int SliderProto::kMaximumFieldNumber;
 const int SliderProto::kIntervalFieldNumber;
@@ -251,6 +253,7 @@ void SliderProto::SharedCtor() {
   detent_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   detent_radius_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   text_suffix_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  suffix_spacing_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   minimum_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   maximum_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   interval_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -284,6 +287,9 @@ void SliderProto::SharedDtor() {
   }
   if (text_suffix_ != &::google::protobuf::internal::kEmptyString) {
     delete text_suffix_;
+  }
+  if (suffix_spacing_ != &::google::protobuf::internal::kEmptyString) {
+    delete suffix_spacing_;
   }
   if (minimum_ != &::google::protobuf::internal::kEmptyString) {
     delete minimum_;
@@ -356,13 +362,18 @@ void SliderProto::Clear() {
         text_suffix_->clear();
       }
     }
+    if (has_suffix_spacing()) {
+      if (suffix_spacing_ != &::google::protobuf::internal::kEmptyString) {
+        suffix_spacing_->clear();
+      }
+    }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_minimum()) {
       if (minimum_ != &::google::protobuf::internal::kEmptyString) {
         minimum_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_maximum()) {
       if (maximum_ != &::google::protobuf::internal::kEmptyString) {
         maximum_->clear();
@@ -551,6 +562,23 @@ bool SliderProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(98)) goto parse_suffix_spacing;
+        break;
+      }
+
+      // optional string suffix_spacing = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_suffix_spacing:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_suffix_spacing()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->suffix_spacing().data(), this->suffix_spacing().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectTag(168)) goto parse_style;
         break;
       }
@@ -705,6 +733,15 @@ void SliderProto::SerializeWithCachedSizes(
       11, this->interval(), output);
   }
 
+  // optional string suffix_spacing = 12;
+  if (has_suffix_spacing()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->suffix_spacing().data(), this->suffix_spacing().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      12, this->suffix_spacing(), output);
+  }
+
   // optional .rec.gui.SliderProto.Style style = 21;
   if (has_style()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
@@ -825,6 +862,16 @@ void SliderProto::SerializeWithCachedSizes(
         11, this->interval(), target);
   }
 
+  // optional string suffix_spacing = 12;
+  if (has_suffix_spacing()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->suffix_spacing().data(), this->suffix_spacing().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        12, this->suffix_spacing(), target);
+  }
+
   // optional .rec.gui.SliderProto.Style style = 21;
   if (has_style()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
@@ -897,6 +944,15 @@ int SliderProto::ByteSize() const {
           this->text_suffix());
     }
 
+    // optional string suffix_spacing = 12;
+    if (has_suffix_spacing()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->suffix_spacing());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional string minimum = 9;
     if (has_minimum()) {
       total_size += 1 +
@@ -904,8 +960,6 @@ int SliderProto::ByteSize() const {
           this->minimum());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional string maximum = 10;
     if (has_maximum()) {
       total_size += 1 +
@@ -980,11 +1034,14 @@ void SliderProto::MergeFrom(const SliderProto& from) {
     if (from.has_text_suffix()) {
       set_text_suffix(from.text_suffix());
     }
-    if (from.has_minimum()) {
-      set_minimum(from.minimum());
+    if (from.has_suffix_spacing()) {
+      set_suffix_spacing(from.suffix_spacing());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_minimum()) {
+      set_minimum(from.minimum());
+    }
     if (from.has_maximum()) {
       set_maximum(from.maximum());
     }
@@ -1027,6 +1084,7 @@ void SliderProto::Swap(SliderProto* other) {
     std::swap(detent_, other->detent_);
     std::swap(detent_radius_, other->detent_radius_);
     std::swap(text_suffix_, other->text_suffix_);
+    std::swap(suffix_spacing_, other->suffix_spacing_);
     std::swap(minimum_, other->minimum_);
     std::swap(maximum_, other->maximum_);
     std::swap(interval_, other->interval_);

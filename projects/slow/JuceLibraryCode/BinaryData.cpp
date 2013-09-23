@@ -103,7 +103,6 @@ static const unsigned char temp_binary_data_1[] =
 "      part {\n"
 "        name: \"time_enabled\"\n"
 "      }\n"
-"      scope: FILE_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -120,7 +119,6 @@ static const unsigned char temp_binary_data_1[] =
 "      part {\n"
 "        name: \"enabled\"\n"
 "      }\n"
-"      scope: FILE_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n";
@@ -258,7 +256,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"command_bar_at_left\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -275,7 +272,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"command_bar_at_top\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -292,7 +288,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"use_tree_view_in_file_dialogs\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -309,7 +304,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"follow_cursor\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -326,7 +320,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_grid\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -343,7 +336,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"modes_at_left\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -360,7 +352,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"modes_at_top\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -377,7 +368,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"parallel_waveforms\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -394,7 +384,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"prefader_levels\"\n"
 "      }\n"
-"      scope: FILE_SCOPE\n"
 "    }\n"
 "  }\n"
 "  disabled: \"empty\"\n"
@@ -412,7 +401,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_about_on_startup\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -429,7 +417,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_cursor_labels\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -446,7 +433,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_labels_at_top\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -463,7 +449,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_master_tune\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -480,7 +465,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_selection_buttons\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -497,7 +481,6 @@ static const unsigned char temp_binary_data_4[] =
 "      part {\n"
 "        name: \"show_times_at_top\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -1003,7 +986,6 @@ static const unsigned char temp_binary_data_7[] =
 "      part {\n"
 "        name: \"file_type_for_save\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "  desc {\n"
@@ -1029,7 +1011,6 @@ static const unsigned char temp_binary_data_7[] =
 "      part {\n"
 "        name: \"language\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "  desc {\n"
@@ -1058,7 +1039,6 @@ static const unsigned char temp_binary_data_7[] =
 "      part {\n"
 "        name: \"advanced_menus\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n"
@@ -1075,7 +1055,6 @@ static const unsigned char temp_binary_data_7[] =
 "      part {\n"
 "        name: \"auto_check_for_updates\"\n"
 "      }\n"
-"      scope: GLOBAL_SCOPE\n"
 "    }\n"
 "  }\n"
 "}\n";
@@ -13724,13 +13703,13 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     switch (hash)
     {
         case 0xc4c114d6:  numBytes = 219; return Colors_def;
-        case 0x82ae93fc:  numBytes = 1593; return Audio_def;
+        case 0x82ae93fc:  numBytes = 1545; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
         case 0xd807eee2:  numBytes = 2081; return File_def;
-        case 0x7975c6e1:  numBytes = 5703; return Gui_def;
+        case 0x7975c6e1:  numBytes = 5315; return Gui_def;
         case 0xb618588d:  numBytes = 1737; return LoopPoints_def;
         case 0x6d98aeb2:  numBytes = 5765; return Selection_def;
-        case 0x29a9fa09:  numBytes = 5281; return Settings_def;
+        case 0x29a9fa09:  numBytes = 5177; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3530; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;

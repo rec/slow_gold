@@ -63,7 +63,6 @@ command {
       part {
         name: "time_enabled"
       }
-      scope: FILE_SCOPE
     }
   }
 }
@@ -80,7 +79,6 @@ command {
       part {
         name: "enabled"
       }
-      scope: FILE_SCOPE
     }
   }
 }

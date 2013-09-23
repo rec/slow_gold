@@ -11,7 +11,6 @@ command {
       part {
         name: "command_bar_at_left"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -28,7 +27,6 @@ command {
       part {
         name: "command_bar_at_top"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -45,7 +43,6 @@ command {
       part {
         name: "use_tree_view_in_file_dialogs"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -62,7 +59,6 @@ command {
       part {
         name: "follow_cursor"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -79,7 +75,6 @@ command {
       part {
         name: "show_grid"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -96,7 +91,6 @@ command {
       part {
         name: "modes_at_left"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -113,7 +107,6 @@ command {
       part {
         name: "modes_at_top"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -130,7 +123,6 @@ command {
       part {
         name: "parallel_waveforms"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -147,7 +139,6 @@ command {
       part {
         name: "prefader_levels"
       }
-      scope: FILE_SCOPE
     }
   }
   disabled: "empty"
@@ -165,7 +156,6 @@ command {
       part {
         name: "show_about_on_startup"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -182,7 +172,6 @@ command {
       part {
         name: "show_cursor_labels"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -199,7 +188,6 @@ command {
       part {
         name: "show_labels_at_top"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -216,7 +204,6 @@ command {
       part {
         name: "show_master_tune"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -233,7 +220,6 @@ command {
       part {
         name: "show_selection_buttons"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }
@@ -250,7 +236,6 @@ command {
       part {
         name: "show_times_at_top"
       }
-      scope: GLOBAL_SCOPE
     }
   }
 }

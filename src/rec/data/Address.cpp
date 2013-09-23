@@ -1,4 +1,6 @@
 #include "rec/data/Address.h"
+#include "rec/data/DataCenter.h"
+#include "rec/util/proto/MessageRegistrarAndMaker.h"
 
 namespace rec {
 namespace data {
@@ -32,6 +34,12 @@ const string Address::toString() const {
   else
     s += "-global";
   return s;
+}
+
+AddressProto::Scope getScope(const AddressProto& a)  {
+  if (a.has_scope())
+    return a.scope();
+  return getDataCenter()->messageMaker().scope(a.type_name());
 }
 
 #if 0
