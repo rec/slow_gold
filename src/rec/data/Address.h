@@ -36,7 +36,6 @@ class Address : public AddressProto {
   Address(int i) { p(i); }
 
   const string toString() const;
-  AddressProto::Scope getScope() const;
 };
 
 AddressProto::Scope getScope(const AddressProto&) ;

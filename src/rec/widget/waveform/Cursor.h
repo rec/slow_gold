@@ -30,7 +30,7 @@ class OutlinedCursorLabel;
 class Cursor : public Component,
                public SettableTooltipClient,
                public Listener<SampleTime>,
-               public GlobalDataListener<WaveformProto>,
+               public DataListener<WaveformProto>,
                public app::LanguageListener,
                public juce::Label::Listener {
  public:

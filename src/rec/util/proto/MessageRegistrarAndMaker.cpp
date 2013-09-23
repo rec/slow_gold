@@ -61,7 +61,7 @@ unique_ptr<Message> MessageRegistrarAndMaker::makeMessage(const string& tn) cons
   }
 }
 
-AddressProto::Scope MessageRegistrarAndMaker::scope(const string& tn) const {
+AddressProto::Scope MessageRegistrarAndMaker::getScope(const string& tn) const {
   try {
     return impl_->registry_.at(tn)->scope_;
   } catch (std::out_of_range&) {

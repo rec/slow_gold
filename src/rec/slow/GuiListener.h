@@ -10,7 +10,7 @@ namespace slow {
 
 class GuiSettings;
 
-class GuiListener : public GlobalDataListener<GuiSettings>,
+class GuiListener : public DataListener<GuiSettings>,
                     public Listener<gui::audio::CommandBarCommand>,
                     public Listener<gui::audio::TransportCommand> {
  public:

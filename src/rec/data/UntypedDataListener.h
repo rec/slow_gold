@@ -13,7 +13,7 @@ class UntypedDataListener : public Listener<const Message&>,
                             public Listener<const VirtualFile&> {
  public:
   typedef AddressProto::Scope Scope;
-  explicit UntypedDataListener(const string& typeName, Scope scope);
+  explicit UntypedDataListener(const string& typeName);
   virtual ~UntypedDataListener();
 
   virtual void operator()(const Message& m) = 0;

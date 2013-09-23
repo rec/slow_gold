@@ -58,5 +58,9 @@ DataCenter* getDataCenter() {
   return *getDC();
 }
 
+AddressProto::Scope getScope(const string& typeName) {
+  return getDataCenter()->messageMaker().getScope(typeName);
+}
+
 }  // namespace data
 }  // namespace rec

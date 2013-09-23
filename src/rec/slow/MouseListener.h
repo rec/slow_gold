@@ -19,7 +19,7 @@ namespace slow {
 
 class MouseListener : public juce::MouseListener,
                       public DataListener<widget::waveform::Viewport>,
-                      public GlobalDataListener<Mode>,
+                      public DataListener<Mode>,
                       public Listener<const widget::waveform::MouseWheelEvent&> {
  public:
   MouseListener();

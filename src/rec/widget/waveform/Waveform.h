@@ -35,8 +35,8 @@ class Waveform : public Component,
                  public Listener<const SampleRange&>,
                  public DataListener<Viewport>,
                  public app::LanguageListener,
-                 public GlobalDataListener<Mode>,
-                 public GlobalDataListener<WaveformProto>,
+                 public DataListener<Mode>,
+                 public DataListener<WaveformProto>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&> {
  public:

@@ -16,8 +16,8 @@ namespace data {
 typedef AddressProto::Scope Scope;
 
 struct AddressListener::UntypedListener : public UntypedDataListener {
-  UntypedListener(AddressListener* p, const string& typeName, Scope scope)
-      : UntypedDataListener(typeName, scope), parent_(p) {
+  UntypedListener(AddressListener* p, const string& typeName)
+      : UntypedDataListener(typeName), parent_(p) {
     DCHECK_NE(typeName, getTypeName<VirtualFile>());
   }
   AddressListener* parent_;
@@ -29,7 +29,7 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 
 AddressListener::AddressListener(const Address& a)
     : address_(a), failOnError_(true) {
-  untypedListener_.reset(new UntypedListener(this, a.type_name(), getScope(a)));
+  untypedListener_.reset(new UntypedListener(this, a.type_name()));
 }
 
 AddressListener::~AddressListener() {}

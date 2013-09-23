@@ -31,7 +31,7 @@ class Player : public DataListener<Gain>,
                public DataListener<widget::waveform::Viewport>,
                public DataListener<StereoProto>,
                public DataListener<stretch::Stretch>,
-               public GlobalDataListener<audio::AudioSettings>,
+               public DataListener<audio::AudioSettings>,
                public Broadcaster<transport::State>,
                public Listener<SampleRate>,
                public juce::ChangeListener {

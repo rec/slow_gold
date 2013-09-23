@@ -245,7 +245,7 @@ void MouseListener::toggleAddLoopPointMode() {
     previousMode_ = mode_;
     mode_.set_click(Mode::DRAW_LOOP_POINTS);
   }
-  GlobalDataListener<Mode>::setProto(mode_);
+  DataListener<Mode>::setProto(mode_);
 #endif
 }
 

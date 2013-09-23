@@ -16,7 +16,7 @@ class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
   unique_ptr<Message> makeMessage(const string& typeName) const override;
   void registerInstance(
       const Message& m, bool copy, data::AddressProto::Scope) override;
-  data::AddressProto::Scope scope(const string& typeName) const override;
+  data::AddressProto::Scope getScope(const string& typeName) const override;
 
  private:
   struct Impl;

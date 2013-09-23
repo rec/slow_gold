@@ -13,7 +13,7 @@ class MessageMaker {
   virtual ~MessageMaker() {}
 
   virtual unique_ptr<Message> makeMessage(const string& typeName) const = 0;
-  virtual data::AddressProto::Scope scope(const string& typeName) const = 0;
+  virtual data::AddressProto::Scope getScope(const string& typeName) const = 0;
 };
 
 }  // namespace util

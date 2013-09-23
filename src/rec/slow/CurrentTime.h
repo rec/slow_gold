@@ -18,7 +18,7 @@ namespace slow {
 
 class CurrentTime : public audio::util::CurrentTimeBase,
                     public DataListener<widget::waveform::Viewport>,
-                    public GlobalDataListener<GuiSettings>,
+                    public DataListener<GuiSettings>,
                     public Listener<SampleTime>,
                     public Listener<audio::transport::State> {
  public:

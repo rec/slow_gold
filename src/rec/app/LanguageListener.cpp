@@ -5,7 +5,7 @@
 namespace rec {
 namespace app {
 
-class LanguageListener::Updater : public GlobalDataListener<AppSettings> {
+class LanguageListener::Updater : public DataListener<AppSettings> {
  public:
   explicit Updater(LanguageListener* client) : client_(client) {}
 

@@ -14,7 +14,7 @@ namespace tree {
 class TreeViewDropAll;
 
 class Root : public Broadcaster<const VirtualFile&>,
-             public data::GlobalDataListener<VirtualFileList>,
+             public data::DataListener<VirtualFileList>,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:

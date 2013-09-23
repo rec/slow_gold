@@ -1,9 +1,10 @@
 #ifndef __REC_DATA_DATALISTENER__
 #define __REC_DATA_DATALISTENER__
 
+#include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
-#include "rec/data/proto/Address.pb.h"
 #include "rec/data/UntypedDataListener.h"
+#include "rec/data/proto/Address.pb.h"
 #include "rec/util/proto/Proto.h"
 
 namespace rec {
@@ -16,9 +17,7 @@ class DataListener : public Listener<const Proto&> {
  public:
   typedef AddressProto::Scope Scope;
 
-  explicit DataListener(AddressProto::Scope scope = AddressProto::FILE_SCOPE) {
-    adaptor_.reset(new Adaptor(this, scope));
-  }
+  explicit DataListener() : adaptor_(new Adaptor(this)) {}
   virtual ~DataListener() {}
 
   virtual void operator()(const Proto&) = 0;
@@ -45,9 +44,8 @@ class DataListener : public Listener<const Proto&> {
  private:
   class Adaptor : public UntypedDataListener {
    public:
-    Adaptor(DataListener<Proto>* p, Scope scope)
-        : UntypedDataListener(getTypeName<Proto>(), scope),
-          parent_(p) {
+    Adaptor(DataListener<Proto>* p)
+        : UntypedDataListener(getTypeName<Proto>()), parent_(p) {
     }
 
     virtual void operator()(const Message& m) {
@@ -68,20 +66,9 @@ class DataListener : public Listener<const Proto&> {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };
 
-template <typename Proto>
-class GlobalDataListener : public DataListener<Proto> {
- public:
-  GlobalDataListener() : DataListener<Proto>(AddressProto::GLOBAL_SCOPE) {}
-  virtual ~GlobalDataListener() {}
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(GlobalDataListener);
-};
-
 }  // namespace data
 
 using data::DataListener;
-using data::GlobalDataListener;
 
 }  // namespace rec
 

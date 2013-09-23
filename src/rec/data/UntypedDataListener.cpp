@@ -1,5 +1,6 @@
 #include "rec/data/UntypedDataListener.h"
 
+#include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/file/VirtualFile.pb.h"
 
@@ -24,8 +25,8 @@ Broadcaster<const VirtualFile&>* fileListener() {
 
 }  // namespace
 
-UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
-    : scope_(scope), typeName_(tn), data_(nullptr) {
+UntypedDataListener::UntypedDataListener(const string& tn)
+    : scope_(getScope(tn)), typeName_(tn), data_(nullptr) {
   fileListener()->addListener(this);
 }
 

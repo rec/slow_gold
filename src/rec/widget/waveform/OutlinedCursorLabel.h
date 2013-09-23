@@ -12,7 +12,7 @@ class Cursor;
 class WaveformProto;
 
 class OutlinedCursorLabel : public gui::SimpleLabel,
-                            public GlobalDataListener<WaveformProto>,
+                            public DataListener<WaveformProto>,
                             juce::Button::Listener {
  public:
   explicit OutlinedCursorLabel(Cursor*);

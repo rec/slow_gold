@@ -14,7 +14,7 @@ namespace gui {
 namespace audio {
 
 class ModeSelector : public Panel,
-                     public GlobalDataListener<Mode>,
+                     public DataListener<Mode>,
                      public juce::Button::Listener {
  public:
   ModeSelector();

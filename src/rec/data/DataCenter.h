@@ -1,7 +1,8 @@
 #ifndef __REC_DATA_DATACENTER__
 #define __REC_DATA_DATACENTER__
 
-#include "rec/base/base.h"
+#include "rec/data/proto/Address.pb.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 
@@ -45,6 +46,8 @@ class DataCenter {
 
 DataCenter* getDataCenter();
 void deleteDataCenter();
+
+AddressProto::Scope getScope(const string& typeName);
 
 }  // namespace data
 }  // namespace rec

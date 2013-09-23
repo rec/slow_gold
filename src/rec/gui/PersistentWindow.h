@@ -11,7 +11,7 @@ namespace rec {
 namespace gui {
 
 class PersistentWindow : public DocumentWindow,
-                         public data::GlobalDataListener<WindowPosition>,
+                         public data::DataListener<WindowPosition>,
                          public GuiWriteable {
  public:
   PersistentWindow(const String& name,

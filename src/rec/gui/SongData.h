@@ -19,8 +19,7 @@ class SongData : public app::LanguageListener,
  public:
   typedef data::Address Address;
 
-  SongData() : data::UntypedDataListener(getTypeName<music::Metadata>(),
-                                         data::AddressProto::FILE_SCOPE) {
+  SongData() : data::UntypedDataListener(getTypeName<music::Metadata>()) {
     setName("SongData");
   }
 
