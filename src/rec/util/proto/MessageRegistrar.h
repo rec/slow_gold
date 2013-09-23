@@ -20,13 +20,13 @@ class MessageRegistrar {
 };
 
 template <typename Class>
-void registerLocal(MessageRegistrar* registrar) {
+void registerFileProto(MessageRegistrar* registrar) {
   registrar->registerInstance(Class::default_instance(), false,
                               data::AddressProto::FILE_SCOPE);
 }
 
 template <typename Class>
-void registerGlobal(MessageRegistrar* registrar) {
+void registerProto(MessageRegistrar* registrar) {
   registrar->registerInstance(Class::default_instance(), false,
                               data::AddressProto::GLOBAL_SCOPE);
 }
