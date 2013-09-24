@@ -23,7 +23,6 @@ class SimpleLabel : public juce::Label {
         setText(newText, t);
   }
 
-
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SimpleLabel);
 };

@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_PROTO_HELP__
 #define __REC_GUI_PROTO_HELP__
 
-#include "rec/base/base.h"
+#include "rec/gui/GetTooltip.h"
 
 namespace rec {
 namespace gui {
@@ -11,6 +11,7 @@ class Constants;
 class Context;
 
 unique_ptr<Component> makeHelp(const Context&);
+void setHelp(const Tooltip&);
 
 }  // namespace gui
 }  // namespace rec

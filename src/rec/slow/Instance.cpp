@@ -26,6 +26,7 @@
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/gui/proto/Help.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
@@ -288,6 +289,15 @@ void Instance::reset() {
 
 SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
+}
+
+#define USE_OLD_HELP true
+
+void Instance::setHelp(const gui::Tooltip& tt) {
+  if (USE_OLD_HELP)
+    components_->mainPage_->setHelp(tt);
+  else
+    gui::setHelp(tt);
 }
 
 }  // namespace slow

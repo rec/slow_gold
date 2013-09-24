@@ -4,10 +4,11 @@
 #include <set>
 
 #include "rec/app/LanguageListener.h"
-#include "rec/gui/proto/Panel.h"
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/SimpleLabel.h"
+#include "rec/gui/GetTooltip.h"
 #include "rec/gui/SetterResizer.h"
+#include "rec/gui/SimpleLabel.h"
+#include "rec/gui/proto/Panel.h"
 
 namespace rec {
 
@@ -23,7 +24,7 @@ class MainPage : public app::LanguageListener {
   virtual ~MainPage();
 
   gui::Panel* panel() { return mainPanel_.get(); }
-  void setHelp(const String&);
+  void setHelp(const gui::Tooltip&);
   void setEnabled(bool);
   virtual void languageChanged();
 

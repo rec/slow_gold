@@ -21,21 +21,33 @@ class HelpPanel : public Panel {
     const HelpProto& proto = comp.help();
     addToPanel(&helpCaption_, constants, comp.size(), proto.caption_size());
     addToPanel(&helpBody_, constants, comp.size(), proto.body_size());
+    INSTANCE = this;
 
     // TODO: font here!
     // TODO: make sure that we are the one getting help updates automatically!
   }
 
-  void setTooltip(const String& newTooltip) override {
-    Panel::setTooltip(newTooltip);
-    helpCaption_.setTooltip(newTooltip);
-    helpBody_.setTooltip(newTooltip);
+  void setTooltip(const String& tt) override {
+    helpCaption_.setTooltip(tt);
+    helpBody_.setTooltip(tt);
   }
 
- private:
+  void setHelp(const Tooltip& tt) {
+    helpCaption_.setTextIfChanged(tt.first, juce::dontSendNotification);
+    helpBody_.setTextIfChanged(tt.second, juce::dontSendNotification);
+  }
+
+  ~HelpPanel() {
+    INSTANCE = nullptr;
+  }
+
+  static HelpPanel* INSTANCE;
+
   SimpleLabel helpCaption_;
   SimpleLabel helpBody_;
 };
+
+HelpPanel* HelpPanel::INSTANCE = nullptr;
 
 }  // namespace
 
@@ -43,5 +55,10 @@ unique_ptr<Component> makeHelp(const Context& context) {
   return unique_ptr<Component>(new HelpPanel(context));
 }
 
+void setHelp(const Tooltip& tt) {
+  HelpPanel::INSTANCE->setHelp(tt);
+}
+
 }  // namespace gui
 }  // namespace rec
+

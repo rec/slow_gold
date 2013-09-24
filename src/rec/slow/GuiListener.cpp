@@ -79,7 +79,7 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    getInstance()->components_->mainPage_->setHelp(gui::getTooltip(comp));
+    getInstance()->setHelp(gui::getTooltip(comp));
   }
 }
 

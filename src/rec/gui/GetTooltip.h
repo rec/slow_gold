@@ -6,9 +6,9 @@
 namespace rec {
 namespace gui {
 
-String getTooltip(Component* c);
+typedef std::pair<String, String> Tooltip;
 
-std::pair<String, String> splitTooltip(const String&);
+Tooltip getTooltip(Component* c);
 
 inline Component* getComponentUnderMouse() {
   return Desktop::getInstance().getMainMouseSource().getComponentUnderMouse();

@@ -152,10 +152,9 @@ void MainPage::languageChanged() {
 
 MainPage::~MainPage() {}
 
-void MainPage::setHelp(const String& tt) {
-  auto r = gui::splitTooltip(tt);
-  helpCaption_.setText(r.first, juce::dontSendNotification);
-  helpBody_.setText(r.second, juce::dontSendNotification);
+void MainPage::setHelp(const gui::Tooltip& tt) {
+  helpCaption_.setText(tt.first, juce::dontSendNotification);
+  helpBody_.setText(tt.second, juce::dontSendNotification);
 }
 
 void MainPage::setEnabled(bool enabled) {

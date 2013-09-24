@@ -5,16 +5,17 @@
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
+#include "rec/gui/GetTooltip.h"
 #include "rec/util/thread/Trash.h"
 
-namespace rec {
+namespace rec { namespace audio { class Device; }}
+namespace rec { namespace audio { namespace source { class Player; }}}
+namespace rec { namespace audio { namespace util { class BufferFiller; }}}
+namespace rec { namespace audio { namespace util { class CurrentTimeBase; }}}
+namespace rec { namespace command { class MidiCommandMap; }}
+namespace rec { namespace gui { class LookAndFeel; }}
 
-namespace audio { class Device; }
-namespace command { class MidiCommandMap; }
-namespace audio { namespace source { class Player; }}
-namespace audio { namespace util { class BufferFiller; }}
-namespace audio { namespace util { class CurrentTimeBase; }}
-namespace gui { class LookAndFeel; }
+namespace rec {
 
 // Test stuff!
 namespace program { class JuceModel; }
@@ -68,6 +69,8 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
+
+  void setHelp(const gui::Tooltip&);
 
  private:
   unique_ptr<SlowProgram> slowProgram_;
