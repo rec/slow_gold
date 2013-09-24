@@ -23,7 +23,7 @@ class MainPage : public app::LanguageListener {
   virtual ~MainPage();
 
   gui::Panel* panel() { return mainPanel_.get(); }
-  void setTooltip(const String&);
+  void setHelp(const String&);
   void setEnabled(bool);
   virtual void languageChanged();
 

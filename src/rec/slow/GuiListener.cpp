@@ -24,21 +24,19 @@ inline void invokeAndCheck(CommandID id) {
   program::juceModel()->invokeAndCheck(id);
 }
 
-const int MS_TILL_TOOLTIP = 700;
+const int MS_TILL_TOOLTIP = 350;
 
 }  // namespace
 
 GuiListener::GuiListener()
-    : displayHelpPane_(false), lastComponent_(nullptr), lastFocus_(nullptr) {
+    : displayHelpPane_(false), lastComponent_(nullptr) {
 }
 
 void GuiListener::operator()(const GuiSettings& settings) {
-  if (!settings.show_tooltips()) {
+  if (!settings.show_tooltips())
     tooltipWindow_.reset();
-
-  } else if (!tooltipWindow_) {
+  else if (!tooltipWindow_)
     tooltipWindow_.reset(new TooltipWindow(nullptr, MS_TILL_TOOLTIP));
-  }
 
   Lock l(lock_);
   displayHelpPane_ = settings.show_help_pane();
@@ -81,16 +79,8 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    getInstance()->components_->mainPage_->setTooltip(gui::getTooltip(comp));
+    getInstance()->components_->mainPage_->setHelp(gui::getTooltip(comp));
   }
-
-#if JUCE_DEBUG
-  comp = Component::getCurrentlyFocusedComponent();
-  if (comp != lastFocus_) {
-    // DLOG(INFO) << (comp ? str(comp->getName()) : string("(none)"));
-    lastFocus_ = comp;
-  }
-#endif
 }
 
 }  // namespace slow

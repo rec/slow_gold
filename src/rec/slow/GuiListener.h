@@ -27,7 +27,6 @@ class GuiListener : public DataListener<GuiSettings>,
   unique_ptr<juce::TooltipWindow> tooltipWindow_;
   bool displayHelpPane_;
   Component* lastComponent_;
-  Component* lastFocus_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(GuiListener);
 };
