@@ -38,7 +38,12 @@ class Address : public AddressProto {
   const string toString() const;
 };
 
-AddressProto::Scope getScope(const AddressProto&) ;
+AddressProto::Scope getScope(const AddressProto&);
+
+// Split an address looking like "classname:address" into a full
+// address record.
+Address splitAddress(const string&);
+
 
 template <typename Type>
 const Address makeAddress() {
