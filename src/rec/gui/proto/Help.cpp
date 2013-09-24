@@ -15,7 +15,7 @@ namespace {
 
 class HelpPanel : public Panel {
  public:
-  HelpPanel(const Context& context) {
+  HelpPanel(const Context& context) : Panel("HelpPanel", VERTICAL) {
     INSTANCE = this;
 
     auto& comp = context.component_;
@@ -24,7 +24,7 @@ class HelpPanel : public Panel {
     addToPanel(&caption_, constants, comp.size(), proto.caption_size());
     addToPanel(&body_, constants, comp.size(), proto.body_size());
 
-    caption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+    caption_.setColour(juce::Label::textColourId, Colours::darkgreen);
     caption_.setJustificationType(Justification::centred);
     Font font = caption_.getFont();
     font.setBold(true);

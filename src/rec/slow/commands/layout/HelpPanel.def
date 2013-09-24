@@ -1,21 +1,17 @@
 layout {
   name: "HelpPanel"
   component {
-    name: "HelpCaption"
-    tooltip: "Help Panel: Shows help about whatever the mouse is over."
+    name: "Help"
     size {
-      min: "28.0"
+      min: "200"
     }
-    label {}
-  }
-  component {
-    name: "HelpBody"
-    tooltip: "Help Panel: Shows help about whatever the mouse is over."
-    size {
-      min: "-0.1"
-      max: "-1.0"
-      preferred: "-0.2"
+    help {
+      caption_size {
+        min: "28"
+      }
+      body_size {
+        min: "-0.1"
+      }
     }
-    label {}
   }
 }

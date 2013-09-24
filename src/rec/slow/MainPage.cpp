@@ -138,6 +138,7 @@ MainPage::MainPage(Components* components)
     add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.2);
     add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
   } else {
+    add(&playbackPanel_, helpPanelNew_.get(), MIN_HELP_PANEL, -1.0, -0.20);
   }
 
 
