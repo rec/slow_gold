@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/data/proto/Address.pb.h"
 #include "rec/gui/proto/Button.pb.h"
 #include "rec/gui/proto/ComboBox.pb.h"
 #include "rec/gui/proto/Custom.pb.h"
@@ -138,14 +137,17 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::rec::gui::Size* release_size();
   inline void set_allocated_size(::rec::gui::Size* size);
 
-  // optional .rec.data.AddressProto address = 4;
+  // optional string address = 4;
   inline bool has_address() const;
   inline void clear_address();
   static const int kAddressFieldNumber = 4;
-  inline const ::rec::data::AddressProto& address() const;
-  inline ::rec::data::AddressProto* mutable_address();
-  inline ::rec::data::AddressProto* release_address();
-  inline void set_allocated_address(::rec::data::AddressProto* address);
+  inline const ::std::string& address() const;
+  inline void set_address(const ::std::string& value);
+  inline void set_address(const char* value);
+  inline void set_address(const char* value, size_t size);
+  inline ::std::string* mutable_address();
+  inline ::std::string* release_address();
+  inline void set_allocated_address(::std::string* address);
 
   // repeated .rec.gui.Color color = 5;
   inline int color_size() const;
@@ -327,7 +329,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::std::string* name_;
   ::std::string* tooltip_;
   ::rec::gui::Size* size_;
-  ::rec::data::AddressProto* address_;
+  ::std::string* address_;
   ::google::protobuf::RepeatedPtrField< ::rec::gui::Color > color_;
   ::rec::gui::FontProto* font_;
   ::std::string* layout_;
@@ -539,7 +541,7 @@ inline void ComponentProto::set_allocated_size(::rec::gui::Size* size) {
   }
 }
 
-// optional .rec.data.AddressProto address = 4;
+// optional string address = 4;
 inline bool ComponentProto::has_address() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -550,30 +552,62 @@ inline void ComponentProto::clear_has_address() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void ComponentProto::clear_address() {
-  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+  if (address_ != &::google::protobuf::internal::kEmptyString) {
+    address_->clear();
+  }
   clear_has_address();
 }
-inline const ::rec::data::AddressProto& ComponentProto::address() const {
-  return address_ != NULL ? *address_ : *default_instance_->address_;
+inline const ::std::string& ComponentProto::address() const {
+  return *address_;
 }
-inline ::rec::data::AddressProto* ComponentProto::mutable_address() {
+inline void ComponentProto::set_address(const ::std::string& value) {
   set_has_address();
-  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  address_->assign(value);
+}
+inline void ComponentProto::set_address(const char* value) {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  address_->assign(value);
+}
+inline void ComponentProto::set_address(const char* value, size_t size) {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  address_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::mutable_address() {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
   return address_;
 }
-inline ::rec::data::AddressProto* ComponentProto::release_address() {
+inline ::std::string* ComponentProto::release_address() {
   clear_has_address();
-  ::rec::data::AddressProto* temp = address_;
-  address_ = NULL;
-  return temp;
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = address_;
+    address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
-inline void ComponentProto::set_allocated_address(::rec::data::AddressProto* address) {
-  delete address_;
-  address_ = address;
+inline void ComponentProto::set_allocated_address(::std::string* address) {
+  if (address_ != &::google::protobuf::internal::kEmptyString) {
+    delete address_;
+  }
   if (address) {
     set_has_address();
+    address_ = address;
   } else {
     clear_has_address();
+    address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

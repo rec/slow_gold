@@ -10,7 +10,8 @@ namespace gui {
 unique_ptr<Component> makeToggleButton(const Context& context) {
   auto& comp = context.component_;
   return unique_ptr<Component>(
-      new SetterToggle(comp.name(), comp.tooltip(), comp.address()));
+      new SetterToggle(comp.name(), comp.tooltip(),
+                       data::splitAddress(comp.address())));
 }
 
 

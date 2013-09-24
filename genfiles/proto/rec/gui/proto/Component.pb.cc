@@ -96,7 +96,6 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fCustom_2eproto();
@@ -111,30 +110,29 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/gui/proto/Component.proto\022\007rec.gui"
-    "\032\034rec/data/proto/Address.proto\032\032rec/gui/"
-    "proto/Button.proto\032\034rec/gui/proto/ComboB"
-    "ox.proto\032\032rec/gui/proto/Custom.proto\032\030re"
-    "c/gui/proto/Font.proto\032\030rec/gui/proto/He"
-    "lp.proto\032\031rec/gui/proto/Label.proto\032\033rec"
-    "/gui/proto/Resizer.proto\032\030rec/gui/proto/"
-    "Size.proto\032\032rec/gui/proto/Slider.proto\032\030"
-    "rec/gui/proto/Text.proto\032 rec/gui/proto/"
-    "ToggleButton.proto\032\023rec/gui/Color.proto\""
-    "\324\004\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
-    "tip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\'"
-    "\n\007address\030\004 \001(\0132\026.rec.data.AddressProto\022"
-    "\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 \n\004font\030\006"
-    " \001(\0132\022.rec.gui.FontProto\022\016\n\006layout\030\021 \001(\t"
-    "\022\017\n\007resizer\030\007 \001(\t\022\026\n\013min_resizer\030\022 \001(\t:\001"
-    "0\022$\n\006button\030\010 \001(\0132\024.rec.gui.ButtonProto\022"
-    ")\n\tcombo_box\030\t \001(\0132\026.rec.gui.ComboBoxPro"
-    "to\022$\n\006custom\030\n \001(\0132\024.rec.gui.CustomProto"
-    "\022 \n\004help\030\020 \001(\0132\022.rec.gui.HelpProto\022\"\n\005la"
-    "bel\030\013 \001(\0132\023.rec.gui.LabelProto\022+\n\014full_r"
-    "esizer\030\014 \001(\0132\025.rec.gui.ResizerProto\022$\n\006s"
-    "lider\030\r \001(\0132\024.rec.gui.SliderProto\022 \n\004tex"
-    "t\030\016 \001(\0132\022.rec.gui.TextProto\0221\n\rtoggle_bu"
-    "tton\030\017 \001(\0132\032.rec.gui.ToggleButtonProto", 998);
+    "\032\032rec/gui/proto/Button.proto\032\034rec/gui/pr"
+    "oto/ComboBox.proto\032\032rec/gui/proto/Custom"
+    ".proto\032\030rec/gui/proto/Font.proto\032\030rec/gu"
+    "i/proto/Help.proto\032\031rec/gui/proto/Label."
+    "proto\032\033rec/gui/proto/Resizer.proto\032\030rec/"
+    "gui/proto/Size.proto\032\032rec/gui/proto/Slid"
+    "er.proto\032\030rec/gui/proto/Text.proto\032 rec/"
+    "gui/proto/ToggleButton.proto\032\023rec/gui/Co"
+    "lor.proto\"\274\004\n\016ComponentProto\022\014\n\004name\030\001 \001"
+    "(\t\022\017\n\007tooltip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec."
+    "gui.Size\022\017\n\007address\030\004 \001(\t\022\035\n\005color\030\005 \003(\013"
+    "2\016.rec.gui.Color\022 \n\004font\030\006 \001(\0132\022.rec.gui"
+    ".FontProto\022\016\n\006layout\030\021 \001(\t\022\017\n\007resizer\030\007 "
+    "\001(\t\022\026\n\013min_resizer\030\022 \001(\t:\0010\022$\n\006button\030\010 "
+    "\001(\0132\024.rec.gui.ButtonProto\022)\n\tcombo_box\030\t"
+    " \001(\0132\026.rec.gui.ComboBoxProto\022$\n\006custom\030\n"
+    " \001(\0132\024.rec.gui.CustomProto\022 \n\004help\030\020 \001(\013"
+    "2\022.rec.gui.HelpProto\022\"\n\005label\030\013 \001(\0132\023.re"
+    "c.gui.LabelProto\022+\n\014full_resizer\030\014 \001(\0132\025"
+    ".rec.gui.ResizerProto\022$\n\006slider\030\r \001(\0132\024."
+    "rec.gui.SliderProto\022 \n\004text\030\016 \001(\0132\022.rec."
+    "gui.TextProto\0221\n\rtoggle_button\030\017 \001(\0132\032.r"
+    "ec.gui.ToggleButtonProto", 944);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::_default_min_resizer_ =
@@ -182,7 +180,6 @@ ComponentProto::ComponentProto()
 
 void ComponentProto::InitAsDefaultInstance() {
   size_ = const_cast< ::rec::gui::Size*>(&::rec::gui::Size::default_instance());
-  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
   font_ = const_cast< ::rec::gui::FontProto*>(&::rec::gui::FontProto::default_instance());
   button_ = const_cast< ::rec::gui::ButtonProto*>(&::rec::gui::ButtonProto::default_instance());
   combo_box_ = const_cast< ::rec::gui::ComboBoxProto*>(&::rec::gui::ComboBoxProto::default_instance());
@@ -206,7 +203,7 @@ void ComponentProto::SharedCtor() {
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   size_ = NULL;
-  address_ = NULL;
+  address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   font_ = NULL;
   layout_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   resizer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -234,6 +231,9 @@ void ComponentProto::SharedDtor() {
   if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
     delete tooltip_;
   }
+  if (address_ != &::google::protobuf::internal::kEmptyString) {
+    delete address_;
+  }
   if (layout_ != &::google::protobuf::internal::kEmptyString) {
     delete layout_;
   }
@@ -245,7 +245,6 @@ void ComponentProto::SharedDtor() {
   }
   if (this != default_instance_) {
     delete size_;
-    delete address_;
     delete font_;
     delete button_;
     delete combo_box_;
@@ -296,7 +295,9 @@ void ComponentProto::Clear() {
       if (size_ != NULL) size_->::rec::gui::Size::Clear();
     }
     if (has_address()) {
-      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+      if (address_ != &::google::protobuf::internal::kEmptyString) {
+        address_->clear();
+      }
     }
     if (has_font()) {
       if (font_ != NULL) font_->::rec::gui::FontProto::Clear();
@@ -406,13 +407,16 @@ bool ComponentProto::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .rec.data.AddressProto address = 4;
+      // optional string address = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_address:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_address()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_address()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->address().data(), this->address().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -668,9 +672,12 @@ void ComponentProto::SerializeWithCachedSizes(
       3, this->size(), output);
   }
 
-  // optional .rec.data.AddressProto address = 4;
+  // optional string address = 4;
   if (has_address()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->address().data(), this->address().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       4, this->address(), output);
   }
 
@@ -802,10 +809,13 @@ void ComponentProto::SerializeWithCachedSizes(
         3, this->size(), target);
   }
 
-  // optional .rec.data.AddressProto address = 4;
+  // optional string address = 4;
   if (has_address()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->address().data(), this->address().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         4, this->address(), target);
   }
 
@@ -948,10 +958,10 @@ int ComponentProto::ByteSize() const {
           this->size());
     }
 
-    // optional .rec.data.AddressProto address = 4;
+    // optional string address = 4;
     if (has_address()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->address());
     }
 
@@ -1096,7 +1106,7 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
       mutable_size()->::rec::gui::Size::MergeFrom(from.size());
     }
     if (from.has_address()) {
-      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
+      set_address(from.address());
     }
     if (from.has_font()) {
       mutable_font()->::rec::gui::FontProto::MergeFrom(from.font());

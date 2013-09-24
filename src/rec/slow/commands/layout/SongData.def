@@ -4,84 +4,49 @@ layout {
   component {
     name: "Track"
     tooltip: "Track Title: The name of this track."
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "track_title"
-      }
-    }
+    address: "rec.music.Metadata:track_title"
     text {}
   }
 
   component {
     name: "Album"
     tooltip: "Album Name: The name of the album this track is from."
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "album_title"
-      }
-    }
+    address: "rec.music.Metadata:album_title"
     text {}
   }
 
   component {
     name: "Artist"
     tooltip: "Artist Name: The artist or musician who made this specific track."
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "artist"
-      }
-    }
+    address: "rec.music.Metadata:artist"
     text {}
   }
 
   component {
     name: "Number"
     tooltip: "Track Number: The album track number for this track"
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "track_number"
-      }
-    }
+    address: "rec.music.Metadata:track_number"
     text {}
   }
 
   component {
     name: "Year"
     tooltip: "Album Year: The year that that this track was recorded."
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "year"
-      }
-    }
+    address: "rec.music.Metadata:year"
     text {}
   }
 
   component {
     name: "Genre"
     tooltip: "Track tags: Tags that categorize this track."
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "genre"
-      }
-    }
+    address: "rec.music.Metadata:genre"
     text {}
   }
 
   component {
     name: "Notes"
     tooltip: "Track Notes: You can enter your notes here."
-    address {
-      type_name: "rec.music.Metadata"
-      part {
-        name: "notes"
-      }
-    }
+    address: "rec.music.Metadata:notes"
     text {
       multiline: true
     }

@@ -1,6 +1,5 @@
 package rec.gui;
 
-import "rec/data/proto/Address.proto";
 import "rec/gui/proto/Button.proto";
 import "rec/gui/proto/ComboBox.proto";
 import "rec/gui/proto/Custom.proto";
@@ -18,7 +17,7 @@ message ComponentProto {
   optional string name = 1;
   optional string tooltip = 2;
   optional Size size = 3;
-  optional data.AddressProto address = 4;
+  optional string address = 4;
 
   repeated Color color = 5;
 
