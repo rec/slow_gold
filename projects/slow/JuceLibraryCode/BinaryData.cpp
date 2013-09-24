@@ -1595,14 +1595,14 @@ const char* Constants_def = (const char*) temp_binary_data_11;
 static const unsigned char temp_binary_data_12[] =
 "layout {\n"
 "  name: \"HelpPanel\"\n"
-"  component {\n"
+"  container {\n"
 "    name: \"Help\"\n"
 "    size {\n"
 "      min: \"200\"\n"
 "    }\n"
 "    help {\n"
 "      caption_size {\n"
-"        min: \"28\"\n"
+"        fixed: \"28\"\n"
 "      }\n"
 "      body_size {\n"
 "        min: \"-0.1\"\n"
@@ -13819,7 +13819,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
-        case 0xeda734e9:  numBytes = 210; return HelpPanel_def;
+        case 0xeda734e9:  numBytes = 212; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 267; return Layout_def;
         case 0x28df9dc5:  numBytes = 784; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 383; return MainPanel_def;

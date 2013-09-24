@@ -102,7 +102,6 @@ MainPage::MainPage(Components* components)
       helpCaption_("", ""),
       helpBody_("", "") {
   CHECK_DDD(123, 51, int16, int32);
-  helpPanelNew_ = gui::makeLayout("HelpPanel", mainPanel_.get());
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
@@ -121,7 +120,12 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
-  if (Instance::USE_OLD_HELP) {
+  Component* help;
+  DLOG(INFO) << "************** STARTING   *************************";
+  if (Instance::USE_NEW_HELP) {
+    helpPanelNew_ = gui::makeLayout("HelpPanel", mainPanel_.get());
+    help = helpPanelNew_.get();
+  } else {
     // Playback panel.
     helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
     helpCaption_.setJustificationType(Justification::centred);
@@ -136,11 +140,10 @@ MainPage::MainPage(Components* components)
     helpBody_.setJustificationType(Justification::topLeft);
     add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);
     add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.2);
-    add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
-  } else {
-    add(&playbackPanel_, helpPanelNew_.get(), MIN_HELP_PANEL, -1.0, -0.20);
+    help = &helpPanel_;
   }
-
+  add(&playbackPanel_, help, MIN_HELP_PANEL, -1.0, -0.20);
+  DLOG(INFO) << "************** DONE *************************";
 
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_,

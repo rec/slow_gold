@@ -1,13 +1,13 @@
 layout {
   name: "HelpPanel"
-  component {
+  container {
     name: "Help"
     size {
       min: "200"
     }
     help {
       caption_size {
-        min: "28"
+        fixed: "28"
       }
       body_size {
         min: "-0.1"

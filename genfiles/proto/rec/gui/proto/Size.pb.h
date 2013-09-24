@@ -92,10 +92,22 @@ class Size : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional string preferred = 1;
+  // optional string fixed = 1;
+  inline bool has_fixed() const;
+  inline void clear_fixed();
+  static const int kFixedFieldNumber = 1;
+  inline const ::std::string& fixed() const;
+  inline void set_fixed(const ::std::string& value);
+  inline void set_fixed(const char* value);
+  inline void set_fixed(const char* value, size_t size);
+  inline ::std::string* mutable_fixed();
+  inline ::std::string* release_fixed();
+  inline void set_allocated_fixed(::std::string* fixed);
+
+  // optional string preferred = 2;
   inline bool has_preferred() const;
   inline void clear_preferred();
-  static const int kPreferredFieldNumber = 1;
+  static const int kPreferredFieldNumber = 2;
   inline const ::std::string& preferred() const;
   inline void set_preferred(const ::std::string& value);
   inline void set_preferred(const char* value);
@@ -104,10 +116,10 @@ class Size : public ::google::protobuf::Message {
   inline ::std::string* release_preferred();
   inline void set_allocated_preferred(::std::string* preferred);
 
-  // optional string min = 2;
+  // optional string min = 3;
   inline bool has_min() const;
   inline void clear_min();
-  static const int kMinFieldNumber = 2;
+  static const int kMinFieldNumber = 3;
   inline const ::std::string& min() const;
   inline void set_min(const ::std::string& value);
   inline void set_min(const char* value);
@@ -116,10 +128,10 @@ class Size : public ::google::protobuf::Message {
   inline ::std::string* release_min();
   inline void set_allocated_min(::std::string* min);
 
-  // optional string max = 3 [default = "-1.0"];
+  // optional string max = 4 [default = "-1.0"];
   inline bool has_max() const;
   inline void clear_max();
-  static const int kMaxFieldNumber = 3;
+  static const int kMaxFieldNumber = 4;
   inline const ::std::string& max() const;
   inline void set_max(const ::std::string& value);
   inline void set_max(const char* value);
@@ -130,6 +142,8 @@ class Size : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.gui.Size)
  private:
+  inline void set_has_fixed();
+  inline void clear_has_fixed();
   inline void set_has_preferred();
   inline void clear_has_preferred();
   inline void set_has_min();
@@ -139,13 +153,14 @@ class Size : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* fixed_;
   ::std::string* preferred_;
   ::std::string* min_;
   ::std::string* max_;
   static ::std::string* _default_max_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fSize_2eproto();
@@ -161,15 +176,85 @@ class Size : public ::google::protobuf::Message {
 
 // Size
 
-// optional string preferred = 1;
-inline bool Size::has_preferred() const {
+// optional string fixed = 1;
+inline bool Size::has_fixed() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Size::set_has_preferred() {
+inline void Size::set_has_fixed() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Size::clear_has_preferred() {
+inline void Size::clear_has_fixed() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void Size::clear_fixed() {
+  if (fixed_ != &::google::protobuf::internal::kEmptyString) {
+    fixed_->clear();
+  }
+  clear_has_fixed();
+}
+inline const ::std::string& Size::fixed() const {
+  return *fixed_;
+}
+inline void Size::set_fixed(const ::std::string& value) {
+  set_has_fixed();
+  if (fixed_ == &::google::protobuf::internal::kEmptyString) {
+    fixed_ = new ::std::string;
+  }
+  fixed_->assign(value);
+}
+inline void Size::set_fixed(const char* value) {
+  set_has_fixed();
+  if (fixed_ == &::google::protobuf::internal::kEmptyString) {
+    fixed_ = new ::std::string;
+  }
+  fixed_->assign(value);
+}
+inline void Size::set_fixed(const char* value, size_t size) {
+  set_has_fixed();
+  if (fixed_ == &::google::protobuf::internal::kEmptyString) {
+    fixed_ = new ::std::string;
+  }
+  fixed_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Size::mutable_fixed() {
+  set_has_fixed();
+  if (fixed_ == &::google::protobuf::internal::kEmptyString) {
+    fixed_ = new ::std::string;
+  }
+  return fixed_;
+}
+inline ::std::string* Size::release_fixed() {
+  clear_has_fixed();
+  if (fixed_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = fixed_;
+    fixed_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Size::set_allocated_fixed(::std::string* fixed) {
+  if (fixed_ != &::google::protobuf::internal::kEmptyString) {
+    delete fixed_;
+  }
+  if (fixed) {
+    set_has_fixed();
+    fixed_ = fixed;
+  } else {
+    clear_has_fixed();
+    fixed_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string preferred = 2;
+inline bool Size::has_preferred() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Size::set_has_preferred() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Size::clear_has_preferred() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Size::clear_preferred() {
   if (preferred_ != &::google::protobuf::internal::kEmptyString) {
@@ -231,15 +316,15 @@ inline void Size::set_allocated_preferred(::std::string* preferred) {
   }
 }
 
-// optional string min = 2;
+// optional string min = 3;
 inline bool Size::has_min() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void Size::set_has_min() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void Size::clear_has_min() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Size::clear_min() {
   if (min_ != &::google::protobuf::internal::kEmptyString) {
@@ -301,15 +386,15 @@ inline void Size::set_allocated_min(::std::string* min) {
   }
 }
 
-// optional string max = 3 [default = "-1.0"];
+// optional string max = 4 [default = "-1.0"];
 inline bool Size::has_max() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Size::set_has_max() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Size::clear_has_max() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Size::clear_max() {
   if (max_ != _default_max_) {

@@ -28,15 +28,12 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
                            true));
   }
   Panel* panel = dynamic_cast<Panel*>(comp.get());
-  int i = 0;
   for (auto& component: layout.component()) {
-    DLOG(INFO) << i++ << ", " << component.ShortDebugString();
-
     auto child = makeComponent(Context(component, constants, panel, addr));
     if (panel)
       panel->addToPanel(child.get(), constants, layout.size(), component.size());
     else
-      comp->addAndMakeVisible(child.get());  // leaks memory here.
+      comp->addAndMakeVisible(child.get());
     child.release();
   }
 

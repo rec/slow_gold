@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Size.proto',
   package='rec.gui',
-  serialized_pb='\n\x18rec/gui/proto/Size.proto\x12\x07rec.gui\"9\n\x04Size\x12\x11\n\tpreferred\x18\x01 \x01(\t\x12\x0b\n\x03min\x18\x02 \x01(\t\x12\x11\n\x03max\x18\x03 \x01(\t:\x04-1.0')
+  serialized_pb='\n\x18rec/gui/proto/Size.proto\x12\x07rec.gui\"H\n\x04Size\x12\r\n\x05\x66ixed\x18\x01 \x01(\t\x12\x11\n\tpreferred\x18\x02 \x01(\t\x12\x0b\n\x03min\x18\x03 \x01(\t\x12\x11\n\x03max\x18\x04 \x01(\t:\x04-1.0')
 
 
 
@@ -26,22 +26,29 @@ _SIZE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='preferred', full_name='rec.gui.Size.preferred', index=0,
+      name='fixed', full_name='rec.gui.Size.fixed', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='min', full_name='rec.gui.Size.min', index=1,
+      name='preferred', full_name='rec.gui.Size.preferred', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='max', full_name='rec.gui.Size.max', index=2,
+      name='min', full_name='rec.gui.Size.min', index=2,
       number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='max', full_name='rec.gui.Size.max', index=3,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=True, default_value=unicode("-1.0", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -56,7 +63,7 @@ _SIZE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=37,
-  serialized_end=94,
+  serialized_end=109,
 )
 
 DESCRIPTOR.message_types_by_name['Size'] = _SIZE

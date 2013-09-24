@@ -8,6 +8,8 @@ namespace {
 
 bool isNumber(const string& s) {
   const char* p = s.c_str();
+  if (*p == '+' or *p == '-')
+    ++p;
   for (; isdigit(*p); ++p);
   if (*p and *p++ != '.')
     return false;

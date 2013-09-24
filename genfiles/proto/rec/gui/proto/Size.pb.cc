@@ -35,7 +35,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fSize_2eproto() {
       "rec/gui/proto/Size.proto");
   GOOGLE_CHECK(file != NULL);
   Size_descriptor_ = file->message_type(0);
-  static const int Size_offsets_[3] = {
+  static const int Size_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Size, fixed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Size, preferred_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Size, min_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Size, max_),
@@ -82,9 +83,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/gui/proto/Size.proto\022\007rec.gui\"9\n\004S"
-    "ize\022\021\n\tpreferred\030\001 \001(\t\022\013\n\003min\030\002 \001(\t\022\021\n\003m"
-    "ax\030\003 \001(\t:\004-1.0", 94);
+    "\n\030rec/gui/proto/Size.proto\022\007rec.gui\"H\n\004S"
+    "ize\022\r\n\005fixed\030\001 \001(\t\022\021\n\tpreferred\030\002 \001(\t\022\013\n"
+    "\003min\030\003 \001(\t\022\021\n\003max\030\004 \001(\t:\004-1.0", 109);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Size.proto", &protobuf_RegisterTypes);
   Size::_default_max_ =
@@ -105,6 +106,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fSize_2eproto {
 
 ::std::string* Size::_default_max_ = NULL;
 #ifndef _MSC_VER
+const int Size::kFixedFieldNumber;
 const int Size::kPreferredFieldNumber;
 const int Size::kMinFieldNumber;
 const int Size::kMaxFieldNumber;
@@ -126,6 +128,7 @@ Size::Size(const Size& from)
 
 void Size::SharedCtor() {
   _cached_size_ = 0;
+  fixed_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   max_ = const_cast< ::std::string*>(_default_max_);
@@ -137,6 +140,9 @@ Size::~Size() {
 }
 
 void Size::SharedDtor() {
+  if (fixed_ != &::google::protobuf::internal::kEmptyString) {
+    delete fixed_;
+  }
   if (preferred_ != &::google::protobuf::internal::kEmptyString) {
     delete preferred_;
   }
@@ -173,6 +179,11 @@ Size* Size::New() const {
 
 void Size::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_fixed()) {
+      if (fixed_ != &::google::protobuf::internal::kEmptyString) {
+        fixed_->clear();
+      }
+    }
     if (has_preferred()) {
       if (preferred_ != &::google::protobuf::internal::kEmptyString) {
         preferred_->clear();
@@ -199,10 +210,27 @@ bool Size::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string preferred = 1;
+      // optional string fixed = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_fixed()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->fixed().data(), this->fixed().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_preferred;
+        break;
+      }
+
+      // optional string preferred = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_preferred:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_preferred()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -211,12 +239,12 @@ bool Size::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_min;
+        if (input->ExpectTag(26)) goto parse_min;
         break;
       }
 
-      // optional string min = 2;
-      case 2: {
+      // optional string min = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_min:
@@ -228,12 +256,12 @@ bool Size::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_max;
+        if (input->ExpectTag(34)) goto parse_max;
         break;
       }
 
-      // optional string max = 3 [default = "-1.0"];
-      case 3: {
+      // optional string max = 4 [default = "-1.0"];
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_max:
@@ -267,31 +295,40 @@ bool Size::MergePartialFromCodedStream(
 
 void Size::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string preferred = 1;
+  // optional string fixed = 1;
+  if (has_fixed()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->fixed().data(), this->fixed().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->fixed(), output);
+  }
+
+  // optional string preferred = 2;
   if (has_preferred()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->preferred().data(), this->preferred().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->preferred(), output);
+      2, this->preferred(), output);
   }
 
-  // optional string min = 2;
+  // optional string min = 3;
   if (has_min()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->min().data(), this->min().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->min(), output);
+      3, this->min(), output);
   }
 
-  // optional string max = 3 [default = "-1.0"];
+  // optional string max = 4 [default = "-1.0"];
   if (has_max()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->max().data(), this->max().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->max(), output);
+      4, this->max(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -302,34 +339,44 @@ void Size::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Size::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional string preferred = 1;
+  // optional string fixed = 1;
+  if (has_fixed()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->fixed().data(), this->fixed().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->fixed(), target);
+  }
+
+  // optional string preferred = 2;
   if (has_preferred()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->preferred().data(), this->preferred().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->preferred(), target);
+        2, this->preferred(), target);
   }
 
-  // optional string min = 2;
+  // optional string min = 3;
   if (has_min()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->min().data(), this->min().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->min(), target);
+        3, this->min(), target);
   }
 
-  // optional string max = 3 [default = "-1.0"];
+  // optional string max = 4 [default = "-1.0"];
   if (has_max()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->max().data(), this->max().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->max(), target);
+        4, this->max(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -343,21 +390,28 @@ int Size::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string preferred = 1;
+    // optional string fixed = 1;
+    if (has_fixed()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->fixed());
+    }
+
+    // optional string preferred = 2;
     if (has_preferred()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->preferred());
     }
 
-    // optional string min = 2;
+    // optional string min = 3;
     if (has_min()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->min());
     }
 
-    // optional string max = 3 [default = "-1.0"];
+    // optional string max = 4 [default = "-1.0"];
     if (has_max()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -391,6 +445,9 @@ void Size::MergeFrom(const ::google::protobuf::Message& from) {
 void Size::MergeFrom(const Size& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_fixed()) {
+      set_fixed(from.fixed());
+    }
     if (from.has_preferred()) {
       set_preferred(from.preferred());
     }
@@ -423,6 +480,7 @@ bool Size::IsInitialized() const {
 
 void Size::Swap(Size* other) {
   if (other != this) {
+    std::swap(fixed_, other->fixed_);
     std::swap(preferred_, other->preferred_);
     std::swap(min_, other->min_);
     std::swap(max_, other->max_);
