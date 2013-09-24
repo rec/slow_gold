@@ -52,13 +52,15 @@ ComponentMaker make(const ComponentProto& c) {
 unique_ptr<Component> makeComponent(const Context& context) {
   auto& comp = context.component_;
   unique_ptr<Component> component;
-  if (ComponentMaker maker = make(comp))
+  if (ComponentMaker maker = make(comp)) {
     component = maker(context);
-
-  component->setName(comp.name());
-  typedef SettableTooltipClient TTClient;
-  if (TTClient* tt = dynamic_cast<TTClient*>(component.get()))
-    tt->setTooltip(comp.tooltip());
+    component->setName(comp.name());
+    typedef SettableTooltipClient TTClient;
+    if (TTClient* tt = dynamic_cast<TTClient*>(component.get()))
+      tt->setTooltip(comp.tooltip());
+  } else {
+    LOG(DFATAL) << "No component in" << comp.ShortDebugString();
+  }
 
   return std::move(component);
 }

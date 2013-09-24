@@ -87,6 +87,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto() {
   delete ComponentProto::default_instance_;
   delete ComponentProto_reflection_;
+  delete ComponentProto::_default_min_resizer_;
 }
 
 void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
@@ -119,23 +120,25 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "Size.proto\032\032rec/gui/proto/Slider.proto\032\030"
     "rec/gui/proto/Text.proto\032 rec/gui/proto/"
     "ToggleButton.proto\032\023rec/gui/Color.proto\""
-    "\321\004\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
+    "\324\004\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
     "tip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\'"
     "\n\007address\030\004 \001(\0132\026.rec.data.AddressProto\022"
     "\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 \n\004font\030\006"
     " \001(\0132\022.rec.gui.FontProto\022\016\n\006layout\030\021 \001(\t"
-    "\022\017\n\007resizer\030\007 \001(\t\022\023\n\013min_resizer\030\022 \001(\r\022$"
-    "\n\006button\030\010 \001(\0132\024.rec.gui.ButtonProto\022)\n\t"
-    "combo_box\030\t \001(\0132\026.rec.gui.ComboBoxProto\022"
-    "$\n\006custom\030\n \001(\0132\024.rec.gui.CustomProto\022 \n"
-    "\004help\030\020 \001(\0132\022.rec.gui.HelpProto\022\"\n\005label"
-    "\030\013 \001(\0132\023.rec.gui.LabelProto\022+\n\014full_resi"
-    "zer\030\014 \001(\0132\025.rec.gui.ResizerProto\022$\n\006slid"
-    "er\030\r \001(\0132\024.rec.gui.SliderProto\022 \n\004text\030\016"
-    " \001(\0132\022.rec.gui.TextProto\0221\n\rtoggle_butto"
-    "n\030\017 \001(\0132\032.rec.gui.ToggleButtonProto", 995);
+    "\022\017\n\007resizer\030\007 \001(\t\022\026\n\013min_resizer\030\022 \001(\t:\001"
+    "0\022$\n\006button\030\010 \001(\0132\024.rec.gui.ButtonProto\022"
+    ")\n\tcombo_box\030\t \001(\0132\026.rec.gui.ComboBoxPro"
+    "to\022$\n\006custom\030\n \001(\0132\024.rec.gui.CustomProto"
+    "\022 \n\004help\030\020 \001(\0132\022.rec.gui.HelpProto\022\"\n\005la"
+    "bel\030\013 \001(\0132\023.rec.gui.LabelProto\022+\n\014full_r"
+    "esizer\030\014 \001(\0132\025.rec.gui.ResizerProto\022$\n\006s"
+    "lider\030\r \001(\0132\024.rec.gui.SliderProto\022 \n\004tex"
+    "t\030\016 \001(\0132\022.rec.gui.TextProto\0221\n\rtoggle_bu"
+    "tton\030\017 \001(\0132\032.rec.gui.ToggleButtonProto", 998);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
+  ComponentProto::_default_min_resizer_ =
+      new ::std::string("0", 1);
   ComponentProto::default_instance_ = new ComponentProto();
   ComponentProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto);
@@ -150,6 +153,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fComponent_2eproto {
 
 // ===================================================================
 
+::std::string* ComponentProto::_default_min_resizer_ = NULL;
 #ifndef _MSC_VER
 const int ComponentProto::kNameFieldNumber;
 const int ComponentProto::kTooltipFieldNumber;
@@ -206,7 +210,7 @@ void ComponentProto::SharedCtor() {
   font_ = NULL;
   layout_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   resizer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  min_resizer_ = 0u;
+  min_resizer_ = const_cast< ::std::string*>(_default_min_resizer_);
   button_ = NULL;
   combo_box_ = NULL;
   custom_ = NULL;
@@ -235,6 +239,9 @@ void ComponentProto::SharedDtor() {
   }
   if (resizer_ != &::google::protobuf::internal::kEmptyString) {
     delete resizer_;
+  }
+  if (min_resizer_ != _default_min_resizer_) {
+    delete min_resizer_;
   }
   if (this != default_instance_) {
     delete size_;
@@ -306,7 +313,11 @@ void ComponentProto::Clear() {
     }
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    min_resizer_ = 0u;
+    if (has_min_resizer()) {
+      if (min_resizer_ != _default_min_resizer_) {
+        min_resizer_->assign(*_default_min_resizer_);
+      }
+    }
     if (has_button()) {
       if (button_ != NULL) button_->::rec::gui::ButtonProto::Clear();
     }
@@ -594,19 +605,20 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(144)) goto parse_min_resizer;
+        if (input->ExpectTag(146)) goto parse_min_resizer;
         break;
       }
 
-      // optional uint32 min_resizer = 18;
+      // optional string min_resizer = 18 [default = "0"];
       case 18: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_min_resizer:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &min_resizer_)));
-          set_has_min_resizer();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_min_resizer()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->min_resizer().data(), this->min_resizer().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -746,9 +758,13 @@ void ComponentProto::SerializeWithCachedSizes(
       17, this->layout(), output);
   }
 
-  // optional uint32 min_resizer = 18;
+  // optional string min_resizer = 18 [default = "0"];
   if (has_min_resizer()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(18, this->min_resizer(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->min_resizer().data(), this->min_resizer().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      18, this->min_resizer(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -890,9 +906,14 @@ void ComponentProto::SerializeWithCachedSizes(
         17, this->layout(), target);
   }
 
-  // optional uint32 min_resizer = 18;
+  // optional string min_resizer = 18 [default = "0"];
   if (has_min_resizer()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(18, this->min_resizer(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->min_resizer().data(), this->min_resizer().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        18, this->min_resizer(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -957,10 +978,10 @@ int ComponentProto::ByteSize() const {
 
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional uint32 min_resizer = 18;
+    // optional string min_resizer = 18 [default = "0"];
     if (has_min_resizer()) {
       total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->min_resizer());
     }
 

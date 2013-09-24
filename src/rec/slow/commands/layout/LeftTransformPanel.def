@@ -10,7 +10,7 @@ layout {
     tooltip: "Enable Speed Slider: Disable or enable speed changes to the track."
     address {
       type_name: "rec.audio.stretch.Stretch"
-      parts {
+      part {
         name: "time_enabled"
       }
     }

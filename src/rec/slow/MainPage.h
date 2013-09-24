@@ -32,7 +32,7 @@ class MainPage : public app::LanguageListener {
   Components* components_;
 
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
-  ptr<gui::Panel> mainPanel_;
+  unique_ptr<gui::Panel> mainPanel_;
 
   // navigationPanel_ contains the navigator, song metadata and loops.
   gui::Panel navigationPanel_;
@@ -57,6 +57,8 @@ class MainPage : public app::LanguageListener {
   gui::SimpleLabel helpCaption_;
   gui::SimpleLabel helpBody_;
   double length_;
+
+  unique_ptr<Component> helpPanelNew_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MainPage);
 };

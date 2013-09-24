@@ -14,43 +14,45 @@ namespace gui {
 namespace {
 
 unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
-  unique_ptr<Component> result;
-  Context context(layout.container(),
-                  juceModel()->constants(),
-                  parent,
-                  getProgram()->resizerAddress());
+  unique_ptr<Component> comp;
+  auto& constants = juceModel()->constants();
+  auto& addr = getProgram()->resizerAddress();
+
   if (layout.has_container()) {
-    result = makeComponent(context);
+    comp = makeComponent(Context(layout.container(), constants, parent, addr));
   } else {
-    result.reset(new Panel(str(layout.name()),
+    comp.reset(new Panel(str(layout.name()),
                            static_cast<Orientation>(layout.orientation()),
                            layout.resize_other_dimension(),
                            layout.is_main(),
                            true));
   }
-  Panel* panel = dynamic_cast<Panel*>(result.get());
-  context.parent_ = result.get();
+  Panel* panel = dynamic_cast<Panel*>(comp.get());
+  int i = 0;
   for (auto& component: layout.component()) {
-    Component* child = makeComponent(context).release();
+    DLOG(INFO) << i++ << ", " << component.ShortDebugString();
+
+    auto child = makeComponent(Context(component, constants, panel, addr));
     if (panel)
-      panel->addToPanel(child, context.constants_, layout.size(), component.size());
+      panel->addToPanel(child.get(), constants, layout.size(), component.size());
     else
-      result->addAndMakeVisible(child);  // leaks memory here.
+      comp->addAndMakeVisible(child.get());  // leaks memory here.
+    child.release();
   }
 
-  return std::move(result);
+  return std::move(comp);
 }
 
 }  // namespace
 
 unique_ptr<Component> makeLayout(const string& name, Component* parent) {
-  unique_ptr<Component> result;
+  unique_ptr<Component> comp;
   try {
-    result = makeLayout(program::juceModel()->getLayout(name), parent);
+    comp = makeLayout(program::juceModel()->getLayout(name), parent);
   } catch (std::out_of_range&) {
     LOG(DFATAL) << "Can't make layout " << name;
   }
-  return std::move(result);
+  return std::move(comp);
 }
 
 }  // namespace gui

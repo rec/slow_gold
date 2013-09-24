@@ -72,6 +72,8 @@ class Instance {
 
   void setHelp(const gui::Tooltip&);
 
+  static const bool USE_OLD_HELP;
+
  private:
   unique_ptr<SlowProgram> slowProgram_;
   unique_ptr<program::JuceModel> juceModel_;

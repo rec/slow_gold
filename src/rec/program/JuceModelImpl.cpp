@@ -98,6 +98,10 @@ void JuceModelImpl::logMaps() {
   }
   LOG(INFO) << "There are " << undeclared << " missing components out of "
             << total << " and " << empty << " empty layouts.";
+
+  if (false)
+  for (auto& i: layoutMap_)
+    LOG(INFO) << i.first << " : " << i.second.ShortDebugString();
 }
 
 const MenuBar& JuceModelImpl::menuBar() const {

@@ -1620,12 +1620,17 @@ const char* HelpPanel_def = (const char*) temp_binary_data_12;
 //================== Layout.def ==================
 static const unsigned char temp_binary_data_13[] =
 "name: \"CommandBar\"\n"
+"name: \"HelpPanel\"\n"
+"name: \"LeftTransformPanel\"\n"
 "name: \"MainPanel\"\n"
 "name: \"ModeSelector\"\n"
 "name: \"NavigationPanel\"\n"
 "name: \"PlaybackPanel\"\n"
+"name: \"RightTransformPanel\"\n"
+"name: \"SongData\"\n"
 "name: \"TransformController\"\n"
-"name: \"TransportController\"\n";
+"name: \"TransportController\"\n"
+"name: \"Waveform\"\n";
 
 const char* Layout_def = (const char*) temp_binary_data_13;
 
@@ -1643,7 +1648,7 @@ static const unsigned char temp_binary_data_14[] =
 "    tooltip: \"Enable Speed Slider: Disable or enable speed changes to the track.\"\n"
 "    address {\n"
 "      type_name: \"rec.audio.stretch.Stretch\"\n"
-"      parts {\n"
+"      part {\n"
 "        name: \"time_enabled\"\n"
 "      }\n"
 "    }\n"
@@ -1864,7 +1869,7 @@ static const unsigned char temp_binary_data_19[] =
 "    name: \"MasterTuneSlider\"\n"
 "    tooltip: \"Master Tune Slider: Master tune is a global detune over all tracks.\"\n"
 "    address {\n"
-"      data_name: \"rec.audio.AudioSettings\"\n"
+"      type_name: \"rec.audio.AudioSettings\"\n"
 "      item {\n"
 "        name: \"master_tune\"\n"
 "      }\n"
@@ -2059,10 +2064,8 @@ static const unsigned char temp_binary_data_23[] =
 "layout {\n"
 "  name: \"Waveform\"\n"
 "  container {\n"
-"    component {\n"
-"      custom {\n"
-"        type_name: \"Waveform\"\n"
-"      }\n"
+"    custom {\n"
+"      type_name: \"Waveform\"\n"
 "    }\n"
 "  }\n"
 "  component {\n"
@@ -13821,8 +13824,8 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
         case 0xeda734e9:  numBytes = 394; return HelpPanel_def;
-        case 0x8b33e590:  numBytes = 160; return Layout_def;
-        case 0x28df9dc5:  numBytes = 785; return LeftTransformPanel_def;
+        case 0x8b33e590:  numBytes = 267; return Layout_def;
+        case 0x28df9dc5:  numBytes = 784; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 383; return MainPanel_def;
         case 0xd66a1508:  numBytes = 271; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
@@ -13831,7 +13834,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x1b5b8645:  numBytes = 1580; return SongData_def;
         case 0x29238b4e:  numBytes = 235; return TransformController_def;
         case 0x4bd6484b:  numBytes = 877; return TransportController_def;
-        case 0x3d219c23:  numBytes = 210; return Waveform_def;
+        case 0x3d219c23:  numBytes = 182; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3790; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;

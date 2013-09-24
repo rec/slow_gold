@@ -1,10 +1,8 @@
 layout {
   name: "Waveform"
   container {
-    component {
-      custom {
-        type_name: "Waveform"
-      }
+    custom {
+      type_name: "Waveform"
     }
   }
   component {

@@ -291,7 +291,7 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
-#define USE_OLD_HELP true
+const bool Instance::USE_OLD_HELP = true;
 
 void Instance::setHelp(const gui::Tooltip& tt) {
   if (USE_OLD_HELP)

@@ -16,25 +16,35 @@ namespace {
 class HelpPanel : public Panel {
  public:
   HelpPanel(const Context& context) {
+    INSTANCE = this;
+
     auto& comp = context.component_;
     auto& constants = context.constants_;
     const HelpProto& proto = comp.help();
-    addToPanel(&helpCaption_, constants, comp.size(), proto.caption_size());
-    addToPanel(&helpBody_, constants, comp.size(), proto.body_size());
-    INSTANCE = this;
+    addToPanel(&caption_, constants, comp.size(), proto.caption_size());
+    addToPanel(&body_, constants, comp.size(), proto.body_size());
 
-    // TODO: font here!
-    // TODO: make sure that we are the one getting help updates automatically!
+    caption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+    caption_.setJustificationType(Justification::centred);
+    Font font = caption_.getFont();
+    font.setBold(true);
+    font.setHeight(font.getHeight() + 2);
+    body_.setFont(font);
+    font.setHeight(font.getHeight() + 3);
+    caption_.setFont(font);
+
+    body_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+    body_.setJustificationType(Justification::topLeft);
   }
 
   void setTooltip(const String& tt) override {
-    helpCaption_.setTooltip(tt);
-    helpBody_.setTooltip(tt);
+    caption_.setTooltip(tt);
+    body_.setTooltip(tt);
   }
 
   void setHelp(const Tooltip& tt) {
-    helpCaption_.setTextIfChanged(tt.first, juce::dontSendNotification);
-    helpBody_.setTextIfChanged(tt.second, juce::dontSendNotification);
+    caption_.setTextIfChanged(tt.first, juce::dontSendNotification);
+    body_.setTextIfChanged(tt.second, juce::dontSendNotification);
   }
 
   ~HelpPanel() {
@@ -43,8 +53,8 @@ class HelpPanel : public Panel {
 
   static HelpPanel* INSTANCE;
 
-  SimpleLabel helpCaption_;
-  SimpleLabel helpBody_;
+  SimpleLabel caption_;
+  SimpleLabel body_;
 };
 
 HelpPanel* HelpPanel::INSTANCE = nullptr;

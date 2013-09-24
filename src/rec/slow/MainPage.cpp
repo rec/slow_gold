@@ -11,8 +11,10 @@
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/gui/proto/Layout.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -41,7 +43,7 @@ const int MIN_WAVEFORM = 150;
 const int MIN_PLAYBACK_PANEL = 100;
 const int MIN_HELP_PANEL = 200;
 const int MIN_TRANSFORM_PANEL = 250;
-const int MIN_TRANSPORT_PANEL = 300;
+const double MIN_TRANSPORT_PANEL = 300.0;
 const int MIN_SONG_DATA = 150;
 const int MIN_LOOPS = 250;
 const int MIN_DIRECTORY = 75;
@@ -100,6 +102,7 @@ MainPage::MainPage(Components* components)
       helpCaption_("", ""),
       helpBody_("", "") {
   CHECK_DDD(123, 51, int16, int32);
+  helpPanelNew_ = gui::makeLayout("HelpPanel", mainPanel_.get());
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
@@ -118,29 +121,32 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
-  // Playback panel.
-  helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-  helpCaption_.setJustificationType(Justification::centred);
-  Font font = helpCaption_.getFont();
-  font.setBold(true);
-  font.setHeight(font.getHeight() + 2);
-  helpBody_.setFont(font);
-  font.setHeight(font.getHeight() + 3);
-  helpCaption_.setFont(font);
+  if (Instance::USE_OLD_HELP) {
+    // Playback panel.
+    helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+    helpCaption_.setJustificationType(Justification::centred);
+    Font font = helpCaption_.getFont();
+    font.setBold(true);
+    font.setHeight(font.getHeight() + 2);
+    helpBody_.setFont(font);
+    font.setHeight(font.getHeight() + 3);
+    helpCaption_.setFont(font);
 
-  helpBody_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-  helpBody_.setJustificationType(Justification::topLeft);
+    helpBody_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+    helpBody_.setJustificationType(Justification::topLeft);
+    add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);
+    add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.2);
+    add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
+  } else {
+  }
 
-  add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
-  add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);
-  add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.2);
 
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_,
       MIN_TRANSFORM_PANEL, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
-  add(&playbackPanel_, components->transportController_.get(),
-      MIN_TRANSPORT_PANEL, -1.0, -0.20);
+  Component *xport = components->transportController_.get();
+  add(&playbackPanel_, xport, MIN_TRANSPORT_PANEL, -1.0, -0.20);
 }
 
 void MainPage::languageChanged() {

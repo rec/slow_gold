@@ -192,12 +192,17 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_resizer();
   inline void set_allocated_resizer(::std::string* resizer);
 
-  // optional uint32 min_resizer = 18;
+  // optional string min_resizer = 18 [default = "0"];
   inline bool has_min_resizer() const;
   inline void clear_min_resizer();
   static const int kMinResizerFieldNumber = 18;
-  inline ::google::protobuf::uint32 min_resizer() const;
-  inline void set_min_resizer(::google::protobuf::uint32 value);
+  inline const ::std::string& min_resizer() const;
+  inline void set_min_resizer(const ::std::string& value);
+  inline void set_min_resizer(const char* value);
+  inline void set_min_resizer(const char* value, size_t size);
+  inline ::std::string* mutable_min_resizer();
+  inline ::std::string* release_min_resizer();
+  inline void set_allocated_min_resizer(::std::string* min_resizer);
 
   // optional .rec.gui.ButtonProto button = 8;
   inline bool has_button() const;
@@ -327,6 +332,8 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::FontProto* font_;
   ::std::string* layout_;
   ::std::string* resizer_;
+  ::std::string* min_resizer_;
+  static ::std::string* _default_min_resizer_;
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::CustomProto* custom_;
@@ -336,7 +343,6 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::SliderProto* slider_;
   ::rec::gui::TextProto* text_;
   ::rec::gui::ToggleButtonProto* toggle_button_;
-  ::google::protobuf::uint32 min_resizer_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
@@ -774,7 +780,7 @@ inline void ComponentProto::set_allocated_resizer(::std::string* resizer) {
   }
 }
 
-// optional uint32 min_resizer = 18;
+// optional string min_resizer = 18 [default = "0"];
 inline bool ComponentProto::has_min_resizer() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
@@ -785,15 +791,63 @@ inline void ComponentProto::clear_has_min_resizer() {
   _has_bits_[0] &= ~0x00000100u;
 }
 inline void ComponentProto::clear_min_resizer() {
-  min_resizer_ = 0u;
+  if (min_resizer_ != _default_min_resizer_) {
+    min_resizer_->assign(*_default_min_resizer_);
+  }
   clear_has_min_resizer();
 }
-inline ::google::protobuf::uint32 ComponentProto::min_resizer() const {
+inline const ::std::string& ComponentProto::min_resizer() const {
+  return *min_resizer_;
+}
+inline void ComponentProto::set_min_resizer(const ::std::string& value) {
+  set_has_min_resizer();
+  if (min_resizer_ == _default_min_resizer_) {
+    min_resizer_ = new ::std::string;
+  }
+  min_resizer_->assign(value);
+}
+inline void ComponentProto::set_min_resizer(const char* value) {
+  set_has_min_resizer();
+  if (min_resizer_ == _default_min_resizer_) {
+    min_resizer_ = new ::std::string;
+  }
+  min_resizer_->assign(value);
+}
+inline void ComponentProto::set_min_resizer(const char* value, size_t size) {
+  set_has_min_resizer();
+  if (min_resizer_ == _default_min_resizer_) {
+    min_resizer_ = new ::std::string;
+  }
+  min_resizer_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::mutable_min_resizer() {
+  set_has_min_resizer();
+  if (min_resizer_ == _default_min_resizer_) {
+    min_resizer_ = new ::std::string(*_default_min_resizer_);
+  }
   return min_resizer_;
 }
-inline void ComponentProto::set_min_resizer(::google::protobuf::uint32 value) {
-  set_has_min_resizer();
-  min_resizer_ = value;
+inline ::std::string* ComponentProto::release_min_resizer() {
+  clear_has_min_resizer();
+  if (min_resizer_ == _default_min_resizer_) {
+    return NULL;
+  } else {
+    ::std::string* temp = min_resizer_;
+    min_resizer_ = const_cast< ::std::string*>(_default_min_resizer_);
+    return temp;
+  }
+}
+inline void ComponentProto::set_allocated_min_resizer(::std::string* min_resizer) {
+  if (min_resizer_ != _default_min_resizer_) {
+    delete min_resizer_;
+  }
+  if (min_resizer) {
+    set_has_min_resizer();
+    min_resizer_ = min_resizer;
+  } else {
+    clear_has_min_resizer();
+    min_resizer_ = const_cast< ::std::string*>(_default_min_resizer_);
+  }
 }
 
 // optional .rec.gui.ButtonProto button = 8;
