@@ -2,14 +2,15 @@
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
+#include "rec/gui/proto/Context.h"
 
 using namespace juce;
 
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeLabel(const ComponentProto& component,
-                                const Constants& constants) {
+unique_ptr<Component> makeLabel(const Context& context) {
+  auto& component = context.component_;
   auto& proto = component.label();
   unique_ptr<SimpleLabel> label(new SimpleLabel("", proto.text()));
 

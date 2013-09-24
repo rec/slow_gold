@@ -1,14 +1,15 @@
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
+#include "rec/gui/proto/Context.h"
 
 using namespace juce;
 
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeComboBox(const ComponentProto& component,
-                                   const Constants& constants) {
+unique_ptr<Component> makeComboBox(const Context& context) {
+  auto& component = context.component_;
   auto& combo = component.combo_box();
   unique_ptr<ComboBox> comboBox(new ComboBox);
   comboBox->setEditableText(false);

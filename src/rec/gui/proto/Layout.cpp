@@ -1,6 +1,7 @@
 #include "rec/gui/proto/Layout.h"
-#include "rec/gui/proto/Layout.pb.h"
 #include "rec/gui/proto/Component.h"
+#include "rec/gui/proto/Context.h"
+#include "rec/gui/proto/Layout.pb.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/program/JuceModel.h"
 
@@ -11,11 +12,12 @@ namespace gui {
 
 namespace {
 
-unique_ptr<Component> makeLayout(const Layout& layout) {
+unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   unique_ptr<Component> result;
   const Constants& constants = juceModel()->constants();
+  Context context(layout.container(), constants, parent);
   if (layout.has_container()) {
-    result = makeComponent(layout.container(), constants);
+    result = makeComponent(context);
   } else {
     result.reset(new Panel(str(layout.name()),
                            static_cast<Orientation>(layout.orientation()),
@@ -24,9 +26,9 @@ unique_ptr<Component> makeLayout(const Layout& layout) {
                            true));
   }
   Panel* panel = dynamic_cast<Panel*>(result.get());
-
+  context.parent_ = result.get();
   for (auto& component: layout.component()) {
-    Component* child = makeComponent(component, constants).release();
+    Component* child = makeComponent(context).release();
     if (panel)
       panel->addToPanel(child, constants, layout.size(), component.size());
     else
@@ -38,10 +40,10 @@ unique_ptr<Component> makeLayout(const Layout& layout) {
 
 }  // namespace
 
-unique_ptr<Component> makeLayout(const string& name) {
+unique_ptr<Component> makeLayout(const string& name, Component* parent) {
   unique_ptr<Component> result;
   try {
-    result = makeLayout(program::juceModel()->getLayout(name));
+    result = makeLayout(program::juceModel()->getLayout(name), parent);
   } catch (std::out_of_range&) {
     LOG(DFATAL) << "Can't make layout " << name;
   }

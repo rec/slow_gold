@@ -8,8 +8,9 @@ namespace gui {
 
 class ComponentProto;
 class Constants;
+class Context;
 
-unique_ptr<Component> makeSlider(const ComponentProto&, const Constants&);
+unique_ptr<Component> makeSlider(const Context&);
 
 }  // namespace gui
 }  // namespace rec

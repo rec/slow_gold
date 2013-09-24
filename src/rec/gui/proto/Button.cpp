@@ -2,6 +2,7 @@
 #include "rec/gui/LanguageButton.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
+#include "rec/gui/proto/Context.h"
 #include "rec/util/Binary.h"
 
 using namespace juce;
@@ -17,8 +18,8 @@ void construct(unique_ptr<Drawable>* drawable, const string& name) {
 
 }  // namespace
 
-unique_ptr<Component> makeButton(const ComponentProto& component,
-                                 const Constants& constants) {
+unique_ptr<Component> makeButton(const Context& context) {
+  auto& component = context.component_;
   const ButtonProto& proto = component.button();
   auto style = static_cast<DrawableButton::ButtonStyle>(proto.style());
   unique_ptr<LanguageButton> button(

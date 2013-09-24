@@ -6,7 +6,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeLayout(const string& name);
+unique_ptr<Component> makeLayout(const string& name, Component* parent);
 
 }  // namespace gui
 }  // namespace rec

@@ -8,8 +8,9 @@ namespace gui {
 
 class ComponentProto;
 class Constants;
+class Context;
 
-unique_ptr<Component> makeCustom(const ComponentProto&, const Constants&);
+unique_ptr<Component> makeCustom(const Context&);
 
 }  // namespace gui
 }  // namespace rec

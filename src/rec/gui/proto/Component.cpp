@@ -4,6 +4,7 @@
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
+#include "rec/gui/proto/Context.h"
 #include "rec/gui/proto/Help.h"
 #include "rec/gui/proto/Label.h"
 #include "rec/gui/proto/Panel.h"
@@ -16,8 +17,7 @@ namespace gui {
 
 namespace {
 
-typedef unique_ptr<Component> (*ComponentMaker)(
-    const ComponentProto&, const Constants&);
+typedef unique_ptr<Component> (*ComponentMaker)(const Context&);
 
 ComponentMaker make(const ComponentProto& c) {
   if (c.has_button())
@@ -48,16 +48,16 @@ ComponentMaker make(const ComponentProto& c) {
 
 }  // namespace
 
-unique_ptr<Component> makeComponent(const ComponentProto& proto,
-                                    const Constants& constants) {
+unique_ptr<Component> makeComponent(const Context& context) {
+  auto& comp = context.component_;
   unique_ptr<Component> component;
-  if (ComponentMaker maker = make(proto))
-    component = maker(proto, constants);
+  if (ComponentMaker maker = make(comp))
+    component = maker(context);
 
-  component->setName(proto.name());
+  component->setName(comp.name());
   typedef SettableTooltipClient TTClient;
   if (TTClient* tt = dynamic_cast<TTClient*>(component.get()))
-    tt->setTooltip(proto.tooltip());
+    tt->setTooltip(comp.tooltip());
 
   return std::move(component);
 }
