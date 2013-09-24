@@ -13,6 +13,7 @@
 #include "rec/command/CallbackTable.h"
 
 namespace rec { namespace gui { class Constants; }}
+namespace rec { namespace data { class Address; }}
 
 namespace rec {
 namespace program {
@@ -48,6 +49,7 @@ class Program : public command::CallbackTable{
   virtual bool isEnabled() const = 0;
   virtual void setEnabled(bool) = 0;
   virtual thread::Looper::Function threadFunction(const string&) const = 0;
+  virtual const data::Address& resizerAddress() const = 0;
 };
 
 void registerProgram(Program*);

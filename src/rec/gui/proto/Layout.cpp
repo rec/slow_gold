@@ -4,6 +4,7 @@
 #include "rec/gui/proto/Layout.pb.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/program/JuceModel.h"
+#include "rec/program/Program.h"
 
 using namespace rec::program;
 
@@ -14,8 +15,10 @@ namespace {
 
 unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   unique_ptr<Component> result;
-  const Constants& constants = juceModel()->constants();
-  Context context(layout.container(), constants, parent);
+  Context context(layout.container(),
+                  juceModel()->constants(),
+                  parent,
+                  getProgram()->resizerAddress());
   if (layout.has_container()) {
     result = makeComponent(context);
   } else {
@@ -30,7 +33,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   for (auto& component: layout.component()) {
     Component* child = makeComponent(context).release();
     if (panel)
-      panel->addToPanel(child, constants, layout.size(), component.size());
+      panel->addToPanel(child, context.constants_, layout.size(), component.size());
     else
       result->addAndMakeVisible(child);  // leaks memory here.
   }

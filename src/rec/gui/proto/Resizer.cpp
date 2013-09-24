@@ -9,15 +9,34 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeResizer(const Context& context) {
-  auto& component = context.component_;
-  auto& proto = component.full_resizer();
-  return unique_ptr<Component>(
-      new SetterResizer(component.address(),
-                        nullptr, // TODO
-                        -1, // TODO
-                        context.constants_.getDouble(proto.min_value())));
+namespace {
 
+unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
+  auto& component = context.component_;
+  data::Address address;
+  string minValue;
+  if (isSimple) {
+    address = context.address_ + component.resizer();
+    minValue = component.min_resizer();
+  } else {
+    address = component.address();
+    minValue = component.full_resizer().min_value();
+  }
+  return unique_ptr<Component>(
+      new SetterResizer(address,
+                        dynamic_cast<Panel*>(context.parent_),
+                        context.parent_->getNumChildComponents(),
+                        context.constants_.getDouble(minValue)));
+}
+
+}  // namespace
+
+unique_ptr<Component> makeResizer(const Context& context) {
+  return makeResizer(context, false);
+}
+
+unique_ptr<Component> makeSimpleResizer(const Context& context) {
+  return makeResizer(context, true);
 }
 
 }  // namespace gui

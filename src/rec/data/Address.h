@@ -41,6 +41,13 @@ class Address : public AddressProto {
 AddressProto::Scope getScope(const AddressProto&) ;
 
 template <typename Type>
+const Address makeAddress() {
+  Address a;
+  a.set_type_name(getTypeName<Type>());
+  return a;
+}
+
+template <typename Type>
 const Address makeAddress(const Address::Part& x) {
   Address a(x);
   a.set_type_name(getTypeName<Type>());

@@ -31,6 +31,7 @@ class SlowProgram : public program::ProgramBase {
   void registerCustomComponents(gui::Constants*) const override;
   string idToName(CommandID) const override;
   CommandID nameToId(const string&) const override;
+  const data::Address& resizerAddress() const override;
 
  private:
   Instance* const instance_;

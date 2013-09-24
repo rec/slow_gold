@@ -10,6 +10,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/translation/TranslationTables.h"
@@ -189,6 +190,11 @@ CommandID SlowProgram::nameToId(const string& name) const {
   if (not Command_Id_Parse(name, &id))
     LOG(DFATAL) << "Didn't understand Command ID " << name;
   return id;
+}
+
+const data::Address& SlowProgram::resizerAddress() const {
+  static const Address address = data::makeAddress<slow::AppLayout>();
+  return address;
 }
 
 }  // namespace slow
