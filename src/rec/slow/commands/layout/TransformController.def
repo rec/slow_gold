@@ -1,11 +1,13 @@
 layout {
   name: "TransformController"
+
   component {
     layout: "LeftTransformPanel"
     size {
       min: "67"
     }
   }
+
   component {
     layout: "RightTransformPanel"
     size {

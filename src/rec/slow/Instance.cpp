@@ -291,13 +291,10 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
-const bool Instance::USE_NEW_HELP = not not true;
+const bool Instance::USE_NEW_GUI = true;
 
 void Instance::setHelp(const gui::Tooltip& tt) {
-  if (USE_NEW_HELP)
-    gui::setHelp(tt);
-  else
-    components_->mainPage_->setHelp(tt);
+  gui::setHelp(tt);
 }
 
 }  // namespace slow

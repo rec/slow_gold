@@ -26,9 +26,6 @@ using namespace rec::data;
 using namespace rec::widget::waveform;
 
 
-TRAN(HELP_PANEL_HELP,
-     "Help Panel: Shows help about whatever the mouse is over.");
-
 TRAN(CD_WINDOW, "CD Window:  Any CDs that you have in "
      "your computer's CD drives will appear here.");
 
@@ -83,7 +80,6 @@ MainPage::MainPage(Components* components)
       mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
-      helpPanel_("Help", VERTICAL),
       transformPanel_("Transform"),
       controlPanel_("Control"),
 
@@ -99,8 +95,7 @@ MainPage::MainPage(Components* components)
                    &playbackPanel_, 1),
       transformResizer_(makeAddress<AppLayout>("transform_x"),
                         &playbackPanel_, 3),
-      helpCaption_("", ""),
-      helpBody_("", "") {
+      helpPanel_(gui::makeLayout("HelpPanel", mainPanel_.get())) {
   CHECK_DDD(123, 51, int16, int32);
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
@@ -120,30 +115,7 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
-  Component* help;
-  DLOG(INFO) << "************** STARTING   *************************";
-  if (Instance::USE_NEW_HELP) {
-    helpPanelNew_ = gui::makeLayout("HelpPanel", mainPanel_.get());
-    help = helpPanelNew_.get();
-  } else {
-    // Playback panel.
-    helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-    helpCaption_.setJustificationType(Justification::centred);
-    Font font = helpCaption_.getFont();
-    font.setBold(true);
-    font.setHeight(font.getHeight() + 2);
-    helpBody_.setFont(font);
-    font.setHeight(font.getHeight() + 3);
-    helpCaption_.setFont(font);
-
-    helpBody_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-    helpBody_.setJustificationType(Justification::topLeft);
-    add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);
-    add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.2);
-    help = &helpPanel_;
-  }
-  add(&playbackPanel_, help, MIN_HELP_PANEL, -1.0, -0.20);
-  DLOG(INFO) << "************** DONE *************************";
+  add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
 
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_,
@@ -154,18 +126,10 @@ MainPage::MainPage(Components* components)
 }
 
 void MainPage::languageChanged() {
-  helpBody_.setTooltip(t_HELP_PANEL_HELP);
-  helpPanel_.setTooltip(t_HELP_PANEL_HELP);
-  helpCaption_.setTooltip(t_HELP_PANEL_HELP);
   components_->directoryTree_->treeView()->setTooltip(t_CD_WINDOW);
 }
 
 MainPage::~MainPage() {}
-
-void MainPage::setHelp(const gui::Tooltip& tt) {
-  helpCaption_.setText(tt.first, juce::dontSendNotification);
-  helpBody_.setText(tt.second, juce::dontSendNotification);
-}
 
 void MainPage::setEnabled(bool enabled) {
   navigationPanel_.setEnabled(enabled);

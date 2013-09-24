@@ -24,7 +24,6 @@ class MainPage : public app::LanguageListener {
   virtual ~MainPage();
 
   gui::Panel* panel() { return mainPanel_.get(); }
-  void setHelp(const gui::Tooltip&);
   void setEnabled(bool);
   virtual void languageChanged();
 
@@ -39,7 +38,6 @@ class MainPage : public app::LanguageListener {
 
   // playbackPanel_ contains help, transform and the controls.
   gui::Panel playbackPanel_;
-  gui::Panel helpPanel_;
   gui::Panel transformPanel_;
   gui::Panel controlPanel_;
 
@@ -54,11 +52,8 @@ class MainPage : public app::LanguageListener {
   gui::SetterResizer helpResizer_;
   gui::SetterResizer transformResizer_;
 
-  gui::SimpleLabel helpCaption_;
-  gui::SimpleLabel helpBody_;
   double length_;
-
-  unique_ptr<Component> helpPanelNew_;
+  unique_ptr<Component> helpPanel_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MainPage);
 };

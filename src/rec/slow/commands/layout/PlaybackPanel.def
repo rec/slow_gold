@@ -5,12 +5,13 @@ layout {
   }
   component {
     name: "Help"
+    tooltip: "Help Panel: Shows help about whatever the mouse is over."
     size {
       min: "200"
     }
     help {
       caption_size {
-        min: "28"
+        fixed: "28"
       }
       body_size {
         min: "-0.1"

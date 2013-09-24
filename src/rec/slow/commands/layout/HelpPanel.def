@@ -2,6 +2,7 @@ layout {
   name: "HelpPanel"
   container {
     name: "Help"
+    tooltip: "Help Panel: Shows help about whatever the mouse is over."
     size {
       min: "200"
     }

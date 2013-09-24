@@ -1597,6 +1597,7 @@ static const unsigned char temp_binary_data_12[] =
 "  name: \"HelpPanel\"\n"
 "  container {\n"
 "    name: \"Help\"\n"
+"    tooltip: \"Help Panel: Shows help about whatever the mouse is over.\"\n"
 "    size {\n"
 "      min: \"200\"\n"
 "    }\n"
@@ -1639,6 +1640,7 @@ static const unsigned char temp_binary_data_14[] =
 "  size {\n"
 "    min: \"30\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"EnableButton\"\n"
 "    tooltip: \"Enable Speed Slider: Disable or enable speed changes to the track.\"\n"
@@ -1652,8 +1654,9 @@ static const unsigned char temp_binary_data_14[] =
 "      caption: \"Enable\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
-"    tooltip: \"\"Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels.\"\n"
+"    tooltip: \"Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels.\"\n"
 "    address {\n"
 "      type_name: \"rec.audio.source.StereoProto\"\n"
 "      part {\n"
@@ -1778,12 +1781,13 @@ static const unsigned char temp_binary_data_18[] =
 "  }\n"
 "  component {\n"
 "    name: \"Help\"\n"
+"    tooltip: \"Help Panel: Shows help about whatever the mouse is over.\"\n"
 "    size {\n"
 "      min: \"200\"\n"
 "    }\n"
 "    help {\n"
 "      caption_size {\n"
-"        min: \"28\"\n"
+"        fixed: \"28\"\n"
 "      }\n"
 "      body_size {\n"
 "        min: \"-0.1\"\n"
@@ -1826,8 +1830,8 @@ static const unsigned char temp_binary_data_19[] =
 "    name: \"SpeedSlider\"\n"
 "    tooltip: \"Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster.\"\n"
 "    address {\n"
-"      data_name: \"rec.audio.stretch.Stretch\"\n"
-"      item {\n"
+"      type_name: \"rec.audio.stretch.Stretch\"\n"
+"      part {\n"
 "        name: \"time_percent\"\n"
 "      }\n"
 "    }\n"
@@ -1839,8 +1843,8 @@ static const unsigned char temp_binary_data_19[] =
 "    name: \"PitchSlider\"\n"
 "    tooltip: \"Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones.\"\n"
 "    address {\n"
-"      data_name: \"rec.audio.stretch.Stretch\"\n"
-"      item {\n"
+"      type_name: \"rec.audio.stretch.Stretch\"\n"
+"      part {\n"
 "        name: \"semitone_shift\"\n"
 "      }\n"
 "    }\n"
@@ -1852,8 +1856,8 @@ static const unsigned char temp_binary_data_19[] =
 "    name: \"FinePitchSlider\"\n"
 "    tooltip: \"Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone).\"\n"
 "    address {\n"
-"      data_name: \"rec.audio.stretch.Stretch\"\n"
-"      item {\n"
+"      type_name: \"rec.audio.stretch.Stretch\"\n"
+"      part {\n"
 "        name: \"detune_cents_shift\"\n"
 "      }\n"
 "    }\n"
@@ -1866,7 +1870,7 @@ static const unsigned char temp_binary_data_19[] =
 "    tooltip: \"Master Tune Slider: Master tune is a global detune over all tracks.\"\n"
 "    address {\n"
 "      type_name: \"rec.audio.AudioSettings\"\n"
-"      item {\n"
+"      part {\n"
 "        name: \"master_tune\"\n"
 "      }\n"
 "    }\n"
@@ -1882,6 +1886,7 @@ const char* RightTransformPanel_def = (const char*) temp_binary_data_19;
 static const unsigned char temp_binary_data_20[] =
 "layout {\n"
 "  name: \"SongData\"\n"
+"\n"
 "  component {\n"
 "    name: \"Track\"\n"
 "    tooltip: \"Track Title: The name of this track.\"\n"
@@ -1893,6 +1898,7 @@ static const unsigned char temp_binary_data_20[] =
 "    }\n"
 "    text {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"Album\"\n"
 "    tooltip: \"Album Name: The name of the album this track is from.\"\n"
@@ -1904,6 +1910,7 @@ static const unsigned char temp_binary_data_20[] =
 "    }\n"
 "    text {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"Artist\"\n"
 "    tooltip: \"Artist Name: The artist or musician who made this specific track.\"\n"
@@ -1915,6 +1922,7 @@ static const unsigned char temp_binary_data_20[] =
 "    }\n"
 "    text {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"Number\"\n"
 "    tooltip: \"Track Number: The album track number for this track\"\n"
@@ -1926,6 +1934,7 @@ static const unsigned char temp_binary_data_20[] =
 "    }\n"
 "    text {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"Year\"\n"
 "    tooltip: \"Album Year: The year that that this track was recorded.\"\n"
@@ -1937,6 +1946,7 @@ static const unsigned char temp_binary_data_20[] =
 "    }\n"
 "    text {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"Genre\"\n"
 "    tooltip: \"Track tags: Tags that categorize this track.\"\n"
@@ -1948,9 +1958,10 @@ static const unsigned char temp_binary_data_20[] =
 "    }\n"
 "    text {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"Notes\"\n"
-"    tooltip: \"Track Notes: You can enter your notes here.\")\n"
+"    tooltip: \"Track Notes: You can enter your notes here.\"\n"
 "    address {\n"
 "      type_name: \"rec.music.Metadata\"\n"
 "      part {\n"
@@ -1969,12 +1980,14 @@ const char* SongData_def = (const char*) temp_binary_data_20;
 static const unsigned char temp_binary_data_21[] =
 "layout {\n"
 "  name: \"TransformController\"\n"
+"\n"
 "  component {\n"
 "    layout: \"LeftTransformPanel\"\n"
 "    size {\n"
 "      min: \"67\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"RightTransformPanel\"\n"
 "    size {\n"
@@ -13819,16 +13832,16 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
-        case 0xeda734e9:  numBytes = 212; return HelpPanel_def;
+        case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 267; return Layout_def;
-        case 0x28df9dc5:  numBytes = 784; return LeftTransformPanel_def;
+        case 0x28df9dc5:  numBytes = 785; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 383; return MainPanel_def;
         case 0xd66a1508:  numBytes = 271; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
-        case 0x334c534f:  numBytes = 532; return PlaybackPanel_def;
+        case 0x334c534f:  numBytes = 606; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1354; return RightTransformPanel_def;
-        case 0x1b5b8645:  numBytes = 1580; return SongData_def;
-        case 0x29238b4e:  numBytes = 235; return TransformController_def;
+        case 0x1b5b8645:  numBytes = 1586; return SongData_def;
+        case 0x29238b4e:  numBytes = 237; return TransformController_def;
         case 0x4bd6484b:  numBytes = 877; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;

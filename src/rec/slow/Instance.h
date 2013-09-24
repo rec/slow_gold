@@ -72,7 +72,7 @@ class Instance {
 
   void setHelp(const gui::Tooltip&);
 
-  static const bool USE_NEW_HELP;
+  static const bool USE_NEW_GUI;
 
  private:
   unique_ptr<SlowProgram> slowProgram_;
