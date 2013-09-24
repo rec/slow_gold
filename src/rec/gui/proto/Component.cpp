@@ -31,9 +31,10 @@ ComponentMaker make(const ComponentProto& c) {
 
   if (c.has_label())
     return &makeLabel;
-/*
-   TODO: resizers go here.
-*/
+
+  if (c.has_resizer())
+    return &makeSimpleResizer;
+
   if (c.has_full_resizer())
     return &makeResizer;
 

@@ -17,5 +17,17 @@ String getTooltip(Component* c) {
   return "";
 }
 
+std::pair<String, String> splitTooltip(const String& tt) {
+  std::pair<String, String> result;
+  int pos = tt.indexOf(":");
+  if (pos == -1) {
+    result.second = tt;
+  } else {
+    result.first = tt.substring(0, pos).trim();
+    result.second = tt.substring(pos + 1).trim();
+  }
+  return result;
+}
+
 }  // namespace gui
 }  // namespace rec

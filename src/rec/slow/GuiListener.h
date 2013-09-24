@@ -24,7 +24,7 @@ class GuiListener : public DataListener<GuiSettings>,
 
  private:
   CriticalSection lock_;
-  ptr<juce::TooltipWindow> tooltipWindow_;
+  unique_ptr<juce::TooltipWindow> tooltipWindow_;
   bool displayHelpPane_;
   Component* lastComponent_;
   Component* lastFocus_;

@@ -4,6 +4,7 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/base/DropDead.h"
+#include "rec/gui/GetTooltip.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
@@ -152,14 +153,9 @@ void MainPage::languageChanged() {
 MainPage::~MainPage() {}
 
 void MainPage::setTooltip(const String& tt) {
-  String caption, body = tt;
-  int pos = tt.indexOf(":");
-  if (pos != -1) {
-    caption = tt.substring(0, pos).trim();
-    body = tt.substring(pos + 1).trim();
-  }
-  helpCaption_.setText(caption, juce::dontSendNotification);
-  helpBody_.setText(body, juce::dontSendNotification);
+  auto r = gui::splitTooltip(tt);
+  helpCaption_.setText(r.first, juce::dontSendNotification);
+  helpBody_.setText(r.second, juce::dontSendNotification);
 }
 
 void MainPage::setEnabled(bool enabled) {

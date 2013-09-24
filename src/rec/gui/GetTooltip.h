@@ -8,6 +8,8 @@ namespace gui {
 
 String getTooltip(Component* c);
 
+std::pair<String, String> splitTooltip(const String&);
+
 inline Component* getComponentUnderMouse() {
   return Desktop::getInstance().getMainMouseSource().getComponentUnderMouse();
 }
