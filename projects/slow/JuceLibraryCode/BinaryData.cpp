@@ -1625,6 +1625,7 @@ static const unsigned char temp_binary_data_13[] =
 "name: \"PlaybackPanel\"\n"
 "name: \"RightTransformPanel\"\n"
 "name: \"SongData\"\n"
+"name: \"TimeController\"\n"
 "name: \"TransformController\"\n"
 "name: \"TransportController\"\n"
 "name: \"Waveform\"\n";
@@ -1911,8 +1912,30 @@ static const unsigned char temp_binary_data_20[] =
 
 const char* SongData_def = (const char*) temp_binary_data_20;
 
-//================== TransformController.def ==================
+//================== TimeController.def ==================
 static const unsigned char temp_binary_data_21[] =
+"layout {\n"
+"  name: \"TimeController\"\n"
+"  padding: true\n"
+"\n"
+"  component {\n"
+"    name: \"SongTime\"\n"
+"    size {\n"
+"      min: \"100\"\n"
+"    }\n"
+"  }\n"
+"  component {\n"
+"    name: \"SongDial\"\n"
+"    size {\n"
+"      min: \"45\"\n"
+"    }\n"
+"  }\n"
+"}\n";
+
+const char* TimeController_def = (const char*) temp_binary_data_21;
+
+//================== TransformController.def ==================
+static const unsigned char temp_binary_data_22[] =
 "layout {\n"
 "  name: \"TransformController\"\n"
 "\n"
@@ -1932,10 +1955,10 @@ static const unsigned char temp_binary_data_21[] =
 "  }\n"
 "}\n";
 
-const char* TransformController_def = (const char*) temp_binary_data_21;
+const char* TransformController_def = (const char*) temp_binary_data_22;
 
 //================== TransportController.def ==================
-static const unsigned char temp_binary_data_22[] =
+static const unsigned char temp_binary_data_23[] =
 "layout {\n"
 "  name: \"TransportController\"\n"
 "  orientation: VERTICAL\n"
@@ -1952,6 +1975,7 @@ static const unsigned char temp_binary_data_22[] =
 "    name: \"LevelMeter\"\n"
 "  }\n"
 "}\n"
+"\n"
 "layout {\n"
 "  name: \"TransportButtonsPanel\"\n"
 "  size {\n"
@@ -1973,6 +1997,7 @@ static const unsigned char temp_binary_data_22[] =
 "    name: \"TimeController\"\n"
 "  }\n"
 "}\n"
+"\n"
 "layout {\n"
 "  name: \"GainPanel\"\n"
 "  component {\n"
@@ -1984,27 +2009,12 @@ static const unsigned char temp_binary_data_22[] =
 "  component {\n"
 "    name: \"LevelSlider\"\n"
 "  }\n"
-"}\n"
-"layout {\n"
-"  name: \"TimeController\"\n"
-"  component {\n"
-"    name: \"SongTime\"\n"
-"    size {\n"
-"      min: \"100\"\n"
-"    }\n"
-"  }\n"
-"  component {\n"
-"    name: \"SongDial\"\n"
-"    size {\n"
-"      min: \"45\"\n"
-"    }\n"
-"  }\n"
 "}\n";
 
-const char* TransportController_def = (const char*) temp_binary_data_22;
+const char* TransportController_def = (const char*) temp_binary_data_23;
 
 //================== Waveform.def ==================
-static const unsigned char temp_binary_data_23[] =
+static const unsigned char temp_binary_data_24[] =
 "layout {\n"
 "  name: \"Waveform\"\n"
 "  container {\n"
@@ -2020,10 +2030,10 @@ static const unsigned char temp_binary_data_23[] =
 "  }\n"
 "}";
 
-const char* Waveform_def = (const char*) temp_binary_data_23;
+const char* Waveform_def = (const char*) temp_binary_data_24;
 
 //================== MenuCollection.def ==================
-static const unsigned char temp_binary_data_24[] =
+static const unsigned char temp_binary_data_25[] =
 "menu_bar {\n"
 "  description {\n"
 "    name: \"basic\"\n"
@@ -2048,10 +2058,10 @@ static const unsigned char temp_binary_data_24[] =
 "  menu: \"help advanced\"\n"
 "}\n";
 
-const char* MenuCollection_def = (const char*) temp_binary_data_24;
+const char* MenuCollection_def = (const char*) temp_binary_data_25;
 
 //================== Menus.def ==================
-static const unsigned char temp_binary_data_25[] =
+static const unsigned char temp_binary_data_26[] =
 "menu {\n"
 "  description {\n"
 "    name: \"file\"\n"
@@ -2241,10 +2251,10 @@ static const unsigned char temp_binary_data_25[] =
 "  }\n"
 "}\n";
 
-const char* Menus_def = (const char*) temp_binary_data_25;
+const char* Menus_def = (const char*) temp_binary_data_26;
 
 //================== Threads.def ==================
-static const unsigned char temp_binary_data_26[] =
+static const unsigned char temp_binary_data_27[] =
 "thread {\n"
 "  name: \"directory\"\n"
 "  priority: 3\n"
@@ -2276,10 +2286,10 @@ static const unsigned char temp_binary_data_26[] =
 "  period: 101\n"
 "}";
 
-const char* Threads_def = (const char*) temp_binary_data_26;
+const char* Threads_def = (const char*) temp_binary_data_27;
 
 //================== AddLoopPointButton.svg ==================
-static const unsigned char temp_binary_data_27[] =
+static const unsigned char temp_binary_data_28[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -2445,10 +2455,10 @@ static const unsigned char temp_binary_data_27[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* AddLoopPointButton_svg = (const char*) temp_binary_data_27;
+const char* AddLoopPointButton_svg = (const char*) temp_binary_data_28;
 
 //================== AddLoopPointButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_28[] =
+static const unsigned char temp_binary_data_29[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -2592,10 +2602,10 @@ static const unsigned char temp_binary_data_28[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* AddLoopPointButtonDisabled_svg = (const char*) temp_binary_data_28;
+const char* AddLoopPointButtonDisabled_svg = (const char*) temp_binary_data_29;
 
 //================== AddLoopPointButtonPressed.svg ==================
-static const unsigned char temp_binary_data_29[] =
+static const unsigned char temp_binary_data_30[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -2747,10 +2757,10 @@ static const unsigned char temp_binary_data_29[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* AddLoopPointButtonPressed_svg = (const char*) temp_binary_data_29;
+const char* AddLoopPointButtonPressed_svg = (const char*) temp_binary_data_30;
 
 //================== AddLoopPointMode.svg ==================
-static const unsigned char temp_binary_data_30[] =
+static const unsigned char temp_binary_data_31[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -2918,10 +2928,10 @@ static const unsigned char temp_binary_data_30[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* AddLoopPointMode_svg = (const char*) temp_binary_data_30;
+const char* AddLoopPointMode_svg = (const char*) temp_binary_data_31;
 
 //================== AddLoopPointModeDisabled.svg ==================
-static const unsigned char temp_binary_data_31[] =
+static const unsigned char temp_binary_data_32[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -3065,10 +3075,10 @@ static const unsigned char temp_binary_data_31[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* AddLoopPointModeDisabled_svg = (const char*) temp_binary_data_31;
+const char* AddLoopPointModeDisabled_svg = (const char*) temp_binary_data_32;
 
 //================== DragMode.svg ==================
-static const unsigned char temp_binary_data_32[] =
+static const unsigned char temp_binary_data_33[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -3290,10 +3300,10 @@ static const unsigned char temp_binary_data_32[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* DragMode_svg = (const char*) temp_binary_data_32;
+const char* DragMode_svg = (const char*) temp_binary_data_33;
 
 //================== DragModeDisabled.svg ==================
-static const unsigned char temp_binary_data_33[] =
+static const unsigned char temp_binary_data_34[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -3493,10 +3503,10 @@ static const unsigned char temp_binary_data_33[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* DragModeDisabled_svg = (const char*) temp_binary_data_33;
+const char* DragModeDisabled_svg = (const char*) temp_binary_data_34;
 
 //================== JumpBackButton.svg ==================
-static const unsigned char temp_binary_data_34[] =
+static const unsigned char temp_binary_data_35[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -3640,10 +3650,10 @@ static const unsigned char temp_binary_data_34[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpBackButton_svg = (const char*) temp_binary_data_34;
+const char* JumpBackButton_svg = (const char*) temp_binary_data_35;
 
 //================== JumpBackButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_35[] =
+static const unsigned char temp_binary_data_36[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -3778,10 +3788,10 @@ static const unsigned char temp_binary_data_35[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpBackButtonDisabled_svg = (const char*) temp_binary_data_35;
+const char* JumpBackButtonDisabled_svg = (const char*) temp_binary_data_36;
 
 //================== JumpBackButtonPressed.svg ==================
-static const unsigned char temp_binary_data_36[] =
+static const unsigned char temp_binary_data_37[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -3922,10 +3932,10 @@ static const unsigned char temp_binary_data_36[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpBackButtonPressed_svg = (const char*) temp_binary_data_36;
+const char* JumpBackButtonPressed_svg = (const char*) temp_binary_data_37;
 
 //================== JumpForwardButton.svg ==================
-static const unsigned char temp_binary_data_37[] =
+static const unsigned char temp_binary_data_38[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4069,10 +4079,10 @@ static const unsigned char temp_binary_data_37[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpForwardButton_svg = (const char*) temp_binary_data_37;
+const char* JumpForwardButton_svg = (const char*) temp_binary_data_38;
 
 //================== JumpForwardButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_38[] =
+static const unsigned char temp_binary_data_39[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4208,10 +4218,10 @@ static const unsigned char temp_binary_data_38[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpForwardButtonDisabled_svg = (const char*) temp_binary_data_38;
+const char* JumpForwardButtonDisabled_svg = (const char*) temp_binary_data_39;
 
 //================== JumpForwardButtonPressed.svg ==================
-static const unsigned char temp_binary_data_39[] =
+static const unsigned char temp_binary_data_40[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4352,10 +4362,10 @@ static const unsigned char temp_binary_data_39[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpForwardButtonPressed_svg = (const char*) temp_binary_data_39;
+const char* JumpForwardButtonPressed_svg = (const char*) temp_binary_data_40;
 
 //================== JumpToStartButton.svg ==================
-static const unsigned char temp_binary_data_40[] =
+static const unsigned char temp_binary_data_41[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4502,10 +4512,10 @@ static const unsigned char temp_binary_data_40[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpToStartButton_svg = (const char*) temp_binary_data_40;
+const char* JumpToStartButton_svg = (const char*) temp_binary_data_41;
 
 //================== JumpToStartButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_41[] =
+static const unsigned char temp_binary_data_42[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4641,10 +4651,10 @@ static const unsigned char temp_binary_data_41[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpToStartButtonDisabled_svg = (const char*) temp_binary_data_41;
+const char* JumpToStartButtonDisabled_svg = (const char*) temp_binary_data_42;
 
 //================== JumpToStartButtonPressed.svg ==================
-static const unsigned char temp_binary_data_42[] =
+static const unsigned char temp_binary_data_43[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4787,10 +4797,10 @@ static const unsigned char temp_binary_data_42[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* JumpToStartButtonPressed_svg = (const char*) temp_binary_data_42;
+const char* JumpToStartButtonPressed_svg = (const char*) temp_binary_data_43;
 
 //================== MacFolderCloseButton.svg ==================
-static const unsigned char temp_binary_data_43[] =
+static const unsigned char temp_binary_data_44[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4911,10 +4921,10 @@ static const unsigned char temp_binary_data_43[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* MacFolderCloseButton_svg = (const char*) temp_binary_data_43;
+const char* MacFolderCloseButton_svg = (const char*) temp_binary_data_44;
 
 //================== MacFolderOpenButton.svg ==================
-static const unsigned char temp_binary_data_44[] =
+static const unsigned char temp_binary_data_45[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5035,10 +5045,10 @@ static const unsigned char temp_binary_data_44[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* MacFolderOpenButton_svg = (const char*) temp_binary_data_44;
+const char* MacFolderOpenButton_svg = (const char*) temp_binary_data_45;
 
 //================== PlayButton.svg ==================
-static const unsigned char temp_binary_data_45[] =
+static const unsigned char temp_binary_data_46[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5178,10 +5188,10 @@ static const unsigned char temp_binary_data_45[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* PlayButton_svg = (const char*) temp_binary_data_45;
+const char* PlayButton_svg = (const char*) temp_binary_data_46;
 
 //================== PlayButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_46[] =
+static const unsigned char temp_binary_data_47[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5314,10 +5324,10 @@ static const unsigned char temp_binary_data_46[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* PlayButtonDisabled_svg = (const char*) temp_binary_data_46;
+const char* PlayButtonDisabled_svg = (const char*) temp_binary_data_47;
 
 //================== SetTimeMode.svg ==================
-static const unsigned char temp_binary_data_47[] =
+static const unsigned char temp_binary_data_48[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5493,10 +5503,10 @@ static const unsigned char temp_binary_data_47[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* SetTimeMode_svg = (const char*) temp_binary_data_47;
+const char* SetTimeMode_svg = (const char*) temp_binary_data_48;
 
 //================== SetTimeModeDisabled.svg ==================
-static const unsigned char temp_binary_data_48[] =
+static const unsigned char temp_binary_data_49[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5651,10 +5661,10 @@ static const unsigned char temp_binary_data_48[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* SetTimeModeDisabled_svg = (const char*) temp_binary_data_48;
+const char* SetTimeModeDisabled_svg = (const char*) temp_binary_data_49;
 
 //================== StopButton.svg ==================
-static const unsigned char temp_binary_data_49[] =
+static const unsigned char temp_binary_data_50[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5790,10 +5800,10 @@ static const unsigned char temp_binary_data_49[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* StopButton_svg = (const char*) temp_binary_data_49;
+const char* StopButton_svg = (const char*) temp_binary_data_50;
 
 //================== StopButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_50[] =
+static const unsigned char temp_binary_data_51[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -5926,10 +5936,10 @@ static const unsigned char temp_binary_data_50[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* StopButtonDisabled_svg = (const char*) temp_binary_data_50;
+const char* StopButtonDisabled_svg = (const char*) temp_binary_data_51;
 
 //================== ZoomInCursor.svg ==================
-static const unsigned char temp_binary_data_51[] =
+static const unsigned char temp_binary_data_52[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
 "<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\r\n"
@@ -6067,10 +6077,10 @@ static const unsigned char temp_binary_data_51[] =
 "\tc3.354,0,6.083,2.729,6.083,6.083c0,3.354-2.729,6.083-6.083,6.083C4.729,14.166,2,11.438,2,8.083z\"/>\r\n"
 "</svg>\r\n";
 
-const char* ZoomInCursor_svg = (const char*) temp_binary_data_51;
+const char* ZoomInCursor_svg = (const char*) temp_binary_data_52;
 
 //================== ZoomMode.svg ==================
-static const unsigned char temp_binary_data_52[] =
+static const unsigned char temp_binary_data_53[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -6227,10 +6237,10 @@ static const unsigned char temp_binary_data_52[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomMode_svg = (const char*) temp_binary_data_52;
+const char* ZoomMode_svg = (const char*) temp_binary_data_53;
 
 //================== ZoomModeDisabled.svg ==================
-static const unsigned char temp_binary_data_53[] =
+static const unsigned char temp_binary_data_54[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -6550,10 +6560,10 @@ static const unsigned char temp_binary_data_53[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomModeDisabled_svg = (const char*) temp_binary_data_53;
+const char* ZoomModeDisabled_svg = (const char*) temp_binary_data_54;
 
 //================== ZoomOutButton.svg ==================
-static const unsigned char temp_binary_data_54[] =
+static const unsigned char temp_binary_data_55[] =
 { 60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,101,110,99,111,100,105,110,103,61,34,117,116,102,45,56,34,63,62,10,60,33,45,45,32,71,101,110,101,114,97,116,111,114,58,32,65,100,111,98,101,32,73,108,108,117,115,116,114,97,116,111,
 114,32,49,49,32,66,117,105,108,100,32,49,57,54,44,32,83,86,71,32,69,120,112,111,114,116,32,80,108,117,103,45,73,110,32,46,32,83,86,71,32,86,101,114,115,105,111,110,58,32,54,46,48,46,48,32,66,117,105,108,100,32,55,56,41,32,32,45,45,62,10,60,33,68,79,67,
 84,89,80,69,32,115,118,103,32,80,85,66,76,73,67,32,34,45,47,47,87,51,67,47,47,68,84,68,32,83,86,71,32,49,46,48,47,47,69,78,34,32,32,32,32,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,84,82,47,50,48,48,49,47,82,69,67,45,83,86,71,
@@ -7080,10 +7090,10 @@ static const unsigned char temp_binary_data_54[] =
 49,50,34,62,117,114,115,111,60,47,116,115,112,97,110,62,60,116,115,112,97,110,32,120,61,34,54,55,46,56,57,54,34,32,121,61,34,48,34,32,102,111,110,116,45,102,97,109,105,108,121,61,34,39,77,121,114,105,97,100,45,82,111,109,97,110,39,34,32,102,111,110,116,
 45,115,105,122,101,61,34,49,50,34,62,114,60,47,116,115,112,97,110,62,60,47,116,101,120,116,62,10,9,9,9,60,47,115,119,105,116,99,104,62,10,9,9,60,47,103,62,10,9,60,47,115,118,103,62,10,0,0 };
 
-const char* ZoomOutButton_svg = (const char*) temp_binary_data_54;
+const char* ZoomOutButton_svg = (const char*) temp_binary_data_55;
 
 //================== ZoomOutButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_55[] =
+static const unsigned char temp_binary_data_56[] =
 { 60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,101,110,99,111,100,105,110,103,61,34,117,116,102,45,56,34,63,62,10,60,33,45,45,32,71,101,110,101,114,97,116,111,114,58,32,65,100,111,98,101,32,73,108,108,117,115,116,114,97,116,111,
 114,32,49,49,32,66,117,105,108,100,32,49,57,54,44,32,83,86,71,32,69,120,112,111,114,116,32,80,108,117,103,45,73,110,32,46,32,83,86,71,32,86,101,114,115,105,111,110,58,32,54,46,48,46,48,32,66,117,105,108,100,32,55,56,41,32,32,45,45,62,10,60,33,68,79,67,
 84,89,80,69,32,115,118,103,32,80,85,66,76,73,67,32,34,45,47,47,87,51,67,47,47,68,84,68,32,83,86,71,32,49,46,48,47,47,69,78,34,32,32,32,32,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,84,82,47,50,48,48,49,47,82,69,67,45,83,86,71,
@@ -7607,10 +7617,10 @@ static const unsigned char temp_binary_data_55[] =
 57,54,34,32,121,61,34,48,34,32,102,111,110,116,45,102,97,109,105,108,121,61,34,39,77,121,114,105,97,100,45,82,111,109,97,110,39,34,32,102,111,110,116,45,115,105,122,101,61,34,49,50,34,62,114,60,47,116,115,112,97,110,62,60,47,116,101,120,116,62,10,9,9,
 9,60,47,115,119,105,116,99,104,62,10,9,9,60,47,103,62,10,9,60,47,115,118,103,62,10,0,0 };
 
-const char* ZoomOutButtonDisabled_svg = (const char*) temp_binary_data_55;
+const char* ZoomOutButtonDisabled_svg = (const char*) temp_binary_data_56;
 
 //================== ZoomOutButtonPressed.svg ==================
-static const unsigned char temp_binary_data_56[] =
+static const unsigned char temp_binary_data_57[] =
 { 60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,101,110,99,111,100,105,110,103,61,34,117,116,102,45,56,34,63,62,10,60,33,45,45,32,71,101,110,101,114,97,116,111,114,58,32,65,100,111,98,101,32,73,108,108,117,115,116,114,97,116,111,
 114,32,49,49,32,66,117,105,108,100,32,49,57,54,44,32,83,86,71,32,69,120,112,111,114,116,32,80,108,117,103,45,73,110,32,46,32,83,86,71,32,86,101,114,115,105,111,110,58,32,54,46,48,46,48,32,66,117,105,108,100,32,55,56,41,32,32,45,45,62,10,60,33,68,79,67,
 84,89,80,69,32,115,118,103,32,80,85,66,76,73,67,32,34,45,47,47,87,51,67,47,47,68,84,68,32,83,86,71,32,49,46,48,47,47,69,78,34,32,32,32,32,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,84,82,47,50,48,48,49,47,82,69,67,45,83,86,71,
@@ -8135,10 +8145,10 @@ static const unsigned char temp_binary_data_56[] =
 49,50,34,62,117,114,115,111,60,47,116,115,112,97,110,62,60,116,115,112,97,110,32,120,61,34,54,55,46,56,57,54,34,32,121,61,34,48,34,32,102,111,110,116,45,102,97,109,105,108,121,61,34,39,77,121,114,105,97,100,45,82,111,109,97,110,39,34,32,102,111,110,116,
 45,115,105,122,101,61,34,49,50,34,62,114,60,47,116,115,112,97,110,62,60,47,116,101,120,116,62,10,9,9,9,60,47,115,119,105,116,99,104,62,10,9,9,60,47,103,62,10,9,60,47,115,118,103,62,10,0,0 };
 
-const char* ZoomOutButtonPressed_svg = (const char*) temp_binary_data_56;
+const char* ZoomOutButtonPressed_svg = (const char*) temp_binary_data_57;
 
 //================== ZoomToSelectionButton.svg ==================
-static const unsigned char temp_binary_data_57[] =
+static const unsigned char temp_binary_data_58[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -8347,10 +8357,10 @@ static const unsigned char temp_binary_data_57[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomToSelectionButton_svg = (const char*) temp_binary_data_57;
+const char* ZoomToSelectionButton_svg = (const char*) temp_binary_data_58;
 
 //================== ZoomToSelectionButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_58[] =
+static const unsigned char temp_binary_data_59[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -8507,10 +8517,10 @@ static const unsigned char temp_binary_data_58[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomToSelectionButtonDisabled_svg = (const char*) temp_binary_data_58;
+const char* ZoomToSelectionButtonDisabled_svg = (const char*) temp_binary_data_59;
 
 //================== ZoomToSelectionButtonPressed.svg ==================
-static const unsigned char temp_binary_data_59[] =
+static const unsigned char temp_binary_data_60[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -8688,10 +8698,10 @@ static const unsigned char temp_binary_data_59[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomToSelectionButtonPressed_svg = (const char*) temp_binary_data_59;
+const char* ZoomToSelectionButtonPressed_svg = (const char*) temp_binary_data_60;
 
 //================== big-icon.png ==================
-static const unsigned char temp_binary_data_60[] =
+static const unsigned char temp_binary_data_61[] =
 { 137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,1,0,0,0,1,0,8,6,0,0,0,92,114,168,102,0,0,32,0,73,68,65,84,120,156,236,93,5,120,84,71,23,93,220,105,139,7,183,226,86,164,184,187,22,119,119,119,13,22,119,119,98,132,132,16,2,193,53,184,22,42,180,127,21,
 90,106,180,84,160,45,109,41,180,148,2,231,191,119,102,222,238,219,8,236,18,161,165,153,239,187,223,11,97,237,109,230,156,123,238,157,59,119,12,134,156,145,169,3,64,197,123,247,238,117,190,122,245,234,200,183,223,126,123,194,157,59,119,122,210,239,234,
 144,229,126,214,159,237,159,62,232,59,106,25,18,18,226,222,186,117,235,55,74,149,42,245,99,137,18,37,126,230,107,187,118,237,46,6,4,4,120,210,255,183,126,214,159,49,103,228,140,52,199,133,11,23,6,87,175,94,253,0,253,248,43,25,82,216,61,178,55,194,194,
@@ -9642,10 +9652,10 @@ static const unsigned char temp_binary_data_60[] =
 255,84,84,84,252,120,238,220,185,223,173,172,172,188,122,247,221,119,31,255,254,247,191,191,247,190,251,238,107,250,245,175,127,189,250,227,143,63,158,253,201,39,159,20,242,53,144,5,240,53,125,213,239,203,208,234,255,250,255,59,249,228,181,234,108,13,
 37,0,0,0,0,73,69,78,68,174,66,96,130,0,0 };
 
-const char* bigicon_png = (const char*) temp_binary_data_60;
+const char* bigicon_png = (const char*) temp_binary_data_61;
 
 //================== icon.png ==================
-static const unsigned char temp_binary_data_61[] =
+static const unsigned char temp_binary_data_62[] =
 { 137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,32,0,0,0,32,8,6,0,0,0,115,122,122,244,0,0,10,85,73,68,65,84,88,133,173,151,7,84,148,87,22,199,191,41,12,109,134,206,12,8,72,145,38,130,20,17,5,21,16,87,17,16,145,128,6,44,128,138,58,22,66,81,34,16,197,
 161,72,25,122,27,65,164,168,131,70,197,4,20,13,26,35,130,168,4,11,182,181,99,151,184,162,176,137,174,152,28,245,191,239,251,60,234,178,171,89,179,155,119,206,59,243,49,223,227,253,127,239,222,251,238,189,67,81,159,48,66,67,67,205,244,244,244,206,155,
 152,152,28,200,200,200,80,250,216,58,103,103,231,112,129,64,112,79,91,91,251,98,76,76,140,230,167,236,253,73,67,75,75,107,165,34,135,2,121,132,171,171,171,255,135,214,132,132,132,140,166,223,7,122,143,125,187,238,243,63,13,192,197,197,101,41,159,71,193,
@@ -9685,10 +9695,10 @@ static const unsigned char temp_binary_data_61[] =
 26,255,147,196,255,117,144,54,221,192,204,204,44,75,77,77,173,135,252,9,54,197,134,10,75,133,17,214,229,8,97,192,53,194,48,158,5,172,121,54,176,34,147,6,229,177,120,76,169,37,86,236,33,191,45,178,162,163,163,13,255,176,240,191,143,238,238,110,142,191,
 191,255,56,146,180,214,26,27,27,55,144,159,234,151,72,21,237,39,167,251,141,158,244,51,253,29,253,142,92,175,181,244,218,43,87,174,112,62,101,239,127,2,66,244,180,141,197,44,139,45,0,0,0,0,73,69,78,68,174,66,96,130,0,0 };
 
-const char* icon_png = (const char*) temp_binary_data_61;
+const char* icon_png = (const char*) temp_binary_data_62;
 
 //================== de-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_62[] =
+static const unsigned char temp_binary_data_63[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,37,115,32,72,97,108,98,116,92,51,48,51,92,50,54,54,110,
 101,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,
 32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,
@@ -10569,10 +10579,10 @@ static const unsigned char temp_binary_data_62[] =
 111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,32,122,117,114,32,65,117,115,119,97,104,108,46,34,10,32,32,105,110,
 100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,10,0,0 };
 
-const char* deTranslatedStrings_def = (const char*) temp_binary_data_62;
+const char* deTranslatedStrings_def = (const char*) temp_binary_data_63;
 
 //================== en-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_63[] =
+static const unsigned char temp_binary_data_64[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,
 101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,
 111,109,109,97,110,100,47,109,97,112,47,77,105,100,105,78,97,109,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,49,53,10,32,32,105,110,100,101,120,58,32,51,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,40,110,111,
@@ -11084,10 +11094,10 @@ static const unsigned char temp_binary_data_63[] =
 120,58,32,52,53,49,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,
 120,58,32,52,53,50,10,0,0 };
 
-const char* enTranslatedStrings_def = (const char*) temp_binary_data_63;
+const char* enTranslatedStrings_def = (const char*) temp_binary_data_64;
 
 //================== es-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_64[] =
+static const unsigned char temp_binary_data_65[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,111,115,34,10,32,
 32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,
 32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,112,47,77,105,
@@ -11972,10 +11982,10 @@ static const unsigned char temp_binary_data_64[] =
 100,101,120,58,32,52,53,49,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,
 32,97,32,108,97,32,115,101,108,101,99,99,105,92,51,48,51,92,50,54,51,110,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,10,0,0 };
 
-const char* esTranslatedStrings_def = (const char*) temp_binary_data_64;
+const char* esTranslatedStrings_def = (const char*) temp_binary_data_65;
 
 //================== fr-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_65[] =
+static const unsigned char temp_binary_data_66[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,37,115,32,100,101,109,105,45,116,111,110,115,34,10,32,
 32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,
 32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,104,111,114,115,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,112,47,77,
@@ -12898,10 +12908,10 @@ static const unsigned char temp_binary_data_65[] =
 97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,32,115,117,114,32,108,97,32,115,92,51,48,51,92,50,53,49,108,101,99,116,105,111,110,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,
 10,0,0 };
 
-const char* frTranslatedStrings_def = (const char*) temp_binary_data_65;
+const char* frTranslatedStrings_def = (const char*) temp_binary_data_66;
 
 //================== id-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_66[] =
+static const unsigned char temp_binary_data_67[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,37,115,32,115,32,115,101,109,105,116,111,110,101,34,10,32,32,
 102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,32,
 111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,112,47,77,105,100,
@@ -13742,7 +13752,7 @@ static const unsigned char temp_binary_data_66[] =
 116,117,107,32,103,101,108,111,109,98,97,110,103,46,34,10,32,32,105,110,100,101,120,58,32,52,53,49,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,
 32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,32,115,101,108,101,107,115,105,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,10,0,0 };
 
-const char* idTranslatedStrings_def = (const char*) temp_binary_data_66;
+const char* idTranslatedStrings_def = (const char*) temp_binary_data_67;
 
 
 const char* getNamedResource (const char*, int&) throw();
@@ -13768,7 +13778,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
-        case 0x8b33e590:  numBytes = 267; return Layout_def;
+        case 0x8b33e590:  numBytes = 290; return Layout_def;
         case 0x28df9dc5:  numBytes = 665; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 383; return MainPanel_def;
         case 0xd66a1508:  numBytes = 271; return ModeSelector_def;
@@ -13776,8 +13786,9 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x334c534f:  numBytes = 606; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1110; return RightTransformPanel_def;
         case 0x1b5b8645:  numBytes = 1159; return SongData_def;
+        case 0x4b55592f:  numBytes = 198; return TimeController_def;
         case 0x29238b4e:  numBytes = 237; return TransformController_def;
-        case 0x4bd6484b:  numBytes = 877; return TransportController_def;
+        case 0x4bd6484b:  numBytes = 698; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3790; return Menus_def;

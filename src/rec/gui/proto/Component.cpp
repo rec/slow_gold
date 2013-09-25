@@ -10,6 +10,8 @@
 #include "rec/gui/proto/Panel.h"
 #include "rec/gui/proto/Resizer.h"
 #include "rec/gui/proto/Slider.h"
+#include "rec/gui/proto/Time.h"
+#include "rec/gui/proto/TimeDial.h"
 #include "rec/gui/proto/ToggleButton.h"
 
 namespace rec {
@@ -40,6 +42,12 @@ ComponentMaker make(const ComponentProto& c) {
 
   if (c.has_slider())
     return &makeSlider;
+
+  if (c.has_time())
+    return &makeTime;
+
+  if (c.has_time_dial())
+    return &makeTimeDial;
 
   if (c.has_toggle_button())
     return &makeToggleButton;

@@ -1,0 +1,17 @@
+layout {
+  name: "TimeController"
+  padding: true
+
+  component {
+    name: "SongTime"
+    size {
+      min: "100"
+    }
+  }
+  component {
+    name: "SongDial"
+    size {
+      min: "45"
+    }
+  }
+}

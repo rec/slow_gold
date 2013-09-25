@@ -236,6 +236,8 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Time.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\TimeDial.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ToggleButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterText.cpp"/>
@@ -359,6 +361,8 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
@@ -1620,6 +1624,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ComboBox.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Constants.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Context.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Custom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Font.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Help.h"/>
@@ -1628,6 +1633,8 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Time.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\TimeDial.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ToggleButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterLabel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h"/>
@@ -1818,6 +1825,8 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
@@ -2303,6 +2312,7 @@
     <None Include="..\..\..\..\src\rec\slow\commands\layout\PlaybackPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\RightTransformPanel.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\SongData.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\TimeController.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\TransformController.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\TransportController.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\Waveform.def"/>

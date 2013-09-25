@@ -820,6 +820,12 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Time.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\TimeDial.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ToggleButton.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1187,6 +1193,12 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc">
@@ -2901,6 +2913,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Constants.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Context.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Custom.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
@@ -2923,6 +2938,12 @@
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Time.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\TimeDial.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ToggleButton.h">
@@ -3493,6 +3514,12 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h">
@@ -4944,6 +4971,9 @@
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\SongData.def">
+      <Filter>SlowGold\src\slow\commands\layout</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\layout\TimeController.def">
       <Filter>SlowGold\src\slow\commands\layout</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\layout\TransformController.def">

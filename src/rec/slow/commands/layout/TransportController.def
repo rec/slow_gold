@@ -14,6 +14,7 @@ layout {
     name: "LevelMeter"
   }
 }
+
 layout {
   name: "TransportButtonsPanel"
   size {
@@ -35,6 +36,7 @@ layout {
     name: "TimeController"
   }
 }
+
 layout {
   name: "GainPanel"
   component {
@@ -45,20 +47,5 @@ layout {
   }
   component {
     name: "LevelSlider"
-  }
-}
-layout {
-  name: "TimeController"
-  component {
-    name: "SongTime"
-    size {
-      min: "100"
-    }
-  }
-  component {
-    name: "SongDial"
-    size {
-      min: "45"
-    }
   }
 }

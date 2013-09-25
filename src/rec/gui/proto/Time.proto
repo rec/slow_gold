@@ -1,0 +1,7 @@
+package rec.gui;
+
+import "rec/gui/Color.proto";
+
+message TimeProto {
+  repeated Color color = 1;
+};

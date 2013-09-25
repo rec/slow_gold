@@ -1,0 +1,7 @@
+package rec.gui;
+
+import "rec/gui/Color.proto";
+
+message TimeDialProto {
+  repeated Color color = 1;
+};

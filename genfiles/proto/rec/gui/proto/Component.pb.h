@@ -34,6 +34,8 @@
 #include "rec/gui/proto/Size.pb.h"
 #include "rec/gui/proto/Slider.pb.h"
 #include "rec/gui/proto/Text.pb.h"
+#include "rec/gui/proto/Time.pb.h"
+#include "rec/gui/proto/TimeDial.pb.h"
 #include "rec/gui/proto/ToggleButton.pb.h"
 #include "rec/gui/Color.pb.h"
 // @@protoc_insertion_point(includes)
@@ -278,6 +280,24 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::rec::gui::TextProto* release_text();
   inline void set_allocated_text(::rec::gui::TextProto* text);
 
+  // optional .rec.gui.TimeDialProto time_dial = 19;
+  inline bool has_time_dial() const;
+  inline void clear_time_dial();
+  static const int kTimeDialFieldNumber = 19;
+  inline const ::rec::gui::TimeDialProto& time_dial() const;
+  inline ::rec::gui::TimeDialProto* mutable_time_dial();
+  inline ::rec::gui::TimeDialProto* release_time_dial();
+  inline void set_allocated_time_dial(::rec::gui::TimeDialProto* time_dial);
+
+  // optional .rec.gui.TimeProto time = 20;
+  inline bool has_time() const;
+  inline void clear_time();
+  static const int kTimeFieldNumber = 20;
+  inline const ::rec::gui::TimeProto& time() const;
+  inline ::rec::gui::TimeProto* mutable_time();
+  inline ::rec::gui::TimeProto* release_time();
+  inline void set_allocated_time(::rec::gui::TimeProto* time);
+
   // optional .rec.gui.ToggleButtonProto toggle_button = 15;
   inline bool has_toggle_button() const;
   inline void clear_toggle_button();
@@ -321,6 +341,10 @@ class ComponentProto : public ::google::protobuf::Message {
   inline void clear_has_slider();
   inline void set_has_text();
   inline void clear_has_text();
+  inline void set_has_time_dial();
+  inline void clear_has_time_dial();
+  inline void set_has_time();
+  inline void clear_has_time();
   inline void set_has_toggle_button();
   inline void clear_has_toggle_button();
 
@@ -344,10 +368,12 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ResizerProto* full_resizer_;
   ::rec::gui::SliderProto* slider_;
   ::rec::gui::TextProto* text_;
+  ::rec::gui::TimeDialProto* time_dial_;
+  ::rec::gui::TimeProto* time_;
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(20 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -1188,15 +1214,91 @@ inline void ComponentProto::set_allocated_text(::rec::gui::TextProto* text) {
   }
 }
 
-// optional .rec.gui.ToggleButtonProto toggle_button = 15;
-inline bool ComponentProto::has_toggle_button() const {
+// optional .rec.gui.TimeDialProto time_dial = 19;
+inline bool ComponentProto::has_time_dial() const {
   return (_has_bits_[0] & 0x00020000u) != 0;
 }
-inline void ComponentProto::set_has_toggle_button() {
+inline void ComponentProto::set_has_time_dial() {
   _has_bits_[0] |= 0x00020000u;
 }
-inline void ComponentProto::clear_has_toggle_button() {
+inline void ComponentProto::clear_has_time_dial() {
   _has_bits_[0] &= ~0x00020000u;
+}
+inline void ComponentProto::clear_time_dial() {
+  if (time_dial_ != NULL) time_dial_->::rec::gui::TimeDialProto::Clear();
+  clear_has_time_dial();
+}
+inline const ::rec::gui::TimeDialProto& ComponentProto::time_dial() const {
+  return time_dial_ != NULL ? *time_dial_ : *default_instance_->time_dial_;
+}
+inline ::rec::gui::TimeDialProto* ComponentProto::mutable_time_dial() {
+  set_has_time_dial();
+  if (time_dial_ == NULL) time_dial_ = new ::rec::gui::TimeDialProto;
+  return time_dial_;
+}
+inline ::rec::gui::TimeDialProto* ComponentProto::release_time_dial() {
+  clear_has_time_dial();
+  ::rec::gui::TimeDialProto* temp = time_dial_;
+  time_dial_ = NULL;
+  return temp;
+}
+inline void ComponentProto::set_allocated_time_dial(::rec::gui::TimeDialProto* time_dial) {
+  delete time_dial_;
+  time_dial_ = time_dial;
+  if (time_dial) {
+    set_has_time_dial();
+  } else {
+    clear_has_time_dial();
+  }
+}
+
+// optional .rec.gui.TimeProto time = 20;
+inline bool ComponentProto::has_time() const {
+  return (_has_bits_[0] & 0x00040000u) != 0;
+}
+inline void ComponentProto::set_has_time() {
+  _has_bits_[0] |= 0x00040000u;
+}
+inline void ComponentProto::clear_has_time() {
+  _has_bits_[0] &= ~0x00040000u;
+}
+inline void ComponentProto::clear_time() {
+  if (time_ != NULL) time_->::rec::gui::TimeProto::Clear();
+  clear_has_time();
+}
+inline const ::rec::gui::TimeProto& ComponentProto::time() const {
+  return time_ != NULL ? *time_ : *default_instance_->time_;
+}
+inline ::rec::gui::TimeProto* ComponentProto::mutable_time() {
+  set_has_time();
+  if (time_ == NULL) time_ = new ::rec::gui::TimeProto;
+  return time_;
+}
+inline ::rec::gui::TimeProto* ComponentProto::release_time() {
+  clear_has_time();
+  ::rec::gui::TimeProto* temp = time_;
+  time_ = NULL;
+  return temp;
+}
+inline void ComponentProto::set_allocated_time(::rec::gui::TimeProto* time) {
+  delete time_;
+  time_ = time;
+  if (time) {
+    set_has_time();
+  } else {
+    clear_has_time();
+  }
+}
+
+// optional .rec.gui.ToggleButtonProto toggle_button = 15;
+inline bool ComponentProto::has_toggle_button() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void ComponentProto::set_has_toggle_button() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void ComponentProto::clear_has_toggle_button() {
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();
