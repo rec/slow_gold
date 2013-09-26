@@ -8,6 +8,7 @@
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/gui/proto/Layout.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
@@ -32,16 +33,22 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 
 Components::Components()
     : manager_(program::applicationCommandManager()),
-      timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops()),
       songData_(new gui::SongData),
       transformController_(new gui::audio::TransformController),
-      transportController_(
-          new gui::audio::TransportController(timeController_.get())),
+      transportController_(new gui::audio::TransportController),
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
 	  commandBar_(new gui::audio::CommandBar) {
+  if (Instance::USE_NEW_GUI) {
+    timeController_ = gui::makeLayout("TimeController",
+                                      transportController_.get());
+  } else {
+    timeController_.reset(new gui::audio::TimeController);
+  }
+  transportController_->addTimeController(timeController_.get());
+
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());

@@ -1,7 +1,6 @@
 #include "rec/gui/audio/TransportController.h"
 
 #include "rec/gui/IconButton.h"
-#include "rec/gui/audio/TimeController.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -20,9 +19,8 @@ const int MUTE_BUTTON_SIZE = 45;
 
 using rec::audio::Gain;
 
-TransportController::TransportController(TimeController* timeController)
+TransportController::TransportController()
     : Panel("TransportController", VERTICAL),
-      timeController_(timeController),
       buttonsPanel_("Buttons", HORIZONTAL),
       gainPanel_("Gain", HORIZONTAL),
       startStopButton_("Start/stop", "Start/Stop Button: Toggle between pause"
@@ -39,6 +37,9 @@ TransportController::TransportController(TimeController* timeController)
              "in dB.", data::makeAddress<Gain>("gain")),
       muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
                   data::makeAddress<Gain>("mute")) {
+}
+
+void TransportController::addTimeController(Component* timeController) {
   startStopButton_.setClickingTogglesState(true);
 
   SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
@@ -55,7 +56,7 @@ TransportController::TransportController(TimeController* timeController)
   buttonsPanel_.addToPanel(&jumpToStartButton_, ICON_SIZE);
   buttonsPanel_.addToPanel(&jumpBackButton_, ICON_SIZE);
   buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
-  buttonsPanel_.addToPanel(timeController_);
+  buttonsPanel_.addToPanel(timeController);
 
   level_.slider()->setRange(-36.0, +12.0, 0.1);
   level_.slider()->setDetent(0.0f);

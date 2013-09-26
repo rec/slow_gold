@@ -111,14 +111,14 @@ MainPage::MainPage(Components* components)
   // Navigation panel.
   add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
-  add(&navigationPanel_, components->songData_, MIN_SONG_DATA, -1.0, -0.30);
+  add(&navigationPanel_, components->songData_.get(), MIN_SONG_DATA, -1.0, -0.30);
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
 
   add(&playbackPanel_, &helpResizer_, 5.0);
-  add(&playbackPanel_, components->transformController_,
+  add(&playbackPanel_, components->transformController_.get(),
       MIN_TRANSFORM_PANEL, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
   Component *xport = components->transportController_.get();

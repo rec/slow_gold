@@ -32,9 +32,10 @@ class TransportController : public Panel,
                             public Listener<rec::audio::transport::State>,
                             public Broadcaster<TransportCommand> {
  public:
-  TransportController(TimeController*);
+  TransportController();
   virtual ~TransportController();
 
+  void addTimeController(Component*);
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
@@ -44,12 +45,9 @@ class TransportController : public Panel,
   util::Listener<const rec::audio::LevelVector&>* levelListener() { return &levelMeter_; }
   void clearLevels();
   LevelMeter* levelMeter() { return &levelMeter_; }
-  TimeController* timeController() { return timeController_; }
 
  private:
   void setGain(rec::audio::Gain);
-
-  TimeController* timeController_;
 
   Panel buttonsPanel_;
   Panel gainPanel_;

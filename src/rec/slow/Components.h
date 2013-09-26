@@ -32,19 +32,19 @@ class Components : public data::DataListener<music::Metadata> {
   virtual void operator()(const music::Metadata&);
 
   ApplicationCommandManager* manager_;
-  ptr<gui::audio::TimeController> timeController_;
+  unique_ptr<Component> timeController_;
 
-  ptr<gui::audio::Loops> loops_;
-  ptr<gui::SongData> songData_;
-  ptr<gui::audio::TransformController> transformController_;
-  ptr<gui::audio::TransportController> transportController_;
+  unique_ptr<gui::audio::Loops> loops_;
+  unique_ptr<gui::SongData> songData_;
+  unique_ptr<gui::audio::TransformController> transformController_;
+  unique_ptr<gui::audio::TransportController> transportController_;
 
-  ptr<widget::tree::Root> directoryTree_;
-  ptr<widget::waveform::Waveform> waveform_;
+  unique_ptr<widget::tree::Root> directoryTree_;
+  unique_ptr<widget::waveform::Waveform> waveform_;
 
-  ptr<gui::audio::ModeSelector> modeSelector_;
-  ptr<gui::audio::CommandBar> commandBar_;
-  ptr<MainPage> mainPage_;
+  unique_ptr<gui::audio::ModeSelector> modeSelector_;
+  unique_ptr<gui::audio::CommandBar> commandBar_;
+  unique_ptr<MainPage> mainPage_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
