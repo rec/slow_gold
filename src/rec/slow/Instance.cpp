@@ -176,12 +176,9 @@ void Instance::init() {
   widget::tree::Root* root = components_->directoryTree_.get();
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
-  // components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
   components_->transportController_->addListener(guiListener_.get());
   components_->commandBar_->addListener(guiListener_.get());
-
-  player_->level()->addListener(components_->transportController_->levelListener());
 
   player_->setSource(makeSource());
   components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());

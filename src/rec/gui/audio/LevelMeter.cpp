@@ -44,7 +44,6 @@ void LevelMeter::operator()(const rec::audio::LevelVector& levels) {
   thread::callAsync(this, &LevelMeter::repaint);
 }
 
-
 void LevelMeter::paint(Graphics& g) {
   g.fillAll(juce::Colours::white);
 

@@ -4,12 +4,13 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/Audio.h"
 #include "rec/util/Listener.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Level : public Wrappy, public Broadcaster<const LevelVector&> {
+class Level : public Wrappy {
  public:
   explicit Level(Source* s = nullptr) : Wrappy(s), channels_(2) {}
 
@@ -20,7 +21,7 @@ class Level : public Wrappy, public Broadcaster<const LevelVector&> {
     LevelVector result(channels_, 0.0);
     for (int c = 0; c < channels_; ++c)
       result[c] = getLevel(i, c);
-    broadcast(result);
+    broadcastState<const LevelVector&>(result);
   }
 
   virtual float getLevel(const AudioSourceChannelInfo& info, int channel) {
@@ -36,7 +37,7 @@ class Level : public Wrappy, public Broadcaster<const LevelVector&> {
   }
 
   void clear() {
-    broadcast(LevelVector(channels_, 0.0));
+    broadcastState<const LevelVector&>(LevelVector(channels_, 0.0));
   }
 
  private:

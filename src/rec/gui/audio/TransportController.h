@@ -39,9 +39,6 @@ class TransportController : public Panel,
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
 
-  void setTransportState(rec::audio::transport::State state);
-
-  util::Listener<const rec::audio::LevelVector&>* levelListener() { return &levelMeter_; }
   void clearLevels();
   LevelMeter* levelMeter() { return &levelMeter_; }
 

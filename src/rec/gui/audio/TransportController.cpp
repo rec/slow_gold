@@ -74,7 +74,10 @@ TransportController::~TransportController() {}
 using rec::audio::transport::State;
 
 void TransportController::operator()(State state) {
-  thread::callAsync(this, &TransportController::setTransportState, state);
+  MessageManagerLock l;
+  startStopButton_.setToggleState(state == rec::audio::transport::RUNNING,
+                                  juce::dontSendNotification);
+  startStopButton_.repaint();
 }
 
 void TransportController::buttonClicked(juce::Button *button) {
@@ -94,12 +97,6 @@ void TransportController::buttonClicked(juce::Button *button) {
 
   else
     LOG(DFATAL) << "Unknown button " << button;
-}
-
-void TransportController::setTransportState(rec::audio::transport::State state) {
-  startStopButton_.setToggleState(state == rec::audio::transport::RUNNING,
-                                  juce::dontSendNotification);
-  startStopButton_.repaint();
 }
 
 void TransportController::operator()(const rec::audio::Gain& gain) {
