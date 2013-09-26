@@ -42,17 +42,6 @@ TimeController::TimeController()
   addToPanel(&filler_);
 }
 
-void TimeController::operator()(SampleTime time) {
-  songTime_.setTime(time);
-  songDial_.setTime(time);
-}
-
-void TimeController::setThread(Thread* thread) {
-  HasThread::setThread(thread);
-  songDial_.setThread(thread);
-  songTime_.setThread(thread);
-}
-
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec

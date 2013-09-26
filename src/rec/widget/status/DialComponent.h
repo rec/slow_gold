@@ -17,6 +17,7 @@ namespace time {
 
 class DialComponent : public Component,
                       public StateListener<SampleTime>,
+                      public StateListener<Thread*>,
                       public DataListener<waveform::Viewport>,
                       public SettableTooltipClient,
                       public HasThread {
@@ -32,7 +33,8 @@ class DialComponent : public Component,
   static const double REDRAW_ANGLE;
 
  protected:
-  virtual void operator()(const waveform::Viewport&);
+  void operator()(Thread* t) override { setThread(t); }
+  void operator()(const waveform::Viewport&) override;
 
  private:
   void recomputeAngle();

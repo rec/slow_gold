@@ -22,6 +22,7 @@ class TextComponent : public gui::SimpleLabel,
                       public app::LanguageListener,
                       public DataListener<waveform::Viewport>,
                       public StateListener<SampleTime>,
+                      public StateListener<Thread*>,
                       public HasThread {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
@@ -30,10 +31,11 @@ class TextComponent : public gui::SimpleLabel,
   SampleTime getTime() const;
   void setTime(SampleTime time);
   void setLength(SampleTime len) { length_ = len; }
-  virtual void languageChanged();
+  void languageChanged() override;
 
  protected:
-  virtual void operator()(const waveform::Viewport&);
+  void operator()(const waveform::Viewport&) override;
+  void operator()(Thread* t) override { setThread(t); }
   bool doSetTime(SampleTime time);
   void redisplay();
 

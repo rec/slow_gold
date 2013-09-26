@@ -2,7 +2,6 @@
 #define __REC_AUDIO_SOURCE_TIMER__
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/StateListener.h"
 
@@ -10,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Timer : public Wrappy {
+class Timer : public Wrappy, public StateListener<Thread*> {
  public:
   explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(nullptr) {}
 
@@ -27,7 +26,7 @@ class Timer : public Wrappy {
       thread_->notify();
   }
 
-  void setThread(Thread* t) { thread_ = t; }
+  void operator()(Thread* t) override { thread_ = t; }
 
   void broadcastTime() {
     broadcastState<SampleTime>(getNextReadPosition());

@@ -11,15 +11,9 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TimeController : public Panel,
-                       public Listener<SampleTime>,
-                       public HasThread {
+class TimeController : public Panel {
  public:
   TimeController();
-  virtual ~TimeController() {}
-
-  virtual void operator()(SampleTime);
-  void setThread(Thread*) override;
 
  private:
   CriticalSection lock_;

@@ -229,10 +229,7 @@ void Instance::startup() {
 
   thread::callAsync(window_, &DocumentWindow::setVisible, true);
   juceModel_->startThreads();
-  Thread* timer = juceModel_->getThread("timer");
-  DCHECK(timer);
-  components_->transportController_->timeController()->setThread(timer);
-  player_->timer()->setThread(timer);
+  broadcastState<Thread*>(juceModel_->getThread("timer"));
 }
 
 void Instance::postStartup() {
