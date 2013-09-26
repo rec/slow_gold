@@ -1,9 +1,11 @@
 #ifndef __REC_SLOW_COMPONENTS__
 #define __REC_SLOW_COMPONENTS__
 
-#include "rec/music/Metadata.h"
+#include "rec/audio/Audio.h"
 #include "rec/data/DataListener.h"
 #include "rec/gui/GetComponentMap.h"
+#include "rec/music/Metadata.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 
@@ -23,14 +25,16 @@ namespace slow {
 
 class MainPage;
 
-class Components : public data::DataListener<music::Metadata> {
+class Components : public data::DataListener<music::Metadata>,
+                   public StateListener<audio::transport::State> {
  public:
   Components();
   ~Components();
 
   virtual void init();
   void setEnabled(bool enabled);
-  virtual void operator()(const music::Metadata&);
+  void operator()(const music::Metadata&) override;
+  void operator()(audio::transport::State) override;
 
   ApplicationCommandManager* manager_;
   unique_ptr<gui::audio::Loops> loops_;

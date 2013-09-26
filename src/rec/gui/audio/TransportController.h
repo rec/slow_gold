@@ -30,14 +30,12 @@ enum TransportCommand {
 class TransportController : public Panel,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
-                            public StateListener<rec::audio::transport::State>,
                             public Broadcaster<TransportCommand> {
  public:
   TransportController();
   virtual ~TransportController();
 
   virtual void buttonClicked(juce::Button *button);
-  virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
 
  private:

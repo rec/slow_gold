@@ -73,13 +73,6 @@ TransportController::~TransportController() {}
 
 using rec::audio::transport::State;
 
-void TransportController::operator()(State state) {
-  MessageManagerLock l;
-  startStopButton_.setToggleState(state == rec::audio::transport::RUNNING,
-                                  juce::dontSendNotification);
-  startStopButton_.repaint();
-}
-
 void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
 

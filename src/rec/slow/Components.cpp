@@ -80,6 +80,13 @@ void Components::operator()(const music::Metadata& md) {
   thread::callAsync(getInstance()->window_, &SlowWindow::setName, name);
 }
 
+void Components::operator()(audio::transport::State state) {
+  DrawableButton* button = getComponent<DrawableButton>("StartStopButton");
+  MessageManagerLock l;
+  button->setToggleState(state == rec::audio::transport::RUNNING,
+                                  juce::dontSendNotification);
+  button->repaint();
+}
 
 }  // namespace slow
 }  // namespace rec
