@@ -24,7 +24,7 @@ class JuceModel : public ApplicationCommandTarget,
 
   ~JuceModel();
 
-  ApplicationCommandTarget* getNextCommandTarget() override { return NULL; }
+  ApplicationCommandTarget* getNextCommandTarget() override { return nullptr; }
   void getAllCommands(juce::Array<CommandID>& commands) override;
   void getCommandInfo(CommandID, ApplicationCommandInfo&) override;
   bool perform(const InvocationInfo& info) override;

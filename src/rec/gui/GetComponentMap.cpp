@@ -7,11 +7,13 @@ namespace {
 
 void getComponentMap(Component* comp, ComponentMap* map) {
   string name = str(comp->getName());
-  try {
-    map->at(name);
-    LOG(ERROR) << "Duplicate component name " << name;
-  } catch (std::out_of_range&) {
-    (*map)[name] = comp;
+  if (not name.empty()) {
+    try {
+      map->at(name);
+      LOG(ERROR) << "Duplicate component name " << name;
+    } catch (std::out_of_range&) {
+      (*map)[name] = comp;
+    }
   }
 
   for (int i = 0; i < comp->getNumChildComponents(); ++i)

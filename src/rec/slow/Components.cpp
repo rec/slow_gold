@@ -43,6 +43,9 @@ Components::Components()
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());
+  componentMap_ = gui::getComponentMap(mainPage_->panel());
+  for (auto& i: componentMap_)
+    DLOG(INFO) << "Component " << i.first;
 }
 
 Components::~Components() {}

@@ -36,7 +36,6 @@ SampleTime Player::getNextReadPosition() {
 }
 
 void Player::setNextReadPosition(const SampleTime& time) {
-  DLOG(INFO) << time;
   selection_->setNextReadPosition(time);
 }
 

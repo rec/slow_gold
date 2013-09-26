@@ -3,6 +3,7 @@
 
 #include "rec/music/Metadata.h"
 #include "rec/data/DataListener.h"
+#include "rec/gui/GetComponentMap.h"
 
 namespace rec {
 
@@ -43,6 +44,20 @@ class Components : public data::DataListener<music::Metadata> {
   unique_ptr<gui::audio::ModeSelector> modeSelector_;
   unique_ptr<gui::audio::CommandBar> commandBar_;
   unique_ptr<MainPage> mainPage_;
+  gui::ComponentMap componentMap_;
+
+  template <typename Type>
+  Type* getComponent(const string& name) {
+    try {
+      Component* comp = componentMap_.at(name);
+      if (Type* t = dynamic_cast<Type*>(comp))
+        return t;
+      LOG(DFATAL) << "Got component but couldn't cast for " << name;
+    } catch (std::out_of_range&) {
+      LOG(DFATAL) << "Couldn't get component for " << name;
+    }
+    return nullptr;
+  }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);

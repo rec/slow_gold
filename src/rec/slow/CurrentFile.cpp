@@ -35,10 +35,12 @@ void CurrentFile::suspend() {
 }
 
 void CurrentFile::saveState() {
-  auto& player = getInstance()->player_;
-  data::Opener<PlayState> state(file());
-  state->set_time(player->getTime());
-  state->set_is_playing(player->state());
+  if (not empty()) {
+    auto& player = getInstance()->player_;
+    data::Opener<PlayState> state(file());
+    state->set_time(player->getTime());
+    state->set_is_playing(player->state());
+  }
 }
 
 void CurrentFile::resume() {
