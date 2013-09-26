@@ -34,9 +34,9 @@ ModeSelector::ModeSelector()
     : Panel("ModeSelector", HORIZONTAL),
       drag_("Drag", "Drag Mode: Use the mouse to drag the waveform back "
             "and forth"),
-      setTime_("setTime", "Set Current Time Mode: Clicking in the waveform "
+      setTime_("SetTime", "Set Current Time Mode: Clicking in the waveform "
                "sets the current time."),
-      zoomIn_("zoomIn", "Zoom Mode: Clicking on the waveform zooms in on "
+      zoomIn_("ZoomIn", "Zoom Mode: Clicking on the waveform zooms in on "
               "that point."),
       addLoopPointClick_("CreateClick", "Add loop point mode: clicking on the "
                          "waveform creates a loop point.") {

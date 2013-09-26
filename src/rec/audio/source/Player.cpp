@@ -2,6 +2,7 @@
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/util/Math.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace audio {
@@ -39,9 +40,9 @@ void Player::setNextReadPosition(const SampleTime& time) {
   selection_->setNextReadPosition(time);
 }
 
-void Player::broadcastState() {
+void Player::broadcastTransportState() {
   level_.clear();
-  broadcast(state());
+  util::broadcastState<State>(state());
 }
 
 void Player::setState(State s) {
@@ -51,7 +52,7 @@ void Player::setState(State s) {
     else
       transportSource_.stop();
 
-    broadcastState();
+    broadcastTransportState();
   }
 }
 
@@ -105,7 +106,7 @@ State Player::state() const {
 }
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {
-  broadcastState();
+  broadcastTransportState();
 }
 
 void Player::setGain(double gain) {

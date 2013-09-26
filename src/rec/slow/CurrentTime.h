@@ -21,7 +21,7 @@ class CurrentTime : public audio::util::CurrentTimeBase,
                     public DataListener<widget::waveform::Viewport>,
                     public DataListener<GuiSettings>,
                     public StateListener<SampleTime>,
-                    public Listener<audio::transport::State> {
+                    public StateListener<audio::transport::State> {
  public:
   CurrentTime();
   virtual ~CurrentTime() {}

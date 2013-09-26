@@ -11,8 +11,8 @@ DataSlider::DataSlider(const String& name,
                        uint32 textEntryBoxHeight)
     : Panel(name, HORIZONTAL, true),
       data::AddressListener(address),
-      slider_(name),
-      caption_(name),
+      slider_(name + ".slider"),
+      caption_(name + ".caption"),
       name_(name),
       tooltip_(tooltip) {
   slider_.setSliderStyle(Slider::LinearHorizontal);

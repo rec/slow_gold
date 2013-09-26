@@ -32,7 +32,6 @@ class Player : public DataListener<Gain>,
                public DataListener<StereoProto>,
                public DataListener<stretch::Stretch>,
                public DataListener<audio::AudioSettings>,
-               public Broadcaster<transport::State>,
                public Listener<SampleRate>,
                public juce::ChangeListener {
  public:
@@ -43,7 +42,7 @@ class Player : public DataListener<Gain>,
 
   void setState(transport::State state);
 
-  void broadcastState();
+  void broadcastTransportState();
   void toggle() { setState(invert(state())); }
   void start() { setState(transport::RUNNING); }
 

@@ -25,8 +25,8 @@ TransportController::TransportController()
       buttonsPanel_("Buttons", HORIZONTAL),
       gainPanel_("Gain", HORIZONTAL),
       timeController_(gui::makeLayout("TimeController", this)),
-      startStopButton_("Start/stop", "Start/Stop Button: Toggle between pause"
-                       " and play."),
+      startStopButton_("StartStopButton", "Start/Stop Button: Toggle between pause "
+                       "and play."),
       jumpToStartButton_("Jump to start", "Jump Forward Button: "
                          "Jump to the start of the next segment."),
       jumpBackButton_("Jump Back", "Jump Back Button: "
@@ -35,8 +35,8 @@ TransportController::TransportController()
                          "Jump to the start of the track."),
       levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
                   "right tracks."),
-      levelSlider_("Volume", "Volume Slider: Raise or lower the sound intensity, "
-             "in dB.", data::makeAddress<Gain>("gain")),
+      levelSlider_("LevelSlider", "Volume Slider: Raise or lower the sound "
+                   "intensity, in dB.", data::makeAddress<Gain>("gain")),
       muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
                   data::makeAddress<Gain>("mute")) {
   startStopButton_.setClickingTogglesState(true);

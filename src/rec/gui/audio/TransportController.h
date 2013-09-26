@@ -10,6 +10,7 @@
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/util/Listener.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace gui {
@@ -29,7 +30,7 @@ enum TransportCommand {
 class TransportController : public Panel,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
-                            public Listener<rec::audio::transport::State>,
+                            public StateListener<rec::audio::transport::State>,
                             public Broadcaster<TransportCommand> {
  public:
   TransportController();

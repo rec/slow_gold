@@ -165,8 +165,6 @@ void Instance::init() {
   window_->getAppleMenu()->addCommandItem(program::applicationCommandManager(),
                                           slow::Command::ABOUT_THIS_PROGRAM);
 
-  player_->addListener(components_->transportController_.get());
-  player_->addListener(currentTime_.get());
   audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
 
 	typedef gui::DropTarget<Waveform> DropWave;
