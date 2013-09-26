@@ -7,12 +7,19 @@ layout {
     size {
       min: "100"
     }
-
+    time {}
   }
   component {
     name: "SongDial"
     size {
       min: "45"
+    }
+    time_dial {
+      widget {
+        colors: "white"
+        colors: "green"
+        colors: "red"
+      }
     }
   }
 }

@@ -67,7 +67,7 @@ unique_ptr<Component> makeComponent(const Context& context) {
     if (TTClient* tt = dynamic_cast<TTClient*>(component.get()))
       tt->setTooltip(comp.tooltip());
   } else {
-    LOG(DFATAL) << "No component in" << comp.ShortDebugString();
+    LOG(DFATAL) << "No component in " << comp.ShortDebugString();
   }
 
   return std::move(component);
