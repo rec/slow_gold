@@ -39,11 +39,7 @@ class TransportController : public Panel,
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
 
-  void clearLevels();
-
  private:
-  void setGain(rec::audio::Gain);
-
   Panel buttonsPanel_;
   Panel gainPanel_;
   unique_ptr<Component> timeController_;

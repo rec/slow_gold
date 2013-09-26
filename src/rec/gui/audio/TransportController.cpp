@@ -100,16 +100,8 @@ void TransportController::buttonClicked(juce::Button *button) {
 }
 
 void TransportController::operator()(const rec::audio::Gain& gain) {
-  setGain(gain);
-}
-
-void TransportController::setGain(rec::audio::Gain gain) {
   levelSlider_.setEnabled(!gain.mute());
   levelMeter_(gain);
-}
-
-void TransportController::clearLevels() {
-  levelMeter_(rec::audio::LevelVector());
 }
 
 }  // namespace rec
