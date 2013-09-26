@@ -1,10 +1,13 @@
 #include "rec/gui/proto/Help.h"
+
+#include "rec/data/DataBroadcaster.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Context.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/util/Binary.h"
+#include "rec/util/Listener.h"
 
 using namespace juce;
 
@@ -13,7 +16,7 @@ namespace gui {
 
 namespace {
 
-class HelpPanel : public Panel {
+class HelpPanel : public Panel, public Listener<const HelpText&> {
  public:
   HelpPanel(const Context& context) : Panel("HelpPanel", VERTICAL) {
     INSTANCE = this;
@@ -35,6 +38,8 @@ class HelpPanel : public Panel {
 
     body_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
     body_.setJustificationType(Justification::topLeft);
+
+    data::addDataListener<const HelpText&>(this);
   }
 
   void setTooltip(const String& tt) override {
@@ -42,9 +47,9 @@ class HelpPanel : public Panel {
     body_.setTooltip(tt);
   }
 
-  void setHelp(const Tooltip& tt) {
-    caption_.setTextIfChanged(tt.first, juce::dontSendNotification);
-    body_.setTextIfChanged(tt.second, juce::dontSendNotification);
+  void operator()(const HelpText& help) override {
+    caption_.setTextIfChanged(help.first, juce::dontSendNotification);
+    body_.setTextIfChanged(help.second, juce::dontSendNotification);
   }
 
   ~HelpPanel() {
@@ -63,10 +68,6 @@ HelpPanel* HelpPanel::INSTANCE = nullptr;
 
 unique_ptr<Component> makeHelp(const Context& context) {
   return unique_ptr<Component>(new HelpPanel(context));
-}
-
-void setHelp(const Tooltip& tt) {
-  HelpPanel::INSTANCE->setHelp(tt);
 }
 
 }  // namespace gui

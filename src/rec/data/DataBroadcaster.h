@@ -21,9 +21,10 @@ class DataBroadcaster {
   template <typename Type>
   void addListener(Listener<Type>* listener) {
     Broadcaster<Type>* b;
+    auto name = typeid(Type).name();
     {
       Lock l(lock_);
-      auto& bref = broadcasters_[typeid(Type).name()];
+      auto& bref = broadcasters_[name];
       b = dynamic_cast<Broadcaster<Type>*>(bref.get());
       if (not b)
         bref.reset(b = new Broadcaster<Type>);
@@ -34,12 +35,16 @@ class DataBroadcaster {
   template <typename Type>
   void broadcast(Type value) {
     Broadcaster<Type>* b;
+    auto name = typeid(Type).name();
     {
       Lock l(lock_);
-      auto name = typeid(Type).name();
-      b = dynamic_cast<Broadcaster<Type>*>(broadcasters_.at(name).get());
+      auto& bref = broadcasters_.at(name);
+      b = dynamic_cast<Broadcaster<Type>*>(bref.get());
     }
-    b->broadcast(value);
+    if (b)
+      b->broadcast(value);
+    else
+      LOG(DFATAL) << "Couldn't broadcast to " << name;
   }
 
   void clear() {
@@ -55,12 +60,12 @@ class DataBroadcaster {
 
 template <typename Type>
 void addDataListener(Listener<Type>* listener) {
-  DataBroadcaster::instance()->addListener(listener);
+  DataBroadcaster::instance()->addListener<Type>(listener);
 }
 
 template <typename Type>
 void broadcastData(Type value) {
-  DataBroadcaster::instance()->broadcast(value);
+  DataBroadcaster::instance()->broadcast<Type>(value);
 }
 
 }  // namespace data

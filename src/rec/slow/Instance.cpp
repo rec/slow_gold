@@ -289,9 +289,5 @@ SampleRate Instance::getSourceSampleRate() const {
 
 const bool Instance::USE_NEW_GUI = true;
 
-void Instance::setHelp(const gui::Tooltip& tt) {
-  gui::setHelp(tt);
-}
-
 }  // namespace slow
 }  // namespace rec

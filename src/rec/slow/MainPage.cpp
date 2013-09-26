@@ -4,7 +4,7 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/base/DropDead.h"
-#include "rec/gui/GetTooltip.h"
+#include "rec/gui/GetHelpText.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"

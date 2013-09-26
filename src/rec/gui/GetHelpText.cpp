@@ -1,4 +1,5 @@
-#include "rec/gui/GetTooltip.h"
+#include "rec/gui/GetHelpText.h"
+#include "rec/data/DataBroadcaster.h"
 
 using namespace juce;
 
@@ -6,7 +7,14 @@ namespace rec {
 namespace gui {
 
 namespace {
-Tooltip splitTooltip(const String& tt) {
+
+HelpText getHelpText(Component* c);
+
+inline Component* getComponentUnderMouse() {
+  return Desktop::getInstance().getMainMouseSource().getComponentUnderMouse();
+}
+
+HelpText splitHelpText(const String& tt) {
   std::pair<String, String> result;
   int pos = tt.indexOf(":");
   if (pos == -1) {
@@ -18,7 +26,7 @@ Tooltip splitTooltip(const String& tt) {
   return result;
 }
 
-String getTooltipFromComponent(Component* c) {
+String getHelpTextFromComponent(Component* c) {
   String result;
   while (c) {
     if (TooltipClient* ttc = dynamic_cast<TooltipClient*>(c)) {
@@ -31,11 +39,17 @@ String getTooltipFromComponent(Component* c) {
   return "";
 }
 
+Component* COMPONENT = nullptr;
 
 }  // namespace
 
-Tooltip getTooltip(Component* c) {
-  return splitTooltip(getTooltipFromComponent(c));
+void refreshHelpText() {
+  Component* comp = getComponentUnderMouse();
+  if (comp != COMPONENT) {
+    COMPONENT = comp;
+    data::broadcastData<const HelpText&>(
+        splitHelpText(getHelpTextFromComponent(comp)));
+  }
 }
 
 }  // namespace gui

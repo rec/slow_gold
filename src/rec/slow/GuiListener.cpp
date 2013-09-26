@@ -8,7 +8,7 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/commands/Command.pb.h"
-#include "rec/gui/GetTooltip.h"
+#include "rec/gui/GetHelpText.h"
 #include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
@@ -74,13 +74,7 @@ void GuiListener::update() {
     if (!displayHelpPane_)
       return;
   }
-
-  Component* comp = gui::getComponentUnderMouse();
-
-  if (comp != lastComponent_) {
-    lastComponent_ = comp;
-    getInstance()->setHelp(gui::getTooltip(comp));
-  }
+  gui::refreshHelpText();
 }
 
 }  // namespace slow

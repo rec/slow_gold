@@ -5,7 +5,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
-#include "rec/gui/GetTooltip.h"
+#include "rec/gui/GetHelpText.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec { namespace audio { class Device; }}
@@ -69,8 +69,6 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
-
-  void setHelp(const gui::Tooltip&);
 
   static const bool USE_NEW_GUI;
 
