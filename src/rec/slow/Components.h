@@ -32,8 +32,6 @@ class Components : public data::DataListener<music::Metadata> {
   virtual void operator()(const music::Metadata&);
 
   ApplicationCommandManager* manager_;
-  unique_ptr<Component> timeController_;
-
   unique_ptr<gui::audio::Loops> loops_;
   unique_ptr<gui::SongData> songData_;
   unique_ptr<gui::audio::TransformController> transformController_;

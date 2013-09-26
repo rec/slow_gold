@@ -35,7 +35,6 @@ class TransportController : public Panel,
   TransportController();
   virtual ~TransportController();
 
-  void addTimeController(Component*);
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
@@ -51,6 +50,7 @@ class TransportController : public Panel,
 
   Panel buttonsPanel_;
   Panel gainPanel_;
+  unique_ptr<Component> timeController_;
 
   LanguageButton startStopButton_;
   LanguageButton jumpToStartButton_;

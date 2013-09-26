@@ -23,7 +23,6 @@
 #include "rec/gui/Dialog.h"
 #include "rec/gui/LookAndFeel.h"
 #include "rec/gui/audio/CommandBar.h"
-#include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/gui/proto/Help.h"

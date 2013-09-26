@@ -5,7 +5,6 @@
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/gui/proto/Layout.h"
@@ -41,14 +40,6 @@ Components::Components()
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
 	  commandBar_(new gui::audio::CommandBar) {
-  if (Instance::USE_NEW_GUI) {
-    timeController_ = gui::makeLayout("TimeController",
-                                      transportController_.get());
-  } else {
-    timeController_.reset(new gui::audio::TimeController);
-  }
-  transportController_->addTimeController(timeController_.get());
-
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());
@@ -61,7 +52,6 @@ void Components::init() {
 }
 
 void Components::setEnabled(bool enabled) {
-  timeController_->setEnabled(enabled);
   loops_->setEnabled(enabled);
   songData_->setEnabled(enabled);
   transformController_->setEnabled(enabled);

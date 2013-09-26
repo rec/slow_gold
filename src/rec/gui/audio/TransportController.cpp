@@ -1,6 +1,7 @@
 #include "rec/gui/audio/TransportController.h"
 
 #include "rec/gui/IconButton.h"
+#include "rec/gui/proto/Layout.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -23,6 +24,7 @@ TransportController::TransportController()
     : Panel("TransportController", VERTICAL),
       buttonsPanel_("Buttons", HORIZONTAL),
       gainPanel_("Gain", HORIZONTAL),
+      timeController_(gui::makeLayout("TimeController", this)),
       startStopButton_("Start/stop", "Start/Stop Button: Toggle between pause"
                        " and play."),
       jumpToStartButton_("Jump to start", "Jump Forward Button: "
@@ -37,9 +39,6 @@ TransportController::TransportController()
              "in dB.", data::makeAddress<Gain>("gain")),
       muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
                   data::makeAddress<Gain>("mute")) {
-}
-
-void TransportController::addTimeController(Component* timeController) {
   startStopButton_.setClickingTogglesState(true);
 
   SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
@@ -56,7 +55,7 @@ void TransportController::addTimeController(Component* timeController) {
   buttonsPanel_.addToPanel(&jumpToStartButton_, ICON_SIZE);
   buttonsPanel_.addToPanel(&jumpBackButton_, ICON_SIZE);
   buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
-  buttonsPanel_.addToPanel(timeController);
+  buttonsPanel_.addToPanel(timeController_.get());
 
   level_.slider()->setRange(-36.0, +12.0, 0.1);
   level_.slider()->setDetent(0.0f);
