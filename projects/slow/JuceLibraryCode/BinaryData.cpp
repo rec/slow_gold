@@ -1645,7 +1645,7 @@ static const unsigned char temp_binary_data_14[] =
 "  component {\n"
 "    name: \"EnableButton\"\n"
 "    tooltip: \"Enable Speed Slider: Disable or enable speed changes to the track.\"\n"
-"    address:: \"rec.audio.stretch.Stretch:time_enabled\"\n"
+"    address: \"rec.audio.stretch.Stretch:time_enabled\"\n"
 "    toggle_button {\n"
 "      caption: \"Enable\"\n"
 "    }\n"
@@ -13779,7 +13779,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 290; return Layout_def;
-        case 0x28df9dc5:  numBytes = 665; return LeftTransformPanel_def;
+        case 0x28df9dc5:  numBytes = 664; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 383; return MainPanel_def;
         case 0xd66a1508:  numBytes = 271; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;

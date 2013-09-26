@@ -1,12 +1,13 @@
 #include <math.h>
 
 #include "rec/widget/status/DialComponent.h"
-#include "rec/util/Math.h"
+#include "rec/data/DataBroadcaster.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Geometry.h"
-#include "rec/widget/Painter.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/Math.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/Painter.h"
 
 using rec::gui::Colors;
 using rec::gui::Color;
@@ -37,6 +38,9 @@ DialComponent::DialComponent(const Dial& desc)
       timeRatio_(0.0) {
   description_.mutable_widget()->set_transparent(true);
   setTooltip("Time Dial: Shows graphically how much of the loop remains.");
+
+  if (desc.use_global_clock())
+    data::addDataListener<SampleTime>(this);
 }
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;

@@ -182,10 +182,6 @@ void Instance::init() {
   components_->transportController_->addListener(guiListener_.get());
   components_->commandBar_->addListener(guiListener_.get());
 
-  player_->timer()->addListener(components_->timeController_.get());
-  player_->timer()->addListener(waveform->timeCursor());
-  player_->timer()->addListener(currentTime_.get());
-
   player_->level()->addListener(components_->transportController_->levelListener());
 
   player_->setSource(makeSource());

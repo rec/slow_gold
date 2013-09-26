@@ -36,9 +36,6 @@ const ::google::protobuf::Descriptor* Dial_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Dial_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* Dial_Direction_descriptor_ = NULL;
-const ::google::protobuf::Descriptor* Time_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Time_reflection_ = NULL;
 
 }  // namespace
 
@@ -50,10 +47,11 @@ void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
       "rec/widget/status/Time.proto");
   GOOGLE_CHECK(file != NULL);
   Text_descriptor_ = file->message_type(0);
-  static const int Text_offsets_[3] = {
+  static const int Text_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, separator_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, fields_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, use_global_clock_),
   };
   Text_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -104,7 +102,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Text_Fields));
   Dial_descriptor_ = file->message_type(1);
-  static const int Dial_offsets_[8] = {
+  static const int Dial_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, outline_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, direction_),
@@ -113,6 +111,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, empty_on_zero_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, from_color_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, to_color_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, use_global_clock_),
   };
   Dial_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -126,22 +125,6 @@ void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Dial));
   Dial_Direction_descriptor_ = Dial_descriptor_->enum_type(0);
-  Time_descriptor_ = file->message_type(2);
-  static const int Time_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, text_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, dial_),
-  };
-  Time_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Time_descriptor_,
-      Time::default_instance_,
-      Time_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Time));
 }
 
 namespace {
@@ -162,8 +145,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
     Text_Fields_descriptor_, &Text_Fields::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Dial_descriptor_, &Dial::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Time_descriptor_, &Time::default_instance());
 }
 
 }  // namespace
@@ -177,8 +158,6 @@ void protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto() {
   delete Text_Fields_reflection_;
   delete Dial::default_instance_;
   delete Dial_reflection_;
-  delete Time::default_instance_;
-  delete Time_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
@@ -192,39 +171,36 @@ void protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/widget/status/Time.proto\022\026rec.widg"
     "et.status.time\032\023rec/gui/Color.proto\032\027rec"
-    "/widget/Widget.proto\"\372\002\n\004Text\022\"\n\006widget\030"
+    "/widget/Widget.proto\"\232\003\n\004Text\022\"\n\006widget\030"
     "\001 \001(\0132\022.rec.widget.Widget\0229\n\tseparator\030\002"
     " \001(\0132&.rec.widget.status.time.Text.Separ"
     "ator\0223\n\006fields\030\003 \001(\0132#.rec.widget.status"
-    ".time.Text.Fields\032]\n\tSeparator\022\021\n\tsepara"
-    "tor\030\001 \001(\t\022\r\n\005width\030\002 \001(\r\022\024\n\005flash\030\003 \001(\010:"
-    "\005false\022\030\n\ndisplay_ms\030\004 \001(\010:\004true\032\177\n\006Fiel"
-    "ds\022\024\n\005hours\030\001 \001(\010:\005false\022\025\n\007minutes\030\002 \001("
-    "\010:\004true\022\025\n\007seconds\030\003 \001(\010:\004true\022\032\n\014millis"
-    "econds\030\004 \001(\010:\004true\022\025\n\006frames\030\005 \001(\010:\005fals"
-    "e\"\306\002\n\004Dial\022\"\n\006widget\030\001 \001(\0132\022.rec.widget."
-    "Widget\022\017\n\007outline\030\002 \001(\r\022D\n\tdirection\030\003 \001"
-    "(\0162&.rec.widget.status.time.Dial.Directi"
-    "on:\tCLOCKWISE\022\031\n\021display_lap_count\030\004 \001(\010"
-    "\022\022\n\nzero_point\030\007 \001(\001\022\033\n\rempty_on_zero\030\010 "
-    "\001(\010:\004true\022\"\n\nfrom_color\030\t \001(\0132\016.rec.gui."
-    "Color\022 \n\010to_color\030\n \001(\0132\016.rec.gui.Color\""
-    "1\n\tDirection\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_C"
-    "LOCKWISE\020\002\"^\n\004Time\022*\n\004text\030\001 \001(\0132\034.rec.w"
-    "idget.status.time.Text\022*\n\004dial\030\002 \001(\0132\034.r"
-    "ec.widget.status.time.Dial", 906);
+    ".time.Text.Fields\022\036\n\020use_global_clock\030\004 "
+    "\001(\010:\004true\032]\n\tSeparator\022\021\n\tseparator\030\001 \001("
+    "\t\022\r\n\005width\030\002 \001(\r\022\024\n\005flash\030\003 \001(\010:\005false\022\030"
+    "\n\ndisplay_ms\030\004 \001(\010:\004true\032\177\n\006Fields\022\024\n\005ho"
+    "urs\030\001 \001(\010:\005false\022\025\n\007minutes\030\002 \001(\010:\004true\022"
+    "\025\n\007seconds\030\003 \001(\010:\004true\022\032\n\014milliseconds\030\004"
+    " \001(\010:\004true\022\025\n\006frames\030\005 \001(\010:\005false\"\346\002\n\004Di"
+    "al\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\022\017"
+    "\n\007outline\030\002 \001(\r\022D\n\tdirection\030\003 \001(\0162&.rec"
+    ".widget.status.time.Dial.Direction:\tCLOC"
+    "KWISE\022\031\n\021display_lap_count\030\004 \001(\010\022\022\n\nzero"
+    "_point\030\007 \001(\001\022\033\n\rempty_on_zero\030\010 \001(\010:\004tru"
+    "e\022\"\n\nfrom_color\030\t \001(\0132\016.rec.gui.Color\022 \n"
+    "\010to_color\030\n \001(\0132\016.rec.gui.Color\022\036\n\020use_g"
+    "lobal_clock\030\013 \001(\010:\004true\"1\n\tDirection\022\r\n\t"
+    "CLOCKWISE\020\001\022\025\n\021COUNTER_CLOCKWISE\020\002", 874);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/status/Time.proto", &protobuf_RegisterTypes);
   Text::default_instance_ = new Text();
   Text_Separator::default_instance_ = new Text_Separator();
   Text_Fields::default_instance_ = new Text_Fields();
   Dial::default_instance_ = new Dial();
-  Time::default_instance_ = new Time();
   Text::default_instance_->InitAsDefaultInstance();
   Text_Separator::default_instance_->InitAsDefaultInstance();
   Text_Fields::default_instance_->InitAsDefaultInstance();
   Dial::default_instance_->InitAsDefaultInstance();
-  Time::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto);
 }
 
@@ -940,6 +916,7 @@ void Text_Fields::Swap(Text_Fields* other) {
 const int Text::kWidgetFieldNumber;
 const int Text::kSeparatorFieldNumber;
 const int Text::kFieldsFieldNumber;
+const int Text::kUseGlobalClockFieldNumber;
 #endif  // !_MSC_VER
 
 Text::Text()
@@ -964,6 +941,7 @@ void Text::SharedCtor() {
   widget_ = NULL;
   separator_ = NULL;
   fields_ = NULL;
+  use_global_clock_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1011,6 +989,7 @@ void Text::Clear() {
     if (has_fields()) {
       if (fields_ != NULL) fields_->::rec::widget::status::time::Text_Fields::Clear();
     }
+    use_global_clock_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1059,6 +1038,22 @@ bool Text::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_use_global_clock;
+        break;
+      }
+
+      // optional bool use_global_clock = 4 [default = true];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_use_global_clock:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &use_global_clock_)));
+          set_has_use_global_clock();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1099,6 +1094,11 @@ void Text::SerializeWithCachedSizes(
       3, this->fields(), output);
   }
 
+  // optional bool use_global_clock = 4 [default = true];
+  if (has_use_global_clock()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->use_global_clock(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1126,6 +1126,11 @@ void Text::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->fields(), target);
+  }
+
+  // optional bool use_global_clock = 4 [default = true];
+  if (has_use_global_clock()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->use_global_clock(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1158,6 +1163,11 @@ int Text::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->fields());
+    }
+
+    // optional bool use_global_clock = 4 [default = true];
+    if (has_use_global_clock()) {
+      total_size += 1 + 1;
     }
 
   }
@@ -1196,6 +1206,9 @@ void Text::MergeFrom(const Text& from) {
     if (from.has_fields()) {
       mutable_fields()->::rec::widget::status::time::Text_Fields::MergeFrom(from.fields());
     }
+    if (from.has_use_global_clock()) {
+      set_use_global_clock(from.use_global_clock());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1222,6 +1235,7 @@ void Text::Swap(Text* other) {
     std::swap(widget_, other->widget_);
     std::swap(separator_, other->separator_);
     std::swap(fields_, other->fields_);
+    std::swap(use_global_clock_, other->use_global_clock_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1269,6 +1283,7 @@ const int Dial::kZeroPointFieldNumber;
 const int Dial::kEmptyOnZeroFieldNumber;
 const int Dial::kFromColorFieldNumber;
 const int Dial::kToColorFieldNumber;
+const int Dial::kUseGlobalClockFieldNumber;
 #endif  // !_MSC_VER
 
 Dial::Dial()
@@ -1298,6 +1313,7 @@ void Dial::SharedCtor() {
   empty_on_zero_ = true;
   from_color_ = NULL;
   to_color_ = NULL;
+  use_global_clock_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1350,6 +1366,9 @@ void Dial::Clear() {
     if (has_to_color()) {
       if (to_color_ != NULL) to_color_->::rec::gui::Color::Clear();
     }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    use_global_clock_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1483,6 +1502,22 @@ bool Dial::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(88)) goto parse_use_global_clock;
+        break;
+      }
+
+      // optional bool use_global_clock = 11 [default = true];
+      case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_use_global_clock:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &use_global_clock_)));
+          set_has_use_global_clock();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1549,6 +1584,11 @@ void Dial::SerializeWithCachedSizes(
       10, this->to_color(), output);
   }
 
+  // optional bool use_global_clock = 11 [default = true];
+  if (has_use_global_clock()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->use_global_clock(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1602,6 +1642,11 @@ void Dial::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         10, this->to_color(), target);
+  }
+
+  // optional bool use_global_clock = 11 [default = true];
+  if (has_use_global_clock()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->use_global_clock(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1665,6 +1710,13 @@ int Dial::ByteSize() const {
     }
 
   }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional bool use_global_clock = 11 [default = true];
+    if (has_use_global_clock()) {
+      total_size += 1 + 1;
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1716,6 +1768,11 @@ void Dial::MergeFrom(const Dial& from) {
       mutable_to_color()->::rec::gui::Color::MergeFrom(from.to_color());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_use_global_clock()) {
+      set_use_global_clock(from.use_global_clock());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1746,6 +1803,7 @@ void Dial::Swap(Dial* other) {
     std::swap(empty_on_zero_, other->empty_on_zero_);
     std::swap(from_color_, other->from_color_);
     std::swap(to_color_, other->to_color_);
+    std::swap(use_global_clock_, other->use_global_clock_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1757,264 +1815,6 @@ void Dial::Swap(Dial* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = Dial_descriptor_;
   metadata.reflection = Dial_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Time::kTextFieldNumber;
-const int Time::kDialFieldNumber;
-#endif  // !_MSC_VER
-
-Time::Time()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Time::InitAsDefaultInstance() {
-  text_ = const_cast< ::rec::widget::status::time::Text*>(&::rec::widget::status::time::Text::default_instance());
-  dial_ = const_cast< ::rec::widget::status::time::Dial*>(&::rec::widget::status::time::Dial::default_instance());
-}
-
-Time::Time(const Time& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Time::SharedCtor() {
-  _cached_size_ = 0;
-  text_ = NULL;
-  dial_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Time::~Time() {
-  SharedDtor();
-}
-
-void Time::SharedDtor() {
-  if (this != default_instance_) {
-    delete text_;
-    delete dial_;
-  }
-}
-
-void Time::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Time::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Time_descriptor_;
-}
-
-const Time& Time::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
-  return *default_instance_;
-}
-
-Time* Time::default_instance_ = NULL;
-
-Time* Time::New() const {
-  return new Time;
-}
-
-void Time::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_text()) {
-      if (text_ != NULL) text_->::rec::widget::status::time::Text::Clear();
-    }
-    if (has_dial()) {
-      if (dial_ != NULL) dial_->::rec::widget::status::time::Dial::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Time::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.status.time.Text text = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_text()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_dial;
-        break;
-      }
-
-      // optional .rec.widget.status.time.Dial dial = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_dial:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_dial()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Time::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.status.time.Text text = 1;
-  if (has_text()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->text(), output);
-  }
-
-  // optional .rec.widget.status.time.Dial dial = 2;
-  if (has_dial()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->dial(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Time::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.status.time.Text text = 1;
-  if (has_text()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->text(), target);
-  }
-
-  // optional .rec.widget.status.time.Dial dial = 2;
-  if (has_dial()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->dial(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Time::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.status.time.Text text = 1;
-    if (has_text()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->text());
-    }
-
-    // optional .rec.widget.status.time.Dial dial = 2;
-    if (has_dial()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->dial());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Time::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Time* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Time*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Time::MergeFrom(const Time& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_text()) {
-      mutable_text()->::rec::widget::status::time::Text::MergeFrom(from.text());
-    }
-    if (from.has_dial()) {
-      mutable_dial()->::rec::widget::status::time::Dial::MergeFrom(from.dial());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Time::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Time::CopyFrom(const Time& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Time::IsInitialized() const {
-
-  return true;
-}
-
-void Time::Swap(Time* other) {
-  if (other != this) {
-    std::swap(text_, other->text_);
-    std::swap(dial_, other->dial_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Time::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Time_descriptor_;
-  metadata.reflection = Time_reflection_;
   return metadata;
 }
 

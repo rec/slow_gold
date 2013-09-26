@@ -1,6 +1,9 @@
 #ifndef __REC_DATA_DATABROADCASTER__
 #define __REC_DATA_DATABROADCASTER__
 
+#include <typeinfo>
+#include <unordered_map>
+
 #include "rec/util/Listener.h"
 
 namespace rec {
@@ -16,26 +19,31 @@ class DataBroadcaster {
   }
 
   template <typename Type>
-  void addListener(const string& name, Listener<Type>* listener) {
+  void addListener(Listener<Type>* listener) {
     Broadcaster<Type>* b;
     {
       Lock l(lock_);
-      auto& bref = broadcasters_[name];
-      b = bref.get();
+      auto& bref = broadcasters_[typeid(Type).name()];
+      b = dynamic_cast<Broadcaster<Type>*>(bref.get());
       if (not b)
-        bref.reset(broadcaster = new Broadcaster<Type>);
+        bref.reset(b = new Broadcaster<Type>);
     }
     b->addListener(listener);
   }
 
   template <typename Type>
-  void broadcast(const string& name, Type value) {
+  void broadcast(Type value) {
     Broadcaster<Type>* b;
     {
       Lock l(lock_);
-      b = dynamic_cast<Broadcaster<Type>*>(broadcasters_.at[name].get());
+      auto name = typeid(Type).name();
+      b = dynamic_cast<Broadcaster<Type>*>(broadcasters_.at(name).get());
     }
     b->broadcast(value);
+  }
+
+  void clear() {
+    broadcasters_.clear();
   }
 
  private:
@@ -45,12 +53,15 @@ class DataBroadcaster {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataBroadcaster);
 };
 
-// TYPE is the full type name, without the rec::.
-#define ADD_DATA_LISTENER(TYPE, LISTENER)                         \
-  DataBroadcaster::instance()->addListener<TYPE>(#TYPE, listener)
+template <typename Type>
+void addDataListener(Listener<Type>* listener) {
+  DataBroadcaster::instance()->addListener(listener);
+}
 
-#define BROADCAST_DATA(TYPE, VALUE)                           \
-  DataBroadcaster::instance()->broadcast<TYPE>(#TYPE, value)
+template <typename Type>
+void broadcastData(Type value) {
+  DataBroadcaster::instance()->broadcast(value);
+}
 
 }  // namespace data
 }  // namespace rec

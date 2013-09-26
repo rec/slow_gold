@@ -15,7 +15,7 @@ import rec.widget.Widget_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/widget/status/Time.proto',
   package='rec.widget.status.time',
-  serialized_pb='\n\x1crec/widget/status/Time.proto\x12\x16rec.widget.status.time\x1a\x13rec/gui/Color.proto\x1a\x17rec/widget/Widget.proto\"\xfa\x02\n\x04Text\x12\"\n\x06widget\x18\x01 \x01(\x0b\x32\x12.rec.widget.Widget\x12\x39\n\tseparator\x18\x02 \x01(\x0b\x32&.rec.widget.status.time.Text.Separator\x12\x33\n\x06\x66ields\x18\x03 \x01(\x0b\x32#.rec.widget.status.time.Text.Fields\x1a]\n\tSeparator\x12\x11\n\tseparator\x18\x01 \x01(\t\x12\r\n\x05width\x18\x02 \x01(\r\x12\x14\n\x05\x66lash\x18\x03 \x01(\x08:\x05\x66\x61lse\x12\x18\n\ndisplay_ms\x18\x04 \x01(\x08:\x04true\x1a\x7f\n\x06\x46ields\x12\x14\n\x05hours\x18\x01 \x01(\x08:\x05\x66\x61lse\x12\x15\n\x07minutes\x18\x02 \x01(\x08:\x04true\x12\x15\n\x07seconds\x18\x03 \x01(\x08:\x04true\x12\x1a\n\x0cmilliseconds\x18\x04 \x01(\x08:\x04true\x12\x15\n\x06\x66rames\x18\x05 \x01(\x08:\x05\x66\x61lse\"\xc6\x02\n\x04\x44ial\x12\"\n\x06widget\x18\x01 \x01(\x0b\x32\x12.rec.widget.Widget\x12\x0f\n\x07outline\x18\x02 \x01(\r\x12\x44\n\tdirection\x18\x03 \x01(\x0e\x32&.rec.widget.status.time.Dial.Direction:\tCLOCKWISE\x12\x19\n\x11\x64isplay_lap_count\x18\x04 \x01(\x08\x12\x12\n\nzero_point\x18\x07 \x01(\x01\x12\x1b\n\rempty_on_zero\x18\x08 \x01(\x08:\x04true\x12\"\n\nfrom_color\x18\t \x01(\x0b\x32\x0e.rec.gui.Color\x12 \n\x08to_color\x18\n \x01(\x0b\x32\x0e.rec.gui.Color\"1\n\tDirection\x12\r\n\tCLOCKWISE\x10\x01\x12\x15\n\x11\x43OUNTER_CLOCKWISE\x10\x02\"^\n\x04Time\x12*\n\x04text\x18\x01 \x01(\x0b\x32\x1c.rec.widget.status.time.Text\x12*\n\x04\x64ial\x18\x02 \x01(\x0b\x32\x1c.rec.widget.status.time.Dial')
+  serialized_pb='\n\x1crec/widget/status/Time.proto\x12\x16rec.widget.status.time\x1a\x13rec/gui/Color.proto\x1a\x17rec/widget/Widget.proto\"\x9a\x03\n\x04Text\x12\"\n\x06widget\x18\x01 \x01(\x0b\x32\x12.rec.widget.Widget\x12\x39\n\tseparator\x18\x02 \x01(\x0b\x32&.rec.widget.status.time.Text.Separator\x12\x33\n\x06\x66ields\x18\x03 \x01(\x0b\x32#.rec.widget.status.time.Text.Fields\x12\x1e\n\x10use_global_clock\x18\x04 \x01(\x08:\x04true\x1a]\n\tSeparator\x12\x11\n\tseparator\x18\x01 \x01(\t\x12\r\n\x05width\x18\x02 \x01(\r\x12\x14\n\x05\x66lash\x18\x03 \x01(\x08:\x05\x66\x61lse\x12\x18\n\ndisplay_ms\x18\x04 \x01(\x08:\x04true\x1a\x7f\n\x06\x46ields\x12\x14\n\x05hours\x18\x01 \x01(\x08:\x05\x66\x61lse\x12\x15\n\x07minutes\x18\x02 \x01(\x08:\x04true\x12\x15\n\x07seconds\x18\x03 \x01(\x08:\x04true\x12\x1a\n\x0cmilliseconds\x18\x04 \x01(\x08:\x04true\x12\x15\n\x06\x66rames\x18\x05 \x01(\x08:\x05\x66\x61lse\"\xe6\x02\n\x04\x44ial\x12\"\n\x06widget\x18\x01 \x01(\x0b\x32\x12.rec.widget.Widget\x12\x0f\n\x07outline\x18\x02 \x01(\r\x12\x44\n\tdirection\x18\x03 \x01(\x0e\x32&.rec.widget.status.time.Dial.Direction:\tCLOCKWISE\x12\x19\n\x11\x64isplay_lap_count\x18\x04 \x01(\x08\x12\x12\n\nzero_point\x18\x07 \x01(\x01\x12\x1b\n\rempty_on_zero\x18\x08 \x01(\x08:\x04true\x12\"\n\nfrom_color\x18\t \x01(\x0b\x32\x0e.rec.gui.Color\x12 \n\x08to_color\x18\n \x01(\x0b\x32\x0e.rec.gui.Color\x12\x1e\n\x10use_global_clock\x18\x0b \x01(\x08:\x04true\"1\n\tDirection\x12\r\n\tCLOCKWISE\x10\x01\x12\x15\n\x11\x43OUNTER_CLOCKWISE\x10\x02')
 
 
 
@@ -36,8 +36,8 @@ _DIAL_DIRECTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=761,
-  serialized_end=810,
+  serialized_start=825,
+  serialized_end=874,
 )
 
 
@@ -85,8 +85,8 @@ _TEXT_SEPARATOR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=259,
-  serialized_end=352,
+  serialized_start=291,
+  serialized_end=384,
 )
 
 _TEXT_FIELDS = _descriptor.Descriptor(
@@ -140,8 +140,8 @@ _TEXT_FIELDS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=354,
-  serialized_end=481,
+  serialized_start=386,
+  serialized_end=513,
 )
 
 _TEXT = _descriptor.Descriptor(
@@ -172,6 +172,13 @@ _TEXT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='use_global_clock', full_name='rec.widget.status.time.Text.use_global_clock', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=True, default_value=True,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -182,7 +189,7 @@ _TEXT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=103,
-  serialized_end=481,
+  serialized_end=513,
 )
 
 
@@ -249,6 +256,13 @@ _DIAL = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='use_global_clock', full_name='rec.widget.status.time.Dial.use_global_clock', index=8,
+      number=11, type=8, cpp_type=7, label=1,
+      has_default_value=True, default_value=True,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -259,43 +273,8 @@ _DIAL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=484,
-  serialized_end=810,
-)
-
-
-_TIME = _descriptor.Descriptor(
-  name='Time',
-  full_name='rec.widget.status.time.Time',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='text', full_name='rec.widget.status.time.Time.text', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='dial', full_name='rec.widget.status.time.Time.dial', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=812,
-  serialized_end=906,
+  serialized_start=516,
+  serialized_end=874,
 )
 
 _TEXT_SEPARATOR.containing_type = _TEXT;
@@ -308,11 +287,8 @@ _DIAL.fields_by_name['direction'].enum_type = _DIAL_DIRECTION
 _DIAL.fields_by_name['from_color'].message_type = rec.gui.Color_pb2._COLOR
 _DIAL.fields_by_name['to_color'].message_type = rec.gui.Color_pb2._COLOR
 _DIAL_DIRECTION.containing_type = _DIAL;
-_TIME.fields_by_name['text'].message_type = _TEXT
-_TIME.fields_by_name['dial'].message_type = _DIAL
 DESCRIPTOR.message_types_by_name['Text'] = _TEXT
 DESCRIPTOR.message_types_by_name['Dial'] = _DIAL
-DESCRIPTOR.message_types_by_name['Time'] = _TIME
 
 class Text(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -337,12 +313,6 @@ class Dial(_message.Message):
   DESCRIPTOR = _DIAL
 
   # @@protoc_insertion_point(class_scope:rec.widget.status.time.Dial)
-
-class Time(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _TIME
-
-  # @@protoc_insertion_point(class_scope:rec.widget.status.time.Time)
 
 
 # @@protoc_insertion_point(module_scope)

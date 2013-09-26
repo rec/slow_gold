@@ -4,12 +4,13 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/data/DataBroadcaster.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Timer : public Wrappy, public Broadcaster<SampleTime > {
+class Timer : public Wrappy {
  public:
   explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(nullptr) {}
 
@@ -29,7 +30,7 @@ class Timer : public Wrappy, public Broadcaster<SampleTime > {
   void setThread(Thread* t) { thread_ = t; }
 
   void broadcastTime() {
-    broadcast(getNextReadPosition());
+    data::broadcastData(SampleTime(getNextReadPosition()));
   }
 
  private:

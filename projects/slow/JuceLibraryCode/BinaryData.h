@@ -49,7 +49,7 @@ namespace BinaryData
     const int            Layout_defSize = 290;
 
     extern const char*   LeftTransformPanel_def;
-    const int            LeftTransformPanel_defSize = 665;
+    const int            LeftTransformPanel_defSize = 664;
 
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 383;

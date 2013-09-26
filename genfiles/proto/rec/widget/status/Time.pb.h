@@ -43,7 +43,6 @@ class Text;
 class Text_Separator;
 class Text_Fields;
 class Dial;
-class Time;
 
 enum Dial_Direction {
   Dial_Direction_CLOCKWISE = 1,
@@ -389,6 +388,13 @@ class Text : public ::google::protobuf::Message {
   inline ::rec::widget::status::time::Text_Fields* release_fields();
   inline void set_allocated_fields(::rec::widget::status::time::Text_Fields* fields);
 
+  // optional bool use_global_clock = 4 [default = true];
+  inline bool has_use_global_clock() const;
+  inline void clear_use_global_clock();
+  static const int kUseGlobalClockFieldNumber = 4;
+  inline bool use_global_clock() const;
+  inline void set_use_global_clock(bool value);
+
   // @@protoc_insertion_point(class_scope:rec.widget.status.time.Text)
  private:
   inline void set_has_widget();
@@ -397,15 +403,18 @@ class Text : public ::google::protobuf::Message {
   inline void clear_has_separator();
   inline void set_has_fields();
   inline void clear_has_fields();
+  inline void set_has_use_global_clock();
+  inline void clear_has_use_global_clock();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::widget::Widget* widget_;
   ::rec::widget::status::time::Text_Separator* separator_;
   ::rec::widget::status::time::Text_Fields* fields_;
+  bool use_global_clock_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
@@ -556,6 +565,13 @@ class Dial : public ::google::protobuf::Message {
   inline ::rec::gui::Color* release_to_color();
   inline void set_allocated_to_color(::rec::gui::Color* to_color);
 
+  // optional bool use_global_clock = 11 [default = true];
+  inline bool has_use_global_clock() const;
+  inline void clear_use_global_clock();
+  static const int kUseGlobalClockFieldNumber = 11;
+  inline bool use_global_clock() const;
+  inline void set_use_global_clock(bool value);
+
   // @@protoc_insertion_point(class_scope:rec.widget.status.time.Dial)
  private:
   inline void set_has_widget();
@@ -574,6 +590,8 @@ class Dial : public ::google::protobuf::Message {
   inline void clear_has_from_color();
   inline void set_has_to_color();
   inline void clear_has_to_color();
+  inline void set_has_use_global_clock();
+  inline void clear_has_use_global_clock();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -585,9 +603,10 @@ class Dial : public ::google::protobuf::Message {
   ::rec::gui::Color* to_color_;
   bool display_lap_count_;
   bool empty_on_zero_;
+  bool use_global_clock_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
@@ -595,102 +614,6 @@ class Dial : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static Dial* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Time : public ::google::protobuf::Message {
- public:
-  Time();
-  virtual ~Time();
-
-  Time(const Time& from);
-
-  inline Time& operator=(const Time& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Time& default_instance();
-
-  void Swap(Time* other);
-
-  // implements Message ----------------------------------------------
-
-  Time* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Time& from);
-  void MergeFrom(const Time& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional .rec.widget.status.time.Text text = 1;
-  inline bool has_text() const;
-  inline void clear_text();
-  static const int kTextFieldNumber = 1;
-  inline const ::rec::widget::status::time::Text& text() const;
-  inline ::rec::widget::status::time::Text* mutable_text();
-  inline ::rec::widget::status::time::Text* release_text();
-  inline void set_allocated_text(::rec::widget::status::time::Text* text);
-
-  // optional .rec.widget.status.time.Dial dial = 2;
-  inline bool has_dial() const;
-  inline void clear_dial();
-  static const int kDialFieldNumber = 2;
-  inline const ::rec::widget::status::time::Dial& dial() const;
-  inline ::rec::widget::status::time::Dial* mutable_dial();
-  inline ::rec::widget::status::time::Dial* release_dial();
-  inline void set_allocated_dial(::rec::widget::status::time::Dial* dial);
-
-  // @@protoc_insertion_point(class_scope:rec.widget.status.time.Time)
- private:
-  inline void set_has_text();
-  inline void clear_has_text();
-  inline void set_has_dial();
-  inline void clear_has_dial();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::rec::widget::status::time::Text* text_;
-  ::rec::widget::status::time::Dial* dial_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
-  friend void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto();
-
-  void InitAsDefaultInstance();
-  static Time* default_instance_;
 };
 // ===================================================================
 
@@ -1067,6 +990,28 @@ inline void Text::set_allocated_fields(::rec::widget::status::time::Text_Fields*
   }
 }
 
+// optional bool use_global_clock = 4 [default = true];
+inline bool Text::has_use_global_clock() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Text::set_has_use_global_clock() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Text::clear_has_use_global_clock() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Text::clear_use_global_clock() {
+  use_global_clock_ = true;
+  clear_has_use_global_clock();
+}
+inline bool Text::use_global_clock() const {
+  return use_global_clock_;
+}
+inline void Text::set_use_global_clock(bool value) {
+  set_has_use_global_clock();
+  use_global_clock_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // Dial
@@ -1296,84 +1241,26 @@ inline void Dial::set_allocated_to_color(::rec::gui::Color* to_color) {
   }
 }
 
-// -------------------------------------------------------------------
-
-// Time
-
-// optional .rec.widget.status.time.Text text = 1;
-inline bool Time::has_text() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+// optional bool use_global_clock = 11 [default = true];
+inline bool Dial::has_use_global_clock() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
-inline void Time::set_has_text() {
-  _has_bits_[0] |= 0x00000001u;
+inline void Dial::set_has_use_global_clock() {
+  _has_bits_[0] |= 0x00000100u;
 }
-inline void Time::clear_has_text() {
-  _has_bits_[0] &= ~0x00000001u;
+inline void Dial::clear_has_use_global_clock() {
+  _has_bits_[0] &= ~0x00000100u;
 }
-inline void Time::clear_text() {
-  if (text_ != NULL) text_->::rec::widget::status::time::Text::Clear();
-  clear_has_text();
+inline void Dial::clear_use_global_clock() {
+  use_global_clock_ = true;
+  clear_has_use_global_clock();
 }
-inline const ::rec::widget::status::time::Text& Time::text() const {
-  return text_ != NULL ? *text_ : *default_instance_->text_;
+inline bool Dial::use_global_clock() const {
+  return use_global_clock_;
 }
-inline ::rec::widget::status::time::Text* Time::mutable_text() {
-  set_has_text();
-  if (text_ == NULL) text_ = new ::rec::widget::status::time::Text;
-  return text_;
-}
-inline ::rec::widget::status::time::Text* Time::release_text() {
-  clear_has_text();
-  ::rec::widget::status::time::Text* temp = text_;
-  text_ = NULL;
-  return temp;
-}
-inline void Time::set_allocated_text(::rec::widget::status::time::Text* text) {
-  delete text_;
-  text_ = text;
-  if (text) {
-    set_has_text();
-  } else {
-    clear_has_text();
-  }
-}
-
-// optional .rec.widget.status.time.Dial dial = 2;
-inline bool Time::has_dial() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Time::set_has_dial() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Time::clear_has_dial() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Time::clear_dial() {
-  if (dial_ != NULL) dial_->::rec::widget::status::time::Dial::Clear();
-  clear_has_dial();
-}
-inline const ::rec::widget::status::time::Dial& Time::dial() const {
-  return dial_ != NULL ? *dial_ : *default_instance_->dial_;
-}
-inline ::rec::widget::status::time::Dial* Time::mutable_dial() {
-  set_has_dial();
-  if (dial_ == NULL) dial_ = new ::rec::widget::status::time::Dial;
-  return dial_;
-}
-inline ::rec::widget::status::time::Dial* Time::release_dial() {
-  clear_has_dial();
-  ::rec::widget::status::time::Dial* temp = dial_;
-  dial_ = NULL;
-  return temp;
-}
-inline void Time::set_allocated_dial(::rec::widget::status::time::Dial* dial) {
-  delete dial_;
-  dial_ = dial;
-  if (dial) {
-    set_has_dial();
-  } else {
-    clear_has_dial();
-  }
+inline void Dial::set_use_global_clock(bool value) {
+  set_has_use_global_clock();
+  use_global_clock_ = value;
 }
 
 

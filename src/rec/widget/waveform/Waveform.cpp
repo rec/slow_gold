@@ -1,5 +1,6 @@
 #include "rec/widget/waveform/Waveform.h"
 
+#include "rec/data/DataBroadcaster.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/audio/CommandBar.h"
@@ -31,8 +32,8 @@ const int ZOOM_CURSOR_WIDTH = 24;
 const int ZOOM_CURSOR_HEIGHT = 24;
 
 static juce::Image getZoomCursor() {
-  juce::Image img(juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
-                  false);
+  juce::Image img(
+      juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT, false);
   Graphics g(img);
   ptr<Drawable> drawable(BINARY_DATA(ZoomInCursor_svg, Drawable));
   drawable->draw(g, 1.0f);
@@ -90,6 +91,7 @@ void Waveform::setLoading(bool loading) {
 void Waveform::init() {
   painter_.reset(new WaveformPainter(this));
   timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
+  data::addDataListener<SampleTime>(timeCursor_.get());
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {

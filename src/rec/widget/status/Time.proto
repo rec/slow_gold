@@ -23,6 +23,8 @@ message Text {
   optional Widget widget = 1;
   optional Separator separator = 2;
   optional Fields fields = 3;
+
+  optional bool use_global_clock = 4 [default = true];
 };
 
 // Represents a dial-style time display.
@@ -41,9 +43,5 @@ message Dial {
 
   optional gui.Color from_color = 9;
   optional gui.Color to_color = 10;
-};
-
-message Time {
-  optional Text text = 1;
-  optional Dial dial = 2;
+  optional bool use_global_clock = 11 [default = true];
 };
