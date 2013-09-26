@@ -10,6 +10,7 @@
 #include "rec/slow/Instance.h"
 #include "rec/util/Listener.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/StateListener.h"
 #include "rec/util/range/Range.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
@@ -19,7 +20,7 @@ namespace slow {
 class CurrentTime : public audio::util::CurrentTimeBase,
                     public DataListener<widget::waveform::Viewport>,
                     public DataListener<GuiSettings>,
-                    public Listener<SampleTime>,
+                    public StateListener<SampleTime>,
                     public Listener<audio::transport::State> {
  public:
   CurrentTime();

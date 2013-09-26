@@ -2733,9 +2733,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\DataBroadcaster.h">
-      <Filter>SlowGold\src\data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
@@ -3272,6 +3269,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\WrapSeries.h">
       <Filter>SlowGold\src\util\range</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\StateBroadcaster.h">
+      <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
       <Filter>SlowGold\src\util</Filter>

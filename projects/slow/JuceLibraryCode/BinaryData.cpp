@@ -1923,6 +1923,7 @@ static const unsigned char temp_binary_data_21[] =
 "    size {\n"
 "      min: \"100\"\n"
 "    }\n"
+"\n"
 "  }\n"
 "  component {\n"
 "    name: \"SongDial\"\n"
@@ -13786,7 +13787,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x334c534f:  numBytes = 606; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1110; return RightTransformPanel_def;
         case 0x1b5b8645:  numBytes = 1159; return SongData_def;
-        case 0x4b55592f:  numBytes = 198; return TimeController_def;
+        case 0x4b55592f:  numBytes = 199; return TimeController_def;
         case 0x29238b4e:  numBytes = 237; return TransformController_def;
         case 0x4bd6484b:  numBytes = 698; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;

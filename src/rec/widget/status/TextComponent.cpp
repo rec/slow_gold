@@ -1,5 +1,4 @@
 #include "rec/widget/status/TextComponent.h"
-#include "rec/data/DataBroadcaster.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/Painter.h"
@@ -18,14 +17,13 @@ namespace time {
 
 TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
+      StateListener<SampleTime>(desc.use_global_clock()),
       description_(desc),
       length_(0),
       sampleRate_(44100.0),
       empty_(true) {
   setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
-  if (desc.use_global_clock())
-    data::addDataListener<SampleTime>(this);
 }
 
 SampleTime TextComponent::getTime() const {

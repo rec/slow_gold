@@ -1,6 +1,6 @@
 #include "rec/gui/proto/Help.h"
 
-#include "rec/data/DataBroadcaster.h"
+#include "rec/util/StateListener.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Context.h"
@@ -16,7 +16,7 @@ namespace gui {
 
 namespace {
 
-class HelpPanel : public Panel, public Listener<const HelpText&> {
+class HelpPanel : public Panel, public StateListener<const HelpText&> {
  public:
   HelpPanel(const Context& context) : Panel("HelpPanel", VERTICAL) {
     INSTANCE = this;
@@ -38,8 +38,6 @@ class HelpPanel : public Panel, public Listener<const HelpText&> {
 
     body_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
     body_.setJustificationType(Justification::topLeft);
-
-    data::addDataListener<const HelpText&>(this);
   }
 
   void setTooltip(const String& tt) override {

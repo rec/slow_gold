@@ -70,7 +70,7 @@ namespace BinaryData
     const int            SongData_defSize = 1159;
 
     extern const char*   TimeController_def;
-    const int            TimeController_defSize = 198;
+    const int            TimeController_defSize = 199;
 
     extern const char*   TransformController_def;
     const int            TransformController_defSize = 237;

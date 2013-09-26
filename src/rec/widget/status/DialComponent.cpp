@@ -1,7 +1,7 @@
 #include <math.h>
 
 #include "rec/widget/status/DialComponent.h"
-#include "rec/data/DataBroadcaster.h"
+#include "rec/util/StateListener.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/LoopPoint.h"
@@ -31,6 +31,7 @@ const SampleTime SMALLEST_TIME_CHANGE = 44;
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(str(desc.widget().name())),
+      StateListener<SampleTime>(desc.use_global_clock()),
       description_(desc),
       time_(0),
       zeroAngle_(0.0),
@@ -38,9 +39,6 @@ DialComponent::DialComponent(const Dial& desc)
       timeRatio_(0.0) {
   description_.mutable_widget()->set_transparent(true);
   setTooltip("Time Dial: Shows graphically how much of the loop remains.");
-
-  if (desc.use_global_clock())
-    data::addDataListener<SampleTime>(this);
 }
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;

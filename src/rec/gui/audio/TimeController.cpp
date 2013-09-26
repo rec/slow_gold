@@ -53,7 +53,6 @@ void TimeController::setThread(Thread* thread) {
   songTime_.setThread(thread);
 }
 
-
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec

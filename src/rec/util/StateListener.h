@@ -7,14 +7,14 @@
 #include "rec/util/Listener.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
-class DataBroadcaster {
+class StateBroadcaster {
  public:
-  DataBroadcaster() {}
+  StateBroadcaster() {}
 
-  static DataBroadcaster* instance() {
-    static DataBroadcaster INSTANCE;
+  static StateBroadcaster* instance() {
+    static StateBroadcaster INSTANCE;
     return &INSTANCE;
   }
 
@@ -55,20 +55,26 @@ class DataBroadcaster {
   std::unordered_map<string, unique_ptr<Deletable>> broadcasters_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(DataBroadcaster);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(StateBroadcaster);
 };
 
 template <typename Type>
-void addDataListener(Listener<Type>* listener) {
-  DataBroadcaster::instance()->addListener<Type>(listener);
+void broadcastState(Type value) {
+  StateBroadcaster::instance()->broadcast<Type>(value);
 }
 
 template <typename Type>
-void broadcastData(Type value) {
-  DataBroadcaster::instance()->broadcast<Type>(value);
-}
+class StateListener : public Listener<Type> {
+ public:
+  explicit StateListener(bool listen = true) {
+    if (listen)
+      StateBroadcaster::instance()->addListener<Type>(this);
+  }
 
-}  // namespace data
+  virtual void operator()(Type) = 0;
+};
+
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_DATA_DATABROADCASTER__

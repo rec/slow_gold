@@ -4,7 +4,7 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/data/DataBroadcaster.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace audio {
@@ -30,7 +30,7 @@ class Timer : public Wrappy {
   void setThread(Thread* t) { thread_ = t; }
 
   void broadcastTime() {
-    data::broadcastData(SampleTime(getNextReadPosition()));
+    broadcastState<SampleTime>(getNextReadPosition());
   }
 
  private:

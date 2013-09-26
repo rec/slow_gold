@@ -1,5 +1,6 @@
 #include "rec/slow/GuiListener.h"
 
+#include "rec/util/StateListener.h"
 #include "rec/gui/GuiWriteable.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"

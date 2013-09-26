@@ -5,6 +5,7 @@
 #include "rec/data/DataListener.h"
 #include "rec/util/HasThread.h"
 #include "rec/util/Listener.h"
+#include "rec/util/StateListener.h"
 #include "rec/util/range/Range.h"
 #include "rec/widget/status/Time.pb.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -15,7 +16,7 @@ namespace status {
 namespace time {
 
 class DialComponent : public Component,
-                      public Listener<SampleTime >,
+                      public StateListener<SampleTime>,
                       public DataListener<waveform::Viewport>,
                       public SettableTooltipClient,
                       public HasThread {

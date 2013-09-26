@@ -6,7 +6,6 @@
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/Frame.h"
-#include "rec/data/DataBroadcaster.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -33,7 +32,6 @@ CurrentTime::CurrentTime()
       length_(0),
       followCursor_(false),
       loopingSegment_(NO_SEGMENT) {
-  data::addDataListener<SampleTime>(this);
 }
 
 void CurrentTime::setTime(SampleTime t) {

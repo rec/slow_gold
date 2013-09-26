@@ -4,6 +4,7 @@
 #include "rec/data/DataListener.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace slow {
@@ -11,8 +12,8 @@ namespace slow {
 class GuiSettings;
 
 class GuiListener : public DataListener<GuiSettings>,
-                    public Listener<gui::audio::CommandBarCommand>,
-                    public Listener<gui::audio::TransportCommand> {
+                    public StateListener<gui::audio::CommandBarCommand>,
+                    public StateListener<gui::audio::TransportCommand> {
  public:
   GuiListener();
   virtual ~GuiListener() {}

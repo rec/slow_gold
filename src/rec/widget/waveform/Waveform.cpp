@@ -1,6 +1,6 @@
 #include "rec/widget/waveform/Waveform.h"
 
-#include "rec/data/DataBroadcaster.h"
+#include "rec/util/StateListener.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/audio/CommandBar.h"
@@ -91,7 +91,7 @@ void Waveform::setLoading(bool loading) {
 void Waveform::init() {
   painter_.reset(new WaveformPainter(this));
   timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
-  data::addDataListener<SampleTime>(timeCursor_.get());
+  StateBroadcaster::instance()->addListener<SampleTime>(timeCursor_.get());
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {

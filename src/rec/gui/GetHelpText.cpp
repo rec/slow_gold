@@ -1,5 +1,5 @@
 #include "rec/gui/GetHelpText.h"
-#include "rec/data/DataBroadcaster.h"
+#include "rec/util/StateListener.h"
 
 using namespace juce;
 
@@ -44,11 +44,10 @@ Component* COMPONENT = nullptr;
 }  // namespace
 
 void refreshHelpText() {
-  Component* comp = getComponentUnderMouse();
-  if (comp != COMPONENT) {
-    COMPONENT = comp;
-    data::broadcastData<const HelpText&>(
-        splitHelpText(getHelpTextFromComponent(comp)));
+  Component* c = getComponentUnderMouse();
+  if (c != COMPONENT) {
+    COMPONENT = c;
+    broadcastState<const HelpText&>(splitHelpText(getHelpTextFromComponent(c)));
   }
 }
 

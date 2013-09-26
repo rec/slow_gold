@@ -1,6 +1,6 @@
 #include "rec/data/DataCenter.h"
 
-#include "rec/data/DataBroadcaster.h"
+#include "rec/util/StateListener.h"
 #include "rec/data/DataMakerImpl.h"
 #include "rec/data/DataMapImpl.h"
 #include "rec/data/DataUpdater.h"
@@ -20,7 +20,7 @@ DataCenter::DataCenter()
 }
 
 DataCenter::~DataCenter() {
-  DataBroadcaster::instance()->clear();
+  StateBroadcaster::instance()->clear();
 }
 
 bool DataCenter::hasUpdates() const {

@@ -8,6 +8,7 @@
 #include "rec/data/DataListener.h"
 #include "rec/util/HasThread.h"
 #include "rec/util/Listener.h"
+#include "rec/util/StateListener.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -20,7 +21,7 @@ namespace time {
 class TextComponent : public gui::SimpleLabel,
                       public app::LanguageListener,
                       public DataListener<waveform::Viewport>,
-                      public Listener<SampleTime>,
+                      public StateListener<SampleTime>,
                       public HasThread {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
