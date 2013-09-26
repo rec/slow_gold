@@ -9,16 +9,6 @@ message Description {
   optional string help = 4;  // Full help text for the command.
 };
 
-message Setter {
-  enum Type {
-    TOGGLE = 0;
-    SELECTION = 1;
-  };
-
-  optional Type type = 1 [default = TOGGLE];
-  optional data.AddressProto address = 2;
-};
-
 // A list of commands that the user can issue.
 message Command {
   enum Id {
@@ -39,6 +29,11 @@ message Command {
     BANK_SIZE = 10000;
   };
 
+  enum SetterType {
+    TOGGLE = 0;
+    SELECTION = 1;
+  };
+
   optional uint32 id = 1;
   optional string id_string = 15;  // For serializing ids.
   optional sint32 index = 2;  // For repeating commands.
@@ -53,7 +48,8 @@ message Command {
 
   // If the purpose of this command is just to set a flag, this is the name
   // of that flag setting.
-  optional Setter setter = 8;
+  optional string setter = 8;
+  optional SetterType setter_type = 16;
 
   // Number of commands represented by this one command.
   optional uint32 size = 9;

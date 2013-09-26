@@ -16,9 +16,17 @@ layout {
     }
     time_dial {
       widget {
-        colors: "white"
-        colors: "green"
-        colors: "red"
+        colors {
+          color {
+            name: "white"
+          }
+          color {
+            name: "green"
+          }
+          color {
+            name: "red"
+          }
+        }
       }
     }
   }

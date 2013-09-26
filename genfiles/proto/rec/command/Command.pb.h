@@ -37,29 +37,9 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
 void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
 
 class Description;
-class Setter;
 class Command;
 class Commands;
 
-enum Setter_Type {
-  Setter_Type_TOGGLE = 0,
-  Setter_Type_SELECTION = 1
-};
-bool Setter_Type_IsValid(int value);
-const Setter_Type Setter_Type_Type_MIN = Setter_Type_TOGGLE;
-const Setter_Type Setter_Type_Type_MAX = Setter_Type_SELECTION;
-const int Setter_Type_Type_ARRAYSIZE = Setter_Type_Type_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* Setter_Type_descriptor();
-inline const ::std::string& Setter_Type_Name(Setter_Type value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    Setter_Type_descriptor(), value);
-}
-inline bool Setter_Type_Parse(
-    const ::std::string& name, Setter_Type* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Setter_Type>(
-    Setter_Type_descriptor(), name, value);
-}
 enum Command_Id {
   Command_Id_NONE = 0,
   Command_Id_QUIT = 4097,
@@ -87,6 +67,25 @@ inline bool Command_Id_Parse(
     const ::std::string& name, Command_Id* value) {
   return ::google::protobuf::internal::ParseNamedEnum<Command_Id>(
     Command_Id_descriptor(), name, value);
+}
+enum Command_SetterType {
+  Command_SetterType_TOGGLE = 0,
+  Command_SetterType_SELECTION = 1
+};
+bool Command_SetterType_IsValid(int value);
+const Command_SetterType Command_SetterType_SetterType_MIN = Command_SetterType_TOGGLE;
+const Command_SetterType Command_SetterType_SetterType_MAX = Command_SetterType_SELECTION;
+const int Command_SetterType_SetterType_ARRAYSIZE = Command_SetterType_SetterType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Command_SetterType_descriptor();
+inline const ::std::string& Command_SetterType_Name(Command_SetterType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Command_SetterType_descriptor(), value);
+}
+inline bool Command_SetterType_Parse(
+    const ::std::string& name, Command_SetterType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Command_SetterType>(
+    Command_SetterType_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -226,124 +225,6 @@ class Description : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Setter : public ::google::protobuf::Message {
- public:
-  Setter();
-  virtual ~Setter();
-
-  Setter(const Setter& from);
-
-  inline Setter& operator=(const Setter& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Setter& default_instance();
-
-  void Swap(Setter* other);
-
-  // implements Message ----------------------------------------------
-
-  Setter* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Setter& from);
-  void MergeFrom(const Setter& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  typedef Setter_Type Type;
-  static const Type TOGGLE = Setter_Type_TOGGLE;
-  static const Type SELECTION = Setter_Type_SELECTION;
-  static inline bool Type_IsValid(int value) {
-    return Setter_Type_IsValid(value);
-  }
-  static const Type Type_MIN =
-    Setter_Type_Type_MIN;
-  static const Type Type_MAX =
-    Setter_Type_Type_MAX;
-  static const int Type_ARRAYSIZE =
-    Setter_Type_Type_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  Type_descriptor() {
-    return Setter_Type_descriptor();
-  }
-  static inline const ::std::string& Type_Name(Type value) {
-    return Setter_Type_Name(value);
-  }
-  static inline bool Type_Parse(const ::std::string& name,
-      Type* value) {
-    return Setter_Type_Parse(name, value);
-  }
-
-  // accessors -------------------------------------------------------
-
-  // optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::rec::command::Setter_Type type() const;
-  inline void set_type(::rec::command::Setter_Type value);
-
-  // optional .rec.data.AddressProto address = 2;
-  inline bool has_address() const;
-  inline void clear_address();
-  static const int kAddressFieldNumber = 2;
-  inline const ::rec::data::AddressProto& address() const;
-  inline ::rec::data::AddressProto* mutable_address();
-  inline ::rec::data::AddressProto* release_address();
-  inline void set_allocated_address(::rec::data::AddressProto* address);
-
-  // @@protoc_insertion_point(class_scope:rec.command.Setter)
- private:
-  inline void set_has_type();
-  inline void clear_has_type();
-  inline void set_has_address();
-  inline void clear_has_address();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::rec::data::AddressProto* address_;
-  int type_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
-
-  void InitAsDefaultInstance();
-  static Setter* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class Command : public ::google::protobuf::Message {
  public:
   Command();
@@ -427,6 +308,30 @@ class Command : public ::google::protobuf::Message {
   static inline bool Id_Parse(const ::std::string& name,
       Id* value) {
     return Command_Id_Parse(name, value);
+  }
+
+  typedef Command_SetterType SetterType;
+  static const SetterType TOGGLE = Command_SetterType_TOGGLE;
+  static const SetterType SELECTION = Command_SetterType_SELECTION;
+  static inline bool SetterType_IsValid(int value) {
+    return Command_SetterType_IsValid(value);
+  }
+  static const SetterType SetterType_MIN =
+    Command_SetterType_SetterType_MIN;
+  static const SetterType SetterType_MAX =
+    Command_SetterType_SetterType_MAX;
+  static const int SetterType_ARRAYSIZE =
+    Command_SetterType_SetterType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  SetterType_descriptor() {
+    return Command_SetterType_descriptor();
+  }
+  static inline const ::std::string& SetterType_Name(SetterType value) {
+    return Command_SetterType_Name(value);
+  }
+  static inline bool SetterType_Parse(const ::std::string& name,
+      SetterType* value) {
+    return Command_SetterType_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
@@ -525,14 +430,24 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 flags() const;
   inline void set_flags(::google::protobuf::uint32 value);
 
-  // optional .rec.command.Setter setter = 8;
+  // optional string setter = 8;
   inline bool has_setter() const;
   inline void clear_setter();
   static const int kSetterFieldNumber = 8;
-  inline const ::rec::command::Setter& setter() const;
-  inline ::rec::command::Setter* mutable_setter();
-  inline ::rec::command::Setter* release_setter();
-  inline void set_allocated_setter(::rec::command::Setter* setter);
+  inline const ::std::string& setter() const;
+  inline void set_setter(const ::std::string& value);
+  inline void set_setter(const char* value);
+  inline void set_setter(const char* value, size_t size);
+  inline ::std::string* mutable_setter();
+  inline ::std::string* release_setter();
+  inline void set_allocated_setter(::std::string* setter);
+
+  // optional .rec.command.Command.SetterType setter_type = 16;
+  inline bool has_setter_type() const;
+  inline void clear_setter_type();
+  static const int kSetterTypeFieldNumber = 16;
+  inline ::rec::command::Command_SetterType setter_type() const;
+  inline void set_setter_type(::rec::command::Command_SetterType value);
 
   // optional uint32 size = 9;
   inline bool has_size() const;
@@ -614,6 +529,8 @@ class Command : public ::google::protobuf::Message {
   inline void clear_has_flags();
   inline void set_has_setter();
   inline void clear_has_setter();
+  inline void set_has_setter_type();
+  inline void clear_has_setter_type();
   inline void set_has_size();
   inline void clear_has_size();
   inline void set_has_callout();
@@ -629,16 +546,17 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > submenu_separator_;
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
-  ::rec::command::Setter* setter_;
+  ::std::string* setter_;
   ::google::protobuf::uint32 flags_;
+  int setter_type_;
   ::google::protobuf::uint32 size_;
+  bool callout_;
   ::google::protobuf::RepeatedPtrField< ::std::string> hidden_;
   ::google::protobuf::RepeatedPtrField< ::std::string> disabled_;
   ::google::protobuf::RepeatedPtrField< ::std::string> ticked_;
-  bool callout_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(15 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -964,71 +882,6 @@ inline void Description::set_allocated_help(::std::string* help) {
   } else {
     clear_has_help();
     help_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// -------------------------------------------------------------------
-
-// Setter
-
-// optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
-inline bool Setter::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Setter::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Setter::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Setter::clear_type() {
-  type_ = 0;
-  clear_has_type();
-}
-inline ::rec::command::Setter_Type Setter::type() const {
-  return static_cast< ::rec::command::Setter_Type >(type_);
-}
-inline void Setter::set_type(::rec::command::Setter_Type value) {
-  assert(::rec::command::Setter_Type_IsValid(value));
-  set_has_type();
-  type_ = value;
-}
-
-// optional .rec.data.AddressProto address = 2;
-inline bool Setter::has_address() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Setter::set_has_address() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Setter::clear_has_address() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Setter::clear_address() {
-  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-  clear_has_address();
-}
-inline const ::rec::data::AddressProto& Setter::address() const {
-  return address_ != NULL ? *address_ : *default_instance_->address_;
-}
-inline ::rec::data::AddressProto* Setter::mutable_address() {
-  set_has_address();
-  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
-  return address_;
-}
-inline ::rec::data::AddressProto* Setter::release_address() {
-  clear_has_address();
-  ::rec::data::AddressProto* temp = address_;
-  address_ = NULL;
-  return temp;
-}
-inline void Setter::set_allocated_address(::rec::data::AddressProto* address) {
-  delete address_;
-  address_ = address;
-  if (address) {
-    set_has_address();
-  } else {
-    clear_has_address();
   }
 }
 
@@ -1419,7 +1272,7 @@ inline void Command::set_flags(::google::protobuf::uint32 value) {
   flags_ = value;
 }
 
-// optional .rec.command.Setter setter = 8;
+// optional string setter = 8;
 inline bool Command::has_setter() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
@@ -1430,42 +1283,97 @@ inline void Command::clear_has_setter() {
   _has_bits_[0] &= ~0x00000200u;
 }
 inline void Command::clear_setter() {
-  if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
+  if (setter_ != &::google::protobuf::internal::kEmptyString) {
+    setter_->clear();
+  }
   clear_has_setter();
 }
-inline const ::rec::command::Setter& Command::setter() const {
-  return setter_ != NULL ? *setter_ : *default_instance_->setter_;
+inline const ::std::string& Command::setter() const {
+  return *setter_;
 }
-inline ::rec::command::Setter* Command::mutable_setter() {
+inline void Command::set_setter(const ::std::string& value) {
   set_has_setter();
-  if (setter_ == NULL) setter_ = new ::rec::command::Setter;
+  if (setter_ == &::google::protobuf::internal::kEmptyString) {
+    setter_ = new ::std::string;
+  }
+  setter_->assign(value);
+}
+inline void Command::set_setter(const char* value) {
+  set_has_setter();
+  if (setter_ == &::google::protobuf::internal::kEmptyString) {
+    setter_ = new ::std::string;
+  }
+  setter_->assign(value);
+}
+inline void Command::set_setter(const char* value, size_t size) {
+  set_has_setter();
+  if (setter_ == &::google::protobuf::internal::kEmptyString) {
+    setter_ = new ::std::string;
+  }
+  setter_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::mutable_setter() {
+  set_has_setter();
+  if (setter_ == &::google::protobuf::internal::kEmptyString) {
+    setter_ = new ::std::string;
+  }
   return setter_;
 }
-inline ::rec::command::Setter* Command::release_setter() {
+inline ::std::string* Command::release_setter() {
   clear_has_setter();
-  ::rec::command::Setter* temp = setter_;
-  setter_ = NULL;
-  return temp;
+  if (setter_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = setter_;
+    setter_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
-inline void Command::set_allocated_setter(::rec::command::Setter* setter) {
-  delete setter_;
-  setter_ = setter;
+inline void Command::set_allocated_setter(::std::string* setter) {
+  if (setter_ != &::google::protobuf::internal::kEmptyString) {
+    delete setter_;
+  }
   if (setter) {
     set_has_setter();
+    setter_ = setter;
   } else {
     clear_has_setter();
+    setter_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// optional .rec.command.Command.SetterType setter_type = 16;
+inline bool Command::has_setter_type() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void Command::set_has_setter_type() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void Command::clear_has_setter_type() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void Command::clear_setter_type() {
+  setter_type_ = 0;
+  clear_has_setter_type();
+}
+inline ::rec::command::Command_SetterType Command::setter_type() const {
+  return static_cast< ::rec::command::Command_SetterType >(setter_type_);
+}
+inline void Command::set_setter_type(::rec::command::Command_SetterType value) {
+  assert(::rec::command::Command_SetterType_IsValid(value));
+  set_has_setter_type();
+  setter_type_ = value;
 }
 
 // optional uint32 size = 9;
 inline bool Command::has_size() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void Command::set_has_size() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void Command::clear_has_size() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void Command::clear_size() {
   size_ = 0u;
@@ -1481,13 +1389,13 @@ inline void Command::set_size(::google::protobuf::uint32 value) {
 
 // optional bool callout = 10;
 inline bool Command::has_callout() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void Command::set_has_callout() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void Command::clear_has_callout() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void Command::clear_callout() {
   callout_ = false;
@@ -1673,12 +1581,12 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Setter_Type>() {
-  return ::rec::command::Setter_Type_descriptor();
-}
-template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_Id>() {
   return ::rec::command::Command_Id_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_SetterType>() {
+  return ::rec::command::Command_SetterType_descriptor();
 }
 
 }  // namespace google

@@ -177,6 +177,13 @@ class AudioSettings : public ::google::protobuf::Message {
   inline double time_nudge() const;
   inline void set_time_nudge(double value);
 
+  // optional bool autoplay = 6;
+  inline bool has_autoplay() const;
+  inline void clear_autoplay();
+  static const int kAutoplayFieldNumber = 6;
+  inline bool autoplay() const;
+  inline void set_autoplay(bool value);
+
   // @@protoc_insertion_point(class_scope:rec.audio.AudioSettings)
  private:
   inline void set_has_master_tune();
@@ -189,17 +196,20 @@ class AudioSettings : public ::google::protobuf::Message {
   inline void clear_has_speed_nudge_percent();
   inline void set_has_time_nudge();
   inline void clear_has_time_nudge();
+  inline void set_has_autoplay();
+  inline void clear_has_autoplay();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   double master_tune_;
   double volume_nudge_db_;
   double speed_nudge_percent_;
-  double time_nudge_;
   int file_type_for_save_;
+  bool autoplay_;
+  double time_nudge_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2faudio_2fAudioSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fAudioSettings_2eproto();
@@ -324,6 +334,28 @@ inline double AudioSettings::time_nudge() const {
 inline void AudioSettings::set_time_nudge(double value) {
   set_has_time_nudge();
   time_nudge_ = value;
+}
+
+// optional bool autoplay = 6;
+inline bool AudioSettings::has_autoplay() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void AudioSettings::set_has_autoplay() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void AudioSettings::clear_has_autoplay() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void AudioSettings::clear_autoplay() {
+  autoplay_ = false;
+  clear_has_autoplay();
+}
+inline bool AudioSettings::autoplay() const {
+  return autoplay_;
+}
+inline void AudioSettings::set_autoplay(bool value) {
+  set_has_autoplay();
+  autoplay_ = value;
 }
 
 

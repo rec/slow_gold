@@ -199,14 +199,15 @@ void Instance::init() {
 #endif
 }
 
-audio::Source* Instance::makeSource() const {
-  return bufferFiller_->reader()->makeSource();
-}
-
 Instance::~Instance() {
+  currentFile_->saveState();
   device_->manager_.removeMidiInputCallback("", midiCommandMap_.get());
   player_->setState(audio::transport::STOPPED);
   device_->shutdown();
+}
+
+audio::Source* Instance::makeSource() const {
+  return bufferFiller_->reader()->makeSource();
 }
 
 void Instance::startup() {

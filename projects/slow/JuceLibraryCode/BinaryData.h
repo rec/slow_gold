@@ -10,7 +10,7 @@ namespace BinaryData
     const int            Colors_defSize = 219;
 
     extern const char*   Audio_def;
-    const int            Audio_defSize = 1545;
+    const int            Audio_defSize = 1632;
 
     extern const char*   Commands_def;
     const int            Commands_defSize = 111;
@@ -19,7 +19,7 @@ namespace BinaryData
     const int            File_defSize = 2081;
 
     extern const char*   Gui_def;
-    const int            Gui_defSize = 5315;
+    const int            Gui_defSize = 4130;
 
     extern const char*   LoopPoints_def;
     const int            LoopPoints_defSize = 1737;
@@ -28,7 +28,7 @@ namespace BinaryData
     const int            Selection_defSize = 5765;
 
     extern const char*   Settings_def;
-    const int            Settings_defSize = 5177;
+    const int            Settings_defSize = 4871;
 
     extern const char*   Transport_def;
     const int            Transport_defSize = 3530;
@@ -49,7 +49,7 @@ namespace BinaryData
     const int            Layout_defSize = 290;
 
     extern const char*   LeftTransformPanel_def;
-    const int            LeftTransformPanel_defSize = 664;
+    const int            LeftTransformPanel_defSize = 663;
 
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 383;
@@ -70,7 +70,7 @@ namespace BinaryData
     const int            SongData_defSize = 1159;
 
     extern const char*   TimeController_def;
-    const int            TimeController_defSize = 325;
+    const int            TimeController_defSize = 448;
 
     extern const char*   TransformController_def;
     const int            TransformController_defSize = 237;
@@ -85,7 +85,7 @@ namespace BinaryData
     const int            MenuCollection_defSize = 373;
 
     extern const char*   Menus_def;
-    const int            Menus_defSize = 3790;
+    const int            Menus_defSize = 3837;
 
     extern const char*   Threads_def;
     const int            Threads_defSize = 351;

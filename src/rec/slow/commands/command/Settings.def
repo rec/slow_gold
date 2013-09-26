@@ -168,15 +168,8 @@ command {
   index: 4
   submenu_name: "Set File Format For Saved Audio"
   category: "(None)"
-  setter {
-    type: SELECTION
-    address {
-      type_name: "rec.audio.AudioSettings"
-      part {
-        name: "file_type_for_save"
-      }
-    }
-  }
+  setter: "rec.audio.AudioSettings:file_type_for_save"
+  setter_type: SELECTION
   desc {
     menu: "AIFF"
     menu: "FLAC"
@@ -193,15 +186,8 @@ command {
   index: 5
   submenu_name: "Set Language"
   category: "(None)"
-  setter {
-    type: SELECTION
-    address {
-      type_name: "rec.app.AppSettings"
-      part {
-        name: "language"
-      }
-    }
-  }
+  setter: "rec.app.AppSettings:language"
+  setter_type: SELECTION
   desc {
     menu: "German"
     menu: "English"
@@ -222,14 +208,7 @@ command {
     menu: "Show Advanced Menus"
     full: "Toggle show/hide of advanced menus."
   }
-  setter {
-    address {
-      type_name: "rec.slow.GuiSettings"
-      part {
-        name: "advanced_menus"
-      }
-    }
-  }
+  setter: "rec.slow.GuiSettings:advanced_menus"
 }
 command {
   id_string: "TOGGLE_AUTOMATIC_UPDATES"
@@ -238,12 +217,5 @@ command {
     menu: "Enable Automatic Updates"
     full: "Enable or disabled automatic updates of SlowGold 8."
   }
-  setter {
-    address {
-      type_name: "rec.slow.GuiSettings"
-      part {
-        name: "auto_check_for_updates"
-      }
-    }
-  }
+  setter: "rec.slow.GuiSettings:auto_check_for_updates"
 }

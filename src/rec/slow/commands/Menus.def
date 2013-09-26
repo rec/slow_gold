@@ -119,6 +119,9 @@ menu {
     menu: "Audio"
   }
   extends: "audio"
+  entry {
+    id_string: "TOGGLE_AUTOPLAY"
+  }
 }
 menu {
   description {

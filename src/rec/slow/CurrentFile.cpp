@@ -1,10 +1,15 @@
 #include "rec/slow/CurrentFile.h"
 
+#include "rec/audio/PlayState.pb.h"
+#include "rec/audio/AudioSettings.pb.h"
+#include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Opener.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/widget/tree/Root.h"
@@ -12,6 +17,7 @@
 #include "rec/widget/waveform/Waveform.h"
 
 using namespace rec::widget::waveform;
+using namespace rec::audio;
 
 TRAN(RAN_OUT_OF_MEMORY, "Ran Out Of Memory For Your File");
 TRAN(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
@@ -24,12 +30,26 @@ unique_ptr<Message> CurrentFile::getFileDescription() {
 }
 
 void CurrentFile::suspend() {
+  saveState();
   getInstance()->reset();  // Stops the loading thread.
 }
 
+void CurrentFile::saveState() {
+  auto& player = getInstance()->player_;
+  data::Opener<PlayState> state(file());
+  state->set_time(player->getTime());
+  state->set_is_playing(player->state());
+}
+
 void CurrentFile::resume() {
-  if (file_.path_size())
+  if (not empty()) {
     getInstance()->fillerThread_->startThread();
+    PlayState state = data::getProto<PlayState>(file());
+    auto& currentTime = getInstance()->currentTime_;
+    currentTime->jumpToTime(state.time());
+    if (data::getProto<AudioSettings>().autoplay() and state.is_playing())
+      getInstance()->player_->setState(transport::RUNNING);
+  }
 }
 
 void CurrentFile::beforeFileChange() {

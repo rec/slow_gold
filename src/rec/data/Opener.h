@@ -39,6 +39,8 @@ class Opener : public Reader<Proto> {
  private:
   const Undoable undoable_;
   ptr<Message> before_;
+
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Opener);
 };
 
 }  // namespace data

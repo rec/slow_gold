@@ -116,6 +116,7 @@ void open() {
 }
 
 void quit() {
+  // This is never called - we should probably get rid of it.
   Instance* i = getInstance();
   i->window_->application()->quit();
 }

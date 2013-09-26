@@ -88,6 +88,7 @@ message Command {
 
     TOGGLE_ADVANCED_MENUS = 59;
     TOGGLE_AUTOMATIC_UPDATES = 67;
+    TOGGLE_AUTOPLAY = 101;
     TOGGLE_FOLLOW_CURSOR = 43;
     TOGGLE_GRID_DISPLAY = 27;
     TOGGLE_COMMAND_BAR_AT_LEFT = 54;
@@ -128,7 +129,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    FIRST_FREE_TYPE = 101;
+    FIRST_FREE_TYPE = 102;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

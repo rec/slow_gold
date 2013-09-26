@@ -331,6 +331,7 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\PlayState.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.cc"/>
@@ -1743,7 +1744,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\range\Slice.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\WrapSeries.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\StateBroadcaster.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\StateListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\SystemStats.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h"/>
@@ -1794,6 +1795,7 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\PlayState.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.h"/>

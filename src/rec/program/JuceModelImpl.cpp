@@ -211,14 +211,13 @@ void JuceModelImpl::getCommandInfo(CommandID id,
       else
         shortName = recentFiles[fileIndex];
     } else if (command.has_setter()) {
-      const Setter& setter = command.setter();
-      bool isGlobal = (getScope(setter.address()) ==
-                       data::AddressProto::GLOBAL_SCOPE);
+      data::Address address = data::splitAddress(command.setter());
+      bool isGlobal = (getScope(address) == data::AddressProto::GLOBAL_SCOPE);
       VirtualFile file = isGlobal ? global() : program_->getCurrentFile();
-      Data* data = getData(setter.address().type_name(), file);
+      Data* data = getData(address.type_name(), file);
       unique_ptr<Message> msg(data->clone());
-      Value value = data::getMessageFieldOrDie(setter.address(), *msg);
-      if (setter.type() == Setter::TOGGLE) {
+      Value value = data::getMessageFieldOrDie(address, *msg);
+      if (command.setter_type() == Command::TOGGLE) {
         LOG_IF(DFATAL, not value.has_bool_f()) << "No boolean value.";
         if (value.bool_f())
           flags |= ApplicationCommandInfo::isTicked;

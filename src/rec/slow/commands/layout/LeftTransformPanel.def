@@ -17,7 +17,7 @@ layout {
 
   component {
     tooltip: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
-    address:: "rec.audio.source.StereoProto:value"
+    address: "rec.audio.source.StereoProto:value"
     combo_box {
       item: "Stereo"
       item: "Left"

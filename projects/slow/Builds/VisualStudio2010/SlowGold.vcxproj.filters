@@ -1105,6 +1105,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
       <Filter>SlowGold\genfiles\rec\audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\PlayState.pb.cc">
+      <Filter>SlowGold\genfiles\rec\audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc">
       <Filter>SlowGold\genfiles\rec\audio\source</Filter>
     </ClCompile>
@@ -3270,7 +3273,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\range\WrapSeries.h">
       <Filter>SlowGold\src\util\range</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\StateBroadcaster.h">
+    <ClInclude Include="..\..\..\..\src\rec\util\StateListener.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
@@ -3421,6 +3424,9 @@
       <Filter>SlowGold\genfiles\rec\app</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
+      <Filter>SlowGold\genfiles\rec\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\PlayState.pb.h">
       <Filter>SlowGold\genfiles\rec\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h">

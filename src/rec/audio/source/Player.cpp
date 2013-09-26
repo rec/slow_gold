@@ -15,24 +15,14 @@ using namespace rec::widget::waveform;
 Player::Player(Device* d) : device_(d) {}
 
 void Player::init() {
-  doLog("Player::init");
-  doLog("Timer::init");
   timer_ = new Timer(nullptr);
-  doLog("Selection::init");
   selection_ = new Selection(timer_);
-  doLog("Stretchy::Stretchy");
   stretchy_ = new Stretchy(selection_);
-  doLog("Stretchy::init");
   stretchy_->init(device_->getSampleRate());
-  doLog("Stereo::init");
   stereo_ = new Stereo(stretchy_);
-  doLog("level setting");
   level_.setSource(stereo_);
-  doLog("adding callback");
   device_->manager_.addAudioCallback(&player_);
-  doLog("Setting source");
   transportSource_.setSource(&level_);
-  doLog("setting transport source");
   player_.setSource(&transportSource_);
 }
 
@@ -46,6 +36,7 @@ SampleTime Player::getNextReadPosition() {
 }
 
 void Player::setNextReadPosition(const SampleTime& time) {
+  DLOG(INFO) << time;
   selection_->setNextReadPosition(time);
 }
 

@@ -13,6 +13,7 @@ class CurrentFile : public util::file::CurrentFileBase {
  public:
   CurrentFile() {}
   const SampleTime length() const { return length_; }
+  void saveState() override;
 
  protected:
   bool determineIfFileEmpty(bool showError) override;

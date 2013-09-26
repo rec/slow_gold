@@ -18,10 +18,10 @@ namespace program {
 SetterListener::SetterListener(CommandID id,
                                const command::Command& command,
                                JuceModel* model)
-    : AddressListener(command.setter().address()),
+    : AddressListener(splitAddress(command.setter())),
       model_(model) {
   Program* p = model->program();
-  if (command.setter().type() == Setter::TOGGLE) {
+  if (command.setter_type() == Command::TOGGLE) {
     p->addCallback(id, methodCallback(this, &SetterListener::toggle));
   } else {
     CommandID index = id - command.id();

@@ -42,6 +42,15 @@ command {
   }
 }
 command {
+  id_string: "TOGGLE_AUTOPLAY"
+  category: "Audio"
+  desc {
+    menu: "Autoplay"
+    full: "Does the audio automatically restart if the program was playing when that file was closed?"
+  }
+  setter: "rec.audio.AudioSettings:autoplay"
+}
+command {
   id_string: "TOGGLE_START_STOP"
   category: "Transport"
   desc {
@@ -57,14 +66,7 @@ command {
     menu: "Enable Stretch"
     full: "Toggle between stretched and real-time playback."
   }
-  setter {
-    address {
-      type_name: "rec.audio.stretch.Stretch"
-      part {
-        name: "time_enabled"
-      }
-    }
-  }
+  setter: "rec.audio.stretch.Stretch:time_enabled"
 }
 command {
   id_string: "TOGGLE_TRANSFORM_ENABLE"
@@ -73,12 +75,5 @@ command {
     menu: "Enable Transforms"
     full: "Toggle pitch, time and stereo transforms of the sound."
   }
-  setter {
-    address {
-      type_name: "rec.audio.stretch.Stretch"
-      part {
-        name: "enabled"
-      }
-    }
-  }
+  setter: "rec.audio.stretch.Stretch:enabled"
 }

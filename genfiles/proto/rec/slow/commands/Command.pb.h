@@ -104,6 +104,7 @@ enum Command_Id {
   Command_Id_SET_SAVE_AS_WAV = 100,
   Command_Id_TOGGLE_ADVANCED_MENUS = 59,
   Command_Id_TOGGLE_AUTOMATIC_UPDATES = 67,
+  Command_Id_TOGGLE_AUTOPLAY = 101,
   Command_Id_TOGGLE_FOLLOW_CURSOR = 43,
   Command_Id_TOGGLE_GRID_DISPLAY = 27,
   Command_Id_TOGGLE_COMMAND_BAR_AT_LEFT = 54,
@@ -139,7 +140,7 @@ enum Command_Id {
   Command_Id_ZOOM_OUT = 40,
   Command_Id_ZOOM_OUT_FULL = 64,
   Command_Id_ZOOM_TO_SELECTION = 45,
-  Command_Id_FIRST_FREE_TYPE = 101,
+  Command_Id_FIRST_FREE_TYPE = 102,
   Command_Id_QUIT = 4097,
   Command_Id_DEL = 4098,
   Command_Id_CUT = 4099,
@@ -282,6 +283,7 @@ class Command : public ::google::protobuf::Message {
   static const Id SET_SAVE_AS_WAV = Command_Id_SET_SAVE_AS_WAV;
   static const Id TOGGLE_ADVANCED_MENUS = Command_Id_TOGGLE_ADVANCED_MENUS;
   static const Id TOGGLE_AUTOMATIC_UPDATES = Command_Id_TOGGLE_AUTOMATIC_UPDATES;
+  static const Id TOGGLE_AUTOPLAY = Command_Id_TOGGLE_AUTOPLAY;
   static const Id TOGGLE_FOLLOW_CURSOR = Command_Id_TOGGLE_FOLLOW_CURSOR;
   static const Id TOGGLE_GRID_DISPLAY = Command_Id_TOGGLE_GRID_DISPLAY;
   static const Id TOGGLE_COMMAND_BAR_AT_LEFT = Command_Id_TOGGLE_COMMAND_BAR_AT_LEFT;

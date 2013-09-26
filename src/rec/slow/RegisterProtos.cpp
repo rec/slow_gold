@@ -2,6 +2,7 @@
 
 #include "rec/app/AppSettings.pb.h"
 #include "rec/audio/AudioSettings.pb.h"
+#include "rec/audio/PlayState.pb.h"
 #include "rec/audio/source/Stereo.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.pb.h"
@@ -32,6 +33,7 @@ void registerProtos() {
 
   registerProto<app::AppSettings>(r);
   registerProto<audio::AudioSettings>(r);
+  registerProto<audio::PlayState>(r);
   registerProto<command::CommandMapProto>(r);
   registerProto<command::Commands>(r);
   registerProto<command::KeyStrokeCommandMapProto>(r);

@@ -25,6 +25,7 @@ class CurrentFileBase : public Listener<const VirtualFile&>,
   void setVirtualFile(const VirtualFile&, bool showError);
   void setFile(const File&, bool showError = true);
   const VirtualFile file() const { return file_; }
+  virtual void saveState() = 0;
 
  protected:
   virtual bool determineIfFileEmpty(bool showError) = 0;
