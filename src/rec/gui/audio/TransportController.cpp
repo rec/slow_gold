@@ -92,11 +92,6 @@ void TransportController::buttonClicked(juce::Button *button) {
     LOG(DFATAL) << "Unknown button " << button;
 }
 
-void TransportController::operator()(const rec::audio::Gain& gain) {
-  levelSlider_.setEnabled(!gain.mute());
-  levelMeter_(gain);
-}
-
 }  // namespace rec
 }  // namespace gui
 }  // namespace audio

@@ -7,25 +7,27 @@
 #include "rec/music/Metadata.h"
 #include "rec/util/StateListener.h"
 
+namespace rec { namespace audio { class Gain; }}
+namespace rec { namespace gui { class SongData; }}
+
+namespace rec { namespace gui { namespace audio { class CommandBar; } }}
+namespace rec { namespace gui { namespace audio { class Loops; } }}
+namespace rec { namespace gui { namespace audio { class ModeSelector; } }}
+namespace rec { namespace gui { namespace audio { class TransformController; } }}
+namespace rec { namespace gui { namespace audio { class TimeController; } }}
+namespace rec { namespace gui { namespace audio { class TransportController; } }}
+
+namespace rec { namespace widget { namespace tree { class Root; } }}
+namespace rec { namespace widget { namespace waveform { class Waveform; } }}
+
+
 namespace rec {
-
-namespace gui { class SongData; }
-
-namespace gui { namespace audio { class CommandBar; } }
-namespace gui { namespace audio { class Loops; } }
-namespace gui { namespace audio { class ModeSelector; } }
-namespace gui { namespace audio { class TransformController; } }
-namespace gui { namespace audio { class TimeController; } }
-namespace gui { namespace audio { class TransportController; } }
-
-namespace widget { namespace tree { class Root; } }
-namespace widget { namespace waveform { class Waveform; } }
-
 namespace slow {
 
 class MainPage;
 
 class Components : public data::DataListener<music::Metadata>,
+                   public data::DataListener<audio::Gain>,
                    public StateListener<audio::transport::State> {
  public:
   Components();
@@ -35,6 +37,7 @@ class Components : public data::DataListener<music::Metadata>,
   void setEnabled(bool enabled);
   void operator()(const music::Metadata&) override;
   void operator()(audio::transport::State) override;
+  void operator()(const audio::Gain&) override;
 
   ApplicationCommandManager* manager_;
   unique_ptr<gui::audio::Loops> loops_;
@@ -64,6 +67,10 @@ class Components : public data::DataListener<music::Metadata>,
   }
 
  private:
+  DrawableButton* startStopButton_;
+  Component* levelSlider_;
+
+
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };
 

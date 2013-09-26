@@ -39,19 +39,25 @@ Components::Components()
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
-	  commandBar_(new gui::audio::CommandBar) {
+      commandBar_(new gui::audio::CommandBar) {
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());
   componentMap_ = gui::getComponentMap(mainPage_->panel());
   for (auto& i: componentMap_)
     DLOG(INFO) << "Component " << i.first;
+  startStopButton_ = getComponent<DrawableButton>("StartStopButton");
+  levelSlider_ = getComponent<Component>("LevelSlider");
 }
 
 Components::~Components() {}
 
 void Components::init() {
   waveform_->init();
+}
+
+void Components::operator()(const rec::audio::Gain& gain) {
+  levelSlider_->setEnabled(!gain.mute());
 }
 
 void Components::setEnabled(bool enabled) {
@@ -81,11 +87,10 @@ void Components::operator()(const music::Metadata& md) {
 }
 
 void Components::operator()(audio::transport::State state) {
-  DrawableButton* button = getComponent<DrawableButton>("StartStopButton");
   MessageManagerLock l;
-  button->setToggleState(state == rec::audio::transport::RUNNING,
-                                  juce::dontSendNotification);
-  button->repaint();
+  startStopButton_->setToggleState(state == rec::audio::transport::RUNNING,
+                                   juce::dontSendNotification);
+  startStopButton_->repaint();
 }
 
 }  // namespace slow

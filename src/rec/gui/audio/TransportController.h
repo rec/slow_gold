@@ -29,14 +29,12 @@ enum TransportCommand {
 // those buttons.
 class TransportController : public Panel,
                             public juce::ButtonListener,
-                            public DataListener<rec::audio::Gain>,
                             public Broadcaster<TransportCommand> {
  public:
   TransportController();
   virtual ~TransportController();
 
-  virtual void buttonClicked(juce::Button *button);
-  virtual void operator()(const rec::audio::Gain&);
+  void buttonClicked(juce::Button*) override;
 
  private:
   Panel buttonsPanel_;
