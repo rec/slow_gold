@@ -35,7 +35,7 @@ TransportController::TransportController()
                          "Jump to the start of the track."),
       levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
                   "right tracks."),
-      level_("Volume", "Volume Slider: Raise or lower the sound intensity, "
+      levelSlider_("Volume", "Volume Slider: Raise or lower the sound intensity, "
              "in dB.", data::makeAddress<Gain>("gain")),
       muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
                   data::makeAddress<Gain>("mute")) {
@@ -57,12 +57,12 @@ TransportController::TransportController()
   buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
   buttonsPanel_.addToPanel(timeController_.get());
 
-  level_.slider()->setRange(-36.0, +12.0, 0.1);
-  level_.slider()->setDetent(0.0f);
-  level_.slider()->setTextValueSuffix(" dB");
+  levelSlider_.slider()->setRange(-36.0, +12.0, 0.1);
+  levelSlider_.slider()->setDetent(0.0f);
+  levelSlider_.slider()->setTextValueSuffix(" dB");
 
   gainPanel_.addToPanel(&muteButton_, MUTE_BUTTON_SIZE);
-  gainPanel_.addToPanel(&level_);
+  gainPanel_.addToPanel(&levelSlider_);
 
   addToPanel(&buttonsPanel_, ICON_SIZE);
   addToPanel(&gainPanel_, ICON_SIZE);
@@ -104,7 +104,7 @@ void TransportController::operator()(const rec::audio::Gain& gain) {
 }
 
 void TransportController::setGain(rec::audio::Gain gain) {
-  level_.setEnabled(!gain.mute());
+  levelSlider_.setEnabled(!gain.mute());
   levelMeter_(gain);
 }
 

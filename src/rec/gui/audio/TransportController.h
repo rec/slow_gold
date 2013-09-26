@@ -40,7 +40,6 @@ class TransportController : public Panel,
   virtual void operator()(const rec::audio::Gain&);
 
   void clearLevels();
-  LevelMeter* levelMeter() { return &levelMeter_; }
 
  private:
   void setGain(rec::audio::Gain);
@@ -54,7 +53,7 @@ class TransportController : public Panel,
   LanguageButton jumpBackButton_;
   LanguageButton jumpForwardButton_;
   LevelMeter levelMeter_;
-  DataSlider level_;
+  DataSlider levelSlider_;
   gui::SetterToggle muteButton_;
 
   juce::Label filler_;
