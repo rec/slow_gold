@@ -6,6 +6,7 @@
 #include "rec/app/LanguageListener.h"
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
+#include "rec/util/HasThread.h"
 #include "rec/util/Listener.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
@@ -19,19 +20,21 @@ namespace time {
 class TextComponent : public gui::SimpleLabel,
                       public app::LanguageListener,
                       public DataListener<waveform::Viewport>,
-                      public Listener<SampleTime> {
+                      public Listener<SampleTime>,
+                      public HasThread {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
   virtual void operator()(SampleTime time) { setTime(time); }
 
   SampleTime getTime() const;
-  bool setTime(SampleTime time);
+  void setTime(SampleTime time);
   void setLength(SampleTime len) { length_ = len; }
-  void redisplay();
   virtual void languageChanged();
 
  protected:
   virtual void operator()(const waveform::Viewport&);
+  bool doSetTime(SampleTime time);
+  void redisplay();
 
  private:
   Text description_;

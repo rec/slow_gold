@@ -9,7 +9,8 @@ namespace util {
 class HasThread {
  public:
   explicit HasThread(Thread* t = nullptr) : thread_(t) {}
-  void setThread(Thread* thread) { thread_ = thread; }
+  virtual ~HasThread() {}
+  virtual void setThread(Thread* thread) { thread_ = thread; }
   Thread* thread() { return thread_; }
   void setThreadFromCurrent() {
     if (!thread_)

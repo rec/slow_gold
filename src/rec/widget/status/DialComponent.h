@@ -3,6 +3,7 @@
 
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
+#include "rec/util/HasThread.h"
 #include "rec/util/Listener.h"
 #include "rec/util/range/Range.h"
 #include "rec/widget/status/Time.pb.h"
@@ -16,15 +17,15 @@ namespace time {
 class DialComponent : public Component,
                       public Listener<SampleTime >,
                       public DataListener<waveform::Viewport>,
-                      public SettableTooltipClient {
+                      public SettableTooltipClient,
+                      public HasThread {
  public:
   explicit DialComponent(const Dial& desc);
 
-  virtual void operator()(SampleTime t);
+  virtual void operator()(SampleTime t) { setTime(t); }
 
   virtual void paint(juce::Graphics& g);
-  virtual void repaint() { Component::repaint(); }
-  bool setTime(SampleTime);
+  void setTime(SampleTime);
 
   static const double PI;
   static const double REDRAW_ANGLE;
@@ -34,6 +35,7 @@ class DialComponent : public Component,
 
  private:
   void recomputeAngle();
+  bool doSetTime(SampleTime);
 
   CriticalSection lock_;
   Dial description_;

@@ -11,7 +11,7 @@ namespace util {
 struct TimeFormat {
   enum Flash { NO_FLASH, FLASH };
   enum LeadingZeros { NO_LEADING_ZEROS, LEADING_ZEROS };
-  enum DisplayHours { NO_DISPLAY_HOURS, DISPLAY_HOURS };
+  enum DisplayHours { NO_DISPLAY_HOURS, DISPLAY_HOURS, PERHAPS_DISPLAY_HOURS };
 
   Flash flash_;
   LeadingZeros leadingZeros_;
@@ -22,7 +22,7 @@ struct TimeFormat {
   }
 
   TimeFormat(Flash flash = NO_FLASH, LeadingZeros leadingZeros = LEADING_ZEROS,
-             int decimals = 3, DisplayHours displayHours = NO_DISPLAY_HOURS)
+             int decimals = 3, DisplayHours displayHours = PERHAPS_DISPLAY_HOURS)
       : flash_(flash),
         leadingZeros_(leadingZeros),
         decimals_(decimals),

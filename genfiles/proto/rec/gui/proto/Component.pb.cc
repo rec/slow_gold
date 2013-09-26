@@ -98,6 +98,7 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fCustom_2eproto();
@@ -108,38 +109,36 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fText_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fTime_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fTimeDial_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
+  ::rec::widget::status::time::protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/gui/proto/Component.proto\022\007rec.gui"
-    "\032\032rec/gui/proto/Button.proto\032\034rec/gui/pr"
-    "oto/ComboBox.proto\032\032rec/gui/proto/Custom"
-    ".proto\032\030rec/gui/proto/Font.proto\032\030rec/gu"
-    "i/proto/Help.proto\032\031rec/gui/proto/Label."
-    "proto\032\033rec/gui/proto/Resizer.proto\032\030rec/"
-    "gui/proto/Size.proto\032\032rec/gui/proto/Slid"
-    "er.proto\032\030rec/gui/proto/Text.proto\032\030rec/"
-    "gui/proto/Time.proto\032\034rec/gui/proto/Time"
-    "Dial.proto\032 rec/gui/proto/ToggleButton.p"
-    "roto\032\023rec/gui/Color.proto\"\211\005\n\016ComponentP"
-    "roto\022\014\n\004name\030\001 \001(\t\022\017\n\007tooltip\030\002 \001(\t\022\033\n\004s"
-    "ize\030\003 \001(\0132\r.rec.gui.Size\022\017\n\007address\030\004 \001("
-    "\t\022\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 \n\004font"
-    "\030\006 \001(\0132\022.rec.gui.FontProto\022\016\n\006layout\030\021 \001"
-    "(\t\022\017\n\007resizer\030\007 \001(\t\022\026\n\013min_resizer\030\022 \001(\t"
-    ":\0010\022$\n\006button\030\010 \001(\0132\024.rec.gui.ButtonProt"
-    "o\022)\n\tcombo_box\030\t \001(\0132\026.rec.gui.ComboBoxP"
-    "roto\022$\n\006custom\030\n \001(\0132\024.rec.gui.CustomPro"
-    "to\022 \n\004help\030\020 \001(\0132\022.rec.gui.HelpProto\022\"\n\005"
-    "label\030\013 \001(\0132\023.rec.gui.LabelProto\022+\n\014full"
-    "_resizer\030\014 \001(\0132\025.rec.gui.ResizerProto\022$\n"
-    "\006slider\030\r \001(\0132\024.rec.gui.SliderProto\022 \n\004t"
-    "ext\030\016 \001(\0132\022.rec.gui.TextProto\022)\n\ttime_di"
-    "al\030\023 \001(\0132\026.rec.gui.TimeDialProto\022 \n\004time"
-    "\030\024 \001(\0132\022.rec.gui.TimeProto\0221\n\rtoggle_but"
-    "ton\030\017 \001(\0132\032.rec.gui.ToggleButtonProto", 1077);
+    "\032\023rec/gui/Color.proto\032\032rec/gui/proto/But"
+    "ton.proto\032\034rec/gui/proto/ComboBox.proto\032"
+    "\032rec/gui/proto/Custom.proto\032\030rec/gui/pro"
+    "to/Font.proto\032\030rec/gui/proto/Help.proto\032"
+    "\031rec/gui/proto/Label.proto\032\033rec/gui/prot"
+    "o/Resizer.proto\032\030rec/gui/proto/Size.prot"
+    "o\032\032rec/gui/proto/Slider.proto\032\030rec/gui/p"
+    "roto/Text.proto\032 rec/gui/proto/ToggleBut"
+    "ton.proto\032\034rec/widget/status/Time.proto\""
+    "\231\005\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tool"
+    "tip\030\002 \001(\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\017"
+    "\n\007address\030\004 \001(\t\022\035\n\005color\030\005 \003(\0132\016.rec.gui"
+    ".Color\022 \n\004font\030\006 \001(\0132\022.rec.gui.FontProto"
+    "\022\016\n\006layout\030\021 \001(\t\022\017\n\007resizer\030\007 \001(\t\022\026\n\013min"
+    "_resizer\030\022 \001(\t:\0010\022$\n\006button\030\010 \001(\0132\024.rec."
+    "gui.ButtonProto\022)\n\tcombo_box\030\t \001(\0132\026.rec"
+    ".gui.ComboBoxProto\022$\n\006custom\030\n \001(\0132\024.rec"
+    ".gui.CustomProto\022 \n\004help\030\020 \001(\0132\022.rec.gui"
+    ".HelpProto\022\"\n\005label\030\013 \001(\0132\023.rec.gui.Labe"
+    "lProto\022+\n\014full_resizer\030\014 \001(\0132\025.rec.gui.R"
+    "esizerProto\022$\n\006slider\030\r \001(\0132\024.rec.gui.Sl"
+    "iderProto\022 \n\004text\030\016 \001(\0132\022.rec.gui.TextPr"
+    "oto\022/\n\ttime_dial\030\023 \001(\0132\034.rec.widget.stat"
+    "us.time.Dial\022*\n\004time\030\024 \001(\0132\034.rec.widget."
+    "status.time.Text\0221\n\rtoggle_button\030\017 \001(\0132"
+    "\032.rec.gui.ToggleButtonProto", 1067);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::_default_min_resizer_ =
@@ -198,8 +197,8 @@ void ComponentProto::InitAsDefaultInstance() {
   full_resizer_ = const_cast< ::rec::gui::ResizerProto*>(&::rec::gui::ResizerProto::default_instance());
   slider_ = const_cast< ::rec::gui::SliderProto*>(&::rec::gui::SliderProto::default_instance());
   text_ = const_cast< ::rec::gui::TextProto*>(&::rec::gui::TextProto::default_instance());
-  time_dial_ = const_cast< ::rec::gui::TimeDialProto*>(&::rec::gui::TimeDialProto::default_instance());
-  time_ = const_cast< ::rec::gui::TimeProto*>(&::rec::gui::TimeProto::default_instance());
+  time_dial_ = const_cast< ::rec::widget::status::time::Dial*>(&::rec::widget::status::time::Dial::default_instance());
+  time_ = const_cast< ::rec::widget::status::time::Text*>(&::rec::widget::status::time::Text::default_instance());
   toggle_button_ = const_cast< ::rec::gui::ToggleButtonProto*>(&::rec::gui::ToggleButtonProto::default_instance());
 }
 
@@ -361,10 +360,10 @@ void ComponentProto::Clear() {
       if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
     }
     if (has_time_dial()) {
-      if (time_dial_ != NULL) time_dial_->::rec::gui::TimeDialProto::Clear();
+      if (time_dial_ != NULL) time_dial_->::rec::widget::status::time::Dial::Clear();
     }
     if (has_time()) {
-      if (time_ != NULL) time_->::rec::gui::TimeProto::Clear();
+      if (time_ != NULL) time_->::rec::widget::status::time::Text::Clear();
     }
     if (has_toggle_button()) {
       if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();
@@ -651,7 +650,7 @@ bool ComponentProto::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .rec.gui.TimeDialProto time_dial = 19;
+      // optional .rec.widget.status.time.Dial time_dial = 19;
       case 19: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -665,7 +664,7 @@ bool ComponentProto::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .rec.gui.TimeProto time = 20;
+      // optional .rec.widget.status.time.Text time = 20;
       case 20: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -823,13 +822,13 @@ void ComponentProto::SerializeWithCachedSizes(
       18, this->min_resizer(), output);
   }
 
-  // optional .rec.gui.TimeDialProto time_dial = 19;
+  // optional .rec.widget.status.time.Dial time_dial = 19;
   if (has_time_dial()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       19, this->time_dial(), output);
   }
 
-  // optional .rec.gui.TimeProto time = 20;
+  // optional .rec.widget.status.time.Text time = 20;
   if (has_time()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       20, this->time(), output);
@@ -987,14 +986,14 @@ void ComponentProto::SerializeWithCachedSizes(
         18, this->min_resizer(), target);
   }
 
-  // optional .rec.gui.TimeDialProto time_dial = 19;
+  // optional .rec.widget.status.time.Dial time_dial = 19;
   if (has_time_dial()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         19, this->time_dial(), target);
   }
 
-  // optional .rec.gui.TimeProto time = 20;
+  // optional .rec.widget.status.time.Text time = 20;
   if (has_time()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1128,14 +1127,14 @@ int ComponentProto::ByteSize() const {
           this->text());
     }
 
-    // optional .rec.gui.TimeDialProto time_dial = 19;
+    // optional .rec.widget.status.time.Dial time_dial = 19;
     if (has_time_dial()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->time_dial());
     }
 
-    // optional .rec.gui.TimeProto time = 20;
+    // optional .rec.widget.status.time.Text time = 20;
     if (has_time()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1238,10 +1237,10 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
       mutable_text()->::rec::gui::TextProto::MergeFrom(from.text());
     }
     if (from.has_time_dial()) {
-      mutable_time_dial()->::rec::gui::TimeDialProto::MergeFrom(from.time_dial());
+      mutable_time_dial()->::rec::widget::status::time::Dial::MergeFrom(from.time_dial());
     }
     if (from.has_time()) {
-      mutable_time()->::rec::gui::TimeProto::MergeFrom(from.time());
+      mutable_time()->::rec::widget::status::time::Text::MergeFrom(from.time());
     }
     if (from.has_toggle_button()) {
       mutable_toggle_button()->::rec::gui::ToggleButtonProto::MergeFrom(from.toggle_button());

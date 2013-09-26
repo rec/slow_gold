@@ -41,14 +41,9 @@ DialComponent::DialComponent(const Dial& desc)
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;
 
-void DialComponent::operator()(SampleTime time) {
-  if (setTime(time))
-    repaint();
-}
-
 static bool SMALLEST_CHANGE_ENABLED = false;
 
-bool DialComponent::setTime(SampleTime time) {
+bool DialComponent::doSetTime(SampleTime time) {
   Lock l(lock_);
   if (SMALLEST_CHANGE_ENABLED && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
     return false;
@@ -94,6 +89,15 @@ bool DialComponent::setTime(SampleTime time) {
 
   return true;
 }
+
+void DialComponent::setTime(SampleTime time) {
+  if (doSetTime(time)) {
+    MessageManagerLock l(thread());
+    if (l.lockWasGained())
+      repaint();
+  }
+}
+
 
 void DialComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);

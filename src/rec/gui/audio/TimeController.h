@@ -18,19 +18,14 @@ class TimeController : public Panel,
   TimeController();
   virtual ~TimeController() {}
 
-  void setTimeScale(double);
-
   virtual void operator()(SampleTime);
-  void setLength(SampleTime);
+  void setThread(Thread*) override;
 
  private:
   CriticalSection lock_;
   widget::status::time::DialComponent songDial_;
   widget::status::time::TextComponent songTime_;
 
-  static const bool DISPLAY_SCALED_TIME = false;
-
-  double timeScale_;
   gui::Panel filler_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TimeController);

@@ -43,7 +43,6 @@ class Text;
 class Text_Separator;
 class Text_Fields;
 class Dial;
-class Bar;
 class Time;
 
 enum Dial_Direction {
@@ -599,78 +598,6 @@ class Dial : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Bar : public ::google::protobuf::Message {
- public:
-  Bar();
-  virtual ~Bar();
-
-  Bar(const Bar& from);
-
-  inline Bar& operator=(const Bar& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Bar& default_instance();
-
-  void Swap(Bar* other);
-
-  // implements Message ----------------------------------------------
-
-  Bar* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Bar& from);
-  void MergeFrom(const Bar& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:rec.widget.status.time.Bar)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[1];
-
-  friend void  protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
-  friend void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto();
-
-  void InitAsDefaultInstance();
-  static Bar* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class Time : public ::google::protobuf::Message {
  public:
   Time();
@@ -743,32 +670,20 @@ class Time : public ::google::protobuf::Message {
   inline ::rec::widget::status::time::Dial* release_dial();
   inline void set_allocated_dial(::rec::widget::status::time::Dial* dial);
 
-  // optional .rec.widget.status.time.Bar bar = 3;
-  inline bool has_bar() const;
-  inline void clear_bar();
-  static const int kBarFieldNumber = 3;
-  inline const ::rec::widget::status::time::Bar& bar() const;
-  inline ::rec::widget::status::time::Bar* mutable_bar();
-  inline ::rec::widget::status::time::Bar* release_bar();
-  inline void set_allocated_bar(::rec::widget::status::time::Bar* bar);
-
   // @@protoc_insertion_point(class_scope:rec.widget.status.time.Time)
  private:
   inline void set_has_text();
   inline void clear_has_text();
   inline void set_has_dial();
   inline void clear_has_dial();
-  inline void set_has_bar();
-  inline void clear_has_bar();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::widget::status::time::Text* text_;
   ::rec::widget::status::time::Dial* dial_;
-  ::rec::widget::status::time::Bar* bar_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
@@ -1383,10 +1298,6 @@ inline void Dial::set_allocated_to_color(::rec::gui::Color* to_color) {
 
 // -------------------------------------------------------------------
 
-// Bar
-
-// -------------------------------------------------------------------
-
 // Time
 
 // optional .rec.widget.status.time.Text text = 1;
@@ -1462,44 +1373,6 @@ inline void Time::set_allocated_dial(::rec::widget::status::time::Dial* dial) {
     set_has_dial();
   } else {
     clear_has_dial();
-  }
-}
-
-// optional .rec.widget.status.time.Bar bar = 3;
-inline bool Time::has_bar() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Time::set_has_bar() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void Time::clear_has_bar() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Time::clear_bar() {
-  if (bar_ != NULL) bar_->::rec::widget::status::time::Bar::Clear();
-  clear_has_bar();
-}
-inline const ::rec::widget::status::time::Bar& Time::bar() const {
-  return bar_ != NULL ? *bar_ : *default_instance_->bar_;
-}
-inline ::rec::widget::status::time::Bar* Time::mutable_bar() {
-  set_has_bar();
-  if (bar_ == NULL) bar_ = new ::rec::widget::status::time::Bar;
-  return bar_;
-}
-inline ::rec::widget::status::time::Bar* Time::release_bar() {
-  clear_has_bar();
-  ::rec::widget::status::time::Bar* temp = bar_;
-  bar_ = NULL;
-  return temp;
-}
-inline void Time::set_allocated_bar(::rec::widget::status::time::Bar* bar) {
-  delete bar_;
-  bar_ = bar;
-  if (bar) {
-    set_has_bar();
-  } else {
-    clear_has_bar();
   }
 }
 

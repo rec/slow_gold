@@ -367,8 +367,6 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
@@ -1572,6 +1570,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Apply.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataBroadcaster.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataListener.h"/>
@@ -1831,8 +1830,6 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>

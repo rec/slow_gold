@@ -2,12 +2,14 @@
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Context.h"
+#include "rec/widget/status/TextComponent.h"
 
 namespace rec {
 namespace gui {
 
 unique_ptr<Component> makeTime(const Context& context) {
-  return unique_ptr<Component>();
+  using widget::status::time::TextComponent;
+  return unique_ptr<Component>(new TextComponent(context.component_.time()));
 }
 
 }  // namespace gui

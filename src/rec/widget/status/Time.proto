@@ -43,11 +43,7 @@ message Dial {
   optional gui.Color to_color = 10;
 };
 
-message Bar {
-};
-
 message Time {
   optional Text text = 1;
   optional Dial dial = 2;
-  optional Bar bar = 3;
 };

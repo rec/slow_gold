@@ -42,7 +42,12 @@ void TextComponent::languageChanged() {
                    "seconds and millseconds."));
 }
 
-bool TextComponent::setTime(SampleTime t) {
+void TextComponent::setTime(SampleTime t) {
+  if (doSetTime(t))
+    redisplay();
+}
+
+bool TextComponent::doSetTime(SampleTime t) {
   bool res;
 
   Lock l(lock_);
@@ -69,7 +74,9 @@ void TextComponent::redisplay() {
     dis = timeDisplay_;
   }
 
-  setText(dis, juce::dontSendNotification);
+  MessageManagerLock l(thread());
+  if (l.lockWasGained())
+    setText(dis, juce::dontSendNotification);
 }
 
 }  // namespace time

@@ -36,9 +36,6 @@ const ::google::protobuf::Descriptor* Dial_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Dial_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* Dial_Direction_descriptor_ = NULL;
-const ::google::protobuf::Descriptor* Bar_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Bar_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Time_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Time_reflection_ = NULL;
@@ -129,25 +126,10 @@ void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Dial));
   Dial_Direction_descriptor_ = Dial_descriptor_->enum_type(0);
-  Bar_descriptor_ = file->message_type(2);
-  static const int Bar_offsets_[1] = {
-  };
-  Bar_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Bar_descriptor_,
-      Bar::default_instance_,
-      Bar_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Bar, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Bar, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Bar));
-  Time_descriptor_ = file->message_type(3);
-  static const int Time_offsets_[3] = {
+  Time_descriptor_ = file->message_type(2);
+  static const int Time_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, text_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, dial_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, bar_),
   };
   Time_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -181,8 +163,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Dial_descriptor_, &Dial::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Bar_descriptor_, &Bar::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Time_descriptor_, &Time::default_instance());
 }
 
@@ -197,8 +177,6 @@ void protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto() {
   delete Text_Fields_reflection_;
   delete Dial::default_instance_;
   delete Dial_reflection_;
-  delete Bar::default_instance_;
-  delete Bar_reflection_;
   delete Time::default_instance_;
   delete Time_reflection_;
 }
@@ -232,23 +210,20 @@ void protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
     "\001(\010:\004true\022\"\n\nfrom_color\030\t \001(\0132\016.rec.gui."
     "Color\022 \n\010to_color\030\n \001(\0132\016.rec.gui.Color\""
     "1\n\tDirection\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_C"
-    "LOCKWISE\020\002\"\005\n\003Bar\"\210\001\n\004Time\022*\n\004text\030\001 \001(\013"
-    "2\034.rec.widget.status.time.Text\022*\n\004dial\030\002"
-    " \001(\0132\034.rec.widget.status.time.Dial\022(\n\003ba"
-    "r\030\003 \001(\0132\033.rec.widget.status.time.Bar", 956);
+    "LOCKWISE\020\002\"^\n\004Time\022*\n\004text\030\001 \001(\0132\034.rec.w"
+    "idget.status.time.Text\022*\n\004dial\030\002 \001(\0132\034.r"
+    "ec.widget.status.time.Dial", 906);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/status/Time.proto", &protobuf_RegisterTypes);
   Text::default_instance_ = new Text();
   Text_Separator::default_instance_ = new Text_Separator();
   Text_Fields::default_instance_ = new Text_Fields();
   Dial::default_instance_ = new Dial();
-  Bar::default_instance_ = new Bar();
   Time::default_instance_ = new Time();
   Text::default_instance_->InitAsDefaultInstance();
   Text_Separator::default_instance_->InitAsDefaultInstance();
   Text_Fields::default_instance_->InitAsDefaultInstance();
   Dial::default_instance_->InitAsDefaultInstance();
-  Bar::default_instance_->InitAsDefaultInstance();
   Time::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto);
 }
@@ -1789,165 +1764,8 @@ void Dial::Swap(Dial* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-#endif  // !_MSC_VER
-
-Bar::Bar()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Bar::InitAsDefaultInstance() {
-}
-
-Bar::Bar(const Bar& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Bar::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Bar::~Bar() {
-  SharedDtor();
-}
-
-void Bar::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Bar::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Bar::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Bar_descriptor_;
-}
-
-const Bar& Bar::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
-  return *default_instance_;
-}
-
-Bar* Bar::default_instance_ = NULL;
-
-Bar* Bar::New() const {
-  return new Bar;
-}
-
-void Bar::Clear() {
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Bar::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      return true;
-    }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
-  }
-  return true;
-#undef DO_
-}
-
-void Bar::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Bar::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Bar::ByteSize() const {
-  int total_size = 0;
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Bar::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Bar* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Bar*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Bar::MergeFrom(const Bar& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Bar::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Bar::CopyFrom(const Bar& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Bar::IsInitialized() const {
-
-  return true;
-}
-
-void Bar::Swap(Bar* other) {
-  if (other != this) {
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Bar::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Bar_descriptor_;
-  metadata.reflection = Bar_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
 const int Time::kTextFieldNumber;
 const int Time::kDialFieldNumber;
-const int Time::kBarFieldNumber;
 #endif  // !_MSC_VER
 
 Time::Time()
@@ -1958,7 +1776,6 @@ Time::Time()
 void Time::InitAsDefaultInstance() {
   text_ = const_cast< ::rec::widget::status::time::Text*>(&::rec::widget::status::time::Text::default_instance());
   dial_ = const_cast< ::rec::widget::status::time::Dial*>(&::rec::widget::status::time::Dial::default_instance());
-  bar_ = const_cast< ::rec::widget::status::time::Bar*>(&::rec::widget::status::time::Bar::default_instance());
 }
 
 Time::Time(const Time& from)
@@ -1971,7 +1788,6 @@ void Time::SharedCtor() {
   _cached_size_ = 0;
   text_ = NULL;
   dial_ = NULL;
-  bar_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1983,7 +1799,6 @@ void Time::SharedDtor() {
   if (this != default_instance_) {
     delete text_;
     delete dial_;
-    delete bar_;
   }
 }
 
@@ -2016,9 +1831,6 @@ void Time::Clear() {
     if (has_dial()) {
       if (dial_ != NULL) dial_->::rec::widget::status::time::Dial::Clear();
     }
-    if (has_bar()) {
-      if (bar_ != NULL) bar_->::rec::widget::status::time::Bar::Clear();
-    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2050,20 +1862,6 @@ bool Time::MergePartialFromCodedStream(
          parse_dial:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_dial()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_bar;
-        break;
-      }
-
-      // optional .rec.widget.status.time.Bar bar = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_bar:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_bar()));
         } else {
           goto handle_uninterpreted;
         }
@@ -2101,12 +1899,6 @@ void Time::SerializeWithCachedSizes(
       2, this->dial(), output);
   }
 
-  // optional .rec.widget.status.time.Bar bar = 3;
-  if (has_bar()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->bar(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2127,13 +1919,6 @@ void Time::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->dial(), target);
-  }
-
-  // optional .rec.widget.status.time.Bar bar = 3;
-  if (has_bar()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->bar(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2159,13 +1944,6 @@ int Time::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->dial());
-    }
-
-    // optional .rec.widget.status.time.Bar bar = 3;
-    if (has_bar()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->bar());
     }
 
   }
@@ -2201,9 +1979,6 @@ void Time::MergeFrom(const Time& from) {
     if (from.has_dial()) {
       mutable_dial()->::rec::widget::status::time::Dial::MergeFrom(from.dial());
     }
-    if (from.has_bar()) {
-      mutable_bar()->::rec::widget::status::time::Bar::MergeFrom(from.bar());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -2229,7 +2004,6 @@ void Time::Swap(Time* other) {
   if (other != this) {
     std::swap(text_, other->text_);
     std::swap(dial_, other->dial_);
-    std::swap(bar_, other->bar_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

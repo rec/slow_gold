@@ -24,6 +24,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "rec/gui/Color.pb.h"
 #include "rec/gui/proto/Button.pb.h"
 #include "rec/gui/proto/ComboBox.pb.h"
 #include "rec/gui/proto/Custom.pb.h"
@@ -34,10 +35,8 @@
 #include "rec/gui/proto/Size.pb.h"
 #include "rec/gui/proto/Slider.pb.h"
 #include "rec/gui/proto/Text.pb.h"
-#include "rec/gui/proto/Time.pb.h"
-#include "rec/gui/proto/TimeDial.pb.h"
 #include "rec/gui/proto/ToggleButton.pb.h"
-#include "rec/gui/Color.pb.h"
+#include "rec/widget/status/Time.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -280,23 +279,23 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::rec::gui::TextProto* release_text();
   inline void set_allocated_text(::rec::gui::TextProto* text);
 
-  // optional .rec.gui.TimeDialProto time_dial = 19;
+  // optional .rec.widget.status.time.Dial time_dial = 19;
   inline bool has_time_dial() const;
   inline void clear_time_dial();
   static const int kTimeDialFieldNumber = 19;
-  inline const ::rec::gui::TimeDialProto& time_dial() const;
-  inline ::rec::gui::TimeDialProto* mutable_time_dial();
-  inline ::rec::gui::TimeDialProto* release_time_dial();
-  inline void set_allocated_time_dial(::rec::gui::TimeDialProto* time_dial);
+  inline const ::rec::widget::status::time::Dial& time_dial() const;
+  inline ::rec::widget::status::time::Dial* mutable_time_dial();
+  inline ::rec::widget::status::time::Dial* release_time_dial();
+  inline void set_allocated_time_dial(::rec::widget::status::time::Dial* time_dial);
 
-  // optional .rec.gui.TimeProto time = 20;
+  // optional .rec.widget.status.time.Text time = 20;
   inline bool has_time() const;
   inline void clear_time();
   static const int kTimeFieldNumber = 20;
-  inline const ::rec::gui::TimeProto& time() const;
-  inline ::rec::gui::TimeProto* mutable_time();
-  inline ::rec::gui::TimeProto* release_time();
-  inline void set_allocated_time(::rec::gui::TimeProto* time);
+  inline const ::rec::widget::status::time::Text& time() const;
+  inline ::rec::widget::status::time::Text* mutable_time();
+  inline ::rec::widget::status::time::Text* release_time();
+  inline void set_allocated_time(::rec::widget::status::time::Text* time);
 
   // optional .rec.gui.ToggleButtonProto toggle_button = 15;
   inline bool has_toggle_button() const;
@@ -368,8 +367,8 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ResizerProto* full_resizer_;
   ::rec::gui::SliderProto* slider_;
   ::rec::gui::TextProto* text_;
-  ::rec::gui::TimeDialProto* time_dial_;
-  ::rec::gui::TimeProto* time_;
+  ::rec::widget::status::time::Dial* time_dial_;
+  ::rec::widget::status::time::Text* time_;
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
@@ -1214,7 +1213,7 @@ inline void ComponentProto::set_allocated_text(::rec::gui::TextProto* text) {
   }
 }
 
-// optional .rec.gui.TimeDialProto time_dial = 19;
+// optional .rec.widget.status.time.Dial time_dial = 19;
 inline bool ComponentProto::has_time_dial() const {
   return (_has_bits_[0] & 0x00020000u) != 0;
 }
@@ -1225,24 +1224,24 @@ inline void ComponentProto::clear_has_time_dial() {
   _has_bits_[0] &= ~0x00020000u;
 }
 inline void ComponentProto::clear_time_dial() {
-  if (time_dial_ != NULL) time_dial_->::rec::gui::TimeDialProto::Clear();
+  if (time_dial_ != NULL) time_dial_->::rec::widget::status::time::Dial::Clear();
   clear_has_time_dial();
 }
-inline const ::rec::gui::TimeDialProto& ComponentProto::time_dial() const {
+inline const ::rec::widget::status::time::Dial& ComponentProto::time_dial() const {
   return time_dial_ != NULL ? *time_dial_ : *default_instance_->time_dial_;
 }
-inline ::rec::gui::TimeDialProto* ComponentProto::mutable_time_dial() {
+inline ::rec::widget::status::time::Dial* ComponentProto::mutable_time_dial() {
   set_has_time_dial();
-  if (time_dial_ == NULL) time_dial_ = new ::rec::gui::TimeDialProto;
+  if (time_dial_ == NULL) time_dial_ = new ::rec::widget::status::time::Dial;
   return time_dial_;
 }
-inline ::rec::gui::TimeDialProto* ComponentProto::release_time_dial() {
+inline ::rec::widget::status::time::Dial* ComponentProto::release_time_dial() {
   clear_has_time_dial();
-  ::rec::gui::TimeDialProto* temp = time_dial_;
+  ::rec::widget::status::time::Dial* temp = time_dial_;
   time_dial_ = NULL;
   return temp;
 }
-inline void ComponentProto::set_allocated_time_dial(::rec::gui::TimeDialProto* time_dial) {
+inline void ComponentProto::set_allocated_time_dial(::rec::widget::status::time::Dial* time_dial) {
   delete time_dial_;
   time_dial_ = time_dial;
   if (time_dial) {
@@ -1252,7 +1251,7 @@ inline void ComponentProto::set_allocated_time_dial(::rec::gui::TimeDialProto* t
   }
 }
 
-// optional .rec.gui.TimeProto time = 20;
+// optional .rec.widget.status.time.Text time = 20;
 inline bool ComponentProto::has_time() const {
   return (_has_bits_[0] & 0x00040000u) != 0;
 }
@@ -1263,24 +1262,24 @@ inline void ComponentProto::clear_has_time() {
   _has_bits_[0] &= ~0x00040000u;
 }
 inline void ComponentProto::clear_time() {
-  if (time_ != NULL) time_->::rec::gui::TimeProto::Clear();
+  if (time_ != NULL) time_->::rec::widget::status::time::Text::Clear();
   clear_has_time();
 }
-inline const ::rec::gui::TimeProto& ComponentProto::time() const {
+inline const ::rec::widget::status::time::Text& ComponentProto::time() const {
   return time_ != NULL ? *time_ : *default_instance_->time_;
 }
-inline ::rec::gui::TimeProto* ComponentProto::mutable_time() {
+inline ::rec::widget::status::time::Text* ComponentProto::mutable_time() {
   set_has_time();
-  if (time_ == NULL) time_ = new ::rec::gui::TimeProto;
+  if (time_ == NULL) time_ = new ::rec::widget::status::time::Text;
   return time_;
 }
-inline ::rec::gui::TimeProto* ComponentProto::release_time() {
+inline ::rec::widget::status::time::Text* ComponentProto::release_time() {
   clear_has_time();
-  ::rec::gui::TimeProto* temp = time_;
+  ::rec::widget::status::time::Text* temp = time_;
   time_ = NULL;
   return temp;
 }
-inline void ComponentProto::set_allocated_time(::rec::gui::TimeProto* time) {
+inline void ComponentProto::set_allocated_time(::rec::widget::status::time::Text* time) {
   delete time_;
   time_ = time;
   if (time) {

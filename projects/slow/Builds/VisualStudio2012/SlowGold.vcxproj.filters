@@ -1195,12 +1195,6 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.cc">
-      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.cc">
-      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
@@ -2739,6 +2733,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataBroadcaster.h">
+      <Filter>SlowGold\src\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
@@ -3514,12 +3511,6 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.h">
-      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Time.pb.h">
-      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\TimeDial.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h">

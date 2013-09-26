@@ -1,5 +1,6 @@
 package rec.gui;
 
+import "rec/gui/Color.proto";
 import "rec/gui/proto/Button.proto";
 import "rec/gui/proto/ComboBox.proto";
 import "rec/gui/proto/Custom.proto";
@@ -10,10 +11,8 @@ import "rec/gui/proto/Resizer.proto";
 import "rec/gui/proto/Size.proto";
 import "rec/gui/proto/Slider.proto";
 import "rec/gui/proto/Text.proto";
-import "rec/gui/proto/Time.proto";
-import "rec/gui/proto/TimeDial.proto";
 import "rec/gui/proto/ToggleButton.proto";
-import "rec/gui/Color.proto";
+import "rec/widget/status/Time.proto";
 
 message ComponentProto {
   optional string name = 1;
@@ -40,8 +39,8 @@ message ComponentProto {
   optional ResizerProto full_resizer = 12;
   optional SliderProto slider = 13;
   optional TextProto text = 14;
-  optional TimeDialProto time_dial = 19;
-  optional TimeProto time = 20;
+  optional widget.status.time.Dial time_dial = 19;
+  optional widget.status.time.Text time = 20;
   optional ToggleButtonProto toggle_button = 15;
 };
 

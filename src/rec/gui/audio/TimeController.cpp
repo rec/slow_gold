@@ -36,38 +36,23 @@ Dial realTimeDial() {
 TimeController::TimeController()
     : Panel("Time controls", HORIZONTAL),
       songDial_(realTimeDial()),
-      songTime_(Text()),
-      timeScale_(1.0) {
+      songTime_(Text()) {
   addToPanel(&songTime_, TEXT_WIDTH);
   addToPanel(&songDial_, DIAL_WIDTH);
   addToPanel(&filler_);
 }
 
-void TimeController::setTimeScale(double scale) {
-  Lock l(lock_);
-  timeScale_ = scale;
-}
-
 void TimeController::operator()(SampleTime time) {
-  SampleTime scaledTime = time;
-  if (DISPLAY_SCALED_TIME)
-    scaledTime = static_cast<uint64>(scaledTime / timeScale_);
-  if (songTime_.setTime(scaledTime)) {
-    MessageManagerLock l(thread());
-    if (l.lockWasGained())
-      songTime_.redisplay();
-  }
-
-  if (songDial_.setTime(scaledTime)) {
-    MessageManagerLock l(thread());
-    if (l.lockWasGained())
-      songDial_.repaint();
-  }
+  songTime_.setTime(time);
+  songDial_.setTime(time);
 }
 
-void TimeController::setLength(SampleTime len) {
-  songTime_.setLength(len);
+void TimeController::setThread(Thread* thread) {
+  HasThread::setThread(thread);
+  songDial_.setThread(thread);
+  songTime_.setThread(thread);
 }
+
 
 }  // namespace audio
 }  // namespace gui
