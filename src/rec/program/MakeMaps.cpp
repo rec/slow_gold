@@ -2,6 +2,7 @@
 
 #include "rec/program/MakeMaps.h"
 #include "rec/command/Command.pb.h"
+#include "rec/gui/proto/Constants.pb.h"
 #include "rec/program/Program.h"
 #include "rec/util/BinaryMacros.h"
 #include "rec/util/thread/Looper.h"
@@ -135,6 +136,10 @@ LayoutMap makeLayoutMap(const Program& program) {
     layoutMap[layout.name()] = layout;
 
   return layoutMap;
+}
+
+gui::Constants makeConstants() {
+  return gui::Constants(BINARY_PROTO(Constants, gui::ConstantProtos));
 }
 
 }  // namespace program

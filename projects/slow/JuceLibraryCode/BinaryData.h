@@ -79,7 +79,7 @@ namespace BinaryData
     const int            TransformController_defSize = 237;
 
     extern const char*   TransportButtonsPanel_def;
-    const int            TransportButtonsPanel_defSize = 876;
+    const int            TransportButtonsPanel_defSize = 878;
 
     extern const char*   TransportController_def;
     const int            TransportController_defSize = 237;
@@ -150,23 +150,23 @@ namespace BinaryData
     extern const char*   MacFolderOpenButton_svg;
     const int            MacFolderOpenButton_svgSize = 13371;
 
-    extern const char*   PlayButton_svg;
-    const int            PlayButton_svgSize = 15991;
-
-    extern const char*   PlayButtonDisabled_svg;
-    const int            PlayButtonDisabled_svgSize = 14281;
-
     extern const char*   SetTimeMode_svg;
     const int            SetTimeMode_svgSize = 24685;
 
     extern const char*   SetTimeModeDisabled_svg;
     const int            SetTimeModeDisabled_svgSize = 19396;
 
-    extern const char*   StopButton_svg;
-    const int            StopButton_svgSize = 15093;
+    extern const char*   StartStopButton_svg;
+    const int            StartStopButton_svgSize = 15991;
 
-    extern const char*   StopButtonDisabled_svg;
-    const int            StopButtonDisabled_svgSize = 14201;
+    extern const char*   StartStopButtonDisabled_svg;
+    const int            StartStopButtonDisabled_svgSize = 14281;
+
+    extern const char*   StartStopButtonOn_svg;
+    const int            StartStopButtonOn_svgSize = 15093;
+
+    extern const char*   StartStopButtonOnDisabled_svg;
+    const int            StartStopButtonOnDisabled_svgSize = 14201;
 
     extern const char*   ZoomInCursor_svg;
     const int            ZoomInCursor_svgSize = 17598;

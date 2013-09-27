@@ -31,7 +31,7 @@ double Constants::getDouble(const string& name) const {
   try {
     return doubleMap_.at(name);
   } catch (std::out_of_range&) {
-    LOG(ERROR) << "Don't understand constant " << name;
+    LOG(DFATAL) << "Don't understand constant " << name;
     return 0.0;
   }
 }

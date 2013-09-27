@@ -35,7 +35,7 @@ unique_ptr<Component> makeButton(const Context& context) {
     construct(&over, imageName + "Over");
 
   if (state.down())
-    construct(&down, imageName + "Down");
+    construct(&down, imageName + "Pressed");
 
   if (state.disabled())
     construct(&disabled, imageName + "Disabled");
@@ -43,13 +43,13 @@ unique_ptr<Component> makeButton(const Context& context) {
   const ButtonProto::State& stateOn = proto.state_on();
   unique_ptr<Drawable> normalOn, overOn, downOn, disabledOn;
   if (stateOn.normal())
-    construct(&overOn, imageName + "OnOver");
+    construct(&overOn, imageName + "On");
 
   if (stateOn.over())
     construct(&overOn, imageName + "OnOver");
 
   if (stateOn.down())
-    construct(&downOn, imageName + "OnDown");
+    construct(&downOn, imageName + "OnPressed");
 
   if (stateOn.disabled())
     construct(&disabledOn, imageName + "OnDisabled");

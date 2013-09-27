@@ -12,7 +12,7 @@ layout {
     }
   }
   component {
-    name: "JumpStartButton"
+    name: "JumpToStartButton"
     tooltip: "Jump Forward Button: Jump to the start of the next segment."
     button {
       command: "JUMP_TO_FIRST"

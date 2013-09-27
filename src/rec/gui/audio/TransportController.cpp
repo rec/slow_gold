@@ -35,25 +35,34 @@ TransportController::TransportController()
                          "Jump to the start of the track."),
       levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
                   "right tracks.") {
-  startStopButton_.setClickingTogglesState(true);
 
-  SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
-  SET_BUTTON_IMAGES3(&jumpForwardButton_, JumpForwardButton);
-  SET_BUTTON_IMAGES3(&jumpBackButton_, JumpBackButton);
-  SET_BUTTON_IMAGES_ALTERNATE(&startStopButton_, PlayButton, StopButton);
+  Component* buttonsPanel;
+  if (slow::Instance::USE_NEW_GUI) {
+    buttonsPanel2_ = gui::makeLayout("TransportButtonsPanel", this);
+    buttonsPanel = buttonsPanel2_.get();
+  } else {
+    startStopButton_.setClickingTogglesState(true);
 
-  jumpForwardButton_.addListener(this);
-  jumpBackButton_.addListener(this);
-  jumpToStartButton_.addListener(this);
-  startStopButton_.addListener(this);
+    SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
+    SET_BUTTON_IMAGES3(&jumpForwardButton_, JumpForwardButton);
+    SET_BUTTON_IMAGES3(&jumpBackButton_, JumpBackButton);
+    SET_BUTTON_IMAGES_ALTERNATE(
+        &startStopButton_, StartStopButton, StartStopButtonOn);
 
-  buttonsPanel_.addToPanel(&startStopButton_, ICON_SIZE);
-  buttonsPanel_.addToPanel(&jumpToStartButton_, ICON_SIZE);
-  buttonsPanel_.addToPanel(&jumpBackButton_, ICON_SIZE);
-  buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
-  buttonsPanel_.addToPanel(timeController_.get());
+    jumpForwardButton_.addListener(this);
+    jumpBackButton_.addListener(this);
+    jumpToStartButton_.addListener(this);
+    startStopButton_.addListener(this);
 
-  addToPanel(&buttonsPanel_, ICON_SIZE);
+    buttonsPanel_.addToPanel(&startStopButton_, ICON_SIZE);
+    buttonsPanel_.addToPanel(&jumpToStartButton_, ICON_SIZE);
+    buttonsPanel_.addToPanel(&jumpBackButton_, ICON_SIZE);
+    buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
+    buttonsPanel_.addToPanel(timeController_.get());
+    buttonsPanel = &buttonsPanel_;
+  }
+
+  addToPanel(buttonsPanel, ICON_SIZE);
 
   gainPanel_ = gui::makeLayout("GainPanel", this);
   addToPanel(gainPanel_.get(), ICON_SIZE);

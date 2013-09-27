@@ -61,6 +61,7 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       menuBarMap_(makeMenuBarMap(*p)),
       layoutMap_(makeLayoutMap(*p)),
       threadMap_(makeThreadMap(*p)),
+      constants_(makeConstants()),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
   program_->registerCustomComponents(&constants_);
