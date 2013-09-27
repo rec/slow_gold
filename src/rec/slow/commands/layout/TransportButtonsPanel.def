@@ -13,23 +13,25 @@ layout {
   }
   component {
     name: "JumpToStartButton"
-    tooltip: "Jump Forward Button: Jump to the start of the next segment."
+    tooltip: "Jump Forward Button: Jump to the start of the track."
     button {
-      command: "JUMP_TO_FIRST"
+      command: "JUMP_SELECTED"
     }
   }
   component {
     name: "JumpBackButton"
-    tooltip: "Jump Back Button: Jump to the start of the next segment."
+    tooltip: "Jump Back Button: Jump to the start of the previous segment."
     button {
-      command: "JUMP_TO_PREVIOUS"
+      command: "JUMP_SELECTED"
+      command_index: 1
     }
   }
   component {
     name: "JumpForwardButton"
-    tooltip: "Jump To Start Button: Jump to the start of the track."
+    tooltip: "Jump To Start Button: Jump to the next segment."
     button {
-      command: "JUMP_TO_NEXT"
+      command: "JUMP_SELECTED"
+      command_index: 3
     }
   }
   component {

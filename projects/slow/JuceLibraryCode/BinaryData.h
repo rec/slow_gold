@@ -79,7 +79,7 @@ namespace BinaryData
     const int            TransformController_defSize = 237;
 
     extern const char*   TransportButtonsPanel_def;
-    const int            TransportButtonsPanel_defSize = 878;
+    const int            TransportButtonsPanel_defSize = 913;
 
     extern const char*   TransportController_def;
     const int            TransportController_defSize = 237;

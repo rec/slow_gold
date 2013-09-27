@@ -20,7 +20,7 @@ class LanguageButton : public DrawableButton, app::LanguageListener {
  private:
   string tooltip_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(LanguageButton);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LanguageButton);
 };
 
 }  // namespace gui

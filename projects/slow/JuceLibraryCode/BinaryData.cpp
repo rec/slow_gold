@@ -1888,23 +1888,25 @@ static const unsigned char temp_binary_data_24[] =
 "  }\n"
 "  component {\n"
 "    name: \"JumpToStartButton\"\n"
-"    tooltip: \"Jump Forward Button: Jump to the start of the next segment.\"\n"
+"    tooltip: \"Jump Forward Button: Jump to the start of the track.\"\n"
 "    button {\n"
-"      command: \"JUMP_TO_FIRST\"\n"
+"      command: \"JUMP_SELECTED\"\n"
 "    }\n"
 "  }\n"
 "  component {\n"
 "    name: \"JumpBackButton\"\n"
-"    tooltip: \"Jump Back Button: Jump to the start of the next segment.\"\n"
+"    tooltip: \"Jump Back Button: Jump to the start of the previous segment.\"\n"
 "    button {\n"
-"      command: \"JUMP_TO_PREVIOUS\"\n"
+"      command: \"JUMP_SELECTED\"\n"
+"      command_index: 1\n"
 "    }\n"
 "  }\n"
 "  component {\n"
 "    name: \"JumpForwardButton\"\n"
-"    tooltip: \"Jump To Start Button: Jump to the start of the track.\"\n"
+"    tooltip: \"Jump To Start Button: Jump to the next segment.\"\n"
 "    button {\n"
-"      command: \"JUMP_TO_NEXT\"\n"
+"      command: \"JUMP_SELECTED\"\n"
+"      command_index: 3\n"
 "    }\n"
 "  }\n"
 "  component {\n"
@@ -13717,7 +13719,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x1b5b8645:  numBytes = 1159; return SongData_def;
         case 0x4b55592f:  numBytes = 448; return TimeController_def;
         case 0x29238b4e:  numBytes = 237; return TransformController_def;
-        case 0x964485f2:  numBytes = 878; return TransportButtonsPanel_def;
+        case 0x964485f2:  numBytes = 913; return TransportButtonsPanel_def;
         case 0x4bd6484b:  numBytes = 237; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;

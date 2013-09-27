@@ -27,5 +27,6 @@ message ButtonProto {
   optional State state = 3;
   optional State state_on = 4;
   optional string command = 5;
+  optional uint32 command_index = 6;
 };
 

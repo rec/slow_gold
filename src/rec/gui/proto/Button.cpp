@@ -3,6 +3,8 @@
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Context.h"
+#include "rec/program/Program.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/Binary.h"
 
 using namespace juce;
@@ -57,6 +59,12 @@ unique_ptr<Component> makeButton(const Context& context) {
   button->setImages(
       normal.get(), over.get(), down.get(), disabled.get(),
       normalOn.get(), overOn.get(), downOn.get(), disabledOn.get());
+
+
+  button->setCommandToTrigger(
+      program::applicationCommandManager(),
+      program::getProgram()->nameToId(proto.command()) + proto.command_index(),
+      not component.has_tooltip());
 
   return unique_ptr<Component>(button.release());
 }

@@ -40,12 +40,13 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto() {
       "rec/gui/proto/Button.proto");
   GOOGLE_CHECK(file != NULL);
   ButtonProto_descriptor_ = file->message_type(0);
-  static const int ButtonProto_offsets_[5] = {
+  static const int ButtonProto_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, behavior_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, style_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, state_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, state_on_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto, command_index_),
   };
   ButtonProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -112,19 +113,20 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\322\003"
+    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\351\003"
     "\n\013ButtonProto\022/\n\010behavior\030\001 \001(\0162\035.rec.gu"
     "i.ButtonProto.Behavior\022)\n\005style\030\002 \001(\0162\032."
     "rec.gui.ButtonProto.Style\022)\n\005state\030\003 \001(\013"
     "2\032.rec.gui.ButtonProto.State\022,\n\010state_on"
     "\030\004 \001(\0132\032.rec.gui.ButtonProto.State\022\017\n\007co"
-    "mmand\030\005 \001(\t\032^\n\005State\022\024\n\006normal\030\001 \001(\010:\004tr"
-    "ue\022\023\n\004over\030\002 \001(\010:\005false\022\022\n\004down\030\003 \001(\010:\004t"
-    "rue\022\026\n\010disabled\030\004 \001(\010:\004true\"+\n\010Behavior\022"
-    "\t\n\005CLICK\020\000\022\n\n\006TOGGLE\020\001\022\010\n\004MODE\020\002\"p\n\005Styl"
-    "e\022\017\n\013ImageFitted\020\000\022\014\n\010ImageRaw\020\001\022\027\n\023Imag"
-    "eAboveTextLabel\020\002\022\033\n\027ImageOnButtonBackgr"
-    "ound\020\003\022\022\n\016ImageStretched\020\004", 506);
+    "mmand\030\005 \001(\t\022\025\n\rcommand_index\030\006 \001(\r\032^\n\005St"
+    "ate\022\024\n\006normal\030\001 \001(\010:\004true\022\023\n\004over\030\002 \001(\010:"
+    "\005false\022\022\n\004down\030\003 \001(\010:\004true\022\026\n\010disabled\030\004"
+    " \001(\010:\004true\"+\n\010Behavior\022\t\n\005CLICK\020\000\022\n\n\006TOG"
+    "GLE\020\001\022\010\n\004MODE\020\002\"p\n\005Style\022\017\n\013ImageFitted\020"
+    "\000\022\014\n\010ImageRaw\020\001\022\027\n\023ImageAboveTextLabel\020\002"
+    "\022\033\n\027ImageOnButtonBackground\020\003\022\022\n\016ImageSt"
+    "retched\020\004", 529);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Button.proto", &protobuf_RegisterTypes);
   ButtonProto::default_instance_ = new ButtonProto();
@@ -519,6 +521,7 @@ const int ButtonProto::kStyleFieldNumber;
 const int ButtonProto::kStateFieldNumber;
 const int ButtonProto::kStateOnFieldNumber;
 const int ButtonProto::kCommandFieldNumber;
+const int ButtonProto::kCommandIndexFieldNumber;
 #endif  // !_MSC_VER
 
 ButtonProto::ButtonProto()
@@ -544,6 +547,7 @@ void ButtonProto::SharedCtor() {
   state_ = NULL;
   state_on_ = NULL;
   command_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  command_index_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -597,6 +601,7 @@ void ButtonProto::Clear() {
         command_->clear();
       }
     }
+    command_index_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -690,6 +695,22 @@ bool ButtonProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(48)) goto parse_command_index;
+        break;
+      }
+
+      // optional uint32 command_index = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_command_index:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &command_index_)));
+          set_has_command_index();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -745,6 +766,11 @@ void ButtonProto::SerializeWithCachedSizes(
       5, this->command(), output);
   }
 
+  // optional uint32 command_index = 6;
+  if (has_command_index()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->command_index(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -787,6 +813,11 @@ void ButtonProto::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         5, this->command(), target);
+  }
+
+  // optional uint32 command_index = 6;
+  if (has_command_index()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->command_index(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -833,6 +864,13 @@ int ButtonProto::ByteSize() const {
           this->command());
     }
 
+    // optional uint32 command_index = 6;
+    if (has_command_index()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->command_index());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -875,6 +913,9 @@ void ButtonProto::MergeFrom(const ButtonProto& from) {
     if (from.has_command()) {
       set_command(from.command());
     }
+    if (from.has_command_index()) {
+      set_command_index(from.command_index());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -903,6 +944,7 @@ void ButtonProto::Swap(ButtonProto* other) {
     std::swap(state_, other->state_);
     std::swap(state_on_, other->state_on_);
     std::swap(command_, other->command_);
+    std::swap(command_index_, other->command_index_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
