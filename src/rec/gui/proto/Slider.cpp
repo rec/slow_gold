@@ -30,6 +30,9 @@ unique_ptr<Component> makeSlider(const Context& context) {
   dataSlider->setRange(constants.getDouble(slider.minimum()),
                        constants.getDouble(slider.maximum()),
                        constants.getDouble(slider.interval()));
+
+  dataSlider->slider()->setTextValueSuffix(slider.suffix_spacing() +
+                                           slider.text_suffix());
   return unique_ptr<Component>(dataSlider.release());
 }
 

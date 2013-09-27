@@ -5,6 +5,9 @@ layout {
     name: "MuteButton"
     tooltip: "Mute Button: Mute or unmute the sound."
     address: "rec.audio.Gain:mute"
+    size {
+      fixed: "45"
+    }
     toggle_button {
       caption: "Mute"
     }

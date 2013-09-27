@@ -43,7 +43,7 @@ namespace BinaryData
     const int            Constants_defSize = 56;
 
     extern const char*   GainPanel_def;
-    const int            GainPanel_defSize = 516;
+    const int            GainPanel_defSize = 551;
 
     extern const char*   HelpPanel_def;
     const int            HelpPanel_defSize = 284;

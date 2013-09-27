@@ -1462,6 +1462,9 @@ static const unsigned char temp_binary_data_12[] =
 "    name: \"MuteButton\"\n"
 "    tooltip: \"Mute Button: Mute or unmute the sound.\"\n"
 "    address: \"rec.audio.Gain:mute\"\n"
+"    size {\n"
+"      fixed: \"45\"\n"
+"    }\n"
 "    toggle_button {\n"
 "      caption: \"Mute\"\n"
 "    }\n"
@@ -13677,7 +13680,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 56; return Constants_def;
-        case 0x391c9e6b:  numBytes = 516; return GainPanel_def;
+        case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 308; return Layout_def;
         case 0x28df9dc5:  numBytes = 663; return LeftTransformPanel_def;
