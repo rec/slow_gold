@@ -7,6 +7,7 @@
 #include "rec/gui/proto/Context.h"
 #include "rec/gui/proto/Help.h"
 #include "rec/gui/proto/Label.h"
+#include "rec/gui/proto/Layout.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/gui/proto/Resizer.h"
 #include "rec/gui/proto/Slider.h"
@@ -22,6 +23,9 @@ namespace {
 typedef unique_ptr<Component> (*ComponentMaker)(const Context&);
 
 ComponentMaker make(const ComponentProto& c) {
+  if (c.has_layout())
+    return &makeLayoutComp;
+
   if (c.has_button())
     return &makeButton;
 

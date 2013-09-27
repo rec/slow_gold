@@ -54,5 +54,9 @@ unique_ptr<Component> makeLayout(const string& name, Component* parent) {
   return std::move(comp);
 }
 
+unique_ptr<Component> makeLayoutComp(const Context& context) {
+  return makeLayout(context.component_.layout(), context.parent_);
+}
+
 }  // namespace gui
 }  // namespace rec
