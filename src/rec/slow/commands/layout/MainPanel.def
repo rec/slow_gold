@@ -1,13 +1,10 @@
 layout {
   name: "MainPanel"
   orientation: VERTICAL
-  size {
-    min: "100.0"
-    max: "-1.0"
-  }
   component {
     layout: "NavigationPanel"
     size {
+      min: "100.0"
       preferred: "-0.2"
     }
   }

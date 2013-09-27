@@ -47,31 +47,13 @@ void Panel::addToPanel(Component* c, double min, double max, double pref) {
 
 void Panel::addToPanel(
     Component* c, const Constants& constants, const Size& size) {
-  addToPanel(c, constants, size, Size());
-}
-
-void Panel::addToPanel(
-    Component* c, const Constants& constants, const Size& s1, const Size& s2) {
-  float min = DEFAULT_MIN, max = DEFAULT_MAX, preferred = DEFAULT_PREF;
-  if (s2.has_fixed()) {
-    min = max = preferred = constants.getDouble(s2.fixed());
-  } else if (s1.has_fixed()) {
-    min = max = preferred = constants.getDouble(s2.fixed());
+  float min, max, preferred;
+  if (size.has_fixed()) {
+    min = max = preferred = constants.getDouble(size.fixed());
   } else {
-    if (s2.has_min())
-      min = constants.getDouble(s2.min());
-    else if (s1.has_min())
-      min = constants.getDouble(s2.min());
-
-    if (s2.has_max())
-      max = constants.getDouble(s2.max());
-    else if (s1.has_max())
-      max = constants.getDouble(s2.max());
-
-    if (s2.has_preferred())
-      preferred = constants.getDouble(s2.preferred());
-    else if (s1.has_preferred())
-      preferred = constants.getDouble(s2.preferred());
+    min = constants.getDouble(size.min());
+    max = constants.getDouble(size.max());
+    preferred = constants.getDouble(size.preferred());
   }
   addToPanel(c, min, max, preferred);
 }

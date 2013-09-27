@@ -279,7 +279,7 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
-const bool Instance::USE_NEW_GUI = not false;
+const bool Instance::USE_NEW_GUI = not not false;
 
 }  // namespace slow
 }  // namespace rec

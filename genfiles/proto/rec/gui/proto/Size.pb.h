@@ -104,7 +104,7 @@ class Size : public ::google::protobuf::Message {
   inline ::std::string* release_fixed();
   inline void set_allocated_fixed(::std::string* fixed);
 
-  // optional string preferred = 2;
+  // optional string preferred = 2 [default = "-1.0"];
   inline bool has_preferred() const;
   inline void clear_preferred();
   static const int kPreferredFieldNumber = 2;
@@ -155,6 +155,7 @@ class Size : public ::google::protobuf::Message {
 
   ::std::string* fixed_;
   ::std::string* preferred_;
+  static ::std::string* _default_preferred_;
   ::std::string* min_;
   ::std::string* max_;
   static ::std::string* _default_max_;
@@ -246,7 +247,7 @@ inline void Size::set_allocated_fixed(::std::string* fixed) {
   }
 }
 
-// optional string preferred = 2;
+// optional string preferred = 2 [default = "-1.0"];
 inline bool Size::has_preferred() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -257,8 +258,8 @@ inline void Size::clear_has_preferred() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void Size::clear_preferred() {
-  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
-    preferred_->clear();
+  if (preferred_ != _default_preferred_) {
+    preferred_->assign(*_default_preferred_);
   }
   clear_has_preferred();
 }
@@ -267,44 +268,44 @@ inline const ::std::string& Size::preferred() const {
 }
 inline void Size::set_preferred(const ::std::string& value) {
   set_has_preferred();
-  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+  if (preferred_ == _default_preferred_) {
     preferred_ = new ::std::string;
   }
   preferred_->assign(value);
 }
 inline void Size::set_preferred(const char* value) {
   set_has_preferred();
-  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+  if (preferred_ == _default_preferred_) {
     preferred_ = new ::std::string;
   }
   preferred_->assign(value);
 }
 inline void Size::set_preferred(const char* value, size_t size) {
   set_has_preferred();
-  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+  if (preferred_ == _default_preferred_) {
     preferred_ = new ::std::string;
   }
   preferred_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Size::mutable_preferred() {
   set_has_preferred();
-  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
-    preferred_ = new ::std::string;
+  if (preferred_ == _default_preferred_) {
+    preferred_ = new ::std::string(*_default_preferred_);
   }
   return preferred_;
 }
 inline ::std::string* Size::release_preferred() {
   clear_has_preferred();
-  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+  if (preferred_ == _default_preferred_) {
     return NULL;
   } else {
     ::std::string* temp = preferred_;
-    preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    preferred_ = const_cast< ::std::string*>(_default_preferred_);
     return temp;
   }
 }
 inline void Size::set_allocated_preferred(::std::string* preferred) {
-  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+  if (preferred_ != _default_preferred_) {
     delete preferred_;
   }
   if (preferred) {
@@ -312,7 +313,7 @@ inline void Size::set_allocated_preferred(::std::string* preferred) {
     preferred_ = preferred;
   } else {
     clear_has_preferred();
-    preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    preferred_ = const_cast< ::std::string*>(_default_preferred_);
   }
 }
 

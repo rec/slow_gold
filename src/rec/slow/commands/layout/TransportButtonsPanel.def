@@ -1,0 +1,41 @@
+layout {
+  name: "TransportButtonsPanel"
+  size {
+    fixed: "TRANSPORT_SIZE"
+  }
+  component {
+    name: "StartStopButton"
+    tooltip: "Start/Stop Button: Toggle between pause and play."
+    button {
+      behavior: TOGGLE
+      command: "TOGGLE_START_STOP"
+    }
+  }
+  component {
+    name: "JumpStartButton"
+    tooltip: "Jump Forward Button: Jump to the start of the next segment."
+    button {
+      command: "JUMP_TO_FIRST"
+    }
+  }
+  component {
+    name: "JumpBackButton"
+    tooltip: "Jump Back Button: Jump to the start of the next segment."
+    button {
+      command: "JUMP_TO_PREVIOUS"
+    }
+  }
+  component {
+    name: "JumpForwardButton"
+    tooltip: "Jump To Start Button: Jump to the start of the track."
+    button {
+      command: "JUMP_TO_NEXT"
+    }
+  }
+  component {
+    layout: "TimeController"
+     size {
+       fixed: "TRANSPORT_SIZE"
+     }
+  }
+}

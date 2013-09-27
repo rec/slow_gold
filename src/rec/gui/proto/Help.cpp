@@ -24,8 +24,11 @@ class HelpPanel : public Panel, public StateListener<const HelpText&> {
     auto& comp = context.component_;
     auto& constants = context.constants_;
     const HelpProto& proto = comp.help();
-    addToPanel(&caption_, constants, comp.size(), proto.caption_size());
-    addToPanel(&body_, constants, comp.size(), proto.body_size());
+    auto& s1 = proto.has_caption_size() ? proto.caption_size() : comp.size();
+    addToPanel(&caption_, constants, s1);
+
+    auto& s2 = proto.has_body_size() ? proto.body_size() : comp.size();
+    addToPanel(&body_, constants, s2);
 
     caption_.setColour(juce::Label::textColourId, Colours::darkgreen);
     caption_.setJustificationType(Justification::centred);

@@ -30,10 +30,12 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   Panel* panel = dynamic_cast<Panel*>(comp.get());
   for (auto& component: layout.component()) {
     auto child = makeComponent(Context(component, constants, panel, addr));
-    if (panel)
-      panel->addToPanel(child.get(), constants, layout.size(), component.size());
-    else
+    if (panel) {
+      auto& size = component.has_size() ? component.size() : layout.size();
+      panel->addToPanel(child.get(), constants, size);
+    } else {
       comp->addAndMakeVisible(child.get());
+    }
     child.release();
   }
 

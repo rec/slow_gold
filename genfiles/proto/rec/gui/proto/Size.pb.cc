@@ -73,6 +73,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fSize_2eproto() {
   delete Size::default_instance_;
   delete Size_reflection_;
+  delete Size::_default_preferred_;
   delete Size::_default_max_;
 }
 
@@ -83,11 +84,13 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/gui/proto/Size.proto\022\007rec.gui\"H\n\004S"
-    "ize\022\r\n\005fixed\030\001 \001(\t\022\021\n\tpreferred\030\002 \001(\t\022\013\n"
-    "\003min\030\003 \001(\t\022\021\n\003max\030\004 \001(\t:\004-1.0", 109);
+    "\n\030rec/gui/proto/Size.proto\022\007rec.gui\"N\n\004S"
+    "ize\022\r\n\005fixed\030\001 \001(\t\022\027\n\tpreferred\030\002 \001(\t:\004-"
+    "1.0\022\013\n\003min\030\003 \001(\t\022\021\n\003max\030\004 \001(\t:\004-1.0", 115);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Size.proto", &protobuf_RegisterTypes);
+  Size::_default_preferred_ =
+      new ::std::string("-1.0", 4);
   Size::_default_max_ =
       new ::std::string("-1.0", 4);
   Size::default_instance_ = new Size();
@@ -104,6 +107,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fSize_2eproto {
 
 // ===================================================================
 
+::std::string* Size::_default_preferred_ = NULL;
 ::std::string* Size::_default_max_ = NULL;
 #ifndef _MSC_VER
 const int Size::kFixedFieldNumber;
@@ -129,7 +133,7 @@ Size::Size(const Size& from)
 void Size::SharedCtor() {
   _cached_size_ = 0;
   fixed_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  preferred_ = const_cast< ::std::string*>(_default_preferred_);
   min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   max_ = const_cast< ::std::string*>(_default_max_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -143,7 +147,7 @@ void Size::SharedDtor() {
   if (fixed_ != &::google::protobuf::internal::kEmptyString) {
     delete fixed_;
   }
-  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+  if (preferred_ != _default_preferred_) {
     delete preferred_;
   }
   if (min_ != &::google::protobuf::internal::kEmptyString) {
@@ -185,8 +189,8 @@ void Size::Clear() {
       }
     }
     if (has_preferred()) {
-      if (preferred_ != &::google::protobuf::internal::kEmptyString) {
-        preferred_->clear();
+      if (preferred_ != _default_preferred_) {
+        preferred_->assign(*_default_preferred_);
       }
     }
     if (has_min()) {
@@ -226,7 +230,7 @@ bool Size::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string preferred = 2;
+      // optional string preferred = 2 [default = "-1.0"];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -304,7 +308,7 @@ void Size::SerializeWithCachedSizes(
       1, this->fixed(), output);
   }
 
-  // optional string preferred = 2;
+  // optional string preferred = 2 [default = "-1.0"];
   if (has_preferred()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->preferred().data(), this->preferred().length(),
@@ -349,7 +353,7 @@ void Size::SerializeWithCachedSizes(
         1, this->fixed(), target);
   }
 
-  // optional string preferred = 2;
+  // optional string preferred = 2 [default = "-1.0"];
   if (has_preferred()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->preferred().data(), this->preferred().length(),
@@ -397,7 +401,7 @@ int Size::ByteSize() const {
           this->fixed());
     }
 
-    // optional string preferred = 2;
+    // optional string preferred = 2 [default = "-1.0"];
     if (has_preferred()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(

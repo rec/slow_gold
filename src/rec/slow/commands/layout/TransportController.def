@@ -14,25 +14,3 @@ layout {
     name: "LevelMeter"
   }
 }
-
-layout {
-  name: "TransportButtonsPanel"
-  size {
-    min: "TRANSPORT_SIZE"
-  }
-  component {
-    name: "StartStopButton"
-  }
-  component {
-    name: "JumpStartButton"
-  }
-  component {
-    name: "JumpBackButton"
-  }
-  component {
-    name: "JumpForwardButton"
-  }
-  component {
-    name: "TimeController"
-  }
-}
