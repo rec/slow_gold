@@ -136,28 +136,28 @@ class ButtonProto_State : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional bool normal = 1 [default = true];
+  // optional bool normal = 1;
   inline bool has_normal() const;
   inline void clear_normal();
   static const int kNormalFieldNumber = 1;
   inline bool normal() const;
   inline void set_normal(bool value);
 
-  // optional bool over = 2 [default = false];
+  // optional bool over = 2;
   inline bool has_over() const;
   inline void clear_over();
   static const int kOverFieldNumber = 2;
   inline bool over() const;
   inline void set_over(bool value);
 
-  // optional bool down = 3 [default = true];
-  inline bool has_down() const;
-  inline void clear_down();
-  static const int kDownFieldNumber = 3;
-  inline bool down() const;
-  inline void set_down(bool value);
+  // optional bool pressed = 3;
+  inline bool has_pressed() const;
+  inline void clear_pressed();
+  static const int kPressedFieldNumber = 3;
+  inline bool pressed() const;
+  inline void set_pressed(bool value);
 
-  // optional bool disabled = 4 [default = true];
+  // optional bool disabled = 4;
   inline bool has_disabled() const;
   inline void clear_disabled();
   static const int kDisabledFieldNumber = 4;
@@ -170,8 +170,8 @@ class ButtonProto_State : public ::google::protobuf::Message {
   inline void clear_has_normal();
   inline void set_has_over();
   inline void clear_has_over();
-  inline void set_has_down();
-  inline void clear_has_down();
+  inline void set_has_pressed();
+  inline void clear_has_pressed();
   inline void set_has_disabled();
   inline void clear_has_disabled();
 
@@ -179,7 +179,7 @@ class ButtonProto_State : public ::google::protobuf::Message {
 
   bool normal_;
   bool over_;
-  bool down_;
+  bool pressed_;
   bool disabled_;
 
   mutable int _cached_size_;
@@ -394,7 +394,7 @@ class ButtonProto : public ::google::protobuf::Message {
 
 // ButtonProto_State
 
-// optional bool normal = 1 [default = true];
+// optional bool normal = 1;
 inline bool ButtonProto_State::has_normal() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -405,7 +405,7 @@ inline void ButtonProto_State::clear_has_normal() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void ButtonProto_State::clear_normal() {
-  normal_ = true;
+  normal_ = false;
   clear_has_normal();
 }
 inline bool ButtonProto_State::normal() const {
@@ -416,7 +416,7 @@ inline void ButtonProto_State::set_normal(bool value) {
   normal_ = value;
 }
 
-// optional bool over = 2 [default = false];
+// optional bool over = 2;
 inline bool ButtonProto_State::has_over() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -438,29 +438,29 @@ inline void ButtonProto_State::set_over(bool value) {
   over_ = value;
 }
 
-// optional bool down = 3 [default = true];
-inline bool ButtonProto_State::has_down() const {
+// optional bool pressed = 3;
+inline bool ButtonProto_State::has_pressed() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ButtonProto_State::set_has_down() {
+inline void ButtonProto_State::set_has_pressed() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ButtonProto_State::clear_has_down() {
+inline void ButtonProto_State::clear_has_pressed() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ButtonProto_State::clear_down() {
-  down_ = true;
-  clear_has_down();
+inline void ButtonProto_State::clear_pressed() {
+  pressed_ = false;
+  clear_has_pressed();
 }
-inline bool ButtonProto_State::down() const {
-  return down_;
+inline bool ButtonProto_State::pressed() const {
+  return pressed_;
 }
-inline void ButtonProto_State::set_down(bool value) {
-  set_has_down();
-  down_ = value;
+inline void ButtonProto_State::set_pressed(bool value) {
+  set_has_pressed();
+  pressed_ = value;
 }
 
-// optional bool disabled = 4 [default = true];
+// optional bool disabled = 4;
 inline bool ButtonProto_State::has_disabled() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -471,7 +471,7 @@ inline void ButtonProto_State::clear_has_disabled() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void ButtonProto_State::clear_disabled() {
-  disabled_ = true;
+  disabled_ = false;
   clear_has_disabled();
 }
 inline bool ButtonProto_State::disabled() const {

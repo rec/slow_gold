@@ -16,10 +16,10 @@ message ButtonProto {
   };
 
   message State {
-    optional bool normal = 1 [default = true];
-    optional bool over = 2 [default = false];
-    optional bool down = 3 [default = true];
-    optional bool disabled = 4 [default = true];
+    optional bool normal = 1;
+    optional bool over = 2;
+    optional bool pressed = 3;
+    optional bool disabled = 4;
   };
 
   optional Behavior behavior = 1;

@@ -43,20 +43,6 @@ void GuiListener::operator()(const GuiSettings& settings) {
   displayHelpPane_ = settings.show_help_pane();
 }
 
-void GuiListener::operator()(TransportCommand command) {
-  if (command == TOGGLE_START_STOP)
-    invokeAndCheck(Command::TOGGLE_START_STOP);
-
-  else if (command == JUMP_TO_FIRST)
-    invokeAndCheck(Command::JUMP + CommandIDs::FIRST);
-
-  else if (command == JUMP_TO_PREVIOUS)
-    invokeAndCheck(Command::JUMP + CommandIDs::PREVIOUS);
-
-  else if (command == JUMP_TO_NEXT)
-    invokeAndCheck(Command::JUMP + CommandIDs::NEXT);
-}
-
 void GuiListener::operator()(CommandBarCommand command) {
   if (command == ADD_LOOP_POINT)
     invokeAndCheck(Command::ADD_LOOP_POINT);

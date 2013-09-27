@@ -63,7 +63,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto() {
   static const int ButtonProto_State_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, normal_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, over_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, down_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, pressed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ButtonProto_State, disabled_),
   };
   ButtonProto_State_reflection_ =
@@ -113,20 +113,19 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\351\003"
+    "\n\032rec/gui/proto/Button.proto\022\007rec.gui\"\323\003"
     "\n\013ButtonProto\022/\n\010behavior\030\001 \001(\0162\035.rec.gu"
     "i.ButtonProto.Behavior\022)\n\005style\030\002 \001(\0162\032."
     "rec.gui.ButtonProto.Style\022)\n\005state\030\003 \001(\013"
     "2\032.rec.gui.ButtonProto.State\022,\n\010state_on"
     "\030\004 \001(\0132\032.rec.gui.ButtonProto.State\022\017\n\007co"
-    "mmand\030\005 \001(\t\022\025\n\rcommand_index\030\006 \001(\r\032^\n\005St"
-    "ate\022\024\n\006normal\030\001 \001(\010:\004true\022\023\n\004over\030\002 \001(\010:"
-    "\005false\022\022\n\004down\030\003 \001(\010:\004true\022\026\n\010disabled\030\004"
-    " \001(\010:\004true\"+\n\010Behavior\022\t\n\005CLICK\020\000\022\n\n\006TOG"
-    "GLE\020\001\022\010\n\004MODE\020\002\"p\n\005Style\022\017\n\013ImageFitted\020"
-    "\000\022\014\n\010ImageRaw\020\001\022\027\n\023ImageAboveTextLabel\020\002"
-    "\022\033\n\027ImageOnButtonBackground\020\003\022\022\n\016ImageSt"
-    "retched\020\004", 529);
+    "mmand\030\005 \001(\t\022\025\n\rcommand_index\030\006 \001(\r\032H\n\005St"
+    "ate\022\016\n\006normal\030\001 \001(\010\022\014\n\004over\030\002 \001(\010\022\017\n\007pre"
+    "ssed\030\003 \001(\010\022\020\n\010disabled\030\004 \001(\010\"+\n\010Behavior"
+    "\022\t\n\005CLICK\020\000\022\n\n\006TOGGLE\020\001\022\010\n\004MODE\020\002\"p\n\005Sty"
+    "le\022\017\n\013ImageFitted\020\000\022\014\n\010ImageRaw\020\001\022\027\n\023Ima"
+    "geAboveTextLabel\020\002\022\033\n\027ImageOnButtonBackg"
+    "round\020\003\022\022\n\016ImageStretched\020\004", 507);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Button.proto", &protobuf_RegisterTypes);
   ButtonProto::default_instance_ = new ButtonProto();
@@ -198,7 +197,7 @@ const int ButtonProto::Style_ARRAYSIZE;
 #ifndef _MSC_VER
 const int ButtonProto_State::kNormalFieldNumber;
 const int ButtonProto_State::kOverFieldNumber;
-const int ButtonProto_State::kDownFieldNumber;
+const int ButtonProto_State::kPressedFieldNumber;
 const int ButtonProto_State::kDisabledFieldNumber;
 #endif  // !_MSC_VER
 
@@ -218,10 +217,10 @@ ButtonProto_State::ButtonProto_State(const ButtonProto_State& from)
 
 void ButtonProto_State::SharedCtor() {
   _cached_size_ = 0;
-  normal_ = true;
+  normal_ = false;
   over_ = false;
-  down_ = true;
-  disabled_ = true;
+  pressed_ = false;
+  disabled_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -257,10 +256,10 @@ ButtonProto_State* ButtonProto_State::New() const {
 
 void ButtonProto_State::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    normal_ = true;
+    normal_ = false;
     over_ = false;
-    down_ = true;
-    disabled_ = true;
+    pressed_ = false;
+    disabled_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -272,7 +271,7 @@ bool ButtonProto_State::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bool normal = 1 [default = true];
+      // optional bool normal = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -287,7 +286,7 @@ bool ButtonProto_State::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool over = 2 [default = false];
+      // optional bool over = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -299,19 +298,19 @@ bool ButtonProto_State::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_down;
+        if (input->ExpectTag(24)) goto parse_pressed;
         break;
       }
 
-      // optional bool down = 3 [default = true];
+      // optional bool pressed = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_down:
+         parse_pressed:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &down_)));
-          set_has_down();
+                 input, &pressed_)));
+          set_has_pressed();
         } else {
           goto handle_uninterpreted;
         }
@@ -319,7 +318,7 @@ bool ButtonProto_State::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool disabled = 4 [default = true];
+      // optional bool disabled = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -353,22 +352,22 @@ bool ButtonProto_State::MergePartialFromCodedStream(
 
 void ButtonProto_State::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional bool normal = 1 [default = true];
+  // optional bool normal = 1;
   if (has_normal()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->normal(), output);
   }
 
-  // optional bool over = 2 [default = false];
+  // optional bool over = 2;
   if (has_over()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->over(), output);
   }
 
-  // optional bool down = 3 [default = true];
-  if (has_down()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->down(), output);
+  // optional bool pressed = 3;
+  if (has_pressed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->pressed(), output);
   }
 
-  // optional bool disabled = 4 [default = true];
+  // optional bool disabled = 4;
   if (has_disabled()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->disabled(), output);
   }
@@ -381,22 +380,22 @@ void ButtonProto_State::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ButtonProto_State::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional bool normal = 1 [default = true];
+  // optional bool normal = 1;
   if (has_normal()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->normal(), target);
   }
 
-  // optional bool over = 2 [default = false];
+  // optional bool over = 2;
   if (has_over()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->over(), target);
   }
 
-  // optional bool down = 3 [default = true];
-  if (has_down()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->down(), target);
+  // optional bool pressed = 3;
+  if (has_pressed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->pressed(), target);
   }
 
-  // optional bool disabled = 4 [default = true];
+  // optional bool disabled = 4;
   if (has_disabled()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->disabled(), target);
   }
@@ -412,22 +411,22 @@ int ButtonProto_State::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bool normal = 1 [default = true];
+    // optional bool normal = 1;
     if (has_normal()) {
       total_size += 1 + 1;
     }
 
-    // optional bool over = 2 [default = false];
+    // optional bool over = 2;
     if (has_over()) {
       total_size += 1 + 1;
     }
 
-    // optional bool down = 3 [default = true];
-    if (has_down()) {
+    // optional bool pressed = 3;
+    if (has_pressed()) {
       total_size += 1 + 1;
     }
 
-    // optional bool disabled = 4 [default = true];
+    // optional bool disabled = 4;
     if (has_disabled()) {
       total_size += 1 + 1;
     }
@@ -465,8 +464,8 @@ void ButtonProto_State::MergeFrom(const ButtonProto_State& from) {
     if (from.has_over()) {
       set_over(from.over());
     }
-    if (from.has_down()) {
-      set_down(from.down());
+    if (from.has_pressed()) {
+      set_pressed(from.pressed());
     }
     if (from.has_disabled()) {
       set_disabled(from.disabled());
@@ -496,7 +495,7 @@ void ButtonProto_State::Swap(ButtonProto_State* other) {
   if (other != this) {
     std::swap(normal_, other->normal_);
     std::swap(over_, other->over_);
-    std::swap(down_, other->down_);
+    std::swap(pressed_, other->pressed_);
     std::swap(disabled_, other->disabled_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

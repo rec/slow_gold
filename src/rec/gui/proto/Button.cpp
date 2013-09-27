@@ -28,38 +28,39 @@ unique_ptr<Component> makeButton(const Context& context) {
       new LanguageButton(component.name(), component.tooltip(), style));
   button->setTooltip(component.tooltip());
 
+  bool isToggle = (proto.behavior() == ButtonProto::TOGGLE);
+
   const string& imageName = component.name();
   const ButtonProto::State& state = proto.state();
-  unique_ptr<Drawable> normal, over, down, disabled;
+  unique_ptr<Drawable> normal, over, pressed, disabled;
   construct(&normal, imageName);
 
   if (state.over())
     construct(&over, imageName + "Over");
 
-  if (state.down())
-    construct(&down, imageName + "Pressed");
+  if (not isToggle and (not proto.has_state() or state.pressed()))
+    construct(&pressed, imageName + "Pressed");
 
   if (state.disabled())
     construct(&disabled, imageName + "Disabled");
 
   const ButtonProto::State& stateOn = proto.state_on();
-  unique_ptr<Drawable> normalOn, overOn, downOn, disabledOn;
-  if (stateOn.normal())
+  unique_ptr<Drawable> normalOn, overOn, pressedOn, disabledOn;
+  if (isToggle or stateOn.normal())
     construct(&overOn, imageName + "On");
 
   if (stateOn.over())
     construct(&overOn, imageName + "OnOver");
 
-  if (stateOn.down())
-    construct(&downOn, imageName + "OnPressed");
+  if (stateOn.pressed())
+    construct(&pressedOn, imageName + "OnPressed");
 
   if (stateOn.disabled())
     construct(&disabledOn, imageName + "OnDisabled");
 
   button->setImages(
-      normal.get(), over.get(), down.get(), disabled.get(),
-      normalOn.get(), overOn.get(), downOn.get(), disabledOn.get());
-
+      normal.get(), over.get(), pressed.get(), disabled.get(),
+      normalOn.get(), overOn.get(), pressedOn.get(), disabledOn.get());
 
   button->setCommandToTrigger(
       program::applicationCommandManager(),

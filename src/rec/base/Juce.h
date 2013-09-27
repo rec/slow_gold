@@ -41,6 +41,7 @@ typedef juce::Desktop Desktop;
 typedef juce::DocumentWindow DocumentWindow;
 typedef juce::DirectoryIterator DirectoryIterator;
 typedef juce::Drawable Drawable;
+typedef juce::DrawableButton DrawableButton;
 
 typedef juce::File File;
 typedef juce::FileChooser FileChooser;
@@ -138,15 +139,6 @@ inline const char* c_str(const String& s) {
 inline void beep( ) {
   juce::LookAndFeel::getDefaultLookAndFeel().playAlertSound();
 }
-
-class DrawableButton : public juce::DrawableButton {
- public:
-  DrawableButton (const String& buttonName,
-                  ButtonStyle buttonStyle) : juce::DrawableButton(buttonName, buttonStyle) {}
-  void buttonStateChanged() {
-    juce::DrawableButton::buttonStateChanged();
-  }
-};
 
 }  // namespace rec
 

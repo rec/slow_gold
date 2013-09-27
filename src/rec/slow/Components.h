@@ -70,7 +70,6 @@ class Components : public data::DataListener<music::Metadata>,
   DrawableButton* startStopButton_;
   Component* levelSlider_;
 
-
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };
 
