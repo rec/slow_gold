@@ -24,7 +24,6 @@ using rec::audio::Gain;
 TransportController::TransportController()
     : Panel("TransportController", VERTICAL),
       buttonsPanel_("Buttons", HORIZONTAL),
-      gainPanel_("Gain", HORIZONTAL),
       timeController_(gui::makeLayout("TimeController", this)),
       startStopButton_("StartStopButton", "Start/Stop Button: Toggle between pause "
                        "and play."),
@@ -35,11 +34,7 @@ TransportController::TransportController()
       jumpForwardButton_("Jump Forward", "Jump To Start Button: "
                          "Jump to the start of the track."),
       levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
-                  "right tracks."),
-      levelSlider_("LevelSlider", "Volume Slider: Raise or lower the sound "
-                   "intensity, in dB.", "", data::makeAddress<Gain>("gain")),
-      muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
-                  data::makeAddress<Gain>("mute")) {
+                  "right tracks.") {
   startStopButton_.setClickingTogglesState(true);
 
   SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
@@ -60,21 +55,8 @@ TransportController::TransportController()
 
   addToPanel(&buttonsPanel_, ICON_SIZE);
 
-  Component* gainPanel;
-  if (slow::Instance::USE_NEW_GUI) {
-    newGainPanel_ = gui::makeLayout("GainPanel", this);
-    gainPanel = newGainPanel_.get();
-  } else {
-    levelSlider_.slider()->setRange(-36.0, +12.0, 0.1);
-    levelSlider_.slider()->setDetent(0.0f);
-    levelSlider_.slider()->setTextValueSuffix(" dB");
-
-    gainPanel_.addToPanel(&muteButton_, MUTE_BUTTON_SIZE);
-    gainPanel_.addToPanel(&levelSlider_);
-    gainPanel = &gainPanel_;
-
-  }
-  addToPanel(gainPanel, ICON_SIZE);
+  gainPanel_ = gui::makeLayout("GainPanel", this);
+  addToPanel(gainPanel_.get(), ICON_SIZE);
   addToPanel(&levelMeter_, 20);
 }
 

@@ -38,8 +38,7 @@ class TransportController : public Panel,
 
  private:
   Panel buttonsPanel_;
-  Panel gainPanel_;
-  unique_ptr<Component> newGainPanel_;
+  unique_ptr<Component> gainPanel_;
   unique_ptr<Component> timeController_;
 
   LanguageButton startStopButton_;
@@ -47,8 +46,6 @@ class TransportController : public Panel,
   LanguageButton jumpBackButton_;
   LanguageButton jumpForwardButton_;
   LevelMeter levelMeter_;
-  DataSlider levelSlider_;
-  gui::SetterToggle muteButton_;
 
   juce::Label filler_;
 
