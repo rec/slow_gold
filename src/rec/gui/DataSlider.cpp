@@ -5,6 +5,7 @@ namespace gui {
 
 DataSlider::DataSlider(const String& name,
                        const String& tooltip,
+                       const String& caption,
                        const data::Address& address,
                        uint32 captionSize,
                        uint32 textEntryBoxWidth,
@@ -12,8 +13,9 @@ DataSlider::DataSlider(const String& name,
     : Panel(name, HORIZONTAL, true),
       data::AddressListener(address),
       slider_(name + ".slider"),
-      caption_(name + ".caption"),
+      caption_(caption, name + ".caption"),
       name_(name),
+      captionText_(caption),
       tooltip_(tooltip) {
   slider_.setSliderStyle(Slider::LinearHorizontal);
   slider_.setTextBoxStyle(Slider::TextBoxLeft, false,
@@ -33,7 +35,10 @@ void DataSlider::operator()(const data::Value& v) {
 }
 
 void DataSlider::languageChanged() {
-  String s = Trans(str(name_));
+  String s = captionText_;
+  if (s.length())
+    s = Trans(str(captionText_));
+
   caption_.setText(s, juce::sendNotification);
 
   String t = Trans(str(tooltip_));
@@ -46,4 +51,3 @@ void DataSlider::languageChanged() {
 
 }  // namespace gui
 }  // namespace rec
-

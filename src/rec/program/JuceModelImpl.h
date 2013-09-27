@@ -36,7 +36,9 @@ class JuceModelImpl {
   Thread* getThread(const string&);
   const command::CommandMapProto& keyMap() const { return keyMap_; }
   const gui::Constants& constants() const { return constants_; }
-  const gui::Layout& getLayout(const string& n) const { return layoutMap_.at(n); }
+  const gui::Layout& getLayout(const string& n) const {
+    return layoutMap_.at(n);
+  }
 
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;

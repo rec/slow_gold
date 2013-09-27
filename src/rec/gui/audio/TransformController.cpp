@@ -32,26 +32,26 @@ using rec::audio::stretch::Stretch;
 TransformController::TransformController()
     : Panel("TransformController", HORIZONTAL),
 
-      playbackSpeed_("Stretch", "Playback Speed Slider: "
+      playbackSpeed_("SpeedSlider", "Playback Speed Slider: "
                      "Controls how fast the loop plays back: "
                      "higher numbers mean the loop plays back faster.",
-                     makeAddress<Stretch>("time_percent")),
+                     "Speed", makeAddress<Stretch>("time_percent")),
 
-      pitchScale_("Pitch", "Playback Tuning Slider: "
+      pitchScale_("PitchSlider", "Playback Tuning Slider: "
                   "Coarse loop playback up and down in pitch, "
                   "measured in semitones.",
-                  makeAddress<Stretch>("semitone_shift")),
+                  "Pitch", makeAddress<Stretch>("semitone_shift")),
 
-      fineScale_("Tune", "Playback Fine Tuning Slider: "
+      fineScale_("TuneSlider", "Playback Fine Tuning Slider: "
                  "Fine tune loop up or down in pitch, measured in "
                  "cents (1/100 of a semitone).",
-                  makeAddress<Stretch>("detune_cents")),
+                 "Tune", makeAddress<Stretch>("detune_cents")),
 
-      masterTune_("Master", "Master Tune Slider: "
+      masterTune_("MasterTuneSlider", "Master Tune Slider: "
                   "Master tune is a global detune over all tracks.",
-                  makeAddress<AudioSettings>("master_tune")),
+                  "Master Tune", makeAddress<AudioSettings>("master_tune")),
 
-      enableButton_("Enable",       "Transform Enable Button: "
+      enableButton_("Enable", "Transform Enable Button: "
                     "Disable or enable all sound transformations: "
                     "pitch, time and stereo processing but not master tune.",
                     makeAddress<Stretch>("time_enabled")),

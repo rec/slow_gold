@@ -133,6 +133,7 @@ LayoutMap makeLayoutMap(const Program& program) {
   gui::Layouts layouts = BINARY_PROTO_MERGED(Layout, gui::Layouts);
   for (auto& layout: layouts.layout())
     layoutMap[layout.name()] = layout;
+
   return layoutMap;
 }
 

@@ -22,6 +22,7 @@ class DataSlider : public Panel,
  public:
   DataSlider(const String& name,
              const String& tooltip,
+             const String& caption,
              const data::Address& address,
              uint32 captionSize = 45,
              uint32 textEntryBoxWidth = 80,
@@ -47,6 +48,7 @@ class DataSlider : public Panel,
   SimpleLabel caption_;
 
   String name_;
+  String captionText_;
   String tooltip_;
 
  private:

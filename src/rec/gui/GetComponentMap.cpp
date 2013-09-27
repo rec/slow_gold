@@ -10,7 +10,7 @@ void getComponentMap(Component* comp, ComponentMap* map) {
   if (not name.empty()) {
     try {
       map->at(name);
-      LOG(ERROR) << "Duplicate component name " << name;
+      // LOG(ERROR) << "Duplicate component name " << name;
     } catch (std::out_of_range&) {
       (*map)[name] = comp;
     }

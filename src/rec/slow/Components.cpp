@@ -44,8 +44,10 @@ Components::Components()
   mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());
   componentMap_ = gui::getComponentMap(mainPage_->panel());
+#if 0
   for (auto& i: componentMap_)
     DLOG(INFO) << "Component " << i.first;
+#endif
   startStopButton_ = getComponent<DrawableButton>("StartStopButton");
   levelSlider_ = getComponent<Component>("LevelSlider");
 }

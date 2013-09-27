@@ -42,11 +42,14 @@ namespace BinaryData
     extern const char*   Constants_def;
     const int            Constants_defSize = 56;
 
+    extern const char*   GainPanel_def;
+    const int            GainPanel_defSize = 516;
+
     extern const char*   HelpPanel_def;
     const int            HelpPanel_defSize = 284;
 
     extern const char*   Layout_def;
-    const int            Layout_defSize = 290;
+    const int            Layout_defSize = 308;
 
     extern const char*   LeftTransformPanel_def;
     const int            LeftTransformPanel_defSize = 663;
@@ -76,7 +79,7 @@ namespace BinaryData
     const int            TransformController_defSize = 237;
 
     extern const char*   TransportController_def;
-    const int            TransportController_defSize = 698;
+    const int            TransportController_defSize = 550;
 
     extern const char*   Waveform_def;
     const int            Waveform_defSize = 182;

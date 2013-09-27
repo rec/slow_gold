@@ -3,6 +3,7 @@
 #include "rec/gui/IconButton.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/slow/commands/Command.pb.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -36,7 +37,7 @@ TransportController::TransportController()
       levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
                   "right tracks."),
       levelSlider_("LevelSlider", "Volume Slider: Raise or lower the sound "
-                   "intensity, in dB.", data::makeAddress<Gain>("gain")),
+                   "intensity, in dB.", "", data::makeAddress<Gain>("gain")),
       muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
                   data::makeAddress<Gain>("mute")) {
   startStopButton_.setClickingTogglesState(true);
@@ -57,15 +58,23 @@ TransportController::TransportController()
   buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
   buttonsPanel_.addToPanel(timeController_.get());
 
-  levelSlider_.slider()->setRange(-36.0, +12.0, 0.1);
-  levelSlider_.slider()->setDetent(0.0f);
-  levelSlider_.slider()->setTextValueSuffix(" dB");
-
-  gainPanel_.addToPanel(&muteButton_, MUTE_BUTTON_SIZE);
-  gainPanel_.addToPanel(&levelSlider_);
-
   addToPanel(&buttonsPanel_, ICON_SIZE);
-  addToPanel(&gainPanel_, ICON_SIZE);
+
+  Component* gainPanel;
+  if (slow::Instance::USE_NEW_GUI) {
+    newGainPanel_ = gui::makeLayout("GainPanel", this);
+    gainPanel = newGainPanel_.get();
+  } else {
+    levelSlider_.slider()->setRange(-36.0, +12.0, 0.1);
+    levelSlider_.slider()->setDetent(0.0f);
+    levelSlider_.slider()->setTextValueSuffix(" dB");
+
+    gainPanel_.addToPanel(&muteButton_, MUTE_BUTTON_SIZE);
+    gainPanel_.addToPanel(&levelSlider_);
+    gainPanel = &gainPanel_;
+
+  }
+  addToPanel(gainPanel, ICON_SIZE);
   addToPanel(&levelMeter_, 20);
 }
 

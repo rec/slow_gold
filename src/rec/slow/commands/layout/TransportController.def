@@ -36,16 +36,3 @@ layout {
     name: "TimeController"
   }
 }
-
-layout {
-  name: "GainPanel"
-  component {
-    name: "MuteButton"
-    size {
-      min: "45"
-    }
-  }
-  component {
-    name: "LevelSlider"
-  }
-}

@@ -39,6 +39,7 @@ class TransportController : public Panel,
  private:
   Panel buttonsPanel_;
   Panel gainPanel_;
+  unique_ptr<Component> newGainPanel_;
   unique_ptr<Component> timeController_;
 
   LanguageButton startStopButton_;

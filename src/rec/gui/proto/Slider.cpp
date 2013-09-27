@@ -12,9 +12,11 @@ unique_ptr<Component> makeSlider(const Context& context) {
   auto& component = context.component_;
   auto& constants = context.constants_;
   auto& slider = component.slider();
+
   unique_ptr<DataSlider> dataSlider(
-      new DataSlider(slider.caption(),
+      new DataSlider("",
                      component.tooltip(),
+                     slider.caption(),
                      data::splitAddress(component.address()),
                      constants.getDouble(slider.caption_size()),
                      constants.getDouble(slider.text_entry_box_width()),
