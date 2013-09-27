@@ -1,0 +1,26 @@
+layout {
+  name: "GainPanel"
+
+  component {
+    name: "MuteButton"
+    tooltip: "Mute Button: Mute or unmute the sound."
+    address: "rec.audio.Gain:mute"
+    toggle_button {
+      caption: "Mute"
+    }
+  }
+
+  component {
+    name: "LevelSlider"
+    tooltip: "Volume Slider: Raise or lower the sound intensity, in dB."
+    address: "rec.audio.Gain:gain"
+    slider {
+      minimum: "-36"
+      maximum: "+12.0"
+      interval: "0.1"
+      detent: "0.0"
+      text_suffix: "dB"
+      suffix_spacing: " "
+    }
+  }
+}
