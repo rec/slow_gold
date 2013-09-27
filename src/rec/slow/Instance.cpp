@@ -175,7 +175,6 @@ void Instance::init() {
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
 
-  components_->transportController_->addListener(guiListener_.get());
   components_->commandBar_->addListener(guiListener_.get());
 
   player_->setSource(makeSource());

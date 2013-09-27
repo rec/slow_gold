@@ -27,28 +27,15 @@ enum TransportCommand {
 
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
-class TransportController : public Panel,
-                            public juce::ButtonListener,
-                            public Broadcaster<TransportCommand> {
+class TransportController : public Panel {
  public:
   TransportController();
   virtual ~TransportController();
 
-  void buttonClicked(juce::Button*) override;
-
  private:
-  Panel buttonsPanel_;
   unique_ptr<Component> gainPanel_;
-  unique_ptr<Component> buttonsPanel2_;
-  unique_ptr<Component> timeController_;
-
-  LanguageButton startStopButton_;
-  LanguageButton jumpToStartButton_;
-  LanguageButton jumpBackButton_;
-  LanguageButton jumpForwardButton_;
+  unique_ptr<Component> buttonsPanel_;
   LevelMeter levelMeter_;
-
-  juce::Label filler_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransportController);
 };
