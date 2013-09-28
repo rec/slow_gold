@@ -35,8 +35,9 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fText_2eproto() {
       "rec/gui/proto/Text.proto");
   GOOGLE_CHECK(file != NULL);
   TextProto_descriptor_ = file->message_type(0);
-  static const int TextProto_offsets_[1] = {
+  static const int TextProto_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TextProto, multiline_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TextProto, caption_),
   };
   TextProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,8 +80,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fText_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/gui/proto/Text.proto\022\007rec.gui\"\036\n\tT"
-    "extProto\022\021\n\tmultiline\030\001 \001(\010", 67);
+    "\n\030rec/gui/proto/Text.proto\022\007rec.gui\"/\n\tT"
+    "extProto\022\021\n\tmultiline\030\001 \001(\010\022\017\n\007caption\030\002"
+    " \001(\t", 84);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Text.proto", &protobuf_RegisterTypes);
   TextProto::default_instance_ = new TextProto();
@@ -99,6 +101,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fText_2eproto {
 
 #ifndef _MSC_VER
 const int TextProto::kMultilineFieldNumber;
+const int TextProto::kCaptionFieldNumber;
 #endif  // !_MSC_VER
 
 TextProto::TextProto()
@@ -118,6 +121,7 @@ TextProto::TextProto(const TextProto& from)
 void TextProto::SharedCtor() {
   _cached_size_ = 0;
   multiline_ = false;
+  caption_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -126,6 +130,9 @@ TextProto::~TextProto() {
 }
 
 void TextProto::SharedDtor() {
+  if (caption_ != &::google::protobuf::internal::kEmptyString) {
+    delete caption_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -154,6 +161,11 @@ TextProto* TextProto::New() const {
 void TextProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     multiline_ = false;
+    if (has_caption()) {
+      if (caption_ != &::google::protobuf::internal::kEmptyString) {
+        caption_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -173,6 +185,23 @@ bool TextProto::MergePartialFromCodedStream(
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &multiline_)));
           set_has_multiline();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_caption;
+        break;
+      }
+
+      // optional string caption = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_caption:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_caption()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->caption().data(), this->caption().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -203,6 +232,15 @@ void TextProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->multiline(), output);
   }
 
+  // optional string caption = 2;
+  if (has_caption()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->caption().data(), this->caption().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->caption(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -214,6 +252,16 @@ void TextProto::SerializeWithCachedSizes(
   // optional bool multiline = 1;
   if (has_multiline()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->multiline(), target);
+  }
+
+  // optional string caption = 2;
+  if (has_caption()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->caption().data(), this->caption().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->caption(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -230,6 +278,13 @@ int TextProto::ByteSize() const {
     // optional bool multiline = 1;
     if (has_multiline()) {
       total_size += 1 + 1;
+    }
+
+    // optional string caption = 2;
+    if (has_caption()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->caption());
     }
 
   }
@@ -262,6 +317,9 @@ void TextProto::MergeFrom(const TextProto& from) {
     if (from.has_multiline()) {
       set_multiline(from.multiline());
     }
+    if (from.has_caption()) {
+      set_caption(from.caption());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -286,6 +344,7 @@ bool TextProto::IsInitialized() const {
 void TextProto::Swap(TextProto* other) {
   if (other != this) {
     std::swap(multiline_, other->multiline_);
+    std::swap(caption_, other->caption_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

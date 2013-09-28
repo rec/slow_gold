@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Text.proto',
   package='rec.gui',
-  serialized_pb='\n\x18rec/gui/proto/Text.proto\x12\x07rec.gui\"\x1e\n\tTextProto\x12\x11\n\tmultiline\x18\x01 \x01(\x08')
+  serialized_pb='\n\x18rec/gui/proto/Text.proto\x12\x07rec.gui\"/\n\tTextProto\x12\x11\n\tmultiline\x18\x01 \x01(\x08\x12\x0f\n\x07\x63\x61ption\x18\x02 \x01(\t')
 
 
 
@@ -32,6 +32,13 @@ _TEXTPROTO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='caption', full_name='rec.gui.TextProto.caption', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -42,7 +49,7 @@ _TEXTPROTO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=37,
-  serialized_end=67,
+  serialized_end=84,
 )
 
 DESCRIPTOR.message_types_by_name['TextProto'] = _TEXTPROTO

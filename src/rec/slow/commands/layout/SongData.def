@@ -1,46 +1,64 @@
 layout {
   name: "SongData"
+  orientation: VERTICAL
+  size {
+    min: "12"
+    max: "20"
+    preferred: "20"
+  }
 
   component {
     name: "Track"
     tooltip: "Track Title: The name of this track."
     address: "rec.music.Metadata:track_title"
-    text {}
+    text {
+      caption: "Track"
+    }
   }
 
   component {
     name: "Album"
     tooltip: "Album Name: The name of the album this track is from."
     address: "rec.music.Metadata:album_title"
-    text {}
+    text {
+      caption: "Album"
+    }
   }
 
   component {
     name: "Artist"
     tooltip: "Artist Name: The artist or musician who made this specific track."
     address: "rec.music.Metadata:artist"
-    text {}
+    text {
+      caption: "Artist"
+    }
   }
 
   component {
     name: "Number"
     tooltip: "Track Number: The album track number for this track"
     address: "rec.music.Metadata:track_number"
-    text {}
+    text {
+      caption: "Number"
+    }
   }
 
   component {
     name: "Year"
     tooltip: "Album Year: The year that that this track was recorded."
     address: "rec.music.Metadata:year"
-    text {}
+    text {
+      caption: "Year"
+    }
   }
 
   component {
     name: "Genre"
     tooltip: "Track tags: Tags that categorize this track."
     address: "rec.music.Metadata:genre"
-    text {}
+    text {
+      caption: "Genre"
+    }
   }
 
   component {
@@ -48,6 +66,7 @@ layout {
     tooltip: "Track Notes: You can enter your notes here."
     address: "rec.music.Metadata:notes"
     text {
+      caption: "Notes"
       multiline: true
     }
   }

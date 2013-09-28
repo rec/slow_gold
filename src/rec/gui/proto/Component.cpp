@@ -12,6 +12,7 @@
 #include "rec/gui/proto/Panel.h"
 #include "rec/gui/proto/Resizer.h"
 #include "rec/gui/proto/Slider.h"
+#include "rec/gui/proto/Text.h"
 #include "rec/gui/proto/Time.h"
 #include "rec/gui/proto/TimeDial.h"
 #include "rec/gui/proto/ToggleButton.h"
@@ -50,6 +51,9 @@ ComponentMaker make(const ComponentProto& c) {
 
   if (c.has_slider())
     return &makeSlider;
+
+  if (c.has_text())
+    return &makeText;
 
   if (c.has_time())
     return &makeTime;
