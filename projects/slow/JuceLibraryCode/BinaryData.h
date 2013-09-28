@@ -67,7 +67,7 @@ namespace BinaryData
     const int            PlaybackPanel_defSize = 620;
 
     extern const char*   RightTransformPanel_def;
-    const int            RightTransformPanel_defSize = 1193;
+    const int            RightTransformPanel_defSize = 1303;
 
     extern const char*   RightTransformPanelMasterTune_def;
     const int            RightTransformPanelMasterTune_defSize = 1116;

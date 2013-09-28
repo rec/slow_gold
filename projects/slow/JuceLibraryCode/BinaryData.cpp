@@ -1738,6 +1738,8 @@ static const unsigned char temp_binary_data_20[] =
 "    address: \"rec.audio.stretch.Stretch:semitone_shift\"\n"
 "    slider {\n"
 "      caption: \"Pitch\"\n"
+"      text_suffix: \"semitones\"\n"
+"      suffix_spacing: \" \"\n"
 "      minimum: \"-24.0\"\n"
 "      maximum: \"24.0\"\n"
 "      interval: \"1.0\"\n"
@@ -1750,6 +1752,8 @@ static const unsigned char temp_binary_data_20[] =
 "    address: \"rec.audio.stretch.Stretch:detune_cents\"\n"
 "    slider {\n"
 "      caption: \"Tune\"\n"
+"      text_suffix: \"cents\"\n"
+"      suffix_spacing: \" \"\n"
 "      minimum: \"-100.0\"\n"
 "      maximum: \"100.0\"\n"
 "      interval: \"0.1\"\n"
@@ -13793,7 +13797,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xd66a1508:  numBytes = 270; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 620; return PlaybackPanel_def;
-        case 0x125e705a:  numBytes = 1193; return RightTransformPanel_def;
+        case 0x125e705a:  numBytes = 1303; return RightTransformPanel_def;
         case 0xea90c3f4:  numBytes = 1116; return RightTransformPanelMasterTune_def;
         case 0x1b5b8645:  numBytes = 1436; return SongData_def;
         case 0x4b55592f:  numBytes = 448; return TimeController_def;

@@ -32,28 +32,18 @@ class TransformController : public Panel,
   virtual void languageChanged();
 
   virtual void comboBoxChanged(juce::ComboBox*);
-  void showMasterTune(bool);
 
  private:
   void setStretch(const rec::audio::stretch::Stretch&);
-
-  DataSlider playbackSpeed_;
-  DataSlider pitchScale_;
-  DataSlider fineScale_;
-  DataSlider masterTune_;
 
   gui::SetterToggle enableButton_;
 
   juce::ComboBox stereoComboBox_;
   Panel leftPanel_;
-  Panel rightPanel_;
 
   Panel leftPadding_;
-  Panel rightPadding_;
-  unique_ptr<Component> newRightPanel_;
+  unique_ptr<Component> rightPanel_;
 
-  bool showMasterTune_;
-  bool rightPanelCreated_;
   rec::audio::source::StereoProto stereo_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransformController);

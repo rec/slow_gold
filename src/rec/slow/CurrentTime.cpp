@@ -129,8 +129,10 @@ void CurrentTime::operator()(const GuiSettings& settings) {
     followCursor_ = settings.follow_cursor();
   }
 
+#if 0
   bool show = settings.show_master_tune();
   getInstance()->components_->transformController_->showMasterTune(show);
+#endif
 }
 
 void CurrentTime::reset() {
