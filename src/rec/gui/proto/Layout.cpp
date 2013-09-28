@@ -39,6 +39,9 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
     child.release();
   }
 
+  if (layout.padding())
+    panel->addToPanel(new Panel);
+
   return std::move(comp);
 }
 

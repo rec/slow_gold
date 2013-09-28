@@ -1717,6 +1717,7 @@ static const unsigned char temp_binary_data_20[] =
 "  size {\n"
 "    fixed: \"30\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"SpeedSlider\"\n"
 "    tooltip: \"Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster.\"\n"
@@ -1724,6 +1725,11 @@ static const unsigned char temp_binary_data_20[] =
 "    slider {\n"
 "      caption: \"Stretch\"\n"
 "      text_suffix: \"%\"\n"
+"      minimum: \"5.0\"\n"
+"      maximum: \"200.0\"\n"
+"      interval: \"0.1\"\n"
+"      detent: \"100\"\n"
+"      detent_radius: \"0.008\"\n"
 "    }\n"
 "  }\n"
 "  component {\n"
@@ -1732,6 +1738,10 @@ static const unsigned char temp_binary_data_20[] =
 "    address: \"rec.audio.stretch.Stretch:semitone_shift\"\n"
 "    slider {\n"
 "      caption: \"Pitch\"\n"
+"      minimum: \"-24.0\"\n"
+"      maximum: \"24.0\"\n"
+"      interval: \"1.0\"\n"
+"      detent: \"0\"\n"
 "    }\n"
 "  }\n"
 "  component {\n"
@@ -1740,6 +1750,10 @@ static const unsigned char temp_binary_data_20[] =
 "    address: \"rec.audio.stretch.Stretch:detune_cents\"\n"
 "    slider {\n"
 "      caption: \"Tune\"\n"
+"      minimum: \"-100.0\"\n"
+"      maximum: \"100.0\"\n"
+"      interval: \"0.1\"\n"
+"      detent: \"0\"\n"
 "    }\n"
 "  }\n"
 "}\n";
@@ -13779,7 +13793,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xd66a1508:  numBytes = 270; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 620; return PlaybackPanel_def;
-        case 0x125e705a:  numBytes = 905; return RightTransformPanel_def;
+        case 0x125e705a:  numBytes = 1193; return RightTransformPanel_def;
         case 0xea90c3f4:  numBytes = 1116; return RightTransformPanelMasterTune_def;
         case 0x1b5b8645:  numBytes = 1436; return SongData_def;
         case 0x4b55592f:  numBytes = 448; return TimeController_def;
