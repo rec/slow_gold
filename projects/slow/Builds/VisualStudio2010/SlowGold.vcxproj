@@ -233,6 +233,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Help.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\LevelMeter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
@@ -348,6 +349,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Orientation.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.cc"/>
@@ -357,6 +359,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Help.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\LevelMeter.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.cc"/>
@@ -1629,6 +1632,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Help.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\LevelMeter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
@@ -1812,6 +1816,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Orientation.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.h"/>
@@ -1821,6 +1826,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Help.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\LevelMeter.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.h"/>

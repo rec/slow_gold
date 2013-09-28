@@ -5,7 +5,6 @@
 #include "rec/data/DataListener.h"
 #include "rec/gui/GetComponentMap.h"
 #include "rec/music/Metadata.h"
-#include "rec/util/StateListener.h"
 
 namespace rec { namespace audio { class Gain; }}
 namespace rec { namespace gui { class SongData; }}
@@ -14,12 +13,9 @@ namespace rec { namespace gui { namespace audio { class CommandBar; } }}
 namespace rec { namespace gui { namespace audio { class Loops; } }}
 namespace rec { namespace gui { namespace audio { class ModeSelector; } }}
 namespace rec { namespace gui { namespace audio { class TransformController; } }}
-namespace rec { namespace gui { namespace audio { class TimeController; } }}
-namespace rec { namespace gui { namespace audio { class TransportController; } }}
 
 namespace rec { namespace widget { namespace tree { class Root; } }}
 namespace rec { namespace widget { namespace waveform { class Waveform; } }}
-
 
 namespace rec {
 namespace slow {
@@ -27,8 +23,7 @@ namespace slow {
 class MainPage;
 
 class Components : public data::DataListener<music::Metadata>,
-                   public data::DataListener<audio::Gain>,
-                   public StateListener<audio::transport::State> {
+                   public data::DataListener<audio::Gain> {
  public:
   Components();
   ~Components();
@@ -36,14 +31,13 @@ class Components : public data::DataListener<music::Metadata>,
   virtual void init();
   void setEnabled(bool enabled);
   void operator()(const music::Metadata&) override;
-  void operator()(audio::transport::State) override;
   void operator()(const audio::Gain&) override;
 
   ApplicationCommandManager* manager_;
   unique_ptr<gui::audio::Loops> loops_;
   unique_ptr<gui::SongData> songData_;
   unique_ptr<gui::audio::TransformController> transformController_;
-  unique_ptr<gui::audio::TransportController> transportController_;
+  unique_ptr<Component> transportController_;
 
   unique_ptr<widget::tree::Root> directoryTree_;
   unique_ptr<widget::waveform::Waveform> waveform_;

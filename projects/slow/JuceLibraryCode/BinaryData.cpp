@@ -1926,16 +1926,21 @@ static const unsigned char temp_binary_data_25[] =
 "  name: \"TransportController\"\n"
 "  orientation: VERTICAL\n"
 "  size {\n"
-"    min: \"TRANSPORT_SIZE\"\n"
+"    fixed: \"TRANSPORT_SIZE\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"TransportButtonsPanel\"\n"
+"    layout: \"TransportButtonsPanel\"\n"
 "  }\n"
 "  component {\n"
-"    name: \"GainPanel\"\n"
+"    layout: \"GainPanel\"\n"
 "  }\n"
 "  component {\n"
 "    name: \"LevelMeter\"\n"
+"    tooltip: \"Level Meter: RMS intensity for left and right tracks.\"\n"
+"    level_meter {}\n"
+"    size {\n"
+"      fixed: \"20\"\n"
+"    }\n"
 "  }\n"
 "}\n";
 
@@ -13721,7 +13726,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x4b55592f:  numBytes = 448; return TimeController_def;
         case 0x29238b4e:  numBytes = 237; return TransformController_def;
         case 0x964485f2:  numBytes = 913; return TransportButtonsPanel_def;
-        case 0x4bd6484b:  numBytes = 237; return TransportController_def;
+        case 0x4bd6484b:  numBytes = 366; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3837; return Menus_def;

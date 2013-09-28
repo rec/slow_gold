@@ -8,6 +8,7 @@
 #include "rec/gui/proto/Help.h"
 #include "rec/gui/proto/Label.h"
 #include "rec/gui/proto/Layout.h"
+#include "rec/gui/proto/LevelMeter.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/gui/proto/Resizer.h"
 #include "rec/gui/proto/Slider.h"
@@ -37,6 +38,9 @@ ComponentMaker make(const ComponentProto& c) {
 
   if (c.has_label())
     return &makeLabel;
+
+  if (c.has_level_meter())
+    return &makeLevelMeter;
 
   if (c.has_resizer())
     return &makeSimpleResizer;

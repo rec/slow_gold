@@ -23,6 +23,7 @@ class MainPage : public app::LanguageListener {
   MainPage(Components*);
   virtual ~MainPage();
 
+  void layoutComponents();
   gui::Panel* panel() { return mainPanel_.get(); }
   void setEnabled(bool);
   virtual void languageChanged();

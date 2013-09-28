@@ -811,6 +811,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\LevelMeter.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1156,6 +1159,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\menu</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Orientation.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
@@ -1181,6 +1187,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\LevelMeter.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.cc">
@@ -2928,6 +2937,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\LevelMeter.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
@@ -3477,6 +3489,9 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Orientation.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
@@ -3502,6 +3517,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\LevelMeter.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.h">

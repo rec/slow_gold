@@ -23,9 +23,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "rec/data/proto/Address.pb.h"
+#include "rec/gui/Orientation.pb.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Size.pb.h"
 // @@protoc_insertion_point(includes)
@@ -41,25 +41,6 @@ void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto();
 class Layout;
 class Layouts;
 
-enum Layout_Orientation {
-  Layout_Orientation_HORIZONTAL = 0,
-  Layout_Orientation_VERTICAL = 1
-};
-bool Layout_Orientation_IsValid(int value);
-const Layout_Orientation Layout_Orientation_Orientation_MIN = Layout_Orientation_HORIZONTAL;
-const Layout_Orientation Layout_Orientation_Orientation_MAX = Layout_Orientation_VERTICAL;
-const int Layout_Orientation_Orientation_ARRAYSIZE = Layout_Orientation_Orientation_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* Layout_Orientation_descriptor();
-inline const ::std::string& Layout_Orientation_Name(Layout_Orientation value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    Layout_Orientation_descriptor(), value);
-}
-inline bool Layout_Orientation_Parse(
-    const ::std::string& name, Layout_Orientation* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Layout_Orientation>(
-    Layout_Orientation_descriptor(), name, value);
-}
 // ===================================================================
 
 class Layout : public ::google::protobuf::Message {
@@ -114,30 +95,6 @@ class Layout : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef Layout_Orientation Orientation;
-  static const Orientation HORIZONTAL = Layout_Orientation_HORIZONTAL;
-  static const Orientation VERTICAL = Layout_Orientation_VERTICAL;
-  static inline bool Orientation_IsValid(int value) {
-    return Layout_Orientation_IsValid(value);
-  }
-  static const Orientation Orientation_MIN =
-    Layout_Orientation_Orientation_MIN;
-  static const Orientation Orientation_MAX =
-    Layout_Orientation_Orientation_MAX;
-  static const int Orientation_ARRAYSIZE =
-    Layout_Orientation_Orientation_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  Orientation_descriptor() {
-    return Layout_Orientation_descriptor();
-  }
-  static inline const ::std::string& Orientation_Name(Orientation value) {
-    return Layout_Orientation_Name(value);
-  }
-  static inline bool Orientation_Parse(const ::std::string& name,
-      Orientation* value) {
-    return Layout_Orientation_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   // optional string name = 1;
@@ -152,12 +109,12 @@ class Layout : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // optional .rec.gui.Layout.Orientation orientation = 2;
+  // optional .rec.gui.OrientationProto.Orientation orientation = 2;
   inline bool has_orientation() const;
   inline void clear_orientation();
   static const int kOrientationFieldNumber = 2;
-  inline ::rec::gui::Layout_Orientation orientation() const;
-  inline void set_orientation(::rec::gui::Layout_Orientation value);
+  inline ::rec::gui::OrientationProto_Orientation orientation() const;
+  inline void set_orientation(::rec::gui::OrientationProto_Orientation value);
 
   // optional bool resize_other_dimension = 3 [default = true];
   inline bool has_resize_other_dimension() const;
@@ -410,7 +367,7 @@ inline void Layout::set_allocated_name(::std::string* name) {
   }
 }
 
-// optional .rec.gui.Layout.Orientation orientation = 2;
+// optional .rec.gui.OrientationProto.Orientation orientation = 2;
 inline bool Layout::has_orientation() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -424,11 +381,11 @@ inline void Layout::clear_orientation() {
   orientation_ = 0;
   clear_has_orientation();
 }
-inline ::rec::gui::Layout_Orientation Layout::orientation() const {
-  return static_cast< ::rec::gui::Layout_Orientation >(orientation_);
+inline ::rec::gui::OrientationProto_Orientation Layout::orientation() const {
+  return static_cast< ::rec::gui::OrientationProto_Orientation >(orientation_);
 }
-inline void Layout::set_orientation(::rec::gui::Layout_Orientation value) {
-  assert(::rec::gui::Layout_Orientation_IsValid(value));
+inline void Layout::set_orientation(::rec::gui::OrientationProto_Orientation value) {
+  assert(::rec::gui::OrientationProto_Orientation_IsValid(value));
   set_has_orientation();
   orientation_ = value;
 }
@@ -639,10 +596,6 @@ Layouts::mutable_layout() {
 namespace google {
 namespace protobuf {
 
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::gui::Layout_Orientation>() {
-  return ::rec::gui::Layout_Orientation_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

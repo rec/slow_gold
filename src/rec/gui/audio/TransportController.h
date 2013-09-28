@@ -16,15 +16,6 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TimeController;
-
-enum TransportCommand {
-  TOGGLE_START_STOP,
-  JUMP_TO_FIRST,
-  JUMP_TO_PREVIOUS,
-  JUMP_TO_NEXT,
-};
-
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
 class TransportController : public Panel {

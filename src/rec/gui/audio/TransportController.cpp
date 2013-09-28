@@ -2,7 +2,6 @@
 
 #include "rec/gui/IconButton.h"
 #include "rec/gui/proto/Layout.h"
-#include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/util/thread/CallAsync.h"
 

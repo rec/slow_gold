@@ -7,6 +7,7 @@ import "rec/gui/proto/Custom.proto";
 import "rec/gui/proto/Font.proto";
 import "rec/gui/proto/Help.proto";
 import "rec/gui/proto/Label.proto";
+import "rec/gui/proto/LevelMeter.proto";
 import "rec/gui/proto/Resizer.proto";
 import "rec/gui/proto/Size.proto";
 import "rec/gui/proto/Slider.proto";
@@ -25,22 +26,23 @@ message ComponentProto {
   optional FontProto font = 6;
 
   // A reference to the item in the Layout Table.
-  optional string layout = 17;
+  optional string layout = 7;
 
   // Shorthand for a resizer and address.
-  optional string resizer = 7;
-  optional string min_resizer = 18 [default = "0"];
+  optional string resizer = 8;
+  optional string min_resizer = 9 [default = "0"];
 
-  optional ButtonProto button = 8;
-  optional ComboBoxProto combo_box = 9;
-  optional CustomProto custom = 10;
-  optional HelpProto help = 16;
-  optional LabelProto label = 11;
-  optional ResizerProto full_resizer = 12;
-  optional SliderProto slider = 13;
-  optional TextProto text = 14;
+  optional ButtonProto button = 10;
+  optional ComboBoxProto combo_box = 11;
+  optional CustomProto custom = 12;
+  optional HelpProto help = 13;
+  optional LabelProto label = 14;
+  optional LevelMeterProto level_meter = 15;
+  optional ResizerProto full_resizer = 16;
+  optional SliderProto slider = 17;
+  optional TextProto text = 18;
   optional widget.status.time.Dial time_dial = 19;
   optional widget.status.time.Text time = 20;
-  optional ToggleButtonProto toggle_button = 15;
+  optional ToggleButtonProto toggle_button = 21;
 };
 

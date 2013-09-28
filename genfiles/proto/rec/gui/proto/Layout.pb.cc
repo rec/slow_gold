@@ -24,7 +24,6 @@ namespace {
 const ::google::protobuf::Descriptor* Layout_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Layout_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* Layout_Orientation_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Layouts_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Layouts_reflection_ = NULL;
@@ -60,7 +59,6 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Layout));
-  Layout_Orientation_descriptor_ = Layout_descriptor_->enum_type(0);
   Layouts_descriptor_ = file->message_type(1);
   static const int Layouts_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layouts, layout_),
@@ -110,21 +108,22 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fOrientation_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSize_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\034r"
-    "ec/data/proto/Address.proto\032\035rec/gui/pro"
-    "to/Component.proto\032\030rec/gui/proto/Size.p"
-    "roto\"\262\002\n\006Layout\022\014\n\004name\030\001 \001(\t\0220\n\013orienta"
-    "tion\030\002 \001(\0162\033.rec.gui.Layout.Orientation\022"
-    "$\n\026resize_other_dimension\030\003 \001(\010:\004true\022\017\n"
-    "\007is_main\030\004 \001(\010\022\017\n\007padding\030\005 \001(\010\022\033\n\004size\030"
-    "\006 \001(\0132\r.rec.gui.Size\022*\n\tcontainer\030\007 \001(\0132"
-    "\027.rec.gui.ComponentProto\022*\n\tcomponent\030\010 "
-    "\003(\0132\027.rec.gui.ComponentProto\"+\n\013Orientat"
-    "ion\022\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\"*\n\007Lay"
-    "outs\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Layout", 477);
+    "ec/data/proto/Address.proto\032\031rec/gui/Ori"
+    "entation.proto\032\035rec/gui/proto/Component."
+    "proto\032\030rec/gui/proto/Size.proto\"\217\002\n\006Layo"
+    "ut\022\014\n\004name\030\001 \001(\t\022:\n\013orientation\030\002 \001(\0162%."
+    "rec.gui.OrientationProto.Orientation\022$\n\026"
+    "resize_other_dimension\030\003 \001(\010:\004true\022\017\n\007is"
+    "_main\030\004 \001(\010\022\017\n\007padding\030\005 \001(\010\022\033\n\004size\030\006 \001"
+    "(\0132\r.rec.gui.Size\022*\n\tcontainer\030\007 \001(\0132\027.r"
+    "ec.gui.ComponentProto\022*\n\tcomponent\030\010 \003(\013"
+    "2\027.rec.gui.ComponentProto\"*\n\007Layouts\022\037\n\006"
+    "layout\030\001 \003(\0132\017.rec.gui.Layout", 469);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
   Layout::default_instance_ = new Layout();
@@ -143,27 +142,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fLayout_2eproto {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* Layout_Orientation_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Layout_Orientation_descriptor_;
-}
-bool Layout_Orientation_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#ifndef _MSC_VER
-const Layout_Orientation Layout::HORIZONTAL;
-const Layout_Orientation Layout::VERTICAL;
-const Layout_Orientation Layout::Orientation_MIN;
-const Layout_Orientation Layout::Orientation_MAX;
-const int Layout::Orientation_ARRAYSIZE;
-#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int Layout::kNameFieldNumber;
 const int Layout::kOrientationFieldNumber;
@@ -283,7 +261,7 @@ bool Layout::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .rec.gui.Layout.Orientation orientation = 2;
+      // optional .rec.gui.OrientationProto.Orientation orientation = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -292,8 +270,8 @@ bool Layout::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::gui::Layout_Orientation_IsValid(value)) {
-            set_orientation(static_cast< ::rec::gui::Layout_Orientation >(value));
+          if (::rec::gui::OrientationProto_Orientation_IsValid(value)) {
+            set_orientation(static_cast< ::rec::gui::OrientationProto_Orientation >(value));
           } else {
             mutable_unknown_fields()->AddVarint(2, value);
           }
@@ -422,7 +400,7 @@ void Layout::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // optional .rec.gui.Layout.Orientation orientation = 2;
+  // optional .rec.gui.OrientationProto.Orientation orientation = 2;
   if (has_orientation()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->orientation(), output);
@@ -479,7 +457,7 @@ void Layout::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // optional .rec.gui.Layout.Orientation orientation = 2;
+  // optional .rec.gui.OrientationProto.Orientation orientation = 2;
   if (has_orientation()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->orientation(), target);
@@ -539,7 +517,7 @@ int Layout::ByteSize() const {
           this->name());
     }
 
-    // optional .rec.gui.Layout.Orientation orientation = 2;
+    // optional .rec.gui.OrientationProto.Orientation orientation = 2;
     if (has_orientation()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->orientation());

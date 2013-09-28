@@ -2,15 +2,20 @@ layout {
   name: "TransportController"
   orientation: VERTICAL
   size {
-    min: "TRANSPORT_SIZE"
+    fixed: "TRANSPORT_SIZE"
   }
   component {
-    name: "TransportButtonsPanel"
+    layout: "TransportButtonsPanel"
   }
   component {
-    name: "GainPanel"
+    layout: "GainPanel"
   }
   component {
     name: "LevelMeter"
+    tooltip: "Level Meter: RMS intensity for left and right tracks."
+    level_meter {}
+    size {
+      fixed: "20"
+    }
   }
 }

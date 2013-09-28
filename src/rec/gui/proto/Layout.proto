@@ -1,17 +1,13 @@
 package rec.gui;
 
 import "rec/data/proto/Address.proto";
+import "rec/gui/Orientation.proto";
 import "rec/gui/proto/Component.proto";
 import "rec/gui/proto/Size.proto";
 
 message Layout {
-  enum Orientation {
-    HORIZONTAL = 0;
-    VERTICAL = 1;
-  };
-
   optional string name = 1;
-  optional Orientation orientation = 2;
+  optional OrientationProto.Orientation orientation = 2;
   optional bool resize_other_dimension = 3 [default = true];
 
   // The "main" window has, on Windows only, a thin black line above all the

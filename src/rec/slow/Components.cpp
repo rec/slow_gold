@@ -35,13 +35,17 @@ Components::Components()
       loops_(new gui::audio::Loops()),
       songData_(new gui::SongData),
       transformController_(new gui::audio::TransformController),
-      transportController_(new gui::audio::TransportController),
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
       commandBar_(new gui::audio::CommandBar) {
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
+  transportController_ = Instance::USE_NEW_GUI ?
+      gui::makeLayout("TransportController", mainPage_->panel()) :
+      unique_ptr<Component>(new gui::audio::TransportController);
+  mainPage_->layoutComponents();
+
   setDefaultCuttable(loops_.get());
   componentMap_ = gui::getComponentMap(mainPage_->panel());
 #if 0
@@ -86,15 +90,6 @@ void Components::operator()(const music::Metadata& md) {
   }
 
   thread::callAsync(getInstance()->window_, &SlowWindow::setName, name);
-}
-
-void Components::operator()(audio::transport::State state) {
-  MessageManagerLock l;
-  bool isRunning = (state == rec::audio::transport::RUNNING);
-  if (false) {
-    startStopButton_->setToggleState(isRunning, juce::dontSendNotification);
-    startStopButton_->repaint();
-  }
 }
 
 }  // namespace slow
