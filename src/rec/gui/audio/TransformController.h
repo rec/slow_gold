@@ -50,6 +50,7 @@ class TransformController : public Panel,
 
   Panel leftPadding_;
   Panel rightPadding_;
+  unique_ptr<Component> newRightPanel_;
 
   bool showMasterTune_;
   bool rightPanelCreated_;

@@ -70,8 +70,6 @@ class Instance {
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 
-  static const bool USE_NEW_GUI;
-
  private:
   unique_ptr<SlowProgram> slowProgram_;
   unique_ptr<program::JuceModel> juceModel_;

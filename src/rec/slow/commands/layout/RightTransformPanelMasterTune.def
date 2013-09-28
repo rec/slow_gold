@@ -1,9 +1,9 @@
 layout {
-  name: "RightTransformPanel"
+  name: "RightTransformPanelMasterTune"
   padding: true
   orientation: VERTICAL
   size {
-    fixed: "30"
+    fixed: "25"
   }
   component {
     name: "SpeedSlider"
@@ -11,7 +11,6 @@ layout {
     address: "rec.audio.stretch.Stretch:time_percent"
     slider {
       caption: "Stretch"
-      text_suffix: "%"
     }
   }
   component {
@@ -28,6 +27,14 @@ layout {
     address: "rec.audio.stretch.Stretch:detune_cents"
     slider {
       caption: "Tune"
+    }
+  }
+  component {
+    name: "MasterTuneSlider"
+    tooltip: "Master Tune Slider: Master tune is a global detune over all tracks."
+    address: "rec.audio.AudioSettings:master_tune"
+    slider {
+      caption: "Master"
     }
   }
 }

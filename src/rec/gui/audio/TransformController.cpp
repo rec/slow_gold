@@ -2,6 +2,7 @@
 
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/source/Stereo.h"
+#include "rec/gui/proto/Layout.h"
 #include "rec/util/thread/CallAsync.h"
 
 using namespace rec::audio::source;
@@ -28,6 +29,8 @@ const int COMBO_BOX_HEIGHT = 30;
 }  // namespace
 
 using rec::audio::stretch::Stretch;
+
+bool USE_NEW_GUI = not not true;
 
 TransformController::TransformController()
     : Panel("TransformController", HORIZONTAL),
@@ -88,13 +91,19 @@ TransformController::TransformController()
   leftPanel_.addToPanel(&leftPadding_);
 
   addToPanel(&leftPanel_, LEFT_PANEL_WIDTH);
-  addToPanel(&rightPanel_, 150, -1.0, 250);
+  if (USE_NEW_GUI) {
+    newRightPanel_ = gui::makeLayout("RightTransformPanel", this);
+    addToPanel(newRightPanel_.get(), 150, -1.0, 250);
+  } else {
+    addToPanel(&rightPanel_, 150, -1.0, 250);
+  }
 }
 
 TransformController::~TransformController() {}
 
 void TransformController::showMasterTune(bool show) {
-  if (!rightPanelCreated_ || showMasterTune_ != show) {
+  if (not USE_NEW_GUI and
+      (!rightPanelCreated_ || showMasterTune_ != show)) {
     showMasterTune_ = show;
     if (rightPanelCreated_)
       rightPanel_.clear();
