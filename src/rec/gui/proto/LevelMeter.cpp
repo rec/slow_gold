@@ -13,7 +13,9 @@ unique_ptr<Component> makeLevelMeter(const Context& context) {
   auto& component = context.component_;
   auto& level = component.level_meter();
   return unique_ptr<Component>(new audio::LevelMeter(
-      "", "", level.orientation(), level.type(), level.margin()));
+      "(name)", "(tooltip)",
+      level.orientation() == OrientationProto::HORIZONTAL,
+      level.type(), level.margin()));
 }
 
 }  // namespace gui

@@ -23,10 +23,15 @@ LevelMeter::LevelMeter(const string& name, const string& tooltip,
       gain_(1.0f),
       margin_(margin),
       preFaderLevels_(false) {
+  if (false)
+  DLOG(INFO)
+      << horizontal_ << ", "
+      << rms_ << ", "
+      << margin_ << ", ";
 }
 
 void LevelMeter::languageChanged() {
-  setTooltip(Trans(tooltip_));
+  // setTooltip(Trans(tooltip_));
 }
 
 void LevelMeter::operator()(const rec::audio::LevelVector& levels) {
