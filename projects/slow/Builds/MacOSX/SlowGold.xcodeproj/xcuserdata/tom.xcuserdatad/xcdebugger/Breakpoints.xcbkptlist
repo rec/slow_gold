@@ -43,27 +43,16 @@
          landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../../../src/rec/gui/audio/TransportController.cpp"
-         timestampString = "401956028.967703"
+         filePath = "../../JuceLibraryCode/modules/juce_gui_basics/buttons/juce_Button.cpp"
+         timestampString = "402079279.610169"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../../../../src/rec/slow/Components.cpp"
-         timestampString = "402010734.291551"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
-         landmarkName = "Components::operator()(audio::transport::State state)"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
+         landmarkName = "Button::setToggleState (const bool shouldBeOn, const NotificationType notification)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

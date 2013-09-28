@@ -91,8 +91,11 @@ void Components::operator()(const music::Metadata& md) {
 void Components::operator()(audio::transport::State state) {
   MessageManagerLock l;
   bool isRunning = (state == rec::audio::transport::RUNNING);
-  startStopButton_->setToggleState(isRunning, juce::dontSendNotification);
-  startStopButton_->repaint();
+  DLOG(INFO) << "isRunning " << isRunning;
+  if (true) {
+    startStopButton_->setToggleState(isRunning, juce::dontSendNotification);
+    startStopButton_->repaint();
+  }
 }
 
 }  // namespace slow

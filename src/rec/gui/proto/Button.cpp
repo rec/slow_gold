@@ -47,7 +47,7 @@ unique_ptr<Component> makeButton(const Context& context) {
   const ButtonProto::State& stateOn = proto.state_on();
   unique_ptr<Drawable> normalOn, overOn, pressedOn, disabledOn;
   if (isToggle or stateOn.normal())
-    construct(&overOn, imageName + "On");
+    construct(&normalOn, imageName + "On");
 
   if (stateOn.over())
     construct(&overOn, imageName + "OnOver");

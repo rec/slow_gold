@@ -1,4 +1,6 @@
 #include "rec/audio/source/Player.h"
+
+#include "rec/audio/PlayState.pb.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/util/Math.h"
@@ -103,6 +105,10 @@ void Player::reset() {
 
 State Player::state() const {
   return transportSource_.isPlaying() ? RUNNING : STOPPED;
+}
+
+void Player::operator()(const PlayState& s) {
+  setState(s.is_playing() ? RUNNING : STOPPED);
 }
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {

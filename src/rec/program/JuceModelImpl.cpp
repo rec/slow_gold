@@ -86,7 +86,7 @@ void JuceModelImpl::logMaps() {
 
   int undeclared = 0, total = 0, empty = 0;
   for (auto& i: layoutMap_) {
-    if (not i.second.component().size()) {
+    if (not (i.second.has_container() or i.second.component().size())) {
       DLOG(INFO) << "empty: " << i.second.name();
       ++empty;
     }

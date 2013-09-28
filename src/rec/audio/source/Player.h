@@ -14,8 +14,9 @@
 #include "rec/data/DataListener.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
-namespace rec {
+namespace rec { namespace audio { class PlayState; }}
 
+namespace rec {
 namespace audio {
 namespace source {
 
@@ -27,11 +28,12 @@ class StereoProto;
 // Player has the following source chain:
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be nullptr if no stretch has been requested.
-class Player : public DataListener<Gain>,
-               public DataListener<widget::waveform::Viewport>,
+class Player : public DataListener<AudioSettings>,
+               public DataListener<Gain>,
+               public DataListener<PlayState>,
                public DataListener<StereoProto>,
                public DataListener<stretch::Stretch>,
-               public DataListener<audio::AudioSettings>,
+               public DataListener<widget::waveform::Viewport>,
                public Listener<SampleRate>,
                public juce::ChangeListener {
  public:
@@ -58,14 +60,14 @@ class Player : public DataListener<Gain>,
 
   Source* makeSourceCopy(Source* s, bool useSelection);
 
-  virtual void changeListenerCallback(ChangeBroadcaster*);
-
-  virtual void operator()(SampleRate outputSampleRate);
-  virtual void operator()(const Gain&);
-  virtual void operator()(const StereoProto&);
-  virtual void operator()(const audio::AudioSettings&);
-  virtual void operator()(const stretch::Stretch&);
-  virtual void operator()(const widget::waveform::Viewport&);
+  void changeListenerCallback(ChangeBroadcaster*) override;
+  void operator()(SampleRate outputSampleRate) override;
+  void operator()(const AudioSettings&) override;
+  void operator()(const Gain&) override;
+  void operator()(const PlayState& s) override;
+  void operator()(const StereoProto&) override;
+  void operator()(const stretch::Stretch&) override;
+  void operator()(const widget::waveform::Viewport&) override;
 
   void setGain(double);
   void setSource(Source*);

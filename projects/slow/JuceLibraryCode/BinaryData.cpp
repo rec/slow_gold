@@ -91,15 +91,6 @@ static const unsigned char temp_binary_data_1[] =
 "  setter: \"rec.audio.AudioSettings:autoplay\"\n"
 "}\n"
 "command {\n"
-"  id_string: \"TOGGLE_START_STOP\"\n"
-"  category: \"Transport\"\n"
-"  desc {\n"
-"    menu: \"Toggle Start/Stop\"\n"
-"    full: \"Start or pause\"\n"
-"  }\n"
-"  disabled: \"empty\"\n"
-"}\n"
-"command {\n"
 "  id_string: \"TOGGLE_STRETCH_ENABLE\"\n"
 "  category: \"Audio\"\n"
 "  desc {\n"
@@ -1047,6 +1038,16 @@ static const unsigned char temp_binary_data_8[] =
 "    menu: \"Nudge speed up\"\n"
 "    full: \"Nudge speed up\"\n"
 "  }\n"
+"}\n"
+"command {\n"
+"  id_string: \"TOGGLE_START_STOP\"\n"
+"  category: \"Transport\"\n"
+"  setter: \"rec.audio.PlayState:is_playing\"\n"
+"  desc {\n"
+"    menu: \"Toggle Start/Stop\"\n"
+"    full: \"Start or pause\"\n"
+"  }\n"
+"  disabled: \"empty\"\n"
 "}\n";
 
 const char* Transport_def = (const char*) temp_binary_data_8;
@@ -13696,14 +13697,14 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     switch (hash)
     {
         case 0xc4c114d6:  numBytes = 219; return Colors_def;
-        case 0x82ae93fc:  numBytes = 1632; return Audio_def;
+        case 0x82ae93fc:  numBytes = 1473; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
         case 0xd807eee2:  numBytes = 2081; return File_def;
         case 0x7975c6e1:  numBytes = 4130; return Gui_def;
         case 0xb618588d:  numBytes = 1737; return LoopPoints_def;
         case 0x6d98aeb2:  numBytes = 5765; return Selection_def;
         case 0x29a9fa09:  numBytes = 4871; return Settings_def;
-        case 0xd87d1dcf:  numBytes = 3530; return Transport_def;
+        case 0xd87d1dcf:  numBytes = 3732; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 107; return Constants_def;

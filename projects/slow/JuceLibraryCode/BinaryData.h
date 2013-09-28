@@ -10,7 +10,7 @@ namespace BinaryData
     const int            Colors_defSize = 219;
 
     extern const char*   Audio_def;
-    const int            Audio_defSize = 1632;
+    const int            Audio_defSize = 1473;
 
     extern const char*   Commands_def;
     const int            Commands_defSize = 111;
@@ -31,7 +31,7 @@ namespace BinaryData
     const int            Settings_defSize = 4871;
 
     extern const char*   Transport_def;
-    const int            Transport_defSize = 3530;
+    const int            Transport_defSize = 3732;
 
     extern const char*   KeyStrokeMap_def;
     const int            KeyStrokeMap_defSize = 5474;

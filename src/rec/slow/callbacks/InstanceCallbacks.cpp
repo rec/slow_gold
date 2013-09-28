@@ -237,7 +237,7 @@ void addInstanceCallbacks(CallbackTable* c) {
 
   addCallback(c, slow::Command::SAVE_FILE, saveFile);
   addCallback(c, slow::Command::SAVE_FILE_SELECTION, saveFileSelection);
-  addCallback(c, slow::Command::TOGGLE_START_STOP, toggleStartStop);
+  // addCallback(c, slow::Command::TOGGLE_START_STOP, toggleStartStop);
   addCallback(c, slow::Command::ZOOM_OUT, zoomOut);
   addCallback(c, slow::Command::ZOOM_OUT_FULL, zoomOutFull);
   addCallback(c, slow::Command::ZOOM_TO_SELECTION, zoomToSelection);

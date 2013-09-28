@@ -121,3 +121,13 @@ command {
     full: "Nudge speed up"
   }
 }
+command {
+  id_string: "TOGGLE_START_STOP"
+  category: "Transport"
+  setter: "rec.audio.PlayState:is_playing"
+  desc {
+    menu: "Toggle Start/Stop"
+    full: "Start or pause"
+  }
+  disabled: "empty"
+}

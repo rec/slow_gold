@@ -51,15 +51,6 @@ command {
   setter: "rec.audio.AudioSettings:autoplay"
 }
 command {
-  id_string: "TOGGLE_START_STOP"
-  category: "Transport"
-  desc {
-    menu: "Toggle Start/Stop"
-    full: "Start or pause"
-  }
-  disabled: "empty"
-}
-command {
   id_string: "TOGGLE_STRETCH_ENABLE"
   category: "Audio"
   desc {

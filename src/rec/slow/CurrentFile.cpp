@@ -39,7 +39,8 @@ void CurrentFile::saveState() {
     auto& player = getInstance()->player_;
     data::Opener<PlayState> state(file());
     state->set_time(player->getTime());
-    state->set_is_playing(player->state());
+    state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
+                          player->state());
   }
 }
 
@@ -49,7 +50,7 @@ void CurrentFile::resume() {
     PlayState state = data::getProto<PlayState>(file());
     auto& currentTime = getInstance()->currentTime_;
     currentTime->jumpToTime(state.time());
-    if (data::getProto<AudioSettings>().autoplay() and state.is_playing())
+    if (false and data::getProto<AudioSettings>().autoplay() and state.is_playing())
       getInstance()->player_->setState(transport::RUNNING);
   }
 }
