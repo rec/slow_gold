@@ -32,7 +32,6 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 Components::Components()
     : manager_(program::applicationCommandManager()),
       loops_(new gui::audio::Loops()),
-      songData_(new gui::SongData),
       transformController_(new gui::audio::TransformController),
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
@@ -40,8 +39,11 @@ Components::Components()
       commandBar_(new gui::audio::CommandBar) {
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
-  transportController_ =
-      gui::makeLayout("TransportController", mainPage_->panel());
+  Component* c = mainPage_->panel();
+  transportController_ = gui::makeLayout("TransportController", c);
+  songData_ = Instance::USE_NEW_GUI ? gui::makeLayout("SongData", c) :
+      unique_ptr<Component>(new gui::SongData);
+
   mainPage_->layoutComponents();
 
   setDefaultCuttable(loops_.get());

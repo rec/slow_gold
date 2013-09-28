@@ -7,7 +7,6 @@
 #include "rec/music/Metadata.h"
 
 namespace rec { namespace audio { class Gain; }}
-namespace rec { namespace gui { class SongData; }}
 
 namespace rec { namespace gui { namespace audio { class CommandBar; } }}
 namespace rec { namespace gui { namespace audio { class Loops; } }}
@@ -35,7 +34,7 @@ class Components : public data::DataListener<music::Metadata>,
 
   ApplicationCommandManager* manager_;
   unique_ptr<gui::audio::Loops> loops_;
-  unique_ptr<gui::SongData> songData_;
+  unique_ptr<Component> songData_;
   unique_ptr<gui::audio::TransformController> transformController_;
   unique_ptr<Component> transportController_;
 
