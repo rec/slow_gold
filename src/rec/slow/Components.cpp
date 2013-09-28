@@ -1,7 +1,6 @@
 #include "rec/slow/Components.h"
 
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
@@ -41,8 +40,7 @@ Components::Components()
   mainPage_.reset(new MainPage(this));
   Component* c = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", c);
-  songData_ = Instance::USE_NEW_GUI ? gui::makeLayout("SongData", c) :
-      unique_ptr<Component>(new gui::SongData);
+  songData_ = gui::makeLayout("SongData", c);
 
   mainPage_->layoutComponents();
 
