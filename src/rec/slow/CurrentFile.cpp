@@ -37,10 +37,23 @@ void CurrentFile::suspend() {
 void CurrentFile::saveState() {
   if (not empty()) {
     auto& player = getInstance()->player_;
-    data::Opener<PlayState> state(file());
-    state->set_time(player->getTime());
-    state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
-                          player->state());
+    if (false) {
+      DLOG(INFO) << "!!!! " << file().ShortDebugString();
+      DLOG(INFO) << player->getTime();
+    }
+    if (true) {
+      data::Opener<PlayState> state(file());
+      state->set_time(player->getTime());
+      state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
+                            player->state());
+      if (false)
+        DLOG(INFO) << "Saving " << state->ShortDebugString();
+    } else {
+      PlayState state = data::getProto<PlayState>(file());
+      state.set_time(player->getTime());
+      data::setProto(state, CANT_UNDO);
+      DLOG(INFO) << "Saving " << state.ShortDebugString();
+    }
   }
 }
 
@@ -50,8 +63,6 @@ void CurrentFile::resume() {
     PlayState state = data::getProto<PlayState>(file());
     auto& currentTime = getInstance()->currentTime_;
     currentTime->jumpToTime(state.time());
-    if (false and data::getProto<AudioSettings>().autoplay() and state.is_playing())
-      getInstance()->player_->setState(transport::RUNNING);
   }
 }
 

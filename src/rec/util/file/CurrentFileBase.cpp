@@ -32,7 +32,6 @@ void CurrentFileBase::setVirtualFile(const VirtualFile& f, bool showError) {
   data::getDataCenter()->clearUndoes();
 
   suspend();
-
   if (file_.path_size())
     gui::addRecentFile(file_, *getFileDescription());
 

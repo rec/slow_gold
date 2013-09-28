@@ -33,7 +33,6 @@ void registerProtos() {
 
   registerProto<app::AppSettings>(r);
   registerProto<audio::AudioSettings>(r);
-  registerProto<audio::PlayState>(r);
   registerProto<command::CommandMapProto>(r);
   registerProto<command::Commands>(r);
   registerProto<command::KeyStrokeCommandMapProto>(r);
@@ -51,6 +50,7 @@ void registerProtos() {
   registerProto<widget::waveform::WaveformProto>(r);
 
   registerFileProto<audio::Gain>(r);
+  registerFileProto<audio::PlayState>(r);
   registerFileProto<audio::source::StereoProto>(r);
   registerFileProto<audio::stretch::Stretch>(r);
   registerFileProto<music::Metadata>(r);

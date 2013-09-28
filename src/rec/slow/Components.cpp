@@ -91,8 +91,7 @@ void Components::operator()(const music::Metadata& md) {
 void Components::operator()(audio::transport::State state) {
   MessageManagerLock l;
   bool isRunning = (state == rec::audio::transport::RUNNING);
-  DLOG(INFO) << "isRunning " << isRunning;
-  if (true) {
+  if (false) {
     startStopButton_->setToggleState(isRunning, juce::dontSendNotification);
     startStopButton_->repaint();
   }

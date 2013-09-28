@@ -30,6 +30,7 @@ template <typename Proto>
 const Proto getProto(const VirtualFile& vf) {
   return getProto<Proto>(getData(getTypeName<Proto>(), vf));
 }
+
 template <typename Proto>
 const Proto getProto(Data* data) {
   Proto proto;
