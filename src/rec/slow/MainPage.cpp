@@ -10,7 +10,6 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/audio/TransformController.h"
-#include "rec/gui/audio/TransportController.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"

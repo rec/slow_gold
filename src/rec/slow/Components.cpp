@@ -6,7 +6,6 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/audio/TransformController.h"
-#include "rec/gui/audio/TransportController.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/CurrentFile.h"
@@ -41,9 +40,8 @@ Components::Components()
       commandBar_(new gui::audio::CommandBar) {
   loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
-  transportController_ = Instance::USE_NEW_GUI ?
-      gui::makeLayout("TransportController", mainPage_->panel()) :
-      unique_ptr<Component>(new gui::audio::TransportController);
+  transportController_ =
+      gui::makeLayout("TransportController", mainPage_->panel());
   mainPage_->layoutComponents();
 
   setDefaultCuttable(loops_.get());
