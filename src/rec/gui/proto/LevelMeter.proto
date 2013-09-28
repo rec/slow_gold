@@ -1,0 +1,19 @@
+package rec.gui;
+
+import "rec/gui/Orientation.proto";
+
+message LevelMeterProto {
+  enum Type {
+    LINEAR = 0;
+    RMS = 1;
+  }
+
+  optional OrientationProto.Orientation orientation = 1;
+  optional Type type = 2 [default = RMS];
+  optional uint32 margin = 3 [default = 2];
+
+  // below this are values implemented in LevelMeter but not hooked up.
+  optional float scale_up_meter = 4 [default = 2.0];
+  optional float gap_width = 5 [default = 2.0];
+  optional uint32 segment_count = 6 [default = 32];
+};
