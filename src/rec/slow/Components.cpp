@@ -52,6 +52,7 @@ Components::Components()
 #endif
   startStopButton_ = getComponent<DrawableButton>("StartStopButton");
   levelSlider_ = getComponent<Component>("LevelSlider");
+  speedSlider_ = getComponent<Component>("SpeedSlider");
 }
 
 Components::~Components() {}
@@ -61,7 +62,7 @@ void Components::init() {
 }
 
 void Components::operator()(const rec::audio::Gain& gain) {
-  levelSlider_->setEnabled(!gain.mute());
+ levelSlider_->setEnabled(!gain.mute());
 }
 
 void Components::setEnabled(bool enabled) {
@@ -88,6 +89,10 @@ void Components::operator()(const music::Metadata& md) {
   }
 
   thread::callAsync(getInstance()->window_, &SlowWindow::setName, name);
+}
+
+void Components::operator()(const audio::stretch::Stretch& s) {
+  speedSlider_->setEnabled(s.time_enabled());
 }
 
 }  // namespace slow

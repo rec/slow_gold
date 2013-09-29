@@ -36,10 +36,11 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fPanel_2eproto() {
       "rec/gui/proto/Panel.proto");
   GOOGLE_CHECK(file != NULL);
   PanelProto_descriptor_ = file->message_type(0);
-  static const int PanelProto_offsets_[3] = {
+  static const int PanelProto_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, orientation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, is_main_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PanelProto, is_opaque_),
   };
   PanelProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -83,12 +84,12 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fPanel_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/gui/proto/Panel.proto\022\007rec.gui\"\246\001\n"
+    "\n\031rec/gui/proto/Panel.proto\022\007rec.gui\"\271\001\n"
     "\nPanelProto\0224\n\013orientation\030\001 \001(\0162\037.rec.g"
     "ui.PanelProto.Orientation\022$\n\026resize_othe"
-    "r_dimension\030\003 \001(\010:\004true\022\017\n\007is_main\030\004 \001(\010"
-    "\"+\n\013Orientation\022\016\n\nHORIZONTAL\020\000\022\014\n\010VERTI"
-    "CAL\020\001", 205);
+    "r_dimension\030\002 \001(\010:\004true\022\017\n\007is_main\030\003 \001(\010"
+    "\022\021\n\tis_opaque\030\004 \001(\010\"+\n\013Orientation\022\016\n\nHO"
+    "RIZONTAL\020\000\022\014\n\010VERTICAL\020\001", 224);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Panel.proto", &protobuf_RegisterTypes);
   PanelProto::default_instance_ = new PanelProto();
@@ -130,6 +131,7 @@ const int PanelProto::Orientation_ARRAYSIZE;
 const int PanelProto::kOrientationFieldNumber;
 const int PanelProto::kResizeOtherDimensionFieldNumber;
 const int PanelProto::kIsMainFieldNumber;
+const int PanelProto::kIsOpaqueFieldNumber;
 #endif  // !_MSC_VER
 
 PanelProto::PanelProto()
@@ -151,6 +153,7 @@ void PanelProto::SharedCtor() {
   orientation_ = 0;
   resize_other_dimension_ = true;
   is_main_ = false;
+  is_opaque_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -189,6 +192,7 @@ void PanelProto::Clear() {
     orientation_ = 0;
     resize_other_dimension_ = true;
     is_main_ = false;
+    is_opaque_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -216,12 +220,12 @@ bool PanelProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_resize_other_dimension;
+        if (input->ExpectTag(16)) goto parse_resize_other_dimension;
         break;
       }
 
-      // optional bool resize_other_dimension = 3 [default = true];
-      case 3: {
+      // optional bool resize_other_dimension = 2 [default = true];
+      case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_resize_other_dimension:
@@ -232,12 +236,12 @@ bool PanelProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_is_main;
+        if (input->ExpectTag(24)) goto parse_is_main;
         break;
       }
 
-      // optional bool is_main = 4;
-      case 4: {
+      // optional bool is_main = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_is_main:
@@ -245,6 +249,22 @@ bool PanelProto::MergePartialFromCodedStream(
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &is_main_)));
           set_has_is_main();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_is_opaque;
+        break;
+      }
+
+      // optional bool is_opaque = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_opaque:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_opaque_)));
+          set_has_is_opaque();
         } else {
           goto handle_uninterpreted;
         }
@@ -276,14 +296,19 @@ void PanelProto::SerializeWithCachedSizes(
       1, this->orientation(), output);
   }
 
-  // optional bool resize_other_dimension = 3 [default = true];
+  // optional bool resize_other_dimension = 2 [default = true];
   if (has_resize_other_dimension()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->resize_other_dimension(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->resize_other_dimension(), output);
   }
 
-  // optional bool is_main = 4;
+  // optional bool is_main = 3;
   if (has_is_main()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->is_main(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->is_main(), output);
+  }
+
+  // optional bool is_opaque = 4;
+  if (has_is_opaque()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->is_opaque(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -300,14 +325,19 @@ void PanelProto::SerializeWithCachedSizes(
       1, this->orientation(), target);
   }
 
-  // optional bool resize_other_dimension = 3 [default = true];
+  // optional bool resize_other_dimension = 2 [default = true];
   if (has_resize_other_dimension()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->resize_other_dimension(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->resize_other_dimension(), target);
   }
 
-  // optional bool is_main = 4;
+  // optional bool is_main = 3;
   if (has_is_main()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->is_main(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->is_main(), target);
+  }
+
+  // optional bool is_opaque = 4;
+  if (has_is_opaque()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->is_opaque(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -327,13 +357,18 @@ int PanelProto::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->orientation());
     }
 
-    // optional bool resize_other_dimension = 3 [default = true];
+    // optional bool resize_other_dimension = 2 [default = true];
     if (has_resize_other_dimension()) {
       total_size += 1 + 1;
     }
 
-    // optional bool is_main = 4;
+    // optional bool is_main = 3;
     if (has_is_main()) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool is_opaque = 4;
+    if (has_is_opaque()) {
       total_size += 1 + 1;
     }
 
@@ -373,6 +408,9 @@ void PanelProto::MergeFrom(const PanelProto& from) {
     if (from.has_is_main()) {
       set_is_main(from.is_main());
     }
+    if (from.has_is_opaque()) {
+      set_is_opaque(from.is_opaque());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -399,6 +437,7 @@ void PanelProto::Swap(PanelProto* other) {
     std::swap(orientation_, other->orientation_);
     std::swap(resize_other_dimension_, other->resize_other_dimension_);
     std::swap(is_main_, other->is_main_);
+    std::swap(is_opaque_, other->is_opaque_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

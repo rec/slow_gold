@@ -1929,6 +1929,7 @@ const char* TimeController_def = (const char*) temp_binary_data_23;
 static const unsigned char temp_binary_data_24[] =
 "layout {\n"
 "  name: \"TransformController\"\n"
+"  is_opaque: true\n"
 "\n"
 "  component {\n"
 "    layout: \"LeftTransformPanel\"\n"
@@ -13801,7 +13802,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xea90c3f4:  numBytes = 1116; return RightTransformPanelMasterTune_def;
         case 0x1b5b8645:  numBytes = 1436; return SongData_def;
         case 0x4b55592f:  numBytes = 448; return TimeController_def;
-        case 0x29238b4e:  numBytes = 236; return TransformController_def;
+        case 0x29238b4e:  numBytes = 254; return TransformController_def;
         case 0x964485f2:  numBytes = 913; return TransportButtonsPanel_def;
         case 0x4bd6484b:  numBytes = 366; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;

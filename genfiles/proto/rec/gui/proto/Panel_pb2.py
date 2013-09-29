@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Panel.proto',
   package='rec.gui',
-  serialized_pb='\n\x19rec/gui/proto/Panel.proto\x12\x07rec.gui\"\xa6\x01\n\nPanelProto\x12\x34\n\x0borientation\x18\x01 \x01(\x0e\x32\x1f.rec.gui.PanelProto.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\"+\n\x0bOrientation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01')
+  serialized_pb='\n\x19rec/gui/proto/Panel.proto\x12\x07rec.gui\"\xb9\x01\n\nPanelProto\x12\x34\n\x0borientation\x18\x01 \x01(\x0e\x32\x1f.rec.gui.PanelProto.Orientation\x12$\n\x16resize_other_dimension\x18\x02 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x03 \x01(\x08\x12\x11\n\tis_opaque\x18\x04 \x01(\x08\"+\n\x0bOrientation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01')
 
 
 
@@ -34,8 +34,8 @@ _PANELPROTO_ORIENTATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=162,
-  serialized_end=205,
+  serialized_start=181,
+  serialized_end=224,
 )
 
 
@@ -55,13 +55,20 @@ _PANELPROTO = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='resize_other_dimension', full_name='rec.gui.PanelProto.resize_other_dimension', index=1,
-      number=3, type=8, cpp_type=7, label=1,
+      number=2, type=8, cpp_type=7, label=1,
       has_default_value=True, default_value=True,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='is_main', full_name='rec.gui.PanelProto.is_main', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='is_opaque', full_name='rec.gui.PanelProto.is_opaque', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -78,7 +85,7 @@ _PANELPROTO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=39,
-  serialized_end=205,
+  serialized_end=224,
 )
 
 _PANELPROTO.fields_by_name['orientation'].enum_type = _PANELPROTO_ORIENTATION

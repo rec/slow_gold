@@ -12,6 +12,7 @@ namespace rec { namespace gui { namespace audio { class CommandBar; } }}
 namespace rec { namespace gui { namespace audio { class Loops; } }}
 namespace rec { namespace gui { namespace audio { class ModeSelector; } }}
 namespace rec { namespace gui { namespace audio { class TransformController; } }}
+namespace rec { namespace audio { namespace stretch { class Stretch; } }}
 
 namespace rec { namespace widget { namespace tree { class Root; } }}
 namespace rec { namespace widget { namespace waveform { class Waveform; } }}
@@ -22,6 +23,7 @@ namespace slow {
 class MainPage;
 
 class Components : public data::DataListener<music::Metadata>,
+                   public data::DataListener<audio::stretch::Stretch>,
                    public data::DataListener<audio::Gain> {
  public:
   Components();
@@ -31,6 +33,7 @@ class Components : public data::DataListener<music::Metadata>,
   void setEnabled(bool enabled);
   void operator()(const music::Metadata&) override;
   void operator()(const audio::Gain&) override;
+  void operator()(const audio::stretch::Stretch&) override;
 
   ApplicationCommandManager* manager_;
   unique_ptr<gui::audio::Loops> loops_;
@@ -62,6 +65,7 @@ class Components : public data::DataListener<music::Metadata>,
  private:
   DrawableButton* startStopButton_;
   Component* levelSlider_;
+  Component* speedSlider_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };

@@ -16,34 +16,16 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TransformController : public Panel,
-                            public data::DataListener<rec::audio::source::StereoProto>,
-                            public data::DataListener<rec::audio::stretch::Stretch>,
-                            public app::LanguageListener,
-                            public juce::ComboBox::Listener {
+class TransformController : public Panel {
  public:
   TransformController();
   virtual ~TransformController();
 
   virtual bool isOpaque() const { return true; }
 
-  virtual void operator()(const rec::audio::stretch::Stretch&);
-  virtual void operator()(const rec::audio::source::StereoProto&);
-  virtual void languageChanged();
-
-  virtual void comboBoxChanged(juce::ComboBox*);
-
  private:
-  void setStretch(const rec::audio::stretch::Stretch&);
-
-  gui::SetterToggle enableButton_;
-  juce::ComboBox stereoComboBox_;
-  Panel leftPanel_;
-  Panel leftPadding_;
+  unique_ptr<Component> leftPanel_;
   unique_ptr<Component> rightPanel_;
-  unique_ptr<Component> newLeftPanel_;
-
-  rec::audio::source::StereoProto stereo_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransformController);
 };

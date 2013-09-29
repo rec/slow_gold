@@ -11,14 +11,16 @@ Panel::Panel(const String& name,
              Orientation o,
              bool resizeOther,
              bool isMain,
-             bool ownComponents)
+             bool ownComponents,
+             bool isOpaque)
     : Component(name),
       SizeHintAccumulator(o),
       orientation_(o),
       resizeOtherDimension_(resizeOther),
       cache_(nullptr),
       isMain_(isMain),
-      ownComponents_(ownComponents) {
+      ownComponents_(ownComponents),
+      isOpaque_(isOpaque) {
 }
 
 Panel::~Panel() {
@@ -92,8 +94,8 @@ unique_ptr<Panel> makePanel(const PanelProto& proto) {
   Orientation o = (proto.orientation() == PanelProto::HORIZONTAL) ?
     HORIZONTAL : VERTICAL;
   string name = "TODO";
-  return make_unique<Panel>(
-      name, o, proto.resize_other_dimension(), proto.is_main());
+  return make_unique<Panel>(name, o, proto.resize_other_dimension(),
+                            proto.is_main(), proto.is_opaque());
 }
 
 }  // namespace gui

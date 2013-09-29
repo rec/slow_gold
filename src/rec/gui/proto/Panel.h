@@ -23,7 +23,8 @@ class Panel : public Component,
         Orientation o = HORIZONTAL,
         bool resizeOther = true,
         bool isMain = false,
-        bool ownComponents = false);
+        bool ownComponents = false,
+        bool isOpaque = false);
 
   ~Panel();
 
@@ -43,6 +44,8 @@ class Panel : public Component,
 
   void clear(bool free = false);
 
+  virtual bool isOpaque() const { return isOpaque_; }
+
   #if JUCE_WINDOWS
   virtual void paintOverChildren(Graphics& g) {
     if (isMain_) {
@@ -61,6 +64,7 @@ class Panel : public Component,
   juce::CachedComponentImage *cache_;
   bool const isMain_;
   bool const ownComponents_;
+  bool const isOpaque_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Panel);

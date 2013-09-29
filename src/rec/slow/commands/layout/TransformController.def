@@ -1,5 +1,6 @@
 layout {
   name: "TransformController"
+  is_opaque: true
 
   component {
     layout: "LeftTransformPanel"

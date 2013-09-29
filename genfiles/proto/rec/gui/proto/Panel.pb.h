@@ -143,19 +143,26 @@ class PanelProto : public ::google::protobuf::Message {
   inline ::rec::gui::PanelProto_Orientation orientation() const;
   inline void set_orientation(::rec::gui::PanelProto_Orientation value);
 
-  // optional bool resize_other_dimension = 3 [default = true];
+  // optional bool resize_other_dimension = 2 [default = true];
   inline bool has_resize_other_dimension() const;
   inline void clear_resize_other_dimension();
-  static const int kResizeOtherDimensionFieldNumber = 3;
+  static const int kResizeOtherDimensionFieldNumber = 2;
   inline bool resize_other_dimension() const;
   inline void set_resize_other_dimension(bool value);
 
-  // optional bool is_main = 4;
+  // optional bool is_main = 3;
   inline bool has_is_main() const;
   inline void clear_is_main();
-  static const int kIsMainFieldNumber = 4;
+  static const int kIsMainFieldNumber = 3;
   inline bool is_main() const;
   inline void set_is_main(bool value);
+
+  // optional bool is_opaque = 4;
+  inline bool has_is_opaque() const;
+  inline void clear_is_opaque();
+  static const int kIsOpaqueFieldNumber = 4;
+  inline bool is_opaque() const;
+  inline void set_is_opaque(bool value);
 
   // @@protoc_insertion_point(class_scope:rec.gui.PanelProto)
  private:
@@ -165,15 +172,18 @@ class PanelProto : public ::google::protobuf::Message {
   inline void clear_has_resize_other_dimension();
   inline void set_has_is_main();
   inline void clear_has_is_main();
+  inline void set_has_is_opaque();
+  inline void clear_has_is_opaque();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   int orientation_;
   bool resize_other_dimension_;
   bool is_main_;
+  bool is_opaque_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fPanel_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fPanel_2eproto();
@@ -212,7 +222,7 @@ inline void PanelProto::set_orientation(::rec::gui::PanelProto_Orientation value
   orientation_ = value;
 }
 
-// optional bool resize_other_dimension = 3 [default = true];
+// optional bool resize_other_dimension = 2 [default = true];
 inline bool PanelProto::has_resize_other_dimension() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -234,7 +244,7 @@ inline void PanelProto::set_resize_other_dimension(bool value) {
   resize_other_dimension_ = value;
 }
 
-// optional bool is_main = 4;
+// optional bool is_main = 3;
 inline bool PanelProto::has_is_main() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -254,6 +264,28 @@ inline bool PanelProto::is_main() const {
 inline void PanelProto::set_is_main(bool value) {
   set_has_is_main();
   is_main_ = value;
+}
+
+// optional bool is_opaque = 4;
+inline bool PanelProto::has_is_opaque() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PanelProto::set_has_is_opaque() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PanelProto::clear_has_is_opaque() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PanelProto::clear_is_opaque() {
+  is_opaque_ = false;
+  clear_has_is_opaque();
+}
+inline bool PanelProto::is_opaque() const {
+  return is_opaque_;
+}
+inline void PanelProto::set_is_opaque(bool value) {
+  set_has_is_opaque();
+  is_opaque_ = value;
 }
 
 
