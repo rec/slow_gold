@@ -52,7 +52,7 @@ namespace BinaryData
     const int            Layout_defSize = 376;
 
     extern const char*   LeftTransformPanel_def;
-    const int            LeftTransformPanel_defSize = 663;
+    const int            LeftTransformPanel_defSize = 665;
 
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 356;
@@ -67,7 +67,7 @@ namespace BinaryData
     const int            PlaybackPanel_defSize = 620;
 
     extern const char*   RightTransformPanel_def;
-    const int            RightTransformPanel_defSize = 1303;
+    const int            RightTransformPanel_defSize = 1301;
 
     extern const char*   RightTransformPanelMasterTune_def;
     const int            RightTransformPanelMasterTune_defSize = 1116;
@@ -218,6 +218,12 @@ namespace BinaryData
 
     extern const char*   idTranslatedStrings_def;
     const int            idTranslatedStrings_defSize = 59202;
+
+    // Points to the start of a list of resource names.
+    extern const char* namedResourceList[];
+
+    // Size of list of resource names.
+    extern const int namedResourceListSize;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

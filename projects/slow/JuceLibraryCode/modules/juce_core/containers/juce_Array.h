@@ -279,8 +279,7 @@ public:
     inline ElementType getFirst() const
     {
         const ScopedLockType lock (getLock());
-        return (numUsed > 0) ? data.elements [0]
-                             : ElementType();
+        return numUsed > 0 ? data.elements[0] : ElementType();
     }
 
     /** Returns the last element in the array, or a default value if the array is empty.
@@ -290,8 +289,7 @@ public:
     inline ElementType getLast() const
     {
         const ScopedLockType lock (getLock());
-        return (numUsed > 0) ? data.elements [numUsed - 1]
-                             : ElementType();
+        return numUsed > 0 ? data.elements[numUsed - 1] : ElementType();
     }
 
     /** Returns a pointer to the actual array data.
@@ -317,6 +315,11 @@ public:
     */
     inline ElementType* end() const noexcept
     {
+       #if JUCE_DEBUG
+        if (data.elements == nullptr || numUsed <= 0) // (to keep static analysers happy)
+            return data.elements;
+       #endif
+
         return data.elements + numUsed;
     }
 
@@ -519,6 +522,7 @@ public:
 
         if (isPositiveAndBelow (indexToChange, numUsed))
         {
+            jassert (data.elements != nullptr);
             data.elements [indexToChange] = newValue;
         }
         else if (indexToChange >= 0)
@@ -546,11 +550,13 @@ public:
 
     /** Adds elements from an array to the end of this array.
 
-        @param elementsToAdd        the array of elements to add
+        @param elementsToAdd        an array of some kind of object from which elements
+                                    can be constructed.
         @param numElementsToAdd     how many elements are in this other array
         @see add
     */
-    void addArray (const ElementType* elementsToAdd, int numElementsToAdd)
+    template <typename Type>
+    void addArray (const Type* elementsToAdd, int numElementsToAdd)
     {
         const ScopedLockType lock (getLock());
 
@@ -564,6 +570,22 @@ public:
                 ++numUsed;
             }
         }
+    }
+
+    /** Adds elements from a null-terminated array of pointers to the end of this array.
+
+        @param elementsToAdd    an array of pointers to some kind of object from which elements
+                                can be constructed. This array must be terminated by a nullptr
+        @see addArray
+    */
+    template <typename Type>
+    void addNullTerminatedArray (const Type* const* elementsToAdd)
+    {
+        int num = 0;
+        for (const Type* const* e = elementsToAdd; *e != nullptr; ++e)
+            ++num;
+
+        addArray (elementsToAdd, num);
     }
 
     /** This swaps the contents of this array with those of another array.

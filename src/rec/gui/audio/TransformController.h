@@ -37,12 +37,11 @@ class TransformController : public Panel,
   void setStretch(const rec::audio::stretch::Stretch&);
 
   gui::SetterToggle enableButton_;
-
   juce::ComboBox stereoComboBox_;
   Panel leftPanel_;
-
   Panel leftPadding_;
   unique_ptr<Component> rightPanel_;
+  unique_ptr<Component> newLeftPanel_;
 
   rec::audio::source::StereoProto stereo_;
 

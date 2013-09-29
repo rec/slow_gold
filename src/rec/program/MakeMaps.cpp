@@ -132,8 +132,12 @@ ThreadMap makeThreadMap(const Program& program) {
 LayoutMap makeLayoutMap(const Program& program) {
   LayoutMap layoutMap;
   gui::Layouts layouts = BINARY_PROTO_MERGED(Layout, gui::Layouts);
-  for (auto& layout: layouts.layout())
-    layoutMap[layout.name()] = layout;
+  for (auto& layout: layouts.layout()) {
+    auto& name = layout.name();
+    if (layoutMap.count(name))
+      LOG(DFATAL) << "Duplicate entry for " << name;
+    layoutMap[name] = layout;
+  }
 
   return layoutMap;
 }

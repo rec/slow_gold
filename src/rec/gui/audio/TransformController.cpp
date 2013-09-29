@@ -40,20 +40,26 @@ TransformController::TransformController()
                     makeAddress<Stretch>("time_enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_(gui::makeLayout("RightTransformPanel", this)) {
-  stereoComboBox_.setEditableText(false);
-  stereoComboBox_.setJustificationType(Justification::centredLeft);
-  stereoComboBox_.addListener(this);
+  if (not USE_NEW_GUI) {
+    stereoComboBox_.setEditableText(false);
+    stereoComboBox_.setJustificationType(Justification::centredLeft);
+    stereoComboBox_.addListener(this);
 
-  stereoComboBox_.addItem(Trans("Stereo"), 1);
-  stereoComboBox_.addItem(Trans("Left"), 2);
-  stereoComboBox_.addItem(Trans("Right"), 3);
-  stereoComboBox_.addItem(Trans("L + R"), 4);
+    stereoComboBox_.addItem(Trans("Stereo"), 1);
+    stereoComboBox_.addItem(Trans("Left"), 2);
+    stereoComboBox_.addItem(Trans("Right"), 3);
+    stereoComboBox_.addItem(Trans("L + R"), 4);
 
-  leftPanel_.addToPanel(&enableButton_, ENABLE_BUTTON_HEIGHT);
-  leftPanel_.addToPanel(&stereoComboBox_, COMBO_BOX_HEIGHT);
-  leftPanel_.addToPanel(&leftPadding_);
+    leftPanel_.addToPanel(&enableButton_, ENABLE_BUTTON_HEIGHT);
+    leftPanel_.addToPanel(&stereoComboBox_, COMBO_BOX_HEIGHT);
+    leftPanel_.addToPanel(&leftPadding_);
 
-  addToPanel(&leftPanel_, LEFT_PANEL_WIDTH);
+    addToPanel(&leftPanel_, LEFT_PANEL_WIDTH);
+  } else {
+    newLeftPanel_ = gui::makeLayout("LeftTransformPanel", this);
+    addToPanel(newLeftPanel_.get(), LEFT_PANEL_WIDTH);
+  }
+
   addToPanel(rightPanel_.get(), 150, -1.0, 250);
 }
 
@@ -64,6 +70,8 @@ void TransformController::operator()(const Stretch& s) {
 }
 
 void TransformController::languageChanged() {
+  if (USE_NEW_GUI)
+    return;
   stereoComboBox_.setTooltip(
       Trans("Stereo Processing Menu:  Choose between the "
             "original stereo, just the left channel, "

@@ -380,7 +380,7 @@ File File::getChildFile (StringRef relativePath) const
                 if (lastSlash >= 0)
                     path = path.substring (0, lastSlash);
 
-                relativePath = relativePath.text + 3;
+                relativePath = relativePath.text + (thirdChar == 0 ? 2 : 3);
             }
             else
             {
@@ -611,22 +611,18 @@ bool File::hasFileExtension (StringRef possibleSuffix) const
     const int semicolon = possibleSuffix.text.indexOf ((juce_wchar) ';');
 
     if (semicolon >= 0)
-    {
         return hasFileExtension (String (possibleSuffix.text).substring (0, semicolon).trimEnd())
                 || hasFileExtension ((possibleSuffix.text + (semicolon + 1)).findEndOfWhitespace());
-    }
-    else
+
+    if (fullPath.endsWithIgnoreCase (possibleSuffix))
     {
-        if (fullPath.endsWithIgnoreCase (possibleSuffix))
-        {
-            if (possibleSuffix.text[0] == '.')
-                return true;
+        if (possibleSuffix.text[0] == '.')
+            return true;
 
-            const int dotPos = fullPath.length() - possibleSuffix.length() - 1;
+        const int dotPos = fullPath.length() - possibleSuffix.length() - 1;
 
-            if (dotPos >= 0)
-                return fullPath [dotPos] == '.';
-        }
+        if (dotPos >= 0)
+            return fullPath [dotPos] == '.';
     }
 
     return false;
@@ -732,7 +728,7 @@ bool File::hasIdenticalContentTo (const File& other) const
         if (in1.openedOk() && in2.openedOk())
         {
             const int bufferSize = 4096;
-            HeapBlock <char> buffer1 (bufferSize), buffer2 (bufferSize);
+            HeapBlock<char> buffer1 (bufferSize), buffer2 (bufferSize);
 
             for (;;)
             {

@@ -1544,7 +1544,7 @@ static const unsigned char temp_binary_data_15[] =
 "  orientation: VERTICAL\n"
 "  padding: true\n"
 "  size {\n"
-"    min: \"30\"\n"
+"    fixed: \"30\"\n"
 "  }\n"
 "\n"
 "  component {\n"
@@ -1723,7 +1723,7 @@ static const unsigned char temp_binary_data_20[] =
 "    tooltip: \"Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster.\"\n"
 "    address: \"rec.audio.stretch.Stretch:time_percent\"\n"
 "    slider {\n"
-"      caption: \"Stretch\"\n"
+"      caption: \"Speed\"\n"
 "      text_suffix: \"%\"\n"
 "      minimum: \"5.0\"\n"
 "      maximum: \"200.0\"\n"
@@ -13792,12 +13792,12 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
-        case 0x28df9dc5:  numBytes = 663; return LeftTransformPanel_def;
+        case 0x28df9dc5:  numBytes = 665; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 356; return MainPanel_def;
         case 0xd66a1508:  numBytes = 270; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 620; return PlaybackPanel_def;
-        case 0x125e705a:  numBytes = 1303; return RightTransformPanel_def;
+        case 0x125e705a:  numBytes = 1301; return RightTransformPanel_def;
         case 0xea90c3f4:  numBytes = 1116; return RightTransformPanelMasterTune_def;
         case 0x1b5b8645:  numBytes = 1436; return SongData_def;
         case 0x4b55592f:  numBytes = 448; return TimeController_def;
@@ -13854,5 +13854,80 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     numBytes = 0;
     return 0;
 }
+const int namedResourceListSize = 71;
+
+const char* namedResourceList[namedResourceListSize] = {
+    "Colors_def",
+    "Audio_def",
+    "Commands_def",
+    "File_def",
+    "Gui_def",
+    "LoopPoints_def",
+    "Selection_def",
+    "Settings_def",
+    "Transport_def",
+    "KeyStrokeMap_def",
+    "CommandBar_def",
+    "Constants_def",
+    "GainPanel_def",
+    "HelpPanel_def",
+    "Layout_def",
+    "LeftTransformPanel_def",
+    "MainPanel_def",
+    "ModeSelector_def",
+    "NavigationPanel_def",
+    "PlaybackPanel_def",
+    "RightTransformPanel_def",
+    "RightTransformPanelMasterTune_def",
+    "SongData_def",
+    "TimeController_def",
+    "TransformController_def",
+    "TransportButtonsPanel_def",
+    "TransportController_def",
+    "Waveform_def",
+    "MenuCollection_def",
+    "Menus_def",
+    "Threads_def",
+    "AddLoopPointButton_svg",
+    "AddLoopPointButtonDisabled_svg",
+    "AddLoopPointButtonPressed_svg",
+    "AddLoopPointMode_svg",
+    "AddLoopPointModeDisabled_svg",
+    "DragMode_svg",
+    "DragModeDisabled_svg",
+    "JumpBackButton_svg",
+    "JumpBackButtonDisabled_svg",
+    "JumpBackButtonPressed_svg",
+    "JumpForwardButton_svg",
+    "JumpForwardButtonDisabled_svg",
+    "JumpForwardButtonPressed_svg",
+    "JumpToStartButton_svg",
+    "JumpToStartButtonDisabled_svg",
+    "JumpToStartButtonPressed_svg",
+    "MacFolderCloseButton_svg",
+    "MacFolderOpenButton_svg",
+    "SetTimeMode_svg",
+    "SetTimeModeDisabled_svg",
+    "StartStopButton_svg",
+    "StartStopButtonDisabled_svg",
+    "StartStopButtonOn_svg",
+    "StartStopButtonOnDisabled_svg",
+    "ZoomInCursor_svg",
+    "ZoomMode_svg",
+    "ZoomModeDisabled_svg",
+    "ZoomOutButton_svg",
+    "ZoomOutButtonDisabled_svg",
+    "ZoomOutButtonPressed_svg",
+    "ZoomToSelectionButton_svg",
+    "ZoomToSelectionButtonDisabled_svg",
+    "ZoomToSelectionButtonPressed_svg",
+    "bigicon_png",
+    "icon_png",
+    "deTranslatedStrings_def",
+    "enTranslatedStrings_def",
+    "esTranslatedStrings_def",
+    "frTranslatedStrings_def",
+    "idTranslatedStrings_def",
+};
 
 }
