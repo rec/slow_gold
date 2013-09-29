@@ -38,7 +38,7 @@ class Components : public data::DataListener<music::Metadata>,
   ApplicationCommandManager* manager_;
   unique_ptr<gui::audio::Loops> loops_;
   unique_ptr<Component> songData_;
-  unique_ptr<gui::audio::TransformController> transformController_;
+  unique_ptr<Component> transformController_;
   unique_ptr<Component> transportController_;
 
   unique_ptr<widget::tree::Root> directoryTree_;
@@ -48,8 +48,8 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<gui::audio::CommandBar> commandBar_;
   unique_ptr<MainPage> mainPage_;
   gui::ComponentMap componentMap_;
-
-  template <typename Type>
+ 
+   template <typename Type>
   Type* getComponent(const string& name) {
     try {
       Component* comp = componentMap_.at(name);

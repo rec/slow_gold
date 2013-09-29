@@ -31,7 +31,6 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 Components::Components()
     : manager_(program::applicationCommandManager()),
       loops_(new gui::audio::Loops()),
-      transformController_(new gui::audio::TransformController),
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
@@ -40,6 +39,7 @@ Components::Components()
   mainPage_.reset(new MainPage(this));
   Component* c = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", c);
+  transformController_ = gui::makeLayout("TransformController", c);
   songData_ = gui::makeLayout("SongData", c);
 
   mainPage_->layoutComponents();

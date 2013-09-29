@@ -17,7 +17,7 @@ import rec.gui.proto.Size_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Layout.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x19rec/gui/Orientation.proto\x1a\x1drec/gui/proto/Component.proto\x1a\x18rec/gui/proto/Size.proto\"\x8f\x02\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12:\n\x0borientation\x18\x02 \x01(\x0e\x32%.rec.gui.OrientationProto.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\x12\x0f\n\x07padding\x18\x05 \x01(\x08\x12\x1b\n\x04size\x18\x06 \x01(\x0b\x32\r.rec.gui.Size\x12*\n\tcontainer\x18\x07 \x01(\x0b\x32\x17.rec.gui.ComponentProto\x12*\n\tcomponent\x18\x08 \x03(\x0b\x32\x17.rec.gui.ComponentProto\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
+  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x19rec/gui/Orientation.proto\x1a\x1drec/gui/proto/Component.proto\x1a\x18rec/gui/proto/Size.proto\"\xa2\x02\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12:\n\x0borientation\x18\x02 \x01(\x0e\x32%.rec.gui.OrientationProto.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\x12\x11\n\tis_opaque\x18\x05 \x01(\x08\x12\x0f\n\x07padding\x18\x06 \x01(\x08\x12\x1b\n\x04size\x18\x07 \x01(\x0b\x32\r.rec.gui.Size\x12*\n\tcontainer\x18\x08 \x01(\x0b\x32\x17.rec.gui.ComponentProto\x12*\n\tcomponent\x18\t \x03(\x0b\x32\x17.rec.gui.ComponentProto\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
 
 
 
@@ -58,29 +58,36 @@ _LAYOUT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='padding', full_name='rec.gui.Layout.padding', index=4,
+      name='is_opaque', full_name='rec.gui.Layout.is_opaque', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='size', full_name='rec.gui.Layout.size', index=5,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='padding', full_name='rec.gui.Layout.padding', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='container', full_name='rec.gui.Layout.container', index=6,
+      name='size', full_name='rec.gui.Layout.size', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='component', full_name='rec.gui.Layout.component', index=7,
-      number=8, type=11, cpp_type=10, label=3,
+      name='container', full_name='rec.gui.Layout.container', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='component', full_name='rec.gui.Layout.component', index=8,
+      number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -95,7 +102,7 @@ _LAYOUT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=154,
-  serialized_end=425,
+  serialized_end=444,
 )
 
 
@@ -122,8 +129,8 @@ _LAYOUTS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=427,
-  serialized_end=469,
+  serialized_start=446,
+  serialized_end=488,
 )
 
 _LAYOUT.fields_by_name['orientation'].enum_type = rec.gui.Orientation_pb2._ORIENTATIONPROTO_ORIENTATION

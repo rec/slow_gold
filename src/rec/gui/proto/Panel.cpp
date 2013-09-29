@@ -90,13 +90,5 @@ void Panel::clear(bool free) {
   }
 }
 
-unique_ptr<Panel> makePanel(const PanelProto& proto) {
-  Orientation o = (proto.orientation() == PanelProto::HORIZONTAL) ?
-    HORIZONTAL : VERTICAL;
-  string name = "TODO";
-  return make_unique<Panel>(name, o, proto.resize_other_dimension(),
-                            proto.is_main(), proto.is_opaque());
-}
-
 }  // namespace gui
 }  // namespace rec

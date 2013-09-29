@@ -79,7 +79,7 @@ namespace BinaryData
     const int            TimeController_defSize = 448;
 
     extern const char*   TransformController_def;
-    const int            TransformController_defSize = 254;
+    const int            TransformController_defSize = 256;
 
     extern const char*   TransportButtonsPanel_def;
     const int            TransportButtonsPanel_defSize = 913;

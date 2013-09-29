@@ -130,35 +130,42 @@ class Layout : public ::google::protobuf::Message {
   inline bool is_main() const;
   inline void set_is_main(bool value);
 
-  // optional bool padding = 5;
+  // optional bool is_opaque = 5;
+  inline bool has_is_opaque() const;
+  inline void clear_is_opaque();
+  static const int kIsOpaqueFieldNumber = 5;
+  inline bool is_opaque() const;
+  inline void set_is_opaque(bool value);
+
+  // optional bool padding = 6;
   inline bool has_padding() const;
   inline void clear_padding();
-  static const int kPaddingFieldNumber = 5;
+  static const int kPaddingFieldNumber = 6;
   inline bool padding() const;
   inline void set_padding(bool value);
 
-  // optional .rec.gui.Size size = 6;
+  // optional .rec.gui.Size size = 7;
   inline bool has_size() const;
   inline void clear_size();
-  static const int kSizeFieldNumber = 6;
+  static const int kSizeFieldNumber = 7;
   inline const ::rec::gui::Size& size() const;
   inline ::rec::gui::Size* mutable_size();
   inline ::rec::gui::Size* release_size();
   inline void set_allocated_size(::rec::gui::Size* size);
 
-  // optional .rec.gui.ComponentProto container = 7;
+  // optional .rec.gui.ComponentProto container = 8;
   inline bool has_container() const;
   inline void clear_container();
-  static const int kContainerFieldNumber = 7;
+  static const int kContainerFieldNumber = 8;
   inline const ::rec::gui::ComponentProto& container() const;
   inline ::rec::gui::ComponentProto* mutable_container();
   inline ::rec::gui::ComponentProto* release_container();
   inline void set_allocated_container(::rec::gui::ComponentProto* container);
 
-  // repeated .rec.gui.ComponentProto component = 8;
+  // repeated .rec.gui.ComponentProto component = 9;
   inline int component_size() const;
   inline void clear_component();
-  static const int kComponentFieldNumber = 8;
+  static const int kComponentFieldNumber = 9;
   inline const ::rec::gui::ComponentProto& component(int index) const;
   inline ::rec::gui::ComponentProto* mutable_component(int index);
   inline ::rec::gui::ComponentProto* add_component();
@@ -177,6 +184,8 @@ class Layout : public ::google::protobuf::Message {
   inline void clear_has_resize_other_dimension();
   inline void set_has_is_main();
   inline void clear_has_is_main();
+  inline void set_has_is_opaque();
+  inline void clear_has_is_opaque();
   inline void set_has_padding();
   inline void clear_has_padding();
   inline void set_has_size();
@@ -190,13 +199,14 @@ class Layout : public ::google::protobuf::Message {
   int orientation_;
   bool resize_other_dimension_;
   bool is_main_;
+  bool is_opaque_;
   bool padding_;
   ::rec::gui::Size* size_;
   ::rec::gui::ComponentProto* container_;
   ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto > component_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
@@ -434,15 +444,37 @@ inline void Layout::set_is_main(bool value) {
   is_main_ = value;
 }
 
-// optional bool padding = 5;
-inline bool Layout::has_padding() const {
+// optional bool is_opaque = 5;
+inline bool Layout::has_is_opaque() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void Layout::set_has_padding() {
+inline void Layout::set_has_is_opaque() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void Layout::clear_has_padding() {
+inline void Layout::clear_has_is_opaque() {
   _has_bits_[0] &= ~0x00000010u;
+}
+inline void Layout::clear_is_opaque() {
+  is_opaque_ = false;
+  clear_has_is_opaque();
+}
+inline bool Layout::is_opaque() const {
+  return is_opaque_;
+}
+inline void Layout::set_is_opaque(bool value) {
+  set_has_is_opaque();
+  is_opaque_ = value;
+}
+
+// optional bool padding = 6;
+inline bool Layout::has_padding() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Layout::set_has_padding() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Layout::clear_has_padding() {
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void Layout::clear_padding() {
   padding_ = false;
@@ -456,15 +488,15 @@ inline void Layout::set_padding(bool value) {
   padding_ = value;
 }
 
-// optional .rec.gui.Size size = 6;
+// optional .rec.gui.Size size = 7;
 inline bool Layout::has_size() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void Layout::set_has_size() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void Layout::clear_has_size() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void Layout::clear_size() {
   if (size_ != NULL) size_->::rec::gui::Size::Clear();
@@ -494,15 +526,15 @@ inline void Layout::set_allocated_size(::rec::gui::Size* size) {
   }
 }
 
-// optional .rec.gui.ComponentProto container = 7;
+// optional .rec.gui.ComponentProto container = 8;
 inline bool Layout::has_container() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void Layout::set_has_container() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void Layout::clear_has_container() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void Layout::clear_container() {
   if (container_ != NULL) container_->::rec::gui::ComponentProto::Clear();
@@ -532,7 +564,7 @@ inline void Layout::set_allocated_container(::rec::gui::ComponentProto* containe
   }
 }
 
-// repeated .rec.gui.ComponentProto component = 8;
+// repeated .rec.gui.ComponentProto component = 9;
 inline int Layout::component_size() const {
   return component_.size();
 }

@@ -13,17 +13,18 @@ message Layout {
   // The "main" window has, on Windows only, a thin black line above all the
   // content.
   optional bool is_main = 4;
+  optional bool is_opaque = 5;
 
   // If there is padding, the right-most component is NOT stretched to fit the
   // full size of the layout.
-  optional bool padding = 5;
+  optional bool padding = 6;
 
-  optional Size size = 6;
+  optional Size size = 7;
 
   // If container is present, then no layout is created - instead the container
   // component is created and used as a parent for the remaining components.
-  optional ComponentProto container = 7;
-  repeated ComponentProto component = 8;
+  optional ComponentProto container = 8;
+  repeated ComponentProto component = 9;
 };
 
 message Layouts {
