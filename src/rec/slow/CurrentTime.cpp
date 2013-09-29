@@ -6,7 +6,6 @@
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/Frame.h"
-#include "rec/gui/audio/TransformController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"

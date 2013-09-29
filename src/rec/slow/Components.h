@@ -11,7 +11,6 @@ namespace rec { namespace audio { class Gain; }}
 namespace rec { namespace gui { namespace audio { class CommandBar; } }}
 namespace rec { namespace gui { namespace audio { class Loops; } }}
 namespace rec { namespace gui { namespace audio { class ModeSelector; } }}
-namespace rec { namespace gui { namespace audio { class TransformController; } }}
 namespace rec { namespace audio { namespace stretch { class Stretch; } }}
 
 namespace rec { namespace widget { namespace tree { class Root; } }}
@@ -48,7 +47,7 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<gui::audio::CommandBar> commandBar_;
   unique_ptr<MainPage> mainPage_;
   gui::ComponentMap componentMap_;
- 
+
    template <typename Type>
   Type* getComponent(const string& name) {
     try {

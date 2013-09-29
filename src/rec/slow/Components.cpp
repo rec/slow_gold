@@ -1,10 +1,11 @@
 #include "rec/slow/Components.h"
 
+#include "rec/audio/util/Gain.pb.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/gui/audio/TransformController.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/CurrentFile.h"
