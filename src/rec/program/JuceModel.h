@@ -46,7 +46,7 @@ class JuceModel : public ApplicationCommandTarget,
   const gui::Layout& getLayout(const string&) const;
   const gui::Constants& constants() const;
 
-  template <typename Type>
+  template <typename Type = Component>
   Type* getComponent(const string& name) {
     try {
       Component* comp = doGetComponent(name);

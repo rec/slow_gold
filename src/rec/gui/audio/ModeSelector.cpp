@@ -40,6 +40,8 @@ ModeSelector::ModeSelector()
               "that point."),
       addLoopPointClick_("CreateClick", "Add loop point mode: clicking on the "
                          "waveform creates a loop point.") {
+  setName("ModeSelector");
+
   SET_BUTTON_IMAGES2(&drag_, DragMode);
   SET_BUTTON_IMAGES2(&setTime_, SetTimeMode);
   SET_BUTTON_IMAGES2(&zoomIn_, ZoomMode);

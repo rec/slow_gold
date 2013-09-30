@@ -24,6 +24,7 @@ CommandBar::CommandBar()
       zoomToSelection_("ZoomToSelection", "Zoom To Selection Button: "
                        "Zoom in or out so the whole selection "
                        "fits the waveform.") {
+  setName("CommandBar");
   addLoopPoint_.addListener(this);
   zoomOutFull_.addListener(this);
   zoomToSelection_.addListener(this);

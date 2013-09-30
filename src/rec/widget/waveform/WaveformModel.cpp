@@ -1,8 +1,7 @@
 #include "rec/widget/waveform/WaveformModel.h"
 
 #include "rec/data/proto/Equals.h"
-#include "rec/gui/audio/CommandBar.h"
-#include "rec/gui/audio/ModeSelector.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/Merge.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -89,10 +88,6 @@ bool WaveformModel::setViewport(const Viewport& vp) {
 }
 
 void WaveformModel::layout(Component* waveform) {
-  using namespace rec::gui::audio;
-
-  CommandBar* cb = nullptr;
-  ModeSelector* ms = nullptr;
   int w = waveform->getWidth(), h = waveform->getHeight();
 
   for (int i = 0; i < waveform->getNumChildComponents(); ++i) {
@@ -100,14 +95,11 @@ void WaveformModel::layout(Component* waveform) {
     if (Cursor* cursor = dynamic_cast<Cursor*>(c)) {
       cursor->layout();
       cursor->layoutCaption();
-    } else {
-      if (!cb)
-        cb = dynamic_cast<CommandBar*>(c);
-      if (!ms)
-        ms = dynamic_cast<ModeSelector*>(c);
     }
   }
 
+  Component* cb = program::juceModel()->getComponent("CommandBar");
+  Component* ms = program::juceModel()->getComponent("ModeSelector");
   if (ms) {
     int dy = MODE_SELECTOR_OFFSET;
     if (desc_.show_times_at_top() == desc_.modes_at_top())

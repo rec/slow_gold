@@ -3,8 +3,6 @@
 #include "rec/util/StateListener.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/Geometry.h"
-#include "rec/gui/audio/CommandBar.h"
-#include "rec/gui/audio/ModeSelector.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
 #include "rec/util/BinaryMacros.h"
