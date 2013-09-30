@@ -907,9 +907,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp">
       <Filter>SlowGold\src\slow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
       <Filter>SlowGold\src\slow</Filter>
     </ClCompile>
@@ -3042,9 +3039,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h">
       <Filter>SlowGold\src\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
       <Filter>SlowGold\src\slow</Filter>
     </ClInclude>
@@ -3166,6 +3160,9 @@
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\ListenerAdaptor.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Loading.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\LockedState.h">

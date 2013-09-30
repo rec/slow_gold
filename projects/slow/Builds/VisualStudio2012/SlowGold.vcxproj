@@ -271,7 +271,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\GuiSettings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp"/>
@@ -1673,7 +1672,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\GuiSettings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h"/>
@@ -1715,6 +1713,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\HasThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\ListenerAdaptor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Loading.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\LockedState.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Math.h"/>

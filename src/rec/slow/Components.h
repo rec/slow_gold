@@ -4,6 +4,8 @@
 #include "rec/audio/Audio.h"
 #include "rec/data/DataListener.h"
 #include "rec/gui/GetComponentMap.h"
+#include "rec/gui/SetterResizer.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/music/Metadata.h"
 
 namespace rec { namespace audio { class Gain; }}
@@ -42,18 +44,38 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<Component> modeSelector_;
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
-  Component* topComponent() { return topComponent_; }
+  Component* topComponent() { return mainPanel_.get(); }
   Component* commandBar() { return commandBar_.get(); }
 
  private:
-  unique_ptr<MainPage> mainPage_;
+  // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
+  unique_ptr<gui::Panel> mainPanel_;
+
+  // navigationPanel_ contains the navigator, song metadata and loops.
+  gui::Panel navigationPanel_;
+
+  // playbackPanel_ contains help, transform and the controls.
+  gui::Panel playbackPanel_;
+  gui::Panel transformPanel_;
+
+  // Resizers for mainPanel_;
+  gui::SetterResizer navigationResizer_;
+
+  // Resizers for navigationPanel_.
+  gui::SetterResizer directoryResizer_;
+  gui::SetterResizer metadataResizer_;
+
+  // Resizers for playbackPanel_.
+  gui::SetterResizer helpResizer_;
+  gui::SetterResizer transformResizer_;
+
+  unique_ptr<Component> helpPanel_;
   unique_ptr<Component> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
   DrawableButton* startStopButton_;
   Component* levelSlider_;
   Component* speedSlider_;
-  Component* topComponent_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };
