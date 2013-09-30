@@ -1672,8 +1672,13 @@ const char* ModeSelector_def = (const char*) temp_binary_data_17;
 static const unsigned char temp_binary_data_18[] =
 "layout {\n"
 "  name: \"NavigationPanel\"\n"
+"  default_size {\n"
+"    fixed: \"RESIZER_SIZE\"\n"
+"  }\n"
 "\n"
 "  component {\n"
+"    name: \"TreeView\"\n"
+"    tooltip: \"CD Window:  Any CDs that you have in your computer's CD drives will appear here.\"\n"
 "    custom {\n"
 "      type_name: \"TreeView\"\n"
 "    }\n"
@@ -1702,6 +1707,7 @@ static const unsigned char temp_binary_data_18[] =
 "  }\n"
 "\n"
 "  component {\n"
+"    name: \"Loops\"\n"
 "    custom {\n"
 "      type_name: \"Loops\"\n"
 "    }\n"
@@ -13858,7 +13864,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x28df9dc5:  numBytes = 677; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 356; return MainPanel_def;
         case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
-        case 0x75b00f76:  numBytes = 534; return NavigationPanel_def;
+        case 0x75b00f76:  numBytes = 716; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 495; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1315; return RightTransformPanel_def;
         case 0xea90c3f4:  numBytes = 1132; return RightTransformPanelMasterTune_def;

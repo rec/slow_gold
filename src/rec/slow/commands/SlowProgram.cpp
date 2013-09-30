@@ -20,6 +20,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Result.h"
 #include "rec/widget/tree/TreeView.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.h"
 

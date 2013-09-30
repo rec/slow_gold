@@ -13,6 +13,7 @@ class Root;
 class TreeView : public TreeViewDropAll {
  public:
   TreeView() : root_(new Root(this)) {}
+  Root* root() { return root_.get(); }
 
  private:
   unique_ptr<Root> root_;

@@ -1,7 +1,12 @@
 layout {
   name: "NavigationPanel"
+  default_size {
+    fixed: "RESIZER_SIZE"
+  }
 
   component {
+    name: "TreeView"
+    tooltip: "CD Window:  Any CDs that you have in your computer's CD drives will appear here."
     custom {
       type_name: "TreeView"
     }
@@ -30,6 +35,7 @@ layout {
   }
 
   component {
+    name: "Loops"
     custom {
       type_name: "Loops"
     }

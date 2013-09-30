@@ -7,6 +7,8 @@
 #include "rec/gui/SetterResizer.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/music/Metadata.h"
+#include "rec/widget/tree/TreeView.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 
 namespace rec { namespace audio { class Gain; }}
 
@@ -36,20 +38,17 @@ class Components : public data::DataListener<music::Metadata>,
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
   Component* topComponent() { return mainPanel_.get(); }
-  widget::tree::Root* directoryTree() { return directoryTree_.get(); }
+  widget::tree::Root* directoryTree();
 
  private:
   unique_ptr<Component> loops_;
-  unique_ptr<Component> songData_;
-  unique_ptr<widget::tree::Root> directoryTree_;
   unique_ptr<Component> modeSelector_;
 
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
   unique_ptr<gui::Panel> mainPanel_;
 
   // navigationPanel_ contains the navigator, song metadata and loops.
-  gui::Panel navigationPanel_;
-  unique_ptr<Component> navigationPanel2_;
+  unique_ptr<Component> navigationPanel_;
 
   // playbackPanel_ contains help, transform and the controls.
   unique_ptr<Component> playbackPanel_;
@@ -57,15 +56,12 @@ class Components : public data::DataListener<music::Metadata>,
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;
 
-  // Resizers for navigationPanel_.
-  gui::SetterResizer directoryResizer_;
-  gui::SetterResizer metadataResizer_;
-
   // Resizers for playbackPanel_.
 
   unique_ptr<Component> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
+  widget::tree::TreeView* treeView_;
   DrawableButton* startStopButton_;
   Component* levelSlider_;
   Component* speedSlider_;
