@@ -3,8 +3,6 @@
 
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/gui/menu/RecentFiles.h"
-#include "rec/gui/proto/Layout.pb.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Threads.pb.h"
 #include "rec/program/Types.h"
@@ -12,13 +10,14 @@
 #include "rec/util/thread/Looper.h"
 #include "rec/command/CallbackTable.h"
 
-namespace rec { namespace gui { class Constants; }}
 namespace rec { namespace data { class Address; }}
+namespace rec { namespace gui { class Constants; }}
+namespace rec { namespace gui { class RecentFilesStrategy; }}
 
 namespace rec {
 namespace program {
 
-class Program : public command::CallbackTable{
+class Program : public command::CallbackTable {
  public:
   Program() {}
   virtual ~Program() {}

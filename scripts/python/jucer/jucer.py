@@ -28,16 +28,27 @@ FILE_GROUPS = [
   ('text', 'projects/slow/text'),
 ]
 
-
 SUFFIXES = set([
   'c',
   'cc',
   'cpp',
   'def',
   'h',
+  'layout',
   'png',
   'svg',
   ])
+
+OMITTED_SUFFIXES = set(['.py', '.proto'])
+
+ACCEPT_ALL_SUFFIXES = False
+
+def accept_suffix(filename):
+  suffix = ('.' + filename).split('.')[-1]
+
+  return (suffix not in OMITTED_SUFFIXES) and (
+    ACCEPT_ALL_SUFFIXES or suffix in SUFFIXES)
+
 
 COMPILE_SUFFIXES = set(['.c', '.cc', '.cpp'])
 
@@ -98,7 +109,8 @@ class JucerDomFile(dom_file.DomFile):
                        compile='01'[compile])
 
   def accept(self, s):
-    return (s and
-            (self.is_test or not '_test.' in s) and
-            ('.' + s).split('.')[-1] in SUFFIXES and
-            not (self.is_test and 'Main.c' in s))
+    return (
+      s and
+      (self.is_test or not '_test.' in s) and
+      accept_suffix(s) and
+      not (self.is_test and 'Main.c' in s))

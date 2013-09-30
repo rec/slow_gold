@@ -5,6 +5,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/FieldOps.h"
+#include "rec/gui/menu/RecentFiles.h"
 #include "rec/program/JuceModel.h"
 #include "rec/program/MakeMaps.h"
 #include "rec/program/Menu.pb.h"
