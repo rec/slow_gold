@@ -88,7 +88,7 @@ Components::Components()
       directoryTree_(new widget::tree::Root),
       mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
-      playbackPanel_("Playback"),
+      playbackPanel_(gui::makeLayout("PlaybackPanel", mainPanel_.get())),
 
       navigationResizer_(makeAddress<AppLayout>("navigation_y"),
                          mainPanel_.get(), 1),
@@ -98,16 +98,7 @@ Components::Components()
       metadataResizer_(makeAddress<AppLayout>("metadata_x"),
                        &navigationPanel_, 3),
 
-      helpResizer_(makeAddress<AppLayout>("help_x"),
-                   &playbackPanel_, 1),
-      transformResizer_(makeAddress<AppLayout>("transform_x"),
-                        &playbackPanel_, 3),
-      helpPanel_(gui::makeLayout("HelpPanel", mainPanel_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
-  transportController_ = gui::makeLayout("TransportController",
-                                         mainPanel_.get());
-  transformController_ = gui::makeLayout("TransformController",
-                                         mainPanel_.get());
   commandBar_ = gui::makeLayout("CommandBar", mainPanel_.get());
   songData_ = gui::makeLayout("SongData", mainPanel_.get());
   modeSelector_ = gui::makeLayout("ModeSelector", mainPanel_.get());
@@ -126,17 +117,7 @@ Components::Components()
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
-  playbackPanel2_ = gui::makeLayout("PlaybackPanel", mainPanel_.get());
-  if (USE_NEW_GUI) {
-    add(mainPanel_.get(), playbackPanel2_.get(), MIN_PLAYBACK_PANEL);
-  } else {
-    add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
-    add(&playbackPanel_, &helpResizer_, 5.0);
-    add(&playbackPanel_, transformController_.get(), MIN_TRANSFORM_PANEL, -1.0, -0.75);
-    add(&playbackPanel_, &transformResizer_, 5.0);
-    add(&playbackPanel_, transportController_.get(), MIN_TRANSPORT_PANEL, -1.0, -0.20);
-    add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
-  }
+  add(mainPanel_.get(), playbackPanel_.get(), MIN_PLAYBACK_PANEL);
 }
 
 Components::~Components() {}
@@ -159,13 +140,10 @@ void Components::operator()(const rec::audio::Gain& gain) {
 void Components::setEnabled(bool enabled) {
   loops_->setEnabled(enabled);
   songData_->setEnabled(enabled);
-  transformController_->setEnabled(enabled);
-  transportController_->setEnabled(enabled);
   waveform_->setEnabled(enabled);
   modeSelector_->setEnabled(enabled);
   commandBar_->setEnabled(enabled);
 
-  enableAllDrawableButtons(transportController_.get(), enabled);
   enableAllDrawableButtons(modeSelector_.get(), enabled);
   enableAllDrawableButtons(commandBar_.get(), enabled);
 }

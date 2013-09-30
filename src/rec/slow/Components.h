@@ -41,8 +41,6 @@ class Components : public data::DataListener<music::Metadata>,
  private:
   unique_ptr<Component> loops_;
   unique_ptr<Component> songData_;
-  unique_ptr<Component> transformController_;
-  unique_ptr<Component> transportController_;
   unique_ptr<widget::tree::Root> directoryTree_;
   unique_ptr<Component> modeSelector_;
 
@@ -53,8 +51,7 @@ class Components : public data::DataListener<music::Metadata>,
   gui::Panel navigationPanel_;
 
   // playbackPanel_ contains help, transform and the controls.
-  gui::Panel playbackPanel_;
-  unique_ptr<Component> playbackPanel2_;
+  unique_ptr<Component> playbackPanel_;
 
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;
@@ -64,10 +61,7 @@ class Components : public data::DataListener<music::Metadata>,
   gui::SetterResizer metadataResizer_;
 
   // Resizers for playbackPanel_.
-  gui::SetterResizer helpResizer_;
-  gui::SetterResizer transformResizer_;
 
-  unique_ptr<Component> helpPanel_;
   unique_ptr<Component> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
