@@ -36,7 +36,6 @@ Components::Components()
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
       commandBar_(new gui::audio::CommandBar) {
-  loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
   Component* c = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", c);
@@ -45,7 +44,6 @@ Components::Components()
 
   mainPage_->layoutComponents();
 
-  setDefaultCuttable(loops_.get());
   componentMap_ = gui::getComponentMap(mainPage_->panel());
 #if 0
   for (auto& i: componentMap_)
@@ -54,6 +52,9 @@ Components::Components()
   startStopButton_ = getComponent<DrawableButton>("StartStopButton");
   levelSlider_ = getComponent<Component>("LevelSlider");
   speedSlider_ = getComponent<Component>("SpeedSlider");
+  gui::audio::Loops* loops = getComponent<gui::audio::Loops>("Loops");
+  loops->setModel(loops);
+  setDefaultCuttable(loops);
 }
 
 Components::~Components() {}

@@ -65,6 +65,7 @@ Loops::Loops(const TableColumnList* desc,
   tcl.mutable_column(1)->set_name(str(Trans("Name")));
   initialize(tcl, "Loops");
   fillHeader(&getHeader());
+  setName("Loops");
 }
 
 Loops::~Loops() {}

@@ -35,7 +35,7 @@ class Components : public data::DataListener<music::Metadata>,
   void operator()(const audio::stretch::Stretch&) override;
 
   ApplicationCommandManager* manager_;
-  unique_ptr<gui::audio::Loops> loops_;
+  unique_ptr<Component> loops_;
   unique_ptr<Component> songData_;
   unique_ptr<Component> transformController_;
   unique_ptr<Component> transportController_;
@@ -65,6 +65,7 @@ class Components : public data::DataListener<music::Metadata>,
   DrawableButton* startStopButton_;
   Component* levelSlider_;
   Component* speedSlider_;
+
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };
