@@ -10,7 +10,7 @@ SetterText::SetterText(const String& name,
                        const String& tip,
                        const String& caption,
                        bool useCaption)
-    : Panel(name, HORIZONTAL, true, true, true, false),
+    : Panel(name),
       data::AddressListener(address),
       caption_(new SimpleLabel),
       editor_(new TextEditor) {

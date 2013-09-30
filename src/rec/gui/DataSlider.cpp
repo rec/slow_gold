@@ -10,7 +10,7 @@ DataSlider::DataSlider(const String& name,
                        uint32 captionSize,
                        uint32 textEntryBoxWidth,
                        uint32 textEntryBoxHeight)
-    : Panel(name, HORIZONTAL, true, false, true),
+    : Panel(name),
       data::AddressListener(address),
       slider_(new DetentSlider(name + ".slider")),
       caption_(new SimpleLabel(caption, name + ".caption")),

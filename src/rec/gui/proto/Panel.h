@@ -22,7 +22,6 @@ class Panel : public Component,
         Orientation o = HORIZONTAL,
         bool resizeOther = true,
         bool isMain = false,
-        bool ownComponents = false,
         bool isOpaque = false);
 
   ~Panel();
@@ -62,7 +61,6 @@ class Panel : public Component,
   SizeAccumulator sizeHints_[LAST];
   juce::CachedComponentImage *cache_;
   bool const isMain_;
-  bool const ownComponents_;
   bool const isOpaque_;
 
  private:

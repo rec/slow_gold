@@ -11,7 +11,6 @@ Panel::Panel(const String& name,
              Orientation o,
              bool resizeOther,
              bool isMain,
-             bool ownComponents,
              bool isOpaque)
     : Component(name),
       SizeHintAccumulator(o),
@@ -19,17 +18,12 @@ Panel::Panel(const String& name,
       resizeOtherDimension_(resizeOther),
       cache_(nullptr),
       isMain_(isMain),
-      ownComponents_(ownComponents),
       isOpaque_(isOpaque) {
-  DCHECK(ownComponents);
 }
 
 Panel::~Panel() {
-  // TODO: make Panel always own its components and use unique_ptr.
-  if (ownComponents_) {
-    for (auto& component: components_)
-      delete component;
-  }
+  for (auto& component: components_)
+    delete component;
 }
 
 void Panel::addToPanel(Component* c) {

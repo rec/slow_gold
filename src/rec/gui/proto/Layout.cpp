@@ -28,8 +28,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
     comp.reset(new Panel(str(layout.name()),
                            static_cast<Orientation>(layout.orientation()),
                            layout.resize_other_dimension(),
-                           layout.is_main(),
-                           true));
+                           layout.is_main()));
   }
   Panel* panel = dynamic_cast<Panel*>(comp.get());
   for (auto& component: layout.component()) {
@@ -45,7 +44,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   }
 
   if (layout.has_padding())
-    panel->addToPanel(new Panel("", HORIZONTAL, true, false, true));
+    panel->addToPanel(new Panel);
 
   if (layout.has_dimensions()) {
     comp->setSize(constants.getDouble(layout.dimensions().width()),

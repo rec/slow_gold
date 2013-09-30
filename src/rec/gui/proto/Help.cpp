@@ -19,7 +19,7 @@ namespace {
 class HelpPanel : public Panel, public StateListener<const HelpText&> {
  public:
   HelpPanel(const Context& context)
-  : Panel("HelpPanel", VERTICAL, true, false, true),
+  : Panel("HelpPanel", VERTICAL),
         caption_(new SimpleLabel),
         body_(new SimpleLabel) {
     INSTANCE = this;

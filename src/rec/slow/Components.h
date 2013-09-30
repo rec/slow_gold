@@ -5,7 +5,6 @@
 #include "rec/data/DataListener.h"
 #include "rec/gui/GetComponentMap.h"
 #include "rec/gui/SetterResizer.h"
-#include "rec/gui/proto/Panel.h"
 #include "rec/music/Metadata.h"
 #include "rec/widget/tree/TreeView.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
