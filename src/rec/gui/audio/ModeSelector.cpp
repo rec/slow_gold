@@ -24,10 +24,6 @@ void setImage(ModeSelector* selector, LanguageButton* b, Mode::Action action) {
   (*selector->buttonMap())[action] = b;
 }
 
-enum Sides {
-  STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
-};
-
 }  // namespace
 
 ModeSelector::ModeSelector()

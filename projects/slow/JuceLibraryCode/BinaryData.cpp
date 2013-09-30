@@ -1613,17 +1613,49 @@ static const unsigned char temp_binary_data_17[] =
 "  default_size {\n"
 "    min: \"MODE_SELECTOR_HEIGHT\"\n"
 "  }\n"
-"  component {\n"
-"    name: \"DragModeButton\"\n"
+"  dimensions {\n"
+"    width: \"156\"\n"
+"    height: \"42\"\n"
 "  }\n"
+"\n"
 "  component {\n"
-"    name: \"SetTimeModeButton\"\n"
+"    name: \"DragMode\"\n"
+"    tooltip: \"Drag Mode: Use the mouse to drag the waveform back and forth\"\n"
+"    address: \"rec.util.Mode:click\"\n"
+"    button {\n"
+"      behavior: MODE\n"
+"      mode_index: 0\n"
+"    }\n"
 "  }\n"
+"\n"
 "  component {\n"
-"    name: \"ZoomModeButton\"\n"
+"    name: \"SetTimeMode\"\n"
+"    tooltip: \"Set Current Time Mode: Clicking in the waveform sets the current time.\"\n"
+"    address: \"rec.util.Mode:click\"\n"
+"    button {\n"
+"      behavior: MODE\n"
+"      mode_index: 1\n"
+"    }\n"
 "  }\n"
+"\n"
 "  component {\n"
-"    name: \"AddLoopPointModeButton\"\n"
+"    name: \"ZoomMode\"\n"
+"    tooltip: \"Zoom Mode: Clicking on the waveform zooms in on that point.\"\n"
+"    address: \"rec.util.Mode:click\"\n"
+"    button {\n"
+"      behavior: MODE\n"
+"      mode_index: 2\n"
+"    }\n"
+"  }\n"
+"\n"
+"  component {\n"
+"    name: \"AddLoopPointMode\"\n"
+"    tooltip: \"Add loop point mode: clicking on the waveform creates a loop point.\"\n"
+"    address: \"rec.util.Mode:click\"\n"
+"    button {\n"
+"      behavior: MODE\n"
+"      mode_index: 3\n"
+"    }\n"
 "  }\n"
 "}\n";
 
@@ -13824,7 +13856,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x8b33e590:  numBytes = 376; return Layout_def;
         case 0x28df9dc5:  numBytes = 673; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 356; return MainPanel_def;
-        case 0xd66a1508:  numBytes = 278; return ModeSelector_def;
+        case 0xd66a1508:  numBytes = 1011; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 534; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 625; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1311; return RightTransformPanel_def;

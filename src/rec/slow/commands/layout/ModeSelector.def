@@ -3,16 +3,48 @@ layout {
   default_size {
     min: "MODE_SELECTOR_HEIGHT"
   }
-  component {
-    name: "DragModeButton"
+  dimensions {
+    width: "156"
+    height: "42"
   }
+
   component {
-    name: "SetTimeModeButton"
+    name: "DragMode"
+    tooltip: "Drag Mode: Use the mouse to drag the waveform back and forth"
+    address: "rec.util.Mode:click"
+    button {
+      behavior: MODE
+      mode_index: 0
+    }
   }
+
   component {
-    name: "ZoomModeButton"
+    name: "SetTimeMode"
+    tooltip: "Set Current Time Mode: Clicking in the waveform sets the current time."
+    address: "rec.util.Mode:click"
+    button {
+      behavior: MODE
+      mode_index: 1
+    }
   }
+
   component {
-    name: "AddLoopPointModeButton"
+    name: "ZoomMode"
+    tooltip: "Zoom Mode: Clicking on the waveform zooms in on that point."
+    address: "rec.util.Mode:click"
+    button {
+      behavior: MODE
+      mode_index: 2
+    }
+  }
+
+  component {
+    name: "AddLoopPointMode"
+    tooltip: "Add loop point mode: clicking on the waveform creates a loop point."
+    address: "rec.util.Mode:click"
+    button {
+      behavior: MODE
+      mode_index: 3
+    }
   }
 }

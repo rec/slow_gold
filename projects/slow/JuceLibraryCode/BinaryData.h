@@ -58,7 +58,7 @@ namespace BinaryData
     const int            MainPanel_defSize = 356;
 
     extern const char*   ModeSelector_def;
-    const int            ModeSelector_defSize = 278;
+    const int            ModeSelector_defSize = 1011;
 
     extern const char*   NavigationPanel_def;
     const int            NavigationPanel_defSize = 534;
