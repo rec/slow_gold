@@ -2,16 +2,13 @@
 
 #include "rec/slow/MainPage.h"
 
-#include "rec/gui/audio/Loops.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/Instance.h"
-#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
-#include "rec/widget/waveform/Zoom.h"
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/widget/waveform/Zoom.h"
 
 using namespace juce;
 using namespace rec::data;
