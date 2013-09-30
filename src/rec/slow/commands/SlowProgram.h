@@ -32,6 +32,7 @@ class SlowProgram : public program::ProgramBase {
   string idToName(CommandID) const override;
   CommandID nameToId(const string&) const override;
   const data::Address& resizerAddress() const override;
+  Component* getTopComponent() override;
 
  private:
   Instance* const instance_;

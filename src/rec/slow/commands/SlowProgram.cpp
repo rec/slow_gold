@@ -7,10 +7,11 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/music/Metadata.h"
+#include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
-#include "rec/slow/AppLayout.pb.h"
+#include "rec/slow/MainPage.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/translation/TranslationTables.h"
@@ -195,6 +196,10 @@ CommandID SlowProgram::nameToId(const string& name) const {
 const data::Address& SlowProgram::resizerAddress() const {
   static const Address address = data::makeAddress<slow::AppLayout>();
   return address;
+}
+
+Component* SlowProgram::getTopComponent() {
+  return getInstance()->components_->mainPage_->panel();
 }
 
 }  // namespace slow

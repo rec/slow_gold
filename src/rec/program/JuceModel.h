@@ -45,6 +45,7 @@ class JuceModel : public ApplicationCommandTarget,
   // @throws std::out_of_range
   const gui::Layout& getLayout(const string&) const;
   const gui::Constants& constants() const;
+  Component* getComponent(const string& name) const;
 
   void startThreads();
   void stopThreads();

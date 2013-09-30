@@ -50,6 +50,7 @@ class Program : public command::CallbackTable{
   virtual void setEnabled(bool) = 0;
   virtual thread::Looper::Function threadFunction(const string&) const = 0;
   virtual const data::Address& resizerAddress() const = 0;
+  virtual Component* getTopComponent() = 0;
 };
 
 void registerProgram(Program*);
