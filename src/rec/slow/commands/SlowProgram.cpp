@@ -11,7 +11,6 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
-#include "rec/slow/MainPage.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/translation/TranslationTables.h"
