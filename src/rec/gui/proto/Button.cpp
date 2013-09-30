@@ -36,6 +36,10 @@ class ModalButton : public LanguageButton, public data::AddressListener,
     addListener(this);
   }
 
+  virtual ~ModalButton() {
+    DLOG(INFO) << "***************** deleting " << str(getName());
+  }
+
   void operator()(const data::Value& value) override {
     setToggleState(value.enum_f() == modeIndex_, juce::dontSendNotification);
   }

@@ -18,39 +18,42 @@ namespace {
 
 class HelpPanel : public Panel, public StateListener<const HelpText&> {
  public:
-  HelpPanel(const Context& context) : Panel("HelpPanel", VERTICAL) {
+  HelpPanel(const Context& context)
+  : Panel("HelpPanel", VERTICAL, true, false, true),
+        caption_(new SimpleLabel),
+        body_(new SimpleLabel) {
     INSTANCE = this;
 
     auto& comp = context.component_;
     auto& constants = context.constants_;
     const HelpProto& proto = comp.help();
     auto& s1 = proto.has_caption_size() ? proto.caption_size() : comp.size();
-    addToPanel(&caption_, constants, s1);
+    addToPanel(caption_, constants, s1);
 
     auto& s2 = proto.has_body_size() ? proto.body_size() : comp.size();
-    addToPanel(&body_, constants, s2);
+    addToPanel(body_, constants, s2);
 
-    caption_.setColour(juce::Label::textColourId, Colours::darkgreen);
-    caption_.setJustificationType(Justification::centred);
-    Font font = caption_.getFont();
+    caption_->setColour(juce::Label::textColourId, Colours::darkgreen);
+    caption_->setJustificationType(Justification::centred);
+    Font font = caption_->getFont();
     font.setBold(true);
     font.setHeight(font.getHeight() + 2);
-    body_.setFont(font);
+    body_->setFont(font);
     font.setHeight(font.getHeight() + 3);
-    caption_.setFont(font);
+    caption_->setFont(font);
 
-    body_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-    body_.setJustificationType(Justification::topLeft);
+    body_->setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+    body_->setJustificationType(Justification::topLeft);
   }
 
   void setTooltip(const String& tt) override {
-    caption_.setTooltip(tt);
-    body_.setTooltip(tt);
+    caption_->setTooltip(tt);
+    body_->setTooltip(tt);
   }
 
   void operator()(const HelpText& help) override {
-    caption_.setTextIfChanged(help.first, juce::dontSendNotification);
-    body_.setTextIfChanged(help.second, juce::dontSendNotification);
+    caption_->setTextIfChanged(help.first, juce::dontSendNotification);
+    body_->setTextIfChanged(help.second, juce::dontSendNotification);
   }
 
   ~HelpPanel() {
@@ -59,8 +62,8 @@ class HelpPanel : public Panel, public StateListener<const HelpText&> {
 
   static HelpPanel* INSTANCE;
 
-  SimpleLabel caption_;
-  SimpleLabel body_;
+  SimpleLabel* caption_;
+  SimpleLabel* body_;
 };
 
 HelpPanel* HelpPanel::INSTANCE = nullptr;

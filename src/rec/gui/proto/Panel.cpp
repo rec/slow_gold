@@ -21,6 +21,7 @@ Panel::Panel(const String& name,
       isMain_(isMain),
       ownComponents_(ownComponents),
       isOpaque_(isOpaque) {
+  DCHECK(ownComponents);
 }
 
 Panel::~Panel() {

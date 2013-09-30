@@ -25,9 +25,9 @@ class SetterText : public Panel,
   virtual void setTooltip(const String& newTooltip);
   void setReadOnly(bool readOnly);
 
-  bool isReadOnly() const { return editor_.isReadOnly(); }
+  bool isReadOnly() const { return editor_->isReadOnly(); }
 
-  TextEditor* editor() { return &editor_; }
+  TextEditor* editor() { return editor_; }
 
   virtual void textEditorTextChanged(TextEditor&);
   virtual void textEditorReturnKeyPressed(TextEditor&) {}
@@ -39,8 +39,8 @@ class SetterText : public Panel,
  protected:
   void setEditorText(String);
 
-  SimpleLabel caption_;
-  TextEditor editor_;
+  SimpleLabel* caption_;
+  TextEditor* editor_;
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterText);

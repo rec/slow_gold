@@ -10,24 +10,24 @@ DataSlider::DataSlider(const String& name,
                        uint32 captionSize,
                        uint32 textEntryBoxWidth,
                        uint32 textEntryBoxHeight)
-    : Panel(name, HORIZONTAL, true),
+    : Panel(name, HORIZONTAL, true, false, true),
       data::AddressListener(address),
-      slider_(name + ".slider"),
-      caption_(caption, name + ".caption"),
+      slider_(new DetentSlider(name + ".slider")),
+      caption_(new SimpleLabel(caption, name + ".caption")),
       name_(name),
       captionText_(caption),
       tooltip_(tooltip) {
-  slider_.setSliderStyle(Slider::LinearHorizontal);
-  slider_.setTextBoxStyle(Slider::TextBoxLeft, false,
+  slider_->setSliderStyle(Slider::LinearHorizontal);
+  slider_->setTextBoxStyle(Slider::TextBoxLeft, false,
                           textEntryBoxWidth, textEntryBoxHeight);
-  slider_.addListener(this);
+  slider_->addListener(this);
 
-  addToPanel(&caption_, captionSize);
-  addToPanel(&slider_, 0, -1.0, -1.0);
+  addToPanel(caption_, captionSize);
+  addToPanel(slider_, 0, -1.0, -1.0);
 }
 
 void DataSlider::sliderValueChanged(Slider*) {
-  setValue(slider_.getValue());
+  setValue(slider_->getValue());
 }
 
 void DataSlider::operator()(const data::Value& v) {
@@ -39,14 +39,14 @@ void DataSlider::languageChanged() {
   if (s.length())
     s = Trans(str(captionText_));
 
-  caption_.setText(s, juce::sendNotification);
+  caption_->setText(s, juce::sendNotification);
 
   String t = Trans(str(tooltip_));
-  slider_.setTooltip(t);
-  caption_.setTooltip(t);
+  slider_->setTooltip(t);
+  caption_->setTooltip(t);
   SettableTooltipClient::setTooltip(t);
 
-  slider_.sendLookAndFeelChange();
+  slider_->sendLookAndFeelChange();
 }
 
 }  // namespace gui

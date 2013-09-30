@@ -10,52 +10,54 @@ SetterText::SetterText(const String& name,
                        const String& tip,
                        const String& caption,
                        bool useCaption)
-    : Panel(name, HORIZONTAL),
-      data::AddressListener(address) {
+    : Panel(name, HORIZONTAL, true, true, true, false),
+      data::AddressListener(address),
+      caption_(new SimpleLabel),
+      editor_(new TextEditor) {
   DCHECK(name.length());
   const String& cap = caption.length() ? caption : name;
-  caption_.setName(name + ".caption");
-  editor_.setName(name + ".editor");
+  caption_->setName(name + ".caption");
+  editor_->setName(name + ".editor");
 
   setTooltip(tip.length() ? tip : cap);
 
   if (useCaption) {
-    caption_.setText(cap, juce::dontSendNotification);
-    addToPanel(&caption_, CAPTION_SIZE);
+    caption_->setText(cap, juce::dontSendNotification);
+    addToPanel(caption_, CAPTION_SIZE);
   }
-  addToPanel(&editor_);
+  addToPanel(editor_);
 
-  editor_.addListener(this);
+  editor_->addListener(this);
 }
 
 void SetterText::operator()(const data::Value& v) {
-  if (v.has_string_f() && str(v.string_f()) != editor_.getText())
+  if (v.has_string_f() && str(v.string_f()) != editor_->getText())
     setEditorText(str(v.string_f()));
 }
 
 void SetterText::setTooltip(const String& newTooltip) {
   Panel::setTooltip(newTooltip);
-  editor_.setTooltip(newTooltip);
-  caption_.setTooltip(newTooltip);
+  editor_->setTooltip(newTooltip);
+  caption_->setTooltip(newTooltip);
 }
 
 void SetterText::setReadOnly(bool readOnly) {
   if (readOnly != isReadOnly()) {
-    editor_.setReadOnly(readOnly);
-    editor_.setCaretVisible(!readOnly);
+    editor_->setReadOnly(readOnly);
+    editor_->setCaretVisible(!readOnly);
   }
 }
 
 void SetterText::textEditorTextChanged(TextEditor&) {
-  setValue(str(editor_.getText()));
+  setValue(str(editor_->getText()));
 }
 
 void SetterText::setEditorBackground(const juce::Colour& c) {
-  editor_.setColour(juce::TextEditor::backgroundColourId, c);
+  editor_->setColour(juce::TextEditor::backgroundColourId, c);
 }
 
 void SetterText::setEditorText(String text) {
-  editor_.setText(text, false);
+  editor_->setText(text, false);
   repaint();
 }
 

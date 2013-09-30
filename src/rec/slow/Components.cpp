@@ -26,45 +26,6 @@ namespace slow {
 
 namespace {
 
-const int MIN_NAV_PANEL = 100;
-const double MIN_RESIZER = 7.0;
-const int MIN_WAVEFORM = 150;
-const int MIN_PLAYBACK_PANEL = 100;
-const int MIN_HELP_PANEL = 200;
-const int MIN_TRANSFORM_PANEL = 250;
-const double MIN_TRANSPORT_PANEL = 300.0;
-const int MIN_SONG_DATA = 150;
-const int MIN_LOOPS = 250;
-const int MIN_DIRECTORY = 75;
-const int HELP_CAPTION_HEIGHT = 28;
-
-template <typename Type>
-void add(gui::Panel* layout, Type* t, double min, double max, double pref) {
-  layout->addToPanel(t, min, max, pref);
-}
-
-template <typename Type>
-void add(gui::Panel* layout, ptr<Type> &t, double min, double max, double p) {
-  layout->addToPanel(t.get(), min, max, p);
-}
-
-template <typename Type>
-void add(gui::Panel* layout, Type t, double size) {
-  add(layout, t, size, size, size);
-}
-
-class MainPanel : public gui::Panel {
- public:
-  MainPanel() : gui::Panel("Main", VERTICAL) {}
-
-#if JUCE_WINDOWS
-  virtual void paintOverChildren(Graphics& g) {
-    g.setColour(juce::Colours::black);
-    g.drawLine(0.0f, 0.0f, static_cast<float>(getWidth()), 0);
-  }
-#endif
-};
-
 void enableAllDrawableButtons(Component *c, bool enabled) {
   if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
     b->setEnabled(enabled);

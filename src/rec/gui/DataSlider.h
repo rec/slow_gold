@@ -32,20 +32,20 @@ class DataSlider : public Panel,
   virtual void operator()(const data::Value&);
   virtual void languageChanged();
 
-  DetentSlider* slider() { return &slider_; }
-  void setDetent(double detent) { slider_.setDetent(detent); }
-  void setDetentRadius(double radius) { slider_.setDetentRadius(radius); }
+  DetentSlider* slider() { return slider_; }
+  void setDetent(double detent) { slider_->setDetent(detent); }
+  void setDetentRadius(double radius) { slider_->setDetentRadius(radius); }
   void setRange(double min, double max, double interval) {
-    slider_.setRange(min, max, interval);
+    slider_->setRange(min, max, interval);
   }
 
  protected:
   void setSliderValue(double value) {
-    slider_.setValue(value, juce::dontSendNotification);
+    slider_->setValue(value, juce::dontSendNotification);
   }
 
-  DetentSlider slider_;
-  SimpleLabel caption_;
+  DetentSlider* slider_;
+  SimpleLabel* caption_;
 
   String name_;
   String captionText_;

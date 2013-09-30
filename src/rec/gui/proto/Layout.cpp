@@ -45,7 +45,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   }
 
   if (layout.has_padding())
-    panel->addToPanel(new Panel);
+    panel->addToPanel(new Panel("", HORIZONTAL, true, false, true));
 
   if (layout.has_dimensions()) {
     comp->setSize(constants.getDouble(layout.dimensions().width()),

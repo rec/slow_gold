@@ -45,7 +45,7 @@ class Panel : public Component,
 
   virtual bool isOpaque() const { return isOpaque_; }
 
-  #if JUCE_WINDOWS
+#if JUCE_WINDOWS
   virtual void paintOverChildren(Graphics& g) {
     if (isMain_) {
       g.setColour(juce::Colours::black);
