@@ -114,9 +114,9 @@ Components::Components()
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
-  add(mainPanel_.get(), waveform(), MIN_WAVEFORM, -1.0, -0.6);
-  waveform()->addAndMakeVisible(modeSelector_.get());
-  waveform()->addAndMakeVisible(commandBar_.get());
+  add(mainPanel_.get(), waveform_.get(), MIN_WAVEFORM, -1.0, -0.6);
+  waveform_->addAndMakeVisible(modeSelector_.get());
+  waveform_->addAndMakeVisible(commandBar_.get());
 
   add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
