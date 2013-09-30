@@ -3,9 +3,9 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
 #include "rec/base/Trans.h"
-#include "rec/command/CallbackTable.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/ZipData.h"
+#include "rec/program/Program.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/GuiSettings.h"
@@ -128,7 +128,7 @@ void whatsNewPage() {
 
 }  // namespace
 
-void addGlobalCallbacks(command::CallbackTable* t) {
+void addGlobalCallbacks(program::Program* t) {
   addCallback(t, Command::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
   addCallback(t, Command::MODE_DRAG, modeDrag);
   addCallback(t, Command::MODE_SET_TIME, modeSetTime);

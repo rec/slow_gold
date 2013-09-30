@@ -1,15 +1,13 @@
 #ifndef __REC_APP_PROGRAM__
 #define __REC_APP_PROGRAM__
 
-#include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/program/Menu.pb.h"
 #include "rec/program/Threads.pb.h"
 #include "rec/program/Types.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/Looper.h"
-#include "rec/command/CallbackTable.h"
 
+namespace rec { namespace command { class Command; }}
 namespace rec { namespace data { class Address; }}
 namespace rec { namespace gui { class Constants; }}
 namespace rec { namespace gui { class RecentFilesStrategy; }}
@@ -17,7 +15,9 @@ namespace rec { namespace gui { class RecentFilesStrategy; }}
 namespace rec {
 namespace program {
 
-class Program : public command::CallbackTable {
+class MenuEntry;
+
+class Program {
  public:
   Program() {}
   virtual ~Program() {}

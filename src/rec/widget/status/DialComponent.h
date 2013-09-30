@@ -3,6 +3,7 @@
 
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
+#include "rec/gui/DisableableComponent.h"
 #include "rec/util/HasThread.h"
 #include "rec/util/Listener.h"
 #include "rec/util/StateListener.h"
@@ -16,6 +17,7 @@ namespace status {
 namespace time {
 
 class DialComponent : public Component,
+                      public gui::DisableableComponent,
                       public StateListener<SampleTime>,
                       public StateListener<Thread*>,
                       public DataListener<waveform::Viewport>,

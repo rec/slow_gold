@@ -5,12 +5,12 @@
 
 namespace rec {
 
-namespace command { class CallbackTable; }
+namespace program { class Program; }
 
 namespace slow {
 
-void addRepeatedCallbacks(command::CallbackTable*, int repeat);
-void addSelectionCallbacks(command::CallbackTable*);
+void addRepeatedCallbacks(program::Program*, int repeat);
+void addSelectionCallbacks(program::Program*);
 
 }  // namespace slow
 }  // namespace rec

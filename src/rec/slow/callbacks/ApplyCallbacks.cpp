@@ -5,7 +5,7 @@
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/command/Command.pb.h"
-#include "rec/command/CallbackTable.h"
+#include "rec/program/Program.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/commands/Command.pb.h"
@@ -20,8 +20,7 @@ namespace {
 
 using audio::AudioSettings;
 using audio::Gain;
-using command::CallbackTable;
-using command::Command;
+using program::Program;
 using widget::waveform::Viewport;
 
 template <typename Proto>
@@ -41,7 +40,7 @@ void executeCallbackIf(bool (*protoFunction)(Proto*)) {
 }
 
 template <typename Proto>
-void addApplyCallback(CallbackTable* c, CommandID id,
+void addApplyCallback(Program* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
   c->addCallback(id,
                  thread::functionCB(&executeCallback<Proto>,
@@ -49,7 +48,7 @@ void addApplyCallback(CallbackTable* c, CommandID id,
 }
 
 template <typename Proto>
-void addApplyCallback(CallbackTable* c, CommandID id,
+void addApplyCallback(Program* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
   c->addCallback(id,
                  thread::functionCB(&executeCallbackIf<Proto>,
@@ -103,7 +102,7 @@ void nudgeSpeedUp(Stretch* s) { nudgeSpeed(s, true); }
 
 }
 
-void addApplyCallbacks(command::CallbackTable* c) {
+void addApplyCallbacks(program::Program* c) {
   addApplyCallback(c, slow::Command::CLEAR_LOOPS, clearLoops);
   addApplyCallback(c, slow::Command::DIM_VOLUME_TOGGLE, dimVolumeToggle);
   addApplyCallback(c, slow::Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle);

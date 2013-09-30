@@ -1,5 +1,6 @@
 #include "rec/gui/proto/Component.h"
 
+#include "rec/gui/DisableableComponent.h"
 #include "rec/gui/proto/Button.h"
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Component.pb.h"
@@ -26,9 +27,6 @@ namespace {
 typedef unique_ptr<Component> (*ComponentMaker)(const Context&);
 
 ComponentMaker make(const ComponentProto& c) {
-  if (c.has_layout())
-    return &makeLayoutComp;
-
   if (c.has_button())
     return &makeButton;
 
@@ -43,6 +41,9 @@ ComponentMaker make(const ComponentProto& c) {
 
   if (c.has_label())
     return &makeLabel;
+
+  if (c.has_layout())
+    return &makeLayoutComp;
 
   if (c.has_level_meter())
     return &makeLevelMeter;
@@ -82,6 +83,8 @@ unique_ptr<Component> makeComponent(const Context& context) {
     typedef SettableTooltipClient TTClient;
     if (TTClient* tt = dynamic_cast<TTClient*>(component.get()))
       tt->setTooltip(comp.tooltip());
+    DCHECK(dynamic_cast<DisableableComponent*>(component.get()))
+        << comp.ShortDebugString() << " !!! " << component->getName();
   } else {
     LOG(DFATAL) << "No component in " << comp.ShortDebugString();
   }

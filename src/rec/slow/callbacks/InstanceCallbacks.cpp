@@ -12,6 +12,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
+#include "rec/program/Program.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
@@ -204,8 +205,9 @@ void pasteOverLoopPoints() {
 }  // namespace
 
 using namespace rec::command;
+using namespace rec::program;
 
-void addInstanceCallbacks(CallbackTable* c) {
+void addInstanceCallbacks(Program* c) {
   using namespace rec::gui;
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;

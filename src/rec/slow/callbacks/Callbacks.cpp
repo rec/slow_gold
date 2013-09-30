@@ -1,6 +1,5 @@
 #include "rec/slow/callbacks/Callbacks.h"
 
-#include "rec/command/CallbackTable.h"
 #include "rec/slow/callbacks/ApplyCallbacks.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/slow/callbacks/InstanceCallbacks.h"
@@ -9,9 +8,7 @@
 namespace rec {
 namespace slow {
 
-using command::CallbackTable;
-
-void addSlowCallbacks(CallbackTable* table, int repeat) {
+void addSlowCallbacks(program::Program* table, int repeat) {
   addGlobalCallbacks(table);
   addInstanceCallbacks(table);
   addApplyCallbacks(table);

@@ -1,10 +1,10 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 
 #include "rec/audio/AudioSettings.pb.h"
-#include "rec/command/CallbackTable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/menu/RecentFiles.pb.h"
 #include "rec/program/JuceModel.h"
+#include "rec/program/Program.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -23,6 +23,7 @@ namespace {
 
 using namespace std;
 using namespace rec::command;
+using namespace rec::program;
 
 int toIndex(int position, int32 segment, int32 size) {
   int pos = (position == CommandIDs::FIRST) ? 0 :
@@ -70,7 +71,7 @@ void select(SelectorFunction selector, int32 pos) {
 }
 
 template <typename Function, typename X, typename Y>
-void addCallback(CallbackTable* c, CommandID id, Function f, X x, Y y) {
+void addCallback(Program* c, CommandID id, Function f, X x, Y y) {
   c->addCallback(id, thread::functionCB(f, x, y));
 }
 
@@ -83,7 +84,7 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 
 }  // namespace
 
-void addSelectionCallbacks(command::CallbackTable* t) {
+void addSelectionCallbacks(Program* t) {
   addCallback(t, slow::Command::DESELECT_ALL, select, deselectAll, CommandIDs::CURRENT);
   addCallback(t, slow::Command::SELECT_ALL, select, selectAll, CommandIDs::CURRENT);
   addCallback(t, slow::Command::INVERT_LOOP_SELECTION, select, invertLoopSelection,
@@ -268,12 +269,12 @@ void loopNextSegment() {
   data::setProto(vp, vf);
 }
 
-void addCallback(CallbackTable* c, int32 type, int32 position,
+void addCallback(Program* c, int32 type, int32 position,
                  SelectorFunction f) {
   addCallback(c, type + position, select, f, position);
 }
 
-void addCallback(CallbackTable* c, int32 type, int32 position,
+void addCallback(Program* c, int32 type, int32 position,
                  LoopSnapshotFunction f) {
   addCallback(c, type + position, loop, f, position);
 }
@@ -282,9 +283,7 @@ const int MENU_COMMAND_REPEATS = 15;
 
 }  // namespace
 
-
-
-void addRepeatedCallbacks(CallbackTable* t, int repeat) {
+void addRepeatedCallbacks(Program* t, int repeat) {
   for (int32 j = 0; j < MENU_COMMAND_REPEATS; ++j) {
     addCallback(t, slow::Command::SELECT, j, selectAdd);
     addCallback(t, slow::Command::SELECT_ONLY, j, selectOnly);

@@ -4,6 +4,7 @@
 #include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/gui/DisableableComponent.h"
 #include "rec/util/Listener.h"
 #include "rec/util/StateListener.h"
 
@@ -13,6 +14,7 @@ namespace audio {
 
 class LevelMeter : public Component,
                    public app::LanguageListener,
+                   public gui::DisableableComponent,
                    public Listener<const rec::audio::Gain&>,
                    public StateListener<const rec::audio::LevelVector&>,
                    public SettableTooltipClient {

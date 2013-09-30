@@ -4,12 +4,14 @@
 #include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
+#include "rec/gui/DisableableComponent.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
 
 class SetterToggle : public app::LanguageListener,
+                     public DisableableComponent,
                      public data::AddressListener,
                      public juce::ToggleButton {
  public:

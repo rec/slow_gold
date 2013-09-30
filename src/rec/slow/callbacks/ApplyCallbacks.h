@@ -5,11 +5,11 @@
 
 namespace rec {
 
-namespace command { class CallbackTable; }
+namespace program { class Program; }
 
 namespace slow {
 
-void addApplyCallbacks(command::CallbackTable*);
+void addApplyCallbacks(program::Program*);
 
 }  // namespace slow
 }  // namespace rec

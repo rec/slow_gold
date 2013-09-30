@@ -5,14 +5,13 @@
 
 namespace rec {
 
-namespace command { class CallbackTable; }
+namespace program { class Program; }
 
 namespace slow {
 
 static const int REPEATED_COUNT = 10;
 
-void addSlowCallbacks(command::CallbackTable*,
-                      int repeat = REPEATED_COUNT);
+void addSlowCallbacks(program::Program*, int repeat = REPEATED_COUNT);
 
 }  // namespace slow
 }  // namespace rec

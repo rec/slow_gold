@@ -1,12 +1,12 @@
 #ifndef __REC_GUI_SIMPLELABEL__
 #define __REC_GUI_SIMPLELABEL__
 
-#include "rec/base/base.h"
+#include "rec/gui/DisableableComponent.h"
 
 namespace rec {
 namespace gui {
 
-class SimpleLabel : public juce::Label {
+class SimpleLabel : public juce::Label, public DisableableComponent {
  public:
   SimpleLabel(const String& name = String::empty,
               const String& labelText = String::empty)

@@ -6,8 +6,6 @@
 namespace rec {
 namespace gui {
 
-class ComponentProto;
-class Constants;
 class Context;
 
 unique_ptr<Component> makeTime(const Context&);

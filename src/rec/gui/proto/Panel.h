@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_LAYOUT_LAYOUT__
 #define __REC_GUI_LAYOUT_LAYOUT__
 
+#include "rec/gui/DisableableComponent.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/SizeHintAccumulator.h"
 
@@ -11,6 +12,7 @@ class Constants;
 class Size;
 
 class Panel : public Component,
+              public DisableableComponent,
               public SizeHintAccumulator,
               public SettableTooltipClient {
  public:
