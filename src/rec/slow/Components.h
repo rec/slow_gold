@@ -49,6 +49,7 @@ class Components : public data::DataListener<music::Metadata>,
 
   // navigationPanel_ contains the navigator, song metadata and loops.
   gui::Panel navigationPanel_;
+  unique_ptr<Component> navigationPanel2_;
 
   // playbackPanel_ contains help, transform and the controls.
   unique_ptr<Component> playbackPanel_;

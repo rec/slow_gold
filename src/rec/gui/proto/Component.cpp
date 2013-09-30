@@ -5,6 +5,7 @@
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Context.h"
+#include "rec/gui/proto/Custom.h"
 #include "rec/gui/proto/Help.h"
 #include "rec/gui/proto/Label.h"
 #include "rec/gui/proto/Layout.h"
@@ -33,6 +34,9 @@ ComponentMaker make(const ComponentProto& c) {
 
   if (c.has_combo_box())
     return &makeComboBox;
+
+  if (c.has_custom())
+    return &makeCustom;
 
   if (c.has_help())
     return &makeHelp;

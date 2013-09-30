@@ -79,7 +79,7 @@ void enableAllDrawableButtons(Component *c, bool enabled) {
   }
 }
 
-const bool USE_NEW_GUI = not false;
+const bool USE_NEW_GUI = not true;
 
 }  // namespace
 
@@ -88,6 +88,7 @@ Components::Components()
       directoryTree_(new widget::tree::Root),
       mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
+      navigationPanel2_(gui::makeLayout("NavigationPanel", mainPanel_.get())),
       playbackPanel_(gui::makeLayout("PlaybackPanel", mainPanel_.get())),
 
       navigationResizer_(makeAddress<AppLayout>("navigation_y"),
@@ -103,19 +104,22 @@ Components::Components()
   songData_ = gui::makeLayout("SongData", mainPanel_.get());
   modeSelector_ = gui::makeLayout("ModeSelector", mainPanel_.get());
 
-  add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
-  add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
+  // Navigation panel.
+  if (USE_NEW_GUI) {
+    add(mainPanel_.get(), navigationPanel2_.get(), MIN_NAV_PANEL, -1.0, -0.2);
+  } else {
+    add(&navigationPanel_, directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
+    add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
+    add(&navigationPanel_, songData_.get(), MIN_SONG_DATA, -1.0, -0.30);
+    add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
+    add(&navigationPanel_, loops_.get(), MIN_LOOPS, -1.0, -0.3);
+    add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
+  }
 
+  add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
   add(mainPanel_.get(), waveform_.get(), MIN_WAVEFORM, -1.0, -0.6);
   waveform_->addAndMakeVisible(modeSelector_.get());
   waveform_->addAndMakeVisible(commandBar_.get());
-
-  // Navigation panel.
-  add(&navigationPanel_, directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
-  add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
-  add(&navigationPanel_, songData_.get(), MIN_SONG_DATA, -1.0, -0.30);
-  add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
-  add(&navigationPanel_, loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   add(mainPanel_.get(), playbackPanel_.get(), MIN_PLAYBACK_PANEL);
 }
