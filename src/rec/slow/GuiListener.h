@@ -2,7 +2,6 @@
 #define __REC_SLOW_GUILISTENER__
 
 #include "rec/data/DataListener.h"
-#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace slow {
