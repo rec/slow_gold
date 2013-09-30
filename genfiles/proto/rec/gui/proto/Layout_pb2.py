@@ -17,9 +17,44 @@ import rec.gui.proto.Size_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Layout.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x19rec/gui/Orientation.proto\x1a\x1drec/gui/proto/Component.proto\x1a\x18rec/gui/proto/Size.proto\"\xa2\x02\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12:\n\x0borientation\x18\x02 \x01(\x0e\x32%.rec.gui.OrientationProto.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\x12\x11\n\tis_opaque\x18\x05 \x01(\x08\x12\x0f\n\x07padding\x18\x06 \x01(\x08\x12\x1b\n\x04size\x18\x07 \x01(\x0b\x32\r.rec.gui.Size\x12*\n\tcontainer\x18\x08 \x01(\x0b\x32\x17.rec.gui.ComponentProto\x12*\n\tcomponent\x18\t \x03(\x0b\x32\x17.rec.gui.ComponentProto\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
+  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\x1a\x19rec/gui/Orientation.proto\x1a\x1drec/gui/proto/Component.proto\x1a\x18rec/gui/proto/Size.proto\"+\n\nDimensions\x12\r\n\x05width\x18\x01 \x01(\t\x12\x0e\n\x06height\x18\x02 \x01(\t\"\xd3\x02\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12:\n\x0borientation\x18\x02 \x01(\x0e\x32%.rec.gui.OrientationProto.Orientation\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\x12\x11\n\tis_opaque\x18\x05 \x01(\x08\x12\x0f\n\x07padding\x18\x06 \x01(\x08\x12#\n\x0c\x64\x65\x66\x61ult_size\x18\x07 \x01(\x0b\x32\r.rec.gui.Size\x12\'\n\ndimensions\x18\x08 \x01(\x0b\x32\x13.rec.gui.Dimensions\x12*\n\tcontainer\x18\t \x01(\x0b\x32\x17.rec.gui.ComponentProto\x12*\n\tcomponent\x18\n \x03(\x0b\x32\x17.rec.gui.ComponentProto\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
 
 
+
+
+_DIMENSIONS = _descriptor.Descriptor(
+  name='Dimensions',
+  full_name='rec.gui.Dimensions',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='width', full_name='rec.gui.Dimensions.width', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='height', full_name='rec.gui.Dimensions.height', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=153,
+  serialized_end=196,
+)
 
 
 _LAYOUT = _descriptor.Descriptor(
@@ -72,22 +107,29 @@ _LAYOUT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='size', full_name='rec.gui.Layout.size', index=6,
+      name='default_size', full_name='rec.gui.Layout.default_size', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='container', full_name='rec.gui.Layout.container', index=7,
+      name='dimensions', full_name='rec.gui.Layout.dimensions', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='component', full_name='rec.gui.Layout.component', index=8,
-      number=9, type=11, cpp_type=10, label=3,
+      name='container', full_name='rec.gui.Layout.container', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='component', full_name='rec.gui.Layout.component', index=9,
+      number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -101,8 +143,8 @@ _LAYOUT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=154,
-  serialized_end=444,
+  serialized_start=199,
+  serialized_end=538,
 )
 
 
@@ -129,17 +171,25 @@ _LAYOUTS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=446,
-  serialized_end=488,
+  serialized_start=540,
+  serialized_end=582,
 )
 
 _LAYOUT.fields_by_name['orientation'].enum_type = rec.gui.Orientation_pb2._ORIENTATIONPROTO_ORIENTATION
-_LAYOUT.fields_by_name['size'].message_type = rec.gui.proto.Size_pb2._SIZE
+_LAYOUT.fields_by_name['default_size'].message_type = rec.gui.proto.Size_pb2._SIZE
+_LAYOUT.fields_by_name['dimensions'].message_type = _DIMENSIONS
 _LAYOUT.fields_by_name['container'].message_type = rec.gui.proto.Component_pb2._COMPONENTPROTO
 _LAYOUT.fields_by_name['component'].message_type = rec.gui.proto.Component_pb2._COMPONENTPROTO
 _LAYOUTS.fields_by_name['layout'].message_type = _LAYOUT
+DESCRIPTOR.message_types_by_name['Dimensions'] = _DIMENSIONS
 DESCRIPTOR.message_types_by_name['Layout'] = _LAYOUT
 DESCRIPTOR.message_types_by_name['Layouts'] = _LAYOUTS
+
+class Dimensions(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _DIMENSIONS
+
+  # @@protoc_insertion_point(class_scope:rec.gui.Dimensions)
 
 class Layout(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

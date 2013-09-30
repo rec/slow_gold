@@ -38,10 +38,113 @@ void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
 void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto();
 
+class Dimensions;
 class Layout;
 class Layouts;
 
 // ===================================================================
+
+class Dimensions : public ::google::protobuf::Message {
+ public:
+  Dimensions();
+  virtual ~Dimensions();
+
+  Dimensions(const Dimensions& from);
+
+  inline Dimensions& operator=(const Dimensions& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Dimensions& default_instance();
+
+  void Swap(Dimensions* other);
+
+  // implements Message ----------------------------------------------
+
+  Dimensions* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Dimensions& from);
+  void MergeFrom(const Dimensions& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string width = 1;
+  inline bool has_width() const;
+  inline void clear_width();
+  static const int kWidthFieldNumber = 1;
+  inline const ::std::string& width() const;
+  inline void set_width(const ::std::string& value);
+  inline void set_width(const char* value);
+  inline void set_width(const char* value, size_t size);
+  inline ::std::string* mutable_width();
+  inline ::std::string* release_width();
+  inline void set_allocated_width(::std::string* width);
+
+  // optional string height = 2;
+  inline bool has_height() const;
+  inline void clear_height();
+  static const int kHeightFieldNumber = 2;
+  inline const ::std::string& height() const;
+  inline void set_height(const ::std::string& value);
+  inline void set_height(const char* value);
+  inline void set_height(const char* value, size_t size);
+  inline ::std::string* mutable_height();
+  inline ::std::string* release_height();
+  inline void set_allocated_height(::std::string* height);
+
+  // @@protoc_insertion_point(class_scope:rec.gui.Dimensions)
+ private:
+  inline void set_has_width();
+  inline void clear_has_width();
+  inline void set_has_height();
+  inline void clear_has_height();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* width_;
+  ::std::string* height_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
+  friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto();
+
+  void InitAsDefaultInstance();
+  static Dimensions* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class Layout : public ::google::protobuf::Message {
  public:
@@ -144,28 +247,37 @@ class Layout : public ::google::protobuf::Message {
   inline bool padding() const;
   inline void set_padding(bool value);
 
-  // optional .rec.gui.Size size = 7;
-  inline bool has_size() const;
-  inline void clear_size();
-  static const int kSizeFieldNumber = 7;
-  inline const ::rec::gui::Size& size() const;
-  inline ::rec::gui::Size* mutable_size();
-  inline ::rec::gui::Size* release_size();
-  inline void set_allocated_size(::rec::gui::Size* size);
+  // optional .rec.gui.Size default_size = 7;
+  inline bool has_default_size() const;
+  inline void clear_default_size();
+  static const int kDefaultSizeFieldNumber = 7;
+  inline const ::rec::gui::Size& default_size() const;
+  inline ::rec::gui::Size* mutable_default_size();
+  inline ::rec::gui::Size* release_default_size();
+  inline void set_allocated_default_size(::rec::gui::Size* default_size);
 
-  // optional .rec.gui.ComponentProto container = 8;
+  // optional .rec.gui.Dimensions dimensions = 8;
+  inline bool has_dimensions() const;
+  inline void clear_dimensions();
+  static const int kDimensionsFieldNumber = 8;
+  inline const ::rec::gui::Dimensions& dimensions() const;
+  inline ::rec::gui::Dimensions* mutable_dimensions();
+  inline ::rec::gui::Dimensions* release_dimensions();
+  inline void set_allocated_dimensions(::rec::gui::Dimensions* dimensions);
+
+  // optional .rec.gui.ComponentProto container = 9;
   inline bool has_container() const;
   inline void clear_container();
-  static const int kContainerFieldNumber = 8;
+  static const int kContainerFieldNumber = 9;
   inline const ::rec::gui::ComponentProto& container() const;
   inline ::rec::gui::ComponentProto* mutable_container();
   inline ::rec::gui::ComponentProto* release_container();
   inline void set_allocated_container(::rec::gui::ComponentProto* container);
 
-  // repeated .rec.gui.ComponentProto component = 9;
+  // repeated .rec.gui.ComponentProto component = 10;
   inline int component_size() const;
   inline void clear_component();
-  static const int kComponentFieldNumber = 9;
+  static const int kComponentFieldNumber = 10;
   inline const ::rec::gui::ComponentProto& component(int index) const;
   inline ::rec::gui::ComponentProto* mutable_component(int index);
   inline ::rec::gui::ComponentProto* add_component();
@@ -188,8 +300,10 @@ class Layout : public ::google::protobuf::Message {
   inline void clear_has_is_opaque();
   inline void set_has_padding();
   inline void clear_has_padding();
-  inline void set_has_size();
-  inline void clear_has_size();
+  inline void set_has_default_size();
+  inline void clear_has_default_size();
+  inline void set_has_dimensions();
+  inline void clear_has_dimensions();
   inline void set_has_container();
   inline void clear_has_container();
 
@@ -201,12 +315,13 @@ class Layout : public ::google::protobuf::Message {
   bool is_main_;
   bool is_opaque_;
   bool padding_;
-  ::rec::gui::Size* size_;
+  ::rec::gui::Size* default_size_;
+  ::rec::gui::Dimensions* dimensions_;
   ::rec::gui::ComponentProto* container_;
   ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto > component_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
@@ -304,6 +419,150 @@ class Layouts : public ::google::protobuf::Message {
 
 
 // ===================================================================
+
+// Dimensions
+
+// optional string width = 1;
+inline bool Dimensions::has_width() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Dimensions::set_has_width() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Dimensions::clear_has_width() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Dimensions::clear_width() {
+  if (width_ != &::google::protobuf::internal::kEmptyString) {
+    width_->clear();
+  }
+  clear_has_width();
+}
+inline const ::std::string& Dimensions::width() const {
+  return *width_;
+}
+inline void Dimensions::set_width(const ::std::string& value) {
+  set_has_width();
+  if (width_ == &::google::protobuf::internal::kEmptyString) {
+    width_ = new ::std::string;
+  }
+  width_->assign(value);
+}
+inline void Dimensions::set_width(const char* value) {
+  set_has_width();
+  if (width_ == &::google::protobuf::internal::kEmptyString) {
+    width_ = new ::std::string;
+  }
+  width_->assign(value);
+}
+inline void Dimensions::set_width(const char* value, size_t size) {
+  set_has_width();
+  if (width_ == &::google::protobuf::internal::kEmptyString) {
+    width_ = new ::std::string;
+  }
+  width_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Dimensions::mutable_width() {
+  set_has_width();
+  if (width_ == &::google::protobuf::internal::kEmptyString) {
+    width_ = new ::std::string;
+  }
+  return width_;
+}
+inline ::std::string* Dimensions::release_width() {
+  clear_has_width();
+  if (width_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = width_;
+    width_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Dimensions::set_allocated_width(::std::string* width) {
+  if (width_ != &::google::protobuf::internal::kEmptyString) {
+    delete width_;
+  }
+  if (width) {
+    set_has_width();
+    width_ = width;
+  } else {
+    clear_has_width();
+    width_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string height = 2;
+inline bool Dimensions::has_height() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Dimensions::set_has_height() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Dimensions::clear_has_height() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Dimensions::clear_height() {
+  if (height_ != &::google::protobuf::internal::kEmptyString) {
+    height_->clear();
+  }
+  clear_has_height();
+}
+inline const ::std::string& Dimensions::height() const {
+  return *height_;
+}
+inline void Dimensions::set_height(const ::std::string& value) {
+  set_has_height();
+  if (height_ == &::google::protobuf::internal::kEmptyString) {
+    height_ = new ::std::string;
+  }
+  height_->assign(value);
+}
+inline void Dimensions::set_height(const char* value) {
+  set_has_height();
+  if (height_ == &::google::protobuf::internal::kEmptyString) {
+    height_ = new ::std::string;
+  }
+  height_->assign(value);
+}
+inline void Dimensions::set_height(const char* value, size_t size) {
+  set_has_height();
+  if (height_ == &::google::protobuf::internal::kEmptyString) {
+    height_ = new ::std::string;
+  }
+  height_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Dimensions::mutable_height() {
+  set_has_height();
+  if (height_ == &::google::protobuf::internal::kEmptyString) {
+    height_ = new ::std::string;
+  }
+  return height_;
+}
+inline ::std::string* Dimensions::release_height() {
+  clear_has_height();
+  if (height_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = height_;
+    height_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Dimensions::set_allocated_height(::std::string* height) {
+  if (height_ != &::google::protobuf::internal::kEmptyString) {
+    delete height_;
+  }
+  if (height) {
+    set_has_height();
+    height_ = height;
+  } else {
+    clear_has_height();
+    height_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
 
 // Layout
 
@@ -488,53 +747,91 @@ inline void Layout::set_padding(bool value) {
   padding_ = value;
 }
 
-// optional .rec.gui.Size size = 7;
-inline bool Layout::has_size() const {
+// optional .rec.gui.Size default_size = 7;
+inline bool Layout::has_default_size() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void Layout::set_has_size() {
+inline void Layout::set_has_default_size() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void Layout::clear_has_size() {
+inline void Layout::clear_has_default_size() {
   _has_bits_[0] &= ~0x00000040u;
 }
-inline void Layout::clear_size() {
-  if (size_ != NULL) size_->::rec::gui::Size::Clear();
-  clear_has_size();
+inline void Layout::clear_default_size() {
+  if (default_size_ != NULL) default_size_->::rec::gui::Size::Clear();
+  clear_has_default_size();
 }
-inline const ::rec::gui::Size& Layout::size() const {
-  return size_ != NULL ? *size_ : *default_instance_->size_;
+inline const ::rec::gui::Size& Layout::default_size() const {
+  return default_size_ != NULL ? *default_size_ : *default_instance_->default_size_;
 }
-inline ::rec::gui::Size* Layout::mutable_size() {
-  set_has_size();
-  if (size_ == NULL) size_ = new ::rec::gui::Size;
-  return size_;
+inline ::rec::gui::Size* Layout::mutable_default_size() {
+  set_has_default_size();
+  if (default_size_ == NULL) default_size_ = new ::rec::gui::Size;
+  return default_size_;
 }
-inline ::rec::gui::Size* Layout::release_size() {
-  clear_has_size();
-  ::rec::gui::Size* temp = size_;
-  size_ = NULL;
+inline ::rec::gui::Size* Layout::release_default_size() {
+  clear_has_default_size();
+  ::rec::gui::Size* temp = default_size_;
+  default_size_ = NULL;
   return temp;
 }
-inline void Layout::set_allocated_size(::rec::gui::Size* size) {
-  delete size_;
-  size_ = size;
-  if (size) {
-    set_has_size();
+inline void Layout::set_allocated_default_size(::rec::gui::Size* default_size) {
+  delete default_size_;
+  default_size_ = default_size;
+  if (default_size) {
+    set_has_default_size();
   } else {
-    clear_has_size();
+    clear_has_default_size();
   }
 }
 
-// optional .rec.gui.ComponentProto container = 8;
-inline bool Layout::has_container() const {
+// optional .rec.gui.Dimensions dimensions = 8;
+inline bool Layout::has_dimensions() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
-inline void Layout::set_has_container() {
+inline void Layout::set_has_dimensions() {
   _has_bits_[0] |= 0x00000080u;
 }
-inline void Layout::clear_has_container() {
+inline void Layout::clear_has_dimensions() {
   _has_bits_[0] &= ~0x00000080u;
+}
+inline void Layout::clear_dimensions() {
+  if (dimensions_ != NULL) dimensions_->::rec::gui::Dimensions::Clear();
+  clear_has_dimensions();
+}
+inline const ::rec::gui::Dimensions& Layout::dimensions() const {
+  return dimensions_ != NULL ? *dimensions_ : *default_instance_->dimensions_;
+}
+inline ::rec::gui::Dimensions* Layout::mutable_dimensions() {
+  set_has_dimensions();
+  if (dimensions_ == NULL) dimensions_ = new ::rec::gui::Dimensions;
+  return dimensions_;
+}
+inline ::rec::gui::Dimensions* Layout::release_dimensions() {
+  clear_has_dimensions();
+  ::rec::gui::Dimensions* temp = dimensions_;
+  dimensions_ = NULL;
+  return temp;
+}
+inline void Layout::set_allocated_dimensions(::rec::gui::Dimensions* dimensions) {
+  delete dimensions_;
+  dimensions_ = dimensions;
+  if (dimensions) {
+    set_has_dimensions();
+  } else {
+    clear_has_dimensions();
+  }
+}
+
+// optional .rec.gui.ComponentProto container = 9;
+inline bool Layout::has_container() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void Layout::set_has_container() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void Layout::clear_has_container() {
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void Layout::clear_container() {
   if (container_ != NULL) container_->::rec::gui::ComponentProto::Clear();
@@ -564,7 +861,7 @@ inline void Layout::set_allocated_container(::rec::gui::ComponentProto* containe
   }
 }
 
-// repeated .rec.gui.ComponentProto component = 9;
+// repeated .rec.gui.ComponentProto component = 10;
 inline int Layout::component_size() const {
   return component_.size();
 }

@@ -37,7 +37,7 @@ namespace BinaryData
     const int            KeyStrokeMap_defSize = 5474;
 
     extern const char*   CommandBar_def;
-    const int            CommandBar_defSize = 623;
+    const int            CommandBar_defSize = 704;
 
     extern const char*   Constants_def;
     const int            Constants_defSize = 107;
@@ -52,40 +52,40 @@ namespace BinaryData
     const int            Layout_defSize = 376;
 
     extern const char*   LeftTransformPanel_def;
-    const int            LeftTransformPanel_defSize = 665;
+    const int            LeftTransformPanel_defSize = 673;
 
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 356;
 
     extern const char*   ModeSelector_def;
-    const int            ModeSelector_defSize = 270;
+    const int            ModeSelector_defSize = 278;
 
     extern const char*   NavigationPanel_def;
-    const int            NavigationPanel_defSize = 529;
+    const int            NavigationPanel_defSize = 534;
 
     extern const char*   PlaybackPanel_def;
-    const int            PlaybackPanel_defSize = 620;
+    const int            PlaybackPanel_defSize = 625;
 
     extern const char*   RightTransformPanel_def;
-    const int            RightTransformPanel_defSize = 1301;
+    const int            RightTransformPanel_defSize = 1311;
 
     extern const char*   RightTransformPanelMasterTune_def;
-    const int            RightTransformPanelMasterTune_defSize = 1116;
+    const int            RightTransformPanelMasterTune_defSize = 1128;
 
     extern const char*   SongData_def;
-    const int            SongData_defSize = 1436;
+    const int            SongData_defSize = 1444;
 
     extern const char*   TimeController_def;
-    const int            TimeController_defSize = 448;
+    const int            TimeController_defSize = 449;
 
     extern const char*   TransformController_def;
     const int            TransformController_defSize = 256;
 
     extern const char*   TransportButtonsPanel_def;
-    const int            TransportButtonsPanel_defSize = 913;
+    const int            TransportButtonsPanel_defSize = 926;
 
     extern const char*   TransportController_def;
-    const int            TransportController_defSize = 366;
+    const int            TransportController_defSize = 374;
 
     extern const char*   Waveform_def;
     const int            Waveform_defSize = 182;

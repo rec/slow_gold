@@ -46,10 +46,11 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<MainPage> mainPage_;
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
-  gui::audio::CommandBar* commandBar() { return commandBar_.get(); }
+  Component* commandBar() { return commandBar2_.get(); }
 
  private:
   unique_ptr<gui::audio::CommandBar> commandBar_;
+  unique_ptr<Component> commandBar2_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
   DrawableButton* startStopButton_;

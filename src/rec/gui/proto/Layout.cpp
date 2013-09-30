@@ -1,6 +1,7 @@
 #include "rec/gui/proto/Layout.h"
 #include "rec/gui/proto/Component.h"
 #include "rec/gui/proto/Context.h"
+#include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Layout.pb.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/program/JuceModel.h"
@@ -31,7 +32,8 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
   for (auto& component: layout.component()) {
     auto child = makeComponent(Context(component, constants, panel, addr));
     if (panel) {
-      auto& size = component.has_size() ? component.size() : layout.size();
+      auto& size = component.has_size() ? component.size() :
+          layout.default_size();
       panel->addToPanel(child.get(), constants, size);
     } else {
       comp->addAndMakeVisible(child.get());
@@ -41,6 +43,11 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
 
   if (layout.padding())
     panel->addToPanel(new Panel);
+
+  if (layout.has_dimensions()) {
+    comp->setSize(constants.getDouble(layout.dimensions().width()),
+                  constants.getDouble(layout.dimensions().height()));
+  }
 
   return std::move(comp);
 }

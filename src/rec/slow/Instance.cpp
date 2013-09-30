@@ -173,8 +173,6 @@ void Instance::init() {
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
 
-  components_->commandBar()->addListener(guiListener_.get());
-
   player_->setSource(makeSource());
   components_->waveform()->setAudioThumbnail(bufferFiller_->thumbnail());
 

@@ -1,5 +1,6 @@
 layout {
   name: "NavigationPanel"
+
   component {
     custom {
       type_name: "TreeView"
@@ -10,9 +11,11 @@ layout {
       preferred: "-0.2"
     }
   }
+
   component {
     resizer: "directory_x"
   }
+
   component {
     layout: "SongData"
     size {
@@ -21,9 +24,11 @@ layout {
       preferred: "-0.30"
     }
   }
+
   component {
     resizer: "metadata_x"
   }
+
   component {
     custom {
       type_name: "Loops"

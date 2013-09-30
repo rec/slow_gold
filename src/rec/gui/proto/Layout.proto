@@ -5,6 +5,11 @@ import "rec/gui/Orientation.proto";
 import "rec/gui/proto/Component.proto";
 import "rec/gui/proto/Size.proto";
 
+message Dimensions {
+  optional string width = 1;
+  optional string height = 2;
+};
+
 message Layout {
   optional string name = 1;
   optional OrientationProto.Orientation orientation = 2;
@@ -19,12 +24,13 @@ message Layout {
   // full size of the layout.
   optional bool padding = 6;
 
-  optional Size size = 7;
+  optional Size default_size = 7;
+  optional Dimensions dimensions = 8;
 
   // If container is present, then no layout is created - instead the container
   // component is created and used as a parent for the remaining components.
-  optional ComponentProto container = 8;
-  repeated ComponentProto component = 9;
+  optional ComponentProto container = 9;
+  repeated ComponentProto component = 10;
 };
 
 message Layouts {

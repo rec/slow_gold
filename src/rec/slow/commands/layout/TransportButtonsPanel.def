@@ -1,8 +1,9 @@
 layout {
   name: "TransportButtonsPanel"
-  size {
+  default_size {
     fixed: "TRANSPORT_SIZE"
   }
+
   component {
     name: "StartStopButton"
     tooltip: "Start/Stop Button: Toggle between pause and play."
@@ -11,6 +12,7 @@ layout {
       command: "TOGGLE_START_STOP"
     }
   }
+
   component {
     name: "JumpToStartButton"
     tooltip: "Jump Forward Button: Jump to the start of the track."
@@ -18,6 +20,7 @@ layout {
       command: "JUMP_SELECTED"
     }
   }
+
   component {
     name: "JumpBackButton"
     tooltip: "Jump Back Button: Jump to the start of the previous segment."
@@ -26,6 +29,7 @@ layout {
       command_index: 1
     }
   }
+
   component {
     name: "JumpForwardButton"
     tooltip: "Jump To Start Button: Jump to the next segment."
@@ -34,6 +38,7 @@ layout {
       command_index: 3
     }
   }
+
   component {
     layout: "TimeController"
      size {

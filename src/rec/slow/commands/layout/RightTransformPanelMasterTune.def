@@ -2,9 +2,10 @@ layout {
   name: "RightTransformPanelMasterTune"
   padding: true
   orientation: VERTICAL
-  size {
+  default_size {
     fixed: "25"
   }
+
   component {
     name: "SpeedSlider"
     tooltip: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
@@ -13,6 +14,7 @@ layout {
       caption: "Stretch"
     }
   }
+
   component {
     name: "PitchSlider"
     tooltip: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
@@ -21,6 +23,7 @@ layout {
       caption: "Pitch"
     }
   }
+
   component {
     name: "FinePitchSlider"
     tooltip: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
@@ -29,6 +32,7 @@ layout {
       caption: "Tune"
     }
   }
+
   component {
     name: "MasterTuneSlider"
     tooltip: "Master Tune Slider: Master tune is a global detune over all tracks."

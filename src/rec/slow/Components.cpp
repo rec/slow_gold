@@ -42,6 +42,7 @@ Components::Components()
   Component* c = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", c);
   transformController_ = gui::makeLayout("TransformController", c);
+  commandBar2_ = gui::makeLayout("CommandBar", c);
   songData_ = gui::makeLayout("SongData", c);
 
   mainPage_->layoutComponents();
@@ -71,12 +72,12 @@ void Components::setEnabled(bool enabled) {
   transportController_->setEnabled(enabled);
   waveform_->setEnabled(enabled);
   modeSelector_->setEnabled(enabled);
-  commandBar_->setEnabled(enabled);
+  commandBar()->setEnabled(enabled);
   mainPage_->setEnabled(enabled);
 
   enableAllDrawableButtons(transportController_.get(), enabled);
   enableAllDrawableButtons(modeSelector_.get(), enabled);
-  enableAllDrawableButtons(commandBar_.get(), enabled);
+  enableAllDrawableButtons(commandBar(), enabled);
 }
 
 void Components::operator()(const music::Metadata& md) {

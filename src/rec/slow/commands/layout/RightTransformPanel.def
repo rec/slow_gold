@@ -2,7 +2,7 @@ layout {
   name: "RightTransformPanel"
   padding: true
   orientation: VERTICAL
-  size {
+  default_size {
     fixed: "30"
   }
 
@@ -20,6 +20,7 @@ layout {
       detent_radius: "0.008"
     }
   }
+
   component {
     name: "PitchSlider"
     tooltip: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
@@ -34,6 +35,7 @@ layout {
       detent: "0"
     }
   }
+
   component {
     name: "FinePitchSlider"
     tooltip: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."

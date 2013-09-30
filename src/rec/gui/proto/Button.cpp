@@ -16,6 +16,7 @@ namespace {
 
 void construct(unique_ptr<Drawable>* drawable, const string& name) {
   drawable->reset(constructName<Drawable>(name + "_svg"));
+  DCHECK(drawable->get()) << "Couldn't create " << name;
 }
 
 }  // namespace

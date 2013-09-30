@@ -21,6 +21,9 @@ namespace gui {
 
 namespace {
 
+const ::google::protobuf::Descriptor* Dimensions_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Dimensions_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Layout_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Layout_reflection_ = NULL;
@@ -37,15 +40,32 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/gui/proto/Layout.proto");
   GOOGLE_CHECK(file != NULL);
-  Layout_descriptor_ = file->message_type(0);
-  static const int Layout_offsets_[9] = {
+  Dimensions_descriptor_ = file->message_type(0);
+  static const int Dimensions_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dimensions, width_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dimensions, height_),
+  };
+  Dimensions_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Dimensions_descriptor_,
+      Dimensions::default_instance_,
+      Dimensions_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dimensions, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dimensions, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Dimensions));
+  Layout_descriptor_ = file->message_type(1);
+  static const int Layout_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, orientation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_main_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_opaque_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, padding_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, default_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, dimensions_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, container_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, component_),
   };
@@ -60,7 +80,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Layout));
-  Layouts_descriptor_ = file->message_type(1);
+  Layouts_descriptor_ = file->message_type(2);
   static const int Layouts_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layouts, layout_),
   };
@@ -88,6 +108,8 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Dimensions_descriptor_, &Dimensions::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Layout_descriptor_, &Layout::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Layouts_descriptor_, &Layouts::default_instance());
@@ -96,6 +118,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto() {
+  delete Dimensions::default_instance_;
+  delete Dimensions_reflection_;
   delete Layout::default_instance_;
   delete Layout_reflection_;
   delete Layouts::default_instance_;
@@ -116,20 +140,24 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
     "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\034r"
     "ec/data/proto/Address.proto\032\031rec/gui/Ori"
     "entation.proto\032\035rec/gui/proto/Component."
-    "proto\032\030rec/gui/proto/Size.proto\"\242\002\n\006Layo"
-    "ut\022\014\n\004name\030\001 \001(\t\022:\n\013orientation\030\002 \001(\0162%."
-    "rec.gui.OrientationProto.Orientation\022$\n\026"
-    "resize_other_dimension\030\003 \001(\010:\004true\022\017\n\007is"
-    "_main\030\004 \001(\010\022\021\n\tis_opaque\030\005 \001(\010\022\017\n\007paddin"
-    "g\030\006 \001(\010\022\033\n\004size\030\007 \001(\0132\r.rec.gui.Size\022*\n\t"
-    "container\030\010 \001(\0132\027.rec.gui.ComponentProto"
-    "\022*\n\tcomponent\030\t \003(\0132\027.rec.gui.ComponentP"
-    "roto\"*\n\007Layouts\022\037\n\006layout\030\001 \003(\0132\017.rec.gu"
-    "i.Layout", 488);
+    "proto\032\030rec/gui/proto/Size.proto\"+\n\nDimen"
+    "sions\022\r\n\005width\030\001 \001(\t\022\016\n\006height\030\002 \001(\t\"\323\002\n"
+    "\006Layout\022\014\n\004name\030\001 \001(\t\022:\n\013orientation\030\002 \001"
+    "(\0162%.rec.gui.OrientationProto.Orientatio"
+    "n\022$\n\026resize_other_dimension\030\003 \001(\010:\004true\022"
+    "\017\n\007is_main\030\004 \001(\010\022\021\n\tis_opaque\030\005 \001(\010\022\017\n\007p"
+    "adding\030\006 \001(\010\022#\n\014default_size\030\007 \001(\0132\r.rec"
+    ".gui.Size\022\'\n\ndimensions\030\010 \001(\0132\023.rec.gui."
+    "Dimensions\022*\n\tcontainer\030\t \001(\0132\027.rec.gui."
+    "ComponentProto\022*\n\tcomponent\030\n \003(\0132\027.rec."
+    "gui.ComponentProto\"*\n\007Layouts\022\037\n\006layout\030"
+    "\001 \003(\0132\017.rec.gui.Layout", 582);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
+  Dimensions::default_instance_ = new Dimensions();
   Layout::default_instance_ = new Layout();
   Layouts::default_instance_ = new Layouts();
+  Dimensions::default_instance_->InitAsDefaultInstance();
   Layout::default_instance_->InitAsDefaultInstance();
   Layouts::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto);
@@ -145,13 +173,296 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fLayout_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int Dimensions::kWidthFieldNumber;
+const int Dimensions::kHeightFieldNumber;
+#endif  // !_MSC_VER
+
+Dimensions::Dimensions()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void Dimensions::InitAsDefaultInstance() {
+}
+
+Dimensions::Dimensions(const Dimensions& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Dimensions::SharedCtor() {
+  _cached_size_ = 0;
+  width_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  height_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Dimensions::~Dimensions() {
+  SharedDtor();
+}
+
+void Dimensions::SharedDtor() {
+  if (width_ != &::google::protobuf::internal::kEmptyString) {
+    delete width_;
+  }
+  if (height_ != &::google::protobuf::internal::kEmptyString) {
+    delete height_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void Dimensions::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Dimensions::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Dimensions_descriptor_;
+}
+
+const Dimensions& Dimensions::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
+  return *default_instance_;
+}
+
+Dimensions* Dimensions::default_instance_ = NULL;
+
+Dimensions* Dimensions::New() const {
+  return new Dimensions;
+}
+
+void Dimensions::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_width()) {
+      if (width_ != &::google::protobuf::internal::kEmptyString) {
+        width_->clear();
+      }
+    }
+    if (has_height()) {
+      if (height_ != &::google::protobuf::internal::kEmptyString) {
+        height_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Dimensions::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string width = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_width()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->width().data(), this->width().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_height;
+        break;
+      }
+
+      // optional string height = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_height:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_height()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->height().data(), this->height().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Dimensions::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string width = 1;
+  if (has_width()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->width().data(), this->width().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->width(), output);
+  }
+
+  // optional string height = 2;
+  if (has_height()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->height().data(), this->height().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->height(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* Dimensions::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional string width = 1;
+  if (has_width()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->width().data(), this->width().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->width(), target);
+  }
+
+  // optional string height = 2;
+  if (has_height()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->height().data(), this->height().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->height(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int Dimensions::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string width = 1;
+    if (has_width()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->width());
+    }
+
+    // optional string height = 2;
+    if (has_height()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->height());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Dimensions::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Dimensions* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Dimensions*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Dimensions::MergeFrom(const Dimensions& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_width()) {
+      set_width(from.width());
+    }
+    if (from.has_height()) {
+      set_height(from.height());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Dimensions::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dimensions::CopyFrom(const Dimensions& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dimensions::IsInitialized() const {
+
+  return true;
+}
+
+void Dimensions::Swap(Dimensions* other) {
+  if (other != this) {
+    std::swap(width_, other->width_);
+    std::swap(height_, other->height_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Dimensions::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Dimensions_descriptor_;
+  metadata.reflection = Dimensions_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int Layout::kNameFieldNumber;
 const int Layout::kOrientationFieldNumber;
 const int Layout::kResizeOtherDimensionFieldNumber;
 const int Layout::kIsMainFieldNumber;
 const int Layout::kIsOpaqueFieldNumber;
 const int Layout::kPaddingFieldNumber;
-const int Layout::kSizeFieldNumber;
+const int Layout::kDefaultSizeFieldNumber;
+const int Layout::kDimensionsFieldNumber;
 const int Layout::kContainerFieldNumber;
 const int Layout::kComponentFieldNumber;
 #endif  // !_MSC_VER
@@ -162,7 +473,8 @@ Layout::Layout()
 }
 
 void Layout::InitAsDefaultInstance() {
-  size_ = const_cast< ::rec::gui::Size*>(&::rec::gui::Size::default_instance());
+  default_size_ = const_cast< ::rec::gui::Size*>(&::rec::gui::Size::default_instance());
+  dimensions_ = const_cast< ::rec::gui::Dimensions*>(&::rec::gui::Dimensions::default_instance());
   container_ = const_cast< ::rec::gui::ComponentProto*>(&::rec::gui::ComponentProto::default_instance());
 }
 
@@ -180,7 +492,8 @@ void Layout::SharedCtor() {
   is_main_ = false;
   is_opaque_ = false;
   padding_ = false;
-  size_ = NULL;
+  default_size_ = NULL;
+  dimensions_ = NULL;
   container_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -194,7 +507,8 @@ void Layout::SharedDtor() {
     delete name_;
   }
   if (this != default_instance_) {
-    delete size_;
+    delete default_size_;
+    delete dimensions_;
     delete container_;
   }
 }
@@ -232,9 +546,14 @@ void Layout::Clear() {
     is_main_ = false;
     is_opaque_ = false;
     padding_ = false;
-    if (has_size()) {
-      if (size_ != NULL) size_->::rec::gui::Size::Clear();
+    if (has_default_size()) {
+      if (default_size_ != NULL) default_size_->::rec::gui::Size::Clear();
     }
+    if (has_dimensions()) {
+      if (dimensions_ != NULL) dimensions_->::rec::gui::Dimensions::Clear();
+    }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_container()) {
       if (container_ != NULL) container_->::rec::gui::ComponentProto::Clear();
     }
@@ -347,26 +666,40 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(58)) goto parse_size;
+        if (input->ExpectTag(58)) goto parse_default_size;
         break;
       }
 
-      // optional .rec.gui.Size size = 7;
+      // optional .rec.gui.Size default_size = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_size:
+         parse_default_size:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_size()));
+               input, mutable_default_size()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(66)) goto parse_container;
+        if (input->ExpectTag(66)) goto parse_dimensions;
         break;
       }
 
-      // optional .rec.gui.ComponentProto container = 8;
+      // optional .rec.gui.Dimensions dimensions = 8;
       case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_dimensions:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_dimensions()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_container;
+        break;
+      }
+
+      // optional .rec.gui.ComponentProto container = 9;
+      case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_container:
@@ -375,12 +708,12 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(74)) goto parse_component;
+        if (input->ExpectTag(82)) goto parse_component;
         break;
       }
 
-      // repeated .rec.gui.ComponentProto component = 9;
-      case 9: {
+      // repeated .rec.gui.ComponentProto component = 10;
+      case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_component:
@@ -389,7 +722,7 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(74)) goto parse_component;
+        if (input->ExpectTag(82)) goto parse_component;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -447,22 +780,28 @@ void Layout::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->padding(), output);
   }
 
-  // optional .rec.gui.Size size = 7;
-  if (has_size()) {
+  // optional .rec.gui.Size default_size = 7;
+  if (has_default_size()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->size(), output);
+      7, this->default_size(), output);
   }
 
-  // optional .rec.gui.ComponentProto container = 8;
+  // optional .rec.gui.Dimensions dimensions = 8;
+  if (has_dimensions()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->dimensions(), output);
+  }
+
+  // optional .rec.gui.ComponentProto container = 9;
   if (has_container()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, this->container(), output);
+      9, this->container(), output);
   }
 
-  // repeated .rec.gui.ComponentProto component = 9;
+  // repeated .rec.gui.ComponentProto component = 10;
   for (int i = 0; i < this->component_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->component(i), output);
+      10, this->component(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -509,25 +848,32 @@ void Layout::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->padding(), target);
   }
 
-  // optional .rec.gui.Size size = 7;
-  if (has_size()) {
+  // optional .rec.gui.Size default_size = 7;
+  if (has_default_size()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, this->size(), target);
+        7, this->default_size(), target);
   }
 
-  // optional .rec.gui.ComponentProto container = 8;
+  // optional .rec.gui.Dimensions dimensions = 8;
+  if (has_dimensions()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, this->dimensions(), target);
+  }
+
+  // optional .rec.gui.ComponentProto container = 9;
   if (has_container()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        8, this->container(), target);
+        9, this->container(), target);
   }
 
-  // repeated .rec.gui.ComponentProto component = 9;
+  // repeated .rec.gui.ComponentProto component = 10;
   for (int i = 0; i < this->component_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        9, this->component(i), target);
+        10, this->component(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -574,14 +920,23 @@ int Layout::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // optional .rec.gui.Size size = 7;
-    if (has_size()) {
+    // optional .rec.gui.Size default_size = 7;
+    if (has_default_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->size());
+          this->default_size());
     }
 
-    // optional .rec.gui.ComponentProto container = 8;
+    // optional .rec.gui.Dimensions dimensions = 8;
+    if (has_dimensions()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->dimensions());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .rec.gui.ComponentProto container = 9;
     if (has_container()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -589,7 +944,7 @@ int Layout::ByteSize() const {
     }
 
   }
-  // repeated .rec.gui.ComponentProto component = 9;
+  // repeated .rec.gui.ComponentProto component = 10;
   total_size += 1 * this->component_size();
   for (int i = 0; i < this->component_size(); i++) {
     total_size +=
@@ -642,9 +997,14 @@ void Layout::MergeFrom(const Layout& from) {
     if (from.has_padding()) {
       set_padding(from.padding());
     }
-    if (from.has_size()) {
-      mutable_size()->::rec::gui::Size::MergeFrom(from.size());
+    if (from.has_default_size()) {
+      mutable_default_size()->::rec::gui::Size::MergeFrom(from.default_size());
     }
+    if (from.has_dimensions()) {
+      mutable_dimensions()->::rec::gui::Dimensions::MergeFrom(from.dimensions());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_container()) {
       mutable_container()->::rec::gui::ComponentProto::MergeFrom(from.container());
     }
@@ -677,7 +1037,8 @@ void Layout::Swap(Layout* other) {
     std::swap(is_main_, other->is_main_);
     std::swap(is_opaque_, other->is_opaque_);
     std::swap(padding_, other->padding_);
-    std::swap(size_, other->size_);
+    std::swap(default_size_, other->default_size_);
+    std::swap(dimensions_, other->dimensions_);
     std::swap(container_, other->container_);
     component_.Swap(&other->component_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

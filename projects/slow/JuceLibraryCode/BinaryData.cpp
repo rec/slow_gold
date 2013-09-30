@@ -1417,25 +1417,32 @@ static const unsigned char temp_binary_data_10[] =
 "layout {\n"
 "  name: \"CommandBar\"\n"
 "  padding: true\n"
-"  size {\n"
+"  default_size {\n"
 "    min: \"COMMAND_BUTTON_HEIGHT\"\n"
 "  }\n"
+"  dimensions {\n"
+"    width: \"118\"\n"
+"    height: \"45\"\n"
+"  }\n"
+"\n"
 "  component {\n"
-"    name: \"CreateNow\"\n"
+"    name: \"AddLoopPointButton\"\n"
 "    tooltip: \"Add Loop Point Button: Add a loop point at the current time.\"\n"
 "    button {\n"
 "      command: \"ADD_LOOP_POINT\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
-"    name: \"ZoomOutFull\"\n"
+"    name: \"ZoomOutButton\"\n"
 "    tooltip: \"Zoom Out Full Button: Zoom the waveform all the way out.\"\n"
 "    button {\n"
 "      command: \"ZOOM_OUT_FULL\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
-"    name: \"ZoomToSelection\"\n"
+"    name: \"ZoomToSelectionButton\"\n"
 "    tooltip: \"Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform.\"\n"
 "    button {\n"
 "      command: \"ZOOM_TO_SELECTION\"\n"
@@ -1543,7 +1550,7 @@ static const unsigned char temp_binary_data_15[] =
 "  name: \"LeftTransformPanel\"\n"
 "  orientation: VERTICAL\n"
 "  padding: true\n"
-"  size {\n"
+"  default_size {\n"
 "    fixed: \"30\"\n"
 "  }\n"
 "\n"
@@ -1603,7 +1610,7 @@ const char* MainPanel_def = (const char*) temp_binary_data_16;
 static const unsigned char temp_binary_data_17[] =
 "layout {\n"
 "  name: \"ModeSelector\"\n"
-"  size {\n"
+"  default_size {\n"
 "    min: \"MODE_SELECTOR_HEIGHT\"\n"
 "  }\n"
 "  component {\n"
@@ -1626,6 +1633,7 @@ const char* ModeSelector_def = (const char*) temp_binary_data_17;
 static const unsigned char temp_binary_data_18[] =
 "layout {\n"
 "  name: \"NavigationPanel\"\n"
+"\n"
 "  component {\n"
 "    custom {\n"
 "      type_name: \"TreeView\"\n"
@@ -1636,9 +1644,11 @@ static const unsigned char temp_binary_data_18[] =
 "      preferred: \"-0.2\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    resizer: \"directory_x\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"SongData\"\n"
 "    size {\n"
@@ -1647,9 +1657,11 @@ static const unsigned char temp_binary_data_18[] =
 "      preferred: \"-0.30\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    resizer: \"metadata_x\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    custom {\n"
 "      type_name: \"Loops\"\n"
@@ -1668,6 +1680,7 @@ const char* NavigationPanel_def = (const char*) temp_binary_data_18;
 static const unsigned char temp_binary_data_19[] =
 "layout {\n"
 "  name: \"PlaybackPanel\"\n"
+"\n"
 "  component {\n"
 "    name: \"Help\"\n"
 "    tooltip: \"Help Panel: Shows help about whatever the mouse is over.\"\n"
@@ -1684,9 +1697,11 @@ static const unsigned char temp_binary_data_19[] =
 "      }\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    resizer: \"help_x\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"TransformController\"\n"
 "    size {\n"
@@ -1694,9 +1709,11 @@ static const unsigned char temp_binary_data_19[] =
 "      preferred: \"-0.75\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    resizer: \"transform_x\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"TransportController\"\n"
 "    size {\n"
@@ -1714,7 +1731,7 @@ static const unsigned char temp_binary_data_20[] =
 "  name: \"RightTransformPanel\"\n"
 "  padding: true\n"
 "  orientation: VERTICAL\n"
-"  size {\n"
+"  default_size {\n"
 "    fixed: \"30\"\n"
 "  }\n"
 "\n"
@@ -1732,6 +1749,7 @@ static const unsigned char temp_binary_data_20[] =
 "      detent_radius: \"0.008\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"PitchSlider\"\n"
 "    tooltip: \"Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones.\"\n"
@@ -1746,6 +1764,7 @@ static const unsigned char temp_binary_data_20[] =
 "      detent: \"0\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"FinePitchSlider\"\n"
 "    tooltip: \"Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone).\"\n"
@@ -1770,9 +1789,10 @@ static const unsigned char temp_binary_data_21[] =
 "  name: \"RightTransformPanelMasterTune\"\n"
 "  padding: true\n"
 "  orientation: VERTICAL\n"
-"  size {\n"
+"  default_size {\n"
 "    fixed: \"25\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"SpeedSlider\"\n"
 "    tooltip: \"Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster.\"\n"
@@ -1781,6 +1801,7 @@ static const unsigned char temp_binary_data_21[] =
 "      caption: \"Stretch\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"PitchSlider\"\n"
 "    tooltip: \"Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones.\"\n"
@@ -1789,6 +1810,7 @@ static const unsigned char temp_binary_data_21[] =
 "      caption: \"Pitch\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"FinePitchSlider\"\n"
 "    tooltip: \"Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone).\"\n"
@@ -1797,6 +1819,7 @@ static const unsigned char temp_binary_data_21[] =
 "      caption: \"Tune\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"MasterTuneSlider\"\n"
 "    tooltip: \"Master Tune Slider: Master tune is a global detune over all tracks.\"\n"
@@ -1814,7 +1837,7 @@ static const unsigned char temp_binary_data_22[] =
 "layout {\n"
 "  name: \"SongData\"\n"
 "  orientation: VERTICAL\n"
-"  size {\n"
+"  default_size {\n"
 "    min: \"12\"\n"
 "    max: \"20\"\n"
 "    preferred: \"20\"\n"
@@ -1900,6 +1923,7 @@ static const unsigned char temp_binary_data_23[] =
 "    }\n"
 "    time {}\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"SongDial\"\n"
 "    size {\n"
@@ -1953,9 +1977,10 @@ const char* TransformController_def = (const char*) temp_binary_data_24;
 static const unsigned char temp_binary_data_25[] =
 "layout {\n"
 "  name: \"TransportButtonsPanel\"\n"
-"  size {\n"
+"  default_size {\n"
 "    fixed: \"TRANSPORT_SIZE\"\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"StartStopButton\"\n"
 "    tooltip: \"Start/Stop Button: Toggle between pause and play.\"\n"
@@ -1964,6 +1989,7 @@ static const unsigned char temp_binary_data_25[] =
 "      command: \"TOGGLE_START_STOP\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"JumpToStartButton\"\n"
 "    tooltip: \"Jump Forward Button: Jump to the start of the track.\"\n"
@@ -1971,6 +1997,7 @@ static const unsigned char temp_binary_data_25[] =
 "      command: \"JUMP_SELECTED\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"JumpBackButton\"\n"
 "    tooltip: \"Jump Back Button: Jump to the start of the previous segment.\"\n"
@@ -1979,6 +2006,7 @@ static const unsigned char temp_binary_data_25[] =
 "      command_index: 1\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    name: \"JumpForwardButton\"\n"
 "    tooltip: \"Jump To Start Button: Jump to the next segment.\"\n"
@@ -1987,6 +2015,7 @@ static const unsigned char temp_binary_data_25[] =
 "      command_index: 3\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"TimeController\"\n"
 "     size {\n"
@@ -2002,7 +2031,7 @@ static const unsigned char temp_binary_data_26[] =
 "layout {\n"
 "  name: \"TransportController\"\n"
 "  orientation: VERTICAL\n"
-"  size {\n"
+"  default_size {\n"
 "    fixed: \"TRANSPORT_SIZE\"\n"
 "  }\n"
 "  component {\n"
@@ -13788,23 +13817,23 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x29a9fa09:  numBytes = 4871; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3732; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
-        case 0x5c64b82e:  numBytes = 623; return CommandBar_def;
+        case 0x5c64b82e:  numBytes = 704; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 107; return Constants_def;
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
-        case 0x28df9dc5:  numBytes = 665; return LeftTransformPanel_def;
+        case 0x28df9dc5:  numBytes = 673; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 356; return MainPanel_def;
-        case 0xd66a1508:  numBytes = 270; return ModeSelector_def;
-        case 0x75b00f76:  numBytes = 529; return NavigationPanel_def;
-        case 0x334c534f:  numBytes = 620; return PlaybackPanel_def;
-        case 0x125e705a:  numBytes = 1301; return RightTransformPanel_def;
-        case 0xea90c3f4:  numBytes = 1116; return RightTransformPanelMasterTune_def;
-        case 0x1b5b8645:  numBytes = 1436; return SongData_def;
-        case 0x4b55592f:  numBytes = 448; return TimeController_def;
+        case 0xd66a1508:  numBytes = 278; return ModeSelector_def;
+        case 0x75b00f76:  numBytes = 534; return NavigationPanel_def;
+        case 0x334c534f:  numBytes = 625; return PlaybackPanel_def;
+        case 0x125e705a:  numBytes = 1311; return RightTransformPanel_def;
+        case 0xea90c3f4:  numBytes = 1128; return RightTransformPanelMasterTune_def;
+        case 0x1b5b8645:  numBytes = 1444; return SongData_def;
+        case 0x4b55592f:  numBytes = 449; return TimeController_def;
         case 0x29238b4e:  numBytes = 256; return TransformController_def;
-        case 0x964485f2:  numBytes = 913; return TransportButtonsPanel_def;
-        case 0x4bd6484b:  numBytes = 366; return TransportController_def;
+        case 0x964485f2:  numBytes = 926; return TransportButtonsPanel_def;
+        case 0x4bd6484b:  numBytes = 374; return TransportController_def;
         case 0x3d219c23:  numBytes = 182; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3837; return Menus_def;

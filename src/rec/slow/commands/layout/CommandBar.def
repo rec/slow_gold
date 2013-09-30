@@ -1,25 +1,32 @@
 layout {
   name: "CommandBar"
   padding: true
-  size {
+  default_size {
     min: "COMMAND_BUTTON_HEIGHT"
   }
+  dimensions {
+    width: "118"
+    height: "45"
+  }
+
   component {
-    name: "CreateNow"
+    name: "AddLoopPointButton"
     tooltip: "Add Loop Point Button: Add a loop point at the current time."
     button {
       command: "ADD_LOOP_POINT"
     }
   }
+
   component {
-    name: "ZoomOutFull"
+    name: "ZoomOutButton"
     tooltip: "Zoom Out Full Button: Zoom the waveform all the way out."
     button {
       command: "ZOOM_OUT_FULL"
     }
   }
+
   component {
-    name: "ZoomToSelection"
+    name: "ZoomToSelectionButton"
     tooltip: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
     button {
       command: "ZOOM_TO_SELECTION"
