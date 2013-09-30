@@ -28,5 +28,8 @@ layout {
 
   component {
     layout: "PlaybackPanel"
+    size {
+      fixed: "100"
+    }
   }
 }

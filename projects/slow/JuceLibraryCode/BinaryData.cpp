@@ -1614,6 +1614,9 @@ static const unsigned char temp_binary_data_16[] =
 "\n"
 "  component {\n"
 "    layout: \"PlaybackPanel\"\n"
+"    size {\n"
+"      fixed: \"100\"\n"
+"    }\n"
 "  }\n"
 "}\n";
 
@@ -13874,7 +13877,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
         case 0x28df9dc5:  numBytes = 677; return LeftTransformPanel_def;
-        case 0xd02ec571:  numBytes = 426; return MainPanel_def;
+        case 0xd02ec571:  numBytes = 462; return MainPanel_def;
         case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 716; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 495; return PlaybackPanel_def;
