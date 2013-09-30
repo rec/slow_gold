@@ -8,7 +8,6 @@
 
 namespace rec { namespace audio { class Gain; }}
 
-namespace rec { namespace gui { namespace audio { class CommandBar; } }}
 namespace rec { namespace gui { namespace audio { class Loops; } }}
 namespace rec { namespace gui { namespace audio { class ModeSelector; } }}
 namespace rec { namespace audio { namespace stretch { class Stretch; } }}
@@ -46,11 +45,10 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<MainPage> mainPage_;
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
-  Component* commandBar() { return commandBar2_.get(); }
+  Component* commandBar() { return commandBar_.get(); }
 
  private:
-  unique_ptr<gui::audio::CommandBar> commandBar_;
-  unique_ptr<Component> commandBar2_;
+  unique_ptr<Component> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
   DrawableButton* startStopButton_;

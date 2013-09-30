@@ -43,17 +43,6 @@ void GuiListener::operator()(const GuiSettings& settings) {
   displayHelpPane_ = settings.show_help_pane();
 }
 
-void GuiListener::operator()(CommandBarCommand command) {
-  if (command == ADD_LOOP_POINT)
-    invokeAndCheck(Command::ADD_LOOP_POINT);
-
-  else if (command == ZOOM_OUT_FULL)
-    invokeAndCheck(Command::ZOOM_OUT_FULL);
-
-  else if (command == ZOOM_TO_SELECTION)
-    invokeAndCheck(Command::ZOOM_TO_SELECTION);
-}
-
 void GuiListener::update() {
   gui::GuiWriteable::writeAll();
   {

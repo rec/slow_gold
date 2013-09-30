@@ -3,7 +3,6 @@
 #include "rec/audio/util/Gain.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/proto/Layout.h"
@@ -36,13 +35,12 @@ Components::Components()
       loops_(new gui::audio::Loops()),
       directoryTree_(new widget::tree::Root),
       modeSelector_(new gui::audio::ModeSelector()),
-      commandBar_(new gui::audio::CommandBar),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
   mainPage_.reset(new MainPage(this));
   Component* c = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", c);
   transformController_ = gui::makeLayout("TransformController", c);
-  commandBar2_ = gui::makeLayout("CommandBar", c);
+  commandBar_ = gui::makeLayout("CommandBar", c);
   songData_ = gui::makeLayout("SongData", c);
 
   mainPage_->layoutComponents();

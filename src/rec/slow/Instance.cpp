@@ -22,7 +22,6 @@
 #include "rec/data/UndoStack.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/LookAndFeel.h"
-#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/proto/Help.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"

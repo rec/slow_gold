@@ -5,7 +5,6 @@
 #include "rec/base/ArraySize.h"
 #include "rec/base/DropDead.h"
 #include "rec/gui/GetHelpText.h"
-#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/proto/Layout.h"
