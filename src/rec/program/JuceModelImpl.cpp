@@ -315,5 +315,15 @@ Thread* JuceModelImpl::getThread(const string& name) {
   return threadMap_.at(name).get();
 }
 
+Component* JuceModelImpl::getComponent(const string& name) const {
+  if (not componentMap_.get()) {
+    componentMap_.reset(new gui::ComponentMap(
+        gui::getComponentMap(program_->getTopComponent())));
+  }
+  return componentMap_->at(name);
+}
+
+
+
 }  // namespace program
 }  // namespace rec

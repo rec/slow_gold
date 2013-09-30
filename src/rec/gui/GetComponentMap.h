@@ -11,7 +11,6 @@ namespace gui {
 typedef std::map<string, Component*> ComponentMap;
 ComponentMap getComponentMap(Component*);
 
-
 }  // namespace gui
 }  // namespace rec
 
