@@ -43,11 +43,10 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<widget::tree::Root> directoryTree_;
 
   unique_ptr<Component> modeSelector_;
-  unique_ptr<gui::audio::CommandBar> commandBar_;
   unique_ptr<MainPage> mainPage_;
   gui::ComponentMap componentMap_;
 
-   template <typename Type>
+  template <typename Type>
   Type* getComponent(const string& name) {
     try {
       Component* comp = componentMap_.at(name);
@@ -61,8 +60,10 @@ class Components : public data::DataListener<music::Metadata>,
   }
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
+  gui::audio::CommandBar* commandBar() { return commandBar_.get(); }
 
  private:
+  unique_ptr<gui::audio::CommandBar> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
   DrawableButton* startStopButton_;

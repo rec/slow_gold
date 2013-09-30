@@ -104,7 +104,7 @@ void MainPage::layoutComponents() {
 
   add(mainPanel_.get(), waveform, MIN_WAVEFORM, -1.0, -0.6);
   waveform->addAndMakeVisible(components_->modeSelector_.get());
-  waveform->addAndMakeVisible(components_->commandBar_.get());
+  waveform->addAndMakeVisible(components_->commandBar());
 
   add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
