@@ -61,7 +61,6 @@ class Instance {
   ptr<CurrentFile> currentFile_;
 
   ptr<audio::source::Player> player_;
-  ptr<Components> components_;
   ptr<CurrentTime> currentTime_;
 
   ptr<MouseListener> mouseListener_;
@@ -69,6 +68,7 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
+  ptr<Components> components_;
 
  private:
   unique_ptr<SlowProgram> slowProgram_;
