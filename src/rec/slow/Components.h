@@ -56,8 +56,6 @@ class Components : public data::DataListener<music::Metadata>,
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;
 
-  // Resizers for playbackPanel_.
-
   unique_ptr<Component> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 

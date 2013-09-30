@@ -80,8 +80,7 @@ const bool USE_NEW_GUI = not true;
 }  // namespace
 
 Components::Components()
-    : loops_(new gui::audio::Loops()),
-      mainPanel_(new MainPanel),
+    : mainPanel_(new MainPanel),
       navigationPanel_(gui::makeLayout("NavigationPanel", mainPanel_.get())),
       playbackPanel_(gui::makeLayout("PlaybackPanel", mainPanel_.get())),
 
@@ -120,7 +119,6 @@ void Components::operator()(const rec::audio::Gain& gain) {
 }
 
 void Components::setEnabled(bool enabled) {
-  loops_->setEnabled(enabled);
   waveform_->setEnabled(enabled);
   modeSelector_->setEnabled(enabled);
   commandBar_->setEnabled(enabled);
