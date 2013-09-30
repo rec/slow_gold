@@ -78,10 +78,10 @@ void CurrentFile::afterFileChange(const VirtualFile& newFile) {
   auto& components = getInstance()->components_;
 
   if (not empty())
-    components->directoryTree_->refreshNode(file_);
+    components->directoryTree()->refreshNode(file_);
 
   if (newFile.path_size())
-    components->directoryTree_->refreshNode(newFile);
+    components->directoryTree()->refreshNode(newFile);
 
   components->setEnabled(length_ != 0);
   broadcastState<Loading>(NOT_LOADING);

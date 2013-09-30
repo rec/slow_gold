@@ -62,7 +62,7 @@ class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
 static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
 
 int navigator(Thread*) {
-  getInstance()->components_->directoryTree_->checkVolumes();
+  getInstance()->components_->directoryTree()->checkVolumes();
   return thread::CONTINUE;
 }
 
@@ -88,7 +88,7 @@ int updateData(Thread* thread) {
 }
 
 int directory(Thread*) {
-  return getInstance()->components_->directoryTree_->run() ? thread::YIELD :
+  return getInstance()->components_->directoryTree()->run() ? thread::YIELD :
     thread::CONTINUE;
 }
 
