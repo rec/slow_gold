@@ -41,7 +41,6 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<Component> transportController_;
 
   unique_ptr<widget::tree::Root> directoryTree_;
-  unique_ptr<widget::waveform::Waveform> waveform_;
 
   unique_ptr<Component> modeSelector_;
   unique_ptr<gui::audio::CommandBar> commandBar_;
@@ -61,11 +60,14 @@ class Components : public data::DataListener<music::Metadata>,
     return nullptr;
   }
 
+  widget::waveform::Waveform* waveform() { return waveform_.get(); }
+
  private:
+  unique_ptr<widget::waveform::Waveform> waveform_;
+
   DrawableButton* startStopButton_;
   Component* levelSlider_;
   Component* speedSlider_;
-
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };

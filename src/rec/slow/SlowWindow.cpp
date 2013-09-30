@@ -138,7 +138,7 @@ void SlowWindow::activeWindowStatusChanged() {
 
   auto& components = getInstance()->components_;
   if (components)
-    components->waveform_->repaint();
+    components->waveform()->repaint();
 }
 
 void SlowWindow::startAboutWindow() {
@@ -159,7 +159,7 @@ void SlowWindow::stopAboutWindow() {
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
   if (!isNowMinimised)
-    getInstance()->components_->waveform_->repaint();
+    getInstance()->components_->waveform()->repaint();
 }
 
 using namespace rec::data;

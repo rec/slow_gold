@@ -142,7 +142,7 @@ void Instance::init() {
   guiListener_.reset(new GuiListener);
   unique_ptr<FillerThread> fillerThread(
       new FillerThread(currentTime_.get(), bufferFiller_.get()));
-  fillerThread->addListener(components_->waveform_.get());
+  fillerThread->addListener(components_->waveform());
   fillerThread_.reset(fillerThread.release());
 
   midiCommandMap_.reset(new command::MidiCommandMap);
@@ -166,7 +166,7 @@ void Instance::init() {
   audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
 
 	typedef gui::DropTarget<Waveform> DropWave;
-  DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform_.get());
+  DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform());
   waveform->dropBroadcaster()->addListener(currentFile_.get());
 
   widget::tree::Root* root = components_->directoryTree_.get();
@@ -176,7 +176,7 @@ void Instance::init() {
   components_->commandBar_->addListener(guiListener_.get());
 
   player_->setSource(makeSource());
-  components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
+  components_->waveform()->setAudioThumbnail(bufferFiller_->thumbnail());
 
   DialogLocker::getDisableBroadcaster()->addListener(juceModel_.get());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());

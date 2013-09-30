@@ -69,8 +69,8 @@ inline const VirtualFile file() {
 
 MouseListener::MouseListener()
     : waveformDragStart_(0), groupingUndoEvents_(false) {
-  components()->waveform_->addMouseListener(this, true);
-  Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
+  components()->waveform()->addMouseListener(this, true);
+  Broadcaster<const MouseWheelEvent&> *w = components()->waveform();
   w->addListener(this);
 }
 
@@ -78,7 +78,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   if (currentFile()->empty())
     return;
 
-  Waveform* waveform = components()->waveform_.get();
+  Waveform* waveform = components()->waveform();
   if (e.eventComponent == waveform) {
     data::getDataCenter()->undoStack()->startGroup();
     groupingUndoEvents_ = true;
@@ -96,7 +96,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
   if (currentFile()->empty())
     return;
 
-  Waveform* waveform = components()->waveform_.get();
+  Waveform* waveform = components()->waveform();
   if (e.eventComponent == waveform)
     dragWaveform(e, waveform);
 
@@ -109,7 +109,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 
 void MouseListener::mouseUp(const MouseEvent&) {
   if (!currentFile()->empty())
-    components()->waveform_->setIsDraggingCursor(false);
+    components()->waveform()->setIsDraggingCursor(false);
 
   if (groupingUndoEvents_)
     data::getDataCenter()->undoStack()->stopGroup();
@@ -136,8 +136,8 @@ Mode::Action MouseListener::getClickAction() {
 }
 
 void MouseListener::operator()(const MouseWheelEvent& e) {
-  const Waveform& waveform = *components()->waveform_;
-  const WaveformModel& model = components()->waveform_->model();
+  const Waveform& waveform = *components()->waveform();
+  const WaveformModel& model = components()->waveform()->model();
   if (e.event_->eventComponent == &waveform) {
     SampleTime time = model.xToTime(e.event_->x);
     double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
@@ -200,7 +200,7 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
 void MouseListener::dragCursor(const MouseEvent& e,
                                widget::waveform::Cursor* cursor) {
   const WaveformModel& model = cursor->waveform()->model();
-  components()->waveform_->setIsDraggingCursor(true);
+  components()->waveform()->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
     int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_ + DRAG_TWEAK;
     SampleTime t = restrict(cursorRestrict_, model.xToTime(cursorX));

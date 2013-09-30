@@ -100,7 +100,7 @@ void MainPage::layoutComponents() {
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
-  Component* waveform = components_->waveform_.get();
+  Component* waveform = components_->waveform();
 
   add(mainPanel_.get(), waveform, MIN_WAVEFORM, -1.0, -0.6);
   waveform->addAndMakeVisible(components_->modeSelector_.get());

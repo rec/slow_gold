@@ -69,8 +69,8 @@ void CurrentFile::resume() {
 void CurrentFile::beforeFileChange() {
   MessageManagerLock l;
   auto& components = getInstance()->components_;
-  components->waveform_->setLoading(true);
-  components->waveform_->repaint();
+  components->waveform()->setLoading(true);
+  components->waveform()->repaint();
 }
 
 void CurrentFile::afterFileChange(const VirtualFile& newFile) {
@@ -84,7 +84,7 @@ void CurrentFile::afterFileChange(const VirtualFile& newFile) {
     components->directoryTree_->refreshNode(newFile);
 
   components->setEnabled(length_ != 0);
-  components->waveform_->setLoading(false);
+  components->waveform()->setLoading(false);
 }
 
 bool CurrentFile::determineIfFileEmpty(bool showError) {

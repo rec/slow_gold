@@ -33,9 +33,9 @@ Components::Components()
     : manager_(program::applicationCommandManager()),
       loops_(new gui::audio::Loops()),
       directoryTree_(new widget::tree::Root),
-      waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
-      commandBar_(new gui::audio::CommandBar) {
+      commandBar_(new gui::audio::CommandBar),
+      waveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
   mainPage_.reset(new MainPage(this));
   Component* c = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", c);
@@ -43,7 +43,6 @@ Components::Components()
   songData_ = gui::makeLayout("SongData", c);
 
   mainPage_->layoutComponents();
-
   componentMap_ = gui::getComponentMap(mainPage_->panel());
 #if 0
   for (auto& i: componentMap_)
@@ -60,7 +59,7 @@ Components::Components()
 Components::~Components() {}
 
 void Components::init() {
-  waveform_->init();
+  waveform()->init();
 }
 
 void Components::operator()(const rec::audio::Gain& gain) {
