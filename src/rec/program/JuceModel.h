@@ -45,6 +45,19 @@ class JuceModel : public ApplicationCommandTarget,
   // @throws std::out_of_range
   const gui::Layout& getLayout(const string&) const;
   const gui::Constants& constants() const;
+
+  template <typename Type>
+  Type* getComponent(const string& name) {
+    try {
+      Component* comp = doGetComponent(name);
+      if (Type* t = dynamic_cast<Type*>(comp))
+        return t;
+      LOG(DFATAL) << "Got component but couldn't cast for " << name;
+    } catch (std::out_of_range&) {
+      LOG(DFATAL) << "Couldn't get component for " << name;
+    }
+    return nullptr;
+  }
   Component* getComponent(const string& name) const;
 
   void startThreads();
@@ -54,6 +67,8 @@ class JuceModel : public ApplicationCommandTarget,
   const command::CommandMapProto& keyMap() const;
 
  private:
+  Component* doGetComponent(const string&) const;
+
   unique_ptr<JuceModelImpl> impl_;
   Program* program_;
   ApplicationCommandManager applicationCommandManager_;
