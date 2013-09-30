@@ -116,7 +116,7 @@ Components::Components()
 
   add(mainPanel_.get(), waveform(), MIN_WAVEFORM, -1.0, -0.6);
   waveform()->addAndMakeVisible(modeSelector_.get());
-  waveform()->addAndMakeVisible(commandBar());
+  waveform()->addAndMakeVisible(commandBar_.get());
 
   add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
@@ -161,11 +161,11 @@ void Components::setEnabled(bool enabled) {
   transportController_->setEnabled(enabled);
   waveform_->setEnabled(enabled);
   modeSelector_->setEnabled(enabled);
-  commandBar()->setEnabled(enabled);
+  commandBar_->setEnabled(enabled);
 
   enableAllDrawableButtons(transportController_.get(), enabled);
   enableAllDrawableButtons(modeSelector_.get(), enabled);
-  enableAllDrawableButtons(commandBar(), enabled);
+  enableAllDrawableButtons(commandBar_.get(), enabled);
 }
 
 void Components::operator()(const music::Metadata& md) {

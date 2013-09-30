@@ -36,15 +36,13 @@ class Components : public data::DataListener<music::Metadata>,
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
   Component* topComponent() { return mainPanel_.get(); }
-  Component* commandBar() { return commandBar_.get(); }
   widget::tree::Root* directoryTree() { return directoryTree_.get(); }
 
+ private:
   unique_ptr<Component> loops_;
   unique_ptr<Component> songData_;
   unique_ptr<Component> transformController_;
   unique_ptr<Component> transportController_;
-
- private:
   unique_ptr<widget::tree::Root> directoryTree_;
   unique_ptr<Component> modeSelector_;
 
