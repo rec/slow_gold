@@ -1,4 +1,6 @@
 #include "rec/gui/proto/Button.h"
+
+#include "rec/data/AddressListener.h"
 #include "rec/gui/LanguageButton.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
@@ -19,6 +21,35 @@ void construct(unique_ptr<Drawable>* drawable, const string& name) {
   DCHECK(drawable->get()) << "Couldn't create " << name;
 }
 
+class ModalButton : public LanguageButton, public data::AddressListener,
+                    public juce::ButtonListener {
+ public:
+  ModalButton(const string& name,
+              const string& tooltip,
+              DrawableButton::ButtonStyle style,
+              const data::Address& address,
+              uint32 modeIndex)
+      : LanguageButton(name, tooltip, style),
+        AddressListener(address),
+        modeIndex_(modeIndex) {
+    addListener(this);
+  }
+
+  void operator()(const data::Value& value) override {
+    setToggleState(value.enum_f() == modeIndex_, juce::dontSendNotification);
+  }
+
+  void buttonClicked(Button*) {
+    value_.set_enum_f(modeIndex_);
+  }
+
+ private:
+  uint32 const modeIndex_;
+  data::Value value_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(ModalButton);
+};
+
 }  // namespace
 
 unique_ptr<Component> makeButton(const Context& context) {
@@ -26,6 +57,10 @@ unique_ptr<Component> makeButton(const Context& context) {
   const ButtonProto& proto = component.button();
   auto style = static_cast<DrawableButton::ButtonStyle>(proto.style());
   unique_ptr<LanguageButton> button(
+      (proto.behavior() == ButtonProto::MODE) ?
+      new ModalButton(component.name(), component.tooltip(), style,
+                      data::splitAddress(component.address()),
+                      proto.mode_index()) :
       new LanguageButton(component.name(), component.tooltip(), style));
   button->setTooltip(component.tooltip());
 

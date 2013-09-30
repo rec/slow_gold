@@ -353,6 +353,13 @@ class ButtonProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 command_index() const;
   inline void set_command_index(::google::protobuf::uint32 value);
 
+  // optional uint32 mode_index = 7;
+  inline bool has_mode_index() const;
+  inline void clear_mode_index();
+  static const int kModeIndexFieldNumber = 7;
+  inline ::google::protobuf::uint32 mode_index() const;
+  inline void set_mode_index(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:rec.gui.ButtonProto)
  private:
   inline void set_has_behavior();
@@ -367,6 +374,8 @@ class ButtonProto : public ::google::protobuf::Message {
   inline void clear_has_command();
   inline void set_has_command_index();
   inline void clear_has_command_index();
+  inline void set_has_mode_index();
+  inline void clear_has_mode_index();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -376,9 +385,10 @@ class ButtonProto : public ::google::protobuf::Message {
   ::rec::gui::ButtonProto_State* state_on_;
   ::std::string* command_;
   ::google::protobuf::uint32 command_index_;
+  ::google::protobuf::uint32 mode_index_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fButton_2eproto();
@@ -698,6 +708,28 @@ inline ::google::protobuf::uint32 ButtonProto::command_index() const {
 inline void ButtonProto::set_command_index(::google::protobuf::uint32 value) {
   set_has_command_index();
   command_index_ = value;
+}
+
+// optional uint32 mode_index = 7;
+inline bool ButtonProto::has_mode_index() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ButtonProto::set_has_mode_index() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ButtonProto::clear_has_mode_index() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ButtonProto::clear_mode_index() {
+  mode_index_ = 0u;
+  clear_has_mode_index();
+}
+inline ::google::protobuf::uint32 ButtonProto::mode_index() const {
+  return mode_index_;
+}
+inline void ButtonProto::set_mode_index(::google::protobuf::uint32 value) {
+  set_has_mode_index();
+  mode_index_ = value;
 }
 
 
