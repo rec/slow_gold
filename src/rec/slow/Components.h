@@ -43,7 +43,7 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<widget::tree::Root> directoryTree_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
-  unique_ptr<gui::audio::ModeSelector> modeSelector_;
+  unique_ptr<Component> modeSelector_;
   unique_ptr<gui::audio::CommandBar> commandBar_;
   unique_ptr<MainPage> mainPage_;
   gui::ComponentMap componentMap_;
