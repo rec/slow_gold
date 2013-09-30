@@ -7,7 +7,6 @@
 #include "rec/slow/Instance.h"
 #include "rec/util/BinaryMacros.h"
 #include "rec/util/Math.h"
-#include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/proto/Defaulter.h"
 #include "rec/util/range/Range.h"
@@ -74,7 +73,14 @@ void Waveform::languageChanged() {
 }
 
 Waveform::~Waveform() {
-  stl::deletePointers(&cursors_);
+  deleteAllChildren();
+  #if 0
+  DLOG(INFO) << "Deleting " << getNumChildComponents() << " components.";
+  for (int i = getNumChildComponents() - 1; i >= 0 ; --i) {
+    DLOG(INFO) << "deleting " << str(getChildComponent(i)->getName());
+    delete getChildComponent(i);
+  }
+  #endif
 }
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
@@ -88,8 +94,8 @@ void Waveform::operator()(Loading loading) {
 
 void Waveform::init() {
   painter_.reset(new WaveformPainter(this));
-  timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
-  StateBroadcaster::instance()->addListener<SampleTime>(timeCursor_.get());
+  timeCursor_ = makeTimeCursor(defaultTimeCursor(), this);
+  StateBroadcaster::instance()->addListener<SampleTime>(timeCursor_);
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {

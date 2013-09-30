@@ -66,7 +66,7 @@ class Waveform : public Component,
 
   void languageChanged() override;
 
-  Cursor* timeCursor() { return timeCursor_.get(); }
+  Cursor* timeCursor() { return timeCursor_; }
 
   const CursorList& getCursors() const { return cursors_; }
   CursorList* getCursorsMutable() { return &cursors_; }
@@ -104,7 +104,7 @@ class Waveform : public Component,
   ptr<WaveformPainter> painter_;
 
   CursorList cursors_;
-  ptr<Cursor> timeCursor_;
+  Cursor* timeCursor_;
 
   juce::MouseCursor	zoomCursor_;
   Loading loading_;
