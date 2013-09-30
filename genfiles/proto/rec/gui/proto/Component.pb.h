@@ -208,6 +208,22 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_min_resizer();
   inline void set_allocated_min_resizer(::std::string* min_resizer);
 
+  // repeated string disable = 22;
+  inline int disable_size() const;
+  inline void clear_disable();
+  static const int kDisableFieldNumber = 22;
+  inline const ::std::string& disable(int index) const;
+  inline ::std::string* mutable_disable(int index);
+  inline void set_disable(int index, const ::std::string& value);
+  inline void set_disable(int index, const char* value);
+  inline void set_disable(int index, const char* value, size_t size);
+  inline ::std::string* add_disable();
+  inline void add_disable(const ::std::string& value);
+  inline void add_disable(const char* value);
+  inline void add_disable(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disable() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disable();
+
   // optional .rec.gui.ButtonProto button = 10;
   inline bool has_button() const;
   inline void clear_button();
@@ -371,6 +387,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::std::string* resizer_;
   ::std::string* min_resizer_;
   static ::std::string* _default_min_resizer_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> disable_;
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::CustomProto* custom_;
@@ -385,7 +402,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(21 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(22 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -922,15 +939,59 @@ inline void ComponentProto::set_allocated_min_resizer(::std::string* min_resizer
   }
 }
 
+// repeated string disable = 22;
+inline int ComponentProto::disable_size() const {
+  return disable_.size();
+}
+inline void ComponentProto::clear_disable() {
+  disable_.Clear();
+}
+inline const ::std::string& ComponentProto::disable(int index) const {
+  return disable_.Get(index);
+}
+inline ::std::string* ComponentProto::mutable_disable(int index) {
+  return disable_.Mutable(index);
+}
+inline void ComponentProto::set_disable(int index, const ::std::string& value) {
+  disable_.Mutable(index)->assign(value);
+}
+inline void ComponentProto::set_disable(int index, const char* value) {
+  disable_.Mutable(index)->assign(value);
+}
+inline void ComponentProto::set_disable(int index, const char* value, size_t size) {
+  disable_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::add_disable() {
+  return disable_.Add();
+}
+inline void ComponentProto::add_disable(const ::std::string& value) {
+  disable_.Add()->assign(value);
+}
+inline void ComponentProto::add_disable(const char* value) {
+  disable_.Add()->assign(value);
+}
+inline void ComponentProto::add_disable(const char* value, size_t size) {
+  disable_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ComponentProto::disable() const {
+  return disable_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+ComponentProto::mutable_disable() {
+  return &disable_;
+}
+
 // optional .rec.gui.ButtonProto button = 10;
 inline bool ComponentProto::has_button() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void ComponentProto::set_has_button() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void ComponentProto::clear_has_button() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void ComponentProto::clear_button() {
   if (button_ != NULL) button_->::rec::gui::ButtonProto::Clear();
@@ -962,13 +1023,13 @@ inline void ComponentProto::set_allocated_button(::rec::gui::ButtonProto* button
 
 // optional .rec.gui.ComboBoxProto combo_box = 11;
 inline bool ComponentProto::has_combo_box() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void ComponentProto::set_has_combo_box() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void ComponentProto::clear_has_combo_box() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void ComponentProto::clear_combo_box() {
   if (combo_box_ != NULL) combo_box_->::rec::gui::ComboBoxProto::Clear();
@@ -1000,13 +1061,13 @@ inline void ComponentProto::set_allocated_combo_box(::rec::gui::ComboBoxProto* c
 
 // optional .rec.gui.CustomProto custom = 12;
 inline bool ComponentProto::has_custom() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void ComponentProto::set_has_custom() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void ComponentProto::clear_has_custom() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void ComponentProto::clear_custom() {
   if (custom_ != NULL) custom_->::rec::gui::CustomProto::Clear();
@@ -1038,13 +1099,13 @@ inline void ComponentProto::set_allocated_custom(::rec::gui::CustomProto* custom
 
 // optional .rec.gui.HelpProto help = 13;
 inline bool ComponentProto::has_help() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void ComponentProto::set_has_help() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void ComponentProto::clear_has_help() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void ComponentProto::clear_help() {
   if (help_ != NULL) help_->::rec::gui::HelpProto::Clear();
@@ -1076,13 +1137,13 @@ inline void ComponentProto::set_allocated_help(::rec::gui::HelpProto* help) {
 
 // optional .rec.gui.LabelProto label = 14;
 inline bool ComponentProto::has_label() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void ComponentProto::set_has_label() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void ComponentProto::clear_has_label() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void ComponentProto::clear_label() {
   if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
@@ -1114,13 +1175,13 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
 
 // optional .rec.gui.LevelMeterProto level_meter = 15;
 inline bool ComponentProto::has_level_meter() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void ComponentProto::set_has_level_meter() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void ComponentProto::clear_has_level_meter() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void ComponentProto::clear_level_meter() {
   if (level_meter_ != NULL) level_meter_->::rec::gui::LevelMeterProto::Clear();
@@ -1152,13 +1213,13 @@ inline void ComponentProto::set_allocated_level_meter(::rec::gui::LevelMeterProt
 
 // optional .rec.gui.ResizerProto full_resizer = 16;
 inline bool ComponentProto::has_full_resizer() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void ComponentProto::set_has_full_resizer() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void ComponentProto::clear_has_full_resizer() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void ComponentProto::clear_full_resizer() {
   if (full_resizer_ != NULL) full_resizer_->::rec::gui::ResizerProto::Clear();
@@ -1190,13 +1251,13 @@ inline void ComponentProto::set_allocated_full_resizer(::rec::gui::ResizerProto*
 
 // optional .rec.gui.SliderProto slider = 17;
 inline bool ComponentProto::has_slider() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void ComponentProto::set_has_slider() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 inline void ComponentProto::clear_has_slider() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void ComponentProto::clear_slider() {
   if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
@@ -1228,13 +1289,13 @@ inline void ComponentProto::set_allocated_slider(::rec::gui::SliderProto* slider
 
 // optional .rec.gui.TextProto text = 18;
 inline bool ComponentProto::has_text() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void ComponentProto::set_has_text() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 inline void ComponentProto::clear_has_text() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline void ComponentProto::clear_text() {
   if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
@@ -1266,13 +1327,13 @@ inline void ComponentProto::set_allocated_text(::rec::gui::TextProto* text) {
 
 // optional .rec.widget.status.time.Dial time_dial = 19;
 inline bool ComponentProto::has_time_dial() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 inline void ComponentProto::set_has_time_dial() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00080000u;
 }
 inline void ComponentProto::clear_has_time_dial() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline void ComponentProto::clear_time_dial() {
   if (time_dial_ != NULL) time_dial_->::rec::widget::status::time::Dial::Clear();
@@ -1304,13 +1365,13 @@ inline void ComponentProto::set_allocated_time_dial(::rec::widget::status::time:
 
 // optional .rec.widget.status.time.Text time = 20;
 inline bool ComponentProto::has_time() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 inline void ComponentProto::set_has_time() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00100000u;
 }
 inline void ComponentProto::clear_has_time() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline void ComponentProto::clear_time() {
   if (time_ != NULL) time_->::rec::widget::status::time::Text::Clear();
@@ -1342,13 +1403,13 @@ inline void ComponentProto::set_allocated_time(::rec::widget::status::time::Text
 
 // optional .rec.gui.ToggleButtonProto toggle_button = 21;
 inline bool ComponentProto::has_toggle_button() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void ComponentProto::set_has_toggle_button() {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00200000u;
 }
 inline void ComponentProto::clear_has_toggle_button() {
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();

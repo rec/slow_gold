@@ -32,6 +32,9 @@ message ComponentProto {
   optional string resizer = 8;
   optional string min_resizer = 9 [default = "0.0"];
 
+  // A list of properties, any one of which will disable this component.
+  repeated string disable = 22;
+
   optional ButtonProto button = 10;
   optional ComboBoxProto combo_box = 11;
   optional CustomProto custom = 12;

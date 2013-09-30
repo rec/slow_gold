@@ -7,9 +7,12 @@
 namespace rec {
 namespace gui {
 
+typedef std::unordered_map<string, bool> PropertyMap;
+
 class DisableableComponent {
  public:
   DisableableComponent() {}
+  virtual ~DisableableComponent() {}
 
   template <typename Type>
   void addDisableProperties(Type properties) {
@@ -32,9 +35,11 @@ class DisableableComponent {
     return false;
   }
 
+  const PropertyMap& map() const { return propertyMap_; }
+
  private:
   CriticalSection lock_;
-  std::unordered_map<string, bool> propertyMap_;
+  PropertyMap propertyMap_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DisableableComponent);
 };
