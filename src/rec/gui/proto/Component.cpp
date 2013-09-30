@@ -1,6 +1,7 @@
 #include "rec/gui/proto/Component.h"
 
 #include "rec/gui/DisableableComponent.h"
+#include "rec/gui/DisableMap.h"
 #include "rec/gui/proto/Button.h"
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Component.pb.h"
@@ -18,6 +19,7 @@
 #include "rec/gui/proto/Time.h"
 #include "rec/gui/proto/TimeDial.h"
 #include "rec/gui/proto/ToggleButton.h"
+#include "rec/program/JuceModel.h"
 
 namespace rec {
 namespace gui {
@@ -80,11 +82,14 @@ unique_ptr<Component> makeComponent(const Context& context) {
   if (ComponentMaker maker = make(comp)) {
     component = maker(context);
     component->setName(comp.name());
-    typedef SettableTooltipClient TTClient;
-    if (TTClient* tt = dynamic_cast<TTClient*>(component.get()))
+    Component* c = component.get();
+    if (SettableTooltipClient* tt = dynamic_cast<SettableTooltipClient*>(c))
       tt->setTooltip(comp.tooltip());
-    DCHECK(dynamic_cast<DisableableComponent*>(component.get()))
-        << comp.ShortDebugString() << " !!! " << component->getName();
+
+    if (DisableableComponent* dc = dynamic_cast<DisableableComponent*>(c))
+      program::juceModel()->disableMap()->addComponent(dc);
+    else
+      LOG(DFATAL) << comp.ShortDebugString() << " !!! " << component->getName();
   } else {
     LOG(DFATAL) << "No component in " << comp.ShortDebugString();
   }
