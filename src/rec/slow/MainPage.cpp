@@ -2,9 +2,6 @@
 
 #include "rec/slow/MainPage.h"
 
-#include "rec/base/ArraySize.h"
-#include "rec/base/DropDead.h"
-#include "rec/gui/GetHelpText.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/slow/AppLayout.pb.h"
@@ -12,14 +9,12 @@
 #include "rec/slow/Instance.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Root.h"
-#include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
 #include "rec/widget/waveform/Zoom.h"
+#include "rec/widget/waveform/Waveform.h"
 
 using namespace juce;
 using namespace rec::data;
-using namespace rec::widget::waveform;
-
 
 TRAN(CD_WINDOW, "CD Window:  Any CDs that you have in "
      "your computer's CD drives will appear here.");
@@ -94,7 +89,6 @@ MainPage::MainPage()
 MainPage::~MainPage() {}
 
 void MainPage::layoutComponents(Components* components) {
-  CHECK_DDD(123, 51, int16, int32);
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 

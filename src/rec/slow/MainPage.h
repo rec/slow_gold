@@ -3,17 +3,11 @@
 
 #include <set>
 
-#include "rec/app/LanguageListener.h"
-#include "rec/gui/DropTarget.h"
-#include "rec/gui/GetHelpText.h"
 #include "rec/gui/SetterResizer.h"
-#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/proto/Panel.h"
 
 namespace rec {
 
-namespace gui { class SetterResizer; }
-namespace gui { class SimpleLabel; }
 namespace slow { class Components; }
 
 namespace slow {
