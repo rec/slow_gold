@@ -33,7 +33,7 @@ Components::Components()
     : loops_(new gui::audio::Loops()),
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
-  mainPage_.reset(new MainPage(this));
+  mainPage_.reset(new MainPage);
   topComponent_ = mainPage_->panel();
   transportController_ = gui::makeLayout("TransportController", topComponent_);
   transformController_ = gui::makeLayout("TransformController", topComponent_);
@@ -41,7 +41,7 @@ Components::Components()
   songData_ = gui::makeLayout("SongData", topComponent_);
   modeSelector_ = gui::makeLayout("ModeSelector", topComponent_);
 
-  mainPage_->layoutComponents();
+  mainPage_->layoutComponents(this);
 }
 
 Components::~Components() {}
@@ -69,7 +69,7 @@ void Components::setEnabled(bool enabled) {
   waveform_->setEnabled(enabled);
   modeSelector_->setEnabled(enabled);
   commandBar()->setEnabled(enabled);
-  mainPage_->setEnabled(enabled);
+  // mainPage_->setEnabled(enabled);
 
   enableAllDrawableButtons(transportController_.get(), enabled);
   enableAllDrawableButtons(modeSelector_.get(), enabled);

@@ -70,13 +70,11 @@ class MainPanel : public gui::Panel {
 
 }  // namespace
 
-MainPage::MainPage(Components* components)
-    : components_(components),
-      mainPanel_(new MainPanel),
+MainPage::MainPage()
+    : mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
       transformPanel_("Transform"),
-      controlPanel_("Control"),
 
       navigationResizer_(makeAddress<AppLayout>("navigation_y"),
                          mainPanel_.get(), 1),
@@ -93,47 +91,36 @@ MainPage::MainPage(Components* components)
       helpPanel_(gui::makeLayout("HelpPanel", mainPanel_.get())) {
 }
 
-void MainPage::layoutComponents() {
+MainPage::~MainPage() {}
+
+void MainPage::layoutComponents(Components* components) {
   CHECK_DDD(123, 51, int16, int32);
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
-  Component* waveform = components_->waveform();
+  Component* waveform = components->waveform();
 
   add(mainPanel_.get(), waveform, MIN_WAVEFORM, -1.0, -0.6);
-  waveform->addAndMakeVisible(components_->modeSelector_.get());
-  waveform->addAndMakeVisible(components_->commandBar());
+  waveform->addAndMakeVisible(components->modeSelector_.get());
+  waveform->addAndMakeVisible(components->commandBar());
 
   add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
   // Navigation panel.
-  add(&navigationPanel_, components_->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
+  add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
-  add(&navigationPanel_, components_->songData_.get(), MIN_SONG_DATA, -1.0, -0.30);
+  add(&navigationPanel_, components->songData_.get(), MIN_SONG_DATA, -1.0, -0.30);
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
-  add(&navigationPanel_, components_->loops_.get(), MIN_LOOPS, -1.0, -0.3);
+  add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
 
   add(&playbackPanel_, &helpResizer_, 5.0);
-  add(&playbackPanel_, components_->transformController_.get(),
+  add(&playbackPanel_, components->transformController_.get(),
       MIN_TRANSFORM_PANEL, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
-  Component *xport = components_->transportController_.get();
+  Component *xport = components->transportController_.get();
   add(&playbackPanel_, xport, MIN_TRANSPORT_PANEL, -1.0, -0.20);
-}
-
-void MainPage::languageChanged() {
-  components_->directoryTree_->treeView()->setTooltip(t_CD_WINDOW);
-}
-
-MainPage::~MainPage() {}
-
-void MainPage::setEnabled(bool enabled) {
-  navigationPanel_.setEnabled(enabled);
-  playbackPanel_.setEnabled(enabled);
-  transformPanel_.setEnabled(enabled);
-  controlPanel_.setEnabled(enabled);
 }
 
 }  // namespace slow

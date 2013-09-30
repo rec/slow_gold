@@ -18,15 +18,13 @@ namespace slow { class Components; }
 
 namespace slow {
 
-class MainPage : public app::LanguageListener {
+class MainPage {
  public:
-  MainPage(Components*);
+  MainPage();
   virtual ~MainPage();
 
-  void layoutComponents();
+  void layoutComponents(Components*);
   gui::Panel* panel() { return mainPanel_.get(); }
-  void setEnabled(bool);
-  virtual void languageChanged();
 
  private:
   Components* components_;
@@ -40,7 +38,6 @@ class MainPage : public app::LanguageListener {
   // playbackPanel_ contains help, transform and the controls.
   gui::Panel playbackPanel_;
   gui::Panel transformPanel_;
-  gui::Panel controlPanel_;
 
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;
@@ -53,7 +50,6 @@ class MainPage : public app::LanguageListener {
   gui::SetterResizer helpResizer_;
   gui::SetterResizer transformResizer_;
 
-  double length_;
   unique_ptr<Component> helpPanel_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MainPage);
