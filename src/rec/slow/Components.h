@@ -41,22 +41,7 @@ class Components : public data::DataListener<music::Metadata>,
   widget::tree::Root* directoryTree();
 
  private:
-  unique_ptr<Component> loops_;
-  unique_ptr<Component> modeSelector_;
-
-  // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
   unique_ptr<Component> mainPanel_;
-
-  // navigationPanel_ contains the navigator, song metadata and loops.
-  unique_ptr<Component> navigationPanel_;
-
-  // playbackPanel_ contains help, transform and the controls.
-  unique_ptr<Component> playbackPanel_;
-
-  // Resizers for mainPanel_;
-
-  unique_ptr<Component> commandBar_;
-  unique_ptr<widget::waveform::Waveform> oldWaveform_;
 
   widget::tree::TreeView* treeView_;
   DrawableButton* startStopButton_;

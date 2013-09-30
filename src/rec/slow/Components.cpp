@@ -75,33 +75,9 @@ void enableAllDrawableButtons(Component *c, bool enabled) {
   }
 }
 
-const bool USE_NEW_GUI = true;
-
 }  // namespace
 
-Components::Components()
-    : mainPanel_(new MainPanel),
-      navigationPanel_(gui::makeLayout("NavigationPanel", mainPanel_.get())),
-      playbackPanel_(gui::makeLayout("PlaybackPanel", mainPanel_.get())),
-
-      oldWaveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
-  if (USE_NEW_GUI) {
-    mainPanel_ = gui::makeLayout("MainPanel", nullptr);
-  } else {
-    #if 0
-    commandBar_ = gui::makeLayout("CommandBar", mainPanel_.get());
-    modeSelector_ = gui::makeLayout("ModeSelector", mainPanel_.get());
-
-    add(mainPanel_.get(), navigationPanel_.get(), MIN_NAV_PANEL, -1.0, -0.2);
-    add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
-    add(mainPanel_.get(), oldWaveform_.get(), MIN_WAVEFORM, -1.0, -0.6);
-    oldWaveform_->addAndMakeVisible(modeSelector_.get());
-    oldWaveform_->addAndMakeVisible(commandBar_.get());
-
-    add(mainPanel_.get(), playbackPanel_.get(), MIN_PLAYBACK_PANEL);
-    #endif
-  }
-}
+Components::Components() : mainPanel_(gui::makeLayout("MainPanel", nullptr)) {}
 
 Components::~Components() {}
 
@@ -112,7 +88,6 @@ void Components::init() {
   levelSlider_ = jm->getComponent<Component>("LevelSlider");
   speedSlider_ = jm->getComponent<Component>("SpeedSlider");
   waveform_ = jm->getComponent<widget::waveform::Waveform>("Waveform");
-  oldWaveform_->init();
   waveform_->init();
   gui::audio::Loops* loops = jm->getComponent<gui::audio::Loops>("Loops");
   loops->setModel(loops);

@@ -32,6 +32,7 @@ class ModalButton : public LanguageButton, public data::AddressListener,
       : LanguageButton(name, tooltip, style),
         AddressListener(address),
         modeIndex_(modeIndex) {
+    DLOG(INFO) << name;
     addListener(this);
   }
 
