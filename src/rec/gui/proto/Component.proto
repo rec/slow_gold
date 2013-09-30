@@ -30,7 +30,7 @@ message ComponentProto {
 
   // Shorthand for a resizer and address.
   optional string resizer = 8;
-  optional string min_resizer = 9 [default = "0"];
+  optional string min_resizer = 9 [default = "0.0"];
 
   optional ButtonProto button = 10;
   optional ComboBoxProto combo_box = 11;

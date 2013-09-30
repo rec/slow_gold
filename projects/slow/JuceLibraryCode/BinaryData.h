@@ -40,7 +40,7 @@ namespace BinaryData
     const int            CommandBar_defSize = 710;
 
     extern const char*   Constants_def;
-    const int            Constants_defSize = 107;
+    const int            Constants_defSize = 155;
 
     extern const char*   GainPanel_def;
     const int            GainPanel_defSize = 551;
@@ -64,7 +64,7 @@ namespace BinaryData
     const int            NavigationPanel_defSize = 534;
 
     extern const char*   PlaybackPanel_def;
-    const int            PlaybackPanel_defSize = 625;
+    const int            PlaybackPanel_defSize = 495;
 
     extern const char*   RightTransformPanel_def;
     const int            RightTransformPanel_defSize = 1315;

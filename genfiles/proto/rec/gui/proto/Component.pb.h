@@ -196,7 +196,7 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_resizer();
   inline void set_allocated_resizer(::std::string* resizer);
 
-  // optional string min_resizer = 9 [default = "0"];
+  // optional string min_resizer = 9 [default = "0.0"];
   inline bool has_min_resizer() const;
   inline void clear_min_resizer();
   static const int kMinResizerFieldNumber = 9;
@@ -852,7 +852,7 @@ inline void ComponentProto::set_allocated_resizer(::std::string* resizer) {
   }
 }
 
-// optional string min_resizer = 9 [default = "0"];
+// optional string min_resizer = 9 [default = "0.0"];
 inline bool ComponentProto::has_min_resizer() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }

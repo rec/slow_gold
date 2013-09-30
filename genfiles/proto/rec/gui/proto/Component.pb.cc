@@ -124,29 +124,29 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "r.proto\032\030rec/gui/proto/Size.proto\032\032rec/g"
     "ui/proto/Slider.proto\032\030rec/gui/proto/Tex"
     "t.proto\032 rec/gui/proto/ToggleButton.prot"
-    "o\032\034rec/widget/status/Time.proto\"\310\005\n\016Comp"
+    "o\032\034rec/widget/status/Time.proto\"\312\005\n\016Comp"
     "onentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tooltip\030\002 \001("
     "\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\017\n\007addres"
     "s\030\004 \001(\t\022\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 "
     "\n\004font\030\006 \001(\0132\022.rec.gui.FontProto\022\016\n\006layo"
-    "ut\030\007 \001(\t\022\017\n\007resizer\030\010 \001(\t\022\026\n\013min_resizer"
-    "\030\t \001(\t:\0010\022$\n\006button\030\n \001(\0132\024.rec.gui.Butt"
-    "onProto\022)\n\tcombo_box\030\013 \001(\0132\026.rec.gui.Com"
-    "boBoxProto\022$\n\006custom\030\014 \001(\0132\024.rec.gui.Cus"
-    "tomProto\022 \n\004help\030\r \001(\0132\022.rec.gui.HelpPro"
-    "to\022\"\n\005label\030\016 \001(\0132\023.rec.gui.LabelProto\022-"
-    "\n\013level_meter\030\017 \001(\0132\030.rec.gui.LevelMeter"
-    "Proto\022+\n\014full_resizer\030\020 \001(\0132\025.rec.gui.Re"
-    "sizerProto\022$\n\006slider\030\021 \001(\0132\024.rec.gui.Sli"
-    "derProto\022 \n\004text\030\022 \001(\0132\022.rec.gui.TextPro"
-    "to\022/\n\ttime_dial\030\023 \001(\0132\034.rec.widget.statu"
-    "s.time.Dial\022*\n\004time\030\024 \001(\0132\034.rec.widget.s"
-    "tatus.time.Text\0221\n\rtoggle_button\030\025 \001(\0132\032"
-    ".rec.gui.ToggleButtonProto", 1146);
+    "ut\030\007 \001(\t\022\017\n\007resizer\030\010 \001(\t\022\030\n\013min_resizer"
+    "\030\t \001(\t:\0030.0\022$\n\006button\030\n \001(\0132\024.rec.gui.Bu"
+    "ttonProto\022)\n\tcombo_box\030\013 \001(\0132\026.rec.gui.C"
+    "omboBoxProto\022$\n\006custom\030\014 \001(\0132\024.rec.gui.C"
+    "ustomProto\022 \n\004help\030\r \001(\0132\022.rec.gui.HelpP"
+    "roto\022\"\n\005label\030\016 \001(\0132\023.rec.gui.LabelProto"
+    "\022-\n\013level_meter\030\017 \001(\0132\030.rec.gui.LevelMet"
+    "erProto\022+\n\014full_resizer\030\020 \001(\0132\025.rec.gui."
+    "ResizerProto\022$\n\006slider\030\021 \001(\0132\024.rec.gui.S"
+    "liderProto\022 \n\004text\030\022 \001(\0132\022.rec.gui.TextP"
+    "roto\022/\n\ttime_dial\030\023 \001(\0132\034.rec.widget.sta"
+    "tus.time.Dial\022*\n\004time\030\024 \001(\0132\034.rec.widget"
+    ".status.time.Text\0221\n\rtoggle_button\030\025 \001(\013"
+    "2\032.rec.gui.ToggleButtonProto", 1148);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::_default_min_resizer_ =
-      new ::std::string("0", 1);
+      new ::std::string("0.0", 3);
   ComponentProto::default_instance_ = new ComponentProto();
   ComponentProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto);
@@ -518,7 +518,7 @@ bool ComponentProto::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string min_resizer = 9 [default = "0"];
+      // optional string min_resizer = 9 [default = "0.0"];
       case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -784,7 +784,7 @@ void ComponentProto::SerializeWithCachedSizes(
       8, this->resizer(), output);
   }
 
-  // optional string min_resizer = 9 [default = "0"];
+  // optional string min_resizer = 9 [default = "0.0"];
   if (has_min_resizer()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->min_resizer().data(), this->min_resizer().length(),
@@ -944,7 +944,7 @@ void ComponentProto::SerializeWithCachedSizes(
         8, this->resizer(), target);
   }
 
-  // optional string min_resizer = 9 [default = "0"];
+  // optional string min_resizer = 9 [default = "0.0"];
   if (has_min_resizer()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->min_resizer().data(), this->min_resizer().length(),
@@ -1100,7 +1100,7 @@ int ComponentProto::ByteSize() const {
 
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string min_resizer = 9 [default = "0"];
+    // optional string min_resizer = 9 [default = "0.0"];
     if (has_min_resizer()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(

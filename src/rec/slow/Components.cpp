@@ -79,6 +79,8 @@ void enableAllDrawableButtons(Component *c, bool enabled) {
   }
 }
 
+const bool USE_NEW_GUI = not false;
+
 }  // namespace
 
 Components::Components()
@@ -87,7 +89,6 @@ Components::Components()
       mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
-      transformPanel_("Transform"),
 
       navigationResizer_(makeAddress<AppLayout>("navigation_y"),
                          mainPanel_.get(), 1),
@@ -118,8 +119,6 @@ Components::Components()
   waveform_->addAndMakeVisible(modeSelector_.get());
   waveform_->addAndMakeVisible(commandBar_.get());
 
-  add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
-
   // Navigation panel.
   add(&navigationPanel_, directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
@@ -127,14 +126,17 @@ Components::Components()
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
-  add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
-
-  add(&playbackPanel_, &helpResizer_, 5.0);
-  add(&playbackPanel_, transformController_.get(),
-      MIN_TRANSFORM_PANEL, -1.0, -0.75);
-  add(&playbackPanel_, &transformResizer_, 5.0);
-  add(&playbackPanel_, transportController_.get(),
-      MIN_TRANSPORT_PANEL, -1.0, -0.20);
+  playbackPanel2_ = gui::makeLayout("PlaybackPanel", mainPanel_.get());
+  if (USE_NEW_GUI) {
+    add(mainPanel_.get(), playbackPanel2_.get(), MIN_PLAYBACK_PANEL);
+  } else {
+    add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
+    add(&playbackPanel_, &helpResizer_, 5.0);
+    add(&playbackPanel_, transformController_.get(), MIN_TRANSFORM_PANEL, -1.0, -0.75);
+    add(&playbackPanel_, &transformResizer_, 5.0);
+    add(&playbackPanel_, transportController_.get(), MIN_TRANSPORT_PANEL, -1.0, -0.20);
+    add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
+  }
 }
 
 Components::~Components() {}

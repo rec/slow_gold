@@ -1462,6 +1462,11 @@ static const unsigned char temp_binary_data_11[] =
 "constant {\n"
 "  name: \"TRANSPORT_SIZE\"\n"
 "  value: 39\n"
+"}\n"
+"\n"
+"constant {\n"
+"  name: \"RESIZER_SIZE\"\n"
+"  value: 7\n"
 "}";
 
 const char* Constants_def = (const char*) temp_binary_data_11;
@@ -1714,21 +1719,15 @@ const char* NavigationPanel_def = (const char*) temp_binary_data_18;
 static const unsigned char temp_binary_data_19[] =
 "layout {\n"
 "  name: \"PlaybackPanel\"\n"
+"  default_size {\n"
+"    fixed: \"RESIZER_SIZE\"\n"
+"  }\n"
 "\n"
 "  component {\n"
-"    name: \"Help\"\n"
-"    tooltip: \"Help Panel: Shows help about whatever the mouse is over.\"\n"
+"    layout: \"HelpPanel\"\n"
 "    size {\n"
 "      min: \"200\"\n"
 "      preferred: \"-0.20\"\n"
-"    }\n"
-"    help {\n"
-"      caption_size {\n"
-"        fixed: \"28\"\n"
-"      }\n"
-"      body_size {\n"
-"        min: \"-0.1\"\n"
-"      }\n"
 "    }\n"
 "  }\n"
 "\n"
@@ -13852,7 +13851,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xd87d1dcf:  numBytes = 3732; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 710; return CommandBar_def;
-        case 0x8c4934f5:  numBytes = 107; return Constants_def;
+        case 0x8c4934f5:  numBytes = 155; return Constants_def;
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
@@ -13860,7 +13859,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xd02ec571:  numBytes = 356; return MainPanel_def;
         case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 534; return NavigationPanel_def;
-        case 0x334c534f:  numBytes = 625; return PlaybackPanel_def;
+        case 0x334c534f:  numBytes = 495; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1315; return RightTransformPanel_def;
         case 0xea90c3f4:  numBytes = 1132; return RightTransformPanelMasterTune_def;
         case 0x1b5b8645:  numBytes = 1444; return SongData_def;

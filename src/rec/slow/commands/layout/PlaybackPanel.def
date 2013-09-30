@@ -1,20 +1,14 @@
 layout {
   name: "PlaybackPanel"
+  default_size {
+    fixed: "RESIZER_SIZE"
+  }
 
   component {
-    name: "Help"
-    tooltip: "Help Panel: Shows help about whatever the mouse is over."
+    layout: "HelpPanel"
     size {
       min: "200"
       preferred: "-0.20"
-    }
-    help {
-      caption_size {
-        fixed: "28"
-      }
-      body_size {
-        min: "-0.1"
-      }
     }
   }
 

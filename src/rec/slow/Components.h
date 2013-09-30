@@ -54,7 +54,7 @@ class Components : public data::DataListener<music::Metadata>,
 
   // playbackPanel_ contains help, transform and the controls.
   gui::Panel playbackPanel_;
-  gui::Panel transformPanel_;
+  unique_ptr<Component> playbackPanel2_;
 
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;
