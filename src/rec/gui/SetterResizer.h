@@ -4,7 +4,7 @@
 #include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
-#include "rec/gui/DisableableComponent.h"
+#include "rec/util/Disableable.h"
 #include "rec/gui/GuiWriteable.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/util/thread/CallAsync.h"
@@ -17,7 +17,7 @@ namespace gui {
 
 class SetterResizer : public data::AddressListener,
                       public app::LanguageListener,
-                      public DisableableComponent,
+                      public Disableable,
                       public StretchableLayoutResizerBar,
                       public SettableTooltipClient,
                       public GuiWriteable {

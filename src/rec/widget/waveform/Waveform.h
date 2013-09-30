@@ -6,7 +6,7 @@
 #include "rec/app/LanguageListener.h"
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
-#include "rec/gui/DisableableComponent.h"
+#include "rec/util/Disableable.h"
 #include "rec/gui/DropTarget.h"
 #include "rec/util/Listener.h"
 #include "rec/util/Loading.h"
@@ -35,7 +35,7 @@ typedef vector<Cursor*> CursorList;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
-                 public gui::DisableableComponent,
+                 public Disableable,
                  public SettableTooltipClient,
                  public DataListener<Viewport>,
                  public app::LanguageListener,

@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_TREE_TREEVIEW__
 #define __REC_WIDGET_TREE_TREEVIEW__
 
-#include "rec/gui/DisableableComponent.h"
+#include "rec/util/Disableable.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
 #include "rec/widget/tree/Root.h"
 
@@ -11,7 +11,7 @@ namespace tree {
 
 class Root;
 
-class TreeView : public TreeViewDropAll, public gui::DisableableComponent {
+class TreeView : public TreeViewDropAll, public Disableable {
  public:
   TreeView() : root_(new Root(this)) {}
   Root* root() { return root_.get(); }

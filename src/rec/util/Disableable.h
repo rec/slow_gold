@@ -5,14 +5,14 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace gui {
+namespace util {
 
 typedef std::unordered_map<string, bool> PropertyMap;
 
-class DisableableComponent {
+class Disableable {
  public:
-  DisableableComponent() {}
-  virtual ~DisableableComponent() {}
+  Disableable() {}
+  virtual ~Disableable() {}
 
   template <typename Type>
   void addDisableProperties(Type properties) {
@@ -41,10 +41,10 @@ class DisableableComponent {
   CriticalSection lock_;
   PropertyMap propertyMap_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(DisableableComponent);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Disableable);
 };
 
-}  // namespace gui
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_GUI_DISABLEABLECOMPONENT__

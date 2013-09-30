@@ -745,9 +745,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\Dialog.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\DisableMap.cpp">
-      <Filter>SlowGold\src\gui</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
@@ -956,6 +953,9 @@
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp">
+      <Filter>SlowGold\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\DisableMap.cpp">
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp">
@@ -2838,12 +2838,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\DisableableComponent.h">
-      <Filter>SlowGold\src\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\DisableMap.h">
-      <Filter>SlowGold\src\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
@@ -3094,6 +3088,12 @@
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Disableable.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\DisableMap.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">

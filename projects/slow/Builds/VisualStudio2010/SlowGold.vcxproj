@@ -211,7 +211,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\Color.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\DataSlider.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\Dialog.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\DisableMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\GetComponentMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\GetHelpText.cpp"/>
@@ -282,6 +281,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\DisableMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CurrentFileBase.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp"/>
@@ -1599,8 +1599,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\DataSlider.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\DetentSlider.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\DisableableComponent.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\DisableMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Font.h"/>
@@ -1685,6 +1683,8 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Disableable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\DisableMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CurrentFileBase.h"/>

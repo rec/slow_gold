@@ -2,13 +2,13 @@
 #define __REC_GUI_LANGUAGEBUTTON__
 
 #include "rec/app/LanguageListener.h"
-#include "rec/gui/DisableableComponent.h"
+#include "rec/util/Disableable.h"
 
 namespace rec {
 namespace gui {
 
 class LanguageButton : public DrawableButton,
-                       public DisableableComponent,
+                       public Disableable,
                        public app::LanguageListener {
  public:
   LanguageButton(const String& name, const String& tooltip,

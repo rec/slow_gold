@@ -1,7 +1,7 @@
 #include "rec/gui/proto/Component.h"
 
-#include "rec/gui/DisableableComponent.h"
-#include "rec/gui/DisableMap.h"
+#include "rec/util/Disableable.h"
+#include "rec/util/DisableMap.h"
 #include "rec/gui/proto/Button.h"
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Component.pb.h"
@@ -86,7 +86,7 @@ unique_ptr<Component> makeComponent(const Context& context) {
     if (SettableTooltipClient* tt = dynamic_cast<SettableTooltipClient*>(c))
       tt->setTooltip(comp.tooltip());
 
-    if (DisableableComponent* dc = dynamic_cast<DisableableComponent*>(c))
+    if (Disableable* dc = dynamic_cast<Disableable*>(c))
       program::juceModel()->disableMap()->addComponent(dc);
     else
       LOG(DFATAL) << comp.ShortDebugString() << " !!! " << component->getName();

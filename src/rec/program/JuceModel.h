@@ -7,8 +7,8 @@
 
 namespace rec { namespace command { class CommandMapProto; }}
 namespace rec { namespace gui { class Constants; }}
-namespace rec { namespace gui { class DisableMap; }}
 namespace rec { namespace gui { class Layout; }}
+namespace rec { namespace util { class DisableMap; }}
 
 namespace rec {
 namespace program {
@@ -46,7 +46,7 @@ class JuceModel : public ApplicationCommandTarget,
   // @throws std::out_of_range
   const gui::Layout& getLayout(const string&) const;
   const gui::Constants& constants() const;
-  gui::DisableMap* disableMap() { return disableMap_.get(); }
+  DisableMap* disableMap() { return disableMap_.get(); }
 
   template <typename Type = Component>
   Type* getComponent(const string& name) {
@@ -74,7 +74,7 @@ class JuceModel : public ApplicationCommandTarget,
   Component* doGetComponent(const string&) const;
 
   unique_ptr<JuceModelImpl> impl_;
-  unique_ptr<gui::DisableMap> disableMap_;
+  unique_ptr<DisableMap> disableMap_;
   Program* program_;
   ApplicationCommandManager applicationCommandManager_;
 

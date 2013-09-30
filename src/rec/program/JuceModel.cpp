@@ -2,7 +2,7 @@
 
 #include "rec/program/JuceModel.h"
 
-#include "rec/gui/DisableMap.h"
+#include "rec/util/DisableMap.h"
 #include "rec/program/JuceModelImpl.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Program.h"
@@ -13,7 +13,7 @@ namespace program {
 static JuceModel* MODEL = nullptr;
 JuceModel* juceModel() { return MODEL; }
 
-JuceModel::JuceModel(Program* p) : disableMap_(new gui::DisableMap), program_(p) {}
+JuceModel::JuceModel(Program* p) : disableMap_(new DisableMap), program_(p) {}
 
 void JuceModel::init() {
   impl_.reset(new JuceModelImpl(program_, this));

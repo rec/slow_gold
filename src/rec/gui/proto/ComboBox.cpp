@@ -2,7 +2,7 @@
 
 #include "rec/data/AddressListener.h"
 #include "rec/data/Value.h"
-#include "rec/gui/DisableableComponent.h"
+#include "rec/util/Disableable.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Context.h"
@@ -18,7 +18,7 @@ namespace {
 class ComboBoxSetter : public AddressListener,
                        public ComboBox,
                        public ComboBox::Listener,
-                       public DisableableComponent {
+                       public Disableable {
  public:
   explicit ComboBoxSetter(const Context& context)
       : AddressListener(data::splitAddress(context.component_.address())) {

@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_TABLEMODELBASE__
 #define __REC_GUI_TABLEMODELBASE__
 
-#include "rec/gui/DisableableComponent.h"
+#include "rec/util/Disableable.h"
 #include "rec/base/SampleTime.h"
 #include "rec/gui/TableColumn.pb.h"
 #include "rec/data/Address.h"
@@ -10,7 +10,7 @@ namespace rec {
 namespace gui {
 
 class TableController : public TableListBoxModel, public TableListBox,
-                        public DisableableComponent {
+                        public Disableable {
  public:
   TableController();
 
