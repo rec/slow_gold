@@ -16,6 +16,8 @@
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 
+using namespace rec::program;
+
 namespace rec {
 namespace slow {
 
@@ -30,7 +32,7 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 }
 
 Components::Components()
-    : manager_(program::applicationCommandManager()),
+    : manager_(applicationCommandManager()),
       loops_(new gui::audio::Loops()),
       directoryTree_(new widget::tree::Root),
       modeSelector_(new gui::audio::ModeSelector()),
@@ -43,23 +45,19 @@ Components::Components()
   songData_ = gui::makeLayout("SongData", c);
 
   mainPage_->layoutComponents();
-  componentMap_ = gui::getComponentMap(mainPage_->panel());
-#if 0
-  for (auto& i: componentMap_)
-    DLOG(INFO) << "Component " << i.first;
-#endif
-  startStopButton_ = getComponent<DrawableButton>("StartStopButton");
-  levelSlider_ = getComponent<Component>("LevelSlider");
-  speedSlider_ = getComponent<Component>("SpeedSlider");
-  gui::audio::Loops* loops = getComponent<gui::audio::Loops>("Loops");
-  loops->setModel(loops);
-  setDefaultCuttable(loops);
 }
 
 Components::~Components() {}
 
 void Components::init() {
   waveform()->init();
+  auto jm = juceModel();
+  startStopButton_ = jm->getComponent<DrawableButton>("StartStopButton");
+  levelSlider_ = jm->getComponent<Component>("LevelSlider");
+  speedSlider_ = jm->getComponent<Component>("SpeedSlider");
+  gui::audio::Loops* loops = jm->getComponent<gui::audio::Loops>("Loops");
+  loops->setModel(loops);
+  setDefaultCuttable(loops);
 }
 
 void Components::operator()(const rec::audio::Gain& gain) {

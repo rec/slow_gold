@@ -44,20 +44,6 @@ class Components : public data::DataListener<music::Metadata>,
 
   unique_ptr<Component> modeSelector_;
   unique_ptr<MainPage> mainPage_;
-  gui::ComponentMap componentMap_;
-
-  template <typename Type>
-  Type* getComponent(const string& name) {
-    try {
-      Component* comp = componentMap_.at(name);
-      if (Type* t = dynamic_cast<Type*>(comp))
-        return t;
-      LOG(DFATAL) << "Got component but couldn't cast for " << name;
-    } catch (std::out_of_range&) {
-      LOG(DFATAL) << "Couldn't get component for " << name;
-    }
-    return nullptr;
-  }
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
   gui::audio::CommandBar* commandBar() { return commandBar_.get(); }
