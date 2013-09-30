@@ -47,7 +47,7 @@ Components::Components()
 Components::~Components() {}
 
 void Components::init() {
-  waveform()->init();
+  waveform_->init();
   auto jm = juceModel();
   startStopButton_ = jm->getComponent<DrawableButton>("StartStopButton");
   levelSlider_ = jm->getComponent<Component>("LevelSlider");
@@ -90,6 +90,12 @@ void Components::operator()(const music::Metadata& md) {
 void Components::operator()(const audio::stretch::Stretch& s) {
   speedSlider_->setEnabled(s.time_enabled());
 }
+
+#if 0
+Component* Components::waveform() {
+  return waveform_.get();
+}
+#endif
 
 }  // namespace slow
 }  // namespace rec

@@ -3,6 +3,7 @@
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/CurrentTimeBase.h"
+#include "rec/util/StateListener.h"
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/WrapSeries.h"
 #include "rec/util/range/Range.h"
@@ -50,7 +51,7 @@ void FillerThread::run() {
     {
       MessageManagerLock l(this);
       if (l.lockWasGained())
-        broadcast(b);
+        broadcastState<const SampleRange&>(b);
     }
     wait(FILLER_THREAD_WAIT);
   }

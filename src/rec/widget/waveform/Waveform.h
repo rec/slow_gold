@@ -3,17 +3,20 @@
 
 #include <set>
 
-#include "rec/base/SampleTime.h"
 #include "rec/app/LanguageListener.h"
+#include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
+#include "rec/gui/DropTarget.h"
 #include "rec/util/Listener.h"
+#include "rec/util/Loading.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Mode.pb.h"
+#include "rec/util/StateListener.h"
 #include "rec/util/range/Range.h"
 #include "rec/widget/waveform/Cursor.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
-#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace widget {
@@ -32,11 +35,12 @@ typedef vector<Cursor*> CursorList;
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public SettableTooltipClient,
-                 public Listener<const SampleRange&>,
                  public DataListener<Viewport>,
                  public app::LanguageListener,
                  public DataListener<Mode>,
                  public DataListener<WaveformProto>,
+                 public StateListener<Loading>,
+                 public StateListener<const SampleRange&>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&> {
  public:
@@ -58,6 +62,7 @@ class Waveform : public Component,
   void operator()(const SampleRange& range) override {
     repaintRange(range);
   }
+  void operator()(Loading) override;
 
   void languageChanged() override;
 
@@ -102,13 +107,15 @@ class Waveform : public Component,
   ptr<Cursor> timeCursor_;
 
   juce::MouseCursor	zoomCursor_;
-  bool loading_;
+  Loading loading_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
   friend class Cursor;
   friend class WaveformPainter;
 };
+
+typedef gui::DropTarget<Waveform> DropWaveform;
 
 }  // namespace waveform
 }  // namespace widget

@@ -139,10 +139,8 @@ void Instance::init() {
   lookAndFeel_.reset(new gui::LookAndFeel);
   mouseListener_.reset(new MouseListener);
   guiListener_.reset(new GuiListener);
-  unique_ptr<FillerThread> fillerThread(
+  fillerThread_.reset(
       new FillerThread(currentTime_.get(), bufferFiller_.get()));
-  fillerThread->addListener(components_->waveform());
-  fillerThread_.reset(fillerThread.release());
 
   midiCommandMap_.reset(new command::MidiCommandMap);
 
@@ -163,14 +161,6 @@ void Instance::init() {
                                           slow::Command::ABOUT_THIS_PROGRAM);
 
   audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
-
-	typedef gui::DropTarget<Waveform> DropWave;
-  DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform());
-  waveform->dropBroadcaster()->addListener(currentFile_.get());
-
-  widget::tree::Root* root = components_->directoryTree_.get();
-  root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
-  root->addListener(currentFile_.get());
 
   player_->setSource(makeSource());
   components_->waveform()->setAudioThumbnail(bufferFiller_->thumbnail());

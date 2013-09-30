@@ -13,8 +13,7 @@ namespace rec {
 namespace util {
 namespace file {
 
-void CurrentFileBase::operator()(const gui::DropFiles& dropFiles) {
-  const file::VirtualFileList& files = dropFiles.files_;
+void CurrentFileBase::operator()(const VirtualFileList& files) {
   if (files.file_size() >= 1)
     setVirtualFile(files.file(0), true);
 }

@@ -55,7 +55,7 @@ Waveform::Waveform()
       model_(new WaveformModel),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT),
-      loading_(false) {
+      loading_(NOT_LOADING) {
   setName("Waveform");
 
   setOpaque(true);
@@ -81,7 +81,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
   painter_->setAudioThumbnail(t);
 }
 
-void Waveform::setLoading(bool loading) {
+void Waveform::operator()(Loading loading) {
   Lock l(lock_);
   loading_ = loading;
 }

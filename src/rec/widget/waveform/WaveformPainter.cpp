@@ -24,7 +24,7 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 using juce::Rectangle;
 
 WaveformPainter::WaveformPainter(Waveform* w)
-    : waveform_(w), thumbnail_(nullptr), model_(w->model()){
+    : waveform_(w), thumbnail_(nullptr), model_(w->model()) {
 }
 
 WaveformPainter::~WaveformPainter() {}
@@ -39,8 +39,8 @@ void WaveformPainter::drawEmpty(Graphics& g) {
 }
 
 void WaveformPainter::paint(Graphics& g, const Range<SampleTime>& range,
-                            bool isLoading) {
-  if (isLoading || model_.isEmpty() || !thumbnail_) {
+                            Loading loading) {
+  if (loading == LOADING || model_.isEmpty() || !thumbnail_) {
     drawEmpty(g);
   } else {
     painter_.reset(new Painter(model_.description().widget(), &g));

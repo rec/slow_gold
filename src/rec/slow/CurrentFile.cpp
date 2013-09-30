@@ -12,6 +12,8 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
+#include "rec/util/Loading.h"
+#include "rec/util/StateListener.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -68,9 +70,7 @@ void CurrentFile::resume() {
 
 void CurrentFile::beforeFileChange() {
   MessageManagerLock l;
-  auto& components = getInstance()->components_;
-  components->waveform()->setLoading(true);
-  components->waveform()->repaint();
+  broadcastState<Loading>(LOADING);
 }
 
 void CurrentFile::afterFileChange(const VirtualFile& newFile) {
@@ -84,7 +84,7 @@ void CurrentFile::afterFileChange(const VirtualFile& newFile) {
     components->directoryTree_->refreshNode(newFile);
 
   components->setEnabled(length_ != 0);
-  components->waveform()->setLoading(false);
+  broadcastState<Loading>(NOT_LOADING);
 }
 
 bool CurrentFile::determineIfFileEmpty(bool showError) {

@@ -8,7 +8,7 @@ namespace rec {
 namespace gui {
 
 class DropFiles {
-public:
+ public:
   VirtualFileList files_;
   Component* target_;
   DropFiles() {}

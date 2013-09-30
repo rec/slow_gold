@@ -5,7 +5,7 @@
 #include "rec/util/file/Util.h"
 #include "rec/util/file/VirtualFileList.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/util/Listener.h"
+#include "rec/util/StateListener.h"
 
 namespace rec {
 namespace gui {
@@ -33,7 +33,7 @@ class DropTarget : public Interface, public Parent {
   virtual void filesDropped(const StringArray& files, int, int) {
     setDraggingOver(false);
     if (isInterestedInFileDrag(files))
-      broadcaster_.broadcast(DropFiles(file::toVirtualFileList(files), this));
+      broadcastState<const VirtualFileList&>(file::toVirtualFileList(files));
   }
 
   virtual void paintOverChildren(Graphics& g) {
@@ -46,8 +46,6 @@ class DropTarget : public Interface, public Parent {
   void repaint() { Parent::repaint(); }
   bool draggingOver() const { return draggingOver_; }
 
-  Broadcaster<const DropFiles&>* dropBroadcaster() { return &broadcaster_; }
-
  private:
   void setDraggingOver(bool d) {
     if (d != draggingOver_) {
@@ -56,7 +54,6 @@ class DropTarget : public Interface, public Parent {
     }
   }
 
-  Broadcaster<const DropFiles&> broadcaster_;
   bool draggingOver_;
 
  private:

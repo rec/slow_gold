@@ -3,6 +3,7 @@
 
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
+#include "rec/util/Loading.h"
 #include "rec/util/range/Range.h"
 
 namespace rec {
@@ -20,7 +21,7 @@ class WaveformPainter {
   WaveformPainter(Waveform* w);
   ~WaveformPainter();
 
-  void paint(Graphics&, const Range<SampleTime >&, bool isLoading);
+  void paint(Graphics&, const Range<SampleTime >&, Loading);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 

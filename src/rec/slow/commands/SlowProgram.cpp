@@ -145,7 +145,7 @@ void SlowProgram::registerAllCallbacks() {
 }
 
 unique_ptr<Component> makeWaveform(const string&) {
-  return unique_ptr<Component>(new Waveform);
+  return unique_ptr<Component>(new DropWaveform);
 }
 
 unique_ptr<Component> makeTreeView(const string&) {
@@ -171,6 +171,8 @@ void SlowProgram::beforeCommand(CommandID id) {
     thread::callAsync(instance_->window_, &app::Window::stopAboutWindow);
 }
 
+
+// TODO: we can almost certainly kill this.
 const int MARGIN = 10;
 
 string SlowProgram::idToName(CommandID id) const {

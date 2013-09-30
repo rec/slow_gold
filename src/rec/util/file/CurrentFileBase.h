@@ -2,6 +2,7 @@
 #define __REC_UTIL_FILE_CURRENTFILEBASE__
 
 #include "rec/util/Listener.h"
+#include "rec/util/StateListener.h"
 #include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec { namespace gui { class DropFiles; } }
@@ -11,14 +12,14 @@ namespace util {
 namespace file {
 
 class CurrentFileBase : public Listener<const VirtualFile&>,
-                        public Listener<const gui::DropFiles&> {
+                        public StateListener<const VirtualFileList&> {
  public:
   CurrentFileBase() : empty_(true) {}
   virtual ~CurrentFileBase() {}
 
   // Set the file and change the persistent data.
-  virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const VirtualFile& vf);
+  void operator()(const VirtualFileList&) override;
+  void operator()(const VirtualFile&) override;
 
   bool empty() const { return empty_; }
 
