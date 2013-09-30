@@ -9,7 +9,6 @@
 namespace rec { namespace audio { class Gain; }}
 
 namespace rec { namespace gui { namespace audio { class Loops; } }}
-namespace rec { namespace gui { namespace audio { class ModeSelector; } }}
 namespace rec { namespace audio { namespace stretch { class Stretch; } }}
 
 namespace rec { namespace widget { namespace tree { class Root; } }}
