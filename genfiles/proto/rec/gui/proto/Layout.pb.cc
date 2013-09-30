@@ -63,7 +63,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_main_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_opaque_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, padding_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, has_padding_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, default_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, dimensions_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, container_),
@@ -141,17 +141,17 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
     "ec/data/proto/Address.proto\032\031rec/gui/Ori"
     "entation.proto\032\035rec/gui/proto/Component."
     "proto\032\030rec/gui/proto/Size.proto\"+\n\nDimen"
-    "sions\022\r\n\005width\030\001 \001(\t\022\016\n\006height\030\002 \001(\t\"\323\002\n"
+    "sions\022\r\n\005width\030\001 \001(\t\022\016\n\006height\030\002 \001(\t\"\327\002\n"
     "\006Layout\022\014\n\004name\030\001 \001(\t\022:\n\013orientation\030\002 \001"
     "(\0162%.rec.gui.OrientationProto.Orientatio"
     "n\022$\n\026resize_other_dimension\030\003 \001(\010:\004true\022"
-    "\017\n\007is_main\030\004 \001(\010\022\021\n\tis_opaque\030\005 \001(\010\022\017\n\007p"
-    "adding\030\006 \001(\010\022#\n\014default_size\030\007 \001(\0132\r.rec"
-    ".gui.Size\022\'\n\ndimensions\030\010 \001(\0132\023.rec.gui."
-    "Dimensions\022*\n\tcontainer\030\t \001(\0132\027.rec.gui."
-    "ComponentProto\022*\n\tcomponent\030\n \003(\0132\027.rec."
-    "gui.ComponentProto\"*\n\007Layouts\022\037\n\006layout\030"
-    "\001 \003(\0132\017.rec.gui.Layout", 582);
+    "\017\n\007is_main\030\004 \001(\010\022\021\n\tis_opaque\030\005 \001(\010\022\023\n\013h"
+    "as_padding\030\006 \001(\010\022#\n\014default_size\030\007 \001(\0132\r"
+    ".rec.gui.Size\022\'\n\ndimensions\030\010 \001(\0132\023.rec."
+    "gui.Dimensions\022*\n\tcontainer\030\t \001(\0132\027.rec."
+    "gui.ComponentProto\022*\n\tcomponent\030\n \003(\0132\027."
+    "rec.gui.ComponentProto\"*\n\007Layouts\022\037\n\006lay"
+    "out\030\001 \003(\0132\017.rec.gui.Layout", 586);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
   Dimensions::default_instance_ = new Dimensions();
@@ -460,7 +460,7 @@ const int Layout::kOrientationFieldNumber;
 const int Layout::kResizeOtherDimensionFieldNumber;
 const int Layout::kIsMainFieldNumber;
 const int Layout::kIsOpaqueFieldNumber;
-const int Layout::kPaddingFieldNumber;
+const int Layout::kHasPaddingFieldNumber;
 const int Layout::kDefaultSizeFieldNumber;
 const int Layout::kDimensionsFieldNumber;
 const int Layout::kContainerFieldNumber;
@@ -491,7 +491,7 @@ void Layout::SharedCtor() {
   resize_other_dimension_ = true;
   is_main_ = false;
   is_opaque_ = false;
-  padding_ = false;
+  has_padding_ = false;
   default_size_ = NULL;
   dimensions_ = NULL;
   container_ = NULL;
@@ -545,7 +545,7 @@ void Layout::Clear() {
     resize_other_dimension_ = true;
     is_main_ = false;
     is_opaque_ = false;
-    padding_ = false;
+    has_padding_ = false;
     if (has_default_size()) {
       if (default_size_ != NULL) default_size_->::rec::gui::Size::Clear();
     }
@@ -650,19 +650,19 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(48)) goto parse_padding;
+        if (input->ExpectTag(48)) goto parse_has_padding;
         break;
       }
 
-      // optional bool padding = 6;
+      // optional bool has_padding = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_padding:
+         parse_has_padding:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &padding_)));
-          set_has_padding();
+                 input, &has_padding_)));
+          set_has_has_padding();
         } else {
           goto handle_uninterpreted;
         }
@@ -775,9 +775,9 @@ void Layout::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->is_opaque(), output);
   }
 
-  // optional bool padding = 6;
-  if (has_padding()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->padding(), output);
+  // optional bool has_padding = 6;
+  if (has_has_padding()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->has_padding(), output);
   }
 
   // optional .rec.gui.Size default_size = 7;
@@ -843,9 +843,9 @@ void Layout::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->is_opaque(), target);
   }
 
-  // optional bool padding = 6;
-  if (has_padding()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->padding(), target);
+  // optional bool has_padding = 6;
+  if (has_has_padding()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->has_padding(), target);
   }
 
   // optional .rec.gui.Size default_size = 7;
@@ -915,8 +915,8 @@ int Layout::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // optional bool padding = 6;
-    if (has_padding()) {
+    // optional bool has_padding = 6;
+    if (has_has_padding()) {
       total_size += 1 + 1;
     }
 
@@ -994,8 +994,8 @@ void Layout::MergeFrom(const Layout& from) {
     if (from.has_is_opaque()) {
       set_is_opaque(from.is_opaque());
     }
-    if (from.has_padding()) {
-      set_padding(from.padding());
+    if (from.has_has_padding()) {
+      set_has_padding(from.has_padding());
     }
     if (from.has_default_size()) {
       mutable_default_size()->::rec::gui::Size::MergeFrom(from.default_size());
@@ -1036,7 +1036,7 @@ void Layout::Swap(Layout* other) {
     std::swap(resize_other_dimension_, other->resize_other_dimension_);
     std::swap(is_main_, other->is_main_);
     std::swap(is_opaque_, other->is_opaque_);
-    std::swap(padding_, other->padding_);
+    std::swap(has_padding_, other->has_padding_);
     std::swap(default_size_, other->default_size_);
     std::swap(dimensions_, other->dimensions_);
     std::swap(container_, other->container_);

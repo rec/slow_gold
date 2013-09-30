@@ -22,7 +22,7 @@ message Layout {
 
   // If there is padding, the right-most component is NOT stretched to fit the
   // full size of the layout.
-  optional bool padding = 6;
+  optional bool has_padding = 6;
 
   optional Size default_size = 7;
   optional Dimensions dimensions = 8;

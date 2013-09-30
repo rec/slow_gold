@@ -41,6 +41,7 @@ class ModalButton : public LanguageButton, public data::AddressListener,
 
   void buttonClicked(Button*) {
     value_.set_enum_f(modeIndex_);
+    setValue(value_);
   }
 
  private:
@@ -64,6 +65,8 @@ unique_ptr<Component> makeButton(const Context& context) {
       new LanguageButton(component.name(), component.tooltip(), style));
   button->setTooltip(component.tooltip());
 
+  bool isClick = (proto.behavior() == ButtonProto::CLICK);
+  bool isMode = (proto.behavior() == ButtonProto::MODE);
   bool isToggle = (proto.behavior() == ButtonProto::TOGGLE);
 
   const string& imageName = component.name();
@@ -74,7 +77,7 @@ unique_ptr<Component> makeButton(const Context& context) {
   if (state.over())
     construct(&over, imageName + "Over");
 
-  if (not isToggle and (not proto.has_state() or state.pressed()))
+  if (isClick or state.pressed())
     construct(&pressed, imageName + "Pressed");
 
   if (state.disabled())
@@ -98,10 +101,12 @@ unique_ptr<Component> makeButton(const Context& context) {
       normal.get(), over.get(), pressed.get(), disabled.get(),
       normalOn.get(), overOn.get(), pressedOn.get(), disabledOn.get());
 
-  button->setCommandToTrigger(
-      program::applicationCommandManager(),
-      program::getProgram()->nameToId(proto.command()) + proto.command_index(),
-      not component.has_tooltip());
+  if (not isMode) {
+    button->setCommandToTrigger(
+        program::applicationCommandManager(),
+        program::getProgram()->nameToId(proto.command()) + proto.command_index(),
+        not component.has_tooltip());
+  }
 
   return unique_ptr<Component>(button.release());
 }

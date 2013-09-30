@@ -4,7 +4,6 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/audio/Loops.h"
-#include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/program/JuceModel.h"
 #include "rec/slow/CurrentFile.h"
@@ -34,7 +33,6 @@ Components::Components()
     : manager_(applicationCommandManager()),
       loops_(new gui::audio::Loops()),
       directoryTree_(new widget::tree::Root),
-      modeSelector_(new gui::audio::ModeSelector()),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
   mainPage_.reset(new MainPage(this));
   Component* c = mainPage_->panel();
@@ -42,6 +40,7 @@ Components::Components()
   transformController_ = gui::makeLayout("TransformController", c);
   commandBar_ = gui::makeLayout("CommandBar", c);
   songData_ = gui::makeLayout("SongData", c);
+  modeSelector_ = gui::makeLayout("ModeSelector", c);
 
   mainPage_->layoutComponents();
 }

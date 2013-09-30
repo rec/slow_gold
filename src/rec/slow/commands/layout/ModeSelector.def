@@ -1,11 +1,13 @@
 layout {
   name: "ModeSelector"
+
+  has_padding: true
   default_size {
-    min: "MODE_SELECTOR_HEIGHT"
+    fixed: "COMMAND_BUTTON_HEIGHT"
   }
   dimensions {
     width: "156"
-    height: "42"
+    height: "38"
   }
 
   component {
@@ -14,7 +16,7 @@ layout {
     address: "rec.util.Mode:click"
     button {
       behavior: MODE
-      mode_index: 0
+      mode_index: 1
     }
   }
 
@@ -24,7 +26,7 @@ layout {
     address: "rec.util.Mode:click"
     button {
       behavior: MODE
-      mode_index: 1
+      mode_index: 3
     }
   }
 
@@ -34,7 +36,7 @@ layout {
     address: "rec.util.Mode:click"
     button {
       behavior: MODE
-      mode_index: 2
+      mode_index: 5
     }
   }
 
@@ -44,7 +46,7 @@ layout {
     address: "rec.util.Mode:click"
     button {
       behavior: MODE
-      mode_index: 3
+      mode_index: 2
     }
   }
 }

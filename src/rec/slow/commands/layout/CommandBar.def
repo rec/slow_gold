@@ -1,8 +1,8 @@
 layout {
   name: "CommandBar"
-  padding: true
+  has_padding: true
   default_size {
-    min: "COMMAND_BUTTON_HEIGHT"
+    fixed: "COMMAND_BUTTON_HEIGHT"
   }
   dimensions {
     width: "118"

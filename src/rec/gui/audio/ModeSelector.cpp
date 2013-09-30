@@ -38,10 +38,12 @@ ModeSelector::ModeSelector()
                          "waveform creates a loop point.") {
   setName("ModeSelector");
 
+#if 0
   SET_BUTTON_IMAGES2(&drag_, DragMode);
   SET_BUTTON_IMAGES2(&setTime_, SetTimeMode);
   SET_BUTTON_IMAGES2(&zoomIn_, ZoomMode);
   SET_BUTTON_IMAGES2(&addLoopPointClick_, AddLoopPointMode);
+  #endif
 
   setImage(this, &drag_, Mode::DRAG);
   setImage(this, &setTime_, Mode::SET_TIME);

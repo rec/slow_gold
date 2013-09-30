@@ -1416,9 +1416,9 @@ const char* KeyStrokeMap_def = (const char*) temp_binary_data_9;
 static const unsigned char temp_binary_data_10[] =
 "layout {\n"
 "  name: \"CommandBar\"\n"
-"  padding: true\n"
+"  has_padding: true\n"
 "  default_size {\n"
-"    min: \"COMMAND_BUTTON_HEIGHT\"\n"
+"    fixed: \"COMMAND_BUTTON_HEIGHT\"\n"
 "  }\n"
 "  dimensions {\n"
 "    width: \"118\"\n"
@@ -1549,7 +1549,7 @@ static const unsigned char temp_binary_data_15[] =
 "layout {\n"
 "  name: \"LeftTransformPanel\"\n"
 "  orientation: VERTICAL\n"
-"  padding: true\n"
+"  has_padding: true\n"
 "  default_size {\n"
 "    fixed: \"30\"\n"
 "  }\n"
@@ -1610,12 +1610,14 @@ const char* MainPanel_def = (const char*) temp_binary_data_16;
 static const unsigned char temp_binary_data_17[] =
 "layout {\n"
 "  name: \"ModeSelector\"\n"
+"\n"
+"  has_padding: true\n"
 "  default_size {\n"
-"    min: \"MODE_SELECTOR_HEIGHT\"\n"
+"    fixed: \"COMMAND_BUTTON_HEIGHT\"\n"
 "  }\n"
 "  dimensions {\n"
 "    width: \"156\"\n"
-"    height: \"42\"\n"
+"    height: \"38\"\n"
 "  }\n"
 "\n"
 "  component {\n"
@@ -1624,7 +1626,7 @@ static const unsigned char temp_binary_data_17[] =
 "    address: \"rec.util.Mode:click\"\n"
 "    button {\n"
 "      behavior: MODE\n"
-"      mode_index: 0\n"
+"      mode_index: 1\n"
 "    }\n"
 "  }\n"
 "\n"
@@ -1634,7 +1636,7 @@ static const unsigned char temp_binary_data_17[] =
 "    address: \"rec.util.Mode:click\"\n"
 "    button {\n"
 "      behavior: MODE\n"
-"      mode_index: 1\n"
+"      mode_index: 3\n"
 "    }\n"
 "  }\n"
 "\n"
@@ -1644,7 +1646,7 @@ static const unsigned char temp_binary_data_17[] =
 "    address: \"rec.util.Mode:click\"\n"
 "    button {\n"
 "      behavior: MODE\n"
-"      mode_index: 2\n"
+"      mode_index: 5\n"
 "    }\n"
 "  }\n"
 "\n"
@@ -1654,7 +1656,7 @@ static const unsigned char temp_binary_data_17[] =
 "    address: \"rec.util.Mode:click\"\n"
 "    button {\n"
 "      behavior: MODE\n"
-"      mode_index: 3\n"
+"      mode_index: 2\n"
 "    }\n"
 "  }\n"
 "}\n";
@@ -1761,7 +1763,7 @@ const char* PlaybackPanel_def = (const char*) temp_binary_data_19;
 static const unsigned char temp_binary_data_20[] =
 "layout {\n"
 "  name: \"RightTransformPanel\"\n"
-"  padding: true\n"
+"  has_padding: true\n"
 "  orientation: VERTICAL\n"
 "  default_size {\n"
 "    fixed: \"30\"\n"
@@ -1819,7 +1821,7 @@ const char* RightTransformPanel_def = (const char*) temp_binary_data_20;
 static const unsigned char temp_binary_data_21[] =
 "layout {\n"
 "  name: \"RightTransformPanelMasterTune\"\n"
-"  padding: true\n"
+"  has_padding: true\n"
 "  orientation: VERTICAL\n"
 "  default_size {\n"
 "    fixed: \"25\"\n"
@@ -1946,7 +1948,7 @@ const char* SongData_def = (const char*) temp_binary_data_22;
 static const unsigned char temp_binary_data_23[] =
 "layout {\n"
 "  name: \"TimeController\"\n"
-"  padding: true\n"
+"  has_padding: true\n"
 "\n"
 "  component {\n"
 "    name: \"SongTime\"\n"
@@ -13849,20 +13851,20 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x29a9fa09:  numBytes = 4871; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3732; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
-        case 0x5c64b82e:  numBytes = 704; return CommandBar_def;
+        case 0x5c64b82e:  numBytes = 710; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 107; return Constants_def;
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
-        case 0x28df9dc5:  numBytes = 673; return LeftTransformPanel_def;
+        case 0x28df9dc5:  numBytes = 677; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 356; return MainPanel_def;
-        case 0xd66a1508:  numBytes = 1011; return ModeSelector_def;
+        case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 534; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 625; return PlaybackPanel_def;
-        case 0x125e705a:  numBytes = 1311; return RightTransformPanel_def;
-        case 0xea90c3f4:  numBytes = 1128; return RightTransformPanelMasterTune_def;
+        case 0x125e705a:  numBytes = 1315; return RightTransformPanel_def;
+        case 0xea90c3f4:  numBytes = 1132; return RightTransformPanelMasterTune_def;
         case 0x1b5b8645:  numBytes = 1444; return SongData_def;
-        case 0x4b55592f:  numBytes = 449; return TimeController_def;
+        case 0x4b55592f:  numBytes = 453; return TimeController_def;
         case 0x29238b4e:  numBytes = 256; return TransformController_def;
         case 0x964485f2:  numBytes = 926; return TransportButtonsPanel_def;
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;

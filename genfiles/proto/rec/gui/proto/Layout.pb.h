@@ -240,12 +240,12 @@ class Layout : public ::google::protobuf::Message {
   inline bool is_opaque() const;
   inline void set_is_opaque(bool value);
 
-  // optional bool padding = 6;
+  // optional bool has_padding = 6;
+  inline bool has_has_padding() const;
+  inline void clear_has_padding();
+  static const int kHasPaddingFieldNumber = 6;
   inline bool has_padding() const;
-  inline void clear_padding();
-  static const int kPaddingFieldNumber = 6;
-  inline bool padding() const;
-  inline void set_padding(bool value);
+  inline void set_has_padding(bool value);
 
   // optional .rec.gui.Size default_size = 7;
   inline bool has_default_size() const;
@@ -298,8 +298,8 @@ class Layout : public ::google::protobuf::Message {
   inline void clear_has_is_main();
   inline void set_has_is_opaque();
   inline void clear_has_is_opaque();
-  inline void set_has_padding();
-  inline void clear_has_padding();
+  inline void set_has_has_padding();
+  inline void clear_has_has_padding();
   inline void set_has_default_size();
   inline void clear_has_default_size();
   inline void set_has_dimensions();
@@ -314,7 +314,7 @@ class Layout : public ::google::protobuf::Message {
   bool resize_other_dimension_;
   bool is_main_;
   bool is_opaque_;
-  bool padding_;
+  bool has_padding_;
   ::rec::gui::Size* default_size_;
   ::rec::gui::Dimensions* dimensions_;
   ::rec::gui::ComponentProto* container_;
@@ -725,26 +725,26 @@ inline void Layout::set_is_opaque(bool value) {
   is_opaque_ = value;
 }
 
-// optional bool padding = 6;
-inline bool Layout::has_padding() const {
+// optional bool has_padding = 6;
+inline bool Layout::has_has_padding() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void Layout::set_has_padding() {
+inline void Layout::set_has_has_padding() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void Layout::clear_has_padding() {
+inline void Layout::clear_has_has_padding() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void Layout::clear_padding() {
-  padding_ = false;
-  clear_has_padding();
+inline void Layout::clear_has_padding() {
+  has_padding_ = false;
+  clear_has_has_padding();
 }
-inline bool Layout::padding() const {
-  return padding_;
+inline bool Layout::has_padding() const {
+  return has_padding_;
 }
-inline void Layout::set_padding(bool value) {
-  set_has_padding();
-  padding_ = value;
+inline void Layout::set_has_padding(bool value) {
+  set_has_has_padding();
+  has_padding_ = value;
 }
 
 // optional .rec.gui.Size default_size = 7;

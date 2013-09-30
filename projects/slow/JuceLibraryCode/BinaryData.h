@@ -37,7 +37,7 @@ namespace BinaryData
     const int            KeyStrokeMap_defSize = 5474;
 
     extern const char*   CommandBar_def;
-    const int            CommandBar_defSize = 704;
+    const int            CommandBar_defSize = 710;
 
     extern const char*   Constants_def;
     const int            Constants_defSize = 107;
@@ -52,13 +52,13 @@ namespace BinaryData
     const int            Layout_defSize = 376;
 
     extern const char*   LeftTransformPanel_def;
-    const int            LeftTransformPanel_defSize = 673;
+    const int            LeftTransformPanel_defSize = 677;
 
     extern const char*   MainPanel_def;
     const int            MainPanel_defSize = 356;
 
     extern const char*   ModeSelector_def;
-    const int            ModeSelector_defSize = 1011;
+    const int            ModeSelector_defSize = 1035;
 
     extern const char*   NavigationPanel_def;
     const int            NavigationPanel_defSize = 534;
@@ -67,16 +67,16 @@ namespace BinaryData
     const int            PlaybackPanel_defSize = 625;
 
     extern const char*   RightTransformPanel_def;
-    const int            RightTransformPanel_defSize = 1311;
+    const int            RightTransformPanel_defSize = 1315;
 
     extern const char*   RightTransformPanelMasterTune_def;
-    const int            RightTransformPanelMasterTune_defSize = 1128;
+    const int            RightTransformPanelMasterTune_defSize = 1132;
 
     extern const char*   SongData_def;
     const int            SongData_defSize = 1444;
 
     extern const char*   TimeController_def;
-    const int            TimeController_defSize = 449;
+    const int            TimeController_defSize = 453;
 
     extern const char*   TransformController_def;
     const int            TransformController_defSize = 256;
