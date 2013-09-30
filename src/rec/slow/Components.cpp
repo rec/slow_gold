@@ -30,17 +30,16 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 }
 
 Components::Components()
-    : manager_(applicationCommandManager()),
-      loops_(new gui::audio::Loops()),
+    : loops_(new gui::audio::Loops()),
       directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()) {
   mainPage_.reset(new MainPage(this));
-  Component* c = mainPage_->panel();
-  transportController_ = gui::makeLayout("TransportController", c);
-  transformController_ = gui::makeLayout("TransformController", c);
-  commandBar_ = gui::makeLayout("CommandBar", c);
-  songData_ = gui::makeLayout("SongData", c);
-  modeSelector_ = gui::makeLayout("ModeSelector", c);
+  topComponent_ = mainPage_->panel();
+  transportController_ = gui::makeLayout("TransportController", topComponent_);
+  transformController_ = gui::makeLayout("TransformController", topComponent_);
+  commandBar_ = gui::makeLayout("CommandBar", topComponent_);
+  songData_ = gui::makeLayout("SongData", topComponent_);
+  modeSelector_ = gui::makeLayout("ModeSelector", topComponent_);
 
   mainPage_->layoutComponents();
 }

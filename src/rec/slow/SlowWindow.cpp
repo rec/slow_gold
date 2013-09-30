@@ -130,7 +130,7 @@ void SlowWindow::anotherInstanceStarted(const String& f) {
 }
 
 Component* SlowWindow::getMainComponent() {
-  return getInstance()->components_->mainPage_->panel();
+  return getInstance()->components_->topComponent ();
 }
 
 void SlowWindow::activeWindowStatusChanged() {

@@ -199,7 +199,7 @@ const data::Address& SlowProgram::resizerAddress() const {
 }
 
 Component* SlowProgram::getTopComponent() {
-  return getInstance()->components_->mainPage_->panel();
+  return getInstance()->components_->topComponent();
 }
 
 }  // namespace slow

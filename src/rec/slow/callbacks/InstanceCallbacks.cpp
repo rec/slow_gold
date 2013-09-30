@@ -102,7 +102,7 @@ void zoomToSelection() {
 
 void audioPreferences() {
   Instance* i = getInstance();
-  i->device_->setupPage_->show(i->components_->mainPage_->panel());
+  i->device_->setupPage_->show(i->components_->topComponent());
 }
 
 void closeFile() {

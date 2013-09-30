@@ -32,7 +32,6 @@ class Components : public data::DataListener<music::Metadata>,
   void operator()(const audio::Gain&) override;
   void operator()(const audio::stretch::Stretch&) override;
 
-  ApplicationCommandManager* manager_;
   unique_ptr<Component> loops_;
   unique_ptr<Component> songData_;
   unique_ptr<Component> transformController_;
@@ -41,18 +40,20 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<widget::tree::Root> directoryTree_;
 
   unique_ptr<Component> modeSelector_;
-  unique_ptr<MainPage> mainPage_;
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
+  Component* topComponent() { return topComponent_; }
   Component* commandBar() { return commandBar_.get(); }
 
  private:
+  unique_ptr<MainPage> mainPage_;
   unique_ptr<Component> commandBar_;
   unique_ptr<widget::waveform::Waveform> waveform_;
 
   DrawableButton* startStopButton_;
   Component* levelSlider_;
   Component* speedSlider_;
+  Component* topComponent_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };
