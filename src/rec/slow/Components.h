@@ -42,7 +42,6 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<Component> modeSelector_;
 
   widget::waveform::Waveform* waveform() { return waveform_.get(); }
-  // Component* waveform();
   Component* topComponent() { return topComponent_; }
   Component* commandBar() { return commandBar_.get(); }
 

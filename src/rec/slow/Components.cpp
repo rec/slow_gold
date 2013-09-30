@@ -91,11 +91,5 @@ void Components::operator()(const audio::stretch::Stretch& s) {
   speedSlider_->setEnabled(s.time_enabled());
 }
 
-#if 0
-Component* Components::waveform() {
-  return waveform_.get();
-}
-#endif
-
 }  // namespace slow
 }  // namespace rec
