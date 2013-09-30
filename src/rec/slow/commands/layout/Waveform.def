@@ -5,10 +5,14 @@ layout {
       type_name: "Waveform"
     }
   }
+
   component {
+    name: "ModeSelector"
     layout: "ModeSelector"
   }
+
   component {
+    name: "CommandBar"
     layout: "CommandBar"
   }
 }

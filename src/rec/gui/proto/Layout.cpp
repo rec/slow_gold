@@ -21,6 +21,9 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
 
   if (layout.has_container()) {
     comp = makeComponent(Context(layout.container(), constants, parent, addr));
+    comp->setName(layout.container().name());
+    DLOG(INFO) << layout.container().name();
+    // comp->setTooltip(layout.container().tooltip()); // TODO:
   } else {
     comp.reset(new Panel(str(layout.name()),
                            static_cast<Orientation>(layout.orientation()),

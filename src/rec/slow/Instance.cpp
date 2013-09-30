@@ -132,6 +132,7 @@ void Instance::init() {
 
   player_->init();
   components_.reset(new Components);
+  components_->init();
 
   currentTime_.reset(new CurrentTime);
   bufferFiller_.reset(new BufferFiller);
@@ -143,14 +144,13 @@ void Instance::init() {
 
   midiCommandMap_.reset(new command::MidiCommandMap);
 
+
   device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
   program::applicationCommandManager()->setFirstCommandTarget(
       juceModel_.get());
   window_->addKeyListener(program::applicationCommandManager()->getKeyMappings());
-
-  components_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 

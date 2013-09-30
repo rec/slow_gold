@@ -54,11 +54,13 @@ class JuceModel : public ApplicationCommandTarget,
         return t;
       LOG(DFATAL) << "Got component but couldn't cast for " << name;
     } catch (std::out_of_range&) {
-      LOG(DFATAL) << "Couldn't get component for " << name;
+      LOG(ERROR) << "Couldn't get component for " << name;
+      LOG(DFATAL) << "Valid names are: " << componentNames();
     }
     return nullptr;
   }
   Component* getComponent(const string& name) const;
+  string componentNames() const;
 
   void startThreads();
   void stopThreads();

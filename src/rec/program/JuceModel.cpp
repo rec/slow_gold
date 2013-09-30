@@ -83,5 +83,9 @@ Component* JuceModel::doGetComponent(const string& name) const {
   return impl_->getComponent(name);
 }
 
+string JuceModel::componentNames() const {
+  return impl_->componentNames();
+}
+
 }  // namespace program
 }  // namespace rec

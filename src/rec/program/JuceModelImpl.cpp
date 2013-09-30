@@ -323,7 +323,12 @@ Component* JuceModelImpl::getComponent(const string& name) const {
   return componentMap_->at(name);
 }
 
-
+string JuceModelImpl::componentNames() const {
+  StringArray names;
+  for (auto& i: *componentMap_)
+    names.add(str(i.first));
+  return str(names.joinIntoString(", "));
+}
 
 }  // namespace program
 }  // namespace rec

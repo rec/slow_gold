@@ -36,7 +36,7 @@ class Components : public data::DataListener<music::Metadata>,
   void operator()(const audio::Gain&) override;
   void operator()(const audio::stretch::Stretch&) override;
 
-  widget::waveform::Waveform* waveform() { return waveform_.get(); }
+  widget::waveform::Waveform* waveform() { return waveform_; }
   Component* topComponent() { return mainPanel_.get(); }
   widget::tree::Root* directoryTree();
 
@@ -45,7 +45,7 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<Component> modeSelector_;
 
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
-  unique_ptr<gui::Panel> mainPanel_;
+  unique_ptr<Component> mainPanel_;
 
   // navigationPanel_ contains the navigator, song metadata and loops.
   unique_ptr<Component> navigationPanel_;
@@ -54,15 +54,15 @@ class Components : public data::DataListener<music::Metadata>,
   unique_ptr<Component> playbackPanel_;
 
   // Resizers for mainPanel_;
-  gui::SetterResizer navigationResizer_;
 
   unique_ptr<Component> commandBar_;
-  unique_ptr<widget::waveform::Waveform> waveform_;
+  unique_ptr<widget::waveform::Waveform> oldWaveform_;
 
   widget::tree::TreeView* treeView_;
   DrawableButton* startStopButton_;
   Component* levelSlider_;
   Component* speedSlider_;
+  widget::waveform::Waveform* waveform_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };

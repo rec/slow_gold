@@ -1587,6 +1587,7 @@ static const unsigned char temp_binary_data_16[] =
 "layout {\n"
 "  name: \"MainPanel\"\n"
 "  orientation: VERTICAL\n"
+"\n"
 "  component {\n"
 "    layout: \"NavigationPanel\"\n"
 "    size {\n"
@@ -1594,16 +1595,23 @@ static const unsigned char temp_binary_data_16[] =
 "      preferred: \"-0.2\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    resizer: \"navigation_y\"\n"
+"    size {\n"
+"      fixed: \"RESIZER_SIZE\"\n"
+"    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"Waveform\"\n"
+"    name: \"Waveform\"\n"
 "    size {\n"
 "      min: \"150.0\"\n"
 "      preferred: \"-0.6\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
 "    layout: \"PlaybackPanel\"\n"
 "  }\n"
@@ -2100,10 +2108,14 @@ static const unsigned char temp_binary_data_27[] =
 "      type_name: \"Waveform\"\n"
 "    }\n"
 "  }\n"
+"\n"
 "  component {\n"
+"    name: \"ModeSelector\"\n"
 "    layout: \"ModeSelector\"\n"
 "  }\n"
+"\n"
 "  component {\n"
+"    name: \"CommandBar\"\n"
 "    layout: \"CommandBar\"\n"
 "  }\n"
 "}";
@@ -13862,7 +13874,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
         case 0x28df9dc5:  numBytes = 677; return LeftTransformPanel_def;
-        case 0xd02ec571:  numBytes = 356; return MainPanel_def;
+        case 0xd02ec571:  numBytes = 426; return MainPanel_def;
         case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 716; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 495; return PlaybackPanel_def;
@@ -13873,7 +13885,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x29238b4e:  numBytes = 256; return TransformController_def;
         case 0x964485f2:  numBytes = 926; return TransportButtonsPanel_def;
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
-        case 0x3d219c23:  numBytes = 182; return Waveform_def;
+        case 0x3d219c23:  numBytes = 232; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3837; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;

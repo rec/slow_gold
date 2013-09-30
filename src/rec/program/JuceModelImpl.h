@@ -41,6 +41,7 @@ class JuceModelImpl {
     return layoutMap_.at(n);
   }
   Component* getComponent(const string& name) const;
+  string componentNames() const;
 
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;

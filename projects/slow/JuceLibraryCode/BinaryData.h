@@ -55,7 +55,7 @@ namespace BinaryData
     const int            LeftTransformPanel_defSize = 677;
 
     extern const char*   MainPanel_def;
-    const int            MainPanel_defSize = 356;
+    const int            MainPanel_defSize = 426;
 
     extern const char*   ModeSelector_def;
     const int            ModeSelector_defSize = 1035;
@@ -88,7 +88,7 @@ namespace BinaryData
     const int            TransportController_defSize = 374;
 
     extern const char*   Waveform_def;
-    const int            Waveform_defSize = 182;
+    const int            Waveform_defSize = 232;
 
     extern const char*   MenuCollection_def;
     const int            MenuCollection_defSize = 373;

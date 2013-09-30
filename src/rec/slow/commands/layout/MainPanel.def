@@ -1,6 +1,7 @@
 layout {
   name: "MainPanel"
   orientation: VERTICAL
+
   component {
     layout: "NavigationPanel"
     size {
@@ -8,16 +9,23 @@ layout {
       preferred: "-0.2"
     }
   }
+
   component {
     resizer: "navigation_y"
+    size {
+      fixed: "RESIZER_SIZE"
+    }
   }
+
   component {
     layout: "Waveform"
+    name: "Waveform"
     size {
       min: "150.0"
       preferred: "-0.6"
     }
   }
+
   component {
     layout: "PlaybackPanel"
   }
