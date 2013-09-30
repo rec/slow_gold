@@ -13,7 +13,6 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/LegacyDatabase.pb.h"
-#include "rec/slow/MainPage.h"
 #include "rec/slow/RegisterProtos.h"
 #include "rec/util/file/FixLegacyFiles.h"
 #include "rec/util/proto/Defaulter.h"

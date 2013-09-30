@@ -29,7 +29,6 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiListener.h"
 #include "rec/slow/GuiSettings.h"
-#include "rec/slow/MainPage.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/commands/Command.pb.h"
