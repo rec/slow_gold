@@ -69,11 +69,8 @@ UndoStack::~UndoStack() {
 }
 
 void UndoStack::updateMenusAndUndo() {
-  auto dm = program::juceModel()->disableMap();
-  bool b1 = dm->setProperty("cant_undo", not undoable());
-  bool b2 = dm->setProperty("cant_redo", not undoes());
-  if (b1 or b2)
-    program::menuItemsChanged();
+  program::juceModel()->setProperty("cant_undo", not undoable());
+  program::juceModel()->setProperty("cant_redo", not undoes());
 }
 
 void UndoStack::clear() {

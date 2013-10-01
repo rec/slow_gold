@@ -42,10 +42,10 @@ string getMenuName(const Menu& menu) {
   return menuName;
 }
 
-template <typename PARTS>
-bool hasProperty(const Program& program, const PARTS& parts) {
+template <typename Parts>
+bool hasProperty(const JuceModel& model, const Parts& parts) {
   for (auto& part: parts) {
-    if (program.hasProperty(part))
+    if (model.getProperty(part))
       return true;
   }
   return false;
@@ -198,9 +198,9 @@ void JuceModelImpl::getCommandInfo(CommandID id,
     const Description& desc = command.desc();
 
     int flags = command.flags();
-    if (hasProperty(*program_, command.disabled()))
+    if (hasProperty(*juceModel_, command.disabled()))
       flags |= ApplicationCommandInfo::isDisabled;
-    if (hasProperty(*program_, command.ticked()))
+    if (hasProperty(*juceModel_, command.ticked()))
       flags |= ApplicationCommandInfo::isTicked;
 
     string shortName;

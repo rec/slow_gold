@@ -15,7 +15,6 @@ class SlowProgram : public program::ProgramBase {
 
   string menuBarName() const override;
 
-  bool hasProperty(const string& name) const override;
   void commandCallout(const command::Command&, ApplicationCommandInfo*)
     const override;
 

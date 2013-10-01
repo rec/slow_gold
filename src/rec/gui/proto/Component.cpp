@@ -87,7 +87,7 @@ unique_ptr<Component> makeComponent(const Context& context) {
       tt->setTooltip(comp.tooltip());
 
     if (Disableable* dc = dynamic_cast<Disableable*>(c))
-      program::juceModel()->disableMap()->addComponent(dc);
+      program::juceModel()->addComponent(dc);
     else
       LOG(DFATAL) << comp.ShortDebugString() << " !!! " << component->getName();
   } else {

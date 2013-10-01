@@ -7,6 +7,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "INVERT_LOOP_SELECTION"
   category: "Selection"
@@ -16,6 +17,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "SELECT"
   index: 15
@@ -56,6 +58,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "SELECT_ALL"
   category: "Transport"
@@ -65,6 +68,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "SELECT_ONLY"
   index: 15
@@ -105,6 +109,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "TOGGLE_SELECTION"
   index: 15
@@ -145,6 +150,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "TOGGLE_WHOLE_SONG_LOOP"
   category: "Selection"
@@ -153,8 +159,10 @@ command {
     full: "Toggle selection between the current segment and the whole song."
   }
   disabled: "one_or_fewer_segments"
+  disabled: "empty"
   callout: true
 }
+
 command {
   id_string: "UNSELECT"
   index: 15

@@ -6,6 +6,7 @@ command {
     full: "Bring up a window describing SlowGold 8."
   }
 }
+
 command {
   id_string: "AUDIO_PREFERENCES"
   category: "Audio"
@@ -14,6 +15,7 @@ command {
     full: "Open the Audio Preferences pane."
   }
 }
+
 command {
   id_string: "CHECK_FOR_UPDATES"
   category: "Help"
@@ -22,6 +24,7 @@ command {
     full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
   }
 }
+
 command {
   id_string: "CLEAR_ALL_SETTINGS"
   category: "Loops"
@@ -31,6 +34,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "CLEAR_KEYBOARD_MAPPINGS"
   category: "File"
@@ -39,6 +43,7 @@ command {
     full: "Clear all keyboard command mappings to program default."
   }
 }
+
 command {
   id_string: "CLEAR_MIDI_MAPPINGS"
   category: "File"
@@ -47,6 +52,7 @@ command {
     full: "Clear all MIDI command mappings."
   }
 }
+
 command {
   id_string: "CLEAR_SETTINGS_FOR_THIS_TRACK"
   category: "Loops"
@@ -55,6 +61,7 @@ command {
     full: "Clear all SlowGold settings for this track only and quit the program."
   }
 }
+
 command {
   id_string: "EXPORT_KEYBOARD_MAPPINGS"
   category: "File"
@@ -63,6 +70,7 @@ command {
     full: "Export keyboard command mappings."
   }
 }
+
 command {
   id_string: "EXPORT_MIDI_MAPPINGS"
   category: "File"
@@ -71,6 +79,7 @@ command {
     full: "Export MIDI command mappings."
   }
 }
+
 command {
   id_string: "EXPORT_SETTINGS"
   category: "File"
@@ -79,6 +88,7 @@ command {
     full: "Export all SlowGold Settings to a .zip file."
   }
 }
+
 command {
   id_string: "IMPORT_KEYBOARD_MAPPINGS"
   category: "File"
@@ -87,6 +97,7 @@ command {
     full: "Import SlowGold keyboard command mappings."
   }
 }
+
 command {
   id_string: "IMPORT_MIDI_MAPPINGS"
   category: "File"
@@ -95,6 +106,7 @@ command {
     full: "Import SlowGold MIDI command mappings."
   }
 }
+
 command {
   id_string: "IMPORT_SETTINGS"
   category: "File"
@@ -103,6 +115,7 @@ command {
     full: "Import SlowGold Settings from a .zip file and merge with current settings."
   }
 }
+
 command {
   id_string: "KEYBOARD_MAPPINGS"
   category: "File"
@@ -111,6 +124,7 @@ command {
     full: "Edit keyboard mappings for commands."
   }
 }
+
 command {
   id_string: "MIDI_MAPPINGS"
   category: "File"
@@ -119,6 +133,7 @@ command {
     full: "Edit midi mappings for commands."
   }
 }
+
 command {
   id_string: "MODE_ADD_LOOP_POINT"
   category: "Edit"
@@ -128,6 +143,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "MODE_DRAG"
   category: "Edit"
@@ -137,6 +153,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "MODE_SET_TIME"
   category: "Edit"
@@ -146,6 +163,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "MODE_ZOOM_IN"
   category: "Edit"
@@ -155,6 +173,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "REQUEST_SUPPORT"
   category: "Help"
@@ -163,6 +182,7 @@ command {
     full: "Make a request for technical support to World Wide Woodshed."
   }
 }
+
 command {
   id_string: "SET_SAVE_FORMAT"
   index: 4
@@ -181,6 +201,7 @@ command {
     full: "..."
   }
 }
+
 command {
   id_string: "SET_LANGUAGE"
   index: 5
@@ -201,6 +222,7 @@ command {
     full: "..."
   }
 }
+
 command {
   id_string: "TOGGLE_ADVANCED_MENUS"
   category: "File"
@@ -210,6 +232,7 @@ command {
   }
   setter: "rec.slow.GuiSettings:advanced_menus"
 }
+
 command {
   id_string: "TOGGLE_AUTOMATIC_UPDATES"
   category: "Help"

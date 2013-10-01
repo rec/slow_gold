@@ -12,9 +12,10 @@ namespace util {
 class DisableMap {
  public:
   DisableMap() : disabled_(false) {}
+  virtual ~DisableMap() {}
 
   void addComponent(Disableable*);
-  bool setProperty(const string&, bool);
+  virtual bool setProperty(const string&, bool);
   bool getProperty(const string&) const;
   bool setDisabled(bool isDisabled);
 

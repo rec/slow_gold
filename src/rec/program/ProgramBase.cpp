@@ -26,28 +26,6 @@ Callback* ProgramBase::getCallback(CommandID command) const {
   return callback;
 }
 
-bool ProgramBase::hasProperty(const string& name) const {
-  if (name == "cant_copy")
-    return not canCopy();
-
-  if (name == "cant_cut")
-    return not canCut();
-
-  if (name == "cant_paste")
-    return not canPaste();
-
-  if (name == "cant_redo")
-    return not canRedo();
-
-  if (name == "cant_undo")
-    return not canUndo();
-
-  if (name == "recent_empty")
-    return gui::recentFilesEmpty();
-
-  return false;
-}
-
 ProgramBase::ProgramBase() : enabled_(true) {
   registerProgram(this);
 }

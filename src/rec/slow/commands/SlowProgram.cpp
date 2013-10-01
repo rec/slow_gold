@@ -113,19 +113,6 @@ string SlowProgram::menuBarName() const {
   return data::getProto<GuiSettings>().advanced_menus() ? "advanced" : "basic";
 }
 
-bool SlowProgram::hasProperty(const string& name) const {
-  if (name == "empty")
-    return instance_->empty();
-
-  if (name == "one_or_fewer_segments") {
-    return ProgramBase::hasProperty("empty") or
-      (data::getProto<Viewport>(instance_->file()).loop_points().
-       loop_point_size() <= 1);
-  }
-
-  return ProgramBase::hasProperty(name);
-}
-
 void SlowProgram::commandCallout(const command::Command& command,
                                  ApplicationCommandInfo* info) const {
   DCHECK_EQ(command.id(), Command::TOGGLE_WHOLE_SONG_LOOP);

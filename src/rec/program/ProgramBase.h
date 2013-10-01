@@ -15,7 +15,6 @@ class ProgramBase : public Program {
 
   void addCallback(CommandID, unique_ptr<Callback>) override;
   Callback* getCallback(CommandID) const override;
-  bool hasProperty(const string& name) const override;
   CallbackMap* getCallbackMap() override { return &callbackMap_; }
   bool isEnabled() const override;
   void setEnabled(bool) override;

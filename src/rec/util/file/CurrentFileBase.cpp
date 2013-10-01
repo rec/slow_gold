@@ -8,6 +8,7 @@
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/program/JuceModel.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/DisableMap.h"
 
 namespace rec {
 namespace util {
@@ -40,6 +41,7 @@ void CurrentFileBase::setVirtualFile(const VirtualFile& f, bool showError) {
   beforeFileChange();
 
   empty_ = determineIfFileEmpty(showError);
+  program::juceModel()->setProperty("empty", empty_);
   if (empty_)
     file_ = data::noData();
   else

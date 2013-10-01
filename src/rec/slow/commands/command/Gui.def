@@ -7,6 +7,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:command_bar_at_left"
 }
+
 command {
   id_string: "TOGGLE_COMMAND_BAR_AT_TOP"
   category: "Display"
@@ -16,6 +17,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:command_bar_at_top"
 }
+
 command {
   id_string: "TOGGLE_FILE_OPEN_TREE_DISPLAY"
   category: "Display"
@@ -25,6 +27,7 @@ command {
   }
   setter: "rec.slow.GuiSettings:use_tree_view_in_file_dialogs"
 }
+
 command {
   id_string: "TOGGLE_FOLLOW_CURSOR"
   category: "Display"
@@ -34,6 +37,7 @@ command {
   }
   setter: "rec.slow.GuiSettings:follow_cursor"
 }
+
 command {
   id_string: "TOGGLE_GRID_DISPLAY"
   category: "Display"
@@ -43,6 +47,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:show_grid"
 }
+
 command {
   id_string: "TOGGLE_MODES_AT_LEFT"
   category: "Display"
@@ -52,6 +57,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:modes_at_left"
 }
+
 command {
   id_string: "TOGGLE_MODES_AT_TOP"
   category: "Display"
@@ -61,6 +67,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:modes_at_top"
 }
+
 command {
   id_string: "TOGGLE_PARALLEL_WAVEFORMS"
   category: "Display"
@@ -70,6 +77,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:parallel_waveforms"
 }
+
 command {
   id_string: "TOGGLE_PREFADER_LEVELS"
   category: "Audio"
@@ -80,6 +88,7 @@ command {
   setter: "rec.audio.Gain:prefader_levels"
   disabled: "empty"
 }
+
 command {
   id_string: "TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP"
   category: "Help"
@@ -89,6 +98,7 @@ command {
   }
   setter: "rec.slow.GuiSettings:show_about_on_startup"
 }
+
 command {
   id_string: "TOGGLE_SHOW_CURSOR_LABELS"
   category: "Display"
@@ -98,6 +108,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:show_cursor_labels"
 }
+
 command {
   id_string: "TOGGLE_SHOW_LABELS_AT_TOP"
   category: "Display"
@@ -107,6 +118,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:show_labels_at_top"
 }
+
 command {
   id_string: "TOGGLE_SHOW_MASTER_TUNE"
   category: "Display"
@@ -116,6 +128,7 @@ command {
   }
   setter: "rec.slow.GuiSettings:show_master_tune"
 }
+
 command {
   id_string: "TOGGLE_SHOW_SELECTION_BUTTONS"
   category: "Display"
@@ -125,6 +138,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:show_selection_buttons"
 }
+
 command {
   id_string: "TOGGLE_SHOW_TIMES_AT_TOP"
   category: "Display"
@@ -134,6 +148,7 @@ command {
   }
   setter: "rec.widget.waveform.WaveformProto:show_times_at_top"
 }
+
 command {
   id_string: "ZOOM_OUT"
   category: "Audio"
@@ -142,6 +157,7 @@ command {
     full: "Zoom out."
   }
 }
+
 command {
   id_string: "ZOOM_OUT_FULL"
   category: "Audio"
@@ -150,6 +166,7 @@ command {
     full: "Zoom out as far as possible."
   }
 }
+
 command {
   id_string: "ZOOM_TO_SELECTION"
   category: "Audio"

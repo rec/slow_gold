@@ -4,11 +4,11 @@
 #include <unordered_map>
 
 #include "rec/util/Listener.h"
+#include "rec/util/DisableMap.h"
 
 namespace rec { namespace command { class CommandMapProto; }}
 namespace rec { namespace gui { class Constants; }}
 namespace rec { namespace gui { class Layout; }}
-namespace rec { namespace util { class DisableMap; }}
 
 namespace rec {
 namespace program {
@@ -18,7 +18,8 @@ class Program;
 
 class JuceModel : public ApplicationCommandTarget,
                   public MenuBarModel,
-                  public Listener<Enable> {
+                  public Listener<Enable>,
+                  public DisableMap {
  public:
   JuceModel(Program* p);
   void init();
@@ -46,7 +47,8 @@ class JuceModel : public ApplicationCommandTarget,
   // @throws std::out_of_range
   const gui::Layout& getLayout(const string&) const;
   const gui::Constants& constants() const;
-  DisableMap* disableMap() { return disableMap_.get(); }
+
+  bool setProperty(const string&, bool) override;
 
   template <typename Type = Component>
   Type* getComponent(const string& name) {

@@ -10,6 +10,8 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/DisableMap.h"
 
+using namespace rec::program;
+
 namespace rec {
 namespace slow {
 
@@ -29,6 +31,11 @@ void GuiListener::operator()(const GuiSettings& settings) {
   displayHelpPane_ = settings.show_help_pane();
 }
 
+void GuiListener::operator()(const widget::waveform::Viewport& viewport) {
+  juceModel()->setProperty("one_or_fewer_segments",
+                           viewport.loop_points().loop_point_size() <= 1);
+}
+
 void GuiListener::update() {
   gui::GuiWriteable::writeAll();
   {
@@ -41,12 +48,9 @@ void GuiListener::update() {
   Component* c = Component::getCurrentlyFocusedComponent();
   if (lastComponent_ != c) {
     lastComponent_ = c;
-    auto dm = program::juceModel()->disableMap();
-    bool b1 = dm->setProperty("cant_copy", not canCopy());
-    bool b2 = dm->setProperty("cant_cut", not canCut());
-    bool b3 = dm->setProperty("cant_paste", not canPaste());
-    if (b1 or b2 or b3)
-      program::menuItemsChanged();
+    juceModel()->setProperty("cant_copy", not canCopy());
+    juceModel()->setProperty("cant_cut", not canCut());
+    juceModel()->setProperty("cant_paste", not canPaste());
   }
 }
 

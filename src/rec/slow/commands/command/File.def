@@ -7,6 +7,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "EJECT_CDS"
   category: "File"
@@ -15,6 +16,7 @@ command {
     full: "Eject all CDs and DVDs"
   }
 }
+
 command {
   id_string: "OPEN"
   category: "File"
@@ -23,6 +25,7 @@ command {
     full: "Open a dialog to select a new audio file for looping."
   }
 }
+
 command {
   id_string: "OPEN_MANUAL"
   category: "Help"
@@ -31,6 +34,7 @@ command {
     full: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
   }
 }
+
 command {
   id_string: "OPEN_PREVIOUS_FILE"
   category: "File"
@@ -40,6 +44,7 @@ command {
   }
   disabled: "recent_empty"
 }
+
 command {
   id_string: "OPEN_SLOWGOLD_DIRECTORY"
   category: "Help"
@@ -48,6 +53,7 @@ command {
     full: "Open the directory where all the SlowGold Preferences Files are located."
   }
 }
+
 command {
   id_string: "QUIT"
   category: "(None)"
@@ -56,6 +62,7 @@ command {
     full: "Quit SlowGold"
   }
 }
+
 command {
   id_string: "RECENT_FILES"
   category: "(None)"
@@ -71,6 +78,7 @@ command {
     full: "Recent files menu"
   }
 }
+
 command {
   id_string: "SAVE_FILE"
   category: "File"
@@ -80,6 +88,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "SAVE_FILE_SELECTION"
   category: "File"
@@ -89,6 +98,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "WHATS_NEW_PAGE"
   category: "Help"

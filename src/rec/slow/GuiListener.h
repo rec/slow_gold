@@ -2,19 +2,23 @@
 #define __REC_SLOW_GUILISTENER__
 
 #include "rec/data/DataListener.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace slow {
 
 class GuiSettings;
 
-class GuiListener : public DataListener<GuiSettings> {
+class GuiListener
+    : public DataListener<GuiSettings>,
+      public DataListener<widget::waveform::Viewport> {
  public:
   GuiListener();
   virtual ~GuiListener() {}
 
-  virtual void operator()(const GuiSettings&);
-  virtual void update();
+  void operator()(const GuiSettings&) override;
+  void operator()(const widget::waveform::Viewport&) override;
+  void update();
 
  private:
   CriticalSection lock_;

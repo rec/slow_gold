@@ -7,6 +7,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "CLEAR_LOOPS"
   category: "Loops"
@@ -16,6 +17,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "COPY"
   category: "Edit"
@@ -25,6 +27,7 @@ command {
   }
   disabled: "cant_copy"
 }
+
 command {
   id_string: "COPY_ALL_LOOP_POINTS"
   category: "Edit"
@@ -34,6 +37,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "CUT"
   category: "Edit"
@@ -43,6 +47,7 @@ command {
   }
   disabled: "cant_cut"
 }
+
 command {
   id_string: "DEL"
   category: "Edit"
@@ -51,6 +56,7 @@ command {
     full: "Delete the current selection without changing the clipboard."
   }
 }
+
 command {
   id_string: "PASTE"
   category: "Edit"
@@ -60,6 +66,7 @@ command {
   }
   disabled: "cant_paste"
 }
+
 command {
   id_string: "PASTE_OVER_LOOP_POINTS"
   category: "Edit"
@@ -69,6 +76,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "REDO"
   category: "Edit"
@@ -78,6 +86,7 @@ command {
   }
   disabled: "cant_redo"
 }
+
 command {
   id_string: "UNDO"
   category: "Edit"

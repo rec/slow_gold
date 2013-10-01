@@ -3,7 +3,6 @@
 #include "rec/program/JuceModel.h"
 
 #include "rec/gui/menu/RecentFiles.h"
-#include "rec/util/DisableMap.h"
 #include "rec/program/JuceModelImpl.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Program.h"
@@ -91,6 +90,14 @@ Component* JuceModel::doGetComponent(const string& name) const {
 string JuceModel::componentNames() const {
   return impl_->componentNames();
 }
+
+bool JuceModel::setProperty(const string& name, bool value) {
+  bool result = DisableMap::setProperty(name, value);
+  if (result)
+    menuItemsChanged();
+  return result;
+}
+
 
 }  // namespace program
 }  // namespace rec

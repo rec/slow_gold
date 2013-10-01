@@ -24,7 +24,6 @@ class Program {
 
   virtual string menuBarName() const = 0;
 
-  virtual bool hasProperty(const string& name) const = 0;
   virtual void commandCallout(const command::Command&, ApplicationCommandInfo*)
     const = 0;
 

@@ -6,6 +6,7 @@ command {
     full: "Toggle audio dim on and off."
  }
 }
+
 command {
   id_string: "MUTE_VOLUME_TOGGLE"
   category: "Audio"
@@ -15,6 +16,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "NUDGE_VOLUME_DOWN"
   category: "Audio"
@@ -24,6 +26,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "NUDGE_VOLUME_UP"
   category: "Audio"
@@ -33,6 +36,7 @@ command {
   }
   disabled: "empty"
 }
+
 command {
   id_string: "RESET_GAIN_TO_UNITY"
   category: "Audio"
@@ -41,6 +45,7 @@ command {
     full: "Reset volume to 0 dB"
   }
 }
+
 command {
   id_string: "TOGGLE_AUTOPLAY"
   category: "Audio"
@@ -50,6 +55,7 @@ command {
   }
   setter: "rec.audio.AudioSettings:autoplay"
 }
+
 command {
   id_string: "TOGGLE_STRETCH_ENABLE"
   category: "Audio"
@@ -59,6 +65,7 @@ command {
   }
   setter: "rec.audio.stretch.Stretch:time_enabled"
 }
+
 command {
   id_string: "TOGGLE_TRANSFORM_ENABLE"
   category: "Audio"
