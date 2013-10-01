@@ -19,8 +19,8 @@ bool Disableable::getDisabledFromProperties() const {
 
 void Disableable::disable(bool isDisabled) {
   if (Component* c = dynamic_cast<Component*>(this)) {
-    DLOG(INFO) << (isDisabled ? "disabling " : "enabling ") << str(c->getName());
     DCHECK(c->getName().length());
+    MessageManagerLock l;
     c->setEnabled(not isDisabled);
   } else
     LOG(DFATAL) << "A Disableable wasn't a Component.";

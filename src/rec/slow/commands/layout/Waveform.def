@@ -8,12 +8,11 @@ layout {
   }
 
   component {
-    name: "ModeSelector"
     layout: "ModeSelector"
   }
 
   component {
-    name: "CommandBar"
     layout: "CommandBar"
+    disable: "empty"
   }
 }

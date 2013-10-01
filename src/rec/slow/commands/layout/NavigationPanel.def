@@ -37,6 +37,7 @@ layout {
 
   component {
     name: "Loops"
+    disable: "empty"
     custom {
       type_name: "Loops"
     }
