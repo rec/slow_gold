@@ -81,12 +81,20 @@ unique_ptr<Component> makeComponent(const Context& context) {
   unique_ptr<Component> component;
   if (ComponentMaker maker = make(comp)) {
     component = maker(context);
-    component->setName(comp.name());
+    const string* name = &comp.name();
+    if (name->empty())
+      name = &comp.layout();
+    if (name->empty())
+      name = &comp.resizer();
+
+    DCHECK(not name->empty()) << comp.ShortDebugString();
+    component->setName(str(*name));
     Component* c = component.get();
     if (SettableTooltipClient* tt = dynamic_cast<SettableTooltipClient*>(c))
       tt->setTooltip(comp.tooltip());
 
     if (Disableable* dc = dynamic_cast<Disableable*>(c)) {
+      dc->addDisableProperties(comp.disable());
       program::juceModel()->addComponent(dc);
       dc->disable(dc->getDisabledFromProperties());
     } else {
@@ -95,12 +103,6 @@ unique_ptr<Component> makeComponent(const Context& context) {
   } else {
     LOG(DFATAL) << "No component in " << comp.ShortDebugString();
   }
-
-  if (not component->getName().length())
-    component->setName(comp.layout());
-
-  if (not component->getName().length())
-    component->setName(comp.resizer());
 
   DCHECK(component->getName().length()) << comp.ShortDebugString();
   return std::move(component);
