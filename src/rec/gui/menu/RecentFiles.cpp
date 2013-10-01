@@ -7,8 +7,10 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/program/Program.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/Copy.h"
+#include "rec/util/DisableMap.h"
 
 using namespace google::protobuf;
 
@@ -59,6 +61,7 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());
   data::setProto(rf, CANT_UNDO);
+  program::juceModel()->disableMap()->setProperty("recent_empty", false);
 }
 
 static const int MAX_DEDUPE_COUNT = 5;
