@@ -145,6 +145,7 @@ void UndoStack::redo() {
 void UndoStack::setEnabled(bool e) {
   Lock l(lock_);
   enabled_ = e;
+  updateMenusAndUndo();
 }
 
 void UndoStack::startGroup() {

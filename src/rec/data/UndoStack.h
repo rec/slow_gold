@@ -25,9 +25,9 @@ class UndoStack {
   void setEnabled(bool e = true);
   void startGroup();
   void stopGroup();
+  void updateMenusAndUndo();
 
  private:
-  void updateMenusAndUndo();
   void undoOrRedo(bool isUndo);
   int popRedos();
 
