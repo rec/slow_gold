@@ -34,7 +34,7 @@ bool DisableMap::setProperty(const string& name, bool value) {
     auto& comp = i->second;
     comp->setDisableProperty(name, value);
     if (not disabled_)
-      disable(comp, comp->getDisabledFromProperties());
+      comp->disable(comp->getDisabledFromProperties());
   }
   return true;
 }
@@ -45,15 +45,8 @@ bool DisableMap::setDisabled(bool isDisabled) {
     return false;
   disabled_ = isDisabled;
   for (auto& comp: components_)
-    disable(comp, disabled_ or comp->getDisabledFromProperties());
+    comp->disable(disabled_ or comp->getDisabledFromProperties());
   return true;
-}
-
-void DisableMap::disable(Disableable* comp, bool isDisabled) {
-  if (Component* c = dynamic_cast<Component*>(comp))
-    c->setEnabled(not isDisabled);
-  else
-    LOG(DFATAL) << "A Disableable wasn't a Component.";
 }
 
 }  // namespace util

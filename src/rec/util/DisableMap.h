@@ -17,11 +17,9 @@ class DisableMap {
   void addComponent(Disableable*);
   virtual bool setProperty(const string&, bool);
   bool getProperty(const string&) const;
-  bool setDisabled(bool isDisabled);
+  bool setDisabled(bool);
 
  private:
-  void disable(Disableable* comp, bool isDisabled);
-
   PropertyMap propertyMap_;
   std::unordered_multimap<string, Disableable*> componentMap_;
   std::unordered_set<Disableable*> components_;

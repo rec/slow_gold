@@ -21,21 +21,11 @@ class Disableable {
       propertyMap_[p] = false;
   }
 
-  void setDisableProperty(const string& name, bool value) {
-    Lock l(lock_);
-    propertyMap_[name] = value;
-  }
-
-  bool getDisabledFromProperties() const {
-    Lock l(lock_);
-    for (auto& i: propertyMap_) {
-      if (i.second)
-        return true;
-    }
-    return false;
-  }
-
+  void setDisableProperty(const string& name, bool value);
+  bool getDisabledFromProperties() const;
   const PropertyMap& map() const { return propertyMap_; }
+
+  void disable(bool isDisabled);
 
  private:
   CriticalSection lock_;
