@@ -14,21 +14,23 @@ namespace gui {
 
 namespace {
 
-unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
+unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
+                                 const string& oldName) {
   unique_ptr<Component> comp;
   auto& constants = juceModel()->constants();
   auto& addr = getProgram()->resizerAddress();
 
   if (layout.has_container()) {
     comp = makeComponent(Context(layout.container(), constants, parent, addr));
-    comp->setName(layout.container().name());
-    DLOG(INFO) << layout.container().name();
-    // comp->setTooltip(layout.container().tooltip()); // TODO:
+    auto& name = layout.container().name();
+    comp->setName(name.empty() ? oldName : name);
   } else {
-    comp.reset(new Panel(str(layout.name()),
-                           static_cast<Orientation>(layout.orientation()),
-                           layout.resize_other_dimension(),
-                           layout.is_main()));
+    auto name = str(layout.name().empty() ? oldName : layout.name());
+    DCHECK(name.length()) << layout.ShortDebugString();
+    comp.reset(new Panel(name,
+                         static_cast<Orientation>(layout.orientation()),
+                         layout.resize_other_dimension(),
+                         layout.is_main()));
   }
   Panel* panel = dynamic_cast<Panel*>(comp.get());
   for (auto& component: layout.component()) {
@@ -59,7 +61,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent) {
 unique_ptr<Component> makeLayout(const string& name, Component* parent) {
   unique_ptr<Component> comp;
   try {
-    comp = makeLayout(program::juceModel()->getLayout(name), parent);
+    comp = makeLayout(program::juceModel()->getLayout(name), parent, name);
   } catch (std::out_of_range&) {
     LOG(DFATAL) << "Can't make layout " << name;
   }

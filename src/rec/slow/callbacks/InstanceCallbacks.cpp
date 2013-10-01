@@ -93,11 +93,13 @@ void zoomToSelection() {
   SampleRange range = rec::util::makeRange<SampleTime>(i->currentTime_->timeSelection());
   SampleTime pad(range.size() / SELECTION_WIDTH_PORTION);
   SampleTime len(i->length().get());
-  widget::waveform::zoomTo(i->file(),
-                           i->length(),
-                           i->getSourceSampleRate(),
-                           std::max(SampleTime(0), range.begin_ - pad),
-                           std::min(len, range.end_ + pad));
+  if (len) {
+    widget::waveform::zoomTo(i->file(),
+                             i->length(),
+                             i->getSourceSampleRate(),
+                             std::max(SampleTime(0), range.begin_ - pad),
+                             std::min(len, range.end_ + pad));
+  }
 }
 
 void audioPreferences() {

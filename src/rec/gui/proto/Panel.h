@@ -44,6 +44,11 @@ class Panel : public Component,
 
   void clear(bool free = false);
 
+  void setEnabled(bool e) {
+    Component::setEnabled(e);
+    DLOG(INFO) << "Enable " << e << ", " << getName();
+  }
+
   virtual bool isOpaque() const { return isOpaque_; }
 
 #if JUCE_WINDOWS

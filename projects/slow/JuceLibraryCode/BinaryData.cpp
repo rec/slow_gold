@@ -1650,6 +1650,7 @@ static const unsigned char temp_binary_data_15[] =
 "  }\n"
 "\n"
 "  component {\n"
+"    name: \"StereoCombo\"\n"
 "    tooltip: \"Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels.\"\n"
 "    address: \"rec.audio.source.StereoProto:value\"\n"
 "    combo_box {\n"
@@ -1787,6 +1788,7 @@ static const unsigned char temp_binary_data_18[] =
 "\n"
 "  component {\n"
 "    layout: \"SongData\"\n"
+"    disable: \"empty\"\n"
 "    size {\n"
 "      min: \"150.0\"\n"
 "      max: \"-1.0\"\n"
@@ -2188,6 +2190,7 @@ static const unsigned char temp_binary_data_27[] =
 "layout {\n"
 "  name: \"Waveform\"\n"
 "  container {\n"
+"    name: \"Waveform\"\n"
 "    custom {\n"
 "      type_name: \"Waveform\"\n"
 "    }\n"
@@ -13957,10 +13960,10 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
-        case 0x28df9dc5:  numBytes = 677; return LeftTransformPanel_def;
+        case 0x28df9dc5:  numBytes = 701; return LeftTransformPanel_def;
         case 0xd02ec571:  numBytes = 462; return MainPanel_def;
         case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
-        case 0x75b00f76:  numBytes = 716; return NavigationPanel_def;
+        case 0x75b00f76:  numBytes = 737; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 495; return PlaybackPanel_def;
         case 0x125e705a:  numBytes = 1315; return RightTransformPanel_def;
         case 0xea90c3f4:  numBytes = 1132; return RightTransformPanelMasterTune_def;
@@ -13969,7 +13972,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x29238b4e:  numBytes = 256; return TransformController_def;
         case 0x964485f2:  numBytes = 926; return TransportButtonsPanel_def;
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
-        case 0x3d219c23:  numBytes = 232; return Waveform_def;
+        case 0x3d219c23:  numBytes = 253; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3837; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;
