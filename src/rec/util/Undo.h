@@ -19,8 +19,6 @@ inline bool canUndo() { return undoable() != 0; }
 void undo();
 void redo();
 
-void addUndoListener(Listener<None>*);
-
 }  // namespace util
 }  // namespace rec
 

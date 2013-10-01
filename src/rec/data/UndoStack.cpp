@@ -5,6 +5,7 @@
 #include "rec/data/Value.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/program/JuceModel.h"
+#include "rec/util/DisableMap.h"
 #include "rec/util/Math.h"
 #include "rec/util/proto/Proto.h"
 #include "rec/util/STL.h"
@@ -68,8 +69,11 @@ UndoStack::~UndoStack() {
 }
 
 void UndoStack::updateMenusAndUndo() {
-  broadcast(None());
-  program::juceModel()->menuItemsChanged();
+  auto dm = program::juceModel()->disableMap();
+  bool b1 = dm->setProperty("cant_undo", not undoable());
+  bool b2 = dm->setProperty("cant_redo", not undoes());
+  if (b1 or b2)
+    program::menuItemsChanged();
 }
 
 void UndoStack::clear() {

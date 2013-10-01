@@ -1,14 +1,14 @@
 #ifndef __REC_EVENT_EVENTSTACK__
 #define __REC_EVENT_EVENTSTACK__
 
-#include "rec/util/Listener.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace data {
 
 class Data;
 
-class UndoStack : public Broadcaster<None> {
+class UndoStack {
  public:
   explicit UndoStack(bool e = false) : undoes_(0), enabled_(e), group_(false) {}
   ~UndoStack();

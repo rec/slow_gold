@@ -27,9 +27,5 @@ void redo() {
   undoStack()->redo();
 }
 
-void addUndoListener(Listener<None>* lst) {
-  undoStack()->addListener(lst);
-}
-
 }  // namespace util
 }  // namespace rec

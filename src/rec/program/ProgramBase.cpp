@@ -37,10 +37,10 @@ bool ProgramBase::hasProperty(const string& name) const {
     return not canPaste();
 
   if (name == "cant_redo")
-    return not canUndo();
+    return not canRedo();
 
   if (name == "cant_undo")
-    return not canRedo();
+    return not canUndo();
 
   if (name == "recent_empty")
     return gui::recentFilesEmpty();
