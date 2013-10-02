@@ -37,7 +37,7 @@ namespace BinaryData
     const int            KeyStrokeMap_defSize = 5474;
 
     extern const char*   CommandBar_def;
-    const int            CommandBar_defSize = 710;
+    const int            CommandBar_defSize = 753;
 
     extern const char*   Constants_def;
     const int            Constants_defSize = 155;

@@ -1509,6 +1509,7 @@ static const unsigned char temp_binary_data_10[] =
 "  component {\n"
 "    name: \"AddLoopPointButton\"\n"
 "    tooltip: \"Add Loop Point Button: Add a loop point at the current time.\"\n"
+"    disable: \"time_is_close_to_loop_point\"\n"
 "    button {\n"
 "      command: \"ADD_LOOP_POINT\"\n"
 "    }\n"
@@ -13957,7 +13958,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x29a9fa09:  numBytes = 4894; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3739; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
-        case 0x5c64b82e:  numBytes = 710; return CommandBar_def;
+        case 0x5c64b82e:  numBytes = 753; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 155; return Constants_def;
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;

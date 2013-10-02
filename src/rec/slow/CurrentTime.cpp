@@ -31,13 +31,15 @@ CurrentTime::CurrentTime()
       requestedTime_(-1),
       length_(0),
       followCursor_(false),
-      loopingSegment_(NO_SEGMENT) {
+      loopingSegment_(NO_SEGMENT),
+      timeIsCloseToLoopPoint_(false) {
 }
 
 void CurrentTime::setTime(SampleTime t) {
   {
     Lock l(lock());
     time_ = t;
+    checkTimeIsCloseToLoopPoint();
 
     if (loopingSegment_ > NO_SEGMENT) {
       uint current = audio::getSegment(viewport_.loop_points(), time());
@@ -88,6 +90,7 @@ void CurrentTime::zoomToTime(SampleTime t) {
 
   zoom->set_end(zoom->begin() + width);
   setViewportProto(viewport);
+  checkTimeIsCloseToLoopPoint();
 }
 
 void CurrentTime::setViewport(const Viewport& viewport) {
@@ -121,6 +124,7 @@ void CurrentTime::setViewport(const Viewport& viewport) {
   }
   if (jump)
     jumpToTime(time);
+  checkTimeIsCloseToLoopPoint();
 }
 
 void CurrentTime::operator()(const GuiSettings& settings) {
@@ -179,6 +183,25 @@ void CurrentTime::operator()(audio::transport::State s) {
   program::menuItemsChanged();
 }
 
+void CurrentTime::checkTimeIsCloseToLoopPoint() {
+  bool isCloseTo;
+  {
+    Lock l(lock());
+    if (viewport_.loop_points().loop_point_size()) {
+      // DLOG(INFO) << time_ << " - " << viewport_.loop_points().ShortDebugString();
+      isCloseTo = audio::isCloseTo(viewport_.loop_points(), time_);
+    } else {
+      isCloseTo = false;
+    }
+    if (isCloseTo == timeIsCloseToLoopPoint_)
+      return;
+    timeIsCloseToLoopPoint_ = isCloseTo;
+  }
+  // DLOG(INFO) << "!!!!!!!!!!!!!! Changed! " << isCloseTo;
+  program::juceModel()->setProperty("time_is_close_to_loop_point", isCloseTo);
+}
+
 }  // namespace slow
 }  // namespace rec
+
 

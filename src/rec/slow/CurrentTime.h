@@ -60,6 +60,7 @@ class CurrentTime : public audio::util::CurrentTimeBase,
  private:
   void zoomToCursor(SampleTime t);
   void setViewportProto(const widget::waveform::Viewport&);
+  void checkTimeIsCloseToLoopPoint();
 
   SampleRangeVector timeSelection_;
   SampleTime time_;
@@ -68,6 +69,7 @@ class CurrentTime : public audio::util::CurrentTimeBase,
   bool followCursor_;
   bool isDragging_;
   int loopingSegment_;
+  bool timeIsCloseToLoopPoint_;
 
   widget::waveform::Viewport viewport_;
 

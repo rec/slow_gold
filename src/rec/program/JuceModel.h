@@ -88,6 +88,7 @@ JuceModel* juceModel();
 
 inline void menuItemsChanged() {
   juceModel()->menuItemsChanged();
+  juceModel()->applicationCommandManager()->commandStatusChanged();
 }
 
 inline ApplicationCommandManager* applicationCommandManager() {

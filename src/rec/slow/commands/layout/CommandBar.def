@@ -12,6 +12,7 @@ layout {
   component {
     name: "AddLoopPointButton"
     tooltip: "Add Loop Point Button: Add a loop point at the current time."
+    disable: "time_is_close_to_loop_point"
     button {
       command: "ADD_LOOP_POINT"
     }

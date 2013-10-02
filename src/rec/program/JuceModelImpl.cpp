@@ -193,12 +193,6 @@ string JuceModelImpl::addMenu(PopupMenu* popup, const string& name) {
 
 void JuceModelImpl::getCommandInfo(CommandID id,
                                    ApplicationCommandInfo* info) {
-#if 0
-  string name = program_->idToName(id);
-  bool log = (name == "TOGGLE_START_STOP");
-  if (log)
-    DLOG(INFO) << "********************* " << name;
-#endif
   try {
     const command::Command& command = commandMap_.at(id);
     const Description& desc = command.desc();

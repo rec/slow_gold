@@ -116,7 +116,7 @@ void SlowWindow::doPostStartup() {
 }
 
 void SlowWindow::doShutdown() {
-  instance_->reset();
+  instance_->shutdown();
 }
 
 void SlowWindow::anotherInstanceStarted(const String& f) {

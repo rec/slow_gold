@@ -258,6 +258,11 @@ void Instance::reset() {
   currentTime_->reset();
 }
 
+void Instance::shutdown() {
+  juceModel_->stopThreads();
+  reset();
+}
+
 SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
