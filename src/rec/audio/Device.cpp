@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 
 static File getDeviceFile() {
-  return app::getAppFile("AudioDevice.xml");
+  return app::getAppFile("global").getChildFile("AudioDevice.xml");
 }
 
 Device::Device() {
@@ -17,6 +17,8 @@ Device::Device() {
   File f = getDeviceFile();
   if (f.exists())
     state.reset(juce::XmlDocument::parse(f));
+  else
+    LOG(ERROR) << "Couldn't read device file " << str(f);
 
   String err = manager_.initialise(0, 2, state.get(), true);
   if (err.length())
@@ -28,8 +30,11 @@ Device::Device() {
 void Device::saveState() {
   ptr<juce::XmlElement> state(manager_.createStateXml());
   if (state) {
-    if (!state->writeToFile(getDeviceFile(), ""))
-      LOG(DFATAL) << "Couldn't write device state file";
+    auto f = getDeviceFile();
+    if (state->writeToFile(f, ""))
+      LOG(INFO) << "Wrote state to file " << str(f);
+    else
+      LOG(DFATAL) << "Couldn't write device state file " << str(f);
   }
 }
 
