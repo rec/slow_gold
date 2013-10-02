@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_DIALOG__
 #define __REC_GUI_DIALOG__
 
+#include "rec/util/Enable.h"
 #include "rec/util/Listener.h"
 
 namespace rec {

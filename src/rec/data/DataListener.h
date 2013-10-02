@@ -3,6 +3,7 @@
 
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Undoable.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/Address.pb.h"
 #include "rec/util/proto/Proto.h"

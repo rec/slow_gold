@@ -3,6 +3,7 @@
 
 #include "rec/util/Disableable.h"
 #include "rec/gui/Geometry.h"
+#include "rec/gui/Orientation.h"
 #include "rec/gui/SizeHintAccumulator.h"
 
 namespace rec {

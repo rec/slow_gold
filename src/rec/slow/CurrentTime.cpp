@@ -9,6 +9,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/range/Contains.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -57,7 +58,7 @@ void CurrentTime::setTime(SampleTime t) {
 }
 
 void CurrentTime::setViewportProto(const Viewport& viewport) {
-  DataListener<Viewport>::setProto(viewport, CANT_UNDO);
+  DataListener<Viewport>::setProto(viewport, data::CANT_UNDO);
 }
 
 void CurrentTime::zoomToTime(SampleTime t) {
@@ -175,6 +176,7 @@ void CurrentTime::setLoopingSegment(int segment) {
 void CurrentTime::operator()(audio::transport::State s) {
   if (s == audio::transport::STOPPED)
     setLoopingSegment(NO_SEGMENT);
+  program::menuItemsChanged();
 }
 
 }  // namespace slow

@@ -2,6 +2,7 @@
 #define __REC_DATA_OPENER__
 
 #include "rec/data/Reader.h"
+#include "rec/data/Undoable.h"
 #include "rec/util/proto/Proto.h"
 
 namespace rec {

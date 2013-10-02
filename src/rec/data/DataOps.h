@@ -3,6 +3,7 @@
 
 #include "rec/data/Data.h"
 #include "rec/data/Reader.h"
+#include "rec/data/Undoable.h"
 #include "rec/util/proto/Proto.h"
 
 namespace rec {

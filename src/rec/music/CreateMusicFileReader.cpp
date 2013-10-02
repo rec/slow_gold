@@ -144,7 +144,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
   }
 
   if (reader_ && metadata && (*metadata != music::Metadata::default_instance()))
-    data::setProto(*metadata, d, CANT_UNDO);
+    data::setProto(*metadata, d, data::CANT_UNDO);
 }
 
 }  // namespace music

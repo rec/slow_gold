@@ -60,7 +60,7 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
 
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());
-  data::setProto(rf, CANT_UNDO);
+  data::setProto(rf, data::CANT_UNDO);
   program::juceModel()->setProperty("recent_empty", false);
 }
 

@@ -5,6 +5,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
+#include "rec/data/Undoable.h"
 #include "rec/gui/GetHelpText.h"
 #include "rec/util/thread/Trash.h"
 
@@ -50,7 +51,7 @@ class Instance {
   bool empty() const;
   audio::Source* makeSource() const;
   SampleRate getSourceSampleRate() const;
-  void setProto(const Message&, Undoable undoable = CAN_UNDO);
+  void setProto(const Message&, data::Undoable undoable = data::CAN_UNDO);
   void reset();
 
   app::Window* window_;

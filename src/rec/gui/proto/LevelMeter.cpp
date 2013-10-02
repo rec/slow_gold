@@ -1,4 +1,6 @@
 #include "rec/gui/proto/LevelMeter.h"
+
+#include "rec/gui/Orientation.h"
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/gui/proto/Component.pb.h"
 #include "rec/gui/proto/Constants.h"
@@ -14,7 +16,7 @@ unique_ptr<Component> makeLevelMeter(const Context& context) {
   auto& level = component.level_meter();
   return unique_ptr<Component>(new audio::LevelMeter(
       "(name)", "(tooltip)",
-      level.orientation() == OrientationProto::HORIZONTAL,
+      level.orientation() == HORIZONTAL,
       level.type(), level.margin()));
 }
 

@@ -82,7 +82,7 @@ void mergeKeysIntoCommands(const CommandMapProto& keys, CommandMap* map) {
   for (auto& entry: keys.entry()) {
     CommandID id = entry.id();
     if (entry.has_index())
-      id += entry.index() - CommandIDs::FIRST;
+      id += entry.index() - Command::FIRST;
     try {
       auto& commandEntry = map->at(id);
       DCHECK(not commandEntry.keypress_size());

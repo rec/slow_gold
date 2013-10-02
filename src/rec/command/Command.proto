@@ -29,6 +29,14 @@ message Command {
     BANK_SIZE = 10000;
   };
 
+  enum Index {
+    FIRST = 0;
+    PREVIOUS = 1;
+    CURRENT = 2;
+    NEXT = 3;
+    LAST = 4;
+  };
+
   enum SetterType {
     TOGGLE = 0;
     SELECTION = 1;

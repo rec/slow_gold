@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 
+#include "rec/util/Enable.h"
 #include "rec/util/Listener.h"
 #include "rec/util/DisableMap.h"
 

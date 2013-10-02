@@ -2,6 +2,7 @@
 #define __REC_DATA_ADDRESSLISTENER__
 
 #include "rec/data/Address.h"
+#include "rec/data/Undoable.h"
 #include "rec/data/Value.h"
 #include "rec/util/Listener.h"
 

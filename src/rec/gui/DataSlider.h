@@ -27,7 +27,6 @@ class DataSlider : public Panel,
              uint32 captionSize = 45,
              uint32 textEntryBoxWidth = 80,
              uint32 textEntryBoxHeight = 1);
-
   virtual void sliderValueChanged(Slider*);
   virtual void operator()(const data::Value&);
   virtual void languageChanged();

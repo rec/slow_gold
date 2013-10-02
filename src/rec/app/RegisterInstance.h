@@ -2,6 +2,7 @@
 #define __REC_APP_REGISTERINSTANCE__
 
 #include "rec/app/RegisterProgram.h"
+#include "rec/app/SocketTimeoutTime.h"
 #include "rec/base/ArraySize.h"
 
 namespace rec {

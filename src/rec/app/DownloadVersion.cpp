@@ -1,6 +1,7 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/AppSettings.pb.h"
 #include "rec/app/GenericApplication.h"
+#include "rec/app/SocketTimeoutTime.h"
 #include "rec/app/Files.h"
 #include "rec/base/DropDead.h"
 #include "rec/base/Trans.h"

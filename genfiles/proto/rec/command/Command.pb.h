@@ -68,6 +68,28 @@ inline bool Command_Id_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<Command_Id>(
     Command_Id_descriptor(), name, value);
 }
+enum Command_Index {
+  Command_Index_FIRST = 0,
+  Command_Index_PREVIOUS = 1,
+  Command_Index_CURRENT = 2,
+  Command_Index_NEXT = 3,
+  Command_Index_LAST = 4
+};
+bool Command_Index_IsValid(int value);
+const Command_Index Command_Index_Index_MIN = Command_Index_FIRST;
+const Command_Index Command_Index_Index_MAX = Command_Index_LAST;
+const int Command_Index_Index_ARRAYSIZE = Command_Index_Index_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Command_Index_descriptor();
+inline const ::std::string& Command_Index_Name(Command_Index value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Command_Index_descriptor(), value);
+}
+inline bool Command_Index_Parse(
+    const ::std::string& name, Command_Index* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Command_Index>(
+    Command_Index_descriptor(), name, value);
+}
 enum Command_SetterType {
   Command_SetterType_TOGGLE = 0,
   Command_SetterType_SELECTION = 1
@@ -308,6 +330,33 @@ class Command : public ::google::protobuf::Message {
   static inline bool Id_Parse(const ::std::string& name,
       Id* value) {
     return Command_Id_Parse(name, value);
+  }
+
+  typedef Command_Index Index;
+  static const Index FIRST = Command_Index_FIRST;
+  static const Index PREVIOUS = Command_Index_PREVIOUS;
+  static const Index CURRENT = Command_Index_CURRENT;
+  static const Index NEXT = Command_Index_NEXT;
+  static const Index LAST = Command_Index_LAST;
+  static inline bool Index_IsValid(int value) {
+    return Command_Index_IsValid(value);
+  }
+  static const Index Index_MIN =
+    Command_Index_Index_MIN;
+  static const Index Index_MAX =
+    Command_Index_Index_MAX;
+  static const int Index_ARRAYSIZE =
+    Command_Index_Index_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Index_descriptor() {
+    return Command_Index_descriptor();
+  }
+  static inline const ::std::string& Index_Name(Index value) {
+    return Command_Index_Name(value);
+  }
+  static inline bool Index_Parse(const ::std::string& name,
+      Index* value) {
+    return Command_Index_Parse(name, value);
   }
 
   typedef Command_SetterType SetterType;
@@ -1583,6 +1632,10 @@ namespace protobuf {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_Id>() {
   return ::rec::command::Command_Id_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_Index>() {
+  return ::rec::command::Command_Index_descriptor();
 }
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_SetterType>() {

@@ -28,6 +28,7 @@ const ::google::protobuf::Descriptor* Command_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Command_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* Command_Id_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* Command_Index_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* Command_SetterType_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Commands_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
@@ -91,7 +92,8 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Command));
   Command_Id_descriptor_ = Command_descriptor_->enum_type(0);
-  Command_SetterType_descriptor_ = Command_descriptor_->enum_type(1);
+  Command_Index_descriptor_ = Command_descriptor_->enum_type(1);
+  Command_SetterType_descriptor_ = Command_descriptor_->enum_type(2);
   Commands_descriptor_ = file->message_type(2);
   static const int Commands_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Commands, command_),
@@ -149,7 +151,7 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"E\n\013Descri"
     "ption\022\014\n\004name\030\001 \001(\t\022\014\n\004menu\030\002 \003(\t\022\014\n\004ful"
-    "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\236\004\n\007Command\022\n\n\002id\030"
+    "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\341\004\n\007Command\022\n\n\002id\030"
     "\001 \001(\r\022\021\n\tid_string\030\017 \001(\t\022\r\n\005index\030\002 \001(\021\022"
     "\020\n\010category\030\003 \001(\t\022\024\n\014submenu_name\030\004 \001(\t\022"
     "\031\n\021submenu_separator\030\016 \003(\r\022&\n\004desc\030\005 \001(\013"
@@ -162,9 +164,11 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205"
     " \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n"
     "\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\016\n\tBANK_SI"
-    "ZE\020\220N\"\'\n\nSetterType\022\n\n\006TOGGLE\020\000\022\r\n\tSELEC"
-    "TION\020\001\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.re"
-    "c.command.Command", 737);
+    "ZE\020\220N\"A\n\005Index\022\t\n\005FIRST\020\000\022\014\n\010PREVIOUS\020\001\022"
+    "\013\n\007CURRENT\020\002\022\010\n\004NEXT\020\003\022\010\n\004LAST\020\004\"\'\n\nSett"
+    "erType\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001\"1\n\010Com"
+    "mands\022%\n\007command\030\001 \003(\0132\024.rec.command.Com"
+    "mand", 804);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -601,6 +605,33 @@ const Command_Id Command::BANK_SIZE;
 const Command_Id Command::Id_MIN;
 const Command_Id Command::Id_MAX;
 const int Command::Id_ARRAYSIZE;
+#endif  // _MSC_VER
+const ::google::protobuf::EnumDescriptor* Command_Index_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Command_Index_descriptor_;
+}
+bool Command_Index_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const Command_Index Command::FIRST;
+const Command_Index Command::PREVIOUS;
+const Command_Index Command::CURRENT;
+const Command_Index Command::NEXT;
+const Command_Index Command::LAST;
+const Command_Index Command::Index_MIN;
+const Command_Index Command::Index_MAX;
+const int Command::Index_ARRAYSIZE;
 #endif  // _MSC_VER
 const ::google::protobuf::EnumDescriptor* Command_SetterType_descriptor() {
   protobuf_AssignDescriptorsOnce();

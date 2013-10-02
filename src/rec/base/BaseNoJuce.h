@@ -28,20 +28,6 @@ using std::vector;
 using util::file::VirtualFile;
 using util::file::VirtualFileList;
 
-enum Endianness { LITTLE_END, BIG_END };
-enum Orientation { HORIZONTAL, VERTICAL};
-enum Undoable { CANT_UNDO, CAN_UNDO };
-enum Enable { DISABLE, ENABLE };
-const int SOCKET_TIMEOUT_MS = 2000;
-
-enum CommandIDs {
-  FIRST, PREVIOUS, CURRENT, NEXT, LAST
-};
-
-inline Orientation inverse(Orientation o) {
-  return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
-}
-
 class None {};
 
 }  // namespace rec

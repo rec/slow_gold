@@ -4,8 +4,9 @@
 #include <string>
 
 #include "rec/app/DownloadVersion.h"
-#include "rec/util/thread/Trash.h"
+#include "rec/util/Enable.h"
 #include "rec/util/Listener.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace app {

@@ -217,8 +217,8 @@ class SaveThread : public ThreadWithProgressWindow {
   void setFile() {
     const VirtualFile vf = instance_->currentFile_.get()->file();
     const VirtualFile newVf = file::toVirtualFile(file_);
-    data::setProto(data::getProto<music::Metadata>(vf), newVf, CANT_UNDO);
-    data::setProto(viewport_, newVf, CANT_UNDO);
+    data::setProto(data::getProto<music::Metadata>(vf), newVf, data::CANT_UNDO);
+    data::setProto(viewport_, newVf, data::CANT_UNDO);
     instance_->currentFile_->setFile(file_);
   }
 

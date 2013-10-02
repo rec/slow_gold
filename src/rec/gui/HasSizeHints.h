@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_HASSIZEHINTS__
 #define __REC_GUI_HASSIZEHINTS__
 
-#include "rec/base/base.h"
+#include "rec/gui/Orientation.h"
 
 namespace rec {
 namespace gui {

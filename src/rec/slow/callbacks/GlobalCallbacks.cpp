@@ -4,6 +4,7 @@
 #include "rec/app/Files.h"
 #include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Undoable.h"
 #include "rec/data/ZipData.h"
 #include "rec/program/Program.h"
 #include "rec/slow/callbacks/CallbackUtils.h"

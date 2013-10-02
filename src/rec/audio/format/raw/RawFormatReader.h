@@ -8,6 +8,8 @@ namespace audio {
 namespace format {
 namespace raw {
 
+enum Endianness { LITTLE_END, BIG_END };
+
 class RawFormatReader : public AudioFormatReader {
  public:
   RawFormatReader(InputStream* s, Endianness e = LITTLE_END)

@@ -5,6 +5,7 @@
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/command/Command.pb.h"
+#include "rec/data/Undoable.h"
 #include "rec/program/Program.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/CallbackUtils.h"

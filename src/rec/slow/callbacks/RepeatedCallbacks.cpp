@@ -26,12 +26,12 @@ using namespace rec::command;
 using namespace rec::program;
 
 int toIndex(int position, int32 segment, int32 size) {
-  int pos = (position == CommandIDs::FIRST) ? 0 :
-    (position == CommandIDs::PREVIOUS) ? segment - 1 :
-    (position == CommandIDs::CURRENT) ? segment :
-    (position == CommandIDs::NEXT) ? segment + 1 :
-    (position == CommandIDs::LAST) ? size - 1 :
-    (position - CommandIDs::LAST - 1);
+  int pos = (position == command::Command::FIRST) ? 0 :
+    (position == command::Command::PREVIOUS) ? segment - 1 :
+    (position == command::Command::CURRENT) ? segment :
+    (position == command::Command::NEXT) ? segment + 1 :
+    (position == command::Command::LAST) ? size - 1 :
+    (position - command::Command::LAST - 1);
   return mod(pos, size);
 }
 
@@ -85,12 +85,12 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 }  // namespace
 
 void addSelectionCallbacks(Program* t) {
-  addCallback(t, slow::Command::DESELECT_ALL, select, deselectAll, CommandIDs::CURRENT);
-  addCallback(t, slow::Command::SELECT_ALL, select, selectAll, CommandIDs::CURRENT);
+  addCallback(t, slow::Command::DESELECT_ALL, select, deselectAll, command::Command::CURRENT);
+  addCallback(t, slow::Command::SELECT_ALL, select, selectAll, command::Command::CURRENT);
   addCallback(t, slow::Command::INVERT_LOOP_SELECTION, select, invertLoopSelection,
-              CommandIDs::CURRENT);
+              command::Command::CURRENT);
   addCallback(t, slow::Command::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
-              CommandIDs::CURRENT);
+              command::Command::CURRENT);
 }
 
 namespace {
@@ -121,7 +121,7 @@ void jump(LoopSnapshot* snap, int32 pos) {
 
 
   // Special case for "jump back";
-  if (pos == CommandIDs::PREVIOUS &&
+  if (pos == command::Command::PREVIOUS &&
       (time - snap->loops_->loop_point(segment).time()) >=
       SampleTime(MAX_JUMP_TIME, snap->loops_->sample_rate())) {
     p = segment;
@@ -240,7 +240,7 @@ void nudgeTime(bool inc) {
   if (selection.loop_point_size() == 1)
     nudgeWithinSegment(selection, inc);
   else
-    jumpSelected(&s, inc ? CommandIDs::NEXT : CommandIDs::PREVIOUS);
+    jumpSelected(&s, inc ? command::Command::NEXT : command::Command::PREVIOUS);
 }
 
 void loopNextSegment() {

@@ -45,7 +45,7 @@ File getDirectoryForDialog(const string& dialogName) {
 
 void setDirectoryForDialog(const string& dialogName, const File& directory) {
   string dir = str(directory.getFullPathName());
-  data::Opener<DialogFiles> df(data::global(), CANT_UNDO);
+  data::Opener<DialogFiles> df(data::global(), data::CANT_UNDO);
   for (int i = 0; i < df->dialog_file_size(); ++i) {
     if (df->dialog_file(i).dialog_name() == dialogName) {
       df->mutable_dialog_file(i)->set_file_name(dir);

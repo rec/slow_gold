@@ -86,7 +86,7 @@ class RegisterSlow : public app::RegisterInstance {
   RegisterSlow() {}
 
   virtual void onSuccess() {
-    data::Opener<AppSettings> settings(data::global(), CANT_UNDO);
+    data::Opener<AppSettings> settings(data::global(), data::CANT_UNDO);
     settings->set_registered(true);
 #if JUCE_WINDOWS
     if (!settings->windows_registered()) {
@@ -244,7 +244,7 @@ bool Instance::empty() const {
   return currentFile_ && currentFile_->empty();
 }
 
-void Instance::setProto(const Message& m, Undoable undoable) {
+void Instance::setProto(const Message& m, data::Undoable undoable) {
    data::setProto(m, file(), undoable);
    juceModel_->menuItemsChanged();
 }

@@ -2,6 +2,7 @@
 #define __REC_GUI_SIZEHINTACCUMULATOR__
 
 #include "rec/gui/HasSizeHints.h"
+#include "rec/gui/Orientation.h"
 #include "rec/gui/SizeAccumulator.h"
 
 namespace rec {

@@ -2,6 +2,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Undoable.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
@@ -48,7 +49,7 @@ void CurrentFileBase::setVirtualFile(const VirtualFile& f, bool showError) {
     nonEmptyFileLoaded();
 
   afterFileChange(newFile);
-  data::setProto(file_, CANT_UNDO);
+  data::setProto(file_, data::CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_);
 
   resume();

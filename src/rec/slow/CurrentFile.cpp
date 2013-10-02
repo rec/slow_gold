@@ -43,19 +43,10 @@ void CurrentFile::saveState() {
       DLOG(INFO) << "!!!! " << file().ShortDebugString();
       DLOG(INFO) << player->getTime();
     }
-    if (true) {
-      data::Opener<PlayState> state(file());
-      state->set_time(player->getTime());
-      state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
-                            player->state());
-      if (false)
-        DLOG(INFO) << "Saving " << state->ShortDebugString();
-    } else {
-      PlayState state = data::getProto<PlayState>(file());
-      state.set_time(player->getTime());
-      data::setProto(state, CANT_UNDO);
-      DLOG(INFO) << "Saving " << state.ShortDebugString();
-    }
+    data::Opener<PlayState> state(file());
+    state->set_time(player->getTime());
+    state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
+                          player->state());
   }
 }
 
@@ -136,7 +127,7 @@ void CurrentFile::nonEmptyFileLoaded() {
   viewport.mutable_loop_points()->set_length(length_);
   viewport.mutable_loop_points()->set_sample_rate(getInstance()->bufferFiller_->reader()->
                                                   reader()->sampleRate);
-  data::setProto(viewport, file_, CANT_UNDO);
+  data::setProto(viewport, file_, data::CANT_UNDO);
 }
 
 }  // namespace slow

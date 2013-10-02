@@ -109,6 +109,7 @@ State Player::state() const {
 
 void Player::operator()(const PlayState& s) {
   setState(s.is_playing() ? RUNNING : STOPPED);
+
 }
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {
