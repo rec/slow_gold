@@ -40,7 +40,7 @@ void WaveformPainter::drawEmpty(Graphics& g) {
 
 void WaveformPainter::paint(Graphics& g, const Range<SampleTime>& range,
                             Loading loading) {
-  if (loading == LOADING || model_.isEmpty() || !thumbnail_) {
+  if (model_.isEmpty() || !thumbnail_) {
     drawEmpty(g);
   } else {
     painter_.reset(new Painter(model_.description().widget(), &g));
