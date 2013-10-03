@@ -1,9 +1,4 @@
 package rec.gui;
 
 message SwitcherProto {
-  enum Type {
-    BOOL = 0;
-    ENUM = 1;
-  };
-  repeated string layout = 1;
 };

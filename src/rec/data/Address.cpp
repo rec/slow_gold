@@ -45,17 +45,17 @@ const string Address::toString() const {
       s += str(String(part(i).index()));
   }
 
-  if (getScope(*this) == AddressProto::FILE_SCOPE)
+  if (getScope() == AddressProto::FILE_SCOPE)
     s += "-file";
   else
     s += "-global";
   return s;
 }
 
-AddressProto::Scope getScope(const AddressProto& a)  {
-  if (a.has_scope())
-    return a.scope();
-  return getDataCenter()->messageMaker().getScope(a.type_name());
+AddressProto::Scope Address::getScope() const {
+  if (has_scope())
+    return scope();
+  return getDataCenter()->messageMaker().getScope(type_name());
 }
 
 }  // namespace data

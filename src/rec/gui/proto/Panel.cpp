@@ -22,8 +22,7 @@ Panel::Panel(const String& name,
 }
 
 Panel::~Panel() {
-  for (auto& component: components_)
-    delete component;
+  deleteAllChildren();
 }
 
 void Panel::addToPanel(Component* c) {
@@ -34,7 +33,6 @@ void Panel::addToPanel(Component* c) {
 }
 
 void Panel::addToPanel(Component* c, double min, double max, double pref) {
-  // DLOG(INFO) << c->getName() << ": " << min << ", " << max << ", " << pref;
   accumulate(min, max, pref);
   layoutManager_.setItemLayout(components_.size(), min, max, pref);
   components_.push_back(c);

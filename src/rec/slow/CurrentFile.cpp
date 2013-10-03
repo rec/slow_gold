@@ -74,7 +74,6 @@ void CurrentFile::afterFileChange(const VirtualFile& newFile) {
   if (newFile.path_size())
     components->directoryTree()->refreshNode(newFile);
 
-  components->setEnabled(length_ != 0);
   broadcastState<Loading>(NOT_LOADING);
 }
 

@@ -34,7 +34,7 @@ class Panel : public Component,
 
   void addToPanel(Component* c);
   void addToPanel(Component* c, double m) { addToPanel(c, m, m, m); }
-  void addToPanel(Component* c, double min, double max, double pref);
+  virtual void addToPanel(Component* c, double min, double max, double pref);
   void addToPanel(Component*, const Constants&, const Size&);
 
   int size() const { return components_.size(); }

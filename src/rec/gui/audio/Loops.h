@@ -17,9 +17,8 @@ class Loops : public TableController,
               public app::LanguageListener,
               public HasCuttable {
  public:
-  explicit Loops(const TableColumnList* desc = nullptr,
-                 const data::Address& partAddress = data::Address("loop_points")
-                 + data::Address("loop_point"));
+  Loops(const TableColumnList* desc = nullptr,
+        const data::Address* partAddress = nullptr);
   virtual ~Loops();
 
   virtual void operator()(const widget::waveform::Viewport&);
@@ -42,7 +41,10 @@ class Loops : public TableController,
   virtual void update();
 
   data::Address getAddress(int col, int row) const {
-    return partAddress_ + data::Address(row) + columns_.column(col).address();
+    data::Address address = partAddress_;
+    address.add_part()->set_index(row);
+    address.mutable_part()->MergeFrom(columns_.column(col).address().part());
+    return address;
   }
 
  private:

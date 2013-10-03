@@ -28,23 +28,18 @@ class Components : public data::DataListener<audio::stretch::Stretch>,
   ~Components();
 
   virtual void init();
-  void setEnabled(bool enabled);
   void operator()(const audio::Gain&) override;
   void operator()(const audio::stretch::Stretch&) override;
   void operator()(const music::Metadata&) override;
+  Component* topComponent() { return mainPanel_.get(); }
 
   widget::waveform::Waveform* waveform() { return waveform_; }
-  Component* topComponent() { return mainPanel_.get(); }
   widget::tree::Root* directoryTree();
 
  private:
   unique_ptr<Component> mainPanel_;
-  unique_ptr<Component> alternateLeftTransformPanel_;
 
   widget::tree::TreeView* treeView_;
-  DrawableButton* startStopButton_;
-  Component* levelSlider_;
-  Component* speedSlider_;
   widget::waveform::Waveform* waveform_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);

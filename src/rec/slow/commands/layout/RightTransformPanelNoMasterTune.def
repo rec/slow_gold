@@ -1,5 +1,5 @@
 layout {
-  name: "RightTransformPanel"
+  name: "RightTransformPanelNoMasterTune"
   has_padding: true
   orientation: VERTICAL
   default_size {
@@ -9,6 +9,7 @@ layout {
   component {
     name: "SpeedSlider"
     tooltip: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+    disabled: "speed_disabled"
     address: "rec.audio.stretch.Stretch:time_percent"
     slider {
       caption: "Speed"

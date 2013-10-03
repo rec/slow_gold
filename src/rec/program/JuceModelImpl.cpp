@@ -216,7 +216,7 @@ void JuceModelImpl::getCommandInfo(CommandID id,
         shortName = recentFiles[fileIndex];
     } else if (command.has_setter()) {
       data::Address address = data::splitAddress(command.setter());
-      bool isGlobal = (getScope(address) == data::AddressProto::GLOBAL_SCOPE);
+      bool isGlobal = (address.getScope() == data::AddressProto::GLOBAL_SCOPE);
       VirtualFile file = isGlobal ? global() : program_->getCurrentFile();
       Data* data = getData(address.type_name(), file);
       unique_ptr<Message> msg(data->clone());

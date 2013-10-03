@@ -46,9 +46,6 @@ Components::~Components() {}
 void Components::init() {
   auto jm = juceModel();
   treeView_ = jm->getComponent<widget::tree::TreeView>("TreeView");
-  startStopButton_ = jm->getComponent<DrawableButton>("StartStopButton");
-  levelSlider_ = jm->getComponent<Component>("LevelSlider");
-  speedSlider_ = jm->getComponent<Component>("SpeedSlider");
   waveform_ = jm->getComponent<widget::waveform::Waveform>("Waveform");
   waveform_->init();
   gui::audio::Loops* loops = jm->getComponent<gui::audio::Loops>("Loops");
@@ -57,18 +54,7 @@ void Components::init() {
 }
 
 void Components::operator()(const rec::audio::Gain& gain) {
- levelSlider_->setEnabled(!gain.mute());
-}
-
-void Components::setEnabled(bool enabled) {
-#if 0
-  oldWaveform_->setEnabled(enabled);
-  modeSelector_->setEnabled(enabled);
-  commandBar_->setEnabled(enabled);
-
-  enableAllDrawableButtons(modeSelector_.get(), enabled);
-  enableAllDrawableButtons(commandBar_.get(), enabled);
-#endif  // TODO: fix this
+  program::juceModel()->setProperty("muted", gain.mute());
 }
 
 void Components::operator()(const music::Metadata& md) {
@@ -83,7 +69,7 @@ void Components::operator()(const music::Metadata& md) {
 }
 
 void Components::operator()(const audio::stretch::Stretch& s) {
-  speedSlider_->setEnabled(s.time_enabled());
+  program::juceModel()->setProperty("speed_disabled", not s.time_enabled());
 }
 
 widget::tree::Root* Components::directoryTree() {

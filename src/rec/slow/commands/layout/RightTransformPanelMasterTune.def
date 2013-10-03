@@ -3,15 +3,22 @@ layout {
   has_padding: true
   orientation: VERTICAL
   default_size {
-    fixed: "25"
+    fixed: "24"
   }
 
   component {
     name: "SpeedSlider"
     tooltip: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+    disabled: "speed_disabled"
     address: "rec.audio.stretch.Stretch:time_percent"
     slider {
-      caption: "Stretch"
+      caption: "Speed"
+      text_suffix: "%"
+      minimum: "5.0"
+      maximum: "200.0"
+      interval: "0.1"
+      detent: "100"
+      detent_radius: "0.008"
     }
   }
 
@@ -21,6 +28,12 @@ layout {
     address: "rec.audio.stretch.Stretch:semitone_shift"
     slider {
       caption: "Pitch"
+      text_suffix: "semitones"
+      suffix_spacing: " "
+      minimum: "-24.0"
+      maximum: "24.0"
+      interval: "1.0"
+      detent: "0"
     }
   }
 
@@ -30,6 +43,12 @@ layout {
     address: "rec.audio.stretch.Stretch:detune_cents"
     slider {
       caption: "Tune"
+      text_suffix: "cents"
+      suffix_spacing: " "
+      minimum: "-100.0"
+      maximum: "100.0"
+      interval: "0.1"
+      detent: "0"
     }
   }
 

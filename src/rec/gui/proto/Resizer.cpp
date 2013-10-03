@@ -16,7 +16,8 @@ unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
   data::Address address;
   string minValue;
   if (isSimple) {
-    address = context.address_ + component.resizer();
+    address = context.address_;
+    address.add_part()->set_name(component.resizer());
     minValue = component.min_resizer();
   } else {
     address = data::splitAddress(component.address());

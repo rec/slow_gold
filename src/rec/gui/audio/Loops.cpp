@@ -54,9 +54,14 @@ Def<TableColumnList> dflt(
 
 }  // namespace
 
-Loops::Loops(const TableColumnList* desc,
-             const Address& partAddress)
-    : partAddress_(partAddress) {
+Loops::Loops(const TableColumnList* desc, const Address* partAddress) {
+  unique_ptr<Address> address;
+  if (partAddress) {
+    partAddress_ = *partAddress;
+  } else {
+    partAddress_.add_part()->set_name("loop_points");
+    partAddress_.add_part()->set_name("loop_point");
+  }
   cuttable_.reset(new LoopsCuttable(this));
   setMultipleSelectionEnabled(true);
 

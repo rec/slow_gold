@@ -43,13 +43,13 @@ namespace BinaryData
     const int            Constants_defSize = 155;
 
     extern const char*   GainPanel_def;
-    const int            GainPanel_defSize = 551;
+    const int            GainPanel_defSize = 573;
 
     extern const char*   HelpPanel_def;
     const int            HelpPanel_defSize = 284;
 
     extern const char*   Layout_def;
-    const int            Layout_defSize = 376;
+    const int            Layout_defSize = 416;
 
     extern const char*   LeftTransformPanel_def;
     const int            LeftTransformPanel_defSize = 701;
@@ -67,10 +67,13 @@ namespace BinaryData
     const int            PlaybackPanel_defSize = 539;
 
     extern const char*   RightTransformPanel_def;
-    const int            RightTransformPanel_defSize = 1315;
+    const int            RightTransformPanel_defSize = 367;
 
     extern const char*   RightTransformPanelMasterTune_def;
-    const int            RightTransformPanelMasterTune_defSize = 1132;
+    const int            RightTransformPanelMasterTune_defSize = 1581;
+
+    extern const char*   RightTransformPanelNoMasterTune_def;
+    const int            RightTransformPanelNoMasterTune_defSize = 1358;
 
     extern const char*   SongData_def;
     const int            SongData_defSize = 1444;
