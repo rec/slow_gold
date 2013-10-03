@@ -82,6 +82,8 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
 }
 
 void JuceModelImpl::logMaps() {
+  if (true)
+    return;
   LOG(INFO) << "There are " << commandMap_.size() << " callbacks.";
   LOG(INFO) << "There are " << layoutMap_.size() << " layouts.";
 
@@ -194,9 +196,6 @@ string JuceModelImpl::addMenu(PopupMenu* popup, const string& name) {
 void JuceModelImpl::getCommandInfo(CommandID id,
                                    ApplicationCommandInfo* info) {
   try {
-    auto name = program::getProgram()->idToName(id);
-    bool log = (name == "ZOOM_OUT_FULL");
-
     const command::Command& command = commandMap_.at(id);
     const Description& desc = command.desc();
 

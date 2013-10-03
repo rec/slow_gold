@@ -60,7 +60,7 @@ Loops::Loops(const TableColumnList* desc,
   cuttable_.reset(new LoopsCuttable(this));
   setMultipleSelectionEnabled(true);
 
-  TableColumnList tcl = dflt.get();
+  TableColumnList tcl = desc ? *desc : dflt.get();
   tcl.mutable_column(0)->set_name(str(Trans("Time")));
   tcl.mutable_column(1)->set_name(str(Trans("Name")));
   initialize(tcl, "Loops");
