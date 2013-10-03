@@ -21,7 +21,7 @@ class ComboBoxSetter : public AddressListener,
                        public Disableable {
  public:
   explicit ComboBoxSetter(const Context& context)
-      : AddressListener(data::splitAddress(context.component_.address())) {
+      : AddressListener(context.component_.address()) {
     auto& component = context.component_;
     auto& combo = component.combo_box();
     setEditableText(false);

@@ -18,8 +18,7 @@ namespace program {
 SetterListener::SetterListener(CommandID id,
                                const command::Command& command,
                                JuceModel* model)
-    : AddressListener(splitAddress(command.setter())),
-      model_(model) {
+    : AddressListener(command.setter()), model_(model) {
   Program* p = model->program();
   if (command.setter_type() == Command::TOGGLE) {
     p->addCallback(id, methodCallback(this, &SetterListener::toggle));

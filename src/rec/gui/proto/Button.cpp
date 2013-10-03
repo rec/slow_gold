@@ -60,7 +60,7 @@ unique_ptr<Component> makeButton(const Context& context) {
   unique_ptr<LanguageButton> button(
       (proto.behavior() == ButtonProto::MODE) ?
       new ModalButton(component.name(), component.tooltip(), style,
-                      data::splitAddress(component.address()),
+                      component.address(),
                       proto.mode_index()) :
       new LanguageButton(component.name(), component.tooltip(), style));
   button->setTooltip(component.tooltip());

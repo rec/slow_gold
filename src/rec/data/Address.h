@@ -12,13 +12,12 @@ class Address : public AddressProto {
   Address() {}
   Address(const AddressProto& a) : AddressProto(a) {}
 
+  // Split a string address into a typename and a list of parts.
+  Address(const string&);
+
   const string toString() const;
   AddressProto::Scope getScope() const;
 };
-
-// Split an address looking like "classname:address" into a full
-// address record.
-Address splitAddress(const string&);
 
 template <typename Type>
 const Address makeAddress() {

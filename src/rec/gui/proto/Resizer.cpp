@@ -20,7 +20,7 @@ unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
     address.add_part()->set_name(component.resizer());
     minValue = component.min_resizer();
   } else {
-    address = data::splitAddress(component.address());
+    address = component.address();
     minValue = component.full_resizer().min_value();
   }
   return unique_ptr<Component>(

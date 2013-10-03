@@ -18,7 +18,7 @@ namespace {
 class Switcher : public Panel, public AddressListener {
  public:
   explicit Switcher(const Context& context)
-  : AddressListener(splitAddress(context.component_.address())),
+  : AddressListener(context.component_.address()),
     index_(-1) {
   }
 

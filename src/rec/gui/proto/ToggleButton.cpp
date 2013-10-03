@@ -11,8 +11,7 @@ unique_ptr<Component> makeToggleButton(const Context& context) {
   auto& comp = context.component_;
 
   unique_ptr<SetterToggle> st(
-      new SetterToggle(comp.name(), comp.tooltip(),
-                       data::splitAddress(comp.address())));
+      new SetterToggle(comp.name(), comp.tooltip(), comp.address()));
   st->setButtonText(str(comp.toggle_button().caption()));
   return unique_ptr<Component>(st.release());
 }

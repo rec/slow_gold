@@ -26,7 +26,7 @@ unique_ptr<Component> makeText(const Context& context) {
   auto& component = context.component_;
   const TextProto& proto = component.text();
   return unique_ptr<Component>(
-      new SetterText("(name)", data::splitAddress(component.address()), "(tt)",
+      new SetterText("(name)", component.address(), "(tt)",
                      proto.caption(), not proto.caption().empty()));
 }
 
