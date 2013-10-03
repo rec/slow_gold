@@ -35,6 +35,7 @@
 #include "rec/gui/proto/Resizer.pb.h"
 #include "rec/gui/proto/Size.pb.h"
 #include "rec/gui/proto/Slider.pb.h"
+#include "rec/gui/proto/Switcher.pb.h"
 #include "rec/gui/proto/Text.pb.h"
 #include "rec/gui/proto/ToggleButton.pb.h"
 #include "rec/widget/status/Time.pb.h"
@@ -208,10 +209,10 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_min_resizer();
   inline void set_allocated_min_resizer(::std::string* min_resizer);
 
-  // repeated string disabled = 22;
+  // repeated string disabled = 10;
   inline int disabled_size() const;
   inline void clear_disabled();
-  static const int kDisabledFieldNumber = 22;
+  static const int kDisabledFieldNumber = 10;
   inline const ::std::string& disabled(int index) const;
   inline ::std::string* mutable_disabled(int index);
   inline void set_disabled(int index, const ::std::string& value);
@@ -224,109 +225,118 @@ class ComponentProto : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disabled() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disabled();
 
-  // optional .rec.gui.ButtonProto button = 10;
+  // optional .rec.gui.ButtonProto button = 11;
   inline bool has_button() const;
   inline void clear_button();
-  static const int kButtonFieldNumber = 10;
+  static const int kButtonFieldNumber = 11;
   inline const ::rec::gui::ButtonProto& button() const;
   inline ::rec::gui::ButtonProto* mutable_button();
   inline ::rec::gui::ButtonProto* release_button();
   inline void set_allocated_button(::rec::gui::ButtonProto* button);
 
-  // optional .rec.gui.ComboBoxProto combo_box = 11;
+  // optional .rec.gui.ComboBoxProto combo_box = 12;
   inline bool has_combo_box() const;
   inline void clear_combo_box();
-  static const int kComboBoxFieldNumber = 11;
+  static const int kComboBoxFieldNumber = 12;
   inline const ::rec::gui::ComboBoxProto& combo_box() const;
   inline ::rec::gui::ComboBoxProto* mutable_combo_box();
   inline ::rec::gui::ComboBoxProto* release_combo_box();
   inline void set_allocated_combo_box(::rec::gui::ComboBoxProto* combo_box);
 
-  // optional .rec.gui.CustomProto custom = 12;
+  // optional .rec.gui.CustomProto custom = 13;
   inline bool has_custom() const;
   inline void clear_custom();
-  static const int kCustomFieldNumber = 12;
+  static const int kCustomFieldNumber = 13;
   inline const ::rec::gui::CustomProto& custom() const;
   inline ::rec::gui::CustomProto* mutable_custom();
   inline ::rec::gui::CustomProto* release_custom();
   inline void set_allocated_custom(::rec::gui::CustomProto* custom);
 
-  // optional .rec.gui.HelpProto help = 13;
+  // optional .rec.gui.HelpProto help = 14;
   inline bool has_help() const;
   inline void clear_help();
-  static const int kHelpFieldNumber = 13;
+  static const int kHelpFieldNumber = 14;
   inline const ::rec::gui::HelpProto& help() const;
   inline ::rec::gui::HelpProto* mutable_help();
   inline ::rec::gui::HelpProto* release_help();
   inline void set_allocated_help(::rec::gui::HelpProto* help);
 
-  // optional .rec.gui.LabelProto label = 14;
+  // optional .rec.gui.LabelProto label = 15;
   inline bool has_label() const;
   inline void clear_label();
-  static const int kLabelFieldNumber = 14;
+  static const int kLabelFieldNumber = 15;
   inline const ::rec::gui::LabelProto& label() const;
   inline ::rec::gui::LabelProto* mutable_label();
   inline ::rec::gui::LabelProto* release_label();
   inline void set_allocated_label(::rec::gui::LabelProto* label);
 
-  // optional .rec.gui.LevelMeterProto level_meter = 15;
+  // optional .rec.gui.LevelMeterProto level_meter = 16;
   inline bool has_level_meter() const;
   inline void clear_level_meter();
-  static const int kLevelMeterFieldNumber = 15;
+  static const int kLevelMeterFieldNumber = 16;
   inline const ::rec::gui::LevelMeterProto& level_meter() const;
   inline ::rec::gui::LevelMeterProto* mutable_level_meter();
   inline ::rec::gui::LevelMeterProto* release_level_meter();
   inline void set_allocated_level_meter(::rec::gui::LevelMeterProto* level_meter);
 
-  // optional .rec.gui.ResizerProto full_resizer = 16;
+  // optional .rec.gui.ResizerProto full_resizer = 17;
   inline bool has_full_resizer() const;
   inline void clear_full_resizer();
-  static const int kFullResizerFieldNumber = 16;
+  static const int kFullResizerFieldNumber = 17;
   inline const ::rec::gui::ResizerProto& full_resizer() const;
   inline ::rec::gui::ResizerProto* mutable_full_resizer();
   inline ::rec::gui::ResizerProto* release_full_resizer();
   inline void set_allocated_full_resizer(::rec::gui::ResizerProto* full_resizer);
 
-  // optional .rec.gui.SliderProto slider = 17;
+  // optional .rec.gui.SliderProto slider = 18;
   inline bool has_slider() const;
   inline void clear_slider();
-  static const int kSliderFieldNumber = 17;
+  static const int kSliderFieldNumber = 18;
   inline const ::rec::gui::SliderProto& slider() const;
   inline ::rec::gui::SliderProto* mutable_slider();
   inline ::rec::gui::SliderProto* release_slider();
   inline void set_allocated_slider(::rec::gui::SliderProto* slider);
 
-  // optional .rec.gui.TextProto text = 18;
+  // optional .rec.gui.SwitcherProto switcher = 19;
+  inline bool has_switcher() const;
+  inline void clear_switcher();
+  static const int kSwitcherFieldNumber = 19;
+  inline const ::rec::gui::SwitcherProto& switcher() const;
+  inline ::rec::gui::SwitcherProto* mutable_switcher();
+  inline ::rec::gui::SwitcherProto* release_switcher();
+  inline void set_allocated_switcher(::rec::gui::SwitcherProto* switcher);
+
+  // optional .rec.gui.TextProto text = 20;
   inline bool has_text() const;
   inline void clear_text();
-  static const int kTextFieldNumber = 18;
+  static const int kTextFieldNumber = 20;
   inline const ::rec::gui::TextProto& text() const;
   inline ::rec::gui::TextProto* mutable_text();
   inline ::rec::gui::TextProto* release_text();
   inline void set_allocated_text(::rec::gui::TextProto* text);
 
-  // optional .rec.widget.status.time.Dial time_dial = 19;
+  // optional .rec.widget.status.time.Dial time_dial = 21;
   inline bool has_time_dial() const;
   inline void clear_time_dial();
-  static const int kTimeDialFieldNumber = 19;
+  static const int kTimeDialFieldNumber = 21;
   inline const ::rec::widget::status::time::Dial& time_dial() const;
   inline ::rec::widget::status::time::Dial* mutable_time_dial();
   inline ::rec::widget::status::time::Dial* release_time_dial();
   inline void set_allocated_time_dial(::rec::widget::status::time::Dial* time_dial);
 
-  // optional .rec.widget.status.time.Text time = 20;
+  // optional .rec.widget.status.time.Text time = 22;
   inline bool has_time() const;
   inline void clear_time();
-  static const int kTimeFieldNumber = 20;
+  static const int kTimeFieldNumber = 22;
   inline const ::rec::widget::status::time::Text& time() const;
   inline ::rec::widget::status::time::Text* mutable_time();
   inline ::rec::widget::status::time::Text* release_time();
   inline void set_allocated_time(::rec::widget::status::time::Text* time);
 
-  // optional .rec.gui.ToggleButtonProto toggle_button = 21;
+  // optional .rec.gui.ToggleButtonProto toggle_button = 23;
   inline bool has_toggle_button() const;
   inline void clear_toggle_button();
-  static const int kToggleButtonFieldNumber = 21;
+  static const int kToggleButtonFieldNumber = 23;
   inline const ::rec::gui::ToggleButtonProto& toggle_button() const;
   inline ::rec::gui::ToggleButtonProto* mutable_toggle_button();
   inline ::rec::gui::ToggleButtonProto* release_toggle_button();
@@ -366,6 +376,8 @@ class ComponentProto : public ::google::protobuf::Message {
   inline void clear_has_full_resizer();
   inline void set_has_slider();
   inline void clear_has_slider();
+  inline void set_has_switcher();
+  inline void clear_has_switcher();
   inline void set_has_text();
   inline void clear_has_text();
   inline void set_has_time_dial();
@@ -396,13 +408,14 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::LevelMeterProto* level_meter_;
   ::rec::gui::ResizerProto* full_resizer_;
   ::rec::gui::SliderProto* slider_;
+  ::rec::gui::SwitcherProto* switcher_;
   ::rec::gui::TextProto* text_;
   ::rec::widget::status::time::Dial* time_dial_;
   ::rec::widget::status::time::Text* time_;
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(22 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(23 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -939,7 +952,7 @@ inline void ComponentProto::set_allocated_min_resizer(::std::string* min_resizer
   }
 }
 
-// repeated string disabled = 22;
+// repeated string disabled = 10;
 inline int ComponentProto::disabled_size() const {
   return disabled_.size();
 }
@@ -983,7 +996,7 @@ ComponentProto::mutable_disabled() {
   return &disabled_;
 }
 
-// optional .rec.gui.ButtonProto button = 10;
+// optional .rec.gui.ButtonProto button = 11;
 inline bool ComponentProto::has_button() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
@@ -1021,7 +1034,7 @@ inline void ComponentProto::set_allocated_button(::rec::gui::ButtonProto* button
   }
 }
 
-// optional .rec.gui.ComboBoxProto combo_box = 11;
+// optional .rec.gui.ComboBoxProto combo_box = 12;
 inline bool ComponentProto::has_combo_box() const {
   return (_has_bits_[0] & 0x00000800u) != 0;
 }
@@ -1059,7 +1072,7 @@ inline void ComponentProto::set_allocated_combo_box(::rec::gui::ComboBoxProto* c
   }
 }
 
-// optional .rec.gui.CustomProto custom = 12;
+// optional .rec.gui.CustomProto custom = 13;
 inline bool ComponentProto::has_custom() const {
   return (_has_bits_[0] & 0x00001000u) != 0;
 }
@@ -1097,7 +1110,7 @@ inline void ComponentProto::set_allocated_custom(::rec::gui::CustomProto* custom
   }
 }
 
-// optional .rec.gui.HelpProto help = 13;
+// optional .rec.gui.HelpProto help = 14;
 inline bool ComponentProto::has_help() const {
   return (_has_bits_[0] & 0x00002000u) != 0;
 }
@@ -1135,7 +1148,7 @@ inline void ComponentProto::set_allocated_help(::rec::gui::HelpProto* help) {
   }
 }
 
-// optional .rec.gui.LabelProto label = 14;
+// optional .rec.gui.LabelProto label = 15;
 inline bool ComponentProto::has_label() const {
   return (_has_bits_[0] & 0x00004000u) != 0;
 }
@@ -1173,7 +1186,7 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
   }
 }
 
-// optional .rec.gui.LevelMeterProto level_meter = 15;
+// optional .rec.gui.LevelMeterProto level_meter = 16;
 inline bool ComponentProto::has_level_meter() const {
   return (_has_bits_[0] & 0x00008000u) != 0;
 }
@@ -1211,7 +1224,7 @@ inline void ComponentProto::set_allocated_level_meter(::rec::gui::LevelMeterProt
   }
 }
 
-// optional .rec.gui.ResizerProto full_resizer = 16;
+// optional .rec.gui.ResizerProto full_resizer = 17;
 inline bool ComponentProto::has_full_resizer() const {
   return (_has_bits_[0] & 0x00010000u) != 0;
 }
@@ -1249,7 +1262,7 @@ inline void ComponentProto::set_allocated_full_resizer(::rec::gui::ResizerProto*
   }
 }
 
-// optional .rec.gui.SliderProto slider = 17;
+// optional .rec.gui.SliderProto slider = 18;
 inline bool ComponentProto::has_slider() const {
   return (_has_bits_[0] & 0x00020000u) != 0;
 }
@@ -1287,15 +1300,53 @@ inline void ComponentProto::set_allocated_slider(::rec::gui::SliderProto* slider
   }
 }
 
-// optional .rec.gui.TextProto text = 18;
-inline bool ComponentProto::has_text() const {
+// optional .rec.gui.SwitcherProto switcher = 19;
+inline bool ComponentProto::has_switcher() const {
   return (_has_bits_[0] & 0x00040000u) != 0;
 }
-inline void ComponentProto::set_has_text() {
+inline void ComponentProto::set_has_switcher() {
   _has_bits_[0] |= 0x00040000u;
 }
-inline void ComponentProto::clear_has_text() {
+inline void ComponentProto::clear_has_switcher() {
   _has_bits_[0] &= ~0x00040000u;
+}
+inline void ComponentProto::clear_switcher() {
+  if (switcher_ != NULL) switcher_->::rec::gui::SwitcherProto::Clear();
+  clear_has_switcher();
+}
+inline const ::rec::gui::SwitcherProto& ComponentProto::switcher() const {
+  return switcher_ != NULL ? *switcher_ : *default_instance_->switcher_;
+}
+inline ::rec::gui::SwitcherProto* ComponentProto::mutable_switcher() {
+  set_has_switcher();
+  if (switcher_ == NULL) switcher_ = new ::rec::gui::SwitcherProto;
+  return switcher_;
+}
+inline ::rec::gui::SwitcherProto* ComponentProto::release_switcher() {
+  clear_has_switcher();
+  ::rec::gui::SwitcherProto* temp = switcher_;
+  switcher_ = NULL;
+  return temp;
+}
+inline void ComponentProto::set_allocated_switcher(::rec::gui::SwitcherProto* switcher) {
+  delete switcher_;
+  switcher_ = switcher;
+  if (switcher) {
+    set_has_switcher();
+  } else {
+    clear_has_switcher();
+  }
+}
+
+// optional .rec.gui.TextProto text = 20;
+inline bool ComponentProto::has_text() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void ComponentProto::set_has_text() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void ComponentProto::clear_has_text() {
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline void ComponentProto::clear_text() {
   if (text_ != NULL) text_->::rec::gui::TextProto::Clear();
@@ -1325,15 +1376,15 @@ inline void ComponentProto::set_allocated_text(::rec::gui::TextProto* text) {
   }
 }
 
-// optional .rec.widget.status.time.Dial time_dial = 19;
+// optional .rec.widget.status.time.Dial time_dial = 21;
 inline bool ComponentProto::has_time_dial() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 inline void ComponentProto::set_has_time_dial() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00100000u;
 }
 inline void ComponentProto::clear_has_time_dial() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline void ComponentProto::clear_time_dial() {
   if (time_dial_ != NULL) time_dial_->::rec::widget::status::time::Dial::Clear();
@@ -1363,15 +1414,15 @@ inline void ComponentProto::set_allocated_time_dial(::rec::widget::status::time:
   }
 }
 
-// optional .rec.widget.status.time.Text time = 20;
+// optional .rec.widget.status.time.Text time = 22;
 inline bool ComponentProto::has_time() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void ComponentProto::set_has_time() {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00200000u;
 }
 inline void ComponentProto::clear_has_time() {
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline void ComponentProto::clear_time() {
   if (time_ != NULL) time_->::rec::widget::status::time::Text::Clear();
@@ -1401,15 +1452,15 @@ inline void ComponentProto::set_allocated_time(::rec::widget::status::time::Text
   }
 }
 
-// optional .rec.gui.ToggleButtonProto toggle_button = 21;
+// optional .rec.gui.ToggleButtonProto toggle_button = 23;
 inline bool ComponentProto::has_toggle_button() const {
-  return (_has_bits_[0] & 0x00200000u) != 0;
+  return (_has_bits_[0] & 0x00400000u) != 0;
 }
 inline void ComponentProto::set_has_toggle_button() {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00400000u;
 }
 inline void ComponentProto::clear_has_toggle_button() {
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();

@@ -12,6 +12,7 @@ layout {
 
   component {
     resizer: "navigation_y"
+    min_resizer: "150.0"
     size {
       fixed: "RESIZER_SIZE"
     }

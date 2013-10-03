@@ -11,6 +11,7 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
+#include "rec/slow/GuiSettings.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/util/Cuttable.h"

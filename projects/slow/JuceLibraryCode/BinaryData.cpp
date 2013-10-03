@@ -1683,6 +1683,7 @@ static const unsigned char temp_binary_data_16[] =
 "\n"
 "  component {\n"
 "    resizer: \"navigation_y\"\n"
+"    min_resizer: \"150.0\"\n"
 "    size {\n"
 "      fixed: \"RESIZER_SIZE\"\n"
 "    }\n"
@@ -13966,7 +13967,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 376; return Layout_def;
         case 0x28df9dc5:  numBytes = 701; return LeftTransformPanel_def;
-        case 0xd02ec571:  numBytes = 462; return MainPanel_def;
+        case 0xd02ec571:  numBytes = 487; return MainPanel_def;
         case 0xd66a1508:  numBytes = 1035; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 760; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 539; return PlaybackPanel_def;
@@ -14027,9 +14028,11 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     numBytes = 0;
     return 0;
 }
+
 const int namedResourceListSize = 71;
 
-const char* namedResourceList[namedResourceListSize] = {
+const char* namedResourceList[] =
+{
     "Colors_def",
     "Audio_def",
     "Commands_def",
@@ -14100,7 +14103,7 @@ const char* namedResourceList[namedResourceListSize] = {
     "enTranslatedStrings_def",
     "esTranslatedStrings_def",
     "frTranslatedStrings_def",
-    "idTranslatedStrings_def",
+    "idTranslatedStrings_def"
 };
 
 }

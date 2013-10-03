@@ -10,30 +10,28 @@
 #include "rec/widget/tree/TreeViewDropAll.h"
 
 namespace rec { namespace audio { class Gain; }}
-
-namespace rec { namespace gui { namespace audio { class Loops; } }}
-namespace rec { namespace audio { namespace stretch { class Stretch; } }}
-
-namespace rec { namespace widget { namespace tree { class Root; } }}
-namespace rec { namespace widget { namespace waveform { class Waveform; } }}
+namespace rec { namespace audio { namespace stretch { class Stretch; }}}
+namespace rec { namespace gui { namespace audio { class Loops; }}}
+namespace rec { namespace widget { namespace tree { class Root; }}}
+namespace rec { namespace widget { namespace waveform { class Waveform; }}}
 
 namespace rec {
 namespace slow {
 
 class MainPage;
 
-class Components : public data::DataListener<music::Metadata>,
-                   public data::DataListener<audio::stretch::Stretch>,
-                   public data::DataListener<audio::Gain> {
+class Components : public data::DataListener<audio::stretch::Stretch>,
+                   public data::DataListener<audio::Gain>,
+                   public data::DataListener<music::Metadata> {
  public:
   Components();
   ~Components();
 
   virtual void init();
   void setEnabled(bool enabled);
-  void operator()(const music::Metadata&) override;
   void operator()(const audio::Gain&) override;
   void operator()(const audio::stretch::Stretch&) override;
+  void operator()(const music::Metadata&) override;
 
   widget::waveform::Waveform* waveform() { return waveform_; }
   Component* topComponent() { return mainPanel_.get(); }
@@ -41,6 +39,7 @@ class Components : public data::DataListener<music::Metadata>,
 
  private:
   unique_ptr<Component> mainPanel_;
+  unique_ptr<Component> alternateLeftTransformPanel_;
 
   widget::tree::TreeView* treeView_;
   DrawableButton* startStopButton_;

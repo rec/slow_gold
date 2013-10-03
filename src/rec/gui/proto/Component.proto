@@ -11,6 +11,7 @@ import "rec/gui/proto/LevelMeter.proto";
 import "rec/gui/proto/Resizer.proto";
 import "rec/gui/proto/Size.proto";
 import "rec/gui/proto/Slider.proto";
+import "rec/gui/proto/Switcher.proto";
 import "rec/gui/proto/Text.proto";
 import "rec/gui/proto/ToggleButton.proto";
 import "rec/widget/status/Time.proto";
@@ -34,19 +35,20 @@ message ComponentProto {
 
   // A list of properties, any one of which will disable this component.
   // This is only for components that do not send CommandIDs.
-  repeated string disabled = 22;
+  repeated string disabled = 10;
 
-  optional ButtonProto button = 10;
-  optional ComboBoxProto combo_box = 11;
-  optional CustomProto custom = 12;
-  optional HelpProto help = 13;
-  optional LabelProto label = 14;
-  optional LevelMeterProto level_meter = 15;
-  optional ResizerProto full_resizer = 16;
-  optional SliderProto slider = 17;
-  optional TextProto text = 18;
-  optional widget.status.time.Dial time_dial = 19;
-  optional widget.status.time.Text time = 20;
-  optional ToggleButtonProto toggle_button = 21;
+  optional ButtonProto button = 11;
+  optional ComboBoxProto combo_box = 12;
+  optional CustomProto custom = 13;
+  optional HelpProto help = 14;
+  optional LabelProto label = 15;
+  optional LevelMeterProto level_meter = 16;
+  optional ResizerProto full_resizer = 17;
+  optional SliderProto slider = 18;
+  optional SwitcherProto switcher = 19;
+  optional TextProto text = 20;
+  optional widget.status.time.Dial time_dial = 21;
+  optional widget.status.time.Text time = 22;
+  optional ToggleButtonProto toggle_button = 23;
 };
 

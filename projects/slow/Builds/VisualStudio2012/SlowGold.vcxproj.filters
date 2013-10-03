@@ -808,6 +808,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Switcher.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Text.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1190,6 +1193,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Switcher.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.cc">
@@ -2490,6 +2496,9 @@
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterProgram.h">
       <Filter>SlowGold\src\app</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\SocketTimeoutTime.h">
+      <Filter>SlowGold\src\app</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h">
       <Filter>SlowGold\src\app</Filter>
     </ClInclude>
@@ -2691,6 +2700,9 @@
     <ClInclude Include="..\..\..\..\src\rec\base\types.h">
       <Filter>SlowGold\src\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
+      <Filter>SlowGold\src\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\src\command</Filter>
     </ClInclude>
@@ -2799,6 +2811,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Reader.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Undoable.h">
+      <Filter>SlowGold\src\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoStack.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
@@ -2874,6 +2889,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\menu\RecentFiles.h">
       <Filter>SlowGold\src\gui\menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Orientation.h">
+      <Filter>SlowGold\src\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
@@ -2917,6 +2935,9 @@
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Switcher.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Text.h">
@@ -3097,6 +3118,9 @@
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\DisableMap.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Enable.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
@@ -3502,6 +3526,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Switcher.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.h">

@@ -55,7 +55,7 @@ namespace BinaryData
     const int            LeftTransformPanel_defSize = 701;
 
     extern const char*   MainPanel_def;
-    const int            MainPanel_defSize = 462;
+    const int            MainPanel_defSize = 487;
 
     extern const char*   ModeSelector_def;
     const int            ModeSelector_defSize = 1035;
@@ -222,7 +222,7 @@ namespace BinaryData
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];
 
-    // Size of list of resource names.
+    // Number of elements in the namedResourceList array.
     extern const int namedResourceListSize;
 
     // If you provide the name of one of the binary resource variables above, this function will

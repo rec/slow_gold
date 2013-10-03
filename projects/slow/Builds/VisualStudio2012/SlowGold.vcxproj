@@ -61,7 +61,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\JuceLibraryCode\modules;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -105,7 +105,7 @@
     </Midl>
     <ClCompile>
       <Optimization>MinSpace</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\JuceLibraryCode\modules;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -238,6 +238,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Switcher.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Text.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Time.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\TimeDial.cpp"/>
@@ -366,6 +367,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Switcher.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
@@ -1489,6 +1491,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\LanguageListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterProgram.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\SocketTimeoutTime.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
@@ -1556,6 +1559,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Trans.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\Command.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\EditButton.h"/>
@@ -1592,6 +1596,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Reader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Undoable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoStack.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UntypedDataListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h"/>
@@ -1617,6 +1622,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\LanguageButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\menu\RecentFiles.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Orientation.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Button.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ComboBox.h"/>
@@ -1632,6 +1638,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Switcher.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Text.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Time.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\TimeDial.h"/>
@@ -1692,6 +1699,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Disableable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\DisableMap.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Enable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CurrentFileBase.h"/>
@@ -1827,6 +1835,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Size.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Switcher.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Text.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
