@@ -34,7 +34,7 @@ SampleTime TextComponent::getTime() const {
 void TextComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);
   sampleRate_ = vp.loop_points().sample_rate();
-  empty_ = !vp.loop_points().has_sample_rate();
+  empty_ = not vp.loop_points().has_sample_rate();
 }
 
 void TextComponent::languageChanged() {

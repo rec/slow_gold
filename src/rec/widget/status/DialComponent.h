@@ -53,6 +53,7 @@ class DialComponent : public Component,
   double timeRatio_;
 
   LoopPointList loops_;
+  bool empty_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DialComponent);
 };

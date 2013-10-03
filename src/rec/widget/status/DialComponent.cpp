@@ -36,7 +36,8 @@ DialComponent::DialComponent(const Dial& desc)
       time_(0),
       zeroAngle_(0.0),
       timeAngle_(0.0),
-      timeRatio_(0.0) {
+      timeRatio_(0.0),
+      empty_(true) {
   description_.mutable_widget()->set_transparent(true);
   setTooltip("Time Dial: Shows graphically how much of the loop remains.");
 }
@@ -100,9 +101,10 @@ void DialComponent::setTime(SampleTime time) {
   }
 }
 
-
 void DialComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);
+
+  empty_ = not vp.loop_points().length();
   loops_ = vp.loop_points();
   setTime(time_);
   repaint();
@@ -112,6 +114,8 @@ void DialComponent::paint(Graphics& g) {
   Lock l(lock_);
 
   Painter p(description_.widget(), &g);
+  if (empty_)
+    return;
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
 
   Path path;
