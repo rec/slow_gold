@@ -18,7 +18,7 @@ layout {
 
   component {
     layout: "TransformController"
-    disable: "empty"
+    disabled: "empty"
     size {
       min: "250"
       preferred: "-0.75"
@@ -31,7 +31,7 @@ layout {
 
   component {
     layout: "TransportController"
-    disable: "empty"
+    disabled: "empty"
     size {
       preferred: "-0.20"
       min: "300"

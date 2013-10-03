@@ -208,21 +208,21 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_min_resizer();
   inline void set_allocated_min_resizer(::std::string* min_resizer);
 
-  // repeated string disable = 22;
-  inline int disable_size() const;
-  inline void clear_disable();
-  static const int kDisableFieldNumber = 22;
-  inline const ::std::string& disable(int index) const;
-  inline ::std::string* mutable_disable(int index);
-  inline void set_disable(int index, const ::std::string& value);
-  inline void set_disable(int index, const char* value);
-  inline void set_disable(int index, const char* value, size_t size);
-  inline ::std::string* add_disable();
-  inline void add_disable(const ::std::string& value);
-  inline void add_disable(const char* value);
-  inline void add_disable(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disable() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disable();
+  // repeated string disabled = 22;
+  inline int disabled_size() const;
+  inline void clear_disabled();
+  static const int kDisabledFieldNumber = 22;
+  inline const ::std::string& disabled(int index) const;
+  inline ::std::string* mutable_disabled(int index);
+  inline void set_disabled(int index, const ::std::string& value);
+  inline void set_disabled(int index, const char* value);
+  inline void set_disabled(int index, const char* value, size_t size);
+  inline ::std::string* add_disabled();
+  inline void add_disabled(const ::std::string& value);
+  inline void add_disabled(const char* value);
+  inline void add_disabled(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disabled() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disabled();
 
   // optional .rec.gui.ButtonProto button = 10;
   inline bool has_button() const;
@@ -387,7 +387,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::std::string* resizer_;
   ::std::string* min_resizer_;
   static ::std::string* _default_min_resizer_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> disable_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> disabled_;
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::CustomProto* custom_;
@@ -939,48 +939,48 @@ inline void ComponentProto::set_allocated_min_resizer(::std::string* min_resizer
   }
 }
 
-// repeated string disable = 22;
-inline int ComponentProto::disable_size() const {
-  return disable_.size();
+// repeated string disabled = 22;
+inline int ComponentProto::disabled_size() const {
+  return disabled_.size();
 }
-inline void ComponentProto::clear_disable() {
-  disable_.Clear();
+inline void ComponentProto::clear_disabled() {
+  disabled_.Clear();
 }
-inline const ::std::string& ComponentProto::disable(int index) const {
-  return disable_.Get(index);
+inline const ::std::string& ComponentProto::disabled(int index) const {
+  return disabled_.Get(index);
 }
-inline ::std::string* ComponentProto::mutable_disable(int index) {
-  return disable_.Mutable(index);
+inline ::std::string* ComponentProto::mutable_disabled(int index) {
+  return disabled_.Mutable(index);
 }
-inline void ComponentProto::set_disable(int index, const ::std::string& value) {
-  disable_.Mutable(index)->assign(value);
+inline void ComponentProto::set_disabled(int index, const ::std::string& value) {
+  disabled_.Mutable(index)->assign(value);
 }
-inline void ComponentProto::set_disable(int index, const char* value) {
-  disable_.Mutable(index)->assign(value);
+inline void ComponentProto::set_disabled(int index, const char* value) {
+  disabled_.Mutable(index)->assign(value);
 }
-inline void ComponentProto::set_disable(int index, const char* value, size_t size) {
-  disable_.Mutable(index)->assign(
+inline void ComponentProto::set_disabled(int index, const char* value, size_t size) {
+  disabled_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ComponentProto::add_disable() {
-  return disable_.Add();
+inline ::std::string* ComponentProto::add_disabled() {
+  return disabled_.Add();
 }
-inline void ComponentProto::add_disable(const ::std::string& value) {
-  disable_.Add()->assign(value);
+inline void ComponentProto::add_disabled(const ::std::string& value) {
+  disabled_.Add()->assign(value);
 }
-inline void ComponentProto::add_disable(const char* value) {
-  disable_.Add()->assign(value);
+inline void ComponentProto::add_disabled(const char* value) {
+  disabled_.Add()->assign(value);
 }
-inline void ComponentProto::add_disable(const char* value, size_t size) {
-  disable_.Add()->assign(reinterpret_cast<const char*>(value), size);
+inline void ComponentProto::add_disabled(const char* value, size_t size) {
+  disabled_.Add()->assign(reinterpret_cast<const char*>(value), size);
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-ComponentProto::disable() const {
-  return disable_;
+ComponentProto::disabled() const {
+  return disabled_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-ComponentProto::mutable_disable() {
-  return &disable_;
+ComponentProto::mutable_disabled() {
+  return &disabled_;
 }
 
 // optional .rec.gui.ButtonProto button = 10;

@@ -171,6 +171,7 @@ command {
 command {
   id_string: "ZOOM_TO_SELECTION"
   category: "Audio"
+  disabled: "cant_zoom_to_selection"
   desc {
     menu: "Zoom To Selection"
     full: "Zoom to selection."

@@ -23,7 +23,7 @@ layout {
 
   component {
     layout: "SongData"
-    disable: "empty"
+    disabled: "empty"
     size {
       min: "150.0"
       max: "-1.0"
@@ -37,7 +37,7 @@ layout {
 
   component {
     name: "Loops"
-    disable: "empty"
+    disabled: "empty"
     custom {
       type_name: "Loops"
     }

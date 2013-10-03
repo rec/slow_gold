@@ -34,7 +34,7 @@ message ComponentProto {
 
   // A list of properties, any one of which will disable this component.
   // This is only for components that do not send CommandIDs.
-  repeated string disable = 22;
+  repeated string disabled = 22;
 
   optional ButtonProto button = 10;
   optional ComboBoxProto combo_box = 11;

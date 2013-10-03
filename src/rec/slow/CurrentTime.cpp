@@ -12,6 +12,7 @@
 #include "rec/program/JuceModel.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/range/Contains.h"
+#include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -23,6 +24,7 @@ using namespace rec::widget::waveform;
 
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
 static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
+static const double MIN_SELECTION_ZOOM = 0.7;
 
 static const int NO_SEGMENT = -1;
 
@@ -32,7 +34,8 @@ CurrentTime::CurrentTime()
       length_(0),
       followCursor_(false),
       loopingSegment_(NO_SEGMENT),
-      timeIsCloseToLoopPoint_(false) {
+      timeIsCloseToLoopPoint_(false),
+      selectionInZoom_(0.0) {
 }
 
 void CurrentTime::setTime(SampleTime t) {
@@ -53,7 +56,7 @@ void CurrentTime::setTime(SampleTime t) {
       }
     }
 
-    if (!(followCursor_  && getInstance()->isPlaying()))
+    if (not followCursor_ or selectionInZoom_ <= 1.0 or not getInstance()->isPlaying())
       return;
   }
   zoomToTime(t);
@@ -129,6 +132,11 @@ void CurrentTime::setViewport(const Viewport& viewport) {
   auto& zoom = viewport.zoom();
   bool zoomedOut = (not zoom.begin()) and (zoom.end() == loops.length());
   program::juceModel()->setProperty("zoomed_out", zoomedOut);
+
+  selectionInZoom_ = widget::waveform::selectionInZoom(viewport);
+  bool cantZoom = selectionInZoom_ >= MIN_SELECTION_ZOOM and
+      selectionInZoom_ <= 1.0;
+  program::juceModel()->setProperty("cant_zoom_to_selection", cantZoom);
 }
 
 void CurrentTime::operator()(const GuiSettings& settings) {

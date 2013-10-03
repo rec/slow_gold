@@ -70,6 +70,7 @@ class CurrentTime : public audio::util::CurrentTimeBase,
   bool isDragging_;
   int loopingSegment_;
   bool timeIsCloseToLoopPoint_;
+  double selectionInZoom_;
 
   widget::waveform::Viewport viewport_;
 

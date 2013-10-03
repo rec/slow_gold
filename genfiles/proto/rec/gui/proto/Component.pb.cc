@@ -45,7 +45,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, layout_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, resizer_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, min_resizer_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, disable_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, button_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, combo_box_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, custom_),
@@ -125,26 +125,26 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "r.proto\032\030rec/gui/proto/Size.proto\032\032rec/g"
     "ui/proto/Slider.proto\032\030rec/gui/proto/Tex"
     "t.proto\032 rec/gui/proto/ToggleButton.prot"
-    "o\032\034rec/widget/status/Time.proto\"\333\005\n\016Comp"
+    "o\032\034rec/widget/status/Time.proto\"\334\005\n\016Comp"
     "onentProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tooltip\030\002 \001("
     "\t\022\033\n\004size\030\003 \001(\0132\r.rec.gui.Size\022\017\n\007addres"
     "s\030\004 \001(\t\022\035\n\005color\030\005 \003(\0132\016.rec.gui.Color\022 "
     "\n\004font\030\006 \001(\0132\022.rec.gui.FontProto\022\016\n\006layo"
     "ut\030\007 \001(\t\022\017\n\007resizer\030\010 \001(\t\022\030\n\013min_resizer"
-    "\030\t \001(\t:\0030.0\022\017\n\007disable\030\026 \003(\t\022$\n\006button\030\n"
-    " \001(\0132\024.rec.gui.ButtonProto\022)\n\tcombo_box\030"
-    "\013 \001(\0132\026.rec.gui.ComboBoxProto\022$\n\006custom\030"
-    "\014 \001(\0132\024.rec.gui.CustomProto\022 \n\004help\030\r \001("
-    "\0132\022.rec.gui.HelpProto\022\"\n\005label\030\016 \001(\0132\023.r"
-    "ec.gui.LabelProto\022-\n\013level_meter\030\017 \001(\0132\030"
-    ".rec.gui.LevelMeterProto\022+\n\014full_resizer"
-    "\030\020 \001(\0132\025.rec.gui.ResizerProto\022$\n\006slider\030"
-    "\021 \001(\0132\024.rec.gui.SliderProto\022 \n\004text\030\022 \001("
-    "\0132\022.rec.gui.TextProto\022/\n\ttime_dial\030\023 \001(\013"
-    "2\034.rec.widget.status.time.Dial\022*\n\004time\030\024"
-    " \001(\0132\034.rec.widget.status.time.Text\0221\n\rto"
-    "ggle_button\030\025 \001(\0132\032.rec.gui.ToggleButton"
-    "Proto", 1165);
+    "\030\t \001(\t:\0030.0\022\020\n\010disabled\030\026 \003(\t\022$\n\006button\030"
+    "\n \001(\0132\024.rec.gui.ButtonProto\022)\n\tcombo_box"
+    "\030\013 \001(\0132\026.rec.gui.ComboBoxProto\022$\n\006custom"
+    "\030\014 \001(\0132\024.rec.gui.CustomProto\022 \n\004help\030\r \001"
+    "(\0132\022.rec.gui.HelpProto\022\"\n\005label\030\016 \001(\0132\023."
+    "rec.gui.LabelProto\022-\n\013level_meter\030\017 \001(\0132"
+    "\030.rec.gui.LevelMeterProto\022+\n\014full_resize"
+    "r\030\020 \001(\0132\025.rec.gui.ResizerProto\022$\n\006slider"
+    "\030\021 \001(\0132\024.rec.gui.SliderProto\022 \n\004text\030\022 \001"
+    "(\0132\022.rec.gui.TextProto\022/\n\ttime_dial\030\023 \001("
+    "\0132\034.rec.widget.status.time.Dial\022*\n\004time\030"
+    "\024 \001(\0132\034.rec.widget.status.time.Text\0221\n\rt"
+    "oggle_button\030\025 \001(\0132\032.rec.gui.ToggleButto"
+    "nProto", 1166);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::_default_min_resizer_ =
@@ -174,7 +174,7 @@ const int ComponentProto::kFontFieldNumber;
 const int ComponentProto::kLayoutFieldNumber;
 const int ComponentProto::kResizerFieldNumber;
 const int ComponentProto::kMinResizerFieldNumber;
-const int ComponentProto::kDisableFieldNumber;
+const int ComponentProto::kDisabledFieldNumber;
 const int ComponentProto::kButtonFieldNumber;
 const int ComponentProto::kComboBoxFieldNumber;
 const int ComponentProto::kCustomFieldNumber;
@@ -384,7 +384,7 @@ void ComponentProto::Clear() {
     }
   }
   color_.Clear();
-  disable_.Clear();
+  disabled_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -703,25 +703,25 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(178)) goto parse_disable;
+        if (input->ExpectTag(178)) goto parse_disabled;
         break;
       }
 
-      // repeated string disable = 22;
+      // repeated string disabled = 22;
       case 22: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_disable:
+         parse_disabled:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_disable()));
+                input, this->add_disabled()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->disable(this->disable_size() - 1).data(),
-            this->disable(this->disable_size() - 1).length(),
+            this->disabled(this->disabled_size() - 1).data(),
+            this->disabled(this->disabled_size() - 1).length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(178)) goto parse_disable;
+        if (input->ExpectTag(178)) goto parse_disabled;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -888,13 +888,13 @@ void ComponentProto::SerializeWithCachedSizes(
       21, this->toggle_button(), output);
   }
 
-  // repeated string disable = 22;
-  for (int i = 0; i < this->disable_size(); i++) {
+  // repeated string disabled = 22;
+  for (int i = 0; i < this->disabled_size(); i++) {
   ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->disable(i).data(), this->disable(i).length(),
+    this->disabled(i).data(), this->disabled(i).length(),
     ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      22, this->disable(i), output);
+      22, this->disabled(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1070,13 +1070,13 @@ void ComponentProto::SerializeWithCachedSizes(
         21, this->toggle_button(), target);
   }
 
-  // repeated string disable = 22;
-  for (int i = 0; i < this->disable_size(); i++) {
+  // repeated string disabled = 22;
+  for (int i = 0; i < this->disabled_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->disable(i).data(), this->disable(i).length(),
+      this->disabled(i).data(), this->disabled(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(22, this->disable(i), target);
+      WriteStringToArray(22, this->disabled(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1243,11 +1243,11 @@ int ComponentProto::ByteSize() const {
         this->color(i));
   }
 
-  // repeated string disable = 22;
-  total_size += 2 * this->disable_size();
-  for (int i = 0; i < this->disable_size(); i++) {
+  // repeated string disabled = 22;
+  total_size += 2 * this->disabled_size();
+  for (int i = 0; i < this->disabled_size(); i++) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->disable(i));
+      this->disabled(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -1276,7 +1276,7 @@ void ComponentProto::MergeFrom(const ::google::protobuf::Message& from) {
 void ComponentProto::MergeFrom(const ComponentProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   color_.MergeFrom(from.color_);
-  disable_.MergeFrom(from.disable_);
+  disabled_.MergeFrom(from.disabled_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_name()) {
       set_name(from.name());
@@ -1374,7 +1374,7 @@ void ComponentProto::Swap(ComponentProto* other) {
     std::swap(layout_, other->layout_);
     std::swap(resizer_, other->resizer_);
     std::swap(min_resizer_, other->min_resizer_);
-    disable_.Swap(&other->disable_);
+    disabled_.Swap(&other->disabled_);
     std::swap(button_, other->button_);
     std::swap(combo_box_, other->combo_box_);
     std::swap(custom_, other->custom_);

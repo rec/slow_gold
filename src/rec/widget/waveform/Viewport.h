@@ -11,8 +11,10 @@ namespace waveform {
 class Viewport;
 
 void addLoopPointToViewport(const VirtualFile& file, SampleTime time);
-double selectionInZoom(const Viewport&);
 
+// If greater than 1, the selection is not contained within the zoom.
+// Otherwise, returns the ratio between the selection area and the zoomed area.
+double selectionInZoom(const Viewport&);
 
 }  // namespace waveform
 }  // namespace widget
