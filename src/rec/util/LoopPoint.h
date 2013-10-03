@@ -10,8 +10,8 @@ namespace rec {
 namespace audio {
 
 const SampleRangeVector getTimeSelection(const LoopPointList&,
-                                              bool isSelected = true,
-                                              bool allowEmpty = false);
+                                         bool isSelected = true,
+                                         bool allowEmpty = false);
 
 bool isCloseTo(const LoopPointList&, SampleTime);
 

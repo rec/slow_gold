@@ -8,7 +8,11 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
+class Viewport;
+
 void addLoopPointToViewport(const VirtualFile& file, SampleTime time);
+double selectionInZoom(const Viewport&);
+
 
 }  // namespace waveform
 }  // namespace widget
