@@ -409,6 +409,7 @@ static const unsigned char temp_binary_data_4[] =
 "command {\n"
 "  id_string: \"ZOOM_OUT_FULL\"\n"
 "  category: \"Audio\"\n"
+"  disabled: \"zoomed_out\"\n"
 "  desc {\n"
 "    menu: \"Zoom Out Completely\"\n"
 "    full: \"Zoom out as far as possible.\"\n"
@@ -431,6 +432,7 @@ static const unsigned char temp_binary_data_5[] =
 "command {\n"
 "  id_string: \"ADD_LOOP_POINT\"\n"
 "  category: \"Loops\"\n"
+"  disabled: \"time_is_close_to_loop_point\"\n"
 "  desc {\n"
 "    menu: \"Add Loop Point At Current Time\"\n"
 "    full: \"Add a loop point at the current time.\"\n"
@@ -1509,7 +1511,6 @@ static const unsigned char temp_binary_data_10[] =
 "  component {\n"
 "    name: \"AddLoopPointButton\"\n"
 "    tooltip: \"Add Loop Point Button: Add a loop point at the current time.\"\n"
-"    disable: \"time_is_close_to_loop_point\"\n"
 "    button {\n"
 "      command: \"ADD_LOOP_POINT\"\n"
 "    }\n"
@@ -13952,13 +13953,13 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x82ae93fc:  numBytes = 1480; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
         case 0xd807eee2:  numBytes = 2091; return File_def;
-        case 0x7975c6e1:  numBytes = 4147; return Gui_def;
-        case 0xb618588d:  numBytes = 1746; return LoopPoints_def;
+        case 0x7975c6e1:  numBytes = 4172; return Gui_def;
+        case 0xb618588d:  numBytes = 1788; return LoopPoints_def;
         case 0x6d98aeb2:  numBytes = 5800; return Selection_def;
         case 0x29a9fa09:  numBytes = 4894; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3739; return Transport_def;
         case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
-        case 0x5c64b82e:  numBytes = 753; return CommandBar_def;
+        case 0x5c64b82e:  numBytes = 710; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 155; return Constants_def;
         case 0x391c9e6b:  numBytes = 551; return GainPanel_def;
         case 0xeda734e9:  numBytes = 284; return HelpPanel_def;

@@ -27,6 +27,7 @@ bool DisableMap::setProperty(const string& name, bool value) {
   auto& oldValue = propertyMap_[name];
   if (value == oldValue)
     return false;
+  // DLOG(INFO) << name << ", " << value << " changed!";
 
   oldValue = value;
   auto r = componentMap_.equal_range(name);

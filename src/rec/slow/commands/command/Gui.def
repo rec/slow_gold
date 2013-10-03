@@ -161,6 +161,7 @@ command {
 command {
   id_string: "ZOOM_OUT_FULL"
   category: "Audio"
+  disabled: "zoomed_out"
   desc {
     menu: "Zoom Out Completely"
     full: "Zoom out as far as possible."

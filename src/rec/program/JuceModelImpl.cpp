@@ -194,6 +194,9 @@ string JuceModelImpl::addMenu(PopupMenu* popup, const string& name) {
 void JuceModelImpl::getCommandInfo(CommandID id,
                                    ApplicationCommandInfo* info) {
   try {
+    auto name = program::getProgram()->idToName(id);
+    bool log = (name == "ZOOM_OUT_FULL");
+
     const command::Command& command = commandMap_.at(id);
     const Description& desc = command.desc();
 

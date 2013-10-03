@@ -19,10 +19,10 @@ namespace BinaryData
     const int            File_defSize = 2091;
 
     extern const char*   Gui_def;
-    const int            Gui_defSize = 4147;
+    const int            Gui_defSize = 4172;
 
     extern const char*   LoopPoints_def;
-    const int            LoopPoints_defSize = 1746;
+    const int            LoopPoints_defSize = 1788;
 
     extern const char*   Selection_def;
     const int            Selection_defSize = 5800;
@@ -37,7 +37,7 @@ namespace BinaryData
     const int            KeyStrokeMap_defSize = 5474;
 
     extern const char*   CommandBar_def;
-    const int            CommandBar_defSize = 753;
+    const int            CommandBar_defSize = 710;
 
     extern const char*   Constants_def;
     const int            Constants_defSize = 155;

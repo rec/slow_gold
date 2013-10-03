@@ -51,6 +51,11 @@ class JuceModel : public ApplicationCommandTarget,
 
   bool setProperty(const string&, bool) override;
 
+  void reportChanges() {
+    menuItemsChanged();
+    applicationCommandManager()->commandStatusChanged();
+  }
+
   template <typename Type = Component>
   Type* getComponent(const string& name) {
     try {

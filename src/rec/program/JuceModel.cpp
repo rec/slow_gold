@@ -94,7 +94,7 @@ string JuceModel::componentNames() const {
 bool JuceModel::setProperty(const string& name, bool value) {
   bool result = DisableMap::setProperty(name, value);
   if (result)
-    menuItemsChanged();
+    reportChanges();
   return result;
 }
 

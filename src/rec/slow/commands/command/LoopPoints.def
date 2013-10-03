@@ -1,6 +1,7 @@
 command {
   id_string: "ADD_LOOP_POINT"
   category: "Loops"
+  disabled: "time_is_close_to_loop_point"
   desc {
     menu: "Add Loop Point At Current Time"
     full: "Add a loop point at the current time."

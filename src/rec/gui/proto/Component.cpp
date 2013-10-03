@@ -93,13 +93,10 @@ unique_ptr<Component> makeComponent(const Context& context) {
     if (SettableTooltipClient* tt = dynamic_cast<SettableTooltipClient*>(c))
       tt->setTooltip(comp.tooltip());
 
-    if (Disableable* dc = dynamic_cast<Disableable*>(c)) {
-      dc->addDisableProperties(comp.disable());
+    if (Disableable* dc = dynamic_cast<Disableable*>(c))
       program::juceModel()->addComponent(dc);
-      dc->disable(dc->getDisabledFromProperties());
-    } else {
+    else
       LOG(DFATAL) << comp.ShortDebugString() << " !!! " << component->getName();
-    }
   } else {
     LOG(DFATAL) << "No component in " << comp.ShortDebugString();
   }

@@ -33,6 +33,7 @@ message ComponentProto {
   optional string min_resizer = 9 [default = "0.0"];
 
   // A list of properties, any one of which will disable this component.
+  // This is only for components that do not send CommandIDs.
   repeated string disable = 22;
 
   optional ButtonProto button = 10;
