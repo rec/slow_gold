@@ -1,0 +1,22 @@
+layout {
+  name: "RightTransformPanel"
+  has_padding: true
+  orientation: VERTICAL
+  default_size {
+    fixed: "-1"
+  }
+
+  container{
+    name: "TransformSwitcher"
+    address: "rec.slow.GuiSettings:show_master_tune"
+    switcher {}
+  }
+
+  component {
+    layout: "RightTransformPanelNoMasterTune"
+  }
+
+  component {
+    layout: "RightTransformPanelMasterTune"
+  }
+}
