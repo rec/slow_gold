@@ -253,8 +253,8 @@ void JUCE_CALLTYPE FloatVectorOperations::multiply (float* dest, float multiplie
 
 void FloatVectorOperations::negate (float* dest, const float* src, int num) noexcept
 {
-   #if 0 and JUCE_USE_VDSP_FRAMEWORK
-    vDSP_vneg (src, 1, dest, 1, num);
+   #if JUCE_USE_VDSP_FRAMEWORK
+    vDSP_vneg ((float*) src, 1, dest, 1, (vDSP_Length) num);
    #else
     copyWithMultiply (dest, src, -1.0f, num);
    #endif

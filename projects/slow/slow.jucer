@@ -18,19 +18,18 @@
       <CONFIGURATIONS>
         <CONFIGURATION cppLibType="libc++" customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
                        isDebug="1" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
-                       name="Debug" optimisation="1" osxArchitecture="default" osxCompatibility="default"
-                       osxSDK="default" targetName="SlowGold 8-debug"/>
+                       name="Debug" optimisation="1" osxArchitecture="32BitUniversal"
+                       osxCompatibility="10.7 SDK" osxSDK="10.7 SDK" targetName="SlowGold 8-debug"/>
         <CONFIGURATION cppLibType="libc++" customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
                        isDebug="0" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
-                       name="Release" optimisation="2" osxArchitecture="default" osxCompatibility="default"
-                       osxSDK="default" targetName="SlowGold 8"/>
+                       name="Release" optimisation="2" osxArchitecture="32BitUniversal"
+                       osxCompatibility="10.7 SDK" osxSDK="10.7 SDK" targetName="SlowGold 8"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_opengl" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_gui_extra" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_gui_basics" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_graphics" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_events" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_data_structures" path="JuceLibraryCode/modules"/>
@@ -61,7 +60,6 @@
         <MODULEPATH id="juce_opengl" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_gui_extra" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_gui_basics" path="JuceLibraryCode/modules"/>
-        <MODULEPATH id="juce_gui_audio" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_graphics" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_events" path="JuceLibraryCode/modules"/>
         <MODULEPATH id="juce_data_structures" path="JuceLibraryCode/modules"/>
@@ -1641,7 +1639,6 @@
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1"/>

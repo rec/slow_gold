@@ -6,7 +6,7 @@
 namespace rec {
 namespace gui {
 
-class LookAndFeel : public juce::LookAndFeel {
+class LookAndFeel : public juce::LookAndFeel_V3 {
  public:
   LookAndFeel();
   virtual ~LookAndFeel() {}
