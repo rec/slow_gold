@@ -6,7 +6,7 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: license.application
+  script: license_server.application
 
 libraries:
 - name: webapp2

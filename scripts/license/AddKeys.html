@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+    {% for key in keys %}
+       <b>Key: {{key}}</b><p>
+    {% endfor %}
+
+    <form action="/add_keys" method="post">
+      <div><textarea name="keys" rows="1" cols="4"></textarea></div>
+      <div><input type="submit" value="Request keys"></div>
+    </form>
+
+  </body>
+</html>
+{% endautoescape %}
