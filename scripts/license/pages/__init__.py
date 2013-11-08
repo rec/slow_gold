@@ -1,12 +1,11 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import webapp2
+import jinja2
+import os.path
 
-from pages import AddKeys, Admin, Redirect, Register
+_HTML = os.path.join(os.path.dirname(os.path.dirname(__file__), 'html'))
 
-application = webapp2.WSGIApplication([
-    ('/admin', Admin),
-    ('/add_keys', AddKeys),
-    ('/', Redirect),
-    ('/register', Register),
-], debug=True)
+JINJA_ENVIRONMENT = jinja2.Environment(
+  loader=jinja2.FileSystemLoader(_HTML),
+  extensions=['jinja2.ext.autoescape'],
+  autoescape=True)

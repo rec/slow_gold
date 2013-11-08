@@ -2,12 +2,12 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import datetime
 
-DEFAULT_EXPIRATION = datetime.timedelta(days=15)
+DEFAULT_EXPIRATION_DAYS = 15
+EXPIRATIONS = {'slowgold': 15}
 
 now = datetime.datetime.utcnow
 
-EXPIRATIONS = {}
-
 def expiration(product):
-  return now() + EXPIRATIONS.get(PRODUCT, DEFAULT_EXPIRATION)
+  days = EXPIRATIONS.get(product, DEFAULT_EXPIRATION_DAYS)
+  return now() + datetime.timedelta(days=days)
 

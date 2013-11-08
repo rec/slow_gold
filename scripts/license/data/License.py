@@ -1,3 +1,5 @@
+import logging
+
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -21,46 +23,50 @@ class License(ndb.Model):
       raise Exception(msg % (('license key ' + self.license_key),) + args)
 
   def distribute(self, license_key):
-    self.test(license.distributed, 'Tried to distribute the key %s twice')
+    self.test(license.distributed, 'Tried to distribute %s twice')
     self.distributed = True
     self.distribution_time = Times.now()
     self.distributed_by = users.get_current_user()
     self.put()
 
-  def claim(self, hardware_key, license_key, machine_info, product, user_name):
-    self.test(self.product == product,
+  def make_claim(self, claim):
+    self.test(self.product == claim.product,
               'Wrong product for %s: expected %s, got %s' %
-              product, self.product)
+              claim.product, self.product)
 
     if not self.distributed:
-      pass  # Report this.
+      logging.warning('Claimed undistributed license key %s', self.license_key)
 
-    if not any(c.hardware_key == hardware_key for c in self.claims):
-      self.test(len(self.claims) < MAXIMUM_COMPUTERS,
-                'This %s is already registered to %d times.',
-                len(self.claims)))
-      claim = Claim(hardware_key=hardware_key,
-                    machine_info=machine_info,
-                    user_name=user_name)
-      self.claims.append(claim)
-      self.put()
+    if any(c.hardware_key == claim.hardware_key for c in self.claims):
+      logging.warning('Second claim for license key %s, hardware key %s',
+                      self.license_key, claim.hardware_key)
+      return
 
-def _query_license_key(license_key, exists)
+    self.test(len(self.claims) < MAXIMUM_COMPUTERS,
+              'This %s is already registered %d times.',
+              len(self.claims))
+
+    self.claims.append(claim)
+    self.put()
+
+def query(license_key)
   c = License.query(License.license_key == license_key)
   c = c.fetch(2)
-  if len(c) != 1:
+  if len(c) > 1:
     raise Exception('Multiple licenses for %s' % license_key)
-  license = c and c[0]
-  if exists:
-    if not license:
-      raise Exception('No license for %s' % license_key)
-  else:
-    if license:
-      raise Exception('Duplicate license for %s' % license_key)
+  return c and c[0]
+
+def _find(license_key):
+  license = query(license_key)
+  if license:
+    return license
+  raise Exception('No license for %s' % license_key)
 
 def make_key(product):
   license_key = MakeKey.make_key()
-  license = _query_license_key(license_key, False)
+  if query(license_key):
+    raise Exception('Duplicate license for %s' % license_key)
+
   license = License(
     created_by=users.get_current_user(),
     distributed=False,
@@ -71,28 +77,25 @@ def make_key(product):
   return license
 
 def distribute(license_key):
-  license = _query_license_key(license_key, True)
+  license = _find(license_key)
   license.distribute()
   return license
 
-def claim(hardware_key, license_key, machine_info, product, user_name):
-  license = _query_license_key(license_key, True)
-  license.claim(hardware_key, machine_info, product, user_name)
+def make_claim(claim):
+  license = _find(claim.license_key)
+  license.claim(claim)
   return license
 
-def trial(hardware_key, machine_info, product):
-  for license in License.query(License.claims.hardware_key == hardware_key):
-    if licence.product == product:
-      # Dodgy - why are they asking for this again?
-      if license.licence_key:
-        raise Exception('This machine already has a license key %s.' %
-                        license.license_key)
-      else:
-        return license
-  claim = Claim(hardware_key=hardware_key, machine_info=machine_info)
-  license = License(claims=[claim],
-                    expiration=Times.expiration(product),
-                    product=product)
+def trial_claim(claim):
+  key = claim.hardware_key
+  for license in License.query(License.claims.hardware_key == key):
+    if licence.product == claim.product:
+      logging.error('This hardware key %s already has a key: ',
+                    key, licence.licence_key or 'trial')
+      return license
+
+  product = claim.product
+  expiration = Times.expiration(product)
+  license = License(claims=[claim], expiration=expiration, product=product)
   license.put()
   return license
-

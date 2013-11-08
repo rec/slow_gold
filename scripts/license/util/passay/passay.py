@@ -2,8 +2,8 @@ from collections import namedtuple
 
 import random
 
-import badwords
-from Enum import Enum
+from util.passay import badwords
+from util import Enum
 
 PasswordGenerator = namedtuple(
   'PasswordGenerator',
