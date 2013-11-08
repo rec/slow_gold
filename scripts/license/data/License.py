@@ -1,15 +1,9 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-import times
-import make_key as _make_key
-
-class Claim(ndb.Model):
-  creation_time = ndb.DateTimeProperty(auto_now_add=True)
-  hardware_key = ndb.StringProperty()
-  machine_info = ndb.StringProperty()
-  user_name =  ndb.StringProperty()
-
+from data import Claim
+from util import MakeKey
+from util import Times
 
 class License(ndb.Model):
   claims = ndb.StructuredProperty(repeated=True)
@@ -29,7 +23,7 @@ class License(ndb.Model):
   def distribute(self, license_key):
     self.test(license.distributed, 'Tried to distribute the key %s twice')
     self.distributed = True
-    self.distribution_time = times.now()
+    self.distribution_time = Times.now()
     self.distributed_by = users.get_current_user()
     self.put()
 
@@ -65,7 +59,7 @@ def _query_license_key(license_key, exists)
       raise Exception('Duplicate license for %s' % license_key)
 
 def make_key(product):
-  license_key = _make_key.make_key()
+  license_key = MakeKey.make_key()
   license = _query_license_key(license_key, False)
   license = License(
     created_by=users.get_current_user(),
@@ -97,7 +91,7 @@ def trial(hardware_key, machine_info, product):
         return license
   claim = Claim(hardware_key=hardware_key, machine_info=machine_info)
   license = License(claims=[claim],
-                    expiration=times.expiration(product),
+                    expiration=Times.expiration(product),
                     product=product)
   license.put()
   return license
