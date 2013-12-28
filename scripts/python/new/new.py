@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
 import getopt
+import json
 import os
 import os.path
 import sys
-import xml.dom.minidom
 
 import split
 
@@ -36,6 +36,7 @@ GROUPS = {
 }
 
 USAGE = USAGE_MESSAGE % ', '.join(GROUPS)
+CONFIG_FILE_NAME = 'config-new.json'
 
 def usage_error(success=False, error=None, usage=USAGE):
   if not success:
@@ -55,39 +56,40 @@ def fix_classname(c):
 
 def compute_paths(file, namespace):
   name = os.path.abspath(file)
-  splitPath = name.split('/src/')
-  if len(splitPath) > 1:
-    originalPath = splitPath[-1].split('/')
-    classname = originalPath.pop()
+  split_path = name.split('/src/')
+  if len(split_path) > 1:
+    original_path = split_path[-1].split('/')
+    classname = original_path.pop()
     if namespace:
       path = namespace.split('.')
     else:
-      path = originalPath
+      path = original_path
 
   elif not namespace:
     raise Exception('Must specify a namespace if not in source tree')
 
   else:
     path = namespace.split('.')
-    originalPath = path
+    original_path = path
     classname = name.split('/')[-1]
 
   if not path:
     path.insert(0, 'rec')
 
-  return name, path, originalPath, classname
+  return name, path, original_path, classname
 
-def create_cpp_files(file, groupname, namespace, includes, output):
+def create_cpp_files(file, groupname, namespace, includes, output, dirname, config):
   group = GROUPS.get(groupname, None)
   usage_error(group, 'No group ' + groupname)
 
-  name, path, originalPath, classname = compute_paths(file, namespace)
+  name, path, original_path, classname = compute_paths(file, namespace)
   context = dict(
-    base_include='rec/base/base.h',
+    base_include=config['base_include'],
     classname=fix_classname(classname),
     commandline=' '.join(['new'] + sys.argv[1:]),
     filename='%s.%s' % (os.path.split(name)[1], groupname),
-    guard='__%s__' % '_'.join(s.upper() for s in path + [fix_classname(classname)]),
+    guard='__%s__' % '_'.join(s.upper()
+                              for s in path + [fix_classname(classname)]),
     includes='\n'.join(includes),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
@@ -96,7 +98,7 @@ def create_cpp_files(file, groupname, namespace, includes, output):
   header_file = classname + '.h'
   ft = ''
 
-  context.update(header_file = '/'.join(originalPath + [header_file]))
+  context.update(header_file = '/'.join(original_path + [header_file]))
 
   for suffix in group['files']:
     wsuffix = suffix.replace('.data.', '.%s.' % ft)
@@ -107,6 +109,17 @@ def create_cpp_files(file, groupname, namespace, includes, output):
       template = open(os.path.join(ROOT, suffix)).read()
       out.write(template.format(**context))
     print 'Written', outfile
+
+def root_config():
+  dirname = os.path.abspath(os.getcwd())
+  while True:
+    try:
+      with open(os.path.join(dirname, CONFIG_FILE_NAME)) as f:
+        return dirname, json.loads(f.read())
+    except IOError:
+      dirname, old = os.path.dirname(dirname), dirname
+      if old == dirname:
+        raise Exception('Didn\'t find config file %s' % CONFIG_FILE_NAME)
 
 def parse_args(args):
   optlist, args = getopt.getopt(
@@ -131,11 +144,12 @@ def parse_args(args):
         value += '.h'
       includes.append('#include "%s"' % value)
 
+  dirname, config = root_config()
   while args:
     arg = args.pop(0).split('.')
     if len(arg) > 1:
       fname = '.'.join(arg[0 : -1])
-      create_cpp_files(fname, arg[-1], namespace, includes, output)
+      create_cpp_files(fname, arg[-1], namespace, includes, output, dirname, config)
     else:
       usage_error(error="Didn't understand %s" % arg)  # Need at least one more argument
 
