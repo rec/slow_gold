@@ -28,7 +28,6 @@ where
 
 ROOT = os.path.join(os.path.dirname(__file__), 'templates')
 
-
 GROUPS = {
   'h': dict(files=['.h']),
   'class': dict(files=['.cpp', '.h']),
@@ -38,9 +37,7 @@ GROUPS = {
 
 USAGE = USAGE_MESSAGE % ', '.join(GROUPS)
 
-MAX_LINES = 500
-
-def usageError(success=False, error=None, usage=USAGE):
+def usage_error(success=False, error=None, usage=USAGE):
   if not success:
     if error:
       print
@@ -53,10 +50,10 @@ def write(name, template, **context):
   with open(name, 'w') as out:
     out.write(template.format(**context))
 
-def fixClassname(c):
+def fix_classname(c):
   return c.replace('-', '')
 
-def computePaths(file, namespace):
+def compute_paths(file, namespace):
   name = os.path.abspath(file)
   splitPath = name.split('/src/')
   if len(splitPath) > 1:
@@ -80,16 +77,16 @@ def computePaths(file, namespace):
 
   return name, path, originalPath, classname
 
-def createCppFiles(file, groupname, namespace, includes, output):
+def create_cpp_files(file, groupname, namespace, includes, output):
   group = GROUPS.get(groupname, None)
-  usageError(group, 'No group ' + groupname)
+  usage_error(group, 'No group ' + groupname)
 
-  name, path, originalPath, classname = computePaths(file, namespace)
+  name, path, originalPath, classname = compute_paths(file, namespace)
   context = dict(
-    classname=fixClassname(classname),
+    classname=fix_classname(classname),
     commandline=' '.join(['new'] + sys.argv[1:]),
     filename='%s.%s' % (os.path.split(name)[1], groupname),
-    guard='__%s__' % '_'.join(s.upper() for s in path + [fixClassname(classname)]),
+    guard='__%s__' % '_'.join(s.upper() for s in path + [fix_classname(classname)]),
     includes='\n'.join(includes),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
@@ -110,7 +107,7 @@ def createCppFiles(file, groupname, namespace, includes, output):
       out.write(template.format(**context))
     print 'Written', outfile
 
-def parseArgs(args):
+def parse_args(args):
   optlist, args = getopt.getopt(
     args, 'p:',
     ['namespace=', 'include=', 'output='])
@@ -137,10 +134,10 @@ def parseArgs(args):
     arg = args.pop(0).split('.')
     if len(arg) > 1:
       fname = '.'.join(arg[0 : -1])
-      createCppFiles(fname, arg[-1], namespace, includes, output)
+      create_cpp_files(fname, arg[-1], namespace, includes, output)
     else:
-      usageError(error="Didn't understand %s" % arg)  # Need at least one more argument
+      usage_error(error="Didn't understand %s" % arg)  # Need at least one more argument
 
 
 if __name__ == "__main__":
-  parseArgs(sys.argv[1:])
+  parse_args(sys.argv[1:])
