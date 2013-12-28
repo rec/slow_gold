@@ -83,6 +83,7 @@ def create_cpp_files(file, groupname, namespace, includes, output):
 
   name, path, originalPath, classname = compute_paths(file, namespace)
   context = dict(
+    base_include='rec/base/base.h',
     classname=fix_classname(classname),
     commandline=' '.join(['new'] + sys.argv[1:]),
     filename='%s.%s' % (os.path.split(name)[1], groupname),

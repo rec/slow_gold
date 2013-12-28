@@ -1,7 +1,7 @@
 #ifndef {guard}
 #define {guard}
 
-#include "rec/base/base.h"
+#include "{base_include}"
 
 {namespace}
 
