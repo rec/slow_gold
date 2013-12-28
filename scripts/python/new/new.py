@@ -54,35 +54,25 @@ def write(name, template, **context):
 def fix_classname(c):
   return c.replace('-', '')
 
-def compute_paths(file, namespace):
-  name = os.path.abspath(file)
-  split_path = name.split('/src/')
-  if len(split_path) > 1:
-    original_path = split_path[-1].split('/')
-    classname = original_path.pop()
-    if namespace:
-      path = namespace.split('.')
-    else:
-      path = original_path
-
-  elif not namespace:
-    raise Exception('Must specify a namespace if not in source tree')
-
-  else:
+def compute_paths(fname, namespace, dirname):
+  name = os.path.abspath(fname)
+  path = os.path.relpath(fname, dirname)
+  original_path = path.split('/')
+  classname = original_path.pop()
+  if namespace:
     path = namespace.split('.')
-    original_path = path
-    classname = name.split('/')[-1]
-
-  if not path:
-    path.insert(0, 'rec')
+  else:
+    path = original_path
 
   return name, path, original_path, classname
 
-def create_cpp_files(file, groupname, namespace, includes, output, dirname, config):
+def create_cpp_files(
+    fname, groupname, namespace, includes, output, dirname, config):
   group = GROUPS.get(groupname, None)
   usage_error(group, 'No group ' + groupname)
 
-  name, path, original_path, classname = compute_paths(file, namespace)
+  name, path, original_path, classname = compute_paths(
+    fname, namespace, dirname)
   context = dict(
     base_include=config['base_include'],
     classname=fix_classname(classname),
@@ -102,7 +92,7 @@ def create_cpp_files(file, groupname, namespace, includes, output, dirname, conf
 
   for suffix in group['files']:
     wsuffix = suffix.replace('.data.', '.%s.' % ft)
-    outfile = file + wsuffix
+    outfile = fname + wsuffix
     if output:
       outfile = output + '/' + outfile.split('/')[-1]
     with open(outfile, 'w') as out:
