@@ -16,13 +16,11 @@ You select which type of C++ files you want to create - your current choices are
 
 Usage:
 
-  new [--proto=<protoname>] [--namespace=rec.foo.bar] <type> <filename>
+  new [--namespace=rec.foo.bar] <type> <filename>
 
 where
   <type> is one of %s
   <filename> is a path to the new file name base
-  --proto indicates the protocol buffer type and is a required argument
-    only if the type is 'def'
   --namespace is an optional namespace, separated by dots - otherwise, the
     namespace is computed automatically
 
@@ -143,7 +141,7 @@ def computePaths(file, namespace):
 
   return name, path, originalPath, classname
 
-def createCppFiles(file, groupname, protoname, namespace, includes, output):
+def createCppFiles(file, groupname, namespace, includes, output):
   group = GROUPS.get(groupname, None)
   usageError(group, 'No group ' + groupname)
 
@@ -156,27 +154,10 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
     includes='\n'.join(includes),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
-    package='.'.join(path),
-    protoname=protoname)
+    package='.'.join(path))
 
-  if group.has_key('datatype'):
-    datatype = group['datatype']
-    isDef = (datatype == 'def')
-    if isDef:
-      usageError(protoname, 'No --proto flag set')
-      context['classname'] = fixClassname(classname[0].lower() + classname[1:])
-
-    ft = group['filetype']
-    datafile = '%s.%s' % (file, ft)
-    data = open(datafile).read()
-    if group.has_key('process'):
-      data = group['process'](data)
-    data = convertToCCode(data)
-    context.update(data=data, datatype=datatype)
-    header_file = '%s.%s.h' % (classname, ft)
-  else:
-    header_file = classname + '.h'
-    ft = ''
+  header_file = classname + '.h'
+  ft = ''
 
   context.update(header_file = '/'.join(originalPath + [header_file]))
 
@@ -193,15 +174,12 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
 def parseArgs(args):
   optlist, args = getopt.getopt(
     args, 'p:',
-    ['proto=', 'namespace=', 'include=', 'output=', 'group='])
+    ['namespace=', 'include=', 'output='])
 
-  protoname, namespace, output = None, None, None
+  namespace, output = None, None
   includes = []
   for name, value in optlist:
-    if name == '-p' or name == '--proto':
-      protoname = value
-
-    elif name == '-n' or name == '--namespace':
+    if name == '-n' or name == '--namespace':
       namespace = value
 
     elif name == '-o' or name == '--output':
@@ -220,7 +198,7 @@ def parseArgs(args):
     arg = args.pop(0).split('.')
     if len(arg) > 1:
       fname = '.'.join(arg[0 : -1])
-      createCppFiles(fname, arg[-1], protoname, namespace, includes, output)
+      createCppFiles(fname, arg[-1], namespace, includes, output)
     else:
       usageError(error="Didn't understand %s" % arg)  # Need at least one more argument
 
