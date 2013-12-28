@@ -191,10 +191,11 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
     print 'Written', outfile
 
 def parseArgs(args):
-  optlist, args = getopt.getopt(args, 'p:',
-                                ['proto=', 'namespace=', 'include=', 'output=',
-                                 'group='])
-  protoname, namespace, output, group = None, None, None, None
+  optlist, args = getopt.getopt(
+    args, 'p:',
+    ['proto=', 'namespace=', 'include=', 'output=', 'group='])
+
+  protoname, namespace, output = None, None, None
   includes = []
   for name, value in optlist:
     if name == '-p' or name == '--proto':
@@ -205,9 +206,6 @@ def parseArgs(args):
 
     elif name == '-o' or name == '--output':
       output = value
-
-    elif name == '-g' or name == '--group':
-      group = value
 
     elif name == '--include':
       value = value.split('/')
@@ -221,12 +219,11 @@ def parseArgs(args):
   while args:
     arg = args.pop(0).split('.')
     if len(arg) > 1:
-      file = '.'.join(arg[0 : -1])
-      group = group or arg[-1]
-      createCppFiles(file, group, protoname, namespace, includes, output)
+      fname = '.'.join(arg[0 : -1])
+      createCppFiles(fname, arg[-1], protoname, namespace, includes, output)
     else:
-      usageError(args)  # Need at least one more argument
-      createCppFiles(arg, group, args.pop(0), protoname)
+      usageError(error="Didn't understand %s" % arg)  # Need at least one more argument
+
 
 if __name__ == "__main__":
   parseArgs(sys.argv[1:])

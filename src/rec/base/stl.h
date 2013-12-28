@@ -1,12 +1,22 @@
-#ifndef __REC_UTIL_PTR
-#define __REC_UTIL_PTR
+#ifndef __REC_BASE_STL__
+#define __REC_BASE_STL__
 
 #include <memory>
 
 #include "rec/base/disallow.h"
-#include "rec/base/make_unique.h" 
+#include "rec/base/make_unique.h"
 
 using std::unique_ptr;
+
+#ifdef _MAKE_UNSIGNED
+template <class T>
+typename make_signed<T>::type as_signed(T t)
+    { return make_signed<T>::type(t); }
+
+template <class T>
+typename make_unsigned<T>::type as_unsigned(T t)
+    { return make_unsigned<T>::type(t); }
+#endif
 
 // ptr, a clone of scoped_ptr, mimics a built-in pointer except that it
 // guarantees deletion of the object pointed to, either on destruction of the
@@ -54,4 +64,4 @@ class ptr {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ptr);
 };
 
-#endif // __REC_UTIL_PTR
+#endif // __REC_BASE_STL__

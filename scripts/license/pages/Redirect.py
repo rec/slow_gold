@@ -1,7 +1,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import webapp2
+from pages import RequestHandler
 
-class Redirect(webapp2.RequestHandler):
+class Redirect(RequestHandler):
   def get(self):
     self.redirect('http://slowgold.com', permanent=True)

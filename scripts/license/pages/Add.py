@@ -1,7 +1,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import webapp2
+from pages import RequestHandler
 
-class Add(webapp2.RequestHandler):
+class Add(RequestHandler):
   def get(self):
     pass

@@ -7,7 +7,7 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/Juce.h"
-#include "rec/base/ptr.h"
+#include "rec/base/stl.h"
 #include "rec/base/Trans.h"
 
 // New features that we don't release are protected with NEW_FEATURES.

@@ -13,7 +13,7 @@ enum FailureMode {
 };
 
 // Make a time-limited demo
-#define DROP_DEAD_DATE 2013, 11, 23
+#define DROP_DEAD_DATE 2014, 2, 1
 
 #ifdef DROP_DEAD_DATE
 
@@ -48,7 +48,7 @@ juce::Time getDate(Number year, Number month, Number day) {
   int d = static_cast<int>((parts[2] + INDEX) ^ INDEX);
 
   Time t = Time(y, m, d, 0, 0);
-#if 1
+#if 0
   LOG(ERROR) << str(t.toString(true, false))
             << ", " << year
             << ", " << month

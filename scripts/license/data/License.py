@@ -3,7 +3,6 @@ import logging
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-from data import Claim
 from util import MakeKey
 from util import Times
 
@@ -29,10 +28,10 @@ class License(ndb.Model):
     self.distributed_by = users.get_current_user()
     self.put()
 
-  def make_claim(self, claim):
-    self.test(self.product == claim.product,
+  def make_claim(self, claim, product):
+    self.test(self.product == product,
               'Wrong product for %s: expected %s, got %s' %
-              claim.product, self.product)
+              product, self.product)
 
     if not self.distributed:
       logging.warning('Claimed undistributed license key %s', self.license_key)
@@ -81,12 +80,11 @@ def distribute(license_key):
   license.distribute()
   return license
 
-def make_claim(claim):
-  license = _find(claim.license_key)
-  license.claim(claim)
-  return license
+def permanent_claim(claim, license_key, product)
+  license = _find(license_key)
+  license.claim(claim, product)
 
-def trial_claim(claim):
+def trial_claim(claim, product):
   key = claim.hardware_key
   for license in License.query(License.claims.hardware_key == key):
     if licence.product == claim.product:
@@ -98,4 +96,5 @@ def trial_claim(claim):
   expiration = Times.expiration(product)
   license = License(claims=[claim], expiration=expiration, product=product)
   license.put()
+
   return license
