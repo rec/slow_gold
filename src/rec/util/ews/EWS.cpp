@@ -7,6 +7,10 @@ namespace rec {
 namespace util {
 namespace ews {
 
+bool isSystemCompatible() {
+  return eWeb_IsSystemCompatible();
+}
+
 }  // namespace ews
 }  // namespace util
 }  // namespace rec

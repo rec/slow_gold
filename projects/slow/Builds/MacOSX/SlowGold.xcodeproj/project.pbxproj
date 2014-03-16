@@ -13,7 +13,6 @@
 		DD34146F04BF23D3257B4599 = {isa = PBXBuildFile; fileRef = 5B52C3A5B6C7B0019ED7CA22; };
 		3C99174C136E050BC88E2DFA = {isa = PBXBuildFile; fileRef = 9552CCC90A9ACFC7DDBCD039; };
 		7A1F9317DCA3180872A3ABF4 = {isa = PBXBuildFile; fileRef = FF5C150C22CFC8392B3368AC; };
-		A49D14BFE90BB58B9AF32A64 = {isa = PBXBuildFile; fileRef = 8761DE0959659C2F97503D1E; };
 		48ED07E5A62F78E913D20B99 = {isa = PBXBuildFile; fileRef = 78FF770E0C1BAE7FFDEF651D; };
 		A779A70403B32DC694F09156 = {isa = PBXBuildFile; fileRef = 30F7FA0E3B6DEC4427844545; };
 		04CE8D1F66E755C7A258D29F = {isa = PBXBuildFile; fileRef = 402C793AB141FE5FC9F7F9FB; };
@@ -1101,7 +1100,6 @@
 		874698C50A4E4300BAEDE8E1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeView.h; path = ../../../../src/rec/widget/tree/TreeView.h; sourceTree = "SOURCE_ROOT"; };
 		87488F70017A7A01BCB3301D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_TextDiff.cpp"; path = "../../JuceLibraryCode/modules/juce_core/text/juce_TextDiff.cpp"; sourceTree = "SOURCE_ROOT"; };
 		87613B849E7836F6E00B4CEB = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_TreeView.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/widgets/juce_TreeView.h"; sourceTree = "SOURCE_ROOT"; };
-		8761DE0959659C2F97503D1E = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EWSEmbedded-GC.framework"; path = "System/Library/Frameworks/EWSEmbedded-GC.framework"; sourceTree = SDKROOT; };
 		877BE465EB479C9383C9EEDA = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_DirectoryContentsList.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsList.cpp"; sourceTree = "SOURCE_ROOT"; };
 		8781E3DD7908233B2110ECEA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_FileLogger.h"; path = "../../JuceLibraryCode/modules/juce_core/logging/juce_FileLogger.h"; sourceTree = "SOURCE_ROOT"; };
 		879DDFD11722CA8E9293471A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_MultiTimer.cpp"; path = "../../JuceLibraryCode/modules/juce_events/timers/juce_MultiTimer.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -3780,7 +3778,6 @@
 					5B52C3A5B6C7B0019ED7CA22,
 					9552CCC90A9ACFC7DDBCD039,
 					FF5C150C22CFC8392B3368AC,
-					8761DE0959659C2F97503D1E,
 					78FF770E0C1BAE7FFDEF651D,
 					30F7FA0E3B6DEC4427844545,
 					402C793AB141FE5FC9F7F9FB,
@@ -3818,10 +3815,10 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../JuceLibraryCode/modules", "../../../../../rec/externals/rubberband/src", "../../../../../rec/src", "../../../../../rec/genfiles/icon", "../../../../../rec/genfiles/proto", "../../../../../rec/genfiles/translation", "../../../../../juce", "../../../../../rec/src/rec/data/yaml/include", "../../../../externals/mac/glog/include", "../../../../../build/Debug/gtest/include", "../../../../externals/mac/mpg123", "../../../../externals/mac/protobuf/include", "../../../../externals/yaml/include", "../..", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/ews/lib\"", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F.";
+				OTHER_LDFLAGS = "-lEWS-gc -lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged ";
 				SDKROOT = macosx10.7;
 				SDKROOT_ppc = macosx10.5; }; name = Debug; };
 		00DCC89C07C7BE87577135F3 = {isa = XCBuildConfiguration; buildSettings = {
@@ -3847,10 +3844,10 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../JuceLibraryCode/modules", "../../../../../rec/externals/rubberband/src", "../../../../../rec/src", "../../../../../rec/genfiles/icon", "../../../../../rec/genfiles/proto", "../../../../../rec/genfiles/translation", "../../../../../juce", "../../../../../rec/src/rec/data/yaml/include", "../../../../externals/mac/glog/include", "../../../../externals/mac/mpg123", "../../../../externals/mac/protobuf/include", "../../../../externals/yaml/include", "../..", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/ews/lib\"", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F.";
+				OTHER_LDFLAGS = "-lEWS-gc -lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged ";
 				SDKROOT = macosx10.7;
 				SDKROOT_ppc = macosx10.5; }; name = Release; };
 		D673E14850405400D7AF2B24 = {isa = XCBuildConfiguration; buildSettings = {
@@ -4172,7 +4169,6 @@
 					DD34146F04BF23D3257B4599,
 					3C99174C136E050BC88E2DFA,
 					7A1F9317DCA3180872A3ABF4,
-					A49D14BFE90BB58B9AF32A64,
 					48ED07E5A62F78E913D20B99,
 					A779A70403B32DC694F09156,
 					04CE8D1F66E755C7A258D29F,
