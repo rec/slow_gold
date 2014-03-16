@@ -49,7 +49,7 @@ template <> long long getSampleCount<int>() { return 0x100000000LL; }
 //
 //    void run(const Infinite& inf, SampleBlock<Sample>* block) {
 //      initialize(block);
-//      while (icrement(block));
+//      while (increment(block));
 //    }
 // the while loop must execute exactly possibleBlocks times, and the
 // contents of SampleBlock must cycle through all possible possibleBlocks

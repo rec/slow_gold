@@ -14079,8 +14079,6 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     return 0;
 }
 
-const int namedResourceListSize = 72;
-
 const char* namedResourceList[] =
 {
     "Colors_def",

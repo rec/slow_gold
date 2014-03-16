@@ -1,5 +1,4 @@
-#ifndef {guard}
-#define {guard}
+#pragma once
 
 #include "{base_include}"
 
@@ -14,5 +13,3 @@ class {classname} {{
 }};
 
 {namespace_end}
-
-#endif  // {guard}
