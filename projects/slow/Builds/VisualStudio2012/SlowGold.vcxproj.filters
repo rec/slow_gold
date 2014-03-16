@@ -98,6 +98,9 @@
     <Filter Include="SlowGold\src\util\cd">
       <UniqueIdentifier>{34C6B577-7FA1-808C-010D-ED0BE6377B7B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\src\util\ews">
+      <UniqueIdentifier>{06B57454-B183-BB85-4943-89B8F25E9F9B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\src\util\file">
       <UniqueIdentifier>{3C2E4D8A-FBF1-89BC-C64C-3EBA3EC7AE1F}</UniqueIdentifier>
     </Filter>
@@ -960,6 +963,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\DisableMap.cpp">
       <Filter>SlowGold\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\ews\EWS.cpp">
+      <Filter>SlowGold\src\util\ews</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp">
       <Filter>SlowGold\src\util\file</Filter>
