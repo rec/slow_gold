@@ -1,5 +1,8 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 
+// #define TEST_EWS
+#include "rec/util/ews/EWS.h"
+
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
 #include "rec/base/Trans.h"
@@ -123,8 +126,14 @@ void modeAddLoopPoint() {
 }
 
 void whatsNewPage() {
+#ifdef TEST_EWS
+  auto status = ews::attemptPurchase();
+  CHECK(not status) << status;
+  CHECK(status);
+#else
   const String& vers = JUCEApplication::getInstance()->getApplicationVersion();
   URL(String::formatted(WHATS_NEW_URL, c_str(vers))).launchInDefaultBrowser();
+#endif
 }
 
 }  // namespace
