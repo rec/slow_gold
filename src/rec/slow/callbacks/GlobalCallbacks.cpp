@@ -1,6 +1,6 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 
-// #define TEST_EWS
+#define TEST_EWS
 #include "rec/util/ews/EWS.h"
 
 #include "rec/app/DownloadVersion.h"

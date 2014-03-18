@@ -1,6 +1,6 @@
 #ifdef __APPLE__
 
-#include "ews/EWSEmbedded.h"
+#include "ews/EWSLib.h"
 #include "rec/util/ews/EWS.h"
 
 namespace rec {
@@ -39,7 +39,6 @@ int attemptPurchase() {
 
   return status;
 }
-
 
 }  // namespace ews
 }  // namespace util

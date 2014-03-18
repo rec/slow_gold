@@ -13,6 +13,7 @@
 		DD34146F04BF23D3257B4599 = {isa = PBXBuildFile; fileRef = 5B52C3A5B6C7B0019ED7CA22; };
 		3C99174C136E050BC88E2DFA = {isa = PBXBuildFile; fileRef = 9552CCC90A9ACFC7DDBCD039; };
 		7A1F9317DCA3180872A3ABF4 = {isa = PBXBuildFile; fileRef = FF5C150C22CFC8392B3368AC; };
+		A49D14BFE90BB58B9AF32A64 = {isa = PBXBuildFile; fileRef = 8761DE0959659C2F97503D1E; };
 		48ED07E5A62F78E913D20B99 = {isa = PBXBuildFile; fileRef = 78FF770E0C1BAE7FFDEF651D; };
 		A779A70403B32DC694F09156 = {isa = PBXBuildFile; fileRef = 30F7FA0E3B6DEC4427844545; };
 		04CE8D1F66E755C7A258D29F = {isa = PBXBuildFile; fileRef = 402C793AB141FE5FC9F7F9FB; };
@@ -1100,6 +1101,7 @@
 		874698C50A4E4300BAEDE8E1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeView.h; path = ../../../../src/rec/widget/tree/TreeView.h; sourceTree = "SOURCE_ROOT"; };
 		87488F70017A7A01BCB3301D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_TextDiff.cpp"; path = "../../JuceLibraryCode/modules/juce_core/text/juce_TextDiff.cpp"; sourceTree = "SOURCE_ROOT"; };
 		87613B849E7836F6E00B4CEB = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_TreeView.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/widgets/juce_TreeView.h"; sourceTree = "SOURCE_ROOT"; };
+		8761DE0959659C2F97503D1E = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EWSEmbedded-GC.framework"; path = "System/Library/Frameworks/EWSEmbedded-GC.framework"; sourceTree = SDKROOT; };
 		877BE465EB479C9383C9EEDA = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_DirectoryContentsList.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsList.cpp"; sourceTree = "SOURCE_ROOT"; };
 		8781E3DD7908233B2110ECEA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_FileLogger.h"; path = "../../JuceLibraryCode/modules/juce_core/logging/juce_FileLogger.h"; sourceTree = "SOURCE_ROOT"; };
 		879DDFD11722CA8E9293471A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_MultiTimer.cpp"; path = "../../JuceLibraryCode/modules/juce_events/timers/juce_MultiTimer.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -3778,6 +3780,7 @@
 					5B52C3A5B6C7B0019ED7CA22,
 					9552CCC90A9ACFC7DDBCD039,
 					FF5C150C22CFC8392B3368AC,
+					8761DE0959659C2F97503D1E,
 					78FF770E0C1BAE7FFDEF651D,
 					30F7FA0E3B6DEC4427844545,
 					402C793AB141FE5FC9F7F9FB,
@@ -3815,10 +3818,10 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../JuceLibraryCode/modules", "../../../../../rec/externals/rubberband/src", "../../../../../rec/src", "../../../../../rec/genfiles/icon", "../../../../../rec/genfiles/proto", "../../../../../rec/genfiles/translation", "../../../../../juce", "../../../../../rec/src/rec/data/yaml/include", "../../../../externals/mac/glog/include", "../../../../../build/Debug/gtest/include", "../../../../externals/mac/mpg123", "../../../../externals/mac/protobuf/include", "../../../../externals/yaml/include", "../..", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/ews/lib\"", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_LDFLAGS = "-lEWS-gc -lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged ";
+				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F../../../../externals/mac/ews/";
 				SDKROOT = macosx10.7;
 				SDKROOT_ppc = macosx10.5; }; name = Debug; };
 		00DCC89C07C7BE87577135F3 = {isa = XCBuildConfiguration; buildSettings = {
@@ -3844,10 +3847,10 @@
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../JuceLibraryCode/modules", "../../../../../rec/externals/rubberband/src", "../../../../../rec/src", "../../../../../rec/genfiles/icon", "../../../../../rec/genfiles/proto", "../../../../../rec/genfiles/translation", "../../../../../juce", "../../../../../rec/src/rec/data/yaml/include", "../../../../externals/mac/glog/include", "../../../../externals/mac/mpg123", "../../../../externals/mac/protobuf/include", "../../../../externals/yaml/include", "../..", "$(inherited)");
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/ews/lib\"", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/mac/rubberband\"", "\"../../../../externals/mac/yaml\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_LDFLAGS = "-lEWS-gc -lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged ";
+				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F../../../../externals/mac/ews/";
 				SDKROOT = macosx10.7;
 				SDKROOT_ppc = macosx10.5; }; name = Release; };
 		D673E14850405400D7AF2B24 = {isa = XCBuildConfiguration; buildSettings = {
@@ -4169,16 +4172,19 @@
 					DD34146F04BF23D3257B4599,
 					3C99174C136E050BC88E2DFA,
 					7A1F9317DCA3180872A3ABF4,
+					A49D14BFE90BB58B9AF32A64,
 					48ED07E5A62F78E913D20B99,
 					A779A70403B32DC694F09156,
 					04CE8D1F66E755C7A258D29F,
 					91E7045691109A0E3192C184,
 					0E5DFED63F314BE646E4A6F7,
 					CB2E72F5FFC98C1ABDAB6A2A, ); runOnlyForDeploymentPostprocessing = 0; };
+		677FC349A887EE4E9A060468 = {isa = PBXShellScriptBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; name = "Post-build script"; shellPath = /bin/sh; shellScript = "../../../../scripts/copy-ews.sh"; };
 		66A6B4AAF4C74918491EEC99 = {isa = PBXNativeTarget; buildConfigurationList = B194B86192FA416B06C77DCB; buildPhases = (
 					55B4235847BD5D4AC75DD5AD,
 					191E9A97D878CBB477B52844,
-					335071FFEEBB20A26401A707, ); buildRules = ( ); dependencies = ( ); name = SlowGold; productName = SlowGold; productReference = 57A179F92CC94E9DAF17FBF5; productInstallPath = "$(HOME)/Applications"; productType = "com.apple.product-type.application"; };
+					335071FFEEBB20A26401A707,
+					677FC349A887EE4E9A060468, ); buildRules = ( ); dependencies = ( ); name = SlowGold; productName = SlowGold; productReference = 57A179F92CC94E9DAF17FBF5; productInstallPath = "$(HOME)/Applications"; productType = "com.apple.product-type.application"; };
 		B6E058BF1C68CB806340553B = {isa = PBXProject; buildConfigurationList = C0B5A359FE7FBF6FAE66FCA1; attributes = { LastUpgradeCheck = 0440; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 7D19445674B4E0F8BA4B6FDC; projectDirPath = ""; projectRoot = ""; targets = ( 66A6B4AAF4C74918491EEC99 ); };
 	};
 	rootObject = B6E058BF1C68CB806340553B;

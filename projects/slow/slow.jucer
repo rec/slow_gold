@@ -12,16 +12,17 @@
               projectType="guiapp" version="8.0.5">
   <EXPORTFORMATS>
     <XCODE_MAC bigIcon="TdymBbjDw" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
-               extraCompilerFlags="" extraLinkerFlags="-lEWS-gc -lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged "
+               extraCompilerFlags="" extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F../../../../externals/mac/ews/"
                objCExtraSuffix="jeMWW9" rtasFolder="~/SDKs/PT_80_SDK" smallIcon="XUc1JS1Qd"
-               targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" extraFrameworks="">
+               targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" extraFrameworks="EWSEmbedded-GC"
+               postbuildCommand="../../../../scripts/copy-ews.sh">
       <CONFIGURATIONS>
         <CONFIGURATION cppLibType="libc++" customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
-                       isDebug="1" libraryPath="../../../../externals/mac/ews/lib;../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
+                       isDebug="1" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Debug" optimisation="1" osxArchitecture="32BitUniversal"
                        osxCompatibility="10.7 SDK" osxSDK="10.7 SDK" targetName="SlowGold 8-debug"/>
         <CONFIGURATION cppLibType="libc++" customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
-                       isDebug="0" libraryPath="../../../../externals/mac/ews/lib;../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
+                       isDebug="0" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                        osxCompatibility="10.7 SDK" osxSDK="10.7 SDK" targetName="SlowGold 8"/>
       </CONFIGURATIONS>
