@@ -44,7 +44,7 @@ class Program {
   virtual CallbackMap* getCallbackMap() = 0;
   virtual string idToName(CommandID) const = 0;
   virtual CommandID nameToId(const string&) const = 0;
-  virtual string getTypeName(const Message&) const = 0;
+  virtual string mapTypeName(const string&) const = 0;
   virtual const char* getPublisherId() const = 0;
   virtual const char* getActivationId() const = 0;
   virtual bool isEnabled() const = 0;

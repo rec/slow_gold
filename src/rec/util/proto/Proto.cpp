@@ -6,8 +6,13 @@
 namespace rec {
 namespace util {
 
-string getTypeName(const Message& m) {
-  return program::getProgram()->getTypeName(m);
+string getTypeName(const Message& message) {
+  auto s = message.GetTypeName();
+
+  if (auto prog = program::getProgram())
+    s = prog->mapTypeName(s);
+
+  return s;
 }
 
 }  // namespace util

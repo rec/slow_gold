@@ -32,7 +32,7 @@ class SlowProgram : public program::ProgramBase {
   CommandID nameToId(const string&) const override;
   const data::Address& resizerAddress() const override;
   Component* getTopComponent() override;
-  string getTypeName(const Message&) const override;
+  string mapTypeName(const string&) const override;
   const char* getPublisherId() const override;
   const char* getActivationId() const override;
 

@@ -195,9 +195,8 @@ Component* SlowProgram::getTopComponent() {
   return getInstance()->components_->topComponent();
 }
 
-string SlowProgram::getTypeName(const Message& message) const {
-  const string& result = message.GetTypeName();
-  return (result == "rec.util.ews.Activation") ? "rec.audio.AudioSamples" : result;
+string SlowProgram::mapTypeName(const string& s) const {
+  return (s == "rec.util.ews.Activation") ? "rec.audio.AudioSamples" : s;
 }
 
 const char* SlowProgram::getPublisherId() const {
