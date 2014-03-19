@@ -45,6 +45,8 @@ class Program {
   virtual string idToName(CommandID) const = 0;
   virtual CommandID nameToId(const string&) const = 0;
   virtual string getTypeName(const Message&) const = 0;
+  virtual const char* getPublisherId() const = 0;
+  virtual const char* getActivationId() const = 0;
   virtual bool isEnabled() const = 0;
   virtual void setEnabled(bool) = 0;
   virtual thread::Looper::Function threadFunction(const string&) const = 0;

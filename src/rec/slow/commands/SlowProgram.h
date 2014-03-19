@@ -33,6 +33,8 @@ class SlowProgram : public program::ProgramBase {
   const data::Address& resizerAddress() const override;
   Component* getTopComponent() override;
   string getTypeName(const Message&) const override;
+  const char* getPublisherId() const override;
+  const char* getActivationId() const override;
 
  private:
   Instance* const instance_;

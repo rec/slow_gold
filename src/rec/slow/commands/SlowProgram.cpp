@@ -60,7 +60,11 @@ class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
   }
 };
 
-static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
+const char PUBLISHER_ID[] = "PUB4876107970";
+const char ACTIVATION_ID[] =
+  "ACT3511648730:L3L2KT-HQLC-DH8NEY-UUHL-V1935A-5GXW22-XL4E-VHNAPV-J7ZY-A3EQPH";
+
+SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
 
 int navigator(Thread*) {
   getInstance()->components_->directoryTree()->checkVolumes();
@@ -194,6 +198,14 @@ Component* SlowProgram::getTopComponent() {
 string SlowProgram::getTypeName(const Message& message) const {
   const string& result = message.GetTypeName();
   return (result == "rec.util.ews.Activation") ? "rec.audio.AudioSamples" : result;
+}
+
+const char* SlowProgram::getPublisherId() const {
+  return PUBLISHER_ID;
+}
+
+const char* SlowProgram::getActivationId() const {
+  return ACTIVATION_ID;
 }
 
 }  // namespace slow
