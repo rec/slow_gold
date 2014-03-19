@@ -171,6 +171,7 @@
 		B2BE0E693719AC0E04202421 = {isa = PBXBuildFile; fileRef = A91650EDCDCFC7EC8BC64E6D; };
 		E57B3C4F01F4A68974516941 = {isa = PBXBuildFile; fileRef = 1971CE6F23AC16200F903CD0; };
 		390D0AB19C5FDCACE86158A8 = {isa = PBXBuildFile; fileRef = BEE0D83379041DC445C63153; };
+		69401A789FBE650D15032C16 = {isa = PBXBuildFile; fileRef = F641D4ACD37742424F828367; };
 		2E6751D462BBFFE419E5E776 = {isa = PBXBuildFile; fileRef = AF92EC97CB2367D67DE58B4B; };
 		D9E6CDD7CF3941D0FFFB8850 = {isa = PBXBuildFile; fileRef = 75A24F8202F96910E924598D; };
 		61C52FC208B14659520C43E5 = {isa = PBXBuildFile; fileRef = 0FBE15185FBB2AE3421FC658; };
@@ -1676,6 +1677,7 @@
 		E19D75272A59B61BFC650176 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_android_JNIHelpers.h"; path = "../../JuceLibraryCode/modules/juce_core/native/juce_android_JNIHelpers.h"; sourceTree = "SOURCE_ROOT"; };
 		E1A2EC6B65514CF763BDA99A = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_FileChooser.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/filebrowser/juce_FileChooser.h"; sourceTree = "SOURCE_ROOT"; };
 		E1DBB1A4569A92C7C9587B79 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Result.h"; path = "../../JuceLibraryCode/modules/juce_core/misc/juce_Result.h"; sourceTree = "SOURCE_ROOT"; };
+		E1E7B5E2DE18A277516836C0 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Crypt.h; path = ../../../../src/rec/util/Crypt.h; sourceTree = "SOURCE_ROOT"; };
 		E1ED15A5C8E5FC15D05049D1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_audio_basics.h"; path = "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.h"; sourceTree = "SOURCE_ROOT"; };
 		E1F9E111DDCDCF3B00AE7626 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_GZIPDecompressorInputStream.h"; path = "../../JuceLibraryCode/modules/juce_core/zip/juce_GZIPDecompressorInputStream.h"; sourceTree = "SOURCE_ROOT"; };
 		E32DF5EDE1C94482A78072AF = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Slider.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/widgets/juce_Slider.h"; sourceTree = "SOURCE_ROOT"; };
@@ -1801,6 +1803,7 @@
 		F5E73F0B545B2587F641ED80 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_win32_HiddenMessageWindow.h"; path = "../../JuceLibraryCode/modules/juce_events/native/juce_win32_HiddenMessageWindow.h"; sourceTree = "SOURCE_ROOT"; };
 		F5F963C26DE6AF16AE88B44E = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Gain.cpp; path = ../../../../src/rec/audio/util/Gain.cpp; sourceTree = "SOURCE_ROOT"; };
 		F6249CDC25D8DC9C42B8DE09 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_SystemStats.cpp"; path = "../../JuceLibraryCode/modules/juce_core/system/juce_SystemStats.cpp"; sourceTree = "SOURCE_ROOT"; };
+		F641D4ACD37742424F828367 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Crypt.cpp; path = ../../../../src/rec/util/Crypt.cpp; sourceTree = "SOURCE_ROOT"; };
 		F656F6C7E2211D393255736B = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F678DB62C8CAEA6ED0A7B13A = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_audio_formats.h"; path = "../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.h"; sourceTree = "SOURCE_ROOT"; };
 		F69AED5B609D4F180AB792D6 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_RecentlyOpenedFilesList.h"; path = "../../JuceLibraryCode/modules/juce_gui_extra/misc/juce_RecentlyOpenedFilesList.h"; sourceTree = "SOURCE_ROOT"; };
@@ -2409,6 +2412,8 @@
 					BEE0D83379041DC445C63153,
 					88ADA3B43A0F37190575DA32,
 					B03FFC16169F954C3ADE7113,
+					F641D4ACD37742424F828367,
+					E1E7B5E2DE18A277516836C0,
 					4159AB261B0A78EF55A967DC,
 					361084732E5B6DEF76C34550,
 					91715861B54018A986325A14,
@@ -4042,6 +4047,7 @@
 					B2BE0E693719AC0E04202421,
 					E57B3C4F01F4A68974516941,
 					390D0AB19C5FDCACE86158A8,
+					69401A789FBE650D15032C16,
 					2E6751D462BBFFE419E5E776,
 					D9E6CDD7CF3941D0FFFB8850,
 					61C52FC208B14659520C43E5,

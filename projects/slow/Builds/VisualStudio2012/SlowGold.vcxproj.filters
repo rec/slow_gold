@@ -964,6 +964,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\DisableMap.cpp">
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Crypt.cpp">
+      <Filter>SlowGold\src\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\ews\EWS.cpp">
       <Filter>SlowGold\src\util\ews</Filter>
     </ClCompile>
@@ -3130,6 +3133,9 @@
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Enable.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Crypt.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
