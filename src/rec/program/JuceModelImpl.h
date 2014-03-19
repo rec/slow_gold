@@ -40,6 +40,7 @@ class JuceModelImpl {
   const gui::Layout& getLayout(const string& n) const {
     return layoutMap_.at(n);
   }
+
   Component* getComponent(const string& name) const;
   string componentNames() const;
 

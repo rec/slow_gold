@@ -15,6 +15,7 @@
 #include "rec/gui/menu/RecentFiles.pb.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/util/ews/Activation.pb.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/SystemStats.pb.h"
@@ -55,6 +56,7 @@ void registerProtos() {
   registerFileProto<audio::stretch::Stretch>(r);
   registerFileProto<music::Metadata>(r);
   registerFileProto<util::LoopPointList>(r);
+  registerFileProto<util::ews::Activation>(r);
   registerFileProto<widget::waveform::Viewport>(r);
   registerFileProto<widget::waveform::Zoom>(r);
 }

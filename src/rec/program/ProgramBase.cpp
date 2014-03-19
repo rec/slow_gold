@@ -46,4 +46,3 @@ void ProgramBase::setEnabled(bool enabled) {
 
 }  // namespace program
 }  // namespace rec
-

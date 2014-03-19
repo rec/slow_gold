@@ -191,6 +191,9 @@
     <Filter Include="SlowGold\genfiles\rec\util">
       <UniqueIdentifier>{A5F61872-EB2F-EB61-856B-E78E568022E1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\genfiles\rec\util\ews">
+      <UniqueIdentifier>{0C8AE2D1-4B91-35E3-576C-9B6F382D1BD1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\genfiles\rec\util\file">
       <UniqueIdentifier>{97C5C6E2-6889-4AC0-0D9E-407A308A2D9E}</UniqueIdentifier>
     </Filter>
@@ -955,6 +958,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp">
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Crypt.cpp">
+      <Filter>SlowGold\src\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp">
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
@@ -962,9 +968,6 @@
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\DisableMap.cpp">
-      <Filter>SlowGold\src\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\Crypt.cpp">
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\ews\EWS.cpp">
@@ -1239,6 +1242,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Binary.pb.cc">
       <Filter>SlowGold\genfiles\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\ews\Activation.pb.cc">
+      <Filter>SlowGold\genfiles\rec\util\ews</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
       <Filter>SlowGold\genfiles\rec\util\file</Filter>
@@ -2688,9 +2694,6 @@
     <ClInclude Include="..\..\..\..\src\rec\base\port.h">
       <Filter>SlowGold\src\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\base\ptr.h">
-      <Filter>SlowGold\src\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h">
       <Filter>SlowGold\src\base</Filter>
     </ClInclude>
@@ -2701,6 +2704,9 @@
       <Filter>SlowGold\src\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h">
+      <Filter>SlowGold\src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\stl.h">
       <Filter>SlowGold\src\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h">
@@ -3120,6 +3126,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Crypt.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
@@ -3135,8 +3144,8 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Enable.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\Crypt.h">
-      <Filter>SlowGold\src\util</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\util\ews\EWS.h">
+      <Filter>SlowGold\src\util\ews</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
       <Filter>SlowGold\src\util</Filter>
@@ -3581,6 +3590,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Binary.pb.h">
       <Filter>SlowGold\genfiles\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\ews\Activation.pb.h">
+      <Filter>SlowGold\genfiles\rec\util\ews</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">
       <Filter>SlowGold\genfiles\rec\util\file</Filter>
@@ -5203,9 +5215,6 @@
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_video\juce_module_info">
       <Filter>Juce Modules\juce_video</Filter>
-    </None>
-    <None Include=".\icon.ico">
-      <Filter>Juce Library Code</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -8,13 +8,12 @@
 namespace rec {
 namespace util {
 
-template <typename Proto>
-const string getTypeName() {
-  return Proto::default_instance().GetTypeName();
-}
+string getTypeName(const Message&);
 
-// A little slower because it uses reflection.
-const string& getTypeName(const Message&);
+template <typename Proto>
+string getTypeName() {
+  return getTypeName(Proto::default_instance());
+}
 
 inline Message* clone(const Message& m) {
   ptr<Message> p(m.New());

@@ -63,6 +63,15 @@ std::set<Type> concat(const std::set<Type>& x, const std::set<Type>& y) {
   return result;
 }
 
+// Never used or tested.
+template <typename Container>
+typename Container::mapped_type getDefault(
+    const Container& container,
+    const typename Container::key_type& dflt) {
+  auto i = container.find(dflt);
+  return (i == container.end()) ? dflt : i->second;
+}
+
 }  // namespace stl
 }  // namespace rec
 

@@ -285,10 +285,10 @@
     <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Crypt.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Disableable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\DisableMap.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\Crypt.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\ews\EWS.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CurrentFileBase.cpp"/>
@@ -380,6 +380,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Binary.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\ews\Activation.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc"/>
@@ -1557,11 +1558,11 @@
     <ClInclude Include="..\..\..\..\src\rec\base\Juce.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\make_unique.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\port.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\base\ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\SampleRate.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\SampleTime.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\stl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Trans.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
@@ -1701,12 +1702,13 @@
     <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Compare.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Crypt.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Disableable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\DisableMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Enable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\Crypt.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\ews\EWS.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CurrentFileBase.h"/>
@@ -1855,6 +1857,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Binary.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\ews\Activation.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h"/>
@@ -2397,7 +2400,6 @@
     <None Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_opengl\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_video\juce_module_info"/>
-    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc"/>

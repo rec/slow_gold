@@ -22,7 +22,7 @@ class Data : public Broadcaster<const Message&> {
 
   bool isEmpty() const { return isEmpty_; }
 
-  const string& getTypeName() const {
+  string getTypeName() const {
     Lock l(lock_);
     return util::getTypeName(*message_);
   }
