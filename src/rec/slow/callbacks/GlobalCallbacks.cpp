@@ -129,7 +129,7 @@ void modeAddLoopPoint() {
 
 void whatsNewPage() {
 #ifdef TEST_EWS
-  CHECK(ews::confirm(ews::TEST_SERIAL_NUMBER));
+  ews::confirm(ews::TEST_SERIAL_NUMBER);
 #else
   const String& vers = JUCEApplication::getInstance()->getApplicationVersion();
   URL(String::formatted(WHATS_NEW_URL, c_str(vers))).launchInDefaultBrowser();
