@@ -22,31 +22,35 @@ inline string fromTime(const Time& t) {
 
 }  // namespace
 
-int daysToExpiration() {
+Authentication testAuthenticated() {
+  Authentication result;
   auto activation = data::getProto<ews::Activation>();
   if (activation.has_samples()) {
-    if (ews::confirm(crypt(activation.samples()))) {
+    result.serialNumber = crypt(activation.samples());
+    if (ews::confirm(result.serialNumber)) {
       LOG(INFO) << "Sample rate computed.";
-      return AUTHORIZED;
+      result.user = crypt(activation.frame());
+    } else {
+      LOG(ERROR) << "Couldn't understand sample rate \""
+                 << activation.samples() << "\"";
     }
+  } else {
+    auto expiration = program::getProgram()->demoExpirationDays();
+    auto now = Time::getCurrentTime();
+    Time time = activation.has_rate() ? toTime(activation.rate()) : now;
+    if (time <= now) {
+      activation.set_rate(fromTime(time));
+      data::setProto(activation);
+      auto days = expiration - static_cast<int>((now - time).inDays());
+      result.daysToExpiration = jmax(0, days);
+    } else {
+      result.daysToExpiration = 0;
+      LOG(ERROR) << "Sample time greater than now: "
+                 << time.toMilliseconds() << ", " << now.toMilliseconds();
 
-    LOG(ERROR) << "Couldn't understand sample rate \""
-               << activation.samples() << "\"";
-    return EXPIRED;
+    }
   }
-
-  auto expiration = program::getProgram()->demoExpirationDays();
-  auto now = Time::getCurrentTime();
-  Time time = activation.has_rate() ? toTime(activation.rate()) : now;
-  if (time > now) {
-    LOG(ERROR) << "Sample time greater than now: "
-               << time.toMilliseconds() << ", " << now.toMilliseconds();
-    return EXPIRED;
-  }
-  activation.set_rate(fromTime(time));
-  data::setProto(activation);
-  auto remainingDays = expiration - static_cast<int>((now - time).inDays());
-  return jmax(remainingDays, EXPIRED);
+  return result;
 }
 
 bool authenticate(const string& serialNumber) {

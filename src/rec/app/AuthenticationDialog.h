@@ -5,10 +5,13 @@
 namespace rec {
 namespace app {
 
-static const int EXPIRED = 0;
-static const int AUTHORIZED = -1;
+struct Authentication {
+  int daysToExpiration;
+  string user;
+  string serialNumber;
+};
 
-int daysToExpiration();
+Authentication testAuthenticated();
 bool authenticate(const string& serialNumber);
 
 }  // namespace app

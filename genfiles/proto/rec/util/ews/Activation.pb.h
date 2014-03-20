@@ -117,20 +117,35 @@ class Activation : public ::google::protobuf::Message {
   inline ::std::string* release_rate();
   inline void set_allocated_rate(::std::string* rate);
 
+  // optional string frame = 3;
+  inline bool has_frame() const;
+  inline void clear_frame();
+  static const int kFrameFieldNumber = 3;
+  inline const ::std::string& frame() const;
+  inline void set_frame(const ::std::string& value);
+  inline void set_frame(const char* value);
+  inline void set_frame(const char* value, size_t size);
+  inline ::std::string* mutable_frame();
+  inline ::std::string* release_frame();
+  inline void set_allocated_frame(::std::string* frame);
+
   // @@protoc_insertion_point(class_scope:rec.util.ews.Activation)
  private:
   inline void set_has_samples();
   inline void clear_has_samples();
   inline void set_has_rate();
   inline void clear_has_rate();
+  inline void set_has_frame();
+  inline void clear_has_frame();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* samples_;
   ::std::string* rate_;
+  ::std::string* frame_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2futil_2fews_2fActivation_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fews_2fActivation_2eproto();
@@ -283,6 +298,76 @@ inline void Activation::set_allocated_rate(::std::string* rate) {
   } else {
     clear_has_rate();
     rate_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string frame = 3;
+inline bool Activation::has_frame() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Activation::set_has_frame() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Activation::clear_has_frame() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Activation::clear_frame() {
+  if (frame_ != &::google::protobuf::internal::kEmptyString) {
+    frame_->clear();
+  }
+  clear_has_frame();
+}
+inline const ::std::string& Activation::frame() const {
+  return *frame_;
+}
+inline void Activation::set_frame(const ::std::string& value) {
+  set_has_frame();
+  if (frame_ == &::google::protobuf::internal::kEmptyString) {
+    frame_ = new ::std::string;
+  }
+  frame_->assign(value);
+}
+inline void Activation::set_frame(const char* value) {
+  set_has_frame();
+  if (frame_ == &::google::protobuf::internal::kEmptyString) {
+    frame_ = new ::std::string;
+  }
+  frame_->assign(value);
+}
+inline void Activation::set_frame(const char* value, size_t size) {
+  set_has_frame();
+  if (frame_ == &::google::protobuf::internal::kEmptyString) {
+    frame_ = new ::std::string;
+  }
+  frame_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Activation::mutable_frame() {
+  set_has_frame();
+  if (frame_ == &::google::protobuf::internal::kEmptyString) {
+    frame_ = new ::std::string;
+  }
+  return frame_;
+}
+inline ::std::string* Activation::release_frame() {
+  clear_has_frame();
+  if (frame_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = frame_;
+    frame_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Activation::set_allocated_frame(::std::string* frame) {
+  if (frame_ != &::google::protobuf::internal::kEmptyString) {
+    delete frame_;
+  }
+  if (frame) {
+    set_has_frame();
+    frame_ = frame;
+  } else {
+    clear_has_frame();
+    frame_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

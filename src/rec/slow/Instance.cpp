@@ -214,11 +214,11 @@ bool Instance::startup() {
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 
-  auto daysToExpiration = app::daysToExpiration();
+  auto daysToExpiration = app::testAuthenticated().daysToExpiration;
   auto about = data::getProto<GuiSettings>().show_about_on_startup();
 
   MessageManagerLock l;
-  if (about or daysToExpiration == app::EXPIRED)
+  if (about or daysToExpiration <= 0)
     window_->startAboutWindow();
   return true;
 }

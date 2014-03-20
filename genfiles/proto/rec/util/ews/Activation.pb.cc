@@ -36,9 +36,10 @@ void protobuf_AssignDesc_rec_2futil_2fews_2fActivation_2eproto() {
       "rec/util/ews/Activation.proto");
   GOOGLE_CHECK(file != NULL);
   Activation_descriptor_ = file->message_type(0);
-  static const int Activation_offsets_[2] = {
+  static const int Activation_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Activation, samples_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Activation, rate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Activation, frame_),
   };
   Activation_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -82,8 +83,8 @@ void protobuf_AddDesc_rec_2futil_2fews_2fActivation_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/util/ews/Activation.proto\022\014rec.uti"
-    "l.ews\"+\n\nActivation\022\017\n\007samples\030\001 \001(\t\022\014\n\004"
-    "rate\030\002 \001(\t", 90);
+    "l.ews\":\n\nActivation\022\017\n\007samples\030\001 \001(\t\022\014\n\004"
+    "rate\030\002 \001(\t\022\r\n\005frame\030\003 \001(\t", 105);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/ews/Activation.proto", &protobuf_RegisterTypes);
   Activation::default_instance_ = new Activation();
@@ -103,6 +104,7 @@ struct StaticDescriptorInitializer_rec_2futil_2fews_2fActivation_2eproto {
 #ifndef _MSC_VER
 const int Activation::kSamplesFieldNumber;
 const int Activation::kRateFieldNumber;
+const int Activation::kFrameFieldNumber;
 #endif  // !_MSC_VER
 
 Activation::Activation()
@@ -123,6 +125,7 @@ void Activation::SharedCtor() {
   _cached_size_ = 0;
   samples_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   rate_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  frame_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -136,6 +139,9 @@ void Activation::SharedDtor() {
   }
   if (rate_ != &::google::protobuf::internal::kEmptyString) {
     delete rate_;
+  }
+  if (frame_ != &::google::protobuf::internal::kEmptyString) {
+    delete frame_;
   }
   if (this != default_instance_) {
   }
@@ -174,6 +180,11 @@ void Activation::Clear() {
         rate_->clear();
       }
     }
+    if (has_frame()) {
+      if (frame_ != &::google::protobuf::internal::kEmptyString) {
+        frame_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -210,6 +221,23 @@ bool Activation::MergePartialFromCodedStream(
                 input, this->mutable_rate()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->rate().data(), this->rate().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_frame;
+        break;
+      }
+
+      // optional string frame = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_frame:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_frame()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->frame().data(), this->frame().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -254,6 +282,15 @@ void Activation::SerializeWithCachedSizes(
       2, this->rate(), output);
   }
 
+  // optional string frame = 3;
+  if (has_frame()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->frame().data(), this->frame().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->frame(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -282,6 +319,16 @@ void Activation::SerializeWithCachedSizes(
         2, this->rate(), target);
   }
 
+  // optional string frame = 3;
+  if (has_frame()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->frame().data(), this->frame().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->frame(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -305,6 +352,13 @@ int Activation::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->rate());
+    }
+
+    // optional string frame = 3;
+    if (has_frame()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->frame());
     }
 
   }
@@ -340,6 +394,9 @@ void Activation::MergeFrom(const Activation& from) {
     if (from.has_rate()) {
       set_rate(from.rate());
     }
+    if (from.has_frame()) {
+      set_frame(from.frame());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -365,6 +422,7 @@ void Activation::Swap(Activation* other) {
   if (other != this) {
     std::swap(samples_, other->samples_);
     std::swap(rate_, other->rate_);
+    std::swap(frame_, other->frame_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

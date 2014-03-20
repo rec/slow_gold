@@ -20,7 +20,7 @@ TRAN(DRAG_SPEED, "Drag the Speed slider to slow down or speed up.");
 TRAN(CREATE_LOOPS, "Create loop points by pressing the L key.");
 TRAN(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
        "commands.");
-TRAN(COPYRIGHT, "Copyright © %d");
+TRAN(COPYRIGHT, "Copyright © %d-%d");
 TRAN(REGISTERED_TO, "Registered to:");
 TRAN(UNREGISTERED, "Not Registered!");
 
@@ -48,12 +48,12 @@ AttributedString getRightSide() {
   right.setJustification(Justification::topRight);
   auto name = JUCEApplication::getInstance()->getApplicationName();
   auto version = JUCEApplication::getInstance()->getApplicationVersion();
-  String t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
-    String::formatted(t_COPYRIGHT, 2012) + String("\n");
+  auto t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
+      String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
   right.append(t, ABOUT_FONT);
 
-  String user = getEnv("USERNAME", "");
-  String reg = user.isEmpty() ? String(t_UNREGISTERED) :
+  auto user = getEnv("USERNAME", "");
+  auto reg = user.isEmpty() ? String(t_UNREGISTERED) :
     (String("\n") + t_REGISTERED_TO + String(" ") + user);
   right.append(reg, ABOUT_FONT);
   return right;
@@ -62,7 +62,7 @@ AttributedString getRightSide() {
 AttributedString getLeftSide() {
   AttributedString left;
   left.setJustification(Justification::topLeft);
-  String s =
+  auto s =
       str("* " + t_DRAG_AUDIO + "\n" +
           "* " + t_CD_AUTOMATIC + "\n" +
           "* " + t_PRESS_SPACE + "\n" +
@@ -102,7 +102,7 @@ class AboutPane : public Component {
   }
 
   void visibilityChanged() override {
-    auto daysToExpiration = app::daysToExpiration();
+    auto authentication = app::testAuthenticated();
     right_ = getRightSide();
     left_ = getLeftSide();
   }

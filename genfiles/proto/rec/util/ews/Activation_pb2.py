@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/util/ews/Activation.proto',
   package='rec.util.ews',
-  serialized_pb='\n\x1drec/util/ews/Activation.proto\x12\x0crec.util.ews\"+\n\nActivation\x12\x0f\n\x07samples\x18\x01 \x01(\t\x12\x0c\n\x04rate\x18\x02 \x01(\t')
+  serialized_pb='\n\x1drec/util/ews/Activation.proto\x12\x0crec.util.ews\":\n\nActivation\x12\x0f\n\x07samples\x18\x01 \x01(\t\x12\x0c\n\x04rate\x18\x02 \x01(\t\x12\r\n\x05\x66rame\x18\x03 \x01(\t')
 
 
 
@@ -39,6 +39,13 @@ _ACTIVATION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='frame', full_name='rec.util.ews.Activation.frame', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -49,7 +56,7 @@ _ACTIVATION = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=47,
-  serialized_end=90,
+  serialized_end=105,
 )
 
 DESCRIPTOR.message_types_by_name['Activation'] = _ACTIVATION
