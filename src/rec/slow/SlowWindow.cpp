@@ -1,6 +1,5 @@
 #include "rec/slow/SlowWindow.h"
 
-#include "rec/app/AuthenticationDialog.h"
 #include "rec/app/Files.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/data/DataCenter.h"
@@ -89,10 +88,13 @@ void SlowWindow::constructInstance() {
 
 void SlowWindow::doStartup() {
   Lock l(lock_);
-  instance_->startup();
-  startupFinished_ = true;
-  auto daysToExpiration = app::daysToExpiration();
-  gotoNextFile();
+
+  if (instance_->startup()) {
+    startupFinished_ = true;
+    gotoNextFile();
+  } else {
+    JUCEApplication::quit();
+  }
 }
 
 void SlowWindow::gotoNextFile() {

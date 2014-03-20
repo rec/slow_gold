@@ -40,7 +40,7 @@ class Instance {
   ~Instance();
 
   void init();
-  void startup();
+  bool startup();
   void shutdown();
 
   const VirtualFile file() const;

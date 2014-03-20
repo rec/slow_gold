@@ -23,17 +23,17 @@ class GenericApplication : public Listener<Enable>,
 
   GenericApplication(ApplicationFunction initializer,
                      ApplicationFunction shutdown);
-  virtual ~GenericApplication();
+  ~GenericApplication() override;
 
-  virtual void initialise(const String& commandLine);
-  virtual void shutdown();
+  void initialise(const String& commandLine) override;
+  void shutdown() override;
   virtual Window* createWindow() = 0;
 
-  virtual const String getApplicationName()    { return name(); }
-  virtual const String getApplicationVersion() { return version(); }
-  virtual bool moreThanOneInstanceAllowed()    { return false; }
-  virtual void anotherInstanceStarted(const String& s);
-  virtual void systemRequestedQuit();
+  const String getApplicationName() override { return name(); }
+  const String getApplicationVersion() override { return version(); }
+  bool moreThanOneInstanceAllowed() override { return false; }
+  void anotherInstanceStarted(const String& s) override;
+  void systemRequestedQuit() override;
 
   virtual void operator()(Enable enable) {
     Lock l(lock_);

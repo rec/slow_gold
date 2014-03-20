@@ -1,6 +1,7 @@
 #include "rec/slow/Instance.h"
 
 #include "rec/app/AppSettings.pb.h"
+#include "rec/app/AuthenticationDialog.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/app/RegisterInstance.h"
 #include "rec/audio/Device.h"
@@ -187,7 +188,7 @@ audio::Source* Instance::makeSource() const {
   return bufferFiller_->reader()->makeSource();
 }
 
-void Instance::startup() {
+bool Instance::startup() {
   juceModel_->menuItemsChanged();
 
   VirtualFile vf = data::getProto<VirtualFile>();
@@ -213,9 +214,13 @@ void Instance::startup() {
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 
+  auto daysToExpiration = app::daysToExpiration();
+  auto about = data::getProto<GuiSettings>().show_about_on_startup();
+
   MessageManagerLock l;
-  if (data::getProto<GuiSettings>().show_about_on_startup())
+  if (about or daysToExpiration == app::EXPIRED)
     window_->startAboutWindow();
+  return true;
 }
 
 const VirtualFile Instance::file() const {

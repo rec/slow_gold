@@ -1,5 +1,6 @@
 #include "rec/slow/AboutWindow.h"
 
+#include "rec/app/AuthenticationDialog.h"
 #include "rec/base/Trans.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -40,6 +41,38 @@ const int OFFSET = 150;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
+Font ABOUT_FONT("Ariel", 20, 0);
+
+AttributedString getRightSide() {
+  AttributedString right;
+  right.setJustification(Justification::topRight);
+  auto name = JUCEApplication::getInstance()->getApplicationName();
+  auto version = JUCEApplication::getInstance()->getApplicationVersion();
+  String t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
+    String::formatted(t_COPYRIGHT, 2012) + String("\n");
+  right.append(t, ABOUT_FONT);
+
+  String user = getEnv("USERNAME", "");
+  String reg = user.isEmpty() ? String(t_UNREGISTERED) :
+    (String("\n") + t_REGISTERED_TO + String(" ") + user);
+  right.append(reg, ABOUT_FONT);
+  return right;
+}
+
+AttributedString getLeftSide() {
+  AttributedString left;
+  left.setJustification(Justification::topLeft);
+  String s =
+      str("* " + t_DRAG_AUDIO + "\n" +
+          "* " + t_CD_AUTOMATIC + "\n" +
+          "* " + t_PRESS_SPACE + "\n" +
+          "* " + t_DRAG_SPEED + "\n" +
+          "* " + t_CREATE_LOOPS + "\n" +
+          "* " + t_DOWNLOAD_MANUAL + "\n");
+  left.append(s, ABOUT_FONT);
+  return left;
+}
+
 }  // namespace
 
 class AboutPane : public Component {
@@ -49,28 +82,6 @@ class AboutPane : public Component {
             str(t_DISPLAY_ON_STARTUP),
             str(t_DISPLAY_ON_STARTUP_TOOLTIP),
             data::makeAddress<GuiSettings>("show_about_on_startup")) {
-    right_.setJustification(Justification::topRight);
-    left_.setJustification(Justification::topLeft);
-
-    Font font("Ariel", 20, 0);
-    String s =
-      str("* " + t_DRAG_AUDIO + "\n" +
-          "* " + t_CD_AUTOMATIC + "\n" +
-          "* " + t_PRESS_SPACE + "\n" +
-          "* " + t_DRAG_SPEED + "\n" +
-          "* " + t_CREATE_LOOPS + "\n" +
-          "* " + t_DOWNLOAD_MANUAL + "\n");
-
-    left_.append(s, font);
-    String t = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
-      String::formatted(t_COPYRIGHT, 2012) + String("\n");
-    right_.append(t, font);
-
-    String user = getEnv("USERNAME", "");
-    String reg = user.isEmpty() ? String(t_UNREGISTERED) :
-      (String("\n") + t_REGISTERED_TO + String(" ") + user);
-    right_.append(reg, font);
-
     addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -89,6 +100,13 @@ class AboutPane : public Component {
     area.setY(area.getY() + OFFSET);
     left_.draw(g, area);
   }
+
+  void visibilityChanged() override {
+    auto daysToExpiration = app::daysToExpiration();
+    right_ = getRightSide();
+    left_ = getLeftSide();
+  }
+
 
  private:
   AttributedString left_, right_;
@@ -125,4 +143,3 @@ void AboutWindow::mouseDown(const MouseEvent&) {
 
 }  // namespace slow
 }  // namespace rec
-
