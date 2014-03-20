@@ -7,7 +7,7 @@ namespace rec { namespace app { class GenericApplication; }}
 
 namespace rec {
 namespace slow {
-  
+
 class Instance;
 
 class SlowWindow : public app::Window  {
@@ -24,7 +24,6 @@ class SlowWindow : public app::Window  {
   virtual void startAboutWindow();
   virtual void stopAboutWindow();
   virtual void minimisationStateChanged(bool isNowMinimised);
-  virtual void doPostStartup();
   virtual void anotherInstanceStarted(const String&);
 
  protected:

@@ -67,7 +67,7 @@ juce::Time getDate(Number year, Number month, Number day) {
 
 template <int INDEX1, int INDEX2, typename Number1, typename Number2>
 void checkDDD(Number1 year, Number1 month, Number1 day) {
-  DLOG(ERROR) << "DDD " << year << month << day;
+  // DLOG(ERROR) << "DDD " << year << month << day;
   using juce::Time;
   static const FailureMode FAIL = static_cast<FailureMode>((INDEX1 + INDEX2) % 4);
   Time t = Time::getCurrentTime();
@@ -75,7 +75,7 @@ void checkDDD(Number1 year, Number1 month, Number1 day) {
   Time t3 = getDate<INDEX2, Number1>(year, month - 1, day);
   if (t3.toMilliseconds() <= t2.toMilliseconds())
     fail<FAIL>();
-  else
+  else if (false)
     DLOG(ERROR) << "!!! " << t2.toMilliseconds() << ", " << t3.toMilliseconds();
 }
 

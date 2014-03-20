@@ -85,11 +85,15 @@ void SlowWindow::init() {
 void SlowWindow::constructInstance() {
   instance_.reset(new slow::Instance(this));
   instance_->init();
-  app::authenticate();
 }
 
 void SlowWindow::doStartup() {
+  Lock l(lock_);
   instance_->startup();
+  instance_->postStartup();
+  startupFinished_ = true;
+  auto daysToExpiration = app::daysToExpiration();
+  gotoNextFile();
 }
 
 void SlowWindow::gotoNextFile() {
@@ -107,14 +111,6 @@ void SlowWindow::gotoNextFile() {
       getInstance()->currentFile_->setFile(nextFile_);
     }
   }
-}
-
-void SlowWindow::doPostStartup() {
-  Lock l(lock_);
-
-  instance_->postStartup();
-  startupFinished_ = true;
-  gotoNextFile();
 }
 
 void SlowWindow::doShutdown() {

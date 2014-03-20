@@ -6,7 +6,7 @@ namespace app {
 
 // Skin.
 static const int SLEEP_BEFORE_STARTUP = 0;
-static const int SLEEP_AFTER_STARTUP = 10;
+static const int SLEEP_AFTER_STARTUP = 0;
 
 Window::Window(GenericApplication* application,
                const String& name,
@@ -35,15 +35,7 @@ void Window::initialise() {
 Window::~Window() {}
 
 void Window::startup() {
-  if (SLEEP_BEFORE_STARTUP)
-    Thread::sleep(SLEEP_BEFORE_STARTUP);
-  // We used to need this so that our GUI has settled down...
   doStartup();
-
-  if (SLEEP_AFTER_STARTUP)
-    Thread::sleep(SLEEP_AFTER_STARTUP);
-
-  doPostStartup();
   GuiWriteable::setWriteableAll(true);
 }
 
