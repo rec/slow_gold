@@ -27,6 +27,9 @@ TRAN(COPYRIGHT, "Copyright © %d-%d");
 TRAN(REGISTERED_TO, "Registered To:");
 TRAN(SERIAL_NUMBER, "Serial Number:");
 TRAN(UNREGISTERED, "Not Registered!");
+TRAN(NAME_LABEL, "Name");
+TRAN(SERIAL_NUMBER_LABEL, "Serial Number");
+TRAN(REGISTER_TEXT, "Register");
 
 namespace rec {
 namespace slow {
@@ -53,7 +56,8 @@ class AboutPane : public Component {
       : displayOnStartup_(
             str(t_DISPLAY_ON_STARTUP),
             str(t_DISPLAY_ON_STARTUP_TOOLTIP),
-            data::makeAddress<GuiSettings>("show_about_on_startup")) {
+            data::makeAddress<GuiSettings>("show_about_on_startup")),
+        accept_(t_REGISTER_TEXT) {
     addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -120,6 +124,8 @@ class AboutPane : public Component {
   AttributedString left_, right_;
   gui::SetterToggle displayOnStartup_;
   Authentication authentication_;
+  TextEditor name_, serialNumber_;
+  TextButton accept_;
 };
 
 AboutWindow::AboutWindow(Component* parent,
