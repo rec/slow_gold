@@ -3,14 +3,13 @@
 namespace rec {
 namespace gui {
 
-static const int CAPTION_SIZE = 50;
-
 SetterText::SetterText(const String& name,
                        const data::Address& address,
                        const String& tip,
                        const String& caption,
-                       bool useCaption)
-    : CaptionText(name, tip, caption, useCaption),
+                       bool useCaption,
+                       int captionSize)
+    : CaptionText(name, tip, caption, useCaption, captionSize),
       data::AddressListener(address) {
 }
 

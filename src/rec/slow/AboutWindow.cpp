@@ -2,6 +2,7 @@
 
 #include "rec/app/AuthenticationDialog.h"
 #include "rec/base/Trans.h"
+#include "rec/gui/CaptionText.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
@@ -28,7 +29,10 @@ TRAN(REGISTERED_TO, "Registered To:");
 TRAN(SERIAL_NUMBER, "Serial Number:");
 TRAN(UNREGISTERED, "Not Registered!");
 TRAN(NAME_LABEL, "Name");
+TRAN(NAME_TOOLTIP, "Enter the name you want to register this program to.");
 TRAN(SERIAL_NUMBER_LABEL, "Serial Number");
+TRAN(SERIAL_NUMBER_TOOLTIP, "Enter the serial number exactly as in your "
+     "Order Confirmation.");
 TRAN(REGISTER_TEXT, "Register");
 
 namespace rec {
@@ -44,6 +48,15 @@ const int OFFSET = 180;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
+const int FORM_OFFSET = 110;
+const int FORM_MARGIN = 40;
+const int FORM_LINE_HEIGHT = 20;
+const int NAME_OFFSET = 0;
+const int SERIAL_NUMBER_OFFSET = 24;
+const int REGISTER_OFFSET = 48;
+const int REGISTER_WIDTH = 80;
+const int CAPTION_SIZE = 80;
+
 Font aboutFont() {
   return Font("Ariel", 20, 0);
 }
@@ -57,10 +70,31 @@ class AboutPane : public Component {
             str(t_DISPLAY_ON_STARTUP),
             str(t_DISPLAY_ON_STARTUP_TOOLTIP),
             data::makeAddress<GuiSettings>("show_about_on_startup")),
+        name_(t_NAME_LABEL, t_NAME_TOOLTIP, "", true, CAPTION_SIZE),
+        serialNumber_(t_SERIAL_NUMBER_LABEL, t_SERIAL_NUMBER_TOOLTIP, "", true,
+                      CAPTION_SIZE),
         accept_(t_REGISTER_TEXT) {
     addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
+    addChildComponent(&name_);
+    name_.setBounds(FORM_MARGIN,
+                    FORM_OFFSET + NAME_OFFSET,
+                    WIDTH - 2 * FORM_MARGIN,
+                    FORM_LINE_HEIGHT);
+
+    addChildComponent(&serialNumber_);
+    serialNumber_.setBounds(FORM_MARGIN,
+                            FORM_OFFSET + SERIAL_NUMBER_OFFSET,
+                            WIDTH - 2 * FORM_MARGIN,
+                            FORM_LINE_HEIGHT);
+
+    addChildComponent(&accept_);
+    accept_.setBounds((WIDTH - REGISTER_WIDTH) / 2,
+                      FORM_OFFSET + REGISTER_OFFSET,
+                      REGISTER_WIDTH,
+                      FORM_LINE_HEIGHT);
+
     setOpaque(true);
     displayOnStartup_.updateCallback();
   }
@@ -79,6 +113,10 @@ class AboutPane : public Component {
 
   void visibilityChanged() override {
     authentication_ = testAuthenticated();
+    auto visible = authentication_.unauthenticated();
+    name_.setVisible(visible);
+    serialNumber_.setVisible(visible);
+    accept_.setVisible(visible);
     right_ = getRightSide();
     left_ = getLeftSide();
   }
@@ -124,7 +162,7 @@ class AboutPane : public Component {
   AttributedString left_, right_;
   gui::SetterToggle displayOnStartup_;
   Authentication authentication_;
-  TextEditor name_, serialNumber_;
+  gui::CaptionText name_, serialNumber_;
   TextButton accept_;
 };
 

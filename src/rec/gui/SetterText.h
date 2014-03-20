@@ -13,7 +13,8 @@ class SetterText : public CaptionText, public data::AddressListener {
              const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty,
-             bool useCaption = true);
+             bool useCaption = true,
+             int captionSize = CAPTION_SIZE);
   ~SetterText() override {}
 
   void operator()(const data::Value& v) override;

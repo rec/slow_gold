@@ -3,12 +3,11 @@
 namespace rec {
 namespace gui {
 
-static const int CAPTION_SIZE = 50;
-
 CaptionText::CaptionText(const String& name,
-                       const String& tip,
-                       const String& caption,
-                       bool useCaption)
+                         const String& tip,
+                         const String& caption,
+                         bool useCaption,
+                         int captionSize)
     : Panel(name),
       caption_(new SimpleLabel),
       editor_(new TextEditor) {
@@ -21,7 +20,7 @@ CaptionText::CaptionText(const String& name,
 
   if (useCaption) {
     caption_->setText(cap, juce::dontSendNotification);
-    addToPanel(caption_, CAPTION_SIZE);
+    addToPanel(caption_, captionSize);
   }
   addToPanel(editor_);
 

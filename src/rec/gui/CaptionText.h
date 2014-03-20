@@ -6,12 +6,15 @@
 namespace rec {
 namespace gui {
 
+static const int CAPTION_SIZE = 50;
+
 class CaptionText : public Panel, public TextEditor::Listener {
  public:
   CaptionText(const String& name,
               const String& tip = String::empty,
               const String& caption = String::empty,
-              bool useCaption = true);
+              bool useCaption = true,
+              int captionSize = CAPTION_SIZE);
   virtual ~CaptionText() {}
 
   virtual void setTooltip(const String& newTooltip);

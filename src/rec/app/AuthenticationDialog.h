@@ -10,6 +10,10 @@ struct Authentication {
   string user;
   string serialNumber;
 
+  bool unauthenticated() const {
+    return user.empty() or serialNumber.empty();
+  }
+
   bool expired() const {
     return user.empty() and daysToExpiration <= 0;
   }
