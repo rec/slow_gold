@@ -9,6 +9,9 @@
 #include "rec/util/GetEnv.h"
 #include "rec/util/thread/CallAsync.h"
 
+using namespace juce;
+using namespace rec::app;
+
 TRAN(DISPLAY_ON_STARTUP, "Display this window on startup");
 TRAN(DISPLAY_ON_STARTUP_TOOLTIP, "Turn this box on if you want About Slow "
        "Gold to appear on startup.");
@@ -21,7 +24,8 @@ TRAN(CREATE_LOOPS, "Create loop points by pressing the L key.");
 TRAN(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
        "commands.");
 TRAN(COPYRIGHT, "Copyright © %d-%d");
-TRAN(REGISTERED_TO, "Registered to:");
+TRAN(REGISTERED_TO, "Registered To:");
+TRAN(SERIAL_NUMBER, "Serial Number:");
 TRAN(UNREGISTERED, "Not Registered!");
 
 namespace rec {
@@ -29,52 +33,16 @@ namespace slow {
 
 namespace {
 
-// Skin
-
-using namespace juce;
-
 const int WIDTH = 650;
 const int HEIGHT = 350;
-const int MARGINI = 20;
+const int MARGINI = 12;
 const float MARGINF = static_cast<float>(MARGINI);
-const int OFFSET = 150;
+const int OFFSET = 180;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
-
 Font aboutFont() {
   return Font("Ariel", 20, 0);
-}
-
-AttributedString getRightSide() {
-  auto font = aboutFont();
-  AttributedString right;
-  right.setJustification(Justification::topRight);
-  auto name = JUCEApplication::getInstance()->getApplicationName();
-  auto version = JUCEApplication::getInstance()->getApplicationVersion();
-  auto t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
-      String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
-  right.append(t, font);
-
-  auto user = getEnv("USERNAME", "");
-  auto reg = user.isEmpty() ? String(t_UNREGISTERED) :
-    (String("\n") + t_REGISTERED_TO + String(" ") + user);
-  right.append(reg, font);
-  return right;
-}
-
-AttributedString getLeftSide() {
-  AttributedString left;
-  left.setJustification(Justification::topLeft);
-  auto s =
-      str("* " + t_DRAG_AUDIO + "\n" +
-          "* " + t_CD_AUTOMATIC + "\n" +
-          "* " + t_PRESS_SPACE + "\n" +
-          "* " + t_DRAG_SPEED + "\n" +
-          "* " + t_CREATE_LOOPS + "\n" +
-          "* " + t_DOWNLOAD_MANUAL + "\n");
-  left.append(s, aboutFont());
-  return left;
 }
 
 }  // namespace
@@ -106,15 +74,52 @@ class AboutPane : public Component {
   }
 
   void visibilityChanged() override {
-    auto authentication = app::testAuthenticated();
+    authentication_ = testAuthenticated();
     right_ = getRightSide();
     left_ = getLeftSide();
   }
 
+  bool expired() const { return authentication_.expired(); }
+
+  AttributedString getRightSide() const {
+    auto font = aboutFont();
+    AttributedString right;
+    right.setJustification(Justification::topRight);
+    auto name = JUCEApplication::getInstance()->getApplicationName();
+    auto version = JUCEApplication::getInstance()->getApplicationVersion();
+    auto t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
+        String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
+    right.append(t, font);
+
+    String user = authentication_.user;
+    if (user.isEmpty()) {
+      right.append(t_UNREGISTERED, font);
+    } else {
+      right.append(String("\n") + t_REGISTERED_TO + String(" ") + user +
+                   String("\n") + t_SERIAL_NUMBER + String(" ") +
+                   authentication_.serialNumber, font);
+    }
+    return right;
+  }
+
+  AttributedString getLeftSide() const {
+    AttributedString left;
+    left.setJustification(Justification::topLeft);
+    auto s =
+        str("* " + t_DRAG_AUDIO + "\n" +
+            "* " + t_CD_AUTOMATIC + "\n" +
+            "* " + t_PRESS_SPACE + "\n" +
+            "* " + t_DRAG_SPEED + "\n" +
+            "* " + t_CREATE_LOOPS + "\n" +
+            "* " + t_DOWNLOAD_MANUAL + "\n");
+    left.append(s, aboutFont());
+    return left;
+  }
 
  private:
   AttributedString left_, right_;
   gui::SetterToggle displayOnStartup_;
+  Authentication authentication_;
 };
 
 AboutWindow::AboutWindow(Component* parent,
@@ -141,8 +146,10 @@ AboutWindow::AboutWindow(Component* parent,
 AboutWindow::~AboutWindow() {}
 
 void AboutWindow::mouseDown(const MouseEvent&) {
-  if (auto window = getInstance()->window_)
-    window->stopAboutWindow();
+  if (not aboutPane_->expired()) {
+    if (auto window = getInstance()->window_)
+      window->stopAboutWindow();
+  }
 }
 
 }  // namespace slow
