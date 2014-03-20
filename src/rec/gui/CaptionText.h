@@ -31,6 +31,11 @@ class CaptionText : public Panel, public TextEditor::Listener {
 
   void setEditorBackground(const juce::Colour&);
 
+  void setFont(const Font& font) {
+    caption_->setFont(font);
+    editor_->setFont(font);
+  }
+
  protected:
   void setEditorText(String);
 

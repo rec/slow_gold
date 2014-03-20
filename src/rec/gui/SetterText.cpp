@@ -19,7 +19,7 @@ void SetterText::operator()(const data::Value& v) {
 }
 
 void SetterText::textEditorTextChanged(TextEditor&) {
-  setValue(str(editor_->getText()));
+  setValue(str(editor()->getText()));
 }
 
 }  // namespace gui

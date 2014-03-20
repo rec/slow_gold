@@ -21,6 +21,7 @@ struct Authentication {
 
 Authentication testAuthenticated();
 bool authenticate(const string& serialNumber);
+bool possible(const std::string& serialNumber);
 
 }  // namespace app
 }  // namespace rec

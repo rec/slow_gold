@@ -33,37 +33,39 @@ TRAN(NAME_TOOLTIP, "Enter the name you want to register this program to.");
 TRAN(SERIAL_NUMBER_LABEL, "Serial Number");
 TRAN(SERIAL_NUMBER_TOOLTIP, "Enter the serial number exactly as in your "
      "Order Confirmation.");
-TRAN(REGISTER_TEXT, "Register");
+TRAN(REGISTER_TEXT, "Register SlowGold");
 
 namespace rec {
 namespace slow {
 
 namespace {
 
-const int WIDTH = 650;
-const int HEIGHT = 350;
+const int WIDTH = 700;
+const int HEIGHT = 380;
 const int MARGINI = 12;
 const float MARGINF = static_cast<float>(MARGINI);
-const int OFFSET = 180;
+const int OFFSET = 205;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
-const int FORM_OFFSET = 110;
-const int FORM_MARGIN = 40;
-const int FORM_LINE_HEIGHT = 20;
-const int NAME_OFFSET = 0;
-const int SERIAL_NUMBER_OFFSET = 24;
-const int REGISTER_OFFSET = 48;
-const int REGISTER_WIDTH = 80;
-const int CAPTION_SIZE = 80;
+const int FORM_OFFSET = 108;
+const int FORM_MARGIN = 12;
+const int FORM_LINE_HEIGHT = 34;
+const int FORM_ITEM_HEIGHT = 24;
+const int REGISTER_WIDTH = 140;
+const int CAPTION_SIZE = 76;
 
 Font aboutFont() {
   return Font("Ariel", 20, 0);
 }
 
+Font formFont() {
+  return Font("Ariel", 12, 0);
+}
+
 }  // namespace
 
-class AboutPane : public Component {
+class AboutPane : public Component, public TextEditor::Listener {
  public:
   AboutPane(const String& name, const String& versionNumber)
       : displayOnStartup_(
@@ -77,27 +79,49 @@ class AboutPane : public Component {
     addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
+
+    auto font = formFont();
+    name_.setFont(font);
+    serialNumber_.setFont(font);
     addChildComponent(&name_);
     name_.setBounds(FORM_MARGIN,
-                    FORM_OFFSET + NAME_OFFSET,
+                    FORM_OFFSET,
                     WIDTH - 2 * FORM_MARGIN,
-                    FORM_LINE_HEIGHT);
+                    FORM_ITEM_HEIGHT);
+    name_.editor()->addListener(this);
 
     addChildComponent(&serialNumber_);
     serialNumber_.setBounds(FORM_MARGIN,
-                            FORM_OFFSET + SERIAL_NUMBER_OFFSET,
+                            FORM_OFFSET + FORM_LINE_HEIGHT,
                             WIDTH - 2 * FORM_MARGIN,
-                            FORM_LINE_HEIGHT);
+                            FORM_ITEM_HEIGHT);
 
+    serialNumber_.editor()->addListener(this);
     addChildComponent(&accept_);
     accept_.setBounds((WIDTH - REGISTER_WIDTH) / 2,
-                      FORM_OFFSET + REGISTER_OFFSET,
+                      FORM_OFFSET + FORM_LINE_HEIGHT * 2,
                       REGISTER_WIDTH,
-                      FORM_LINE_HEIGHT);
+                      FORM_ITEM_HEIGHT);
+    accept_.setEnabled(false);
 
     setOpaque(true);
     displayOnStartup_.updateCallback();
   }
+
+  ~AboutPane() {
+    name_.editor()->removeListener(this);
+    serialNumber_.editor()->removeListener(this);
+  }
+
+  void textEditorTextChanged(TextEditor&) override {
+    auto disabled = name_.editor()->getText().isEmpty() or
+        serialNumber_.editor()->getText().isEmpty();
+    accept_.setEnabled(not disabled);
+  }
+
+  void textEditorReturnKeyPressed(TextEditor&) override {}
+  void textEditorEscapeKeyPressed(TextEditor&) override {}
+  void textEditorFocusLost(TextEditor&) override {}
 
   void paint(Graphics& g) {
     g.fillAll(Colours::white);

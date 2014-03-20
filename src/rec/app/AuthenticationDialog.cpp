@@ -57,5 +57,9 @@ bool authenticate(const string& serialNumber) {
   return false;
 }
 
+bool possible(const string& serialNumber) {
+  return serialNumber.size() == strlen(ews::TEST_SERIAL_NUMBER);
+}
+
 }  // namespace app
 }  // namespace rec
