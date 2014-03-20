@@ -9,6 +9,10 @@ struct Authentication {
   int daysToExpiration;
   string user;
   string serialNumber;
+
+  bool expired() const {
+    return user.empty() and daysToExpiration <= 0;
+  }
 };
 
 Authentication testAuthenticated();

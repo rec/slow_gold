@@ -41,21 +41,25 @@ const int OFFSET = 150;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
-Font ABOUT_FONT("Ariel", 20, 0);
+
+Font aboutFont() {
+  return Font("Ariel", 20, 0);
+}
 
 AttributedString getRightSide() {
+  auto font = aboutFont();
   AttributedString right;
   right.setJustification(Justification::topRight);
   auto name = JUCEApplication::getInstance()->getApplicationName();
   auto version = JUCEApplication::getInstance()->getApplicationVersion();
   auto t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
       String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
-  right.append(t, ABOUT_FONT);
+  right.append(t, font);
 
   auto user = getEnv("USERNAME", "");
   auto reg = user.isEmpty() ? String(t_UNREGISTERED) :
     (String("\n") + t_REGISTERED_TO + String(" ") + user);
-  right.append(reg, ABOUT_FONT);
+  right.append(reg, font);
   return right;
 }
 
@@ -69,7 +73,7 @@ AttributedString getLeftSide() {
           "* " + t_DRAG_SPEED + "\n" +
           "* " + t_CREATE_LOOPS + "\n" +
           "* " + t_DOWNLOAD_MANUAL + "\n");
-  left.append(s, ABOUT_FONT);
+  left.append(s, aboutFont());
   return left;
 }
 
