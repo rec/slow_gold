@@ -42,7 +42,6 @@ class Instance {
   void init();
   void startup();
   void shutdown();
-  void postStartup();
 
   const VirtualFile file() const;
   SampleTime time() const;

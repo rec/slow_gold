@@ -90,7 +90,6 @@ void SlowWindow::constructInstance() {
 void SlowWindow::doStartup() {
   Lock l(lock_);
   instance_->startup();
-  instance_->postStartup();
   startupFinished_ = true;
   auto daysToExpiration = app::daysToExpiration();
   gotoNextFile();

@@ -208,9 +208,7 @@ void Instance::startup() {
   thread::callAsync(window_, &DocumentWindow::setVisible, true);
   juceModel_->startThreads();
   broadcastState<Thread*>(juceModel_->getThread("timer"));
-}
 
-void Instance::postStartup() {
   data::getDataCenter()->undoStack()->setEnabled();
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
