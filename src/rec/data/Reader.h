@@ -13,7 +13,9 @@ template <typename Proto>
 class Reader {
  public:
   Reader(Data* d) : data_(d) { initialize(); }
-  Reader(const VirtualFile& vf) : data_(getData<Proto>(vf)) { initialize(); }
+  Reader(const VirtualFile& vf = global()) : data_(getData<Proto>(vf)) {
+    initialize();
+  }
 
   ~Reader() {}
 

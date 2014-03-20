@@ -10,7 +10,6 @@ class AboutPane;
 
 class AboutWindow : public Component {
  public:
-  static const int FADE_OUT_TIME = 600;
   explicit AboutWindow(Component* parent, const String& name, const String& versionNumber);
 
   virtual void paint(Graphics&) {}
@@ -20,7 +19,7 @@ class AboutWindow : public Component {
 
  private:
   Component* parent_;
-  ptr<AboutPane> aboutPane_;
+  unique_ptr<AboutPane> aboutPane_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
 };
 

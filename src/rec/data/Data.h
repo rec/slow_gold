@@ -4,6 +4,7 @@
 #include <google/protobuf/message.h>
 
 #include "rec/util/Listener.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/proto/Proto.h"
 
 namespace rec {
@@ -66,6 +67,12 @@ class Data : public Broadcaster<const Message&> {
 
 Data* getData(const string& typeName, const VirtualFile& vf);
 
+// The virtual file for global data (not attached to any specific file).
+const VirtualFile& global();
+
+// The virtual file for empty data (not stored or updated).
+const VirtualFile& noData();
+
 template <typename Proto>
 Data* getData(const VirtualFile& vf) {
   return getData(getTypeName<Proto>(), vf);
@@ -74,6 +81,17 @@ Data* getData(const VirtualFile& vf) {
 inline Data* getData(const Message& m, const VirtualFile& vf) {
   return getData(getTypeName(m), vf);
 }
+
+inline const VirtualFile& global() {
+  static const VirtualFile vf = file::makeVirtualFile(VirtualFile::GLOBAL);
+  return vf;
+}
+
+inline const VirtualFile& noData() {
+  static const VirtualFile vf;
+  return vf;
+}
+
 
 }  // namespace data
 }  // namespace rec

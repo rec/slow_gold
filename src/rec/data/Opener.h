@@ -23,6 +23,10 @@ class Opener : public Reader<Proto> {
     before_.reset(clone(*this->proto_));
   }
 
+  Opener(Undoable undoable = CAN_UNDO) : Reader<Proto>(), undoable_(undoable) {
+    before_.reset(clone(*this->proto_));
+  }
+
   ~Opener() {
     if (this->data_->isEmpty()) {
       LOG(ERROR) << "Opening empty data " << this->data_->getTypeName();

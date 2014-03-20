@@ -49,14 +49,8 @@ class AboutPane : public Component {
             str(t_DISPLAY_ON_STARTUP),
             str(t_DISPLAY_ON_STARTUP_TOOLTIP),
             data::makeAddress<GuiSettings>("show_about_on_startup")) {
-#if 0
-    // FIX JUCE BUG!
-    right_.setJustification(Justification::bottomRight);
-    left_.setJustification(Justification::centredLeft);
-#else
     right_.setJustification(Justification::topRight);
     left_.setJustification(Justification::topLeft);
-#endif
 
     Font font("Ariel", 20, 0);
     String s =
@@ -112,8 +106,8 @@ AboutWindow::AboutWindow(Component* parent,
   setBounds(bounds);
   addAndMakeVisible(aboutPane_.get());
   aboutPane_->setBounds((bounds.getWidth() - WIDTH) / 2,
-                      (bounds.getHeight() - HEIGHT) / 2,
-                      WIDTH, HEIGHT);
+                        (bounds.getHeight() - HEIGHT) / 2,
+                        WIDTH, HEIGHT);
   aboutPane_->setColour(Label::backgroundColourId, Colours::white);
   aboutPane_->setColour(Label::outlineColourId, Colours::red);
 

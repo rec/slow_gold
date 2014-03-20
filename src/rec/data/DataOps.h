@@ -17,12 +17,6 @@ template <typename Proto> const Proto getProto();
 template <typename Proto> const Proto getProto(Data* data);
 template <typename Proto> const Proto getProto(const VirtualFile& vf);
 
-// The virtual file for global data (not attached to any specific file).
-const VirtualFile& global();
-
-// The virtual file for empty data (not stored or updated).
-const VirtualFile& noData();
-
 Message* cloneMessage(Data* data);
 
 // Implementations follow.

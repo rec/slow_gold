@@ -139,6 +139,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\rec\app\AuthenticationDialog.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
@@ -1492,6 +1493,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\AuthenticationDialog.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Files.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h"/>

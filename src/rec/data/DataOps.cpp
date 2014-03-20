@@ -12,16 +12,6 @@ Data* getData(const string& typeName, const VirtualFile& vf) {
   return getDataCenter()->dataMap()->getData(typeName, vf);
 }
 
-const VirtualFile& global() {
-  static const VirtualFile vf = file::makeVirtualFile(VirtualFile::GLOBAL);
-  return vf;
-}
-
-const VirtualFile& noData() {
-  static const VirtualFile vf;
-  return vf;
-}
-
 void setProto(const Message& m, Undoable undoable) {
   setProto(m, global(), undoable);
 }
