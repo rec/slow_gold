@@ -8,7 +8,9 @@
 namespace rec {
 namespace util {
 
-string getTypeName(const Message&);
+inline string getTypeName(const Message& message) {
+  return message.GetTypeName();
+}
 
 template <typename Proto>
 string getTypeName() {

@@ -6,6 +6,7 @@
 namespace rec {
 namespace util {
 
+#if 0
 string getTypeName(const Message& message) {
   auto s = message.GetTypeName();
 
@@ -14,6 +15,7 @@ string getTypeName(const Message& message) {
 
   return s;
 }
+#endif
 
 }  // namespace util
 }  // namespace rec

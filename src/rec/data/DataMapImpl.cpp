@@ -2,6 +2,7 @@
 
 #include "rec/data/Data.h"
 #include "rec/data/DataMaker.h"
+#include "rec/program/Program.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/file/VirtualFile.pb.h"
@@ -29,7 +30,9 @@ DataMapImpl::~DataMapImpl() {
 }
 
 Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
-  File file = getShadowDirectory(vf).getChildFile(str(typeName));
+  auto prog = program::getProgram();
+  string mappedTypeName = prog ? prog->mapTypeName(typeName) : typeName;
+  File file = getShadowDirectory(vf).getChildFile(str(mappedTypeName));
   string key = str(file);
 
   Lock l(lock_);

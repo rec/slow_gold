@@ -1,5 +1,6 @@
 #include "rec/slow/SlowWindow.h"
 
+#include "rec/app/AuthenticationDialog.h"
 #include "rec/app/Files.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/data/DataCenter.h"
@@ -84,6 +85,7 @@ void SlowWindow::init() {
 void SlowWindow::constructInstance() {
   instance_.reset(new slow::Instance(this));
   instance_->init();
+  app::authenticate();
 }
 
 void SlowWindow::doStartup() {
@@ -164,16 +166,8 @@ void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
-  doLog("in initialize");
-  // LOG(INFO) << "Registering protos";
-  doLog("registering protos");
   registerProtos();
-  // LOG(INFO) << "SlowWindow::initialize";
-  doLog("moving directories");
   file::fixLegacyFiles();
-  doLog("registering translations");
-  doLog("all done initialize");
-  // LOG(INFO) << "done initialize";
 }
 
 void shutdown(app::GenericApplication*) {

@@ -35,12 +35,16 @@ class SlowProgram : public program::ProgramBase {
   string mapTypeName(const string&) const override;
   const char* getPublisherId() const override;
   const char* getActivationId() const override;
+  int demoExpirationDays() const { return EXPIRATION_DAYS; }
 
  private:
   Instance* const instance_;
+  static const int EXPIRATION_DAYS = 15;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowProgram);
 };
+
+string mapTypeName(const string&);
 
 }  // namespace slow
 }  // namespace rec

@@ -24,5 +24,11 @@ void crypt(string* target) {
     target->at(i) ^= MASK[i % arraysize(MASK)];
 }
 
+string crypt(const string& str) {
+  auto s = str;
+  crypt(&s);
+  return s;
+}
+
 }  // namespace util
 }  // namespace rec

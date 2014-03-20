@@ -1,15 +1,17 @@
 #pragma once
 
+#include <string>
+
 namespace rec {
 namespace util {
 namespace ews {
 
 extern const char TEST_SERIAL_NUMBER[];
 
-bool confirm(const char* serialNumber);
-bool activate(const char* serialNumber);
-bool deactivate(const char* serialNumber);
-bool validate(const char* serialNumber);
+bool confirm(const std::string& serialNumber);
+bool activate(const std::string& serialNumber);
+bool deactivate(const std::string& serialNumber);
+bool validate(const std::string& serialNumber);
 
 }  // namespace ews
 }  // namespace util

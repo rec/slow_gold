@@ -6,6 +6,7 @@ namespace rec {
 namespace util {
 
 void crypt(string*);
+string crypt(const string&);
 
 }  // namespace util
 }  // namespace rec

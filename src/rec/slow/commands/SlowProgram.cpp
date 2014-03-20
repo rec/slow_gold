@@ -196,6 +196,10 @@ Component* SlowProgram::getTopComponent() {
 }
 
 string SlowProgram::mapTypeName(const string& s) const {
+  return rec::slow::mapTypeName(s);
+}
+
+string mapTypeName(const string& s) {
   return (s == "rec.util.ews.Activation") ? "rec.audio.AudioSamples" : s;
 }
 
