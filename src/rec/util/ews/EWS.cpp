@@ -22,7 +22,6 @@ namespace {
 const char TEST_SERIAL_NUMBER[] =
   "000016-12NGVJ-2VHWCD-QRH6YA-BR1635-0XB5MC-XDX6FV-JCNU3F-E7G3A6-02R2AK";
 
-
 bool isSystemCompatible() {
   return eWeb_IsSystemCompatible();
 }
@@ -43,38 +42,23 @@ inline string fromTime(const Time& t) {
   return crypt(String(t.toMilliseconds()).toStdString());
 }
 
-bool confirm(const string& serialNumber) {
-  auto status = eWeb_ConfirmSerialNumber(publisherId(), serialNumber.c_str());
-  if (status) {
-    LOG(ERROR) << "eWeb_ConfirmSerialNumber: " << status
-               << ", " << publisherId()
-               << ", " << serialNumber;
-  }
-  return not status;
+OSStatus confirm(const string& serialNumber) {
+  return eWeb_ConfirmSerialNumber(publisherId(), serialNumber.c_str());
 }
 
-bool validate(const string& serialNumber) {
-  auto status = eWeb_ValidateActivation(
+OSStatus validate(const string& serialNumber) {
+  return eWeb_ValidateActivation(
       publisherId(), activationId(), serialNumber.c_str());
-  if (status) {
-    LOG(ERROR) << "eWeb_ConfirmSerialNumber: " << status
-               << ", " << publisherId()
-               << ", " << activationId()
-               << ", " << serialNumber;
-  }
-  return not status;
 }
 
-bool activate(const string& serialNumber) {
-  auto status = eWeb_ActivateSerialNumber(
+OSStatus activate(const string& serialNumber) {
+  return eWeb_ActivateSerialNumber(
       publisherId(), activationId(), serialNumber.c_str(), false);
-  if (status) {
-    LOG(ERROR) << "eWeb_ConfirmSerialNumber: " << status
-               << ", " << publisherId()
-               << ", " << activationId()
-               << ", " << serialNumber;
-  }
-  return not status;
+}
+
+OSStatus deactivate(const string& serialNumber) {
+  return eWeb_DeactivateSerialNumber(
+      publisherId(), activationId(), serialNumber.c_str());
 }
 
 }  // namespace
@@ -84,12 +68,12 @@ Authentication testAuthenticated() {
   auto activation = data::getProto<Activation>();
   if (activation.has_samples()) {
     result.serialNumber = crypt(activation.samples());
-    if (validate(result.serialNumber)) {
+    auto status = validate(result.serialNumber);
+    if (not status) {
       LOG(INFO) << "Sample rate computed.";
       result.user = crypt(activation.frame());
     } else {
-      LOG(ERROR) << "Couldn't understand sample rate \""
-                 << activation.samples() << "\"";
+      LOG(ERROR) << status;
     }
   } else {
     auto expiration = program::getProgram()->demoExpirationDays();
@@ -110,19 +94,8 @@ Authentication testAuthenticated() {
   return result;
 }
 
-bool deactivate(const string& serialNumber) {
-  auto status = eWeb_DeactivateSerialNumber(
-      publisherId(), activationId(), serialNumber.c_str());
-  if (status) {
-    LOG(ERROR) << "eWeb_ConfirmSerialNumber: " << status
-               << ", " << publisherId()
-               << ", " << activationId()
-               << ", " << serialNumber;
-  }
-  return not status;
-}
-
 string confirmAndActivate(const string& serialNumber, const string& name) {
+
   return "";
 }
 
