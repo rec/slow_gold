@@ -14,6 +14,8 @@ using namespace rec::app;
 using namespace rec::ews;
 using namespace rec::gui;
 
+TRAN(AUTHENTICATED_TITLE, "Thank you!");
+TRAN(COULDNT_AUTHENTICATE_TITLE, "Couldn't authenticate.");
 TRAN(AUTHENTICATED, "Your serial number was authenticated! "
      "Thanks for supporting independent developers.");
 TRAN(COULDNT_AUTHENTICATE,
@@ -130,9 +132,17 @@ void AboutPane::buttonClicked(Button*) {
   auto error = ews::confirmAndActivate(
       str(name_->editor()->getText().trim()),
       str(name_->editor()->getText().trim()));
-  String message = error.size() ? String(t_COULDNT_AUTHENTICATE + error) :
-      String(t_AUTHENTICATED);
+  auto message = error.empty() ? String(t_AUTHENTICATED) :
+      String(t_COULDNT_AUTHENTICATE + error);
+  auto& title = error.empty() ? t_AUTHENTICATED_TITLE :
+      t_COULDNT_AUTHENTICATE_TITLE;
+  auto icon = error.empty() ? AlertWindow::InfoIcon : AlertWindow::WarningIcon;
+  AlertWindow::showMessageBoxAsync(icon, title, message, "", this, this);
   LOG(INFO) << message;
+}
+
+void AboutPane::modalStateFinished(int returnValue) {
+  LOG(INFO) << "Dialog finished";
 }
 
 void AboutPane::textEditorTextChanged(TextEditor&) {

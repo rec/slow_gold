@@ -11,7 +11,8 @@ namespace slow {
 
 class AboutPane : public Component,
                   public TextEditor::Listener,
-                  public juce::ButtonListener {
+                  public juce::ButtonListener,
+                  public juce::ModalComponentManager::Callback {
  public:
   AboutPane(const String& name, const String& versionNumber);
   ~AboutPane() override;
@@ -21,6 +22,8 @@ class AboutPane : public Component,
   void textEditorEscapeKeyPressed(TextEditor&) override {}
   void textEditorFocusLost(TextEditor&) override {}
   void buttonClicked(juce::Button*) override;
+
+  void modalStateFinished(int returnValue) override;
 
   void paint(Graphics& g);
   void visibilityChanged() override;
