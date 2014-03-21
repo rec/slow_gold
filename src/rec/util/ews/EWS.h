@@ -24,10 +24,9 @@ struct Authentication {
 
 Authentication testAuthenticated();
 
-bool confirm(const std::string& serialNumber);
-bool activate(const std::string& serialNumber);
-bool deactivate(const std::string& serialNumber);
-bool validate(const std::string& serialNumber);
+std::string confirmAndActivate(
+    const std::string& serialNumber,
+    const std::string& name);
 
 }  // namespace ews
 }  // namespace util

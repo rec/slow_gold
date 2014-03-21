@@ -122,9 +122,14 @@ bool AboutPane::expired() const {
 }
 
 void AboutPane::buttonClicked(Button*) {
-  auto name = name_->editor()->getText().trim();
-  auto serialNumber = name_->editor()->getText().trim();
-
+  auto error = ews::confirmAndActivate(
+      str(name_->editor()->getText().trim()),
+      str(name_->editor()->getText().trim()));
+  if (error.size()) {
+    LOG(ERROR) << error;
+  } else {
+    LOG(INFO) << "activated.";
+  }
 }
 
 void AboutPane::textEditorTextChanged(TextEditor&) {
