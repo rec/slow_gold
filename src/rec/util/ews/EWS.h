@@ -1,17 +1,15 @@
 #pragma once
 
-#include <string>
+#include "rec/base/base.h"
 
 namespace rec {
 namespace util {
 namespace ews {
 
-extern const char TEST_SERIAL_NUMBER[];
-
 struct Authentication {
   int daysToExpiration;
-  std::string user;
-  std::string serialNumber;
+  string user;
+  string serialNumber;
 
   bool unauthenticated() const {
     return user.empty() or serialNumber.empty();
@@ -24,9 +22,7 @@ struct Authentication {
 
 Authentication testAuthenticated();
 
-std::string confirmAndActivate(
-    const std::string& serialNumber,
-    const std::string& name);
+string confirmAndActivate(const string& serialNumber, const string& name);
 
 }  // namespace ews
 }  // namespace util

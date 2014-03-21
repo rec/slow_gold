@@ -22,6 +22,8 @@ class Trans {
   operator String() const;
   void registerTranslation() const;
 
+  string toStdString() const { return String(*this).toStdString(); }
+
  private:
   ptr<TranslatedString> string_;
   Language language_;

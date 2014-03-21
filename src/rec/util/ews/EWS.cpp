@@ -1,17 +1,20 @@
 #ifdef __APPLE__
 
-#include <glog/logging.h>
-
 #include "ews/EWSEmbedded.h"
 
+#include "rec/util/ews/EWS.h"
+#include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
 #include "rec/program/Program.h"
 #include "rec/util/ews/Activation.pb.h"
 #include "rec/util/Crypt.h"
-#include "rec/util/ews/EWS.h"
 
 using std::string;
 using namespace ::juce;
+
+TRAN(INVALID_SERIAL_NUMBER, "Invalid serial number");
+TRAN(TOO_MANY_ACTIVATIONS, "Too many activations for this key.");
+TRAN(UNABLE_TO_ACTIVATE, "Unable to activate key, error=");
 
 namespace rec {
 namespace util {
@@ -96,13 +99,13 @@ Authentication testAuthenticated() {
 
 string confirmAndActivate(const string& serialNumber, const string& name) {
   if (confirm(serialNumber))
-    return "Invalid serial number";
+    return t_INVALID_SERIAL_NUMBER.toStdString();
 
   if (auto s = activate(serialNumber)) {
     if (s == E_ACTIVATESN_LIMIT_MET)
-      return "Too many activations for this key.";
+      return t_TOO_MANY_ACTIVATIONS.toStdString();
     auto code = String(static_cast<int>(s));
-    return ("Unable to activate key, error=" + code).toStdString();
+    return (t_UNABLE_TO_ACTIVATE + code).toStdString();
   }
 
   Activation activation;

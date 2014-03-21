@@ -2,6 +2,7 @@
 
 #include "rec/base/Trans.h"
 #include "rec/gui/CaptionText.h"
+#include "rec/gui/Dialog.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
@@ -13,6 +14,10 @@ using namespace rec::app;
 using namespace rec::ews;
 using namespace rec::gui;
 
+TRAN(AUTHENTICATED, "Your serial number was authenticated! "
+     "Thanks for supporting independent developers.");
+TRAN(COULDNT_AUTHENTICATE,
+     "Couldn't authenticate your name and serial number because: ");
 TRAN(DISPLAY_ON_STARTUP, "Display this window on startup");
 TRAN(DISPLAY_ON_STARTUP_TOOLTIP, "Turn this box on if you want About Slow "
        "Gold to appear on startup.");
@@ -125,11 +130,9 @@ void AboutPane::buttonClicked(Button*) {
   auto error = ews::confirmAndActivate(
       str(name_->editor()->getText().trim()),
       str(name_->editor()->getText().trim()));
-  if (error.size()) {
-    LOG(ERROR) << error;
-  } else {
-    LOG(INFO) << "activated.";
-  }
+  String message = error.size() ? String(t_COULDNT_AUTHENTICATE + error) :
+      String(t_AUTHENTICATED);
+  LOG(INFO) << message;
 }
 
 void AboutPane::textEditorTextChanged(TextEditor&) {
