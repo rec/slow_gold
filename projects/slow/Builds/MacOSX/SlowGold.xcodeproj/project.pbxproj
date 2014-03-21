@@ -137,6 +137,7 @@
 		E2D50D651A4A184462FA911C = {isa = PBXBuildFile; fileRef = D84AEC58930C2C836FEBEBA6; };
 		DDDEC35E5A8963E596D05B80 = {isa = PBXBuildFile; fileRef = D6A713A30E786F82D87E0DE1; };
 		904D90CC1267D72479475395 = {isa = PBXBuildFile; fileRef = A837A36D5728AFA55284371B; };
+		65232B532526680E9A89A1AB = {isa = PBXBuildFile; fileRef = A1BA6C8B1D895134B86392FF; };
 		43126547AB67C04400F864CF = {isa = PBXBuildFile; fileRef = CB222B595410F9239997CB53; };
 		80222F4E85C8F7198BBE3CCF = {isa = PBXBuildFile; fileRef = F1A62FEBDB6E1BA6693089CB; };
 		92728F57C025A2D1045A3EDD = {isa = PBXBuildFile; fileRef = 4F4C7D8EAB14808A7C97970A; };
@@ -1115,6 +1116,7 @@
 		87F70A3DC6FC2EAC00A38A77 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ToggleButton.pb.cc; path = ../../../../genfiles/proto/rec/gui/proto/ToggleButton.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		8807608C46DC0DC0C03E664D = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.pb.h; path = ../../../../genfiles/proto/rec/gui/Color.pb.h; sourceTree = "SOURCE_ROOT"; };
 		8825DDA5D79428E02B1EBDEA = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_module_info"; path = "../../JuceLibraryCode/modules/juce_audio_formats/juce_module_info"; sourceTree = "SOURCE_ROOT"; };
+		883615176EC729988637AA75 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AboutPane.h; path = ../../../../src/rec/slow/AboutPane.h; sourceTree = "SOURCE_ROOT"; };
 		888F04743891BEF94622ED38 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Instance.cpp; path = ../../../../src/rec/slow/Instance.cpp; sourceTree = "SOURCE_ROOT"; };
 		88AC76F32BFEC5E5CF45DA6F = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_core.h"; path = "../../JuceLibraryCode/modules/juce_core/juce_core.h"; sourceTree = "SOURCE_ROOT"; };
 		88ADA3B43A0F37190575DA32 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisableMap.h; path = ../../../../src/rec/util/DisableMap.h; sourceTree = "SOURCE_ROOT"; };
@@ -1262,6 +1264,7 @@
 		A144CDDE154B7E4195DE408B = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_win32_QuickTimeMovieComponent.cpp"; path = "../../JuceLibraryCode/modules/juce_video/native/juce_win32_QuickTimeMovieComponent.cpp"; sourceTree = "SOURCE_ROOT"; };
 		A16C231722341605FA3A6E8B = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CaptionText.h; path = ../../../../src/rec/gui/CaptionText.h; sourceTree = "SOURCE_ROOT"; };
 		A19FC8C300E04DBBB240AFB9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_AudioIODevice.cpp"; path = "../../JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioIODevice.cpp"; sourceTree = "SOURCE_ROOT"; };
+		A1BA6C8B1D895134B86392FF = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AboutPane.cpp; path = ../../../../src/rec/slow/AboutPane.cpp; sourceTree = "SOURCE_ROOT"; };
 		A1C3359E3CFCACD3526C7026 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Random.h"; path = "../../JuceLibraryCode/modules/juce_core/maths/juce_Random.h"; sourceTree = "SOURCE_ROOT"; };
 		A1F63987FBBAD9E33BDFB3F7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformPainter.h; path = ../../../../src/rec/widget/waveform/WaveformPainter.h; sourceTree = "SOURCE_ROOT"; };
 		A21E606D84ADD437A0198FE7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = "SOURCE_ROOT"; };
@@ -2266,6 +2269,8 @@
 					01820A566F0E100206C2C983,
 					482ECBEC809FE85F2636424A, ); name = commands; sourceTree = "<group>"; };
 		A0266BC1ECDC72CCDA8B4801 = {isa = PBXGroup; children = (
+					A1BA6C8B1D895134B86392FF,
+					883615176EC729988637AA75,
 					CB222B595410F9239997CB53,
 					377A515D0F7C7D76E9B2D2E2,
 					E5225045DBFD13973B3F65C1,
@@ -4029,6 +4034,7 @@
 					E2D50D651A4A184462FA911C,
 					DDDEC35E5A8963E596D05B80,
 					904D90CC1267D72479475395,
+					65232B532526680E9A89A1AB,
 					43126547AB67C04400F864CF,
 					80222F4E85C8F7198BBE3CCF,
 					92728F57C025A2D1045A3EDD,
