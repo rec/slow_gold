@@ -11,10 +11,10 @@ namespace slow {
 
 class AboutPane : public Component,
                   public TextEditor::Listener,
-                  public juce::ButtonListener,
-                  public juce::ModalComponentManager::Callback {
+                  public juce::ButtonListener {
  public:
-  AboutPane(const String& name, const String& versionNumber);
+  AboutPane(const String& name, const String& versionNumber,
+            juce::ModalComponentManager::Callback* callback);
   ~AboutPane() override;
 
   void textEditorTextChanged(TextEditor&) override;
@@ -22,8 +22,6 @@ class AboutPane : public Component,
   void textEditorEscapeKeyPressed(TextEditor&) override {}
   void textEditorFocusLost(TextEditor&) override {}
   void buttonClicked(juce::Button*) override;
-
-  void modalStateFinished(int returnValue) override;
 
   void paint(Graphics& g);
   void visibilityChanged() override;
@@ -41,6 +39,7 @@ class AboutPane : public Component,
   unique_ptr<ews::Authentication> authentication_;
   unique_ptr<gui::CaptionText> name_, serialNumber_;
   juce::TextButton accept_;
+  juce::ModalComponentManager::Callback* callback_;
 };
 
 }  // namespace slow

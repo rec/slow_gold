@@ -12,7 +12,7 @@ struct Authentication {
   string serialNumber;
 
   bool unauthenticated() const {
-    return user.empty() or serialNumber.empty();
+    return user.empty();
   }
 
   bool expired() const {

@@ -12,7 +12,7 @@ AboutWindow::AboutWindow(Component* parent,
                          const String& versionNumber)
     : Component("AboutWindow"),
       parent_(parent),
-      aboutPane_(new AboutPane(name, versionNumber)) {
+      aboutPane_(new AboutPane(name, versionNumber, this)) {
   setOpaque(false);
   Rectangle<int> bounds = parent_->getLocalBounds();
   setBounds(bounds);
@@ -30,7 +30,7 @@ AboutWindow::AboutWindow(Component* parent,
 
 AboutWindow::~AboutWindow() {}
 
-void AboutWindow::mouseDown(const MouseEvent&) {
+void AboutWindow::close() {
   if (not aboutPane_->expired()) {
     if (auto window = getInstance()->window_)
       window->stopAboutWindow();

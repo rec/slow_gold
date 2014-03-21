@@ -8,16 +8,21 @@ namespace slow {
 
 class AboutPane;
 
-class AboutWindow : public Component {
+class AboutWindow : public Component,
+                    public juce::ModalComponentManager::Callback {
  public:
-  explicit AboutWindow(Component* parent, const String& name, const String& versionNumber);
-
-  virtual void paint(Graphics&) {}
+  AboutWindow(
+      Component* parent, const String& name, const String& versionNumber);
 
   ~AboutWindow();
-  virtual void mouseDown(const MouseEvent&);
+
+  void paint(Graphics&) override {}
+  void mouseDown(const MouseEvent&) override { close(); }
+  void modalStateFinished(int returnValue) override { close(); }
 
  private:
+  void close();
+
   Component* parent_;
   unique_ptr<AboutPane> aboutPane_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);

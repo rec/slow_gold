@@ -73,7 +73,9 @@ Font formFont() {
 const int AboutPane::WIDTH = 700;
 const int AboutPane::HEIGHT = 380;
 
-AboutPane::AboutPane(const String& name, const String& versionNumber)
+AboutPane::AboutPane(
+    const String& name, const String& versionNumber,
+    ModalComponentManager::Callback* callback)
     : displayOnStartup_(new SetterToggle(
           str(t_DISPLAY_ON_STARTUP),
           str(t_DISPLAY_ON_STARTUP_TOOLTIP),
@@ -84,7 +86,8 @@ AboutPane::AboutPane(const String& name, const String& versionNumber)
       serialNumber_(new CaptionText(
           t_SERIAL_NUMBER_LABEL, t_SERIAL_NUMBER_TOOLTIP, "",
           true, CAPTION_SIZE)),
-      accept_(t_REGISTER_TEXT) {
+      accept_(t_REGISTER_TEXT),
+      callback_(callback) {
   addAndMakeVisible(displayOnStartup_.get());
   displayOnStartup_->setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
                               BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -129,20 +132,19 @@ bool AboutPane::expired() const {
 }
 
 void AboutPane::buttonClicked(Button*) {
+  auto user = name_->editor()->getText().trim();
   auto error = ews::confirmAndActivate(
-      str(name_->editor()->getText().trim()),
-      str(name_->editor()->getText().trim()));
-  auto message = error.empty() ? String(t_AUTHENTICATED) :
-      String(t_COULDNT_AUTHENTICATE + error);
-  auto& title = error.empty() ? t_AUTHENTICATED_TITLE :
-      t_COULDNT_AUTHENTICATE_TITLE;
-  auto icon = error.empty() ? AlertWindow::InfoIcon : AlertWindow::WarningIcon;
-  AlertWindow::showMessageBoxAsync(icon, title, message, "", this, this);
-  LOG(INFO) << message;
-}
-
-void AboutPane::modalStateFinished(int returnValue) {
-  LOG(INFO) << "Dialog finished";
+      str(serialNumber_->editor()->getText().trim()), str(user));
+  if (error.empty()) {
+    authentication_->user = user.toStdString();
+    AlertWindow::showMessageBoxAsync(
+        AlertWindow::InfoIcon, t_AUTHENTICATED_TITLE, t_AUTHENTICATED, "",
+        nullptr, callback_);
+  } else {
+    AlertWindow::showMessageBoxAsync(
+        AlertWindow::WarningIcon, t_COULDNT_AUTHENTICATE_TITLE,
+        String(t_COULDNT_AUTHENTICATE + error));
+  }
 }
 
 void AboutPane::textEditorTextChanged(TextEditor&) {
