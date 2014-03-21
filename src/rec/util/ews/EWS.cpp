@@ -73,7 +73,7 @@ Authentication testAuthenticated() {
       LOG(INFO) << "Sample rate computed.";
       result.user = crypt(activation.frame());
     } else {
-      LOG(ERROR) << status;
+      LOG(ERROR) << "No sample rate " << activation.samples() << status;
     }
   } else {
     auto expiration = program::getProgram()->demoExpirationDays();
@@ -95,10 +95,24 @@ Authentication testAuthenticated() {
 }
 
 string confirmAndActivate(const string& serialNumber, const string& name) {
+  if (confirm(serialNumber))
+    return "Invalid serial number";
+
+  if (auto s = activate(serialNumber)) {
+    if (s == E_ACTIVATESN_LIMIT_MET)
+      return "Too many activations for this key.";
+    auto code = String(static_cast<int>(s));
+    return ("Unable to activate key, error=" + code).toStdString();
+  }
+
+  Activation activation;
+  activation.set_samples(crypt(serialNumber));
+  activation.set_frame(crypt(name));
+  activation.set_rate(fromTime(Time::getCurrentTime()));
+  data::setProto(activation);
 
   return "";
 }
-
 
 }  // namespace ews
 }  // namespace util
