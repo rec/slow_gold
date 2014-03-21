@@ -1,15 +1,16 @@
 #include "rec/slow/AboutPane.h"
 
-#include "rec/app/AuthenticationDialog.h"
 #include "rec/base/Trans.h"
 #include "rec/gui/CaptionText.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
+#include "rec/util/ews/EWS.h"
 
 using namespace juce;
 using namespace rec::app;
+using namespace rec::ews;
 using namespace rec::gui;
 
 TRAN(DISPLAY_ON_STARTUP, "Display this window on startup");
@@ -121,7 +122,9 @@ bool AboutPane::expired() const {
 }
 
 void AboutPane::buttonClicked(Button*) {
-  LOG(INFO) << "Click!";
+  auto name = name_->editor()->getText().trim();
+  auto serialNumber = name_->editor()->getText().trim();
+
 }
 
 void AboutPane::textEditorTextChanged(TextEditor&) {

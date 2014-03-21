@@ -1,7 +1,6 @@
 #include "rec/slow/Instance.h"
 
 #include "rec/app/AppSettings.pb.h"
-#include "rec/app/AuthenticationDialog.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/app/RegisterInstance.h"
 #include "rec/audio/Device.h"
@@ -36,6 +35,7 @@
 #include "rec/slow/commands/SlowProgram.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
+#include "rec/util/ews/EWS.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/Trash.h"
@@ -215,7 +215,7 @@ bool Instance::startup() {
     thread::trash::run<RegisterSlow>();
 
   if (data::getProto<GuiSettings>().show_about_on_startup() or
-      app::testAuthenticated().expired()) {
+      ews::testAuthenticated().expired()) {
     MessageManagerLock l;
     window_->startAboutWindow();
   }

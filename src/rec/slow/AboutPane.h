@@ -2,7 +2,7 @@
 
 #include "rec/base/base.h"
 
-namespace rec { namespace app { class Authentication; }}
+namespace rec { namespace util { namespace ews { class Authentication; }}}
 namespace rec { namespace gui { class CaptionText; }}
 namespace rec { namespace gui { class SetterToggle; }}
 
@@ -35,7 +35,7 @@ class AboutPane : public Component,
  private:
   juce::AttributedString left_, right_;
   unique_ptr<gui::SetterToggle> displayOnStartup_;
-  unique_ptr<app::Authentication> authentication_;
+  unique_ptr<ews::Authentication> authentication_;
   unique_ptr<gui::CaptionText> name_, serialNumber_;
   juce::TextButton accept_;
 };
