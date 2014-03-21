@@ -26,6 +26,9 @@ class AboutPane : public Component, public TextEditor::Listener {
   juce::AttributedString getRightSide() const;
   juce::AttributedString getLeftSide() const;
 
+  static const int WIDTH;
+  static const int HEIGHT;
+
  private:
   juce::AttributedString left_, right_;
   unique_ptr<gui::SetterToggle> displayOnStartup_;

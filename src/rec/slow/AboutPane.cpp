@@ -39,8 +39,6 @@ namespace slow {
 
 namespace {
 
-const int WIDTH = 700;
-const int HEIGHT = 380;
 const int MARGINI = 12;
 const float MARGINF = static_cast<float>(MARGINI);
 const int OFFSET = 205;
@@ -64,11 +62,15 @@ Font formFont() {
 
 }  // namespace
 
+const int AboutPane::WIDTH = 700;
+const int AboutPane::HEIGHT = 380;
+
 AboutPane::AboutPane(const String& name, const String& versionNumber)
     : displayOnStartup_(new SetterToggle(
           str(t_DISPLAY_ON_STARTUP),
           str(t_DISPLAY_ON_STARTUP_TOOLTIP),
           data::makeAddress<GuiSettings>("show_about_on_startup"))),
+      authentication_(new Authentication),
       name_(new CaptionText(
           t_NAME_LABEL, t_NAME_TOOLTIP, "", true, CAPTION_SIZE)),
       serialNumber_(new CaptionText(
