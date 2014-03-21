@@ -90,6 +90,7 @@ AboutPane::AboutPane(const String& name, const String& versionNumber)
                   WIDTH - 2 * FORM_MARGIN,
                   FORM_ITEM_HEIGHT);
   name_->editor()->addListener(this);
+  accept_.addListener(this);
 
   addChildComponent(serialNumber_.get());
   serialNumber_->setBounds(FORM_MARGIN,
@@ -112,10 +113,15 @@ AboutPane::AboutPane(const String& name, const String& versionNumber)
 AboutPane::~AboutPane() {
   name_->editor()->removeListener(this);
   serialNumber_->editor()->removeListener(this);
+  accept_.removeListener(this);
 }
 
 bool AboutPane::expired() const {
   return authentication_->expired();
+}
+
+void AboutPane::buttonClicked(Button*) {
+  LOG(INFO) << "Click!";
 }
 
 void AboutPane::textEditorTextChanged(TextEditor&) {

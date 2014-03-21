@@ -9,7 +9,9 @@ namespace rec { namespace gui { class SetterToggle; }}
 namespace rec {
 namespace slow {
 
-class AboutPane : public Component, public TextEditor::Listener {
+class AboutPane : public Component,
+                  public TextEditor::Listener,
+                  public juce::ButtonListener {
  public:
   AboutPane(const String& name, const String& versionNumber);
   ~AboutPane() override;
@@ -18,6 +20,7 @@ class AboutPane : public Component, public TextEditor::Listener {
   void textEditorReturnKeyPressed(TextEditor&) override {}
   void textEditorEscapeKeyPressed(TextEditor&) override {}
   void textEditorFocusLost(TextEditor&) override {}
+  void buttonClicked(juce::Button*) override;
 
   void paint(Graphics& g);
   void visibilityChanged() override;
