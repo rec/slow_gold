@@ -19,7 +19,7 @@ TRAN(COULDNT_AUTHENTICATE_TITLE, "Couldn't authenticate.");
 TRAN(AUTHENTICATED, "Your serial number was authenticated! "
      "Thanks for supporting independent developers.");
 TRAN(COULDNT_AUTHENTICATE,
-     "Couldn't authenticate your name and serial number because: ");
+     "Couldn't authenticate your name and serial number because:");
 TRAN(DISPLAY_ON_STARTUP, "Display this window on startup");
 TRAN(DISPLAY_ON_STARTUP_TOOLTIP, "Turn this box on if you want About Slow "
        "Gold to appear on startup.");
@@ -34,7 +34,9 @@ TRAN(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
 TRAN(COPYRIGHT, "Copyright © %d-%d");
 TRAN(REGISTERED_TO, "Registered To:");
 TRAN(SERIAL_NUMBER, "Serial Number:");
-TRAN(UNREGISTERED, "Not Registered!");
+TRAN(UNREGISTERED_START, "Not Registered!   Expires in");
+TRAN(UNREGISTERED_SINGLE, "day.");
+TRAN(UNREGISTERED_PLURAL, "days.");
 TRAN(NAME_LABEL, "Name");
 TRAN(NAME_TOOLTIP, "Enter the name you want to register this program to.");
 TRAN(SERIAL_NUMBER_LABEL, "Serial Number");
@@ -166,6 +168,8 @@ void AboutPane::paint(Graphics& g) {
 }
 
 void AboutPane::visibilityChanged() {
+  if (not isVisible())
+    return;
   *authentication_ = testAuthenticated();
   auto visible = authentication_->unauthenticated();
   name_->setVisible(visible);
@@ -173,6 +177,7 @@ void AboutPane::visibilityChanged() {
   accept_.setVisible(visible);
   right_ = getRightSide();
   left_ = getLeftSide();
+  displayOnStartup_->setEnabled(not visible);
 }
 
 AttributedString AboutPane::getRightSide() const {
@@ -185,9 +190,16 @@ AttributedString AboutPane::getRightSide() const {
       String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
   right.append(t, font);
 
-  String user = authentication_->user;
+  auto user = String(authentication_->user);
   if (user.isEmpty()) {
-    right.append(t_UNREGISTERED, font);
+    auto days = authentication_->daysToExpiration;
+    auto plural = (days == 1) ? "" : "s";
+    right.append(t_UNREGISTERED_START, font);
+    right.append(" ", font);
+    right.append(String(days), font, Colours::red);
+    right.append(" ");
+    right.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
+
   } else {
     right.append(String("\n") + t_REGISTERED_TO + String(" ") + user +
                  String("\n") + t_SERIAL_NUMBER + String(" ") +

@@ -215,7 +215,7 @@ bool Instance::startup() {
     thread::trash::run<RegisterSlow>();
 
   if (data::getProto<GuiSettings>().show_about_on_startup() or
-      ews::testAuthenticated().expired()) {
+      ews::testAuthenticated().unauthenticated()) {
     MessageManagerLock l;
     window_->startAboutWindow();
   }

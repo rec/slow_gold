@@ -275,8 +275,15 @@ void JuceModelImpl::makeRecentFiles(PopupMenu* popup) {
   popup->addSubMenu(command.submenu_name(), submenu);
 }
 
+
 bool JuceModelImpl::perform(const InvocationInfo& info) {
-  if (Callback* callback = program_->getCallback(info.commandID)) {
+  auto id = info.commandID;
+  if (not (program_->isEnabled() or
+           id == juce::StandardApplicationCommandIDs::quit)) {
+    return false;
+  }
+
+  if (auto callback = program_->getCallback(id)) {
     (*callback)();
     return true;
   }
