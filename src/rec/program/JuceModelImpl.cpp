@@ -280,7 +280,7 @@ bool JuceModelImpl::perform(const InvocationInfo& info) {
   auto id = info.commandID;
   if (not (program_->isEnabled() or
            id == juce::StandardApplicationCommandIDs::quit)) {
-    return false;
+    return true;
   }
 
   if (auto callback = program_->getCallback(id)) {

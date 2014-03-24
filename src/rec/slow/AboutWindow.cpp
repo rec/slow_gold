@@ -1,4 +1,5 @@
 #include "rec/slow/AboutWindow.h"
+#include "rec/program/Program.h"
 #include "rec/slow/AboutPane.h"
 #include "rec/slow/Instance.h"
 
@@ -32,8 +33,10 @@ AboutWindow::~AboutWindow() {}
 
 void AboutWindow::close() {
   if (not aboutPane_->expired()) {
-    if (auto window = getInstance()->window_)
+    if (auto window = getInstance()->window_) {
+      program::getProgram()->setEnabled(true);
       window->stopAboutWindow();
+    }
   }
 }
 

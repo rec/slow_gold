@@ -4,6 +4,7 @@
 #include "rec/gui/CaptionText.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/SetterToggle.h"
+#include "rec/program/Program.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
@@ -168,10 +169,13 @@ void AboutPane::paint(Graphics& g) {
 }
 
 void AboutPane::visibilityChanged() {
+  *authentication_ = testAuthenticated();
   if (not isVisible())
     return;
-  *authentication_ = testAuthenticated();
+
   auto visible = authentication_->unauthenticated();
+  if (visible)
+    program::getProgram()->setEnabled(false);
   name_->setVisible(visible);
   serialNumber_->setVisible(visible);
   accept_.setVisible(visible);
