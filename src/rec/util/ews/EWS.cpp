@@ -30,7 +30,7 @@ bool isSystemCompatible() {
 }
 
 const char* publisherId() {
-  return program::getProgram()->getPublisherId();
+   return program::getProgram()->getPublisherId();
 }
 
 const char* activationId() {
@@ -64,6 +64,31 @@ OSStatus deactivate(const string& serialNumber) {
       publisherId(), activationId(), serialNumber.c_str());
 }
 
+bool acceptStatus(OSStatus status, const string& serialNumber) {
+  if (not status)
+    return true;
+
+  if (status != E_INET_CONNECTION_FAILURE and
+      status != E_INET_ESELLERATE_FAILURE) {
+    return false;
+  }
+
+  if (serialNumber.size() != strlen(TEST_SERIAL_NUMBER))
+    return false;
+
+  for (auto i = 0; i < serialNumber.size(); ++i) {
+    auto ch = serialNumber[i];
+    if ((i + 1) % 6) {
+      if (not (isdigit(ch) or isupper(ch)))
+        return false;
+      if (ch == 'I' or ch == 'O' or ch == 'V' or ch == 'Z')
+        return false;
+    }
+  }
+
+  return true;
+}
+
 }  // namespace
 
 Authentication testAuthenticated() {
@@ -72,7 +97,7 @@ Authentication testAuthenticated() {
   if (activation.has_samples()) {
     result.serialNumber = crypt(activation.samples());
     auto status = validate(result.serialNumber);
-    if (not status) {
+    if (acceptStatus(status, result.serialNumber)) {
       LOG(INFO) << "Sample rate computed.";
       result.user = crypt(activation.frame());
     } else {

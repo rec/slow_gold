@@ -10,6 +10,7 @@ struct Authentication {
   int daysToExpiration;
   string user;
   string serialNumber;
+  bool authenticatedCouldntConnect;
 
   bool unauthenticated() const {
     return user.empty();
