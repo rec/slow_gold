@@ -26,6 +26,7 @@ class AboutPane : public Component,
   void paint(Graphics& g);
   void visibilityChanged() override;
   bool expired() const;
+  bool authenticated() const;
 
   juce::AttributedString getRightSide() const;
   juce::AttributedString getLeftSide() const;
@@ -39,6 +40,7 @@ class AboutPane : public Component,
   unique_ptr<ews::Authentication> authentication_;
   unique_ptr<gui::CaptionText> name_, serialNumber_;
   juce::TextButton accept_;
+  juce::TextButton close_;
   juce::ModalComponentManager::Callback* callback_;
 };
 

@@ -32,10 +32,11 @@ TRAN(DRAG_SPEED, "Drag the Speed slider to slow down or speed up.");
 TRAN(CREATE_LOOPS, "Create loop points by pressing the L key.");
 TRAN(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
        "commands.");
+TRAN(CLOSE_TEXT, "Close");
 TRAN(COPYRIGHT, "Copyright © %d-%d");
 TRAN(REGISTERED_TO, "Registered To:");
 TRAN(SERIAL_NUMBER, "Serial Number:");
-TRAN(UNREGISTERED_START, "Not Registered!   Expires in");
+TRAN(UNREGISTERED_START, "This unregistered copy expires in");
 TRAN(UNREGISTERED_SINGLE, "day.");
 TRAN(UNREGISTERED_PLURAL, "days.");
 TRAN(NAME_LABEL, "Name");
@@ -60,7 +61,9 @@ const int FORM_OFFSET = 108;
 const int FORM_MARGIN = 12;
 const int FORM_LINE_HEIGHT = 34;
 const int FORM_ITEM_HEIGHT = 24;
-const int REGISTER_WIDTH = 140;
+const int BUTTON_SPACING = 35;
+const int SECOND_BUTTON_WIDTH = 120;
+const int SECOND_BUTTON_OFFSET = 25;
 const int CAPTION_SIZE = 76;
 
 Font aboutFont() {
@@ -90,6 +93,7 @@ AboutPane::AboutPane(
           t_SERIAL_NUMBER_LABEL, t_SERIAL_NUMBER_TOOLTIP, "",
           true, CAPTION_SIZE)),
       accept_(t_REGISTER_TEXT),
+      close_(t_CLOSE_TEXT),
       callback_(callback) {
   addAndMakeVisible(displayOnStartup_.get());
   displayOnStartup_->setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
@@ -104,7 +108,6 @@ AboutPane::AboutPane(
                   WIDTH - 2 * FORM_MARGIN,
                   FORM_ITEM_HEIGHT);
   name_->editor()->addListener(this);
-  accept_.addListener(this);
 
   addChildComponent(serialNumber_.get());
   serialNumber_->setBounds(FORM_MARGIN,
@@ -113,12 +116,19 @@ AboutPane::AboutPane(
                           FORM_ITEM_HEIGHT);
 
   serialNumber_->editor()->addListener(this);
+
   addChildComponent(&accept_);
-  accept_.setBounds((WIDTH - REGISTER_WIDTH) / 2,
-                    FORM_OFFSET + FORM_LINE_HEIGHT * 2,
-                    REGISTER_WIDTH,
-                    FORM_ITEM_HEIGHT);
+  auto bx = SECOND_BUTTON_OFFSET +
+      (WIDTH - 2 * SECOND_BUTTON_WIDTH - BUTTON_SPACING) / 2;
+  auto by = FORM_OFFSET + FORM_LINE_HEIGHT * 2;
+  accept_.setBounds(bx, by, SECOND_BUTTON_WIDTH, FORM_ITEM_HEIGHT);
   accept_.setEnabled(false);
+  accept_.addListener(this);
+
+  addChildComponent(&close_);
+  close_.setBounds(bx + SECOND_BUTTON_WIDTH + BUTTON_SPACING, by,
+                   SECOND_BUTTON_WIDTH, FORM_ITEM_HEIGHT);
+  close_.addListener(this);
 
   setOpaque(true);
   displayOnStartup_->updateCallback();
@@ -134,19 +144,28 @@ bool AboutPane::expired() const {
   return authentication_->expired();
 }
 
-void AboutPane::buttonClicked(Button*) {
-  auto user = name_->editor()->getText().trim();
-  auto error = ews::confirmAndActivate(
-      str(serialNumber_->editor()->getText().trim()), str(user));
-  if (error.empty()) {
-    authentication_->user = user.toStdString();
-    AlertWindow::showMessageBoxAsync(
-        AlertWindow::InfoIcon, t_AUTHENTICATED_TITLE, t_AUTHENTICATED, "",
-        nullptr, callback_);
+bool AboutPane::authenticated() const {
+  return authentication_->authenticated();
+}
+
+void AboutPane::buttonClicked(Button* button) {
+  if (button == &accept_) {
+    auto user = name_->editor()->getText().trim();
+    auto error = ews::confirmAndActivate(
+        str(serialNumber_->editor()->getText().trim()), str(user));
+    if (error.empty()) {
+      authentication_->user = user.toStdString();
+      AlertWindow::showMessageBoxAsync(
+          AlertWindow::InfoIcon, t_AUTHENTICATED_TITLE, t_AUTHENTICATED, "",
+          nullptr, callback_);
+    } else {
+      AlertWindow::showMessageBoxAsync(
+          AlertWindow::WarningIcon, t_COULDNT_AUTHENTICATE_TITLE,
+          String(t_COULDNT_AUTHENTICATE + error));
+    }
   } else {
-    AlertWindow::showMessageBoxAsync(
-        AlertWindow::WarningIcon, t_COULDNT_AUTHENTICATE_TITLE,
-        String(t_COULDNT_AUTHENTICATE + error));
+    if (not expired())
+      callback_->modalStateFinished(0);
   }
 }
 
@@ -173,12 +192,14 @@ void AboutPane::visibilityChanged() {
   if (not isVisible())
     return;
 
-  auto visible = authentication_->unauthenticated();
+  auto visible = not authentication_->authenticated();
   if (visible)
     program::getProgram()->setEnabled(false);
   name_->setVisible(visible);
   serialNumber_->setVisible(visible);
   accept_.setVisible(visible);
+  close_.setVisible(visible);
+  close_.setEnabled(not expired());
   right_ = getRightSide();
   left_ = getLeftSide();
   displayOnStartup_->setEnabled(not visible);
@@ -200,7 +221,7 @@ AttributedString AboutPane::getRightSide() const {
     auto plural = (days == 1) ? "" : "s";
     right.append(t_UNREGISTERED_START, font);
     right.append(" ", font);
-    right.append(String(days), font, Colours::red);
+    right.append(String(days), font, days < 10 ? Colours::red : Colours::black);
     right.append(" ");
     right.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
 

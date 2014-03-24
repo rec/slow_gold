@@ -31,6 +31,11 @@ AboutWindow::AboutWindow(Component* parent,
 
 AboutWindow::~AboutWindow() {}
 
+void AboutWindow::mouseDown(const MouseEvent&) {
+  if (aboutPane_->authenticated())
+    close();
+}
+
 void AboutWindow::close() {
   if (not aboutPane_->expired()) {
     if (auto window = getInstance()->window_) {

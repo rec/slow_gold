@@ -12,12 +12,12 @@ struct Authentication {
   string serialNumber;
   bool authenticatedCouldntConnect;
 
-  bool unauthenticated() const {
-    return user.empty();
+  bool authenticated() const {
+    return not user.empty();
   }
 
   bool expired() const {
-    return user.empty() and daysToExpiration <= 0;
+    return (not authenticated()) and daysToExpiration <= 0;
   }
 };
 

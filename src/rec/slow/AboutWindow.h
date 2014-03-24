@@ -17,7 +17,7 @@ class AboutWindow : public Component,
   ~AboutWindow();
 
   void paint(Graphics&) override {}
-  void mouseDown(const MouseEvent&) override { close(); }
+  void mouseDown(const MouseEvent&) override;
   void modalStateFinished(int returnValue) override { close(); }
 
  private:
