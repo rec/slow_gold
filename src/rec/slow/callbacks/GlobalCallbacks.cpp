@@ -131,6 +131,7 @@ void modeAddLoopPoint() {
 class AuthorizeCallback : public juce::ModalComponentManager::Callback {
  public:
   AuthorizeCallback() {}
+
   void modalStateFinished(int returnValue) override {
     if (returnValue) {
       auto authentication = ews::testAuthenticated();

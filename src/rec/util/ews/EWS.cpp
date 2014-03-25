@@ -5,6 +5,7 @@
 #include "rec/util/ews/EWS.h"
 #include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Opener.h"
 #include "rec/program/Program.h"
 #include "rec/util/ews/Activation.pb.h"
 #include "rec/util/Crypt.h"
@@ -48,6 +49,18 @@ inline string fromTime(const Time& t) {
   return crypt(String(t.toMilliseconds()).toStdString());
 }
 
+inline Time daysAfterNow(int days) {
+  return Time::getCurrentTime() + RelativeTime::days(days);
+}
+
+inline string fromTime(const RelativeTime& t) {
+  return fromTime(Time::getCurrentTime() + t);
+}
+
+inline string fromTimeDays(int days) {
+  return fromTime(daysAfterNow(days));
+}
+
 OSStatus confirm(const string& serialNumber) {
   return eWeb_ConfirmSerialNumber(publisherId(), serialNumber.c_str());
 }
@@ -81,6 +94,8 @@ bool acceptStatus(OSStatus status, const string& serialNumber) {
         return false;
       if (ch == 'I' or ch == 'O' or ch == 'V' or ch == 'Z')
         return false;
+    } else if (ch != '-') {
+      return false;
     }
   }
 
@@ -89,28 +104,10 @@ bool acceptStatus(OSStatus status, const string& serialNumber) {
 
 }  // namespace
 
-String deactivate(const string& serialNumber) {
-  auto status = eWeb_DeactivateSerialNumber(
-      publisherId(), activationId(), serialNumber.c_str());
-  if (not status)
-    return "";
-
-  if (status <= E_DEACTIVATION_NO_SUCH_SERIAL_NUMBER and
-      status >= E_DEACTIVATION_DEACTIVATION_LIMIT_MET) {
-    return t_INVALID_SERIAL_NUMBER;
-  }
-
-  if (status <= E_INET_CONNECTION_FAILURE and
-      status >= E_INET_ESTATE_NOT_FOUND) {
-    return t_NETWORK_ISSUES;
-  }
-
-  return t_UNKNOWN_ERROR + String(static_cast<int>(status));
-}
-
 Authentication testAuthenticated() {
   Authentication result;
   auto activation = data::getProto<Activation>();
+
   if (activation.has_samples()) {
     result.serialNumber = crypt(activation.samples());
     auto status = validate(result.serialNumber);
@@ -121,21 +118,50 @@ Authentication testAuthenticated() {
       LOG(ERROR) << "No sample rate " << activation.samples() << status;
     }
   } else {
-    auto expiration = program::getProgram()->demoExpirationDays();
-    auto now = Time::getCurrentTime();
-    Time time = activation.has_rate() ? toTime(activation.rate()) : now;
-    if (time <= now) {
-      activation.set_rate(fromTime(time));
-      data::setProto(activation);
-      auto days = expiration - static_cast<int>((now - time).inDays());
-      result.daysToExpiration = jmax(0, days);
+    auto daysToExpiration = program::getProgram()->demoExpirationDays();
+    if (activation.has_rate()) {
+      auto time = toTime(activation.rate());
+      auto now = Time::getCurrentTime();
+      auto delta = time - now;
+      auto days = delta.inDays();
+      if (days > daysToExpiration) {
+        result.daysToExpiration = 0;
+        LOG(ERROR) << "Sample time greater than now: "
+                   << time.toMilliseconds() << ", " << now.toMilliseconds();
+      } else {
+        result.daysToExpiration = days;
+      }
     } else {
-      result.daysToExpiration = 0;
-      LOG(ERROR) << "Sample time greater than now: "
-                 << time.toMilliseconds() << ", " << now.toMilliseconds();
+      result.daysToExpiration = daysToExpiration;
+      activation.set_rate(fromTimeDays(daysToExpiration));
     }
   }
   return result;
+}
+
+String deactivate(const string& serialNumber) {
+  if (auto status = eWeb_DeactivateSerialNumber(
+          publisherId(), activationId(), serialNumber.c_str())) {
+    if (status <= E_DEACTIVATION_NO_SUCH_SERIAL_NUMBER and
+        status >= E_DEACTIVATION_DEACTIVATION_LIMIT_MET) {
+      return t_INVALID_SERIAL_NUMBER;
+    }
+
+    if (status <= E_INET_CONNECTION_FAILURE and
+        status >= E_INET_ESTATE_NOT_FOUND) {
+      return t_NETWORK_ISSUES;
+    }
+
+    return t_UNKNOWN_ERROR + String(static_cast<int>(status));
+  }
+
+  data::Opener<Activation> activation(data::CANT_UNDO);
+  activation->clear_samples();
+  auto days = program::getProgram()->unauthorizedExpirationDays();
+  activation->set_rate(fromTimeDays(days));
+  activation->clear_frame();
+
+  return "";
 }
 
 string confirmAndActivate(const string& serialNumber, const string& name) {
@@ -152,7 +178,7 @@ string confirmAndActivate(const string& serialNumber, const string& name) {
   Activation activation;
   activation.set_samples(crypt(serialNumber));
   activation.set_frame(crypt(name));
-  activation.set_rate(fromTime(Time::getCurrentTime()));
+  activation.set_rate(fromTimeDays(0));
   data::setProto(activation);
 
   return "";

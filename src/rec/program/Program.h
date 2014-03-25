@@ -48,6 +48,7 @@ class Program {
   virtual const char* getPublisherId() const = 0;
   virtual const char* getActivationId() const = 0;
   virtual int demoExpirationDays() const = 0;
+  virtual int unauthorizedExpirationDays() const = 0;
   virtual bool isEnabled() const = 0;
   virtual void setEnabled(bool) = 0;
   virtual thread::Looper::Function threadFunction(const string&) const = 0;
