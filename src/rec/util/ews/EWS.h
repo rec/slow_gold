@@ -25,6 +25,8 @@ Authentication testAuthenticated();
 
 string confirmAndActivate(const string& serialNumber, const string& name);
 
+String deactivate(const string& serialNumber);
+
 }  // namespace ews
 }  // namespace util
 }  // namespace rec

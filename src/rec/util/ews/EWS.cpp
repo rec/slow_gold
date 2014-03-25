@@ -15,6 +15,9 @@ using namespace ::juce;
 TRAN(INVALID_SERIAL_NUMBER, "Invalid serial number");
 TRAN(TOO_MANY_ACTIVATIONS, "Too many activations for this key.");
 TRAN(UNABLE_TO_ACTIVATE, "Unable to activate key, error=");
+TRAN(NETWORK_ISSUES, "Network connection issue.  Please try again later.");
+TRAN(UNKNOWN_ERROR, "Unknown error - please report to technical support. "
+     "Code=");
 
 namespace rec {
 namespace util {
@@ -59,11 +62,6 @@ OSStatus activate(const string& serialNumber) {
       publisherId(), activationId(), serialNumber.c_str(), false);
 }
 
-OSStatus deactivate(const string& serialNumber) {
-  return eWeb_DeactivateSerialNumber(
-      publisherId(), activationId(), serialNumber.c_str());
-}
-
 bool acceptStatus(OSStatus status, const string& serialNumber) {
   if (not status)
     return true;
@@ -91,6 +89,25 @@ bool acceptStatus(OSStatus status, const string& serialNumber) {
 
 }  // namespace
 
+String deactivate(const string& serialNumber) {
+  auto status = eWeb_DeactivateSerialNumber(
+      publisherId(), activationId(), serialNumber.c_str());
+  if (not status)
+    return "";
+
+  if (status <= E_DEACTIVATION_NO_SUCH_SERIAL_NUMBER and
+      status >= E_DEACTIVATION_DEACTIVATION_LIMIT_MET) {
+    return t_INVALID_SERIAL_NUMBER;
+  }
+
+  if (status <= E_INET_CONNECTION_FAILURE and
+      status >= E_INET_ESTATE_NOT_FOUND) {
+    return t_NETWORK_ISSUES;
+  }
+
+  return t_UNKNOWN_ERROR + String(static_cast<int>(status));
+}
+
 Authentication testAuthenticated() {
   Authentication result;
   auto activation = data::getProto<Activation>();
@@ -116,7 +133,6 @@ Authentication testAuthenticated() {
       result.daysToExpiration = 0;
       LOG(ERROR) << "Sample time greater than now: "
                  << time.toMilliseconds() << ", " << now.toMilliseconds();
-
     }
   }
   return result;

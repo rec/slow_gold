@@ -20,12 +20,12 @@ class Trans {
   ~Trans();
 
   operator String() const;
-  void registerTranslation() const;
-
   string toStdString() const { return String(*this).toStdString(); }
 
+  void registerTranslation() const;
+
  private:
-  ptr<TranslatedString> string_;
+  unique_ptr<TranslatedString> string_;
   Language language_;
 
   void check(const string& s);

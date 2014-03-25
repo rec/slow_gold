@@ -11,12 +11,18 @@
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/GuiSettings.h"
 #include "rec/support/RequestSupport.h"
+#include "rec/util/ews/EWS.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Undo.h"
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/cd/Eject.h"
 
+TRAN(DEAUTHORIZE_TITLE, "Deauthorize SlowGold.");
+TRAN(DEAUTHORIZE_FULL, "Do you want to deauthorize SlowGold on this computer?");
+TRAN(DEAUTHORIZE_COMPLETE, "SlowGold has been deauthorized on this computer.");
+TRAN(DEAUTHORIZE_FAILED, "SlowGold deauthorization failed.");
+TRAN(DEAUTHORIZE_REASON, "Reason:");
 TRAN(CANT_LOAD, "Couldn't Load The SlowGold 8 User Manual");
 TRAN(CANT_LOAD_FULL, "Sorry, couldn't load the SlowGold 8 user manual at");
 TRAN(CLICK_TO_CONTINUE, "Click to continue.");
@@ -122,7 +128,32 @@ void modeAddLoopPoint() {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 
+class AuthorizeCallback : public juce::ModalComponentManager::Callback {
+ public:
+  AuthorizeCallback() {}
+  void modalStateFinished(int returnValue) override {
+    if (returnValue) {
+      auto authentication = ews::testAuthenticated();
+      auto error = ews::deactivate(authentication.serialNumber);
+      if (error.isEmpty()) {
+        AlertWindow::showMessageBoxAsync(
+            AlertWindow::InfoIcon, t_DEAUTHORIZE_COMPLETE, t_DEAUTHORIZE_COMPLETE);
+      } else {
+        AlertWindow::showMessageBoxAsync(
+            AlertWindow::WarningIcon, t_DEAUTHORIZE_FAILED,
+            t_DEAUTHORIZE_FAILED + String(" ") + t_DEAUTHORIZE_REASON +
+            String(" ") + error);
+      }
+    }
+    delete this;
+  }
+
+};
+
 void deauthorize() {
+  AlertWindow::showOkCancelBox(
+      AlertWindow::InfoIcon, t_DEAUTHORIZE_TITLE, t_DEAUTHORIZE_FULL, t_OK,
+      t_CANCEL, nullptr, new AuthorizeCallback());
 }
 
 void whatsNewPage() {
