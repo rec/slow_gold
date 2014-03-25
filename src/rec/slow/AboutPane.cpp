@@ -40,6 +40,7 @@ TRAN(SERIAL_NUMBER, "Serial Number:");
 TRAN(UNREGISTERED_START, "This unregistered copy expires in");
 TRAN(UNREGISTERED_SINGLE, "day.");
 TRAN(UNREGISTERED_PLURAL, "days.");
+TRAN(EXPIRED, "This unregistered copy has expired!");
 TRAN(NAME_LABEL, "Name");
 TRAN(NAME_TOOLTIP, "Enter the name you want to register this program to.");
 TRAN(SERIAL_NUMBER_LABEL, "Serial Number");
@@ -220,13 +221,16 @@ AttributedString AboutPane::getRightSide() const {
   auto user = String(authentication_->user);
   if (user.isEmpty()) {
     auto days = authentication_->daysToExpiration;
-    auto plural = (days == 1) ? "" : "s";
-    right.append(t_UNREGISTERED_START, font);
-    right.append(" ", font);
-    right.append(String(days), font, days < 10 ? Colours::red : Colours::black);
-    right.append(" ");
-    right.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
-
+    if (days > 0) {
+      auto plural = (days == 1) ? "" : "s";
+      right.append(t_UNREGISTERED_START, font);
+      right.append(" ", font);
+      right.append(String(days), font, days < 10 ? Colours::red : Colours::black);
+      right.append(" ");
+      right.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
+    } else {
+      right.append(t_EXPIRED, font, Colours::red);
+    }
   } else {
     right.append(String("\n") + t_REGISTERED_TO + String(" ") + user +
                  String("\n") + t_SERIAL_NUMBER + String(" ") +

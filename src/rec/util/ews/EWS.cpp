@@ -122,8 +122,7 @@ Authentication testAuthenticated() {
     if (activation.has_rate()) {
       auto time = toTime(activation.rate());
       auto now = Time::getCurrentTime();
-      auto delta = time - now;
-      auto days = delta.inDays();
+      auto days = std::max(static_cast<int>((time - now).inDays()), 0);
       if (days > daysToExpiration) {
         result.daysToExpiration = 0;
         LOG(ERROR) << "Sample time greater than now: "
