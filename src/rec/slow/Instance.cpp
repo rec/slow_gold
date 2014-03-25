@@ -214,8 +214,10 @@ bool Instance::startup() {
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 
-  if (data::getProto<GuiSettings>().show_about_on_startup() or
-      not ews::testAuthenticated().authenticated()) {
+  auto unauthorized = not ews::testAuthenticated().authenticated();
+  program::juceModel()->setProperty("unauthorized", unauthorized);
+
+  if (data::getProto<GuiSettings>().show_about_on_startup() or unauthorized) {
     MessageManagerLock l;
     window_->startAboutWindow();
   }

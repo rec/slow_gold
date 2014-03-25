@@ -240,6 +240,16 @@ static const unsigned char temp_binary_data_3[] =
 "    menu: \"What\\'s New In This Release?\"\n"
 "    full: \"Go to the webpage which tells you what new features and bug fixes are in the release you\\'re running.\"\n"
 "  }\n"
+"}\n"
+"\n"
+"command {\n"
+"  id_string: \"DEAUTHORIZE\"\n"
+"  category: \"Help\"\n"
+"  desc {\n"
+"    menu: \"Deauthorize SlowGold from this computer.\"\n"
+"    full: \"Deauthorize SlowGold from this computer.\"\n"
+"  }\n"
+"  disabled: \"unauthorized\"\n"
 "}\n";
 
 const char* File_def = (const char*) temp_binary_data_3;
@@ -340,6 +350,7 @@ static const unsigned char temp_binary_data_4[] =
 "command {\n"
 "  id_string: \"TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\"\n"
 "  category: \"Help\"\n"
+"  disabled: \"unauthorized\"\n"
 "  desc {\n"
 "    menu: \"Show About Window At Startup\"\n"
 "    full: \"Toggle whether we show the About Window every time we start up.\"\n"
@@ -2375,6 +2386,7 @@ static const unsigned char temp_binary_data_30[] =
 "    id_string: \"OPEN_MANUAL\"\n"
 "    id_string: \"REQUEST_SUPPORT\"\n"
 "    id_string: \"WHATS_NEW_PAGE\"\n"
+"    id_string: \"DEAUTHORIZE\"\n"
 "  }\n"
 "}\n"
 "menu {\n"
@@ -14003,8 +14015,8 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xc4c114d6:  numBytes = 219; return Colors_def;
         case 0x82ae93fc:  numBytes = 1480; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
-        case 0xd807eee2:  numBytes = 2091; return File_def;
-        case 0x7975c6e1:  numBytes = 4209; return Gui_def;
+        case 0xd807eee2:  numBytes = 2296; return File_def;
+        case 0x7975c6e1:  numBytes = 4236; return Gui_def;
         case 0xb618588d:  numBytes = 1788; return LoopPoints_def;
         case 0x6d98aeb2:  numBytes = 5800; return Selection_def;
         case 0x29a9fa09:  numBytes = 4894; return Settings_def;
@@ -14030,7 +14042,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
         case 0x3d219c23:  numBytes = 227; return Waveform_def;
         case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
-        case 0x1d81d01a:  numBytes = 3837; return Menus_def;
+        case 0x1d81d01a:  numBytes = 3866; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;

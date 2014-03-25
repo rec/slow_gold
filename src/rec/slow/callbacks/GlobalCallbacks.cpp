@@ -122,6 +122,9 @@ void modeAddLoopPoint() {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 
+void deauthorize() {
+}
+
 void whatsNewPage() {
   const String& vers = JUCEApplication::getInstance()->getApplicationVersion();
   URL(String::formatted(WHATS_NEW_URL, c_str(vers))).launchInDefaultBrowser();
@@ -137,6 +140,7 @@ void addGlobalCallbacks(program::Program* t) {
   addCallback(t, Command::COPY, copyToClipboard);
   addCallback(t, Command::CUT, cutToClipboard);
   addCallback(t, Command::DEL, cutNoClipboard);
+  addCallback(t, Command::DEAUTHORIZE, deauthorize);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
   addCallback(t, Command::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
   addCallback(t, Command::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
@@ -152,7 +156,6 @@ void addGlobalCallbacks(program::Program* t) {
   addCallback(t, Command::UNDO, undo);
   addCallback(t, Command::WHATS_NEW_PAGE, whatsNewPage);
 }
-
 
 }  // namespace slow
 }  // namespace rec

@@ -107,3 +107,13 @@ command {
     full: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
   }
 }
+
+command {
+  id_string: "DEAUTHORIZE"
+  category: "Help"
+  desc {
+    menu: "Deauthorize SlowGold from this computer."
+    full: "Deauthorize SlowGold from this computer."
+  }
+  disabled: "unauthorized"
+}

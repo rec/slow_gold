@@ -22,6 +22,8 @@ message Command {
     CLOSE_FILE = 6;
     COPY_ALL_LOOP_POINTS = 95;
 
+    DEAUTHORIZE = 102;
+
     DIM_VOLUME_TOGGLE = 7;
 
     EJECT_CDS = 8;
@@ -129,7 +131,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    FIRST_FREE_TYPE = 102;
+    FIRST_FREE_TYPE = 103;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

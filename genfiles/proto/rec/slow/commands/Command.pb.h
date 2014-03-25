@@ -54,6 +54,7 @@ enum Command_Id {
   Command_Id_CLEAR_SAVED_FILE_DATA = 5,
   Command_Id_CLOSE_FILE = 6,
   Command_Id_COPY_ALL_LOOP_POINTS = 95,
+  Command_Id_DEAUTHORIZE = 102,
   Command_Id_DIM_VOLUME_TOGGLE = 7,
   Command_Id_EJECT_CDS = 8,
   Command_Id_EXPORT_KEYBOARD_MAPPINGS = 82,
@@ -140,7 +141,7 @@ enum Command_Id {
   Command_Id_ZOOM_OUT = 40,
   Command_Id_ZOOM_OUT_FULL = 64,
   Command_Id_ZOOM_TO_SELECTION = 45,
-  Command_Id_FIRST_FREE_TYPE = 102,
+  Command_Id_FIRST_FREE_TYPE = 103,
   Command_Id_QUIT = 4097,
   Command_Id_DEL = 4098,
   Command_Id_CUT = 4099,
@@ -233,6 +234,7 @@ class Command : public ::google::protobuf::Message {
   static const Id CLEAR_SAVED_FILE_DATA = Command_Id_CLEAR_SAVED_FILE_DATA;
   static const Id CLOSE_FILE = Command_Id_CLOSE_FILE;
   static const Id COPY_ALL_LOOP_POINTS = Command_Id_COPY_ALL_LOOP_POINTS;
+  static const Id DEAUTHORIZE = Command_Id_DEAUTHORIZE;
   static const Id DIM_VOLUME_TOGGLE = Command_Id_DIM_VOLUME_TOGGLE;
   static const Id EJECT_CDS = Command_Id_EJECT_CDS;
   static const Id EXPORT_KEYBOARD_MAPPINGS = Command_Id_EXPORT_KEYBOARD_MAPPINGS;

@@ -4,6 +4,7 @@
 #include "rec/gui/CaptionText.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/SetterToggle.h"
+#include "rec/program/JuceModel.h"
 #include "rec/program/Program.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
@@ -154,6 +155,7 @@ void AboutPane::buttonClicked(Button* button) {
     auto error = ews::confirmAndActivate(
         str(serialNumber_->editor()->getText().trim()), str(user));
     if (error.empty()) {
+      program::juceModel()->setProperty("unauthorized", false);
       authentication_->user = user.toStdString();
       AlertWindow::showMessageBoxAsync(
           AlertWindow::InfoIcon, t_AUTHENTICATED_TITLE, t_AUTHENTICATED, "",
