@@ -19,7 +19,10 @@
 #include "rec/util/proto/ProtoFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/RunOnMessageThread.h"
 #include "rec/widget/waveform/Waveform.h"
+
+using namespace juce;
 
 namespace rec {
 namespace slow {
@@ -27,8 +30,6 @@ namespace slow {
 namespace {
 
 #define LOG_TO_STDERROR 1
-
-using namespace juce;
 
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
@@ -59,6 +60,27 @@ void redirectLogs(const File& appDir) {
   }
 #endif
 }
+
+static const auto SHUTDOWN_COUNT = 10;
+static const auto SHUTDOWN_WAIT = 50;
+
+class Shutdown : public Thread {
+ public:
+  Shutdown() : Thread("Shutdown") {}
+
+  void run() override {
+    auto i = 0;
+    while (data::getDataCenter()->hasUpdates()) {
+      if (++i < SHUTDOWN_COUNT) {
+        sleep(SHUTDOWN_WAIT);
+      } else {
+        LOG(ERROR) << "Data center shut down with updates pending.";
+        break;
+      }
+    }
+    thread::runOnMessageThread(&JUCEApplication::quit);
+  }
+};
 
 }
 
@@ -158,7 +180,8 @@ void SlowWindow::stopAboutWindow() {
 }
 
 void SlowWindow::systemRequestedQuit() {
-  JUCEApplication::quit();
+  shutdownThread_.reset(new Shutdown());
+  shutdownThread_->startThread();
 }
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {

@@ -42,6 +42,7 @@ class SlowWindow : public app::Window  {
   ptr<Component> aboutWindow_;
   bool startupFinished_;
   File nextFile_;
+  unique_ptr<Thread> shutdownThread_;
 
   CriticalSection lock_;
 
