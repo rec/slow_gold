@@ -14,7 +14,7 @@ void DataSet::insert(Data* data) {
   Lock l(lock_);
   if (!data_)
     data_.reset(new Set);
-  DCHECK(data_->insert(data).second);
+  data_->insert(data);
   notify();
 }
 

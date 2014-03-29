@@ -39,10 +39,6 @@ void CurrentFile::suspend() {
 void CurrentFile::saveState() {
   if (not empty()) {
     auto& player = getInstance()->player_;
-    if (false) {
-      DLOG(INFO) << "!!!! " << file().ShortDebugString();
-      DLOG(INFO) << player->getTime();
-    }
     data::Opener<PlayState> state(file());
     state->set_time(player->getTime());
     state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
