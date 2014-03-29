@@ -38,7 +38,7 @@ const char* publisherId() {
 }
 
 const char* activationId() {
-  return program::getProgram()->getPublisherId();
+  return program::getProgram()->getActivationId();
 }
 
 inline Time toTime(const string& s) {
@@ -65,18 +65,15 @@ OSStatus confirm(const string& serialNumber) {
   return eWeb_ConfirmSerialNumber(publisherId(), serialNumber.c_str());
 }
 
-OSStatus validate(const string& serialNumber) {
-  return eWeb_ValidateActivation(
-      publisherId(), activationId(), serialNumber.c_str());
-}
-
 OSStatus activate(const string& serialNumber) {
   return eWeb_ActivateSerialNumber(
       publisherId(), activationId(), serialNumber.c_str(), false);
 }
 
-bool acceptStatus(OSStatus status, const string& serialNumber) {
-  if (not status)
+bool validate(const string& serialNumber) {
+  auto status = eWeb_ValidateActivation(
+      publisherId(), activationId(), serialNumber.c_str());
+  if (status == E_VALIDATEACTIVATION_MACHINE_MATCH)
     return true;
 
   if (status != E_INET_CONNECTION_FAILURE and
@@ -110,13 +107,8 @@ Authentication testAuthenticated() {
 
   if (activation.has_samples()) {
     result.serialNumber = crypt(activation.samples());
-    auto status = validate(result.serialNumber);
-    if (acceptStatus(status, result.serialNumber)) {
-      LOG(INFO) << "Sample rate computed.";
+    if (validate(result.serialNumber))
       result.user = crypt(activation.frame());
-    } else {
-      LOG(ERROR) << "No sample rate " << activation.samples() << status;
-    }
   } else {
     auto daysToExpiration = program::getProgram()->demoExpirationDays();
     if (activation.has_rate()) {

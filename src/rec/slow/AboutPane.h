@@ -28,14 +28,14 @@ class AboutPane : public Component,
   bool expired() const;
   bool authenticated() const;
 
-  juce::AttributedString getRightSide() const;
-  juce::AttributedString getLeftSide() const;
+  void getRightSide();
+  void getLeftSide();
 
   static const int WIDTH;
   static const int HEIGHT;
 
  private:
-  juce::AttributedString left_, right_;
+  juce::AttributedString left_, center_, right_;
   unique_ptr<gui::SetterToggle> displayOnStartup_;
   unique_ptr<ews::Authentication> authentication_;
   unique_ptr<gui::CaptionText> name_, serialNumber_;

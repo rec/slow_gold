@@ -71,6 +71,7 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
 }
 
 SlowWindow::~SlowWindow() {
+  Lock l(lock_);
   aboutWindow_.reset();
 }
 
@@ -149,6 +150,7 @@ void SlowWindow::startAboutWindow() {
 }
 
 void SlowWindow::stopAboutWindow() {
+  Lock l(lock_);
   if (aboutWindow_) {
     Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(),
                                                  FADE_OUT_TIME);

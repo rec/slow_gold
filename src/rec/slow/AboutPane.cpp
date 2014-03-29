@@ -55,7 +55,8 @@ namespace {
 
 const int MARGINI = 12;
 const float MARGINF = static_cast<float>(MARGINI);
-const int OFFSET = 205;
+const int CENTER_OFFSET = 80;
+const int LEFT_OFFSET = 125;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
@@ -74,6 +75,10 @@ Font aboutFont() {
 
 Font formFont() {
   return Font("Ariel", 12, 0);
+}
+
+Font serialFont() {
+  return Font("Ariel", 15, 0);
 }
 
 }  // namespace
@@ -164,7 +169,7 @@ void AboutPane::buttonClicked(Button* button) {
     } else {
       AlertWindow::showMessageBoxAsync(
           AlertWindow::WarningIcon, t_COULDNT_AUTHENTICATE_TITLE,
-          String(t_COULDNT_AUTHENTICATE + error));
+          String(t_COULDNT_AUTHENTICATE + String("\n") + error));
     }
   } else {
     if (not expired())
@@ -186,7 +191,11 @@ void AboutPane::paint(Graphics& g) {
                         WIDTH - 2 * MARGINF,
                         HEIGHT - 2 * MARGINF);
   right_.draw(g, area);
-  area.setY(area.getY() + OFFSET);
+
+  area.setY(area.getY() + CENTER_OFFSET);
+  center_.draw(g, area);
+
+  area.setY(area.getY() + LEFT_OFFSET);
   left_.draw(g, area);
 }
 
@@ -203,45 +212,49 @@ void AboutPane::visibilityChanged() {
   accept_.setVisible(visible);
   close_.setVisible(visible);
   close_.setEnabled(not expired());
-  right_ = getRightSide();
-  left_ = getLeftSide();
+  getRightSide();
+  getLeftSide();
   displayOnStartup_->setEnabled(not visible);
 }
 
-AttributedString AboutPane::getRightSide() const {
+void AboutPane::getRightSide() {
+  right_.clear();
+  right_.setJustification(Justification::topRight);
+
+  center_.clear();
+  center_.setJustification(Justification::centredTop);
+
   auto font = aboutFont();
-  AttributedString right;
-  right.setJustification(Justification::topRight);
   auto name = JUCEApplication::getInstance()->getApplicationName();
   auto version = JUCEApplication::getInstance()->getApplicationVersion();
   auto t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
       String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
-  right.append(t, font);
+  right_.append(t, font);
 
   auto user = String(authentication_->user);
   if (user.isEmpty()) {
     auto days = authentication_->daysToExpiration;
     if (days > 0) {
       auto plural = (days == 1) ? "" : "s";
-      right.append(t_UNREGISTERED_START, font);
-      right.append(" ", font);
-      right.append(String(days), font, days < 10 ? Colours::red : Colours::black);
-      right.append(" ");
-      right.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
+      right_.append(t_UNREGISTERED_START, font);
+      right_.append(" ", font);
+      right_.append(String(days), font, days < 10 ? Colours::red : Colours::black);
+      right_.append(" ");
+      right_.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
     } else {
-      right.append(t_EXPIRED, font, Colours::red);
+      right_.append(t_EXPIRED, font, Colours::red);
     }
   } else {
-    right.append(String("\n") + t_REGISTERED_TO + String(" ") + user +
-                 String("\n") + t_SERIAL_NUMBER + String(" ") +
-                 authentication_->serialNumber, font);
+     center_.append(String("\n") + t_REGISTERED_TO + " " + user + "\n\n",
+                   font);
+    center_.append(t_SERIAL_NUMBER + String(" ") +
+                   authentication_->serialNumber, serialFont());
   }
-  return right;
 }
 
-AttributedString AboutPane::getLeftSide() const {
-  AttributedString left;
-  left.setJustification(Justification::topLeft);
+void AboutPane::getLeftSide() {
+  left_.clear();
+  left_.setJustification(Justification::topLeft);
   auto s =
       str("* " + t_DRAG_AUDIO + "\n" +
           "* " + t_CD_AUTOMATIC + "\n" +
@@ -249,8 +262,7 @@ AttributedString AboutPane::getLeftSide() const {
           "* " + t_DRAG_SPEED + "\n" +
           "* " + t_CREATE_LOOPS + "\n" +
           "* " + t_DOWNLOAD_MANUAL + "\n");
-  left.append(s, aboutFont());
-  return left;
+  left_.append(s, aboutFont());
 }
 
 }  // namespace slow
