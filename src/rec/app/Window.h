@@ -34,6 +34,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void init() {}
 
   virtual void anotherInstanceStarted(const String& s) {}
+  virtual void systemRequestedQuit() = 0;
 
  protected:
   virtual void constructInstance() = 0;

@@ -13,26 +13,27 @@ class Instance;
 class SlowWindow : public app::Window  {
  public:
   explicit SlowWindow(app::GenericApplication*);
-  virtual ~SlowWindow();
+  ~SlowWindow() override;
 
-  virtual void init();
+  void init() override;
 
-  virtual void paint(Graphics& g) {
+  void paint(Graphics& g) override {
     g.fillAll(juce::Colours::lightgrey);
   }
 
-  virtual void startAboutWindow();
-  virtual void stopAboutWindow();
-  virtual void minimisationStateChanged(bool isNowMinimised);
-  virtual void anotherInstanceStarted(const String&);
+  void startAboutWindow() override;
+  void stopAboutWindow() override;
+  void minimisationStateChanged(bool isNowMinimised) override;
+  void anotherInstanceStarted(const String&) override;
+  void systemRequestedQuit() override;
 
  protected:
-  virtual void doStartup();
-  virtual void doShutdown();
+  void doStartup() override;
+  void doShutdown() override;
 
-  virtual void constructInstance();
-  virtual Component* getMainComponent();
-  virtual void activeWindowStatusChanged();
+  void constructInstance() override;
+  Component* getMainComponent() override;
+  void activeWindowStatusChanged() override;
 
  private:
   void gotoNextFile();

@@ -67,7 +67,7 @@ void GenericApplication::shutdown() {
 
 void GenericApplication::systemRequestedQuit() {
   if (enable_ == ENABLE)
-    JUCEApplication::systemRequestedQuit();
+    window_->systemRequestedQuit();
 }
 
 void GenericApplication::anotherInstanceStarted(const String& s) {

@@ -157,6 +157,10 @@ void SlowWindow::stopAboutWindow() {
   }
 }
 
+void SlowWindow::systemRequestedQuit() {
+  JUCEApplication::quit();
+}
+
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
   if (!isNowMinimised)
     getInstance()->components_->waveform()->repaint();
