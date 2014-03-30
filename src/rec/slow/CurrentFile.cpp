@@ -39,10 +39,12 @@ void CurrentFile::suspend() {
 void CurrentFile::saveState() {
   if (not empty()) {
     auto& player = getInstance()->player_;
-    data::Opener<PlayState> state(file());
-    state->set_time(player->getTime());
-    state->set_is_playing(data::getProto<AudioSettings>().autoplay() and
-                          player->state());
+    PlayState state;
+    state.set_time(player->getTime());
+    state.set_is_playing(data::getProto<AudioSettings>().autoplay() and
+                         player->state());
+    DLOG(INFO) << "\n" << state.DebugString();
+    data::setProto(state, file());
   }
 }
 
@@ -50,6 +52,7 @@ void CurrentFile::resume() {
   if (not empty()) {
     getInstance()->fillerThread_->startThread();
     PlayState state = data::getProto<PlayState>(file());
+
     auto& currentTime = getInstance()->currentTime_;
     currentTime->jumpToTime(state.time());
   }

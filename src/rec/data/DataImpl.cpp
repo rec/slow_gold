@@ -28,6 +28,7 @@ DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
 }
 
 void DataImpl::reportChange() {
+  // DLOG(INFO) << "Reporting change " << str(file_);
   dataUpdater_->reportChange(this);
 }
 

@@ -2294,7 +2294,7 @@ static const unsigned char temp_binary_data_29[] =
 "  }\n"
 "  menu: \"file advanced\"\n"
 "  menu: \"edit advanced\"\n"
-"  menu: \"audio advanced\"\n"
+"  menu: \"audio\"\n"
 "  menu: \"transport advanced\"\n"
 "  menu: \"select advanced\"\n"
 "  menu: \"display\"\n"
@@ -14041,7 +14041,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x964485f2:  numBytes = 926; return TransportButtonsPanel_def;
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
         case 0x3d219c23:  numBytes = 227; return Waveform_def;
-        case 0xc7af2e43:  numBytes = 373; return MenuCollection_def;
+        case 0xc7af2e43:  numBytes = 364; return MenuCollection_def;
         case 0x1d81d01a:  numBytes = 3866; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;

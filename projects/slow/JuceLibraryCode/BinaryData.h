@@ -97,7 +97,7 @@ namespace BinaryData
     const int            Waveform_defSize = 227;
 
     extern const char*   MenuCollection_def;
-    const int            MenuCollection_defSize = 373;
+    const int            MenuCollection_defSize = 364;
 
     extern const char*   Menus_def;
     const int            Menus_defSize = 3866;

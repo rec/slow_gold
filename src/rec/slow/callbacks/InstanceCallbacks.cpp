@@ -117,12 +117,6 @@ void open() {
   gui::dialog::openOneAudioFile(i->currentFile_.get());
 }
 
-void quit() {
-  // This is never called - we should probably get rid of it.
-  Instance* i = getInstance();
-  i->window_->application()->quit();
-}
-
 void toggleStartStop() {
   Instance* i = getInstance();
   if (!i->empty())
@@ -225,7 +219,6 @@ void addInstanceCallbacks(Program* c) {
 
   addCallback(c, slow::Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
-  // addApplyCallback(c, slow::Command::CLEAR_NAVIGATOR, clearNavigator);
   addCallback(c, slow::Command::CLOSE_FILE, closeFile);
   addCallback(c, slow::Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
 
@@ -236,11 +229,8 @@ void addInstanceCallbacks(Program* c) {
 
   addCallback(c, slow::Command::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
 
-  addCallback(c, slow::Command::QUIT, quit);
-
   addCallback(c, slow::Command::SAVE_FILE, saveFile);
   addCallback(c, slow::Command::SAVE_FILE_SELECTION, saveFileSelection);
-  // addCallback(c, slow::Command::TOGGLE_START_STOP, toggleStartStop);
   addCallback(c, slow::Command::ZOOM_OUT, zoomOut);
   addCallback(c, slow::Command::ZOOM_OUT_FULL, zoomOutFull);
   addCallback(c, slow::Command::ZOOM_TO_SELECTION, zoomToSelection);
