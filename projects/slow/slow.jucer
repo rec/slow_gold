@@ -11,10 +11,10 @@
               pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0"
               projectType="guiapp" version="8.0.8">
   <EXPORTFORMATS>
-    <XCODE_MAC bigIcon="TdymBbjDw" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
+    <XCODE_MAC bigIcon="Lw3skp9XC" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
                extraCompilerFlags="" extraFrameworks="EWSEmbedded-GC" extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F../../../../externals/mac/ews/"
                objCExtraSuffix="jeMWW9" postbuildCommand="../../../../scripts/copy-ews.sh"
-               rtasFolder="~/SDKs/PT_80_SDK" smallIcon="XUc1JS1Qd" targetFolder="Builds/MacOSX"
+               rtasFolder="~/SDKs/PT_80_SDK" smallIcon="QNvJ3OwJO" targetFolder="Builds/MacOSX"
                vstFolder="~/SDKs/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION cppLibType="libc++" customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
@@ -43,9 +43,9 @@
         <MODULEPATH id="juce_audio_basics" path="JuceLibraryCode/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2012 bigIcon="XUc1JS1Qd" extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
+    <VS2012 bigIcon="Lw3skp9XC" extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
             extraLinkerFlags=" ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT"
-            libraryType="1" smallIcon="XUc1JS1Qd" targetFolder="Builds/VisualStudio2012">
+            libraryType="1" smallIcon="QNvJ3OwJO" targetFolder="Builds/VisualStudio2012">
       <CONFIGURATIONS>
         <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="1" libraryPath="..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug "
