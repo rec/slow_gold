@@ -19,14 +19,17 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
   unique_ptr<Component> comp;
   auto& constants = juceModel()->constants();
   auto& addr = getProgram()->resizerAddress();
+  string name;
 
   if (layout.has_container()) {
     comp = makeComponent(Context(layout.container(), constants, parent, addr));
-    auto& name = layout.container().name();
-    comp->setName(name.empty() ? oldName : name);
+    name = layout.container().name();
+    name = name.empty() ? oldName : name;
+    DCHECK(not name.empty()) << layout.ShortDebugString();
+    comp->setName(name);
   } else {
-    auto name = str(layout.name().empty() ? oldName : layout.name());
-    DCHECK(name.length()) << layout.ShortDebugString();
+    name = layout.name().empty() ? oldName : layout.name();
+    DCHECK(not name.empty()) << layout.ShortDebugString();
     comp.reset(new Panel(name,
                          static_cast<Orientation>(layout.orientation()),
                          layout.resize_other_dimension(),
@@ -46,7 +49,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
   }
 
   if (layout.has_padding())
-    panel->addToPanel(new Panel);
+    panel->addToPanel(new Panel(name));
 
   if (layout.has_dimensions()) {
     comp->setSize(constants.getDouble(layout.dimensions().width()),

@@ -14,7 +14,7 @@ unique_ptr<Component> makeSlider(const Context& context) {
   auto& slider = component.slider();
 
   unique_ptr<DataSlider> dataSlider(
-      new DataSlider("",
+      new DataSlider(component.name(),
                      component.tooltip(),
                      slider.caption(),
                      component.address(),

@@ -2,6 +2,7 @@
 
 #include "rec/data/AddressListener.h"
 #include "rec/gui/proto/Context.h"
+#include "rec/gui/ApplyRecursive.h"
 #include "rec/gui/proto/Panel.h"
 #include "rec/program/Program.h"
 #include "rec/program/JuceModel.h"
@@ -15,10 +16,18 @@ namespace gui {
 
 namespace {
 
+void layoutRepaint(Component* comp) {
+  if (Panel* panel = dynamic_cast<Panel*>(comp))
+    panel->layout();
+  else
+    comp->repaint();
+}
+
 class Switcher : public Panel, public AddressListener {
  public:
   explicit Switcher(const Context& context)
-  : AddressListener(context.component_.address()),
+  : Panel(context.component_.name()),
+    AddressListener(context.component_.address()),
     index_(-1) {
   }
 
@@ -41,9 +50,7 @@ class Switcher : public Panel, public AddressListener {
     MessageManagerLock l;
     auto part = parts_[index].get();
     Panel::addToPanel(part, -1.0, -1.0, -1.0);
-    layout();
-    if (Panel* panel = dynamic_cast<Panel*>(part))
-      panel->layout();
+    applyRecursiveDepthFirst(&layoutRepaint, this);
   }
 
   void addToPanel(Component* c, double, double, double) override {

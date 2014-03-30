@@ -19,6 +19,7 @@ Panel::Panel(const String& name,
       cache_(nullptr),
       isMain_(isMain),
       isOpaque_(isOpaque) {
+  CHECK(not name.isEmpty());
 }
 
 Panel::~Panel() {
@@ -62,13 +63,22 @@ void Panel::layout() {
   int width = getWidth();
   int height = getHeight();
   if (components_.size() && width && height) {
-    layoutManager_.layOutComponents(&components_[0], components_.size(),
-                                    0, 0, width, height,
-                                    orientation_ == VERTICAL,
-									resizeOtherDimension_);
+    DLOG(INFO) << getName();
+    String res;
+    for (auto i = 0; i < getNumChildComponents(); ++i)
+      res += (getChildComponent(i)->getName() + " ");
+
+    DLOG(INFO) << res;
+    layoutManager_.layOutComponents(
+        &components_[0], components_.size(),
+        0, 0, width, height,
+        orientation_ == VERTICAL, resizeOtherDimension_);
     if (cache_)
       cache_->invalidateAll();
+  } else {
+    DLOG(INFO) << "Empty panel " << getName();
   }
+  repaint();
 }
 
 void Panel::clear(bool free) {

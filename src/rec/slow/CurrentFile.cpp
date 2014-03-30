@@ -37,13 +37,12 @@ void CurrentFile::suspend() {
 }
 
 void CurrentFile::saveState() {
-  if (not empty()) {
+  if (false and not empty()) {
     auto& player = getInstance()->player_;
     PlayState state;
     state.set_time(player->getTime());
     state.set_is_playing(data::getProto<AudioSettings>().autoplay() and
                          player->state());
-    DLOG(INFO) << "\n" << state.DebugString();
     data::setProto(state, file());
   }
 }

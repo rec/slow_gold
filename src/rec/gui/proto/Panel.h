@@ -21,7 +21,7 @@ class Panel : public Component,
   static const int DEFAULT_MAX = -1;
   static const int DEFAULT_PREF = -1;
 
-  Panel(const String& name = String::empty,
+  Panel(const String& name,
         Orientation o = HORIZONTAL,
         bool resizeOther = true,
         bool isMain = false,
