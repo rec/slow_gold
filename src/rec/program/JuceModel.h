@@ -57,9 +57,9 @@ class JuceModel : public ApplicationCommandTarget,
   }
 
   template <typename Type = Component>
-  Type* getComponent(const string& name) {
+  Type* getComponent(const string& name, Component* parent) {
     try {
-      Component* comp = doGetComponent(name);
+      Component* comp = doGetComponent(name, parent);
       if (Type* t = dynamic_cast<Type*>(comp))
         return t;
       LOG(DFATAL) << "Got component but couldn't cast for " << name;
@@ -69,7 +69,7 @@ class JuceModel : public ApplicationCommandTarget,
     }
     return nullptr;
   }
-  Component* getComponent(const string& name) const;
+  Component* getComponent(const string& name, Component* parent) const;
   string componentNames() const;
 
   void startThreads();
@@ -79,7 +79,7 @@ class JuceModel : public ApplicationCommandTarget,
   const command::CommandMapProto& keyMap() const;
 
  private:
-  Component* doGetComponent(const string&) const;
+  Component* doGetComponent(const string&, Component* parent) const;
 
   unique_ptr<JuceModelImpl> impl_;
   unique_ptr<DisableMap> disableMap_;

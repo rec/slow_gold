@@ -51,7 +51,7 @@ Def<CursorProto> defaultDesc(
 
 Waveform::Waveform()
     : Component("WaveformComponent"),
-      model_(new WaveformModel),
+      model_(new WaveformModel(this)),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT),
       loading_(NOT_LOADING) {

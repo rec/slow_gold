@@ -325,7 +325,8 @@ Thread* JuceModelImpl::getThread(const string& name) {
   return threadMap_.at(name).get();
 }
 
-Component* JuceModelImpl::getComponent(const string& name) const {
+Component* JuceModelImpl::getComponent(
+    const string& name, Component* parent) const {
   if (not componentMap_.get()) {
     componentMap_.reset(new gui::ComponentMap(
         gui::getComponentMap(program_->getTopComponent())));

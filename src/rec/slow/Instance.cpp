@@ -132,7 +132,7 @@ void Instance::init() {
   player_.reset(new audio::source::Player(device_.get()));
 
   player_->init();
-  components_.reset(new Components);
+  components_.reset(new Components(window_));
   components_->init();
 
   currentTime_.reset(new CurrentTime);
@@ -144,7 +144,6 @@ void Instance::init() {
       new FillerThread(currentTime_.get(), bufferFiller_.get()));
 
   midiCommandMap_.reset(new command::MidiCommandMap);
-
 
   device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());

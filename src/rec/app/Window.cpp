@@ -18,7 +18,6 @@ Window::Window(GenericApplication* application,
 }
 
 void Window::initialise() {
-  doLog("constructing instance");
   constructInstance();
 
 #if JUCE_MAC

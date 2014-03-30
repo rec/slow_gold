@@ -25,16 +25,15 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
     comp = makeComponent(Context(layout.container(), constants, parent, addr));
     name = layout.container().name();
     name = name.empty() ? oldName : name;
-    DCHECK(not name.empty()) << layout.ShortDebugString();
     comp->setName(name);
   } else {
     name = layout.name().empty() ? oldName : layout.name();
-    DCHECK(not name.empty()) << layout.ShortDebugString();
     comp.reset(new Panel(name,
                          static_cast<Orientation>(layout.orientation()),
                          layout.resize_other_dimension(),
                          layout.is_main()));
   }
+  DCHECK(not name.empty()) << layout.ShortDebugString();
   Panel* panel = dynamic_cast<Panel*>(comp.get());
   for (auto& component: layout.component()) {
     auto child = makeComponent(Context(component, constants, panel, addr));

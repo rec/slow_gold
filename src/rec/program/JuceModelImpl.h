@@ -41,7 +41,7 @@ class JuceModelImpl {
     return layoutMap_.at(n);
   }
 
-  Component* getComponent(const string& name) const;
+  Component* getComponent(const string& name, Component* parent) const;
   string componentNames() const;
 
  private:

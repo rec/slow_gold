@@ -12,7 +12,9 @@ namespace waveform {
 
 class WaveformModel {
  public:
-  WaveformModel() : isDraggingCursor_(false) {}
+  WaveformModel(Component* parent)
+      : isDraggingCursor_(false), parent_(parent) {
+  }
 
   util::Range<SampleTime > getTimeRange() const;
   SampleTime xToTime(int x) const;
@@ -45,6 +47,7 @@ class WaveformModel {
   bool isDraggingCursor_;
   int width_;
   WaveformProto desc_;
+  Component* parent_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformModel);
 };

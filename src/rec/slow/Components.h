@@ -24,7 +24,7 @@ class Components : public data::DataListener<audio::stretch::Stretch>,
                    public data::DataListener<audio::Gain>,
                    public data::DataListener<music::Metadata> {
  public:
-  Components();
+  explicit Components(Component* parent);
   ~Components();
 
   virtual void init();
@@ -41,8 +41,9 @@ class Components : public data::DataListener<audio::stretch::Stretch>,
 
   widget::tree::TreeView* treeView_;
   widget::waveform::Waveform* waveform_;
+  Component* parent_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Components);
 };
 
 }  // namespace slow
