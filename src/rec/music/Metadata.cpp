@@ -17,6 +17,7 @@ Metadata getTrack(const Album& album, int i) {
 Metadata getMetadata(const StringPairArray& metadata) {
   Metadata t;
   const StringArray& keys = metadata.getAllKeys();
+  string albumArtist;
   for (int i = 0; i < keys.size(); ++i) {
     const String& k = keys[i];
     const string& v = str(metadata[k]);
@@ -27,9 +28,13 @@ Metadata getMetadata(const StringPairArray& metadata) {
     else if (k == "TDRC") t.set_year(v);
     else if (k == "TIT2") t.set_track_title(v);
     else if (k == "TPE1") t.set_artist(v);
-    else if (k == "TPE2") t.set_artist(v);
+    else if (k == "TPE2") albumArtist = v;
     else if (k == "TRCK") t.set_track_number(v);
   }
+
+  if (t.artist().empty())
+    t.set_artist(albumArtist);
+
   return t;
 
   // What's the difference between TPE1 and TPE2?
