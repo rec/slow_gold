@@ -2,7 +2,6 @@
 #define __REC_APP_PROGRAMINSTANCEIMPL__
 
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/gui/GetComponentMap.h"
 #include "rec/gui/proto/Constants.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/SetterListener.h"
@@ -41,9 +40,6 @@ class JuceModelImpl {
     return layoutMap_.at(n);
   }
 
-  Component* getComponent(const string& name, Component* parent) const;
-  string componentNames() const;
-
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;
 
@@ -73,7 +69,6 @@ class JuceModelImpl {
   DataListeners dataListeners_;
   CommandID recentFiles_;
   CommandID recentFilesEnd_;
-  mutable unique_ptr<gui::ComponentMap> componentMap_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(JuceModelImpl);
 };

@@ -56,22 +56,6 @@ class JuceModel : public ApplicationCommandTarget,
     applicationCommandManager()->commandStatusChanged();
   }
 
-  template <typename Type = Component>
-  Type* getTypedComponent(const string& name) {
-    try {
-      Component* comp = getComponent(name, nullptr);
-      if (Type* t = dynamic_cast<Type*>(comp))
-        return t;
-      else
-        LOG(DFATAL) << "Got component but couldn't cast for " << name << ": " << comp->getName();
-    } catch (std::out_of_range&) {
-      LOG(ERROR) << "Couldn't get component for " << name;
-      LOG(DFATAL) << "Valid names are: " << componentNames();
-    }
-    return nullptr;
-  }
-  string componentNames() const;
-
   void startThreads();
   void stopThreads();
   Thread* getThread(const string&);
@@ -79,8 +63,6 @@ class JuceModel : public ApplicationCommandTarget,
   const command::CommandMapProto& keyMap() const;
 
  private:
-  Component* getComponent(const string&, Component* parent) const;
-
   unique_ptr<JuceModelImpl> impl_;
   unique_ptr<DisableMap> disableMap_;
   Program* program_;

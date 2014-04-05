@@ -34,7 +34,6 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
                          layout.is_main()));
   }
   DCHECK(not name.empty()) << layout.ShortDebugString();
-  DCHECK_EQ(name, comp->getName());
   Panel* panel = dynamic_cast<Panel*>(comp.get());
   for (auto& component: layout.component()) {
     auto child = makeComponent(Context(component, constants, panel, addr));
@@ -49,7 +48,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
   }
 
   if (layout.has_padding())
-    panel->addToPanel(new Panel(name));
+    panel->addToPanel(new Panel(name + ".padding"));
 
   if (layout.has_dimensions()) {
     comp->setSize(constants.getDouble(layout.dimensions().width()),

@@ -1,7 +1,8 @@
 #include "rec/widget/waveform/WaveformModel.h"
 
 #include "rec/data/proto/Equals.h"
-#include "rec/program/JuceModel.h"
+#include "rec/gui/FindTypedComponent.h"
+#include "rec/program/Program.h"
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/Merge.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -98,8 +99,9 @@ void WaveformModel::layout(Component* waveform) {
     }
   }
 
-  auto cb = program::juceModel()->getTypedComponent("CommandBar");
-  auto ms = program::juceModel()->getTypedComponent("ModeSelector");
+  auto top = program::getProgram()->getTopComponent();
+  auto cb = gui::findComponent(top, "CommandBar");
+  auto ms = gui::findComponent(top, "ModeSelector");
   if (ms) {
     int dy = MODE_SELECTOR_OFFSET;
     if (desc_.show_times_at_top() == desc_.modes_at_top())

@@ -83,14 +83,6 @@ const gui::Layout& JuceModel::getLayout(const string& name) const {
   return impl_->getLayout(name);
 }
 
-Component* JuceModel::getComponent(const string& name, Component* parent) const {
-  return impl_->getComponent(name, parent);
-}
-
-string JuceModel::componentNames() const {
-  return impl_->componentNames();
-}
-
 bool JuceModel::setProperty(const string& name, bool value) {
   bool result = DisableMap::setProperty(name, value);
   if (result)

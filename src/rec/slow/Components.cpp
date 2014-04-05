@@ -5,9 +5,11 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.pb.h"
 #include "rec/gui/DropTarget.h"
+#include "rec/gui/FindTypedComponent.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/proto/Layout.h"
 #include "rec/program/JuceModel.h"
+#include "rec/program/Program.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
@@ -20,6 +22,7 @@
 #include "rec/widget/waveform/Zoom.h"
 
 using namespace rec::data;
+using namespace rec::gui;
 using namespace rec::program;
 
 namespace rec {
@@ -48,11 +51,13 @@ Components::Components(Component* parent)
 Components::~Components() {}
 
 void Components::init() {
-  auto jm = juceModel();
-  treeView_ = jm->getTypedComponent<widget::tree::TreeView>("TreeView");
-  waveform_ = jm->getTypedComponent<widget::waveform::Waveform>("Waveform");
+  auto top = getProgram()->getTopComponent();
+
+  treeView_ = findTypedComponent<widget::tree::TreeView>(top, "TreeView");
+  waveform_ = findTypedComponent<widget::waveform::Waveform>(top, "Waveform");
   waveform_->init();
-  gui::audio::Loops* loops = jm->getTypedComponent<gui::audio::Loops>("Loops");
+
+  auto loops = findTypedComponent<gui::audio::Loops>(top, "Loops");
   loops->setModel(loops);
   setDefaultCuttable(loops);
 }

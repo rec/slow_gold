@@ -326,30 +326,5 @@ Thread* JuceModelImpl::getThread(const string& name) {
   return threadMap_.at(name).get();
 }
 
-Component* JuceModelImpl::getComponent(
-    const string& name, Component* parent) const {
-  if (not componentMap_.get()) {
-    auto top = getComponentMap(program_->getTopComponent());
-    componentMap_ = make_unique<ComponentMap>(top);
-  }
-  DLOG(INFO) << componentMap_->size();
-  if (parent) {
-    return componentMap_->at(gui::ComponentKey(name, parent));
-  } else {
-    for (auto i: *componentMap_) {
-      if (i.first.first == name)
-        return i.first.second;
-    }
-    throw std::out_of_range(name);
-  }
-}
-
-string JuceModelImpl::componentNames() const {
-  StringArray names;
-  for (auto& i: *componentMap_)
-    names.add(i.first.first);
-  return str(names.joinIntoString(", "));
-}
-
 }  // namespace program
 }  // namespace rec

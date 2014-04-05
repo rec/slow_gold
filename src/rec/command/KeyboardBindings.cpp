@@ -20,8 +20,10 @@ void fillKeyPressMappingSet(const CommandMapProto& commandMap,
   mappings->clearAllKeyPresses();
   for (int i = 0; i < commandMap.entry_size(); ++i) {
     const CommandMapEntry& m = commandMap.entry(i);
-    for (int j = 0; j < m.key_size(); ++j)
-      mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
+    for (int j = 0; j < m.key_size(); ++j) {
+      if (m.id() != juce::StandardApplicationCommandIDs::quit)
+        mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
+    }
   }
 }
 

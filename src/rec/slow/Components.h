@@ -3,7 +3,6 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/data/DataListener.h"
-#include "rec/gui/GetComponentMap.h"
 #include "rec/gui/SetterResizer.h"
 #include "rec/music/Metadata.h"
 #include "rec/widget/tree/TreeView.h"
