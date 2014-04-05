@@ -1,4 +1,4 @@
- #ifndef __REC_APP_PROGRAM_INSTANCE__
+#ifndef __REC_APP_PROGRAM_INSTANCE__
 #define __REC_APP_PROGRAM_INSTANCE__
 
 #include <unordered_map>
