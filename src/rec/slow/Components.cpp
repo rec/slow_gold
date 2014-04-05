@@ -42,19 +42,17 @@ void enableAllDrawableButtons(Component *c, bool enabled) {
 Components::Components(Component* parent)
     : mainPanel_(gui::makeLayout("MainPanel", nullptr)),
       parent_(parent) {
+  parent->addChildComponent(mainPanel_.get());
 }
 
 Components::~Components() {}
 
 void Components::init() {
   auto jm = juceModel();
-  treeView_ = jm->getComponent<widget::tree::TreeView>(
-      "TreeView", parent_);
-  waveform_ = jm->getComponent<widget::waveform::Waveform>(
-      "Waveform", parent_);
+  treeView_ = jm->getTypedComponent<widget::tree::TreeView>("TreeView");
+  waveform_ = jm->getTypedComponent<widget::waveform::Waveform>("Waveform");
   waveform_->init();
-  gui::audio::Loops* loops = jm->getComponent<gui::audio::Loops>(
-      "Loops", parent_);
+  gui::audio::Loops* loops = jm->getTypedComponent<gui::audio::Loops>("Loops");
   loops->setModel(loops);
   setDefaultCuttable(loops);
 }

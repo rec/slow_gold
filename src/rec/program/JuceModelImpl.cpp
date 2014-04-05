@@ -1,5 +1,6 @@
 #include "rec/program/JuceModelImpl.h"
 
+#include "rec/base/make_unique.h"
 #include "rec/command/Command.pb.h"
 #include "rec/data/Address.h"
 #include "rec/data/Data.h"
@@ -13,6 +14,7 @@
 
 using namespace rec::command;
 using namespace rec::data;
+using namespace rec::gui;
 
 TRAN(OPEN_RECENT2, "Open recent");
 
@@ -82,8 +84,7 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
 }
 
 void JuceModelImpl::logMaps() {
-  if (true)
-    return;
+#ifdef JUCE_MODEL_LOG_MAPS
   LOG(INFO) << "There are " << commandMap_.size() << " callbacks.";
   LOG(INFO) << "There are " << layoutMap_.size() << " layouts.";
 
@@ -103,9 +104,9 @@ void JuceModelImpl::logMaps() {
   LOG(INFO) << "There are " << undeclared << " missing components out of "
             << total << " and " << empty << " empty layouts.";
 
-  if (false)
   for (auto& i: layoutMap_)
     LOG(INFO) << i.first << " : " << i.second.ShortDebugString();
+#endif
 }
 
 const MenuBar& JuceModelImpl::menuBar() const {
@@ -328,16 +329,25 @@ Thread* JuceModelImpl::getThread(const string& name) {
 Component* JuceModelImpl::getComponent(
     const string& name, Component* parent) const {
   if (not componentMap_.get()) {
-    componentMap_.reset(new gui::ComponentMap(
-        gui::getComponentMap(program_->getTopComponent())));
+    auto top = getComponentMap(program_->getTopComponent());
+    componentMap_ = make_unique<ComponentMap>(top);
   }
-  return componentMap_->at(name);
+  DLOG(INFO) << componentMap_->size();
+  if (parent) {
+    return componentMap_->at(gui::ComponentKey(name, parent));
+  } else {
+    for (auto i: *componentMap_) {
+      if (i.first.first == name)
+        return i.first.second;
+    }
+    throw std::out_of_range(name);
+  }
 }
 
 string JuceModelImpl::componentNames() const {
   StringArray names;
   for (auto& i: *componentMap_)
-    names.add(str(i.first));
+    names.add(i.first.first);
   return str(names.joinIntoString(", "));
 }
 

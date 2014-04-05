@@ -83,7 +83,7 @@ const gui::Layout& JuceModel::getLayout(const string& name) const {
   return impl_->getLayout(name);
 }
 
-Component* JuceModel::doGetComponent(const string& name, Component* parent) const {
+Component* JuceModel::getComponent(const string& name, Component* parent) const {
   return impl_->getComponent(name, parent);
 }
 

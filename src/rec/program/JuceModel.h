@@ -1,4 +1,4 @@
-#ifndef __REC_APP_PROGRAM_INSTANCE__
+ #ifndef __REC_APP_PROGRAM_INSTANCE__
 #define __REC_APP_PROGRAM_INSTANCE__
 
 #include <unordered_map>
@@ -57,19 +57,19 @@ class JuceModel : public ApplicationCommandTarget,
   }
 
   template <typename Type = Component>
-  Type* getComponent(const string& name, Component* parent) {
+  Type* getTypedComponent(const string& name) {
     try {
-      Component* comp = doGetComponent(name, parent);
+      Component* comp = getComponent(name, nullptr);
       if (Type* t = dynamic_cast<Type*>(comp))
         return t;
-      LOG(DFATAL) << "Got component but couldn't cast for " << name;
+      else
+        LOG(DFATAL) << "Got component but couldn't cast for " << name << ": " << comp->getName();
     } catch (std::out_of_range&) {
       LOG(ERROR) << "Couldn't get component for " << name;
       LOG(DFATAL) << "Valid names are: " << componentNames();
     }
     return nullptr;
   }
-  Component* getComponent(const string& name, Component* parent) const;
   string componentNames() const;
 
   void startThreads();
@@ -79,7 +79,7 @@ class JuceModel : public ApplicationCommandTarget,
   const command::CommandMapProto& keyMap() const;
 
  private:
-  Component* doGetComponent(const string&, Component* parent) const;
+  Component* getComponent(const string&, Component* parent) const;
 
   unique_ptr<JuceModelImpl> impl_;
   unique_ptr<DisableMap> disableMap_;

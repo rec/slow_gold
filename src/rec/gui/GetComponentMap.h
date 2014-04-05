@@ -8,7 +8,9 @@
 namespace rec {
 namespace gui {
 
-typedef std::map<string, Component*> ComponentMap;
+typedef std::pair<string, Component*> ComponentKey;
+
+typedef std::map<ComponentKey, Component*> ComponentMap;
 ComponentMap getComponentMap(Component*);
 
 }  // namespace gui

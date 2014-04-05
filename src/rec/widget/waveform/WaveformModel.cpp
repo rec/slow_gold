@@ -98,8 +98,8 @@ void WaveformModel::layout(Component* waveform) {
     }
   }
 
-  Component* cb = program::juceModel()->getComponent("CommandBar", parent_);
-  Component* ms = program::juceModel()->getComponent("ModeSelector", parent_);
+  auto cb = program::juceModel()->getTypedComponent("CommandBar");
+  auto ms = program::juceModel()->getTypedComponent("ModeSelector");
   if (ms) {
     int dy = MODE_SELECTOR_OFFSET;
     if (desc_.show_times_at_top() == desc_.modes_at_top())

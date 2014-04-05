@@ -55,15 +55,6 @@ command {
 }
 
 command {
-  id_string: "QUIT"
-  category: "(None)"
-  desc {
-    menu: "Quit"
-    full: "Quit SlowGold"
-  }
-}
-
-command {
   id_string: "RECENT_FILES"
   category: "(None)"
   index: 31

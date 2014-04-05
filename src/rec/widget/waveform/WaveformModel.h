@@ -14,7 +14,7 @@ class WaveformModel {
  public:
   WaveformModel(Component* parent)
       : isDraggingCursor_(false), parent_(parent) {
-  }
+   }
 
   util::Range<SampleTime > getTimeRange() const;
   SampleTime xToTime(int x) const;

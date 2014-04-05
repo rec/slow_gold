@@ -19,7 +19,7 @@ namespace BinaryData
     const int            Commands_defSize = 111;
 
     extern const char*   File_def;
-    const int            File_defSize = 2296;
+    const int            File_defSize = 2186;
 
     extern const char*   Gui_def;
     const int            Gui_defSize = 4236;
@@ -178,7 +178,7 @@ namespace BinaryData
     const int            StartStopButtonOnDisabled_svgSize = 14201;
 
     extern const char*   ZoomInCursor_svg;
-    const int            ZoomInCursor_svgSize = 17598;
+    const int            ZoomInCursor_svgSize = 18741;
 
     extern const char*   ZoomMode_svg;
     const int            ZoomMode_svgSize = 19762;

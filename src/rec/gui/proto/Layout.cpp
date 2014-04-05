@@ -34,6 +34,7 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
                          layout.is_main()));
   }
   DCHECK(not name.empty()) << layout.ShortDebugString();
+  DCHECK_EQ(name, comp->getName());
   Panel* panel = dynamic_cast<Panel*>(comp.get());
   for (auto& component: layout.component()) {
     auto child = makeComponent(Context(component, constants, panel, addr));
