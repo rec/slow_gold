@@ -1,3 +1,5 @@
+#include <tuple>
+
 #include "rec/gui/proto/Switcher.h"
 
 #include "rec/data/AddressListener.h"
@@ -15,6 +17,14 @@ namespace rec {
 namespace gui {
 
 namespace {
+
+struct Part {
+  double min_;
+  double max_;
+  double pref_;
+
+  unique_ptr<Component> component_;
+};
 
 void layoutRepaint(Component* comp) {
   if (Panel* panel = dynamic_cast<Panel*>(comp))
@@ -48,17 +58,24 @@ class Switcher : public Panel, public AddressListener {
     removeAllChildren();
 
     MessageManagerLock l;
-    auto part = parts_[index].get();
-    Panel::addToPanel(part, -1.0, -1.0, -1.0);
+    auto& p = parts_[index];
+    Panel::addToPanel(p.component_.get(), p.min_, p.max_, p.pref_);
+    DLOG(INFO) << p.component_->getNumChildComponents();
     applyRecursiveDepthFirst(&layoutRepaint, this);
   }
 
-  void addToPanel(Component* c, double, double, double) override {
-    parts_.push_back(unique_ptr<Component>(c));
+  void addToPanel(Component* c, double min, double max, double pref) override {
+    Part part;
+    part.component_.reset(c);
+    part.min_ = min;
+    part.max_ = max;
+    part.pref_ = pref;
+
+    parts_.push_back(std::move(part));
   }
 
  private:
-  vector<unique_ptr<Component>> parts_;
+  vector<Part> parts_;
   int index_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Switcher);
