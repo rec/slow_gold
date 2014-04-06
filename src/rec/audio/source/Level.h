@@ -30,10 +30,8 @@ class Level : public Wrappy {
 
   virtual std::pair<float, float> getMinMax(const AudioSourceChannelInfo& info,
                                             int channel) {
-    std::pair<float, float> mm;
-    info.buffer->findMinMax(channel, info.startSample, info.numSamples,
-                            mm.first, mm.second);
-    return mm;
+    auto r = info.buffer->findMinMax(channel, info.startSample, info.numSamples);
+    return std::make_pair(r.getStart(), r.getEnd());
   }
 
   void clear() {

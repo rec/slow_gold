@@ -19,7 +19,6 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
       convertSample<Sample, float>(frame->sample_[ch], &(out[ch][s]));
   }
 }
-
 }  // namespace
 
 template <typename Frame>
@@ -55,7 +54,7 @@ template <typename Frame>
 SampleTime Frames<Frame>::getAudioBlock(const Info& info,
                                         SampleTime offset) const {
   int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
-  float** out = info.buffer->getArrayOfChannels();
+  float** out = info.buffer->getArrayOfWritePointers();
   DCHECK_GE(numSamples, 0) << info.numSamples << ", " << length_ << ", "  << offset;
   fillArrayOfChannels(frames_, offset, out, info.startSample, numSamples);
   return numSamples;

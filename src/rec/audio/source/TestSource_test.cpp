@@ -29,7 +29,7 @@ void testSource(PositionableAudioSource* source,
   for (int c = 0; c < CHANNELS; ++c) {
     for (int i = 0; i < numSamples; ++i) {
       EXPECT_EQ(Testy::getSample(readOffset + i),
-                *buffer.getSampleData(c, writeOffset + i))
+                *buffer.getReadPointer(c, writeOffset + i))
         << "channel: " << c
         << ", sample: " << i
         << ", numSamples: " << numSamples;

@@ -178,7 +178,7 @@ namespace BinaryData
     const int            StartStopButtonOnDisabled_svgSize = 14201;
 
     extern const char*   ZoomInCursor_svg;
-    const int            ZoomInCursor_svgSize = 18741;
+    const int            ZoomInCursor_svgSize = 816;
 
     extern const char*   ZoomMode_svg;
     const int            ZoomMode_svgSize = 19762;

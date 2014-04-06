@@ -17,8 +17,8 @@ class DetentSlider : public juce::Slider {
   void setDetentRadius(float r) { detentRadius_ = r; }
   void clearDetent() { detentSet_ = false; }
 
-  virtual double snapValue(double value, bool userIsDragging) {
-    if (!(userIsDragging && detentSet_))
+  double snapValue(double value, juce::Slider::DragMode dragMode) override {
+    if (dragMode == juce::Slider::notDragging or not detentSet_)
       return value;
 
     float d = fabsf(getPositionOfValue(value) - getPositionOfValue(detent_));

@@ -19,7 +19,7 @@ class Testy : public PositionableAudioSource {
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     for (int c = 0; c < i.buffer->getNumChannels(); ++c) {
       for (int s = 0; s < i.numSamples; ++s)
-        *i.buffer->getSampleData(c, s + i.startSample) = getSample(position_ + s);
+        *i.buffer->getWritePointer(c, s + i.startSample) = getSample(position_ + s);
     }
     position_ += i.numSamples;
   }
@@ -70,8 +70,8 @@ class Testy : public PositionableAudioSource {
 
     for (int c = 0; c < channels; ++c) {
       for (int i = 0; i < length; ++i) {
-        float samples[] = { *buffer[0]->getSampleData(c, i),
-          *buffer[1]->getSampleData(c, i) };
+        float samples[] = { *buffer[0]->getReadPointer(c, i),
+          *buffer[1]->getReadPointer(c, i) };
         EXPECT_NEAR(samples[0], samples[1], delta)
         << "At sample " << i << " channel " << c;
         maxDelta = std::max(maxDelta, fabsf(samples[0] - samples[1]));

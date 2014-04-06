@@ -174,6 +174,20 @@ public:
                    Justification justificationType,
                    bool useEllipsesIfTooBig) const;
 
+    /** Draws a line of text within a specified rectangle.
+
+        The text will be positioned within the rectangle based on the justification
+        flags passed-in. If the string is too long to fit inside the rectangle, it will
+        either be truncated or will have ellipsis added to its end (if the useEllipsesIfTooBig
+        flag is true).
+
+        @see drawSingleLineText, drawFittedText, drawMultiLineText, GlyphArrangement::addJustifiedText
+    */
+    void drawText (const String& text,
+                   const Rectangle<float>& area,
+                   Justification justificationType,
+                   bool useEllipsesIfTooBig) const;
+
     /** Tries to draw a text string inside a given space.
 
         This does its best to make the given text readable within the specified rectangle,
@@ -351,6 +365,11 @@ public:
     */
     void drawEllipse (float x, float y, float width, float height,
                       float lineThickness) const;
+
+    /** Draws an elliptical stroke using the current colour or brush.
+        @see fillEllipse, Path::addEllipse
+    */
+    void drawEllipse (const Rectangle<float>& area, float lineThickness) const;
 
     //==============================================================================
     /** Draws a line between two points.

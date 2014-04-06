@@ -73,7 +73,7 @@ int RubberBand::retrieve(int copied, const AudioSourceChannelInfo& info) {
   if (!available)
     return 0;
 
-  float** out = info.buffer->getArrayOfChannels();
+  float** out = info.buffer->getArrayOfWritePointers();
   int startSample = info.startSample + copied;
 
   vector<float*> output(2);

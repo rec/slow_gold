@@ -44,7 +44,7 @@ struct Copier {
       // This probably isn't right.
       int c1 = (chanFrom * c) / chanTo;
       int c2 = (chanFrom * (c + 1) - 1) / chanTo;
-      float* fromSamp = from_.buffer_->getSampleData(c1, startFrom.toInt());
+      float* fromSamp = from_.buffer_->getWritePointer(c1, startFrom.toInt());
 
       if (c1 == c2) {
         to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt());

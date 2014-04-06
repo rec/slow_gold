@@ -18,7 +18,7 @@ float** Implementation::getSourceSamples(int numSamples) {
   info_.numSamples = numSamples;
   buffer_.setSize(buffer_.getNumChannels(), numSamples, false, false, true);
   source_->getNextAudioBlock(info_);
-  return buffer_.getArrayOfChannels();
+  return buffer_.getArrayOfWritePointers();
 }
 
 void Implementation::setStretch(const Stretch& s) {
