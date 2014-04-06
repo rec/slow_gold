@@ -41,10 +41,6 @@ class Switcher : public Panel, public AddressListener {
     index_(-1) {
   }
 
-  ~Switcher() {
-    removeAllChildren();
-  }
-
   void operator()(const data::Value& value) override {
     int index;
     if (value.has_bool_f())
@@ -55,27 +51,19 @@ class Switcher : public Panel, public AddressListener {
     if (index == index_)
       return;
     index_ = index;
-    removeAllChildren();
-
     MessageManagerLock l;
-    auto& p = parts_[index];
-    Panel::addToPanel(p.component_.get(), p.min_, p.max_, p.pref_);
-    DLOG(INFO) << p.component_->getNumChildComponents();
-    applyRecursiveDepthFirst(&layoutRepaint, this);
+    for (auto i = 0; i < getNumChildComponents(); ++i)
+      getChildComponent(i)->setVisible(i == index_);
   }
 
-  void addToPanel(Component* c, double min, double max, double pref) override {
-    Part part;
-    part.component_.reset(c);
-    part.min_ = min;
-    part.max_ = max;
-    part.pref_ = pref;
-
-    parts_.push_back(std::move(part));
+  void layout() override {
+    auto bounds = getLocalBounds();
+    for (auto i = 0; i < getNumChildComponents(); ++i)
+      getChildComponent(i)->setBounds(bounds);
+    repaint();
   }
 
  private:
-  vector<Part> parts_;
   int index_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Switcher);

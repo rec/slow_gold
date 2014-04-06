@@ -34,6 +34,7 @@ void Panel::addToPanel(Component* c) {
 }
 
 void Panel::addToPanel(Component* c, double min, double max, double pref) {
+  DCHECK(not c->getParentComponent());  // Can't move items around.
   accumulate(min, max, pref);
   layoutManager_.setItemLayout(components_.size(), min, max, pref);
   components_.push_back(c);

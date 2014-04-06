@@ -69,8 +69,8 @@ class Shutdown : public Thread {
   Shutdown() : Thread("Shutdown") {}
 
   void run() override {
+    LOG(INFO) << "SlowGold: shutdown starting.";
     getInstance()->currentFile_->saveState();
-    DLOG(INFO) << "SHUTDOWN!";
     auto i = 0;
     while (data::getDataCenter()->hasUpdates()) {
       if (++i < SHUTDOWN_COUNT) {
@@ -82,6 +82,7 @@ class Shutdown : public Thread {
     }
     if (data::getDataCenter()->hasUpdates())
       LOG(ERROR) << "Shutdown has updates still pending.";
+    LOG(INFO) << "Juce: shutdown starting.";
     thread::runOnMessageThread(&JUCEApplication::quit);
   }
 };

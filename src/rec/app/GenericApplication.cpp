@@ -20,29 +20,22 @@ GenericApplication::GenericApplication(ApplicationFunction i,
 GenericApplication::~GenericApplication() {}
 
 void GenericApplication::initialise(const String&) {
-  doLog("GenericApplication::initialise");
-
   setApplicationName(name());
 
   audio::format::mpg123::initializeOnce();
   if (initializer_)
     initializer_(this);
   window_.reset(createWindow());
-  doLog("running window initializer");
   window_->initialise();
-  doLog("setting look and feel");
   gui::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
 
-  doLog("checking for updates");
   if (autoCheckForUpdates())
     downloadNewVersionIfNeeded(version(), name());
 
-  doLog("running startup thread");
   thread::runInNewThread("startup thread",
                          STARTUP_THREAD_PRIORITY,
                          window_.get(),
                          &Window::startup);
-  doLog("initialise finished");
   LOG(INFO) << name() << ": initialise finished.";
 
   // FLAGS_log_dir = str(File::getSpecialLocation(
@@ -50,8 +43,6 @@ void GenericApplication::initialise(const String&) {
 }
 
 void GenericApplication::shutdown() {
-  LOG(INFO) << name() << ": shutdown starting...";
-
   gui::dialog::shutdownDialog();
   if (window_) {
     window_->shutdown();
