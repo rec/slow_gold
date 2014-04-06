@@ -19,7 +19,7 @@ namespace BinaryData
     const int            Commands_defSize = 111;
 
     extern const char*   File_def;
-    const int            File_defSize = 2186;
+    const int            File_defSize = 2228;
 
     extern const char*   Gui_def;
     const int            Gui_defSize = 4236;
@@ -31,13 +31,13 @@ namespace BinaryData
     const int            Selection_defSize = 5800;
 
     extern const char*   Settings_def;
-    const int            Settings_defSize = 4894;
+    const int            Settings_defSize = 4900;
 
     extern const char*   Transport_def;
     const int            Transport_defSize = 3739;
 
     extern const char*   KeyStrokeMap_def;
-    const int            KeyStrokeMap_defSize = 5474;
+    const int            KeyStrokeMap_defSize = 5426;
 
     extern const char*   CommandBar_def;
     const int            CommandBar_defSize = 710;
@@ -100,7 +100,7 @@ namespace BinaryData
     const int            MenuCollection_defSize = 364;
 
     extern const char*   Menus_def;
-    const int            Menus_defSize = 3866;
+    const int            Menus_defSize = 3872;
 
     extern const char*   Threads_def;
     const int            Threads_defSize = 351;

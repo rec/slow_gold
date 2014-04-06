@@ -184,9 +184,9 @@ command {
 }
 
 command {
-  id_string: "SET_SAVE_FORMAT"
+  id_string: "SET_EXPORT_FORMAT"
   index: 4
-  submenu_name: "Set File Format For Saved Audio"
+  submenu_name: "Set Format For Exported Audio Files"
   category: "(None)"
   setter: "rec.audio.AudioSettings:file_type_for_save"
   setter_type: SELECTION

@@ -84,7 +84,7 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fCommand_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/slow/commands/Command.proto\022\010rec.s"
     "low\032\031rec/command/Command.proto\032 rec/comm"
-    "and/map/CommandMap.proto\"\342\022\n\007Command\"\326\022\n"
+    "and/map/CommandMap.proto\"\222\022\n\007Command\"\206\022\n"
     "\002Id\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PROGRAM\020:\022\022\n"
     "\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFERENCES\020\002"
     "\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CLEAR_KEYBOAR"
@@ -113,12 +113,10 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fCommand_2eproto() {
     "OPEN_PREVIOUS_FILE\020N\022\033\n\027OPEN_SLOWGOLD_DI"
     "RECTORY\020J\022\032\n\026PASTE_OVER_LOOP_POINTS\020`\022\022\n"
     "\014RECENT_FILES\020\340\266\r\022\010\n\004REDO\020\027\022\023\n\017REQUEST_S"
-    "UPPORT\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022\r\n\tSAV"
-    "E_FILE\020E\022\027\n\023SAVE_FILE_SELECTION\020F\022\014\n\006SEL"
-    "ECT\020\220\241\017\022\021\n\013SELECT_ONLY\020\240\357\017\022\022\n\014SET_LANGUA"
-    "GE\020\320\3418\022\025\n\017SET_SAVE_FORMAT\020\360\252+\022\024\n\020SET_SAV"
-    "E_AS_AIFF\020a\022\024\n\020SET_SAVE_AS_FLAC\020b\022\023\n\017SET"
-    "_SAVE_AS_OGG\020c\022\023\n\017SET_SAVE_AS_WAV\020d\022\031\n\025T"
+    "UPPORT\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022\017\n\013EXP"
+    "ORT_FILE\020E\022\031\n\025EXPORT_FILE_SELECTION\020F\022\014\n"
+    "\006SELECT\020\220\241\017\022\021\n\013SELECT_ONLY\020\240\357\017\022\022\n\014SET_LA"
+    "NGUAGE\020\320\3418\022\027\n\021SET_EXPORT_FORMAT\020\360\252+\022\031\n\025T"
     "OGGLE_ADVANCED_MENUS\020;\022\034\n\030TOGGLE_AUTOMAT"
     "IC_UPDATES\020C\022\023\n\017TOGGLE_AUTOPLAY\020e\022\030\n\024TOG"
     "GLE_FOLLOW_CURSOR\020+\022\027\n\023TOGGLE_GRID_DISPL"
@@ -144,7 +142,7 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fCommand_2eproto() {
     "ZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECTION\020-\022\023"
     "\n\017FIRST_FREE_TYPE\020g\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 "
     "\022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSEL"
-    "ECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 ", 2509);
+    "ECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 ", 2429);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/Command.proto", &protobuf_RegisterTypes);
   Command::default_instance_ = new Command();
@@ -253,10 +251,6 @@ bool Command_Id_IsValid(int value) {
     case 94:
     case 95:
     case 96:
-    case 97:
-    case 98:
-    case 99:
-    case 100:
     case 101:
     case 102:
     case 103:
@@ -336,16 +330,12 @@ const Command_Id Command::RECENT_FILES;
 const Command_Id Command::REDO;
 const Command_Id Command::REQUEST_SUPPORT;
 const Command_Id Command::RESET_GAIN_TO_UNITY;
-const Command_Id Command::SAVE_FILE;
-const Command_Id Command::SAVE_FILE_SELECTION;
+const Command_Id Command::EXPORT_FILE;
+const Command_Id Command::EXPORT_FILE_SELECTION;
 const Command_Id Command::SELECT;
 const Command_Id Command::SELECT_ONLY;
 const Command_Id Command::SET_LANGUAGE;
-const Command_Id Command::SET_SAVE_FORMAT;
-const Command_Id Command::SET_SAVE_AS_AIFF;
-const Command_Id Command::SET_SAVE_AS_FLAC;
-const Command_Id Command::SET_SAVE_AS_OGG;
-const Command_Id Command::SET_SAVE_AS_WAV;
+const Command_Id Command::SET_EXPORT_FORMAT;
 const Command_Id Command::TOGGLE_ADVANCED_MENUS;
 const Command_Id Command::TOGGLE_AUTOMATIC_UPDATES;
 const Command_Id Command::TOGGLE_AUTOPLAY;

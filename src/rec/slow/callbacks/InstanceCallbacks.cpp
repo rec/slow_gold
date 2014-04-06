@@ -21,7 +21,7 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/callbacks/CommandEditors.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
-#include "rec/slow/callbacks/SaveFile.h"
+#include "rec/slow/callbacks/ExportFile.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/file/VirtualFile.h"
@@ -222,6 +222,9 @@ void addInstanceCallbacks(Program* c) {
   addCallback(c, slow::Command::CLOSE_FILE, closeFile);
   addCallback(c, slow::Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
 
+  addCallback(c, slow::Command::EXPORT_FILE, saveFile);
+  addCallback(c, slow::Command::EXPORT_FILE_SELECTION, saveFileSelection);
+
   addCallback(c, slow::Command::KEYBOARD_MAPPINGS, keyboardMappings);
   addCallback(c, slow::Command::MIDI_MAPPINGS, midiMappings);
 
@@ -229,8 +232,6 @@ void addInstanceCallbacks(Program* c) {
 
   addCallback(c, slow::Command::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
 
-  addCallback(c, slow::Command::SAVE_FILE, saveFile);
-  addCallback(c, slow::Command::SAVE_FILE_SELECTION, saveFileSelection);
   addCallback(c, slow::Command::ZOOM_OUT, zoomOut);
   addCallback(c, slow::Command::ZOOM_OUT_FULL, zoomOutFull);
   addCallback(c, slow::Command::ZOOM_TO_SELECTION, zoomToSelection);

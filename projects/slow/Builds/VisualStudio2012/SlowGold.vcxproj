@@ -262,7 +262,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowProgram.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
@@ -1679,7 +1679,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowProgram.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>

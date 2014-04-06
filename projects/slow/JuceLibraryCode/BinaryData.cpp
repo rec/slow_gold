@@ -205,21 +205,21 @@ static const unsigned char temp_binary_data_3[] =
 "}\n"
 "\n"
 "command {\n"
-"  id_string: \"SAVE_FILE\"\n"
+"  id_string: \"EXPORT_FILE\"\n"
 "  category: \"File\"\n"
 "  desc {\n"
-"    menu: \"Save...\"\n"
-"    full: \"Save the full transformed file in the default save format.\"\n"
+"    menu: \"Export As Audio File...\"\n"
+"    full: \"Export the entire transformed file in the default save format.\"\n"
 "  }\n"
 "  disabled: \"empty\"\n"
 "}\n"
 "\n"
 "command {\n"
-"  id_string: \"SAVE_FILE_SELECTION\"\n"
+"  id_string: \"EXPORT_FILE_SELECTION\"\n"
 "  category: \"File\"\n"
 "  desc {\n"
-"    menu: \"Save Selection...\"\n"
-"    full: \"Save just the selected portion of the transformed file in the default save format.\"\n"
+"    menu: \"Export Selection As Audio File...\"\n"
+"    full: \"Export just the selected portion of the transformed file in the default save format.\"\n"
 "  }\n"
 "  disabled: \"empty\"\n"
 "}\n"
@@ -932,9 +932,9 @@ static const unsigned char temp_binary_data_7[] =
 "}\n"
 "\n"
 "command {\n"
-"  id_string: \"SET_SAVE_FORMAT\"\n"
+"  id_string: \"SET_EXPORT_FORMAT\"\n"
 "  index: 4\n"
-"  submenu_name: \"Set File Format For Saved Audio\"\n"
+"  submenu_name: \"Set Format For Exported Audio Files\"\n"
 "  category: \"(None)\"\n"
 "  setter: \"rec.audio.AudioSettings:file_type_for_save\"\n"
 "  setter_type: SELECTION\n"
@@ -1384,12 +1384,10 @@ static const unsigned char temp_binary_data_9[] =
 "  key: \"shift + command + z\"\r\n"
 "}\r\n"
 "entry {\r\n"
-"  id_string: \"SAVE_FILE\"\r\n"
-"  key: \"command + s\"\r\n"
+"  id_string: \"EXPORT_FILE\"\r\n"
 "}\r\n"
 "entry {\r\n"
-"  id_string: \"SAVE_FILE_SELECTION\"\r\n"
-"  key: \"command + shift + s\"\r\n"
+"  id_string: \"EXPORT_FILE_SELECTION\"\r\n"
 "}\r\n"
 "entry {\r\n"
 "  id_string: \"SELECT_ALL\"\r\n"
@@ -2310,9 +2308,9 @@ static const unsigned char temp_binary_data_30[] =
 "    id_string: \"OPEN_PREVIOUS_FILE\"\n"
 "    id_string: \"RECENT_FILES\"\n"
 "    id_string: \"NONE\"\n"
-"    id_string: \"SAVE_FILE\"\n"
-"    id_string: \"SAVE_FILE_SELECTION\"\n"
-"    id_string: \"SET_SAVE_FORMAT\"\n"
+"    id_string: \"EXPORT_FILE\"\n"
+"    id_string: \"EXPORT_FILE_SELECTION\"\n"
+"    id_string: \"SET_EXPORT_FORMAT\"\n"
 "  }\n"
 "}\n"
 "menu {\n"
@@ -14026,13 +14024,13 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xc4c114d6:  numBytes = 219; return Colors_def;
         case 0x82ae93fc:  numBytes = 1480; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
-        case 0xd807eee2:  numBytes = 2186; return File_def;
+        case 0xd807eee2:  numBytes = 2228; return File_def;
         case 0x7975c6e1:  numBytes = 4236; return Gui_def;
         case 0xb618588d:  numBytes = 1788; return LoopPoints_def;
         case 0x6d98aeb2:  numBytes = 5800; return Selection_def;
-        case 0x29a9fa09:  numBytes = 4894; return Settings_def;
+        case 0x29a9fa09:  numBytes = 4900; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3739; return Transport_def;
-        case 0xdf58e54b:  numBytes = 5474; return KeyStrokeMap_def;
+        case 0xdf58e54b:  numBytes = 5426; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 710; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 155; return Constants_def;
         case 0x391c9e6b:  numBytes = 573; return GainPanel_def;
@@ -14053,7 +14051,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
         case 0x3d219c23:  numBytes = 227; return Waveform_def;
         case 0xc7af2e43:  numBytes = 364; return MenuCollection_def;
-        case 0x1d81d01a:  numBytes = 3866; return Menus_def;
+        case 0x1d81d01a:  numBytes = 3872; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;

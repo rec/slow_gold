@@ -242,12 +242,10 @@ entry {
   key: "shift + command + z"
 }
 entry {
-  id_string: "SAVE_FILE"
-  key: "command + s"
+  id_string: "EXPORT_FILE"
 }
 entry {
-  id_string: "SAVE_FILE_SELECTION"
-  key: "command + shift + s"
+  id_string: "EXPORT_FILE_SELECTION"
 }
 entry {
   id_string: "SELECT_ALL"

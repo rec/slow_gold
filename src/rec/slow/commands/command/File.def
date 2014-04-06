@@ -71,21 +71,21 @@ command {
 }
 
 command {
-  id_string: "SAVE_FILE"
+  id_string: "EXPORT_FILE"
   category: "File"
   desc {
-    menu: "Save..."
-    full: "Save the full transformed file in the default save format."
+    menu: "Export As Audio File..."
+    full: "Export the entire transformed file in the default save format."
   }
   disabled: "empty"
 }
 
 command {
-  id_string: "SAVE_FILE_SELECTION"
+  id_string: "EXPORT_FILE_SELECTION"
   category: "File"
   desc {
-    menu: "Save Selection..."
-    full: "Save just the selected portion of the transformed file in the default save format."
+    menu: "Export Selection As Audio File..."
+    full: "Export just the selected portion of the transformed file in the default save format."
   }
   disabled: "empty"
 }
