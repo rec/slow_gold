@@ -42,7 +42,6 @@ namespace {
 
 const int BUTTON_HEIGHT = 20;
 const double MAX_BUTTON_PADDING = 8.0;
-const int BUTTON_Y_PADDING = 8;
 const int TOP_RIGHT_PADDING = 10;
 
 String currentlyAssignedTo(const String& commandName) {

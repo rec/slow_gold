@@ -7,8 +7,6 @@
 namespace rec {
 namespace util {
 
-static const int STATE_SIZE = 16;
-
 typedef vector<byte> ByteVector;
 
 static int randomItemIndex(int size) {

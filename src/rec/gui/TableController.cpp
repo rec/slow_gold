@@ -9,7 +9,6 @@ namespace gui {
 
 static const int CELL_MARGIN_VERTICAL = 2;
 static const int CELL_MARGIN_HORIZONTAL = 2;
-static const int VERTICAL_SCROLL_WIDTH = 20;
 
 static const juce::Colour SELECTED_COLOR(0xffefef80);
 static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;

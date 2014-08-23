@@ -22,7 +22,6 @@ namespace waveform {
 
 namespace {
 
-const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int ZOOM_CURSOR_X_HOTSPOT = 8;
 const int ZOOM_CURSOR_Y_HOTSPOT = 8;
 const int ZOOM_CURSOR_WIDTH = 24;
@@ -30,7 +29,7 @@ const int ZOOM_CURSOR_HEIGHT = 24;
 
 static juce::Image getZoomCursor() {
   juce::Image img(
-      juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT, false);
+      juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT, true);
   Graphics g(img);
   ptr<Drawable> drawable(BINARY_DATA(ZoomInCursor_svg, Drawable));
   drawable->draw(g, 1.0f);

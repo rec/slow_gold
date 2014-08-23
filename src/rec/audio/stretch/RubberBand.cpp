@@ -16,7 +16,8 @@ static const int OPTIONS =
   RubberBandStretcher::OptionTransientsSmooth +
   0
 ;
-
+    
+#ifdef DEATH
 static const int DEATH_OPTIONS =
   RubberBandStretcher::OptionPitchHighQuality |
   RubberBandStretcher::OptionProcessRealTime |
@@ -24,6 +25,7 @@ static const int DEATH_OPTIONS =
   // RubberBandStretcher::OptionTransientsSmooth +
   0
 ;
+#endif
 
 static const double EPSILON = 1e-6;
 
@@ -65,8 +67,6 @@ void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       process();
   }
 }
-
-static const int CHANNELS = 2;
 
 int RubberBand::retrieve(int copied, const AudioSourceChannelInfo& info) {
   int available = stretcher_->available();

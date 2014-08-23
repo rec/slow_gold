@@ -15,8 +15,6 @@ static const int MIN_WIDTH = 825;
 static const int MIN_HEIGHT = 550;
 static const int MIN_X = 50;
 static const int MIN_Y = 40;
-static const int X_FUDGE = 50;
-static const int Y_FUDGE = 50;
 
 static const int START_WIDTH = 900;
 static const int START_HEIGHT = 650;

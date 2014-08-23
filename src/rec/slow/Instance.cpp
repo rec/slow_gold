@@ -54,7 +54,6 @@ using namespace rec::widget::waveform;
 
 using gui::DialogLocker;
 
-static const int MS_TILL_TOOLTIP = 700;
 static const int FILLER_PRIORITY = 4;
 
 using juce::TooltipWindow;

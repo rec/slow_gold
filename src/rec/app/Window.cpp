@@ -5,8 +5,8 @@ namespace rec {
 namespace app {
 
 // Skin.
-static const int SLEEP_BEFORE_STARTUP = 0;
-static const int SLEEP_AFTER_STARTUP = 0;
+//static const int SLEEP_BEFORE_STARTUP = 0;
+//static const int SLEEP_AFTER_STARTUP = 0;
 
 Window::Window(GenericApplication* application,
                const String& name,

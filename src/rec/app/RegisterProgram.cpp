@@ -9,7 +9,7 @@ namespace app {
 namespace {
 
 const bool USE_POSTDATA = false;
-const char* const EMPTY_PARAMETER = "NONE";
+//const char* const EMPTY_PARAMETER = "NONE";
 
 }  // namespace
 

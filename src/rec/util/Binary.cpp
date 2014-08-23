@@ -50,6 +50,7 @@ String* construct(const string& s) {
 
 template <>
 Drawable* construct(const string& s) {
+  DLOG(INFO) << s.size() << ":\n" << s;
   return Drawable::createFromImageData(s.data(), s.size());
 }
 
@@ -78,4 +79,3 @@ XmlElement* createBinary(const char* data, size_t len, const string& filename) {
 
 }  // namespace util
 }  // namespace rec
-

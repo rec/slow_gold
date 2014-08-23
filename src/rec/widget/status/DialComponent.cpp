@@ -22,11 +22,10 @@ namespace time {
 // Skin
 
 // Half a degree.
-static const double ALMOST_ZERO = 0.5 / 360.0;
+//static const double ALMOST_ZERO = 0.5 / 360.0;
 
 const double DialComponent::PI = 3.14159265358979323846264;
 const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
-const double SMALLEST_REAL_LENGTH = 0.1;
 const SampleTime SMALLEST_TIME_CHANGE = 44;
 
 DialComponent::DialComponent(const Dial& desc)

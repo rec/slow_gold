@@ -12,7 +12,6 @@ namespace util {
 
 using namespace rec::widget::waveform;
 
-const int PARAMETER_WAIT = 1000;
 static const char* FILENAME = "thumbnail.stream";
 
 BufferFiller::BufferFiller()

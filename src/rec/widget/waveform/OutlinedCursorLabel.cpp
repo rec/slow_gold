@@ -71,8 +71,6 @@ void OutlinedCursorLabel::textEditorTextChanged(TextEditor& e) {
   cursor_->setText(e.getText());
 }
 
-static const bool FIX = true;
-
 void OutlinedCursorLabel::editorShown(TextEditor*) {
   if (showSelectionButtons_)
     removeChildComponent(&selectButton_);

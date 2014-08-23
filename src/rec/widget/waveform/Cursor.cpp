@@ -28,7 +28,6 @@ namespace rec {
 
 static const SampleTime SMALLEST_TIME_SAMPLES = 10000;
 static const int CAPTION_PADDING_INTERNAL = 10;
-static const int CAPTION_OFFSET = 10000;
 static const int CAPTION_PADDING = 2;
 static const int CAPTION_X_OFFSET = -3;
 static const int CAPTION_Y_OFFSET = 6;

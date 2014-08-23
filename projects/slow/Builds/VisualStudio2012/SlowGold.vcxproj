@@ -259,10 +259,10 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CommandEditors.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowProgram.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
@@ -1479,6 +1479,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_opengl\opengl\juce_OpenGLTexture.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\capture\juce_CameraDevice.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\native\juce_android_CameraDevice.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1583,6 +1586,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Trans.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandCallback.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\EditButton.h"/>
@@ -1626,6 +1630,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Internal.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\ZipData.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\ApplyRecursive.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LoopsCuttable.h"/>
@@ -1637,6 +1642,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Dump.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\FindTypedComponent.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Font.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h"/>
@@ -1691,10 +1697,10 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CommandEditors.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowProgram.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
@@ -1801,6 +1807,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\ModalCallback.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\RunOnMessageThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Undo.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\Circular.h"/>
@@ -1976,9 +1983,9 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_utils\juce_audio_utils.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharacterFunctions.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_ASCII.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF8.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF16.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF32.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF8.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_Identifier.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_LocalisedStrings.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_NewLine.h"/>
@@ -2003,6 +2010,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_OptionalScopedPointer.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_ReferenceCountedObject.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_ScopedPointer.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_SharedResourcePointer.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_Singleton.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_WeakReference.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\containers\juce_AbstractFifo.h"/>
@@ -2395,6 +2403,8 @@
     <None Include="..\..\art\icon\StartStopButtonDisabled.svg"/>
     <None Include="..\..\art\icon\StartStopButtonOn.svg"/>
     <None Include="..\..\art\icon\StartStopButtonOnDisabled.svg"/>
+    <None Include="..\..\art\icon\ZoomInCursor-new.svg"/>
+    <None Include="..\..\art\icon\ZoomInCursor-old.svg"/>
     <None Include="..\..\art\icon\ZoomInCursor.svg"/>
     <None Include="..\..\art\icon\ZoomMode.svg"/>
     <None Include="..\..\art\icon\ZoomModeDisabled.svg"/>
@@ -2425,7 +2435,6 @@
     <None Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_opengl\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_video\juce_module_info"/>
-    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc"/>

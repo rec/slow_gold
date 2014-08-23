@@ -9,8 +9,6 @@ namespace thread {
 
 namespace {
 
-const int THREAD_SLEEP = 50;
-
 struct HasOwner {
   explicit HasOwner(void* owner = nullptr) : owner_(owner) {}
   bool operator()(const HasOwner* that) { return owner_ == that->owner_; }

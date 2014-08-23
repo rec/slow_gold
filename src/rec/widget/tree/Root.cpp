@@ -28,8 +28,6 @@ using namespace rec::gui;
 
 namespace {
 
-const int ROOT_WAIT_TIME = 1000;
-
 File getOpennessFile() {
   return app::getAppFile("TreeOpenness.xml");
 }

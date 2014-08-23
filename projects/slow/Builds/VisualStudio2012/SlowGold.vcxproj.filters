@@ -880,6 +880,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CommandEditors.cpp">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.cpp">
+      <Filter>SlowGold\src\slow\callbacks</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClCompile>
@@ -887,9 +890,6 @@
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp">
-      <Filter>SlowGold\src\slow\callbacks</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.cpp">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowProgram.cpp">
@@ -2449,6 +2449,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_opengl\opengl\juce_OpenGLTexture.cpp">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\capture\juce_CameraDevice.cpp">
+      <Filter>Juce Modules\juce_video\capture</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\native\juce_android_CameraDevice.cpp">
       <Filter>Juce Modules\juce_video\native</Filter>
     </ClCompile>
@@ -2739,6 +2742,9 @@
     <ClInclude Include="..\..\..\..\src\rec\base\types.h">
       <Filter>SlowGold\src\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandCallback.h">
+      <Filter>SlowGold\src\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\src\command</Filter>
     </ClInclude>
@@ -2868,6 +2874,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\ZipData.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\ApplyRecursive.h">
+      <Filter>SlowGold\src\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h">
       <Filter>SlowGold\src\gui\audio</Filter>
     </ClInclude>
@@ -2899,6 +2908,9 @@
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h">
+      <Filter>SlowGold\src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Dump.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\FindTypedComponent.h">
@@ -3063,6 +3075,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CommandEditors.h">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.h">
+      <Filter>SlowGold\src\slow\callbacks</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClInclude>
@@ -3070,9 +3085,6 @@
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h">
-      <Filter>SlowGold\src\slow\callbacks</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ExportFile.h">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowProgram.h">
@@ -3391,6 +3403,9 @@
       <Filter>SlowGold\src\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h">
+      <Filter>SlowGold\src\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\RunOnMessageThread.h">
       <Filter>SlowGold\src\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h">
@@ -3918,13 +3933,13 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_ASCII.h">
       <Filter>Juce Modules\juce_core\text</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF8.h">
+      <Filter>Juce Modules\juce_core\text</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF16.h">
       <Filter>Juce Modules\juce_core\text</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF32.h">
-      <Filter>Juce Modules\juce_core\text</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharPointer_UTF8.h">
       <Filter>Juce Modules\juce_core\text</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_Identifier.h">
@@ -3997,6 +4012,9 @@
       <Filter>Juce Modules\juce_core\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_ScopedPointer.h">
+      <Filter>Juce Modules\juce_core\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_SharedResourcePointer.h">
       <Filter>Juce Modules\juce_core\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\memory\juce_Singleton.h">
@@ -5171,6 +5189,12 @@
     <None Include="..\..\art\icon\StartStopButtonOnDisabled.svg">
       <Filter>SlowGold\art\icon</Filter>
     </None>
+    <None Include="..\..\art\icon\ZoomInCursor-new.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomInCursor-old.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
     <None Include="..\..\art\icon\ZoomInCursor.svg">
       <Filter>SlowGold\art\icon</Filter>
     </None>
@@ -5260,9 +5284,6 @@
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_video\juce_module_info">
       <Filter>Juce Modules\juce_video</Filter>
-    </None>
-    <None Include=".\icon.ico">
-      <Filter>Juce Library Code</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
