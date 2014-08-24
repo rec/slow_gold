@@ -15,25 +15,31 @@ class Timer : public Wrappy, public StateListener<Thread*> {
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);
-    if (thread_)
+    if (isRunning())
       thread_->notify();
   }
 
   virtual void setNextReadPosition(int64 time) {
     DCHECK_GE(time, 0);
     Wrappy::setNextReadPosition(time);
-    if (thread_)
+    if (isRunning())
       thread_->notify();
   }
 
   void operator()(Thread* t) override { thread_ = t; }
 
   void broadcastTime() {
-    broadcastState<SampleTime>(getNextReadPosition());
+    if (isRunning())
+      broadcastState<SampleTime>(getNextReadPosition());
   }
 
  private:
   Thread* thread_;
+
+  bool isRunning() const {
+    return thread_ and not thread_->threadShouldExit();
+  }
+
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Timer);
 };

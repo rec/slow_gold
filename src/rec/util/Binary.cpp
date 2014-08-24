@@ -31,10 +31,8 @@ void binaryProtoMerged(const string& s, Message* message) {
   BinaryNames names;
   copy::copy(s, &names);
 
-  for (auto& name: names.name()) {
-    // DLOG(INFO) << "Merging " << name;
+  for (auto& name: names.name())
     copy::merge(getNamedResource(name + "_def"), message);
-  }
 }
 
 string getNamedResource(const string& name) {
@@ -50,7 +48,6 @@ String* construct(const string& s) {
 
 template <>
 Drawable* construct(const string& s) {
-  DLOG(INFO) << s.size() << ":\n" << s;
   return Drawable::createFromImageData(s.data(), s.size());
 }
 
@@ -74,7 +71,8 @@ Drawable* createBinary(const char* data, size_t len, const string& filename) {
 template <>
 XmlElement* createBinary(const char* data, size_t len, const string& filename) {
   BinaryOrFile b(data, len, filename);
-  return XmlDocument::parse(*ptr<String>(createBinary<String>(b.data_, b.length_)));
+  auto binary = createBinary<String>(b.data_, b.length_);
+  return XmlDocument::parse(*ptr<String>(binary));
 }
 
 }  // namespace util

@@ -177,14 +177,8 @@ namespace BinaryData
     extern const char*   StartStopButtonOnDisabled_svg;
     const int            StartStopButtonOnDisabled_svgSize = 14201;
 
-    extern const char*   ZoomInCursornew_svg;
-    const int            ZoomInCursornew_svgSize = 18741;
-
-    extern const char*   ZoomInCursorold_svg;
-    const int            ZoomInCursorold_svgSize = 17598;
-
     extern const char*   ZoomInCursor_svg;
-    const int            ZoomInCursor_svgSize = 816;
+    const int            ZoomInCursor_svgSize = 17598;
 
     extern const char*   ZoomMode_svg;
     const int            ZoomMode_svgSize = 19762;
@@ -235,7 +229,7 @@ namespace BinaryData
     extern const char* namedResourceList[];
 
     // Number of elements in the namedResourceList array.
-    const int namedResourceListSize = 74;
+    const int namedResourceListSize = 72;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

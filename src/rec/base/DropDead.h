@@ -13,7 +13,7 @@ enum FailureMode {
 };
 
 // Make a time-limited demo
-// #define DROP_DEAD_DATE 2014, 9, 1
+#define DROP_DEAD_DATE 2015, 1, 1
 
 #ifdef DROP_DEAD_DATE
 

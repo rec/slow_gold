@@ -80,9 +80,8 @@ class Shutdown : public Thread {
         break;
       }
     }
-    if (data::getDataCenter()->hasUpdates())
-      LOG(ERROR) << "Shutdown has updates still pending.";
     LOG(INFO) << "Juce: shutdown starting.";
+    getInstance()->shutdown();
     thread::runOnMessageThread(&JUCEApplication::quit);
   }
 };

@@ -74,7 +74,7 @@ class Waveform : public Component,
   CursorList* getCursorsMutable() { return &cursors_; }
 
   void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&) override;
-  CriticalSection* lock() { return &lock_; }
+  CriticalSection* lock() { return &lock_;}
   int getCursorX(uint index) const;
   void setCursorText(int index, const String& text);
   void setIsDraggingCursor(bool d);
@@ -108,7 +108,7 @@ class Waveform : public Component,
   CursorList cursors_;
   Cursor* timeCursor_;
 
-  juce::MouseCursor	zoomCursor_;
+  juce::MouseCursor zoomCursor_;
   Loading loading_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);

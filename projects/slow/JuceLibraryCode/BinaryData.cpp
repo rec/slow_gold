@@ -6174,169 +6174,8 @@ static const unsigned char temp_binary_data_55[] =
 
 const char* StartStopButtonOnDisabled_svg = (const char*) temp_binary_data_55;
 
-//================== ZoomInCursor-new.svg ==================
+//================== ZoomInCursor.svg ==================
 static const unsigned char temp_binary_data_56[] =
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
-"<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n"
-"<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\r\n"
-"<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\r\n"
-"\t width=\"18.771px\" height=\"18.479px\" viewBox=\"0 0 18.771 18.479\" enable-background=\"new 0 0 18.771 18.479\" xml:space=\"preserve\">\r\n"
-"<metadata><?xpacket begin=\"\xef\xbb\xbf\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\n"
-"<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 5.0-c060 61.134777, 2010/02/12-17:32:00        \">\n"
-"   <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-"      <rdf:Description rdf:about=\"\"\n"
-"            xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\"\n"
-"            xmlns:xmpGImg=\"http://ns.adobe.com/xap/1.0/g/img/\">\n"
-"         <xmp:CreateDate>2014-03-30T19:35:28-04:00</xmp:CreateDate>\n"
-"         <xmp:ModifyDate>2014-03-30T19:35:29-04:00</xmp:ModifyDate>\n"
-"         <xmp:CreatorTool>Adobe Illustrator CS5.1</xmp:CreatorTool>\n"
-"         <xmp:Thumbnails>\n"
-"            <rdf:Alt>\n"
-"               <rdf:li rdf:parseType=\"Resource\">\n"
-"                  <xmpGImg:width>256</xmpGImg:width>\n"
-"                  <xmpGImg:height>252</xmpGImg:height>\n"
-"                  <xmpGImg:format>JPEG</xmpGImg:format>\n"
-"                  <xmpGImg:image>/9j/4AAQSkZJRgABAgEASABIAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEA&#xA;AQBIAAAAAQAB/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoK&#xA;DBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwc"
-"NDA0YEBAYGhURFRofHx8f&#xA;Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgA/AEAAwER&#xA;AAIRAQMRAf/EAaIAAAAHAQEBAQEAAAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAA&#xA;AQACAwQFBgcICQoLEAACAQMDAgQCBgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicY"
-"EUMpGhBxWxQiPB&#xA;UtHhMxZi8CRygvElQzRTkqKyY3PCNUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE&#xA;1OT0ZXWFlaW1xdXl9WZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZ&#xA;qbnJ2en5KjpKWmp6ipqqusra6voRAAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhI"
-"gZxgZEy&#xA;obHwFMHR4SNCFVJicvEzJDRDghaSUyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp&#xA;0+PzhJSktMTU5PRldYWVpbXF1eX1RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo&#xA;+DlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+v/aAAwDAQACEQMRAD8A9U4q7FXYq7FXYq7FXYq7"
-"&#xA;FUHq2s6Ro9k99q19Bp9nH9u5upEhjHzZyoxV4z5v/wCcvvyv0YvDo4ufMN0uwNsnoW/IdjNMFb6U&#xA;Rhirx7zH/wA5n/mNfMyaJp9ho0BrwYq13OP9nIVjP/IrFXnOsfnr+cGrkm882agoavJbWX6mpr1H&#xA;G2EIpirFL7zBr1+WN9qV1dlqhjPPJISD1ryY9cVS/FV8U00LiSF2jkHR0JU7+4xVPNM/MDz5pZU6&#xA;b5"
-"j1OzC0osF5Oi0FKDirgEbdMVZxoX/OUH50aTxU64NQhX/dN9BFNX5yBVl/4fFXqPlf/nN2UFI/&#xA;NXltWH7d1pcpFPlbzk/8nsVe3eSvz2/K7zi0cGk63FFfyUC6fef6LcFj+yiyUWQ/8Yy2Ks+xV2Ku&#xA;xV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxVL9f8w6H5e0yXVNbvodO0+H+8uLhwi1pUKK&#xA;/aY02Ubnt"
-"ir5k/Mv/nMx+Ulh+X1mAoqra1fpUn/Kgt67exl/4DFXzd5m83+aPNF+b/zDqdxqd1vx&#xA;e4csEB/ZjT7CL7KAMVSfFXYq7FXYq7FXYq7FXYq7FXYq9O/Lv/nIj8y/JLRQW9+dU0iPY6XqBaaM&#xA;L4ROT6kXtxbj7HFX1Z+V3/OSvkDzy8VhLIdD16Sirp14y8JXPa3n+FZPZSFY9lxV61irsVdirsVd&#xA;irsVdirsVdirsVdi"
-"rsVdirsVdirsVeTfnL/zkP5W/LuJ9PgC6t5oZax6bG3wQ1Gz3Lj7A8EHxH2G&#xA;+Kvirz5+Y/m/z1qx1LzHftcuCfq9svwW8Cn9mGIbL8+p7k4qxnFXYq7FXYq7FXYq7FXYq7FXYq7F&#xA;XYq7FXYq93/J3/nKfzL5TeDSPNTS655dFESZm5XtsvQcHY/vUUfsOfkwApir7J8teZ9A8z6PBrOg&#xA;3sd/ptwKxzxHv3VlNGR17qw"
-"BHfFU0xV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV83/APOQf/OTcehN&#xA;c+U/JM6y62paHUtWWjJamlDHAejTdmbonT7X2VXx/cXFxczyXFzK81xMxeWaRi7u7GrMzGpJJ6k4&#xA;qp4q7FXYq7FU10Dyr5l8xXX1XQdLutUuB9pLWF5eI8WKghR7nFXq3l7/AJxE/N/VFWS9gs9Fjbel&#xA;7cBnp/qWwn39mpirPNO/5wcnKhtS83"
-"Kjb1jtrIuPb43mT/iOKpwP+cIfK1N/M19Xv+5h/riqjdf8&#xA;4PaEyUtfNV1E9D8UtrHKK9tlki/XirF9Y/5wk84wBjo/mGwvqVKrcxzWrGnT7AuRU/PFXmnmj/nH&#xA;r83/AC4ry3nl2e6tU3NzYFbxaD9orCXkUf6yjFXnbo8btHIpR0JV0YUII2IIOKrcVdirsVdirNfy&#xA;u/NnzV+XWtjUNGl9SzlIGoaXKT6Fwg/mA+y4/"
-"Zcbj3FQVX3p+W/5l+WPzB8vprGhT140S9spKCe2&#xA;lIr6ci/8RYbN2xVleKuxV2KuxV2KuxV2KuxV2KuxV2Kvm/8A5yb/AOcg20KOfyT5TuSutyrx1bUo&#xA;WFbVGG8EZH+7mH2mH2B0+L7Kr48JJNTuTirWKuxV2Ksw/L38p/PPn+9MHl3TzJbxsFudRmPp2sJP&#xA;88pB3/yVBb2xV9U/l9/ziD5D0IR3fmeV/MeoihMT1hs0"
-"b2iU8pP9m1D/ACjFXuWnaZpumWkdlptp&#xA;DZWcQpFbW8axRKPBUQKo+7FUTirsVdirsVdirsVYn51/Kr8v/OkTL5h0W3upyKLfKvpXS06Unj4y&#xA;UHgTT2xV8zfmV/zhz5h0tZtQ8kXZ1myWrHTLnjHeKo3ojjjFN/wh7AHFXzve2N7YXctnewSWt3Ax&#xA;Se3mUxyIw6qysAQfniqhirsVdirKvy3/ADG8w+QPM0Gu6NIfhIS"
-"8s2JEVzBWrRSDfr2P7J3GKv0H&#xA;/L7z7oPnryxa+YNFk5W844zwNT1IJlA5wyAdGWv0ihGxxVkeKuxV2KuxV2KuxV2KuxV2KvJv+ch/&#xA;zli/LvysINPdW80asrR6bGaH0U6PcuPBOiDu3sDir4IuLie5uJbm4kaa4mdpJpXJZ3dzVmZjuSSa&#xA;k4qp4q7FWwCTQbk4q+kvyP8A+cUrrWUtvMXnxJLTSnAltNFBKTzqdw05FG"
-"iQ/wAo+M/5PdV9b6Xp&#xA;em6VYQafplrFZWNsoSC2gQRxoo7KqgAYqisVdirsVdirsVdirsVdirsVdirAPzU/JTyZ+Y1gy6nB&#xA;9V1dFpaazbqouIyPsq/+/Y/8hvoKnfFXw7+Z35UebPy71r9H63DztpSTYalECbe4Qd0Y9GFfiQ7j&#xA;5UJVYZirsVdir0j8i/zevvy382pdOXl0C/Kw6zZrvWMH4ZkX/fkVSR4io74q/QWwv"
-"7PULG3v7GZL&#xA;izuo1mtriM8keNxyVlI6gg4qr4q7FXYq7FXYq7FXYql/mHX9M8vaHfa3qkvo6fp0L3FxJtXigrRQ&#xA;aVZuijudsVfnD+Y/nzVvPXm+/wDMepEh7luNtb1qsFum0UK/6o6+Jqe+KsZxV2KtgEmg3JxV9e/8&#xA;43/843waZBaec/Odpz1d6TaTpMwNLUVqk0yHrMeqqfsdT8f2VX0tirsVdirsVdirsVdirsVd"
-"irsV&#xA;dirsVdiqTecPJ/l/zfoFzoWvWq3Wn3I3U7Ojj7MkbdUdexH6sVfAv5zfk/rX5a+ZGs5w9zot0WfS&#xA;NTIoJYxuUemyypWjD6RscVefYq7FXYq+q/8AnD382mbn+XerzVoHuPL8jnsKvPbCv0yJ/svbFX1T&#xA;irsVdirsVdirsVdir5U/5zM/Mtudn+X1hJRQEv8AWmU9Sa/V4G+X96R/qYq+VsVdirsVfSf/ADil&#x"
-"A;+R6azdJ588xWwfSrSQjRbSUVWedDQzsD1SJhRfF/9XdV9g4q7FXYq7FXYq7FXYq7FXYq7FXYq7FX&#xA;Yq7FXYqx3z/5E0Hzz5Xu/L2tRcre4WsM6gepBMv93NET0ZD94qDsTir87PPXkvWfJfmm+8uaunG7&#xA;snosig8JYm3jljJ6q67+3Q7jFUgxV2Ko3RdY1DRdWs9W02YwX9hMlxbTL1V42DL9G24xV+k35fec&#xA;rDzn5"
-"O0vzJZUEeoQh5Yga+lMvwzRH/UkUr+OKshxV2KuxV2KuxVB6zq1lo+kX2rXz+nZ6fBJdXL+&#xA;EcKF2P3Lir8z/N/ma/8ANHmjU/MN+f8AStTuHuHWtQgY/BGv+SiUUewxVJ8VdirMPyn/AC9vfP8A&#xA;550/y7AWjt5CZtRuVFTDax0Mr/PcKv8AlEYq/RrS9LsNK0210zT4FtrGyiSC2gQUVI4wFVR8gMVR&#xA;WKuxV2KuxV2K"
-"uxV2KuxV2KuxV2KuxV2KuxV2KuxV4f8A85U/lQnm3yY3mLToeWv+XY2mHEfFNZD4&#xA;povcp/eJ8iB9rFXw3irsVdir6h/5wr8+NFf6t5HupP3Vyv6S0wHtKgCXCD/WTgwH+S2KvrPFXYq7&#xA;FXYq7FXhv/OX3m86N+V40eF+N15huUtiBs31eCk0xH+yVEPs2Kvh3FXYq7FX2z/ziD+Xw0LyHL5n&#xA;u46aj5jfnESPiSzhJWI"
-"f89G5P7jj4Yq97xV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxVx&#xA;AYEEVB2IPQjFX53fnz+Xq+RfzK1LSreMppV0RfaVtQC3nJPAe0Tho/8AY4q88xV2Ksk/LfzZL5R8&#xA;96J5iQkJp91G9wFrVrdjwnXb+aJmGKv0vR0kRZI2Do4DI6moIO4IIxVvFXYq7FXYq+LP+cz/ADG1&#xA;9+Y2n6IjVg0awUslek92xkf741"
-"ixV8/Yq7FU18q6BdeYvMul6Da7XGqXUNqjdl9VwpY+yg1OKv02&#xA;0zTrTTNNtNNsoxFZ2UMdvbRDosUShEUfJVGKonFXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXY&#xA;q7FXYq+df+c0PJy3/kzTPNMKf6Totz9XuWA/49rugqT/AJMyoB/rHFXxrirsVdir9FvyG8xt5h/K&#xA;LyzqEj85ktBaTsd2L2bG3Jb3b0uX04qz7"
-"FXYq7FXYq/Ob89dYOr/AJwebLwnkF1CW1Vq1qtnS2Wh&#xA;8KQ4qwTFXYq9r/5xE8vLqn5vwXsi8o9Fs7i9FenNgLZPp/f8h8sVfdOKuxV2KuxV2KuxV2KuxV2K&#xA;uxV2KuxV2KuxV2KuxV2KuxV2KsU/Nfy+vmH8tfMukFPUkudPnNulK/v4kMsP3SopxV+a2KuxV2Kv&#xA;tD/nCvWDc/l3qulu1X0/U2dBXpHcQoQKf66OcVfQ"
-"mKuxV2KuxV+XfmC+N/r2pXxbkbu6nnLA1BMk&#xA;jNWvfriqX4q7FX1P/wA4Oacpn83akw+JFsraM17OZnfb/YLir6txV2KuxV2KuxV2KuxV2KuxV2Ku&#xA;xV2KuxV2KuxV2KuxV2KuxVxAIodweoxV+XvmTThpnmLVNNAoLK7ntwOtBFKyf8a4qluKuxV9S/8A&#xA;ODl8Vu/N9iTtJHYzotenBp1Ygf7MVxV9X4q7FXYq7FX5V4q"
-"7FXYq+v8A/nCED/C3mY9/r0O//PE4&#xA;q+lcVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdir81fzWVV/NHziqgKq65qQVRs&#xA;ABdybDFWK4q7FX0r/wA4Q/8AKVeZf+YGH/k9ir6/xV2KuxV2KvyumieGZ4ZBSSNijjrupocVWYq7&#xA;FX1z/wA4PXSNoXmq1FOcV1aytvvSWORRt/zyOKvpvFXYq7FXYq7FXY"
-"q7FXYq7FXYq7FXYq7FXYq7&#xA;FXYq7FXYq7FXYq/M78ybpbz8xfNN2tONxq9/KtDUUe6kYUP04qxzFXYq+mP+cIIXPmTzRMB+7Szt&#xA;0Y+7ysR/xA4q+vMVdirsVdir8yvzA0w6X588x6aV4iz1O8gUUoOKTuq0FBsQNsVSDFXYq+kf+cJN&#xA;YEHnHzDo5an16wjuVUmlWtZgnTuaXJxV9h4q7FXYq7FXYq7FXYq7FXYq7FXYq"
-"7FXYq7FXYq7FXYq&#xA;7FXYqhdV1CDTdLvNRn/uLKCS4l7fBEhdvwXFX5dXNxLc3EtxMeUsztJI3izGpP3nFVLFXYq+tv8A&#xA;nB3TCmk+bNUI2uJ7S2Rv+MCSuwG3/F4rvir6exV2KuxV2KvgL/nKDQv0T+dGuFV4w6gIL6H39aJR&#xA;If8Akar4q8oxV2KvRv8AnHrzQvlz83/Lt5K/C1upzYXJOw43imFS3ssjq30Yq/Q7FXYq"
-"7FXYq7FX&#xA;Yq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXl3/OS/mddA/JzXGV+NxqirpduP5jdHjKP+RAkOKvz&#xA;8xV2KuxV92/84j6CdM/Jy0umXi+sXlzemvXiGFsv3i3qPnir2fFXYq7FXYq+U/8AnN3yuRL5b81R&#xA;psyy6XdP4UJntx+M2KvlfFXYquR3jdZI2KOhDI6mhBG4IIxV+k35VedYvOn5f6L5hVgZ7q3Vb5R"
-"t&#xA;xuov3c4p2HqKSPamKssxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2Kvj/8A5zS88i98&#xA;x6X5NtpKw6TH9d1BQdvrNwo9JWHikPxD2fFXzXirsVVLe3nubiK3gQyTzOscUairM7GiqB4knFX6&#xA;b+S/L0flzyjo2gx0I0yzgtWYftPFGFd/9kwJxVOcVdirsVdirAfz28lN5x/K7W9Jgj9S/ii+uaeo&#xA;F"
-"WNxa/vFRfeRQY/9lir86cVdirsVfR//ADhz+ZQ0vzDd+SNQm42Ws1uNM5GirexrR0Ff9/RL96AD&#xA;rir7FxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxVJvOXmvS/KflfUvMWptxs9NhaV1BoX&#xA;bpHGv+VI5CL7nFX5r+ZfMOpeY/MGoa7qb+pfalO9xO3YM5rxXwVR8KjsMVSzFXYq9Z/5xh8lnzN+&#xA;bWmyyx87"
-"HQ66pdEjblAQIB8/XZDTwBxV994q7FXYq7FXYq7FX58/85Efl23kn8y7+3gi9PSNUJ1D&#xA;SyPsiOZiXiH/ABik5LT+WnjirzHFXYqr2N7d2F7Be2crQXdrIs1vOhoySRkMrKfEEVxV+h35Kfmp&#xA;YfmN5Mg1NWVNXteNvrNoNjHcBftqv++5ftJ9I6qcVZ/irsVdirsVdirsVdirsVdirsVdirsVdirs&#xA;VdirsVfGH/OWX5w"
-"J5i11fJejTc9G0aUtqEyH4Z71aqU91g3X3avgDir56xV2KuxV9zf84mfl6fLX&#xA;5dDW7uPjqfmZlu2BFCtogItl3/mDNJ8mGKvbsVdirsVdirsVdiryX/nJX8rn88+QJJbCL1Ne0Mte&#xA;acqirypx/f24/wCMiqCo7sqjFXwLirsVdirMvyp/M7Wvy781w63p1Zrdv3WpWBbilxATUoetGHVG&#xA;psfaoKr9CfJ/nDQPN/l+11"
-"7QrkXOn3S1U9HRx9qORf2XQ7EfwxVOcVdirsVdirsVdirsVdirsVdi&#xA;rsVdirsVdirwH/nJf8/YvKmnTeUvLdyG8z3sZS9uI23sYXHiOkzqfh7qPi/lxV8VEkmp3JxVrFXY&#xA;q9B/I38s5/zB8/WWlujfoe1Iu9ZmHRbaMisddvilaiDvuT2OKv0RhhihiSGFFjijUJHGgCqqqKBV&#xA;A2AAxVdirsVdirsVdirsVdir4i/5y"
-"n/J1/KfmVvNWkQU8u65KzTIg+G2vWqzpQbKku7p/shsAMVe&#xA;EYq7FXYq9B/J/wDObzJ+WutCezY3Wi3Lg6npDtSOUDbmhNeEqjow+RqMVfePkTz/AOV/POgxa15e&#xA;u1uLdqLPCfhmgkpUxTR9UYfceoJG+KsixV2KuxV2KuxV2KuxV2KuxV2KuxV2KvAfz9/5yX07ypFc&#xA;+W/KU0d75nYNHcXqEPDYnofFXmH8vRT9r+XF"
-"XxddXVzd3Mt1dSvPczu0k88jF3d3NWZmNSSSaknF&#xA;VLFXYq7FXt3/ADjN+del+QNXudI1yCNNF1qRDNqip++t5VHFDIRu8O+4/Z+0O4Kr7jgnguII54JF&#xA;lglUPFKhDI6MKqysNiCNwRiq/FXYq7FXYq7FXYq7FUr8z+WtH8z6Be6DrMAuNNv4zFPGevirKf2X&#xA;RgGU9iK4q/PT82fyu1v8uvNUujagDLZyVl0vUAKJcQV"
-"oG9nXo69j7EEqsKxV2KuxVP8AyX5680+S&#xA;9ZTV/Ll89ldrRZFHxRSpWpjljPwup9+nUUOKvsX8qP8AnKnyb5tjh07zG0fl7zA1FpK1LKdvGKZj&#xA;8BP8kh9gzYq9wBDAEGoO4I6EYq7FXYq7FXYq7FXYq7FXYqk3mvzl5X8p6W2p+YtSh02zWoV5W+Jy&#xA;P2Y4xV5G/wAlATir5J/OD/nLLXfMSTaN5LWXRtGeqTagx43s6/"
-"5BU/uFP+SeR8RuMVfPZJJqdycV&#xA;axV2KuxV2KuxV79/zjr/AM5FT+UJ4fK3mmZpfK0rcbS7arPYOx+8wE/aX9nqO4Kr7TgnguII54JF&#xA;lglUPFKhDI6MKqysNiCNwRiq/FXYq7FXYq7FXYq7FWKfmX+W/l/8wfLE+hawnGv7yyvUAMttOB8M&#xA;kdfuZf2htir4A/Mb8tvM/kDzBJo2uwca1azvEBMFzEDQSRN+teq98VYri"
-"rsVdirsVeh/l7+fP5le&#xA;RVjt9K1I3WlIR/uKvgZ7cAdkqQ8Q/wCMbLir6H8nf85oeTL9Uh806Zc6Lc7Brm3/ANLtvcmgWZfk&#xA;Eb54q9f8v/mx+WvmFU/RHmXT7mSSnCAzpFPv0/cylJP+FxVlYIIqNwehxV2KuxVC6hqul6bB6+o3&#xA;kFlB/v24kSJNv8pyoxV5x5o/5yX/ACc8vqytrqapcL0t9LU3Rb5SrSD75MVeIeef"
-"+c0vMd6JLbyb&#xA;pcekwmoXUL3jcXNOzLFT0UPs3MYq+fvMPmXzB5j1J9T13UJ9SvpPtT3Dl2A/lWuyqOyrsMVSzFXY&#xA;q7FXYq7FXYq7FXYq9+/5x1/5yKn8oTw+VvNMzS+VpW42l21Wewdj95gJ+0v7PUdwVX2nBPBcQRzw&#xA;SLLBKoeKVCGR0YVVlYbEEbgjFV+KuxV2KuxV2KuxV2Ksc8+/l95Y89aDJovmC1E9u3xQTrR"
-"ZoJKU&#xA;EkL0PFh9x6EEYq+Fvze/Ivzb+W98XukN/oEr8bPWYVIjNfspMu/pSexND2JxV5virsVdirsVdirs&#xA;VTLTvMnmLTABpuqXdkB0FvPLEBX/AFGXFU4X81vzRVQq+cdcVVFFUaldgADsP3mKqF1+ZP5i3i8b&#xA;vzTq9wtCOMt/dOKHqKNIcVSG4ubi5lM1xK80rfakkYsx+ZNTiqlirsVdirsVdirYBPTFWsVdirsV&#"
-"xA;dirsVdir37/nHX/nIqfyhPD5W80zNL5WlbjaXbVZ7B2P3mAn7S/s9R3BVfacE8FxBHPBIssEqh4p&#xA;UIZHRhVWVhsQRuCMVX4q7FXYq7FXYq7FXYqoX9hY6hZzWN/bx3VncIY7i2mUPG6NsVZWqCDir5d/&#xA;Nr/nD3k02r/l24FavJ5fuHoPGltO5/4SQ/7Ltir5h1jRdW0XUJtN1azmsL+A8Zra4Ro3U/6rAbeB&#xA;xVBY"
-"q7FXYq7FXYq7FXYq7FXYq7FXYq7FXoX5ZfkZ5+/MGZJNMszaaPypLrN2DHbgDqI9uUreyA+5&#xA;GKvsj8r/AMgfInkGxYQ2y6rq9xE0N7qt4is7o4KvHHGeSxRsCQVFSRsxbFXzn/zkV/zjrP5Qnm80&#xA;+VoWl8rStyu7Ras9g7H7zAT9lv2eh7EqvAcVdirsVdirsVdir37/AJx1/wCcip/KE8PlbzTM0vla&#xA;VuNpdtVnsHY"
-"/eYCftL+z1HcFV9pwTwXEEc8EiywSqHilQhkdGFVZWGxBG4IxVfirsVdirsVdirsV&#xA;dirsVY95y/L7yd5zsPqXmTS4dQjAIilccZoq94pl4yJ/sT88VfNvnz/nCu+iMl15H1ZbmPqNM1Ih&#xA;JQPBLiNeDewZF/1sVeB+bPy289+UZWj8xaHdWCqeIuHQvbsenwzpyib6GxVjWKuxV2KuxV2KuxV2&#xA;Kqlvb3FzOkFvE808hC"
-"xxRqWdmPQKoqScVereSv8AnGD82PM7RyzacNCsGoTdaoTC1P8AJgAaavhV&#xA;QPfFX0b+Xf8Azid+Xfld47zWQ3mbVEoQ12gW0Vh3W1BYN/z0Zh7DFXtccccUaxxqEjQBURQAqqBQ&#xA;AAdAMVXYqsngguIJIJ41lglUpLE4DI6MKMrKdiCNiDir4s/5yK/5x1n8oTzeafK0LS+VpW5XdotW&#xA;ewdj95gJ+y37PQ9iVXgOKuxV2"
-"KuxV2KuxV79/wA46/8AORU/lCeHyt5pmaXytK3G0u2qz2DsfvMB&#xA;P2l/Z6juCq+04J4LiCOeCRZYJVDxSoQyOjCqsrDYgjcEYqvxV2KuxV2KuxV2KuxV2KuxVp0SRGjk&#xA;UOjgq6MKgg7EEHFWB+Y/yI/KPzCWfUPLNokz7tPaK1nIT/MWtzFyP+tXFXnOsf8AOFn5c3JL6Zqm&#xA;p6exr8DPDcRjwoGjR/8Ah8VYpe/84N3I"
-"JNj5wRwa0SexKU8ByWd6/diqXf8AQkPmr/qZbH/kTNiq&#xA;pD/zg/5jL0n80WaJT7SW8rmvyLJ+vFU903/nB3SEYHU/NlxcL3W2tEgPbbk8s/v2xVnGhf8AOJH5&#xA;N6YVa5s7vV3U1DX1ywFf9W2Fup+kYq9O8veTfKfluL0tA0ez0tSKMbWCOJm/13UBm+k4qnGKuxV2&#xA;KuxV2KrJ4ILiCSCeNZYJVKSxOAyOjCjKynYgjYg"
-"4q+LP+civ+cdZ/KE83mnytC0vlaVuV3aLVnsH&#xA;Y/eYCfst+z0PYlV4DirsVdirsVdirsVe/wD/ADjn/wA5EXHlK4g8qeZ5Xn8sTuEs7k1d7F3PYCpa&#xA;Fid1/Z6juCq+1cVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdiqyeC&#xA;C4gkgnjWWCVSksTgMjowoysp2II2IOKviz/nIr/nHWfyhP"
-"N5p8rQtL5Wlbld2i1Z7B2P3mAn7Lfs&#xA;9D2JVeA4q7FXYq7FW1VmYKoLMxoqjcknFX2H/wA44f8AOOC6Ett5y85WwbW2Al0rSpRUWgO6zTKf&#xA;93/yr+x/rfZVfSGKuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2KuxV2K&#xA;rJ4ILiCSCeNZYJVKSxOAyOjCjKynYgjYg4q+LP8AnIr/AJx1n8oTz"
-"eafK0LS+VpW5XdotWewdj95&#xA;gJ+y37PQ9iVXgOKuxVtVZmCqCzMaKo3JJxV9h/8AOOH/ADjguhLbecvOVsG1tgJdK0qUVFoDus0y&#xA;n/d/8q/sf632VX0hirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVd&#xA;irsVdiqyeCC4gkgnjWWCVSksTgMjowoysp2II2IOKviz/nIr/nHWfyhPN5p8"
-"rQtL5Wlbld2i1Z7B&#xA;2P3mAn7Lfs9D2JVeBKrMwVQWZjRVG5JOKvsP/nHD/nHBdCW285ecrYNrbAS6VpUoqLQHdZplP+7/&#xA;AOVf2P8AW+yq+kMVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsV&#xA;dirsVdirsVUb76l9SuPr3p/UfTf616/H0vS4nn6nP4eHGvKu1MVfJv5Rf9C/f8r51P8"
-"ARvqej6i/&#xA;4S+t8fqX1qp9X0uXxcuX+83qf8S44q+uMVdirsVf/9k=</xmpGImg:image>\n"
-"               </rdf:li>\n"
-"            </rdf:Alt>\n"
-"         </xmp:Thumbnails>\n"
-"         <xmp:MetadataDate>2014-03-30T19:35:29-04:00</xmp:MetadataDate>\n"
-"      </rdf:Description>\n"
-"      <rdf:Description rdf:about=\"\"\n"
-"            xmlns:dc=\"http://purl.org/dc/elements/1.1/\">\n"
-"         <dc:format>image/svg+xml</dc:format>\n"
-"      </rdf:Description>\n"
-"      <rdf:Description rdf:about=\"\"\n"
-"            xmlns:xmpTPg=\"http://ns.adobe.com/xap/1.0/t/pg/\"\n"
-"            xmlns:stDim=\"http://ns.adobe.com/xap/1.0/sType/Dimensions#\"\n"
-"            xmlns:xmpG=\"http://ns.adobe.com/xap/1.0/g/\">\n"
-"         <xmpTPg:MaxPageSize rdf:parseType=\"Resource\">\n"
-"            <stDim:w>0.260715</stDim:w>\n"
-"            <stDim:h>0.256646</stDim:h>\n"
-"            <stDim:unit>Inches</stDim:unit>\n"
-"         </xmpTPg:MaxPageSize>\n"
-"         <xmpTPg:NPages>1</xmpTPg:NPages>\n"
-"         <xmpTPg:HasVisibleTransparency>False</xmpTPg:HasVisibleTransparency>\n"
-"         <xmpTPg:HasVisibleOverprint>False</xmpTPg:HasVisibleOverprint>\n"
-"         <xmpTPg:PlateNames>\n"
-"            <rdf:Seq>\n"
-"               <rdf:li>Cyan</rdf:li>\n"
-"               <rdf:li>Magenta</rdf:li>\n"
-"               <rdf:li>Yellow</rdf:li>\n"
-"               <rdf:li>Black</rdf:li>\n"
-"            </rdf:Seq>\n"
-"         </xmpTPg:PlateNames>\n"
-"         <xmpTPg:SwatchGroups>\n"
-"            <rdf:Seq>\n"
-"               <rdf:li rdf:parseType=\"Resource\">\n"
-"                  <xmpG:groupName>Default Swatch Group</xmpG:groupName>\n"
-"                  <xmpG:groupType>0</xmpG:groupType>\n"
-"               </rdf:li>\n"
-"            </rdf:Seq>\n"
-"         </xmpTPg:SwatchGroups>\n"
-"      </rdf:Description>\n"
-"      <rdf:Description rdf:about=\"\"\n"
-"            xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\"\n"
-"            xmlns:stEvt=\"http://ns.adobe.com/xap/1.0/sType/ResourceEvent#\">\n"
-"         <xmpMM:DerivedFrom rdf:parseType=\"Resource\"/>\n"
-"         <xmpMM:DocumentID>xmp.did:F77F1174072068118083AB5EB34F1B97</xmpMM:DocumentID>\n"
-"         <xmpMM:InstanceID>xmp.iid:F77F1174072068118083AB5EB34F1B97</xmpMM:InstanceID>\n"
-"         <xmpMM:OriginalDocumentID>xmp.did:F77F1174072068118083AB5EB34F1B97</xmpMM:OriginalDocumentID>\n"
-"         <xmpMM:History>\n"
-"            <rdf:Seq>\n"
-"               <rdf:li rdf:parseType=\"Resource\">\n"
-"                  <stEvt:action>saved</stEvt:action>\n"
-"                  <stEvt:instanceID>xmp.iid:F77F1174072068118083AB5EB34F1B97</stEvt:instanceID>\n"
-"                  <stEvt:when>2014-03-30T19:35:29-04:00</stEvt:when>\n"
-"                  <stEvt:softwareAgent>Adobe Illustrator CS5.1</stEvt:softwareAgent>\n"
-"                  <stEvt:changed>/</stEvt:changed>\n"
-"               </rdf:li>\n"
-"            </rdf:Seq>\n"
-"         </xmpMM:History>\n"
-"      </rdf:Description>\n"
-"   </rdf:RDF>\n"
-"</x:xmpmeta>\n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                                                                                                    \n"
-"                           \n"
-"<?xpacket end=\"w\"?>\r\n"
-"\t</metadata>\r\n"
-"<path d=\"M18.771,16.355l-3.899-3.898c0.815-1.263,1.296-2.762,1.296-4.373C16.166,3.626,12.54,0,8.083,0S0,3.626,0,8.083\r\n"
-"\ts3.626,8.083,8.083,8.083c1.765,0,3.392-0.573,4.722-1.534l3.848,3.847L18.771,16.355z M2,8.083C2,4.729,4.729,2,8.083,2\r\n"
-"\tc3.354,0,6.083,2.729,6.083,6.083c0,3.354-2.729,6.083-6.083,6.083C4.729,14.166,2,11.438,2,8.083z\"/>\r\n"
-"</svg>\r\n";
-
-const char* ZoomInCursornew_svg = (const char*) temp_binary_data_56;
-
-//================== ZoomInCursor-old.svg ==================
-static const unsigned char temp_binary_data_57[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
 "<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\r\n"
@@ -6474,27 +6313,10 @@ static const unsigned char temp_binary_data_57[] =
 "\tc3.354,0,6.083,2.729,6.083,6.083c0,3.354-2.729,6.083-6.083,6.083C4.729,14.166,2,11.438,2,8.083z\"/>\r\n"
 "</svg>\r\n";
 
-const char* ZoomInCursorold_svg = (const char*) temp_binary_data_57;
-
-//================== ZoomInCursor.svg ==================
-static const unsigned char temp_binary_data_58[] =
-"<svg width=\"640\" height=\"480\" xmlns=\"http://www.w3.org/2000/svg\">\n"
-" <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->\n"
-"\n"
-" <g>\n"
-"  <title>Layer 1</title>\n"
-"  <g id=\"svg_6\">\n"
-"   <path fill=\"black\" id=\"svg_5\" d=\"m400.000031,300.651031l-33.234253,-33.225739c6.946899,-10.765533 11.046814,-23.542694 11.046814,-37.274536c-0.017029,-37.999054 -30.924286,-68.906311 -68.914825,-68.906311s-68.897797,30.907257 -68.897797,68.89"
-"7797s30.907257,68.897797 68.897797,68.897797c15.044495,0 28.912689,-4.884125 40.249329,-13.0755l32.799561,32.791046l18.053375,-18.104553zm-142.952484,-70.508789c0,-28.588791 23.261414,-51.85022 51.85022,-51.85022c28.588806,0 51.85022,23.261429 51.850"
-"22,51.85022c0,28.588806 -23.261414,51.85022 -51.85022,51.85022c-28.588806,0 -51.85022,-23.252899 -51.85022,-51.85022z\"/>\n"
-"  </g>\n"
-" </g>\n"
-"</svg>\n";
-
-const char* ZoomInCursor_svg = (const char*) temp_binary_data_58;
+const char* ZoomInCursor_svg = (const char*) temp_binary_data_56;
 
 //================== ZoomMode.svg ==================
-static const unsigned char temp_binary_data_59[] =
+static const unsigned char temp_binary_data_57[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -6651,10 +6473,10 @@ static const unsigned char temp_binary_data_59[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomMode_svg = (const char*) temp_binary_data_59;
+const char* ZoomMode_svg = (const char*) temp_binary_data_57;
 
 //================== ZoomModeDisabled.svg ==================
-static const unsigned char temp_binary_data_60[] =
+static const unsigned char temp_binary_data_58[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -6974,10 +6796,10 @@ static const unsigned char temp_binary_data_60[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomModeDisabled_svg = (const char*) temp_binary_data_60;
+const char* ZoomModeDisabled_svg = (const char*) temp_binary_data_58;
 
 //================== ZoomOutButton.svg ==================
-static const unsigned char temp_binary_data_61[] =
+static const unsigned char temp_binary_data_59[] =
 { 60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,101,110,99,111,100,105,110,103,61,34,117,116,102,45,56,34,63,62,10,60,33,45,45,32,71,101,110,101,114,97,116,111,114,58,32,65,100,111,98,101,32,73,108,108,117,115,116,114,97,116,111,
 114,32,49,49,32,66,117,105,108,100,32,49,57,54,44,32,83,86,71,32,69,120,112,111,114,116,32,80,108,117,103,45,73,110,32,46,32,83,86,71,32,86,101,114,115,105,111,110,58,32,54,46,48,46,48,32,66,117,105,108,100,32,55,56,41,32,32,45,45,62,10,60,33,68,79,67,
 84,89,80,69,32,115,118,103,32,80,85,66,76,73,67,32,34,45,47,47,87,51,67,47,47,68,84,68,32,83,86,71,32,49,46,48,47,47,69,78,34,32,32,32,32,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,84,82,47,50,48,48,49,47,82,69,67,45,83,86,71,
@@ -7504,10 +7326,10 @@ static const unsigned char temp_binary_data_61[] =
 49,50,34,62,117,114,115,111,60,47,116,115,112,97,110,62,60,116,115,112,97,110,32,120,61,34,54,55,46,56,57,54,34,32,121,61,34,48,34,32,102,111,110,116,45,102,97,109,105,108,121,61,34,39,77,121,114,105,97,100,45,82,111,109,97,110,39,34,32,102,111,110,116,
 45,115,105,122,101,61,34,49,50,34,62,114,60,47,116,115,112,97,110,62,60,47,116,101,120,116,62,10,9,9,9,60,47,115,119,105,116,99,104,62,10,9,9,60,47,103,62,10,9,60,47,115,118,103,62,10,0,0 };
 
-const char* ZoomOutButton_svg = (const char*) temp_binary_data_61;
+const char* ZoomOutButton_svg = (const char*) temp_binary_data_59;
 
 //================== ZoomOutButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_62[] =
+static const unsigned char temp_binary_data_60[] =
 { 60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,101,110,99,111,100,105,110,103,61,34,117,116,102,45,56,34,63,62,10,60,33,45,45,32,71,101,110,101,114,97,116,111,114,58,32,65,100,111,98,101,32,73,108,108,117,115,116,114,97,116,111,
 114,32,49,49,32,66,117,105,108,100,32,49,57,54,44,32,83,86,71,32,69,120,112,111,114,116,32,80,108,117,103,45,73,110,32,46,32,83,86,71,32,86,101,114,115,105,111,110,58,32,54,46,48,46,48,32,66,117,105,108,100,32,55,56,41,32,32,45,45,62,10,60,33,68,79,67,
 84,89,80,69,32,115,118,103,32,80,85,66,76,73,67,32,34,45,47,47,87,51,67,47,47,68,84,68,32,83,86,71,32,49,46,48,47,47,69,78,34,32,32,32,32,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,84,82,47,50,48,48,49,47,82,69,67,45,83,86,71,
@@ -8031,10 +7853,10 @@ static const unsigned char temp_binary_data_62[] =
 57,54,34,32,121,61,34,48,34,32,102,111,110,116,45,102,97,109,105,108,121,61,34,39,77,121,114,105,97,100,45,82,111,109,97,110,39,34,32,102,111,110,116,45,115,105,122,101,61,34,49,50,34,62,114,60,47,116,115,112,97,110,62,60,47,116,101,120,116,62,10,9,9,
 9,60,47,115,119,105,116,99,104,62,10,9,9,60,47,103,62,10,9,60,47,115,118,103,62,10,0,0 };
 
-const char* ZoomOutButtonDisabled_svg = (const char*) temp_binary_data_62;
+const char* ZoomOutButtonDisabled_svg = (const char*) temp_binary_data_60;
 
 //================== ZoomOutButtonPressed.svg ==================
-static const unsigned char temp_binary_data_63[] =
+static const unsigned char temp_binary_data_61[] =
 { 60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,101,110,99,111,100,105,110,103,61,34,117,116,102,45,56,34,63,62,10,60,33,45,45,32,71,101,110,101,114,97,116,111,114,58,32,65,100,111,98,101,32,73,108,108,117,115,116,114,97,116,111,
 114,32,49,49,32,66,117,105,108,100,32,49,57,54,44,32,83,86,71,32,69,120,112,111,114,116,32,80,108,117,103,45,73,110,32,46,32,83,86,71,32,86,101,114,115,105,111,110,58,32,54,46,48,46,48,32,66,117,105,108,100,32,55,56,41,32,32,45,45,62,10,60,33,68,79,67,
 84,89,80,69,32,115,118,103,32,80,85,66,76,73,67,32,34,45,47,47,87,51,67,47,47,68,84,68,32,83,86,71,32,49,46,48,47,47,69,78,34,32,32,32,32,34,104,116,116,112,58,47,47,119,119,119,46,119,51,46,111,114,103,47,84,82,47,50,48,48,49,47,82,69,67,45,83,86,71,
@@ -8559,10 +8381,10 @@ static const unsigned char temp_binary_data_63[] =
 49,50,34,62,117,114,115,111,60,47,116,115,112,97,110,62,60,116,115,112,97,110,32,120,61,34,54,55,46,56,57,54,34,32,121,61,34,48,34,32,102,111,110,116,45,102,97,109,105,108,121,61,34,39,77,121,114,105,97,100,45,82,111,109,97,110,39,34,32,102,111,110,116,
 45,115,105,122,101,61,34,49,50,34,62,114,60,47,116,115,112,97,110,62,60,47,116,101,120,116,62,10,9,9,9,60,47,115,119,105,116,99,104,62,10,9,9,60,47,103,62,10,9,60,47,115,118,103,62,10,0,0 };
 
-const char* ZoomOutButtonPressed_svg = (const char*) temp_binary_data_63;
+const char* ZoomOutButtonPressed_svg = (const char*) temp_binary_data_61;
 
 //================== ZoomToSelectionButton.svg ==================
-static const unsigned char temp_binary_data_64[] =
+static const unsigned char temp_binary_data_62[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -8771,10 +8593,10 @@ static const unsigned char temp_binary_data_64[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomToSelectionButton_svg = (const char*) temp_binary_data_64;
+const char* ZoomToSelectionButton_svg = (const char*) temp_binary_data_62;
 
 //================== ZoomToSelectionButtonDisabled.svg ==================
-static const unsigned char temp_binary_data_65[] =
+static const unsigned char temp_binary_data_63[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -8931,10 +8753,10 @@ static const unsigned char temp_binary_data_65[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomToSelectionButtonDisabled_svg = (const char*) temp_binary_data_65;
+const char* ZoomToSelectionButtonDisabled_svg = (const char*) temp_binary_data_63;
 
 //================== ZoomToSelectionButtonPressed.svg ==================
-static const unsigned char temp_binary_data_66[] =
+static const unsigned char temp_binary_data_64[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -9112,10 +8934,10 @@ static const unsigned char temp_binary_data_66[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomToSelectionButtonPressed_svg = (const char*) temp_binary_data_66;
+const char* ZoomToSelectionButtonPressed_svg = (const char*) temp_binary_data_64;
 
 //================== big-icon.png ==================
-static const unsigned char temp_binary_data_67[] =
+static const unsigned char temp_binary_data_65[] =
 { 137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,1,0,0,0,1,0,8,6,0,0,0,92,114,168,102,0,0,32,0,73,68,65,84,120,156,236,93,5,120,84,71,23,93,220,105,139,7,183,226,86,164,184,187,22,119,119,119,13,22,119,119,98,132,132,16,2,193,53,184,22,42,180,127,21,
 90,106,180,84,160,45,109,41,180,148,2,231,191,119,102,222,238,219,8,236,18,161,165,153,239,187,223,11,97,237,109,230,156,123,238,157,59,119,12,134,156,145,169,3,64,197,123,247,238,117,190,122,245,234,200,183,223,126,123,194,157,59,119,122,210,239,234,
 144,229,126,214,159,237,159,62,232,59,106,25,18,18,226,222,186,117,235,55,74,149,42,245,99,137,18,37,126,230,107,187,118,237,46,6,4,4,120,210,255,183,126,214,159,49,103,228,140,52,199,133,11,23,6,87,175,94,253,0,253,248,43,25,82,216,61,178,55,194,194,
@@ -10066,10 +9888,10 @@ static const unsigned char temp_binary_data_67[] =
 255,84,84,84,252,120,238,220,185,223,173,172,172,188,122,247,221,119,31,255,254,247,191,191,247,190,251,238,107,250,245,175,127,189,250,227,143,63,158,253,201,39,159,20,242,53,144,5,240,53,125,213,239,203,208,234,255,250,255,59,249,228,181,234,108,13,
 37,0,0,0,0,73,69,78,68,174,66,96,130,0,0 };
 
-const char* bigicon_png = (const char*) temp_binary_data_67;
+const char* bigicon_png = (const char*) temp_binary_data_65;
 
 //================== icon.png ==================
-static const unsigned char temp_binary_data_68[] =
+static const unsigned char temp_binary_data_66[] =
 { 137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,32,0,0,0,32,8,6,0,0,0,115,122,122,244,0,0,10,85,73,68,65,84,88,133,173,151,7,84,148,87,22,199,191,41,12,109,134,206,12,8,72,145,38,130,20,17,5,21,16,87,17,16,145,128,6,44,128,138,58,22,66,81,34,16,197,
 161,72,25,122,27,65,164,168,131,70,197,4,20,13,26,35,130,168,4,11,182,181,99,151,184,162,176,137,174,152,28,245,191,239,251,60,234,178,171,89,179,155,119,206,59,243,49,223,227,253,127,239,222,251,238,189,67,81,159,48,66,67,67,205,244,244,244,206,155,
 152,152,28,200,200,200,80,250,216,58,103,103,231,112,129,64,112,79,91,91,251,98,76,76,140,230,167,236,253,73,67,75,75,107,165,34,135,2,121,132,171,171,171,255,135,214,132,132,132,140,166,223,7,122,143,125,187,238,243,63,13,192,197,197,101,41,159,71,193,
@@ -10109,10 +9931,10 @@ static const unsigned char temp_binary_data_68[] =
 26,255,147,196,255,117,144,54,221,192,204,204,44,75,77,77,173,135,252,9,54,197,134,10,75,133,17,214,229,8,97,192,53,194,48,158,5,172,121,54,176,34,147,6,229,177,120,76,169,37,86,236,33,191,45,178,162,163,163,13,255,176,240,191,143,238,238,110,142,191,
 191,255,56,146,180,214,26,27,27,55,144,159,234,151,72,21,237,39,167,251,141,158,244,51,253,29,253,142,92,175,181,244,218,43,87,174,112,62,101,239,127,2,66,244,180,141,197,44,139,45,0,0,0,0,73,69,78,68,174,66,96,130,0,0 };
 
-const char* icon_png = (const char*) temp_binary_data_68;
+const char* icon_png = (const char*) temp_binary_data_66;
 
 //================== de-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_69[] =
+static const unsigned char temp_binary_data_67[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,37,115,32,72,97,108,98,116,92,51,48,51,92,50,54,54,110,
 101,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,
 32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,
@@ -10993,10 +10815,10 @@ static const unsigned char temp_binary_data_69[] =
 111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,32,122,117,114,32,65,117,115,119,97,104,108,46,34,10,32,32,105,110,
 100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,10,0,0 };
 
-const char* deTranslatedStrings_def = (const char*) temp_binary_data_69;
+const char* deTranslatedStrings_def = (const char*) temp_binary_data_67;
 
 //================== en-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_70[] =
+static const unsigned char temp_binary_data_68[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,
 101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,
 111,109,109,97,110,100,47,109,97,112,47,77,105,100,105,78,97,109,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,49,53,10,32,32,105,110,100,101,120,58,32,51,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,40,110,111,
@@ -11508,10 +11330,10 @@ static const unsigned char temp_binary_data_70[] =
 120,58,32,52,53,49,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,
 120,58,32,52,53,50,10,0,0 };
 
-const char* enTranslatedStrings_def = (const char*) temp_binary_data_70;
+const char* enTranslatedStrings_def = (const char*) temp_binary_data_68;
 
 //================== es-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_71[] =
+static const unsigned char temp_binary_data_69[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,111,115,34,10,32,
 32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,
 32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,112,47,77,105,
@@ -12396,10 +12218,10 @@ static const unsigned char temp_binary_data_71[] =
 100,101,120,58,32,52,53,49,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,
 32,97,32,108,97,32,115,101,108,101,99,99,105,92,51,48,51,92,50,54,51,110,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,10,0,0 };
 
-const char* esTranslatedStrings_def = (const char*) temp_binary_data_71;
+const char* esTranslatedStrings_def = (const char*) temp_binary_data_69;
 
 //================== fr-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_72[] =
+static const unsigned char temp_binary_data_70[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,37,115,32,100,101,109,105,45,116,111,110,115,34,10,32,
 32,102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,
 32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,104,111,114,115,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,112,47,77,
@@ -13322,10 +13144,10 @@ static const unsigned char temp_binary_data_72[] =
 97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,32,115,117,114,32,108,97,32,115,92,51,48,51,92,50,53,49,108,101,99,116,105,111,110,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,
 10,0,0 };
 
-const char* frTranslatedStrings_def = (const char*) temp_binary_data_72;
+const char* frTranslatedStrings_def = (const char*) temp_binary_data_70;
 
 //================== id-TranslatedStrings.def ==================
-static const unsigned char temp_binary_data_73[] =
+static const unsigned char temp_binary_data_71[] =
 { 115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,37,115,32,37,115,32,115,101,109,105,116,111,110,101,115,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,37,115,32,115,32,115,101,109,105,116,111,110,101,34,10,32,32,
 102,105,108,101,58,32,34,114,101,99,47,115,108,111,119,47,99,97,108,108,98,97,99,107,115,47,83,97,118,101,70,105,108,101,46,99,112,112,34,10,32,32,108,105,110,101,58,32,52,55,10,32,32,105,110,100,101,120,58,32,50,10,125,10,115,116,114,32,123,10,32,32,
 111,114,105,103,105,110,97,108,58,32,34,37,115,32,111,102,102,34,10,32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,37,115,32,111,102,102,34,10,32,32,102,105,108,101,58,32,34,114,101,99,47,99,111,109,109,97,110,100,47,109,97,112,47,77,105,100,
@@ -14166,7 +13988,7 @@ static const unsigned char temp_binary_data_73[] =
 116,117,107,32,103,101,108,111,109,98,97,110,103,46,34,10,32,32,105,110,100,101,120,58,32,52,53,49,10,125,10,115,116,114,32,123,10,32,32,111,114,105,103,105,110,97,108,58,32,34,90,111,111,109,32,116,111,32,115,101,108,101,99,116,105,111,110,46,34,10,
 32,32,116,114,97,110,115,108,97,116,105,111,110,58,32,34,90,111,111,109,32,115,101,108,101,107,115,105,46,34,10,32,32,105,110,100,101,120,58,32,52,53,50,10,125,10,109,97,120,95,105,110,100,101,120,58,32,52,53,50,10,0,0 };
 
-const char* idTranslatedStrings_def = (const char*) temp_binary_data_73;
+const char* idTranslatedStrings_def = (const char*) temp_binary_data_71;
 
 
 const char* getNamedResource (const char*, int&) throw();
@@ -14235,9 +14057,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xc91b54f7:  numBytes = 14281; return StartStopButtonDisabled_svg;
         case 0x6bd5175a:  numBytes = 15093; return StartStopButtonOn_svg;
         case 0xdd1682f6:  numBytes = 14201; return StartStopButtonOnDisabled_svg;
-        case 0x300ba997:  numBytes = 18741; return ZoomInCursornew_svg;
-        case 0x6fd8129e:  numBytes = 17598; return ZoomInCursorold_svg;
-        case 0x685b7c93:  numBytes = 816; return ZoomInCursor_svg;
+        case 0x685b7c93:  numBytes = 17598; return ZoomInCursor_svg;
         case 0x2f87f6db:  numBytes = 19762; return ZoomMode_svg;
         case 0x21f65177:  numBytes = 30124; return ZoomModeDisabled_svg;
         case 0x6dffc892:  numBytes = 39902; return ZoomOutButton_svg;
@@ -14318,8 +14138,6 @@ const char* namedResourceList[] =
     "StartStopButtonDisabled_svg",
     "StartStopButtonOn_svg",
     "StartStopButtonOnDisabled_svg",
-    "ZoomInCursornew_svg",
-    "ZoomInCursorold_svg",
     "ZoomInCursor_svg",
     "ZoomMode_svg",
     "ZoomModeDisabled_svg",

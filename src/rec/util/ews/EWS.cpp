@@ -103,6 +103,7 @@ bool validate(const string& serialNumber) {
 
 Authentication testAuthenticated() {
   Authentication result;
+#ifdef EWS_AUTHENTICATION
   auto activation = data::getProto<Activation>();
 
   if (activation.has_samples()) {
@@ -127,10 +128,14 @@ Authentication testAuthenticated() {
       activation.set_rate(fromTimeDays(daysToExpiration));
     }
   }
+#else
+  result.user = "Tempo Rary";
+#endif
   return result;
 }
 
 String deactivate(const string& serialNumber) {
+#ifdef EWS_AUTHENTICATION
   if (auto status = eWeb_DeactivateSerialNumber(
           publisherId(), activationId(), serialNumber.c_str())) {
     if (status <= E_DEACTIVATION_NO_SUCH_SERIAL_NUMBER and
@@ -151,11 +156,13 @@ String deactivate(const string& serialNumber) {
   auto days = program::getProgram()->unauthorizedExpirationDays();
   activation->set_rate(fromTimeDays(days));
   activation->clear_frame();
+#endif
 
   return "";
 }
 
 string confirmAndActivate(const string& serialNumber, const string& name) {
+#ifdef EWS_AUTHENTICATION
   if (confirm(serialNumber))
     return t_INVALID_SERIAL_NUMBER.toStdString();
 
@@ -171,6 +178,7 @@ string confirmAndActivate(const string& serialNumber, const string& name) {
   activation.set_frame(crypt(name));
   activation.set_rate(fromTimeDays(0));
   data::setProto(activation);
+#endif
 
   return "";
 }

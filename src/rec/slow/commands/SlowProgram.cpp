@@ -72,6 +72,9 @@ int navigator(Thread*) {
 }
 
 int writeGui(Thread* thread) {
+  if (thread->threadShouldExit())
+    return thread::DONE;
+    
   MessageManagerLock l(thread);
   if (!l.lockWasGained())
     return thread::DONE;

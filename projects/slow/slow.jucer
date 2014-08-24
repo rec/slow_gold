@@ -11,10 +11,10 @@
               pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0"
               projectType="guiapp" version="8.0.8">
   <EXPORTFORMATS>
-    <XCODE_MAC bigIcon="Lw3skp9XC" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
+    <XCODE_MAC bigIcon="xgHYijRXt" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
                extraCompilerFlags="" extraFrameworks="EWSEmbedded-GC" extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged -F../../../../externals/mac/ews/"
                objCExtraSuffix="jeMWW9" postbuildCommand="../../../../scripts/copy-ews.sh"
-               rtasFolder="~/SDKs/PT_80_SDK" smallIcon="QNvJ3OwJO" targetFolder="Builds/MacOSX"
+               rtasFolder="~/SDKs/PT_80_SDK" smallIcon="c2SzXryvG" targetFolder="Builds/MacOSX"
                vstFolder="~/SDKs/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION cppLibType="libc++" customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
@@ -1620,10 +1620,6 @@
               id="oQMrvp82L" name="StartStopButtonOn.svg" resource="1"/>
         <FILE compile="0" file="/development/rec/projects/slow/art/icon/StartStopButtonOnDisabled.svg"
               id="zwA3EIuag" name="StartStopButtonOnDisabled.svg" resource="1"/>
-        <FILE compile="0" file="/development/rec/projects/slow/art/icon/ZoomInCursor-new.svg"
-              id="zPaHpzhYY" name="ZoomInCursor-new.svg" resource="1"/>
-        <FILE compile="0" file="/development/rec/projects/slow/art/icon/ZoomInCursor-old.svg"
-              id="XSbnz4czU" name="ZoomInCursor-old.svg" resource="1"/>
         <FILE compile="0" file="/development/rec/projects/slow/art/icon/ZoomInCursor.svg"
               id="Il98zxN6m" name="ZoomInCursor.svg" resource="1"/>
         <FILE compile="0" file="/development/rec/projects/slow/art/icon/ZoomMode.svg"
