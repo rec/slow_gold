@@ -87,13 +87,13 @@ void protobuf_AddDesc_rec_2faudio_2fAudioSettings_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/audio/AudioSettings.proto\022\trec.aud"
-    "io\"\214\002\n\rAudioSettings\022\023\n\013master_tune\030\001 \001("
+    "io\"\222\002\n\rAudioSettings\022\023\n\013master_tune\030\001 \001("
     "\001\022B\n\022file_type_for_save\030\002 \001(\0162!.rec.audi"
     "o.AudioSettings.FileType:\003WAV\022\032\n\017volume_"
     "nudge_db\030\003 \001(\001:\0011\022\037\n\023speed_nudge_percent"
-    "\030\004 \001(\001:\00210\022\026\n\ntime_nudge\030\005 \001(\001:\00210\022\020\n\010au"
-    "toplay\030\006 \001(\010\";\n\010FileType\022\010\n\004AIFF\020\000\022\010\n\004FL"
-    "AC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022\t\n\005COUNT\020\004", 313);
+    "\030\004 \001(\001:\00210\022\026\n\ntime_nudge\030\005 \001(\001:\00210\022\026\n\010au"
+    "toplay\030\006 \001(\010:\004true\";\n\010FileType\022\010\n\004AIFF\020\000"
+    "\022\010\n\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022\t\n\005COUNT\020\004", 319);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/AudioSettings.proto", &protobuf_RegisterTypes);
   AudioSettings::default_instance_ = new AudioSettings();
@@ -167,7 +167,7 @@ void AudioSettings::SharedCtor() {
   volume_nudge_db_ = 1;
   speed_nudge_percent_ = 10;
   time_nudge_ = 10;
-  autoplay_ = false;
+  autoplay_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -208,7 +208,7 @@ void AudioSettings::Clear() {
     volume_nudge_db_ = 1;
     speed_nudge_percent_ = 10;
     time_nudge_ = 10;
-    autoplay_ = false;
+    autoplay_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -304,7 +304,7 @@ bool AudioSettings::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool autoplay = 6;
+      // optional bool autoplay = 6 [default = true];
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -364,7 +364,7 @@ void AudioSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->time_nudge(), output);
   }
 
-  // optional bool autoplay = 6;
+  // optional bool autoplay = 6 [default = true];
   if (has_autoplay()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->autoplay(), output);
   }
@@ -403,7 +403,7 @@ void AudioSettings::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->time_nudge(), target);
   }
 
-  // optional bool autoplay = 6;
+  // optional bool autoplay = 6 [default = true];
   if (has_autoplay()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->autoplay(), target);
   }
@@ -445,7 +445,7 @@ int AudioSettings::ByteSize() const {
       total_size += 1 + 8;
     }
 
-    // optional bool autoplay = 6;
+    // optional bool autoplay = 6 [default = true];
     if (has_autoplay()) {
       total_size += 1 + 1;
     }

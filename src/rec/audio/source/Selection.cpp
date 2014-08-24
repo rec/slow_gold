@@ -10,7 +10,7 @@ namespace source {
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& ai) {
   SampleRangeVector sel = selection();
   SampleTime pos = getNextReadPosition();
-  if (!sel.begin()->end_) {
+  if (sel.empty() or not sel.begin()->end_) {
     clear(ai);
     return;
   }

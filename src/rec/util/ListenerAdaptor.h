@@ -24,7 +24,7 @@ class ListenerAdaptor : public Listener<Type1> {
       if (Type2 t2 = dynamic_cast<Type2>(&t1))
         (*parent_)(*t2);
       else
-        LOG(DFATAL) << getTypeName(t1) << " should be " << getTypeName<Type1>();
+        LOG(DFATAL) << t1.GetTypeName() << " should be " << getTypeName<Type1>();
     }
 
    private:

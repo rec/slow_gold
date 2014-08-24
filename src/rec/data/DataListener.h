@@ -54,7 +54,7 @@ class DataListener : public Listener<const Proto&> {
       if (const Proto* p = dynamic_cast<const Proto*>(&m))
         (*parent_)(*p);
       else
-        LOG(DFATAL) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
+        LOG(DFATAL) << m.GetTypeName() << " isn't type " << getTypeName<Proto>();
     }
     virtual ~Adaptor() {}
 

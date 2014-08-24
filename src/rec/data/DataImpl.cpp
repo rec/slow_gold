@@ -49,7 +49,6 @@ bool DataImpl::writeToFile() {
     LOG(DFATAL) << "Tried to write an empty value.";
     return false;
   }
-  // DLOG(INFO) << "Writing " << str(file_);
   return copy::copy(CLONE(), file_);
 #else
   return true;

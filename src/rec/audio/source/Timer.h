@@ -29,8 +29,8 @@ class Timer : public Wrappy, public StateListener<Thread*> {
   void operator()(Thread* t) override { thread_ = t; }
 
   void broadcastTime() {
-    if (isRunning())
-      broadcastState<SampleTime>(getNextReadPosition());
+      //if (isRunning())
+    broadcastState<SampleTime>(getNextReadPosition());
   }
 
  private:

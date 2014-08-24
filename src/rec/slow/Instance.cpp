@@ -176,7 +176,6 @@ void Instance::init() {
 }
 
 Instance::~Instance() {
-  currentFile_->saveState();
   device_->manager_.removeMidiInputCallback("", midiCommandMap_.get());
   player_->setState(audio::transport::STOPPED);
   device_->shutdown();

@@ -183,7 +183,7 @@ static const unsigned char temp_binary_data_3[] =
 "  id_string: \"OPEN_SLOWGOLD_DIRECTORY\"\n"
 "  category: \"Help\"\n"
 "  desc {\n"
-"    menu: \"Open SlowGold Preferences Directory\"\n"
+"    menu: \"Open SlowGold Preferences Directory (experts only!)\"\n"
 "    full: \"Open the directory where all the SlowGold Preferences Files are located.\"\n"
 "  }\n"
 "}\n"
@@ -2375,6 +2375,7 @@ static const unsigned char temp_binary_data_30[] =
 "    id_string: \"OPEN_MANUAL\"\n"
 "    id_string: \"REQUEST_SUPPORT\"\n"
 "    id_string: \"WHATS_NEW_PAGE\"\n"
+"    id_string: \"NONE\"\n"
 "    id_string: \"DEAUTHORIZE\"\n"
 "  }\n"
 "}\n"
@@ -2461,6 +2462,8 @@ static const unsigned char temp_binary_data_30[] =
 "    id_string: \"NONE\"\n"
 "    id_string: \"CHECK_FOR_UPDATES\"\n"
 "    id_string: \"TOGGLE_AUTOMATIC_UPDATES\"\n"
+"    id_string: \"NONE\"\n"
+"    id_string: \"OPEN_SLOWGOLD_DIRECTORY\"\n"
 "  }\n"
 "}\n"
 "menu {\n"
@@ -14004,7 +14007,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0xc4c114d6:  numBytes = 219; return Colors_def;
         case 0x82ae93fc:  numBytes = 1480; return Audio_def;
         case 0x7f758dee:  numBytes = 111; return Commands_def;
-        case 0xd807eee2:  numBytes = 2228; return File_def;
+        case 0xd807eee2:  numBytes = 2244; return File_def;
         case 0x7975c6e1:  numBytes = 4236; return Gui_def;
         case 0xb618588d:  numBytes = 1788; return LoopPoints_def;
         case 0x6d98aeb2:  numBytes = 5800; return Selection_def;
@@ -14031,7 +14034,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
         case 0x3d219c23:  numBytes = 227; return Waveform_def;
         case 0xc7af2e43:  numBytes = 364; return MenuCollection_def;
-        case 0x1d81d01a:  numBytes = 3872; return Menus_def;
+        case 0x1d81d01a:  numBytes = 3957; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;

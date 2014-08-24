@@ -70,7 +70,7 @@ class Shutdown : public Thread {
 
   void run() override {
     LOG(INFO) << "SlowGold: shutdown starting.";
-    getInstance()->currentFile_->saveState();
+    sleep(SHUTDOWN_WAIT);
     auto i = 0;
     while (data::getDataCenter()->hasUpdates()) {
       if (++i < SHUTDOWN_COUNT) {
@@ -134,7 +134,7 @@ void SlowWindow::gotoNextFile() {
       else if (const LegacyDatabase* db = dynamic_cast<LegacyDatabase*>(msg.get()))
         data::setProto(*db, data::global());
       else
-        LOG(DFATAL) << "Database type" << getTypeName(*msg);
+        LOG(DFATAL) << "Database type" << msg->GetTypeName();
     } else {
       getInstance()->currentFile_->setFile(nextFile_);
     }
@@ -184,6 +184,7 @@ void SlowWindow::stopAboutWindow() {
 }
 
 void SlowWindow::systemRequestedQuit() {
+  getInstance()->currentFile_->saveState();
   shutdownThread_.reset(new Shutdown());
   shutdownThread_->startThread();
 }

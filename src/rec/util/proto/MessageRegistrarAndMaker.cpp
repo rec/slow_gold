@@ -43,7 +43,7 @@ MessageRegistrarAndMaker::~MessageRegistrarAndMaker() {}
 
 void MessageRegistrarAndMaker::registerInstance(
     const Message& m, bool copy, AddressProto::Scope scope) {
-  const string& typeName = getTypeName(m);
+  const string& typeName = m.GetTypeName();
   DCHECK_LT(typeName.size(), file::MAX_FILENANE_LENGTH);
   if (impl_->registry_.count(typeName)) {
     LOG(DFATAL) << "Tried to register the same type twice: " << typeName;

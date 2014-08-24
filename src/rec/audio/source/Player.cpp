@@ -108,8 +108,13 @@ State Player::state() const {
 }
 
 void Player::operator()(const PlayState& s) {
-  setState(s.is_playing() ? RUNNING : STOPPED);
-
+    if (s.is_playing()) {
+        if (s.has_time())
+            setNextReadPosition(s.time());
+        setState(RUNNING);
+    } else {
+        setState(STOPPED);
+    }
 }
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {

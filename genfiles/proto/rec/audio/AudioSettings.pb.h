@@ -177,7 +177,7 @@ class AudioSettings : public ::google::protobuf::Message {
   inline double time_nudge() const;
   inline void set_time_nudge(double value);
 
-  // optional bool autoplay = 6;
+  // optional bool autoplay = 6 [default = true];
   inline bool has_autoplay() const;
   inline void clear_autoplay();
   static const int kAutoplayFieldNumber = 6;
@@ -336,7 +336,7 @@ inline void AudioSettings::set_time_nudge(double value) {
   time_nudge_ = value;
 }
 
-// optional bool autoplay = 6;
+// optional bool autoplay = 6 [default = true];
 inline bool AudioSettings::has_autoplay() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -347,7 +347,7 @@ inline void AudioSettings::clear_has_autoplay() {
   _has_bits_[0] &= ~0x00000020u;
 }
 inline void AudioSettings::clear_autoplay() {
-  autoplay_ = false;
+  autoplay_ = true;
   clear_has_autoplay();
 }
 inline bool AudioSettings::autoplay() const {

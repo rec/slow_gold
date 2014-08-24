@@ -25,7 +25,7 @@ class Data : public Broadcaster<const Message&> {
 
   string getTypeName() const {
     Lock l(lock_);
-    return util::getTypeName(*message_);
+    return message_->GetTypeName();
   }
   virtual const string& key() const = 0;
 
@@ -79,7 +79,7 @@ Data* getData(const VirtualFile& vf) {
 }
 
 inline Data* getData(const Message& m, const VirtualFile& vf) {
-  return getData(getTypeName(m), vf);
+  return getData(m.GetTypeName(), vf);
 }
 
 inline const VirtualFile& global() {

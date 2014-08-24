@@ -19,7 +19,7 @@ namespace BinaryData
     const int            Commands_defSize = 111;
 
     extern const char*   File_def;
-    const int            File_defSize = 2228;
+    const int            File_defSize = 2244;
 
     extern const char*   Gui_def;
     const int            Gui_defSize = 4236;
@@ -100,7 +100,7 @@ namespace BinaryData
     const int            MenuCollection_defSize = 364;
 
     extern const char*   Menus_def;
-    const int            Menus_defSize = 3872;
+    const int            Menus_defSize = 3957;
 
     extern const char*   Threads_def;
     const int            Threads_defSize = 351;

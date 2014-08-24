@@ -22,7 +22,7 @@ class UndoStack::Entry {
       timestamp_ = juce::Time::currentTimeMillis();
     DCHECK(undo_);
     DCHECK(redo_);
-    DCHECK_EQ(getTypeName(*undo_), getTypeName(*redo_));
+    DCHECK_EQ(undo_->GetTypeName(), redo_->GetTypeName());
   }
 
   static const int64 MAX_GROUP_TIME = 2000;
@@ -53,7 +53,7 @@ class UndoStack::Entry {
   }
 
   void log() const {
-    DLOG(INFO) << "Undo: " << getTypeName(*undo_);
+    DLOG(INFO) << "Undo: " << undo_->GetTypeName();
   }
 
   Data* data_;

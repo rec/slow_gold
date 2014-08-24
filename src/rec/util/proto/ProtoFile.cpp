@@ -27,7 +27,7 @@ Message* readProtoFile(const File& file, const MessageMaker& maker) {
 void writeProtoFile(const Message& msg, const File& file) {
   string s;
   if (!(copy::copy(msg, &s) &&
-        copy::copy(str(getTypeName(msg) + "\n" + s), file))) {
+        copy::copy(str(msg.GetTypeName() + "\n" + s), file))) {
     LOG(ERROR) << "Unable to write proto file " << str(file);
   }
 }

@@ -37,7 +37,7 @@ void CurrentFile::suspend() {
 }
 
 void CurrentFile::saveState() {
-  if (false and not empty()) {
+  if (not empty()) {
     auto& player = getInstance()->player_;
     PlayState state;
     state.set_time(player->getTime());

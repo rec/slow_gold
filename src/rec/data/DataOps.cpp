@@ -25,7 +25,7 @@ void setProto(const Message& m, Data* data, Undoable undoable) {
 }
 
 void setProto(const Message& m, const VirtualFile& vf, Undoable undoable) {
-  setProto(m, getData(getTypeName(m), vf), undoable);
+  setProto(m, getData(m.GetTypeName(), vf), undoable);
 }
 
 

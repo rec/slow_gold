@@ -196,7 +196,6 @@
 		DD16957CB8366725A47A5066 = {isa = PBXBuildFile; fileRef = AAC9A27C1B25F904FACC1654; };
 		A6E4E852B0DEE0469E893378 = {isa = PBXBuildFile; fileRef = 43295B877C5F6070B68EEB25; };
 		D4A4F4B0E98186AEEC7446CA = {isa = PBXBuildFile; fileRef = 2405F6E3BC73946D769771C6; };
-		7155BA4944ACDF6B64703206 = {isa = PBXBuildFile; fileRef = 6C1F6A208C55A60A44ACF8B9; };
 		6273330233502BEE575E7A92 = {isa = PBXBuildFile; fileRef = 344253E274AD1AA03212AB2B; };
 		D5C785AB0652BB33C8B7559C = {isa = PBXBuildFile; fileRef = 4E4B13B43D0786EBE189BD9F; };
 		3C4B5DF7768DE996BC2ED170 = {isa = PBXBuildFile; fileRef = 70EE5B7A5DF6ACD006E8C049; };
@@ -956,7 +955,6 @@
 		6BD2CCF0ADF08F26D0A67CB6 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_win32_Threads.cpp"; path = "../../JuceLibraryCode/modules/juce_core/native/juce_win32_Threads.cpp"; sourceTree = "SOURCE_ROOT"; };
 		6BE6F1380B9C3999CCCB8919 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Partition.h; path = ../../../../src/rec/util/partition/Partition.h; sourceTree = "SOURCE_ROOT"; };
 		6BFD60A91DDB3D1A668ACBFE = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../../../src/rec/audio/source/Player.h; sourceTree = "SOURCE_ROOT"; };
-		6C1F6A208C55A60A44ACF8B9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Proto.cpp; path = ../../../../src/rec/util/proto/Proto.cpp; sourceTree = "SOURCE_ROOT"; };
 		6CA3E259F4272748E14459BC = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_GlyphArrangement.cpp"; path = "../../JuceLibraryCode/modules/juce_graphics/fonts/juce_GlyphArrangement.cpp"; sourceTree = "SOURCE_ROOT"; };
 		6CA689BA76CD70A5ED1A9B9D = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ComponentMovementWatcher.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_ComponentMovementWatcher.h"; sourceTree = "SOURCE_ROOT"; };
 		6CB5AD3BDFC2BD2E9AE5433D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "juce_mac_WebBrowserComponent.mm"; path = "../../JuceLibraryCode/modules/juce_gui_extra/native/juce_mac_WebBrowserComponent.mm"; sourceTree = "SOURCE_ROOT"; };
@@ -2377,7 +2375,6 @@
 					533EE0E56BBFC7741BF04550,
 					2405F6E3BC73946D769771C6,
 					59A223FA9216EAAECA72190B,
-					6C1F6A208C55A60A44ACF8B9,
 					19F357B18FF01536C544BA32,
 					344253E274AD1AA03212AB2B,
 					D026C3431FE14BEAF63CAE6C,
@@ -4126,7 +4123,6 @@
 					DD16957CB8366725A47A5066,
 					A6E4E852B0DEE0469E893378,
 					D4A4F4B0E98186AEEC7446CA,
-					7155BA4944ACDF6B64703206,
 					6273330233502BEE575E7A92,
 					D5C785AB0652BB33C8B7559C,
 					3C4B5DF7768DE996BC2ED170,

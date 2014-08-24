@@ -61,10 +61,10 @@ const Value AddressListener::getValue() const {
 }
 
 void AddressListener::receiveMessage(const Message& m) {
-  if (getTypeName(m) == untypedListener_->typeName())
+  if (m.GetTypeName() == untypedListener_->typeName())
     (*this)(getValue(m));
   else
-    LOG(DFATAL) << "Bad update " << getTypeName(m) << ", " << untypedListener_->typeName();
+    LOG(DFATAL) << "Bad update " << m.GetTypeName() << ", " << untypedListener_->typeName();
 }
 
 }  // namespace data

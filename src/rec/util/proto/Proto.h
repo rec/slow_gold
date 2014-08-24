@@ -8,13 +8,9 @@
 namespace rec {
 namespace util {
 
-inline string getTypeName(const Message& message) {
-  return message.GetTypeName();
-}
-
 template <typename Proto>
 string getTypeName() {
-  return getTypeName(Proto::default_instance());
+    return Proto::default_instance().GetTypeName();
 }
 
 inline Message* clone(const Message& m) {
