@@ -196,6 +196,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\DataOps.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataSet.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\MoveCopy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
@@ -1609,6 +1610,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataOps.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataSet.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\MoveCopy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
@@ -2351,6 +2353,7 @@
     <None Include="..\..\..\..\src\rec\slow\commands\command\Commands.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\command\File.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\command\Gui.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\command\Help.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\command\LoopPoints.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\command\Selection.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\command\Settings.def"/>

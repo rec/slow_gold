@@ -1,27 +1,9 @@
 command {
-  id_string: "ABOUT_THIS_PROGRAM"
-  category: "Help"
-  desc {
-    menu: "About SlowGold 8"
-    full: "Bring up a window describing SlowGold 8."
-  }
-}
-
-command {
   id_string: "AUDIO_PREFERENCES"
   category: "Audio"
   desc {
     menu: "Audio Preferences..."
     full: "Open the Audio Preferences pane."
-  }
-}
-
-command {
-  id_string: "CHECK_FOR_UPDATES"
-  category: "Help"
-  desc {
-    menu: "Check For Updates"
-    full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
   }
 }
 
@@ -175,15 +157,6 @@ command {
 }
 
 command {
-  id_string: "REQUEST_SUPPORT"
-  category: "Help"
-  desc {
-    menu: "Request Technical Support"
-    full: "Make a request for technical support to World Wide Woodshed."
-  }
-}
-
-command {
   id_string: "SET_EXPORT_FORMAT"
   index: 4
   submenu_name: "Set Format For Exported Audio Files"
@@ -231,14 +204,4 @@ command {
     full: "Toggle show/hide of advanced menus."
   }
   setter: "rec.slow.GuiSettings:advanced_menus"
-}
-
-command {
-  id_string: "TOGGLE_AUTOMATIC_UPDATES"
-  category: "Help"
-  desc {
-    menu: "Enable Automatic Updates"
-    full: "Enable or disabled automatic updates of SlowGold 8."
-  }
-  setter: "rec.slow.GuiSettings:auto_check_for_updates"
 }

@@ -54,12 +54,14 @@ enum Command_Id {
   Command_Id_CLEAR_SAVED_FILE_DATA = 5,
   Command_Id_CLOSE_FILE = 6,
   Command_Id_COPY_ALL_LOOP_POINTS = 95,
+  Command_Id_COPY_FILE = 103,
   Command_Id_DEAUTHORIZE = 102,
   Command_Id_DIM_VOLUME_TOGGLE = 7,
   Command_Id_EJECT_CDS = 8,
   Command_Id_EXPORT_KEYBOARD_MAPPINGS = 82,
   Command_Id_EXPORT_MIDI_MAPPINGS = 83,
   Command_Id_EXPORT_SETTINGS = 75,
+  Command_Id_FIND_MISSING_LOOP_POINTS = 105,
   Command_Id_IMPORT_KEYBOARD_MAPPINGS = 84,
   Command_Id_IMPORT_MIDI_MAPPINGS = 85,
   Command_Id_IMPORT_SETTINGS = 76,
@@ -73,6 +75,7 @@ enum Command_Id {
   Command_Id_MODE_DRAG = 60,
   Command_Id_MODE_SET_TIME = 61,
   Command_Id_MODE_ZOOM_IN = 62,
+  Command_Id_MOVE_FILE = 104,
   Command_Id_MUTE_VOLUME_TOGGLE = 14,
   Command_Id_NUDGE_BACKWARD = 89,
   Command_Id_NUDGE_FORWARD = 90,
@@ -137,7 +140,7 @@ enum Command_Id {
   Command_Id_ZOOM_OUT = 40,
   Command_Id_ZOOM_OUT_FULL = 64,
   Command_Id_ZOOM_TO_SELECTION = 45,
-  Command_Id_FIRST_FREE_TYPE = 103,
+  Command_Id_FIRST_FREE_ID = 106,
   Command_Id_QUIT = 4097,
   Command_Id_DEL = 4098,
   Command_Id_CUT = 4099,
@@ -230,12 +233,14 @@ class Command : public ::google::protobuf::Message {
   static const Id CLEAR_SAVED_FILE_DATA = Command_Id_CLEAR_SAVED_FILE_DATA;
   static const Id CLOSE_FILE = Command_Id_CLOSE_FILE;
   static const Id COPY_ALL_LOOP_POINTS = Command_Id_COPY_ALL_LOOP_POINTS;
+  static const Id COPY_FILE = Command_Id_COPY_FILE;
   static const Id DEAUTHORIZE = Command_Id_DEAUTHORIZE;
   static const Id DIM_VOLUME_TOGGLE = Command_Id_DIM_VOLUME_TOGGLE;
   static const Id EJECT_CDS = Command_Id_EJECT_CDS;
   static const Id EXPORT_KEYBOARD_MAPPINGS = Command_Id_EXPORT_KEYBOARD_MAPPINGS;
   static const Id EXPORT_MIDI_MAPPINGS = Command_Id_EXPORT_MIDI_MAPPINGS;
   static const Id EXPORT_SETTINGS = Command_Id_EXPORT_SETTINGS;
+  static const Id FIND_MISSING_LOOP_POINTS = Command_Id_FIND_MISSING_LOOP_POINTS;
   static const Id IMPORT_KEYBOARD_MAPPINGS = Command_Id_IMPORT_KEYBOARD_MAPPINGS;
   static const Id IMPORT_MIDI_MAPPINGS = Command_Id_IMPORT_MIDI_MAPPINGS;
   static const Id IMPORT_SETTINGS = Command_Id_IMPORT_SETTINGS;
@@ -249,6 +254,7 @@ class Command : public ::google::protobuf::Message {
   static const Id MODE_DRAG = Command_Id_MODE_DRAG;
   static const Id MODE_SET_TIME = Command_Id_MODE_SET_TIME;
   static const Id MODE_ZOOM_IN = Command_Id_MODE_ZOOM_IN;
+  static const Id MOVE_FILE = Command_Id_MOVE_FILE;
   static const Id MUTE_VOLUME_TOGGLE = Command_Id_MUTE_VOLUME_TOGGLE;
   static const Id NUDGE_BACKWARD = Command_Id_NUDGE_BACKWARD;
   static const Id NUDGE_FORWARD = Command_Id_NUDGE_FORWARD;
@@ -313,7 +319,7 @@ class Command : public ::google::protobuf::Message {
   static const Id ZOOM_OUT = Command_Id_ZOOM_OUT;
   static const Id ZOOM_OUT_FULL = Command_Id_ZOOM_OUT_FULL;
   static const Id ZOOM_TO_SELECTION = Command_Id_ZOOM_TO_SELECTION;
-  static const Id FIRST_FREE_TYPE = Command_Id_FIRST_FREE_TYPE;
+  static const Id FIRST_FREE_ID = Command_Id_FIRST_FREE_ID;
   static const Id QUIT = Command_Id_QUIT;
   static const Id DEL = Command_Id_DEL;
   static const Id CUT = Command_Id_CUT;

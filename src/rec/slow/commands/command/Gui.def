@@ -90,17 +90,6 @@ command {
 }
 
 command {
-  id_string: "TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP"
-  category: "Help"
-  disabled: "unauthorized"
-  desc {
-    menu: "Show About Window At Startup"
-    full: "Toggle whether we show the About Window every time we start up."
-  }
-  setter: "rec.slow.GuiSettings:show_about_on_startup"
-}
-
-command {
   id_string: "TOGGLE_SHOW_CURSOR_LABELS"
   category: "Display"
   desc {

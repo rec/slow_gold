@@ -21,6 +21,7 @@ message Command {
     CLEAR_SAVED_FILE_DATA = 5;
     CLOSE_FILE = 6;
     COPY_ALL_LOOP_POINTS = 95;
+    COPY_FILE = 103;
 
     DEAUTHORIZE = 102;
 
@@ -30,6 +31,8 @@ message Command {
     EXPORT_KEYBOARD_MAPPINGS = 82;
     EXPORT_MIDI_MAPPINGS = 83;
     EXPORT_SETTINGS = 75;
+
+    FIND_MISSING_LOOP_POINTS = 105;
 
     IMPORT_KEYBOARD_MAPPINGS = 84;
     IMPORT_MIDI_MAPPINGS = 85;
@@ -48,6 +51,7 @@ message Command {
     MODE_DRAG = 60;
     MODE_SET_TIME = 61;
     MODE_ZOOM_IN = 62;
+    MOVE_FILE = 104;
     MUTE_VOLUME_TOGGLE = 14;
 
     NUDGE_BACKWARD = 89;
@@ -125,7 +129,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    FIRST_FREE_TYPE = 103;
+    FIRST_FREE_ID = 106;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

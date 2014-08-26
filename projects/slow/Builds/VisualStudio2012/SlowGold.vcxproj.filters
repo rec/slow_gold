@@ -691,6 +691,9 @@
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp">
       <Filter>SlowGold\src\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\MoveCopy.cpp">
+      <Filter>SlowGold\src\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
       <Filter>SlowGold\src\data\proto</Filter>
     </ClCompile>
@@ -2809,6 +2812,9 @@
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h">
+      <Filter>SlowGold\src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\MoveCopy.h">
       <Filter>SlowGold\src\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h">
@@ -5031,6 +5037,9 @@
       <Filter>SlowGold\src\slow\commands\command</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\command\Gui.def">
+      <Filter>SlowGold\src\slow\commands\command</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\command\Help.def">
       <Filter>SlowGold\src\slow\commands\command</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\command\LoopPoints.def">

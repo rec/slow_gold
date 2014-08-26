@@ -4,8 +4,10 @@ menu {
   }
   entry {
     id_string: "OPEN"
-    id_string: "CLOSE_FILE"
+    id_string: "COPY_FILE"
+    id_string: "MOVE_FILE"
     id_string: "EJECT_CDS"
+    id_string: "CLOSE_FILE"
     id_string: "NONE"
     id_string: "TOGGLE_ADVANCED_MENUS"
     id_string: "NONE"
@@ -81,6 +83,8 @@ menu {
     id_string: "WHATS_NEW_PAGE"
     id_string: "NONE"
     id_string: "DEAUTHORIZE"
+    id_string: "NONE"
+    id_string: "FIND_MISSING_LOOP_POINTS"
   }
 }
 menu {

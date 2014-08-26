@@ -71,12 +71,6 @@ void addLoopPoint() {
                                            i->player_->getTime());
 }
 
-#ifdef SHOULD_REMOVE
-void clearNavigator(VirtualFileList *vfl) {
-  vfl->Clear();
-}
-#endif
-
 void zoomOut() {
   Instance* i = getInstance();
   widget::waveform::zoomScale(i->file(), i->length(),
@@ -110,6 +104,14 @@ void audioPreferences() {
 void closeFile() {
   Instance* i = getInstance();
   i->currentFile_->setVirtualFile(data::noData(), false);
+}
+
+void copyFile() {
+  Instance* i = getInstance();
+  // if (gui::dialog::saveVirtualFile(
+}
+
+void moveFile() {
 }
 
 void open() {
@@ -203,38 +205,40 @@ void pasteOverLoopPoints() {
 using namespace rec::command;
 using namespace rec::program;
 
-void addInstanceCallbacks(Program* c) {
+void addInstanceCallbacks(Program* p) {
   using namespace rec::gui;
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 
-  addCallback(c, slow::Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
-  addCallback(c, slow::Command::ADD_LOOP_POINT, addLoopPoint);
-  addCallback(c, slow::Command::AUDIO_PREFERENCES, audioPreferences);
+  addCallback(p, slow::Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
+  addCallback(p, slow::Command::ADD_LOOP_POINT, addLoopPoint);
+  addCallback(p, slow::Command::AUDIO_PREFERENCES, audioPreferences);
 
-  addCallback(c, slow::Command::CHECK_FOR_UPDATES, checkForUpdates);
-  addCallback(c, slow::Command::CLEAR_ALL_SETTINGS, clearAllSettings);
-  addCallback(c, slow::Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
-  addCallback(c, slow::Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
+  addCallback(p, slow::Command::CHECK_FOR_UPDATES, checkForUpdates);
+  addCallback(p, slow::Command::CLEAR_ALL_SETTINGS, clearAllSettings);
+  addCallback(p, slow::Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
+  addCallback(p, slow::Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
 
-  addCallback(c, slow::Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
+  addCallback(p, slow::Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
-  addCallback(c, slow::Command::CLOSE_FILE, closeFile);
-  addCallback(c, slow::Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
+  addCallback(p, slow::Command::CLOSE_FILE, closeFile);
+  addCallback(p, slow::Command::COPY_FILE, copyFile);
+  addCallback(p, slow::Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
 
-  addCallback(c, slow::Command::EXPORT_FILE, saveFile);
-  addCallback(c, slow::Command::EXPORT_FILE_SELECTION, saveFileSelection);
+  addCallback(p, slow::Command::EXPORT_FILE, saveFile);
+  addCallback(p, slow::Command::EXPORT_FILE_SELECTION, saveFileSelection);
 
-  addCallback(c, slow::Command::KEYBOARD_MAPPINGS, keyboardMappings);
-  addCallback(c, slow::Command::MIDI_MAPPINGS, midiMappings);
+  addCallback(p, slow::Command::KEYBOARD_MAPPINGS, keyboardMappings);
+  addCallback(p, slow::Command::MIDI_MAPPINGS, midiMappings);
+  addCallback(p, slow::Command::MOVE_FILE, moveFile);
 
-  addCallback(c, slow::Command::OPEN, open);
+  addCallback(p, slow::Command::OPEN, open);
 
-  addCallback(c, slow::Command::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
+  addCallback(p, slow::Command::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
 
-  addCallback(c, slow::Command::ZOOM_OUT, zoomOut);
-  addCallback(c, slow::Command::ZOOM_OUT_FULL, zoomOutFull);
-  addCallback(c, slow::Command::ZOOM_TO_SELECTION, zoomToSelection);
+  addCallback(p, slow::Command::ZOOM_OUT, zoomOut);
+  addCallback(p, slow::Command::ZOOM_OUT_FULL, zoomOutFull);
+  addCallback(p, slow::Command::ZOOM_TO_SELECTION, zoomToSelection);
 }
 
 }  // namespace slow

@@ -16,13 +16,16 @@ namespace BinaryData
     const int            Audio_defSize = 1480;
 
     extern const char*   Commands_def;
-    const int            Commands_defSize = 111;
+    const int            Commands_defSize = 124;
 
     extern const char*   File_def;
-    const int            File_defSize = 2244;
+    const int            File_defSize = 1964;
 
     extern const char*   Gui_def;
-    const int            Gui_defSize = 4236;
+    const int            Gui_defSize = 3941;
+
+    extern const char*   Help_def;
+    const int            Help_defSize = 1878;
 
     extern const char*   LoopPoints_def;
     const int            LoopPoints_defSize = 1788;
@@ -31,7 +34,7 @@ namespace BinaryData
     const int            Selection_defSize = 5800;
 
     extern const char*   Settings_def;
-    const int            Settings_defSize = 4900;
+    const int            Settings_defSize = 4124;
 
     extern const char*   Transport_def;
     const int            Transport_defSize = 3739;
@@ -100,7 +103,7 @@ namespace BinaryData
     const int            MenuCollection_defSize = 364;
 
     extern const char*   Menus_def;
-    const int            Menus_defSize = 3957;
+    const int            Menus_defSize = 4075;
 
     extern const char*   Threads_def;
     const int            Threads_defSize = 351;
@@ -229,7 +232,7 @@ namespace BinaryData
     extern const char* namedResourceList[];
 
     // Number of elements in the namedResourceList array.
-    const int namedResourceListSize = 72;
+    const int namedResourceListSize = 73;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

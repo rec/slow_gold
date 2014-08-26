@@ -87,6 +87,9 @@ void exportSettings() {
     file.revealToUser();
 }
 
+void findMissingLoopPoints() {
+}
+
 void importSettings() {
   File start = File::getSpecialLocation(File::userDesktopDirectory);
   File file = browseForFile(t_SELECT_IMPORT_FILE, start, OPEN_FILE);
@@ -177,6 +180,7 @@ void addGlobalCallbacks(program::Program* t) {
   addCallback(t, Command::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
   addCallback(t, Command::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
   addCallback(t, Command::EXPORT_SETTINGS, exportSettings);
+  addCallback(t, Command::FIND_MISSING_LOOP_POINTS, findMissingLoopPoints);
   addCallback(t, Command::IMPORT_KEYBOARD_MAPPINGS, importKeyboardMappings);
   addCallback(t, Command::IMPORT_MIDI_MAPPINGS, importMidiMappings);
   addCallback(t, Command::IMPORT_SETTINGS, importSettings);

@@ -9,6 +9,15 @@ command {
 }
 
 command {
+  id_string: "COPY_FILE"
+  category: "File"
+  desc {
+    menu: "Save a copy..."
+    full: "Save an exact copy of this file."
+  }
+}
+
+command {
   id_string: "EJECT_CDS"
   category: "File"
   desc {
@@ -27,11 +36,11 @@ command {
 }
 
 command {
-  id_string: "OPEN_MANUAL"
-  category: "Help"
+  id_string: "MOVE_FILE"
+  category: "File"
   desc {
-    menu: "Download SlowGold 8 User Manual"
-    full: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
+    menu: "Move audio file..."
+    full: "Move this file to a different location."
   }
 }
 
@@ -43,15 +52,6 @@ command {
     full: "Re-open the file that was most recently closed."
   }
   disabled: "recent_empty"
-}
-
-command {
-  id_string: "OPEN_SLOWGOLD_DIRECTORY"
-  category: "Help"
-  desc {
-    menu: "Open SlowGold Preferences Directory (experts only!)"
-    full: "Open the directory where all the SlowGold Preferences Files are located."
-  }
 }
 
 command {
@@ -91,20 +91,12 @@ command {
 }
 
 command {
-  id_string: "WHATS_NEW_PAGE"
+  id_string: "TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP"
   category: "Help"
-  desc {
-    menu: "What\'s New In This Release?"
-    full: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
-  }
-}
-
-command {
-  id_string: "DEAUTHORIZE"
-  category: "Help"
-  desc {
-    menu: "Deauthorize SlowGold from this computer."
-    full: "Deauthorize SlowGold from this computer."
-  }
   disabled: "unauthorized"
+  desc {
+    menu: "Show About Window At Startup"
+    full: "Toggle whether we show the About Window every time we start up."
+  }
+  setter: "rec.slow.GuiSettings:show_about_on_startup"
 }
