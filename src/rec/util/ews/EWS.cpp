@@ -10,6 +10,8 @@
 #include "rec/util/ews/Activation.pb.h"
 #include "rec/util/Crypt.h"
 
+#define EWS_AUTHENTICATION
+
 using std::string;
 using namespace ::juce;
 

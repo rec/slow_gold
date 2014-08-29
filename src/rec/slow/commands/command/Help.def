@@ -1,0 +1,83 @@
+command {
+  id_string: "ABOUT_THIS_PROGRAM"
+  category: "Help"
+  desc {
+    menu: "About SlowGold 8"
+    full: "Bring up a window describing SlowGold 8."
+  }
+}
+
+command {
+  id_string: "CHECK_FOR_UPDATES"
+  category: "Help"
+  desc {
+    menu: "Check For Updates"
+    full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
+  }
+}
+
+command {
+  id_string: "DEAUTHORIZE"
+  category: "Help"
+  desc {
+    menu: "Deauthorize SlowGold from this computer."
+    full: "Deauthorize SlowGold from this computer."
+  }
+  disabled: "unauthorized"
+}
+
+command {
+  id_string: "FIND_MISSING_LOOP_POINTS"
+  category: "Help"
+  desc {
+    menu: "Retrieve loop points for documents that you have moved."
+    full: "Deauthorize SlowGold from this computer."
+  }
+  disabled: "unauthorized"
+}
+
+command {
+  id_string: "OPEN_MANUAL"
+  category: "Help"
+  desc {
+    menu: "Download SlowGold 8 User Manual"
+    full: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
+  }
+}
+
+command {
+  id_string: "REQUEST_SUPPORT"
+  category: "Help"
+  desc {
+    menu: "Request Technical Support"
+    full: "Make a request for technical support to World Wide Woodshed."
+  }
+}
+
+command {
+  id_string: "TOGGLE_AUTOMATIC_UPDATES"
+  category: "Help"
+  desc {
+    menu: "Enable Automatic Updates"
+    full: "Enable or disabled automatic updates of SlowGold 8."
+  }
+  setter: "rec.slow.GuiSettings:auto_check_for_updates"
+}
+
+command {
+  id_string: "OPEN_SLOWGOLD_DIRECTORY"
+  category: "Help"
+  desc {
+    menu: "Open SlowGold Preferences Directory (experts only!)"
+    full: "Open the directory where all the SlowGold Preferences Files are located."
+  }
+}
+
+command {
+  id_string: "WHATS_NEW_PAGE"
+  category: "Help"
+  desc {
+    menu: "What\'s New In This Release?"
+    full: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
+  }
+}
