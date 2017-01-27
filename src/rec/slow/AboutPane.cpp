@@ -228,19 +228,19 @@ void AboutPane::getRightSide() {
   auto name = JUCEApplication::getInstance()->getApplicationName();
   auto version = JUCEApplication::getInstance()->getApplicationVersion();
   auto t = name + " " + version + "\nWorld Wide Woodshed Software\n" +
-      String::formatted(t_COPYRIGHT, 2012, 2014) + String("\n");
+      String::formatted(t_COPYRIGHT, 2012, 2017) + String("\n");
   right_.append(t, font);
 
   auto user = String(authentication_->user);
   if (user.isEmpty()) {
     auto days = authentication_->daysToExpiration;
     if (days > 0) {
-      auto plural = (days == 1) ? "" : "s";
+      auto& plural = (days == 1) ? t_UNREGISTERED_SINGLE : t_UNREGISTERED_PLURAL;
       right_.append(t_UNREGISTERED_START, font);
       right_.append(" ", font);
       right_.append(String(days), font, days < 10 ? Colours::red : Colours::black);
       right_.append(" ");
-      right_.append(plural ? t_UNREGISTERED_PLURAL : t_UNREGISTERED_SINGLE, font);
+      right_.append(plural, font);
     } else {
       right_.append(t_EXPIRED, font, Colours::red);
     }

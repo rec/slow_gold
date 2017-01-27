@@ -42,8 +42,8 @@ class SlowProgram : public program::ProgramBase {
 
  private:
   Instance* const instance_;
-  static const int EXPIRATION_DAYS = 1;  //15;
-  static const int UNAUTHORIZED_EXPIRATION_DAYS = 1; //2;
+  static const int EXPIRATION_DAYS = 31;
+  static const int UNAUTHORIZED_EXPIRATION_DAYS = 2;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowProgram);
 };
