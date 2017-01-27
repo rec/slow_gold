@@ -16,7 +16,7 @@ static const int OPTIONS =
   RubberBandStretcher::OptionTransientsSmooth +
   0
 ;
-    
+
 #ifdef DEATH
 static const int DEATH_OPTIONS =
   RubberBandStretcher::OptionPitchHighQuality |

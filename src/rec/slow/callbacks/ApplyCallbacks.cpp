@@ -3,6 +3,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/audio/util/LimitPitch.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/data/Undoable.h"
@@ -80,9 +81,11 @@ void resetGainToUnity(Gain* gain) {
 using namespace rec::audio;
 using namespace rec::audio::stretch;
 
-template <int semitones>
+
+template <int delta>
 void nudgePitch(Stretch* s) {
-    s->set_semitone_shift(s->semitone_shift() + semitones);
+    auto semi = s->semitone_shift() + delta;
+    s->set_semitone_shift(limitPitch(semi));
 }
 
 bool nudgeVolume(Gain* gain, bool isInc) {

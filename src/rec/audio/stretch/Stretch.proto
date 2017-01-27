@@ -21,7 +21,7 @@ message Stretch {
   optional double time_percent = 6      [default = 100.0];
   optional double sample_rate = 7       [default = 44100.0];
   optional uint32 channels = 8          [default = 2];
-  optional double pitch_scale = 9       [default = 1.0];
+  // optional double pitch_scale = 9       [default = 1.0];
   optional double semitone_shift = 10;
   optional double detune_cents = 11;
   optional uint32 bands = 12            [default = 2048];

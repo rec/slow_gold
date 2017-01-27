@@ -1,6 +1,7 @@
 #include "rec/util/math.h"
 
 #include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/util/LimitPitch.h"
 
 namespace rec {
 namespace audio {
@@ -8,13 +9,7 @@ namespace stretch {
 
 namespace {
 
-const double NO_SCALE = 1.0;
-const double PERCENT = 100.0;
-const double OCTAVE = 2.0;
-const double SEMITONES_PER_OCTAVE = 12.0;
-const double CENTS_PER_SEMITONE = 100.0;
-const double SEMITONE_LOG = SEMITONES_PER_OCTAVE / log(OCTAVE);
-const double MIN_DETUNE_DIFFERENCE = 0.05;
+const auto MIN_DETUNE_DIFFERENCE = 0.05;
 
 double timeScale(const Stretch& d) {
 #ifdef USE_STRETCH_ENABLE
@@ -22,7 +17,7 @@ double timeScale(const Stretch& d) {
 #else
   bool enabled = d.time_enabled();
 #endif
-  return enabled ? (PERCENT / d.time_percent()) : NO_SCALE;
+  return enabled ? (100.0 / d.time_percent()) : 1.0;
 }
 
 double pitchScale(const Stretch& d, double detuneCents) {
@@ -33,21 +28,17 @@ double pitchScale(const Stretch& d, double detuneCents) {
 #endif
 
   if (!enabled && near(detuneCents, 0.0, MIN_DETUNE_DIFFERENCE))
-    return NO_SCALE;
+    return 1.0;
 
   double cents = detuneCents;
   if (enabled)
     cents += d.detune_cents();
 
-  double semitones = cents / CENTS_PER_SEMITONE;
+  double semitones = cents / 100.0;
   if (enabled)
     semitones += d.semitone_shift();
 
-  double scale = powl(OCTAVE, semitones / SEMITONES_PER_OCTAVE);
-  if (enabled)
-    scale *= d.pitch_scale();
-
-  return scale;
+  return pow(2.0, limitPitch(semitones) / 12.0);
 }
 
 double sampleRateRatio(const StretchParameters& sp) {
@@ -65,7 +56,8 @@ double pitchScale(const StretchParameters& sp) {
 }
 
 double pitchSemitones(const StretchParameters& sp) {
-  return SEMITONE_LOG * log(pitchScale(sp));
+  static auto const semitone_log = 12.0 / log(2.0);
+  return semitone_log * log(pitchScale(sp));
 }
 
 }  // namespace stretch
