@@ -198,12 +198,12 @@ entry {
     key: "cursor right"
 }
 entry {
-  id_string: "NUDGE_VOLUME_DOWN"
-    key: "cursor down"
+  id_string: "NUDGE_PITCH_DOWN"
+    key: "command + cursor down"
 }
 entry {
-  id_string: "NUDGE_VOLUME_UP"
-    key: "cursor up"
+  id_string: "NUDGE_PITCH_UP"
+    key: "command + cursor up"
 }
 entry {
   id_string: "NUDGE_SPEED_DOWN"
@@ -216,6 +216,14 @@ entry {
     key: "+"
     key: "shift + +"
     key: "="
+}
+entry {
+  id_string: "NUDGE_VOLUME_DOWN"
+    key: "cursor down"
+}
+entry {
+  id_string: "NUDGE_VOLUME_UP"
+    key: "cursor up"
 }
 entry {
   id_string: "OPEN"

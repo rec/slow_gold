@@ -58,6 +58,26 @@ static const unsigned char temp_binary_data_1[] =
 "}\n"
 "\n"
 "command {\n"
+"  id_string: \"NUDGE_PITCH_DOWN\"\n"
+"  category: \"Audio\"\n"
+"  desc {\n"
+"    menu: \"Nudge pitch down\"\n"
+"    full: \"Nudge pitch down by 1 semitone\"\n"
+"  }\n"
+"  disabled: \"empty\"\n"
+"}\n"
+"\n"
+"command {\n"
+"  id_string: \"NUDGE_PITCH_UP\"\n"
+"  category: \"Audio\"\n"
+"  desc {\n"
+"    menu: \"Nudge pitch up\"\n"
+"    full: \"Nudge pitch up by 1 semitone\"\n"
+"  }\n"
+"  disabled: \"empty\"\n"
+"}\n"
+"\n"
+"command {\n"
 "  id_string: \"NUDGE_VOLUME_DOWN\"\n"
 "  category: \"Audio\"\n"
 "  desc {\n"
@@ -1373,12 +1393,12 @@ static const unsigned char temp_binary_data_10[] =
 "    key: \"cursor right\"\r\n"
 "}\r\n"
 "entry {\r\n"
-"  id_string: \"NUDGE_VOLUME_DOWN\"\r\n"
-"    key: \"cursor down\"\r\n"
+"  id_string: \"NUDGE_PITCH_DOWN\"\r\n"
+"    key: \"command + cursor down\"\r\n"
 "}\r\n"
 "entry {\r\n"
-"  id_string: \"NUDGE_VOLUME_UP\"\r\n"
-"    key: \"cursor up\"\r\n"
+"  id_string: \"NUDGE_PITCH_UP\"\r\n"
+"    key: \"command + cursor up\"\r\n"
 "}\r\n"
 "entry {\r\n"
 "  id_string: \"NUDGE_SPEED_DOWN\"\r\n"
@@ -1391,6 +1411,14 @@ static const unsigned char temp_binary_data_10[] =
 "    key: \"+\"\r\n"
 "    key: \"shift + +\"\r\n"
 "    key: \"=\"\r\n"
+"}\r\n"
+"entry {\r\n"
+"  id_string: \"NUDGE_VOLUME_DOWN\"\r\n"
+"    key: \"cursor down\"\r\n"
+"}\r\n"
+"entry {\r\n"
+"  id_string: \"NUDGE_VOLUME_UP\"\r\n"
+"    key: \"cursor up\"\r\n"
 "}\r\n"
 "entry {\r\n"
 "  id_string: \"OPEN\"\r\n"
@@ -2333,8 +2361,6 @@ static const unsigned char temp_binary_data_31[] =
 "  }\n"
 "  entry {\n"
 "    id_string: \"OPEN\"\n"
-"    id_string: \"COPY_FILE\"\n"
-"    id_string: \"MOVE_FILE\"\n"
 "    id_string: \"EJECT_CDS\"\n"
 "    id_string: \"CLOSE_FILE\"\n"
 "    id_string: \"NONE\"\n"
@@ -2373,6 +2399,9 @@ static const unsigned char temp_binary_data_31[] =
 "    id_string: \"TOGGLE_STRETCH_ENABLE\"\n"
 "    id_string: \"NUDGE_SPEED_UP\"\n"
 "    id_string: \"NUDGE_SPEED_DOWN\"\n"
+"    id_string: \"NONE\"\n"
+"    id_string: \"NUDGE_PITCH_UP\"\n"
+"    id_string: \"NUDGE_PITCH_DOWN\"\n"
 "    id_string: \"NONE\"\n"
 "    id_string: \"AUDIO_PREFERENCES\"\n"
 "  }\n"
@@ -2413,7 +2442,6 @@ static const unsigned char temp_binary_data_31[] =
 "    id_string: \"NONE\"\n"
 "    id_string: \"DEAUTHORIZE\"\n"
 "    id_string: \"NONE\"\n"
-"    id_string: \"FIND_MISSING_LOOP_POINTS\"\n"
 "  }\n"
 "}\n"
 "menu {\n"
@@ -14042,7 +14070,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     switch (hash)
     {
         case 0xc4c114d6:  numBytes = 219; return Colors_def;
-        case 0x82ae93fc:  numBytes = 1480; return Audio_def;
+        case 0x82ae93fc:  numBytes = 1814; return Audio_def;
         case 0x7f758dee:  numBytes = 124; return Commands_def;
         case 0xd807eee2:  numBytes = 1964; return File_def;
         case 0x7975c6e1:  numBytes = 3941; return Gui_def;
@@ -14051,7 +14079,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x6d98aeb2:  numBytes = 5800; return Selection_def;
         case 0x29a9fa09:  numBytes = 4124; return Settings_def;
         case 0xd87d1dcf:  numBytes = 3739; return Transport_def;
-        case 0xdf58e54b:  numBytes = 5426; return KeyStrokeMap_def;
+        case 0xdf58e54b:  numBytes = 5580; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 710; return CommandBar_def;
         case 0x8c4934f5:  numBytes = 155; return Constants_def;
         case 0x391c9e6b:  numBytes = 573; return GainPanel_def;
@@ -14072,7 +14100,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x4bd6484b:  numBytes = 374; return TransportController_def;
         case 0x3d219c23:  numBytes = 227; return Waveform_def;
         case 0xc7af2e43:  numBytes = 364; return MenuCollection_def;
-        case 0x1d81d01a:  numBytes = 4075; return Menus_def;
+        case 0x1d81d01a:  numBytes = 4067; return Menus_def;
         case 0xd793124f:  numBytes = 351; return Threads_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;

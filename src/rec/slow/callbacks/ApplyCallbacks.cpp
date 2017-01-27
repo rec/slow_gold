@@ -80,6 +80,11 @@ void resetGainToUnity(Gain* gain) {
 using namespace rec::audio;
 using namespace rec::audio::stretch;
 
+template <int semitones>
+void nudgePitch(Stretch* s) {
+    s->set_semitone_shift(s->semitone_shift() + semitones);
+}
+
 bool nudgeVolume(Gain* gain, bool isInc) {
   if (gain->dim() || gain->mute())
     return false;
@@ -95,11 +100,11 @@ void nudgeSpeed(Stretch* stretch, bool isInc) {
   stretch->set_time_percent(stretch->time_percent() * scale);
 }
 
-bool nudgeVolumeDown(Gain* g) { return nudgeVolume(g, false); }
-bool nudgeVolumeUp(Gain* g) { return nudgeVolume(g, true); }
-
 void nudgeSpeedDown(Stretch* s) { nudgeSpeed(s, false); }
 void nudgeSpeedUp(Stretch* s) { nudgeSpeed(s, true); }
+
+bool nudgeVolumeDown(Gain* g) { return nudgeVolume(g, false); }
+bool nudgeVolumeUp(Gain* g) { return nudgeVolume(g, true); }
 
 }
 
@@ -107,10 +112,12 @@ void addApplyCallbacks(program::Program* c) {
   addApplyCallback(c, slow::Command::CLEAR_LOOPS, clearLoops);
   addApplyCallback(c, slow::Command::DIM_VOLUME_TOGGLE, dimVolumeToggle);
   addApplyCallback(c, slow::Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle);
-  addApplyCallback(c, slow::Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
-  addApplyCallback(c, slow::Command::NUDGE_VOLUME_UP, nudgeVolumeUp);
+  addApplyCallback(c, slow::Command::NUDGE_PITCH_DOWN, nudgePitch<-1>);
+  addApplyCallback(c, slow::Command::NUDGE_PITCH_UP, nudgePitch<1>);
   addApplyCallback(c, slow::Command::NUDGE_SPEED_DOWN, nudgeSpeedDown);
   addApplyCallback(c, slow::Command::NUDGE_SPEED_UP, nudgeSpeedUp);
+  addApplyCallback(c, slow::Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
+  addApplyCallback(c, slow::Command::NUDGE_VOLUME_UP, nudgeVolumeUp);
   addApplyCallback(c, slow::Command::RESET_GAIN_TO_UNITY, resetGainToUnity);
 }
 

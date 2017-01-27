@@ -18,6 +18,26 @@ command {
 }
 
 command {
+  id_string: "NUDGE_PITCH_DOWN"
+  category: "Audio"
+  desc {
+    menu: "Nudge pitch down"
+    full: "Nudge pitch down by 1 semitone"
+  }
+  disabled: "empty"
+}
+
+command {
+  id_string: "NUDGE_PITCH_UP"
+  category: "Audio"
+  desc {
+    menu: "Nudge pitch up"
+    full: "Nudge pitch up by 1 semitone"
+  }
+  disabled: "empty"
+}
+
+command {
   id_string: "NUDGE_VOLUME_DOWN"
   category: "Audio"
   desc {

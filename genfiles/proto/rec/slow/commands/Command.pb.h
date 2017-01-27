@@ -83,6 +83,8 @@ enum Command_Id {
   Command_Id_NUDGE_BEGIN_RIGHT = 16,
   Command_Id_NUDGE_END_LEFT = 17,
   Command_Id_NUDGE_END_RIGHT = 18,
+  Command_Id_NUDGE_PITCH_DOWN = 106,
+  Command_Id_NUDGE_PITCH_UP = 107,
   Command_Id_NUDGE_SPEED_DOWN = 86,
   Command_Id_NUDGE_SPEED_UP = 87,
   Command_Id_NUDGE_VOLUME_DOWN = 19,
@@ -140,7 +142,7 @@ enum Command_Id {
   Command_Id_ZOOM_OUT = 40,
   Command_Id_ZOOM_OUT_FULL = 64,
   Command_Id_ZOOM_TO_SELECTION = 45,
-  Command_Id_FIRST_FREE_ID = 106,
+  Command_Id_FIRST_FREE_ID = 108,
   Command_Id_QUIT = 4097,
   Command_Id_DEL = 4098,
   Command_Id_CUT = 4099,
@@ -262,6 +264,8 @@ class Command : public ::google::protobuf::Message {
   static const Id NUDGE_BEGIN_RIGHT = Command_Id_NUDGE_BEGIN_RIGHT;
   static const Id NUDGE_END_LEFT = Command_Id_NUDGE_END_LEFT;
   static const Id NUDGE_END_RIGHT = Command_Id_NUDGE_END_RIGHT;
+  static const Id NUDGE_PITCH_DOWN = Command_Id_NUDGE_PITCH_DOWN;
+  static const Id NUDGE_PITCH_UP = Command_Id_NUDGE_PITCH_UP;
   static const Id NUDGE_SPEED_DOWN = Command_Id_NUDGE_SPEED_DOWN;
   static const Id NUDGE_SPEED_UP = Command_Id_NUDGE_SPEED_UP;
   static const Id NUDGE_VOLUME_DOWN = Command_Id_NUDGE_VOLUME_DOWN;
