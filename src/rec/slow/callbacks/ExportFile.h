@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_CALLBACKS_SAVEFILE__
-#define __REC_SLOW_CALLBACKS_SAVEFILE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -8,10 +7,8 @@ namespace slow {
 
 class Instance;
 
-void saveFile();
-void saveFileSelection();
+void exportFile();
+void exportFileSelection();
 
 }  // namespace slow
 }  // namespace rec
-
-#endif  // __REC_SLOW_CALLBACKS_SAVEFILE__

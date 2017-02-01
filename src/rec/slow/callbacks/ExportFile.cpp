@@ -107,7 +107,7 @@ static bool isLegalSuffix(const String& suffix) {
 }
 
 
-File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
+File getExportFile(Instance* instance, audio::AudioSettings::FileType t) {
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
@@ -267,7 +267,7 @@ Viewport getViewport(Instance* instance, bool useSelection,
   return viewport;
 }
 
-void doSaveFile(Instance* instance, bool useSelection) {
+void doExportFile(Instance* instance, bool useSelection) {
   using namespace juce;
   ptr<audio::Source> s(instance->makeSource());
   s.reset(instance->player_->makeSourceCopy(s.release(), useSelection));
@@ -287,7 +287,7 @@ void doSaveFile(Instance* instance, bool useSelection) {
 
   AudioSettings::FileType t = data::getProto<AudioSettings>().
     file_type_for_save();
-  File file = getSaveFile(instance, t);
+  File file = getExportFile(instance, t);
   if (file != File::nonexistent) {
     String name = String::formatted(t_SAVING_FILE, c_str(file.getFileName()));
     Viewport viewport = getViewport(instance, useSelection, len);
@@ -298,12 +298,12 @@ void doSaveFile(Instance* instance, bool useSelection) {
 }  // namespace
 
 
-void saveFile() {
-  doSaveFile(getInstance(), false);
+void exportFile() {
+  doExportFile(getInstance(), false);
 }
 
-void saveFileSelection() {
-  doSaveFile(getInstance(), true);
+void exportFileSelection() {
+  doExportFile(getInstance(), true);
 }
 
 }  // namespace slow

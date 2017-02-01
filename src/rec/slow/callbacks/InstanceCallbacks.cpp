@@ -107,7 +107,7 @@ void closeFile() {
 }
 
 void copyFile() {
-  Instance* i = getInstance();
+  // Instance* i = getInstance();
   // if (gui::dialog::saveVirtualFile(
 }
 
@@ -225,8 +225,8 @@ void addInstanceCallbacks(Program* p) {
   addCallback(p, slow::Command::COPY_FILE, copyFile);
   addCallback(p, slow::Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
 
-  addCallback(p, slow::Command::EXPORT_FILE, saveFile);
-  addCallback(p, slow::Command::EXPORT_FILE_SELECTION, saveFileSelection);
+  addCallback(p, slow::Command::EXPORT_FILE, exportFile);
+  addCallback(p, slow::Command::EXPORT_FILE_SELECTION, exportFileSelection);
 
   addCallback(p, slow::Command::KEYBOARD_MAPPINGS, keyboardMappings);
   addCallback(p, slow::Command::MIDI_MAPPINGS, midiMappings);
