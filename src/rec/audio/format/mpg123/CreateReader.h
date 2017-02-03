@@ -18,9 +18,9 @@ struct OutputFormat {
 // list of OutputFormats that we want to accept - if they're nullptr, or the same,
 // we accept all formats.
 Error createReader(juce::InputStream* sourceStream,
-                                      juce::AudioFormatReader** reader,
-                                      OutputFormat* begin = nullptr,
-                                      OutputFormat* end = nullptr);
+                   juce::AudioFormatReader** reader,
+                   OutputFormat* begin = nullptr,
+                   OutputFormat* end = nullptr);
 
 }  // namespace mpg123
 }  // namespace format

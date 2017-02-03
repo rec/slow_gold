@@ -15,14 +15,15 @@ class Format : public juce::AudioFormat {
     virtual ~Format();
 
     virtual juce::AudioFormatReader* createReaderFor(juce::InputStream* source,
-                                                                                                      bool deleteStreamOnFail);
+                                                     bool deleteStreamOnFail);
 
-    virtual juce::AudioFormatWriter* createWriterFor(juce::OutputStream* /* output */,
-                                                                                                      double /* sampleRateToUse */,
-                                                                                                      unsigned int /* numChannels */,
-                                                                                                      int /* bitsPerSample */,
-                                                                                                      const StringPairArray& /* meta */,
-                                                                                                      int /* quality */) {
+    virtual juce::AudioFormatWriter* createWriterFor(
+          juce::OutputStream* /* output */,
+          double /* sampleRateToUse */,
+          unsigned int /* numChannels */,
+          int /* bitsPerSample */,
+          const StringPairArray& /* meta */,
+          int /* quality */) {
         return nullptr;
     }
 

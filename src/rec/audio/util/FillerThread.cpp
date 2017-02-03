@@ -25,14 +25,15 @@ void FillerThread::setFillPositionOrJump() {
         if (reader->coversTime(jump))
             currentTime_->jumpToTime(jump);
     } else {
-        // Find the first moment in the selection after "time" that needs to be filled.
+        // Find the first moment in the selection after "time" that needs to be
+        // filled.
         SampleRangeVector sel = currentTime_->timeSelection();
         SampleRangeVector readerFilled = reader->filled();
         SampleRangeVector fill = difference<SampleTime>(sel, readerFilled);
         if (!fill.empty()) {
             SampleTime time = currentTime_->time();
-            SampleRangeVector fillList = getUnfilledBlocks(fill, time, reader->length(),
-                                                                                                          STOP_AT_END);
+            auto fillList = getUnfilledBlocks(
+                fill, time, reader->length(), STOP_AT_END);
             if (!fillList.empty())
                 reader->setNextFillPosition(fillList.begin()->begin_);
             else

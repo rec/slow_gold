@@ -5,8 +5,8 @@
 /*
     Components:
         the buffer: a C-style array of frames with a length
-        a map from blocks of frames in the source to blocks within the block of memory
-
+        a map from blocks of frames in the source to blocks within the block of
+        memory
   */
 
 
@@ -27,7 +27,9 @@ class TimeMap {
   private:
     typedef Range<SampleTime> TimeRange;
     class Compare {
-        bool operator()(const TimeRange& x, const TimeRange& y) { return x > y; }
+        bool operator()(const TimeRange& x, const TimeRange& y) {
+            return x > y;
+        }
     };
 
     typedef std::map<SampleTime, TimeRange, Compare> RangeMap;

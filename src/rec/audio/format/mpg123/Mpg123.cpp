@@ -35,8 +35,8 @@ class Initializer {
 
     static Initializer& instance() {
         // C guarantees thread-safe construction of this variable, so we're
-        // guaranteed that that first mpg123_init() is atomic - but if you turn it
-        // off and on, all bets are off!
+        // guaranteed that that first mpg123_init() is atomic - but if you turn
+        // it off and on, all bets are off!
         static Initializer i;
         return i;
     }

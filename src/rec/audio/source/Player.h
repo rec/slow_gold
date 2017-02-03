@@ -28,13 +28,13 @@ class StereoProto;
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be nullptr if no stretch has been requested.
 class Player : public DataListener<AudioSettings>,
-                              public DataListener<Gain>,
-                              public DataListener<PlayState>,
-                              public DataListener<StereoProto>,
-                              public DataListener<stretch::Stretch>,
-                              public DataListener<widget::waveform::Viewport>,
-                              public Listener<SampleRate>,
-                              public juce::ChangeListener {
+               public DataListener<Gain>,
+               public DataListener<PlayState>,
+               public DataListener<StereoProto>,
+               public DataListener<stretch::Stretch>,
+               public DataListener<widget::waveform::Viewport>,
+               public Listener<SampleRate>,
+               public juce::ChangeListener {
   public:
     Player(Device* d);
 

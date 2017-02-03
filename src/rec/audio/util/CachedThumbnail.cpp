@@ -10,8 +10,9 @@ static const int COMPRESSION = 256;
 
 CachedThumbnail::CachedThumbnail()
             : cacheWritten_(false),
-                cache_(1),
-                thumbnail_(COMPRESSION, *format::getReaderAudioFormatManager(), cache_) {
+              cache_(1),
+              thumbnail_(COMPRESSION, *format::getReaderAudioFormatManager(),
+                         cache_) {
 }
 
 void CachedThumbnail::addBlock(SampleTime pos, const Info& i) {
@@ -37,7 +38,7 @@ void CachedThumbnail::write(const File& file) {
 }
 
 void CachedThumbnail::read(const File& file, SampleRate sampleRate,
-                                                      SampleTime sampleLength, int channels) {
+                           SampleTime sampleLength, int channels) {
     thumbnail_.reset(channels, sampleRate, sampleLength);
 
 #ifndef SLOWGOLD_SAVE_DISABLED

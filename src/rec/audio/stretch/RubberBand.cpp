@@ -31,9 +31,9 @@ static const double EPSILON = 1e-6;
 
 RubberBand::RubberBand(Source* s, const StretchParameters& stretch)
         : Implementation(s, stretch),
-            outputSampleRate_(0),
-            timeScale_(0.0),
-            pitchScale_(0.0) {
+          outputSampleRate_(0),
+          timeScale_(0.0),
+          pitchScale_(0.0) {
     doLog("RubberBand::RubberBand");
     CHECK_DDD(7134, 1893, int32, int16);
     doLog("RubberBand::RubberBand done");

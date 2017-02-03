@@ -16,7 +16,8 @@ class CachedThumbnail {
     AudioThumbnail* thumbnail() { return &thumbnail_; }
     bool cacheWritten() const { return cacheWritten_; }
     void write(const File&);
-    void read(const File&, SampleRate rate, SampleTime sampleLength, int channels = 2);
+    void read(const File&, SampleRate rate, SampleTime sampleLength,
+              int channels = 2);
 
   private:
     bool cacheWritten_;

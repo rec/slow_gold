@@ -16,8 +16,8 @@ typedef ::RubberBand::RubberBandStretcher RubberBandStretcher;
 class RubberBand : public Implementation {
   public:
     explicit RubberBand(Source* source,
-                                            const StretchParameters& stretch =
-                                            StretchParameters::default_instance());
+                        const StretchParameters& stretch =
+                        StretchParameters::default_instance());
     virtual ~RubberBand();
 
     virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);

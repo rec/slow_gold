@@ -15,11 +15,11 @@ AudioFormatReader* RawFormat::createReaderFor(InputStream* source, bool) {
 }
 
 AudioFormatWriter* RawFormat::createWriterFor(OutputStream* output,
-                                                                                            double sampleRateToUse,
-                                                                                            unsigned int numChannels,
-                                                                                            int bitsPerSample,
-                                                                                            const StringPairArray& /* meta */,
-                                                                                            int /* quality */) {
+                                              double sampleRateToUse,
+                                              unsigned int numChannels,
+                                              int bitsPerSample,
+                                              const StringPairArray& /* meta */,
+                                              int /* quality */) {
     return new RawFormatWriter(output, "raw", sampleRateToUse, numChannels,
                                                           bitsPerSample);
 }

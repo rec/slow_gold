@@ -13,8 +13,8 @@ class Implementation {
     static const int INITIAL_BUFFER_SIZE = (1 << 14);
 
     explicit Implementation(Source* s,
-                                                    const StretchParameters& stretch =
-                                                    StretchParameters::default_instance());
+                            const StretchParameters& stretch =
+                            StretchParameters::default_instance());
     virtual ~Implementation() {}
 
     virtual void getNextAudioBlock(const AudioSourceChannelInfo&) = 0;

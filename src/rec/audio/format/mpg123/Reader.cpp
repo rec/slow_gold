@@ -13,7 +13,7 @@ namespace format {
 namespace mpg123 {
 
 Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh,
-                              Copier copier)
+               Copier copier)
     : AudioFormatReader(in, formatName),
         mh_(mh),
         buffer_(nullptr),
@@ -30,7 +30,7 @@ Reader::~Reader() {
 }
 
 bool Reader::readSamples(int** dest, int destChannels, int destOffset,
-                                                  int64 startSampleInFile, int numSamples) {
+                         int64 startSampleInFile, int numSamples) {
     if (mpg123_seek(mh_, static_cast<size_t>(startSampleInFile), SEEK_SET) < 0)
         return false;
 

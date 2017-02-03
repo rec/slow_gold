@@ -34,7 +34,7 @@ struct Copier {
 
     void copy(int f, int t) const {
         to_.buffer_->copyFrom(f, to_.time_.toInt(), *from_.buffer_, t,
-                                                    from_.time_.toInt(), count_.toInt());
+                              from_.time_.toInt(), count_.toInt());
     }
 
     void mix(int chanFrom, int chanTo) const {
@@ -47,11 +47,14 @@ struct Copier {
             float* fromSamp = from_.buffer_->getWritePointer(c1, startFrom.toInt());
 
             if (c1 == c2) {
-                to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt());
+                to_.buffer_->copyFrom(
+                    c, startTo.toInt(), fromSamp, count_.toInt());
             } else {
-                to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt(), 0.5f);
-                to_.buffer_->addFrom(c, startTo.toInt(), *from_.buffer_, c2,
-                                                          startFrom.toInt(), count_.toInt(), 0.5f);
+                to_.buffer_->copyFrom(
+                    c, startTo.toInt(), fromSamp, count_.toInt(), 0.5f);
+                to_.buffer_->addFrom(
+                    c, startTo.toInt(), *from_.buffer_, c2,
+                    startFrom.toInt(), count_.toInt(), 0.5f);
             }
         }
     }
@@ -81,7 +84,7 @@ SampleTime copy(const BufferTime& from, const BufferTime& to, SampleTime cnt) {
 namespace {
 
 SampleTime copy(bool copyFirstToSecond,
-                                const BufferTime& x, const BufferTime& y, SampleTime c) {
+                const BufferTime& x, const BufferTime& y, SampleTime c) {
     return copyFirstToSecond ? copy(x, y, c) : copy(y, x, c);
 }
 
@@ -96,8 +99,8 @@ BufferTime reset(const BufferTime& bt, SampleTime t = 0.0) {
 }  // namespace
 
 SampleTime copyCircular(const BufferTime& circ, SampleTime size,
-                                                const BufferTime& reg, SampleTime count,
-                                                bool toReg) {
+                        const BufferTime& reg, SampleTime count,
+                        bool toReg) {
     SampleTime available = (size - circ.time_);
     SampleTime n = std::min(available, count);
     SampleTime copied = copy(toReg, circ, reg, n);
@@ -114,12 +117,12 @@ SampleTime copyCircular(const BufferTime& circ, SampleTime size,
 }
 
 SampleTime copyFromCircular(const BufferTime& from, SampleTime fromSize,
-                                                        const BufferTime& to, SampleTime count) {
+                            const BufferTime& to, SampleTime count) {
     return copyCircular(from, fromSize, to, count, true);
 }
 
 SampleTime copyToCircular(const BufferTime& from, const BufferTime& to,
-                                                    SampleTime toSize, SampleTime count) {
+                          SampleTime toSize, SampleTime count) {
     return copyCircular(to, toSize, from, count, false);
 }
 

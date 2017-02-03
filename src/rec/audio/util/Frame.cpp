@@ -9,9 +9,9 @@ namespace {
 
 template <typename Sample, int CHANNELS>
 void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
-                                                  SampleTime inOffset,
-                                                  float **out, int outOffset,
-                                                  int numSamples) {
+                         SampleTime inOffset,
+                         float **out, int outOffset,
+                         int numSamples) {
     typedef InterleavedFrame<Sample, CHANNELS> Frame;
     Frame* frame = in + inOffset.toInt();
     for (int i = 0, s = outOffset; i < numSamples; ++i, ++frame, ++s) {
@@ -45,17 +45,19 @@ bool Frames<Frame>::setLength(SampleTime length) {
         return true;
     } else {
         LOG(ERROR) << "Unable to allocate " << length << " frames, "
-                              << size << " bytes ";
+                   << size << " bytes ";
         return false;
     }
 }
 
 template <typename Frame>
 SampleTime Frames<Frame>::getAudioBlock(const Info& info,
-                                                                                SampleTime offset) const {
-    int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
+                                        SampleTime offset) const {
+    int numSamples = std::min(info.numSamples,
+                              static_cast<int>(length_ - offset));
     float** out = info.buffer->getArrayOfWritePointers();
-    DCHECK_GE(numSamples, 0) << info.numSamples << ", " << length_ << ", "  << offset;
+    DCHECK_GE(numSamples, 0) << info.numSamples << ", "
+                             << length_ << ", "  << offset;
     fillArrayOfChannels(frames_, offset, out, info.startSample, numSamples);
     return numSamples;
 }

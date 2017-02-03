@@ -11,7 +11,6 @@ typedef Source* (*SourceFilter)(Source*);
 
 void processAudioFile(const File& in, const File& out, SourceFilter f);
 
-
 typedef std::pair<Source*, AudioFormatWriter*> SourceAndWriter;
 
 SourceAndWriter makeSourceAndWriter(const File& in, const File& out);

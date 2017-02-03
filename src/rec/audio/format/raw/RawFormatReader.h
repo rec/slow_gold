@@ -24,11 +24,13 @@ class RawFormatReader : public AudioFormatReader {
     virtual ~RawFormatReader() {}
 
     virtual bool readSamples(int** destSamples,
-                                                      int numDestChannels,
-                                                      int /*startOffsetInDestBuffer*/,  // Why isn't this used?
-                                                      int64 startSampleInFile,
-                                                      int numSamples) {
-        numDestChannels = std::min(static_cast<int>(numChannels), numDestChannels);
+                             int numDestChannels,
+                             int /*startOffsetInDestBuffer*/,
+                             // Why isn't this used?
+                             int64 startSampleInFile,
+                             int numSamples) {
+        numDestChannels = std::min(
+            static_cast<int>(numChannels), numDestChannels);
 
         if (lengthInSamples < 0) {
             frameSize_ = (numChannels * bitsPerSample / 8);
@@ -38,14 +40,17 @@ class RawFormatReader : public AudioFormatReader {
         for (int i = 0; i < numSamples; ++i) {
             for (int c = 0; c < numDestChannels; ++c) {
                 int s;
-                if (bitsPerSample == 8)
+                if (bitsPerSample == 8) {
                     s = input->readByte() * 256 * 65536;
-                else if (bitsPerSample == 16)
-                    s = (endian_ ? input->readShortBigEndian() : input->readShort()) * 65536;
-                else if (bitsPerSample == 32)
-                    s = (endian_ ? input->readIntBigEndian() : input->readInt()) * 65536;
-                else {
-                    DCHECK(false) << "Unknown bits per sample " << bitsPerSample;
+                } else if (bitsPerSample == 16) {
+                    s = (endian_ ? input->readShortBigEndian() :
+                         input->readShort()) * 65536;
+                } else if (bitsPerSample == 32) {
+                    s = (endian_ ? input->readIntBigEndian() :
+                         input->readInt()) * 65536;
+                } else {
+                    DCHECK(false) << "Unknown bits per sample "
+                                  << bitsPerSample;
                     s = 0;
                 }
 

@@ -24,12 +24,14 @@ class Level : public Wrappy {
     }
 
     virtual float getLevel(const AudioSourceChannelInfo& info, int channel) {
-        return info.buffer->getRMSLevel(channel, info.startSample, info.numSamples);
+        return info.buffer->getRMSLevel(
+            channel, info.startSample, info.numSamples);
     }
 
     virtual std::pair<float, float> getMinMax(const AudioSourceChannelInfo& info,
-                                                                                        int channel) {
-        auto r = info.buffer->findMinMax(channel, info.startSample, info.numSamples);
+                                              int channel) {
+        auto r = info.buffer->findMinMax(
+            channel, info.startSample, info.numSamples);
         return std::make_pair(r.getStart(), r.getEnd());
     }
 

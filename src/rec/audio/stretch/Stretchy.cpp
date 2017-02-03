@@ -17,7 +17,8 @@ namespace stretch {
 
 Stretchy::Stretchy(Source* s, const Stretchy& stretchy)
         : Wrappy(s),
-            implementation_(new RubberBand(s, stretchy.implementation_->stretch())) {
+          implementation_(std::make_unique<RubberBand>(
+              s, stretchy.implementation_->stretch())) {
 }
 
 Stretchy::Stretchy(Source* s) : Wrappy(s) {}

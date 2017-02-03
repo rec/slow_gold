@@ -23,9 +23,9 @@ struct Copy {
     static Out cast(In in) { return Out(in); }
 
     static void copy(int** destSamples, int destChannels, int64 destOffset,
-                                      void* source, int sourceChannels, int64 sourceSize) {
-        Out** out = (Out**) destSamples;
-        In* in = (In*) source;
+                     void* source, int sourceChannels, int64 sourceSize) {
+        auto out = (Out**) destSamples;
+        auto in = (In*) source;
 
         if (destChannels == 1 && sourceChannels == 2) {
             Out *o = out[0] + destOffset;
@@ -42,12 +42,25 @@ struct Copy {
     }
 };
 
-template<> int Copy<char,   int>::cast(char x)   { return 0x1000000 * int(x); }
-template<> int Copy<short,  int>::cast(short x)  { return 0x10000 * int(x); }
+template<> int Copy<char, int>::cast(char x) {
+    return 0x1000000 * int(x);
+}
 
-template<> int Copy<uchar,  int>::cast(uchar x)  { return 0x1000000 * char(int(x) - 0x80); }
-template<> int Copy<ushort, int>::cast(ushort x) { return 0x10000 * (int(x) - 0x8000); }
-template<> int Copy<unsigned int,   int>::cast(unsigned int x)   { return int(int64(x) - 0x80000000L); }
+template<> int Copy<short, int>::cast(short x) {
+    return 0x10000 * int(x);
+}
+
+template<> int Copy<uchar, int>::cast(uchar x) {
+    return 0x1000000 * char(int(x) - 0x80);
+}
+
+template<> int Copy<ushort, int>::cast(ushort x) {
+    return 0x10000 * (int(x) - 0x8000);
+}
+
+template<> int Copy<unsigned int, int>::cast(unsigned int x) {
+    return int(int64(x) - 0x80000000L);
+}
 
 }  // namespace
 

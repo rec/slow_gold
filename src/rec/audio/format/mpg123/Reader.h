@@ -17,17 +17,17 @@ class Reader : public juce::AudioFormatReader {
     ~Reader();
 
     virtual bool readSamples(int** destSamples,
-                                                      int numDestChannels,
-                                                      int startOffsetInDestBuffer,
-                                                      int64 startSampleInFile,
-                                                      int numSamples);
+                             int numDestChannels,
+                             int startOffsetInDestBuffer,
+                             int64 startSampleInFile,
+                             int numSamples);
 
   private:
     Reader(juce::InputStream* in, const String& name, mpg123_handle* mh,
                   Copier copier);
 
     friend Error createReader(juce::InputStream*, juce::AudioFormatReader**,
-                                                        OutputFormat*, OutputFormat*);
+                              OutputFormat*, OutputFormat*);
 
     mpg123_handle* mh_;
     uchar* buffer_;

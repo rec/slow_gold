@@ -38,7 +38,7 @@ SampleTime BufferFiller::length() const {
 }
 
 void BufferFiller::setReader(const VirtualFile& f,
-                                                                      AudioFormatReader* reader) {
+                             AudioFormatReader* reader) {
     Lock l(lock_);
     DCHECK(reader);
     DCHECK(reader->lengthInSamples);

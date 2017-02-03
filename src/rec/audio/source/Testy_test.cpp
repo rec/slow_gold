@@ -19,8 +19,10 @@ TEST(RecAudio, Testy) {
     testy.getNextAudioBlock(info);
 
     for (int c = 0; c < 2; ++c) {
-        for (int i = 0; i < 32; ++i)
-            EXPECT_EQ(Testy::getSample(16 + i), *buffer.getReadPointer(c, 64 + i));
+        for (int i = 0; i < 32; ++i) {
+            EXPECT_EQ(Testy::getSample(16 + i),
+                      *buffer.getReadPointer(c, 64 + i));
+        }
     }
 }
 

@@ -129,12 +129,12 @@ Source* Player::makeSourceCopy(Source* s, bool useSelection) {
     Lock l(lock_);
     std::unique_ptr<Source> source(s);
     if (useSelection) {
-        std::unique_ptr<Selection> selection(new Selection(source.release()));
+        auto selection = std::make_unique<Selection>(source.release());
         selection->setSelection(selection_->selection());
         source.reset(selection.release());
     }
 
-    std::unique_ptr<Stretchy> stretchy(new Stretchy(source.release(), *stretchy_));
+    auto stretchy = std::make_unique<Stretchy>(source.release(), *stretchy_);
     source.reset(stretchy.release());
     return source.release();
 }

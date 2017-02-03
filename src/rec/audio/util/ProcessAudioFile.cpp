@@ -6,7 +6,7 @@ namespace audio {
 namespace util {
 
 void processAudioFile(const File& in, const File& out,
-                                            SourceFilter filter) {
+                      SourceFilter filter) {
     CHECK(in.exists()) << "File " << str(in) << " doesn't exist";
     std::unique_ptr<AudioFormatReader> reader(format::createReader(in));
     std::unique_ptr<PositionableAudioSource> src(
@@ -23,15 +23,16 @@ void processAudioFile(const File& in, const File& out,
 
     std::unique_ptr<AudioFormatWriter> writer(
             f->createWriterFor(stream,
-                                                  reader->sampleRate,
-                                                  reader->numChannels,
-                                                  reader->bitsPerSample,
-                                                  StringPairArray(),
-                                                  0));
+                               reader->sampleRate,
+                               reader->numChannels,
+                               reader->bitsPerSample,
+                               StringPairArray(),
+                               0));
     CHECK(writer) << "Couldn't create writer for " << str(out);
 
     src.reset(filter(src.release()));
-    writer->writeFromAudioSource(*src, static_cast<int>(src->getTotalLength()), 4096);
+    writer->writeFromAudioSource(*src,
+                                 static_cast<int>(src->getTotalLength()), 4096);
 }
 
 typedef std::pair<Source*, AudioFormatWriter*> SourceAndWriter;

@@ -11,7 +11,7 @@ typedef long long int int64;
 
 // A function that copies samples from source to destination.
 typedef void (*Copier)(int** dest, int destChannels, int64 destOffset,
-                                              void* source, int sourceChannels, int64 sourceSize);
+                       void* source, int sourceChannels, int64 sourceSize);
 
 // Get a Copier that matches the mp3 encoding.
 Copier getCopier(int encoding);

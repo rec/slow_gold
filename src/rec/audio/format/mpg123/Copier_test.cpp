@@ -18,8 +18,9 @@ void testCopier(int encoding, Out mult = 1, Out offset = 0) {
 
     for (int c = 0; c < 2; ++c) {
         for (int s = 0; s < 3; ++s) {
-            ASSERT_EQ(Out(mult * (int64(samples[s][c]) - offset)), destBase[c][s])
-                << c << ", " << s;
+            ASSERT_EQ(Out(mult * (int64(samples[s][c]) - offset)),
+                      destBase[c][s])
+                    << c << ", " << s;
         }
     }
 }

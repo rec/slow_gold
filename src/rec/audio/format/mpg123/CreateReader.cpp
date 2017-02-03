@@ -14,17 +14,19 @@ namespace mpg123 {
 namespace {
 
 Error setFormat(mpg123_handle* mh,
-                                OutputFormat* begin,
-                                OutputFormat* end) {
-    if (begin != end) {
-        if (Error e = mpg123_format_none(mh))
-            return e;
+                OutputFormat* begin,
+                OutputFormat* end) {
+    if (begin == end)
+        return MPG123_OK;
 
-        for (OutputFormat* i = begin; i != end; ++i) {
-            if (Error e = mpg123_format(mh, i->rate_, i->channels_, i->encoding_))
-                return e;
-        }
+    if (Error e = mpg123_format_none(mh))
+        return e;
+
+    for (OutputFormat* i = begin; i != end; ++i) {
+        if (auto e = mpg123_format(mh, i->rate_, i->channels_, i->encoding_))
+            return e;
     }
+
     return MPG123_OK;
 }
 
@@ -35,9 +37,9 @@ Error setFormat(mpg123_handle* mh,
 #endif
 
 Error createReader(InputStream* in,
-                                      AudioFormatReader** reader,
-                                      OutputFormat* begin,
-                                      OutputFormat* end) {
+                   AudioFormatReader** reader,
+                   OutputFormat* begin,
+                   OutputFormat* end) {
     mpg123_handle *mh = nullptr;
 
     long sampleRate;

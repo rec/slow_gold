@@ -15,24 +15,27 @@ struct AudioFormatOutputDescription {
 
 class AudioFormat
 {
-        // ...
-        virtual AudioFormatWriter* createWriterFor (OutputStream*, const OutputDescription&) = 0;
-        virtual AudioFormatWriter* createWriterFor (OutputStream* streamToWriteTo,
-                                                                                                double sampleRate,
-                                                                                                unsigned int channels,
-                                                                                                int bitsPerSample,
-                                                                                                const StringPairArray& metadataValues,
-                                                                                                int qualityOptionIndex) {
-                AudioFormatOutputDescription desc;
+    // ...
+    virtual AudioFormatWriter* createWriterFor(
+        OutputStream*, const OutputDescription&) = 0;
 
-                desc.sampleRate = sampleRate;
-                desc.channels = channels;
-                desc.bitsPerSample = bitsPerSample;
-                desc.encoderHints = metadataValues;
-                desc.encoderHints["quality"] = getQualityOptions()[qualityOptionIndex];
+    virtual AudioFormatWriter* createWriterFor(
+            OutputStream* streamToWriteTo,
+            double sampleRate,
+            unsigned int channels,
+            int bitsPerSample,
+            const StringPairArray& metadataValues,
+            int qualityOptionIndex) {
+        AudioFormatOutputDescription desc;
 
-                return createWriterFor(streamToWriteTo, desc);
-        }
+        desc.sampleRate = sampleRate;
+        desc.channels = channels;
+        desc.bitsPerSample = bitsPerSample;
+        desc.encoderHints = metadataValues;
+        desc.encoderHints["quality"] = getQualityOptions()[qualityOptionIndex];
+
+        return createWriterFor(streamToWriteTo, desc);
+    }
 };
 
 #endif

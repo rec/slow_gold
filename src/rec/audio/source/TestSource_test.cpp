@@ -13,9 +13,9 @@ const int FULL_BUFFER_SIZE = 128;
 // Make sure that a given PositionableAudioSource is the same as the test
 // source.
 void testSource(PositionableAudioSource* source,
-                                int numSamples,
-                                int readOffset,
-                                int writeOffset) {
+                int numSamples,
+                int readOffset,
+                int writeOffset) {
     AudioSampleBuffer buffer(CHANNELS, FULL_BUFFER_SIZE);
 
     AudioSourceChannelInfo info;

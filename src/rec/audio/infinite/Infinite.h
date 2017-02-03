@@ -71,9 +71,9 @@ class Infinite {
     // initialize() fills the SampleBlock regardless of its current contents.
     virtual void initialize(SampleBlock* blocks) const = 0;
 
-    // increment() takes the current SampleBlock contents and changes them to the
-    // next SampleBlock state in sequence and returns true IF such a state exists,
-    // otherwise increment() returns false;
+    // increment() takes the current SampleBlock contents and changes them to
+    // the next SampleBlock state in sequence and returns true IF such a state
+    // exists, otherwise increment() returns false;
     virtual bool increment(SampleBlock* blocks) const = 0;
 
   private:

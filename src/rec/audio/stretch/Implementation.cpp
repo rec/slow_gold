@@ -8,7 +8,7 @@ namespace stretch {
 static const double EPSILON = 1e-6;
 
 Implementation::Implementation(PositionableAudioSource* source,
-                                                              const StretchParameters& stretch)
+                               const StretchParameters& stretch)
         : stretch_(stretch), source_(source), buffer_(2, INITIAL_BUFFER_SIZE) {
     info_.buffer = &buffer_;
     info_.startSample = 0;

@@ -28,7 +28,7 @@ Device::Device() {
 }
 
 void Device::saveState() {
-    std::unique_ptr<juce::XmlElement> state(manager_.createStateXml());
+    auto state = manager_.createStateXml();
     if (state) {
         auto f = getDeviceFile();
         if (state->writeToFile(f, ""))

@@ -13,14 +13,14 @@ class RawFormat : public juce::AudioFormat {
     virtual ~RawFormat() {}
 
     virtual AudioFormatReader* createReaderFor(InputStream* source,
-                                                                                          bool deleteStreamOnFail);
+                                               bool deleteStreamOnFail);
 
     virtual AudioFormatWriter* createWriterFor(OutputStream* output,
-                                                                                          double sampleRateToUse,
-                                                                                          unsigned int numChannels,
-                                                                                          int bitsPerSample,
-                                                                                          const StringPairArray& meta,
-                                                                                          int quality);
+                                               double sampleRateToUse,
+                                               unsigned int numChannels,
+                                               int bitsPerSample,
+                                               const StringPairArray& meta,
+                                               int quality);
 
     virtual juce::Array<int> getPossibleSampleRates();
     virtual juce::Array<int> getPossibleBitDepths();
