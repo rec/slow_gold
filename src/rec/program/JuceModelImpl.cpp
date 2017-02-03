@@ -72,7 +72,7 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
   for (auto& i: commandMap_) {
     Command& cmd = i.second;
     if (cmd.has_setter()) {
-      dataListeners_.push_back(make_unique<SetterListener>(
+      dataListeners_.push_back(std::make_unique<SetterListener>(
           i.first, cmd, juceModel));
     }
   }

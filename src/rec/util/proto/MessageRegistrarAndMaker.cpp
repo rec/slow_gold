@@ -49,7 +49,7 @@ void MessageRegistrarAndMaker::registerInstance(
     LOG(DFATAL) << "Tried to register the same type twice: " << typeName;
     return;
   }
-  impl_->registry_[typeName] = make_unique<Entry>(m, copy, scope);
+  impl_->registry_[typeName] = std::make_unique<Entry>(m, copy, scope);
 }
 
 unique_ptr<Message> MessageRegistrarAndMaker::makeMessage(const string& tn) const {
