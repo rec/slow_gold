@@ -22,10 +22,9 @@ class BufferedReader : public Fillable {
   AudioFormatReader* reader() { return reader_.get(); }
 
  protected:
-  ptr<AudioFormatReader> reader_;
+  std::unique_ptr<AudioFormatReader> reader_;
 };
 
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

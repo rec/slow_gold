@@ -12,17 +12,16 @@ class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
   MessageRegistrarAndMaker();
   virtual ~MessageRegistrarAndMaker();
 
-  unique_ptr<Message> makeMessage(const string& typeName) const override;
+  std::unique_ptr<Message> makeMessage(const string& typeName) const override;
   void registerInstance(
       const Message& m, bool copy, data::AddressProto::Scope) override;
   data::AddressProto::Scope getScope(const string& typeName) const override;
 
  private:
   struct Impl;
-  unique_ptr<Impl> impl_;
+  std::unique_ptr<Impl> impl_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MessageRegistrarAndMaker);
 };
 
 }  // namespace util
 }  // namespace rec
-

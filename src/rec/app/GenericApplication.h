@@ -47,7 +47,7 @@ class GenericApplication : public Listener<Enable>,
  protected:
   ApplicationFunction initializer_;
   ApplicationFunction shutdown_;
-  ptr<Window> window_;
+  std::unique_ptr<Window> window_;
   thread_ptr<Thread> startupThread_;
   Enable enable_;
   bool autoCheckForUpdates_;
@@ -59,4 +59,3 @@ class GenericApplication : public Listener<Enable>,
 
 }  // namespace app
 }  // namespace rec
-

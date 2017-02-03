@@ -87,7 +87,7 @@ void Root::readOpenness() {
     return;
 
   opennessStarted_ = true;
-  ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
+  std::unique_ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
   if (openness) {
     restoreOpenness(&root_, *openness);
     tree_->restoreOpennessState(*openness, true);
@@ -99,7 +99,7 @@ void Root::readOpenness() {
 
 void Root::writeOpenness() {
   if (USE_OPENNESS_FILE && opennessRead_) {
-    ptr<XmlElement> openness(tree_->getOpennessState(true));
+    std::unique_ptr<XmlElement> openness(tree_->getOpennessState(true));
     if (!(openness && openness->writeToFile(getOpennessFile(), "")))
       LOG(DFATAL) << "Couldn't write openness file";
   } else {
@@ -162,7 +162,7 @@ void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
 }
 
 void Root::addVolume(const VirtualFile& volume, int insertAt) {
-  ptr<Node> directory;
+  std::unique_ptr<Node> directory;
 
   if (volume.type() == VirtualFile::CD)
     directory.reset(new CD(desc_, volume));

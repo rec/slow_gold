@@ -66,7 +66,7 @@ void Directory::partition() {
                                                           minPartition());
 
   for (int i = 0; i < shards.size(); ++i) {
-    ptr<Node> node(createChildFile(shards[i]));
+    std::unique_ptr<Node> node(createChildFile(shards[i]));
     node->addListener(this);
     if (isOpen_)
       node->requestChildren();

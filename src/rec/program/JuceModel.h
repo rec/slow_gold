@@ -62,8 +62,8 @@ class JuceModel : public ApplicationCommandTarget,
   const command::CommandMapProto& keyMap() const;
 
  private:
-  unique_ptr<JuceModelImpl> impl_;
-  unique_ptr<DisableMap> disableMap_;
+  std::unique_ptr<JuceModelImpl> impl_;
+  std::unique_ptr<DisableMap> disableMap_;
   Program* program_;
   ApplicationCommandManager applicationCommandManager_;
 
@@ -83,4 +83,3 @@ inline ApplicationCommandManager* applicationCommandManager() {
 
 }  // namespace program
 }  // namespace rec
-

@@ -17,7 +17,7 @@ struct HasOwner {
 
 struct OwnedCallback : public HasOwner {
   OwnedCallback(void* owner, Callback* cb) : HasOwner(owner), callback_(cb) {}
-  ptr<Callback> callback_;
+  std::unique_ptr<Callback> callback_;
 };
 
 }  // namespace
@@ -46,7 +46,7 @@ void CallbackQueue::removeCallbacksFor(void* owner) {
 void CallbackQueue::runOneCallback() {
   Lock l(lock_);
   if (!empty()) {
-    ptr<OwnedCallback> owned(queue_->list_.back());
+    std::unique_ptr<OwnedCallback> owned(queue_->list_.back());
     (*owned->callback_)();
     queue_->list_.pop_back();
   }
@@ -55,4 +55,3 @@ void CallbackQueue::runOneCallback() {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

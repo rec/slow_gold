@@ -26,7 +26,7 @@ const String KeyStrokeEditor::getDescription(const string& key) const {
 }
 
 juce::AlertWindow* KeyStrokeEditor::newWindow() {
-  ptr<juce::AlertWindow> window(Editor::newWindow());
+  std::unique_ptr<juce::AlertWindow> window(Editor::newWindow());
   window->addKeyListener(this);
   return window.release();
 }

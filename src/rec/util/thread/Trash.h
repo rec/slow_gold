@@ -13,7 +13,7 @@ namespace trash {
 void discard(Thread* t);
 
 template <typename ThreadClass>
-void discard(ptr<ThreadClass>* t) {
+void discard(std::unique_ptr<ThreadClass>* t) {
   discard(t->release());
 }
 
@@ -31,16 +31,16 @@ inline void discardAndEmpty(Thread* t) { discard(t); empty(); }
 
 
 template <typename Type>
-class thread_ptr : public ptr<Type> {
+class thread_ptr : public std::unique_ptr<Type> {
 public:
-  explicit thread_ptr(Type* p = 0) : ptr<Type>(p) {}
+  explicit thread_ptr(Type* p = 0) : std::unique_ptr<Type>(p) {}
 
   ~thread_ptr() { reset(); }
 
   void reset(Type* p = nullptr) {
     if (p != this->get()) {
       thread::trash::discard(this->release());
-      ptr<Type>::reset(p);
+      std::unique_ptr<Type>::reset(p);
     }
   }
 
@@ -52,4 +52,3 @@ public:
 
 }  // namespace util
 }  // namespace rec
-

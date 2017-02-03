@@ -27,8 +27,8 @@ TRAN(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
 namespace rec {
 namespace slow {
 
-unique_ptr<Message> CurrentFile::getFileDescription() {
-  return unique_ptr<Message>(data::getData<music::Metadata>(file_)->clone());
+std::unique_ptr<Message> CurrentFile::getFileDescription() {
+  return std::unique_ptr<Message>(data::getData<music::Metadata>(file_)->clone());
 }
 
 void CurrentFile::suspend() {

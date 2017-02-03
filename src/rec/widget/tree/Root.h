@@ -50,7 +50,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   NodeDesc desc_;
   RootNode root_;
 
-  unique_ptr<TreeViewDropAll> treeDeleter_;
+  std::unique_ptr<TreeViewDropAll> treeDeleter_;
   TreeViewDropAll* tree_;  // This is our actual Component!
   file::VirtualFileList volumes_;
 
@@ -65,4 +65,3 @@ class Root : public Broadcaster<const VirtualFile&>,
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

@@ -38,7 +38,7 @@ class WaveformPainter {
   juce::AudioThumbnail* thumbnail_;
   const WaveformModel& model_;
   Range<SampleTime> range_;
-  ptr<Painter> painter_;
+  std::unique_ptr<Painter> painter_;
   juce::Rectangle<int> bounds_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
@@ -47,4 +47,3 @@ class WaveformPainter {
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

@@ -19,7 +19,7 @@ void DataSet::insert(Data* data) {
 }
 
 int DataSet::insert(Set* s) {
-  ptr<Set> del(s);
+  std::unique_ptr<Set> del(s);
   if (!s)
     return 0;
   int size = s->size();

@@ -12,12 +12,12 @@ namespace format {
 using namespace juce;
 
 AudioFormatManager* getReaderAudioFormatManager() {
-  static ptr<AudioFormatManager> instance(createAudioFormatManager(READ));
+  static std::unique_ptr<AudioFormatManager> instance(createAudioFormatManager(READ));
   return instance.get();
 }
 
 AudioFormatManager* getWriterAudioFormatManager() {
-  static ptr<AudioFormatManager> instance(createAudioFormatManager(WRITE));
+  static std::unique_ptr<AudioFormatManager> instance(createAudioFormatManager(WRITE));
   return instance.get();
 }
 
@@ -40,13 +40,13 @@ AudioFormatWriter* createWriter(const File& f) {
   }
 
   f.deleteFile();
-  ptr<FileOutputStream> fos(new FileOutputStream(f));
+  std::unique_ptr<FileOutputStream> fos(new FileOutputStream(f));
   StringArray qualityOptions = fmt->getQualityOptions();
   int quality = std::max(0, qualityOptions.size() - 1);
   int channels = 2;
   double sampleRate = static_cast<double>(getOutputSampleRate());
 
-  ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.release(), sampleRate,
+  std::unique_ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.release(), sampleRate,
                                                      channels, 16,
                                                      StringPairArray(),
                                                      quality));
@@ -58,4 +58,3 @@ AudioFormatWriter* createWriter(const File& f) {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

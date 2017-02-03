@@ -14,11 +14,10 @@ class LanguageListener {
 
  private:
   class Updater;
-  ptr<Updater> updater_;
+  std::unique_ptr<Updater> updater_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(LanguageListener);
 };
 
 }  // namespace app
 }  // namespace rec
-

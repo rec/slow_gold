@@ -9,7 +9,7 @@
 namespace rec {
 namespace program {
 
-void ProgramBase::addCallback(CommandID command, unique_ptr<Callback> callback) {
+void ProgramBase::addCallback(CommandID command, std::unique_ptr<Callback> callback) {
   auto loc = callbackMap_.find(command);
   if (loc == callbackMap_.end())
     callbackMap_.insert(loc, std::make_pair(command, std::move(callback)));

@@ -34,7 +34,7 @@ class TreeViewDropAll : public TreeViewDropTarget
 #endif
 
  private:
-  ptr<Drawable> slowGoldIcon_;
+  std::unique_ptr<Drawable> slowGoldIcon_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TreeViewDropAll);
 };
@@ -42,4 +42,3 @@ class TreeViewDropAll : public TreeViewDropTarget
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

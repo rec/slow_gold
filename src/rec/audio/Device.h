@@ -13,7 +13,7 @@ class Device : public juce::ChangeListener {
   Device();
 
   mutable AudioDeviceManager manager_;
-  ptr<SetupPage> setupPage_;
+  std::unique_ptr<SetupPage> setupPage_;
 
   void saveState();
   void shutdown();
@@ -27,4 +27,3 @@ class Device : public juce::ChangeListener {
 
 }  // namespace audio
 }  // namespace rec
-

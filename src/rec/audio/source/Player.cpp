@@ -127,14 +127,14 @@ void Player::setGain(double gain) {
 
 Source* Player::makeSourceCopy(Source* s, bool useSelection) {
   Lock l(lock_);
-  ptr<Source> source(s);
+  std::unique_ptr<Source> source(s);
   if (useSelection) {
-    ptr<Selection> selection(new Selection(source.release()));
+    std::unique_ptr<Selection> selection(new Selection(source.release()));
     selection->setSelection(selection_->selection());
     source.reset(selection.release());
   }
 
-  ptr<Stretchy> stretchy(new Stretchy(source.release(), *stretchy_));
+  std::unique_ptr<Stretchy> stretchy(new Stretchy(source.release(), *stretchy_));
   source.reset(stretchy.release());
   return source.release();
 }

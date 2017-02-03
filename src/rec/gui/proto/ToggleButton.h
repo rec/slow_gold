@@ -9,9 +9,7 @@ class ComponentProto;
 class Constants;
 class Context;
 
-unique_ptr<Component> makeToggleButton(const Context&);
+std::unique_ptr<Component> makeToggleButton(const Context&);
 
 }  // namespace gui
 }  // namespace rec
-
-

@@ -72,7 +72,7 @@ template <>
 XmlElement* createBinary(const char* data, size_t len, const string& filename) {
   BinaryOrFile b(data, len, filename);
   auto binary = createBinary<String>(b.data_, b.length_);
-  return XmlDocument::parse(*ptr<String>(binary));
+  return XmlDocument::parse(*std::unique_ptr<String>(binary));
 }
 
 }  // namespace util

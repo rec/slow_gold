@@ -70,12 +70,12 @@ class BufferManager {
   }
 
  private:
-  ptr<Source> source_;
+  std::unique_ptr<Source> source_;
   LoopPointList loopPoints_;
 
   SampleTime time_;
   SampleTime requestedTime_;
-  ptr<Callback> requestedTimeCallback_;
+  std::unique_ptr<Callback> requestedTimeCallback_;
 
   TimeMap timeMap_;
   Thumbnail thumbnail_;
@@ -88,4 +88,3 @@ class BufferManager {
 
 }  // namespace audio
 }  // namespace rec
-

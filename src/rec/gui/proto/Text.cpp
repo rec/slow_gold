@@ -16,16 +16,16 @@ namespace gui {
 
 namespace {
 
-void construct(unique_ptr<Drawable>* drawable, const string& name) {
+void construct(std::unique_ptr<Drawable>* drawable, const string& name) {
   drawable->reset(constructName<Drawable>(name + "_svg"));
 }
 
 }  // namespace
 
-unique_ptr<Component> makeText(const Context& context) {
+std::unique_ptr<Component> makeText(const Context& context) {
   auto& component = context.component_;
   const TextProto& proto = component.text();
-  return unique_ptr<Component>(
+  return std::unique_ptr<Component>(
       new SetterText("(name)", component.address(), "(tt)",
                      proto.caption(), not proto.caption().empty()));
 }

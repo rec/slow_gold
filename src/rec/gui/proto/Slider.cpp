@@ -8,12 +8,12 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeSlider(const Context& context) {
+std::unique_ptr<Component> makeSlider(const Context& context) {
   auto& component = context.component_;
   auto& constants = context.constants_;
   auto& slider = component.slider();
 
-  unique_ptr<DataSlider> dataSlider(
+  std::unique_ptr<DataSlider> dataSlider(
       new DataSlider(component.name(),
                      component.tooltip(),
                      slider.caption(),
@@ -33,7 +33,7 @@ unique_ptr<Component> makeSlider(const Context& context) {
 
   dataSlider->slider()->setTextValueSuffix(slider.suffix_spacing() +
                                            slider.text_suffix());
-  return unique_ptr<Component>(dataSlider.release());
+  return std::unique_ptr<Component>(dataSlider.release());
 }
 
 }  // namespace gui

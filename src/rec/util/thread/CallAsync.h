@@ -18,7 +18,7 @@ class CallbackMessage : public juce::CallbackMessage,
 
 }  // namespace callback
 
-inline void callAsync(unique_ptr<Callback> cb) {
+inline void callAsync(std::unique_ptr<Callback> cb) {
   (new thread::callback::CallbackMessage(cb.release()))->post();
 }
 
@@ -45,4 +45,3 @@ void callAsync(Type* o, Method m, V1 v1, V2 v2) {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

@@ -25,14 +25,14 @@ class Wrappy : public PositionableAudioSource {
 
   virtual PositionableAudioSource* source() const;
   virtual void setSource(PositionableAudioSource* s);
-  void swap(ptr<PositionableAudioSource>* other);
+  void swap(std::unique_ptr<PositionableAudioSource>* other);
 
  protected:
   virtual PositionableAudioSource* getSource() const;
   CriticalSection lock_;
 
   SampleTime position_;
-  ptr<PositionableAudioSource> source_;
+  std::unique_ptr<PositionableAudioSource> source_;
 
   bool prepared_;
 
@@ -43,4 +43,3 @@ class Wrappy : public PositionableAudioSource {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

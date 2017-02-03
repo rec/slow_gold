@@ -13,7 +13,7 @@ string getTypeName() {
 }
 
 inline Message* clone(const Message& m) {
-  ptr<Message> p(m.New());
+  std::unique_ptr<Message> p(m.New());
   p->CopyFrom(m);
   return p.release();
 }
@@ -24,4 +24,3 @@ inline Message* clone(const Message* m) {
 
 }  // namespace util
 }  // namespace rec
-

@@ -61,7 +61,7 @@ class DataListener : public Listener<const Proto&> {
     DataListener<Proto>* const parent_;
   };
 
-  ptr<Adaptor> adaptor_;
+  std::unique_ptr<Adaptor> adaptor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };
@@ -71,4 +71,3 @@ class DataListener : public Listener<const Proto&> {
 using data::DataListener;
 
 }  // namespace rec
-

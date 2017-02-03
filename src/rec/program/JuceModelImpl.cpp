@@ -220,7 +220,7 @@ void JuceModelImpl::getCommandInfo(CommandID id,
       bool isGlobal = (address.getScope() == data::AddressProto::GLOBAL_SCOPE);
       VirtualFile file = isGlobal ? global() : program_->getCurrentFile();
       Data* data = getData(address.type_name(), file);
-      unique_ptr<Message> msg(data->clone());
+      std::unique_ptr<Message> msg(data->clone());
       Value value = data::getMessageFieldOrDie(address, *msg);
       if (command.setter_type() == Command::TOGGLE) {
         LOG_IF(DFATAL, not value.has_bool_f()) << "No boolean value.";

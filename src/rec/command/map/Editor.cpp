@@ -105,7 +105,7 @@ void Editor::setColours(const Colour& mainBackground,
 }
 
 juce::AlertWindow* Editor::newWindow() {
-  ptr<juce::AlertWindow> window(new juce::AlertWindow(t_NEW_COMMAND_MAPPING,
+  std::unique_ptr<juce::AlertWindow> window(new juce::AlertWindow(t_NEW_COMMAND_MAPPING,
                                                       getWindowTitle(),
                                                       AlertWindow::NoIcon));
 

@@ -36,9 +36,9 @@ class AboutPane : public Component,
 
  private:
   juce::AttributedString left_, center_, right_;
-  unique_ptr<gui::SetterToggle> displayOnStartup_;
-  unique_ptr<ews::Authentication> authentication_;
-  unique_ptr<gui::CaptionText> name_, serialNumber_;
+  std::unique_ptr<gui::SetterToggle> displayOnStartup_;
+  std::unique_ptr<ews::Authentication> authentication_;
+  std::unique_ptr<gui::CaptionText> name_, serialNumber_;
   juce::TextButton accept_;
   juce::TextButton close_;
   juce::ModalComponentManager::Callback* callback_;

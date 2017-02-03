@@ -19,7 +19,7 @@ class CallbackQueue : public HasLock {
 
  private:
   struct Queue;
-  ptr<Queue> queue_;
+  std::unique_ptr<Queue> queue_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CallbackQueue);
 };
@@ -27,4 +27,3 @@ class CallbackQueue : public HasLock {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

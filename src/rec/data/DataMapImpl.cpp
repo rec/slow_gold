@@ -40,7 +40,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
   if (i != map_.end())
     return i->second->data_;
 
-  unique_ptr<Message> msg(messageMaker_->makeMessage(typeName));
+  std::unique_ptr<Message> msg(messageMaker_->makeMessage(typeName));
   if (!msg) {
     LOG(DFATAL) << "Unable to make messages for " << typeName;
     return nullptr;

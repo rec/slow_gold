@@ -39,7 +39,7 @@ bool RegisterProgram::tryOneUrl(const String& urlName) {
   Range<const NamedFunction*> s = getNamedFunctions();
   for (const NamedFunction* i = s.begin_; i != s.end_; ++i)
     url = url.withParameter(i->name_, i->function_());
-  ptr<InputStream> stream(url.createInputStream(USE_POSTDATA,
+  std::unique_ptr<InputStream> stream(url.createInputStream(USE_POSTDATA,
                                                 progressCallback(),
                                                 this, "", timeOut(),
                                                 nullptr));

@@ -28,7 +28,7 @@ void CachedThumbnail::write(const File& file) {
   DCHECK(thumbnail_.getTotalLength());
   if (thumbnail_.getTotalLength()) {
     file.getParentDirectory().createDirectory();
-    ptr<juce::FileOutputStream> out(file.createOutputStream());
+    std::unique_ptr<juce::FileOutputStream> out(file.createOutputStream());
     if (!out)
     	LOG(ERROR) << "Unable to write file " << str(file);
     else
@@ -42,7 +42,7 @@ void CachedThumbnail::read(const File& file, SampleRate sampleRate,
 
 #ifndef SLOWGOLD_SAVE_DISABLED
   if (file.exists()) {
-    ptr<juce::FileInputStream> out(file.createInputStream());
+    std::unique_ptr<juce::FileInputStream> out(file.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
       cacheWritten_ = thumbnail_.isFullyLoaded();

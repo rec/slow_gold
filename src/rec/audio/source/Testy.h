@@ -54,7 +54,7 @@ class Testy : public PositionableAudioSource {
 
     float maxDelta = 0.0;
 
-    ptr<AudioSampleBuffer> buffer[2];
+    std::unique_ptr<AudioSampleBuffer> buffer[2];
 
     for (int i = 0; i < 2; ++i) {
       buffer[i].reset(new AudioSampleBuffer(channels, length));
@@ -85,4 +85,3 @@ class Testy : public PositionableAudioSource {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

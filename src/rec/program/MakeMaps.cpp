@@ -32,7 +32,7 @@ static void fixExtends(Menu* menu, MenuMap* map, StringSet* seen = nullptr) {
     }
     try {
       Menu* extendedMenu = &map->at(extends);
-      unique_ptr<StringSet> seenDeleter;
+      std::unique_ptr<StringSet> seenDeleter;
       if (not seen) {
         seen = new StringSet;
         seenDeleter.reset(seen);
@@ -122,7 +122,7 @@ ThreadMap makeThreadMap(const Program& program) {
   ThreadProtos threads = BINARY_PROTO(Threads, ThreadProtos);
   for (auto& thread: threads.thread()) {
     auto f = program.threadFunction(thread.name());
-    unique_ptr<Thread> t(new thread::Looper(thread.name(), f, thread.period()));
+    std::unique_ptr<Thread> t(new thread::Looper(thread.name(), f, thread.period()));
     t->setPriority(thread.priority());
     threadMap[thread.name()] = std::move(t);
   }

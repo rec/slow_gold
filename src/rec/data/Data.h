@@ -35,7 +35,7 @@ class Data : public Broadcaster<const Message&> {
 
   virtual void addListener(Listener<const Message&>* listener) {
     Broadcaster<const Message&>::addListener(listener);
-    // (*listener)(*ptr<Message>(clone()));  // OH, DEAR!
+    // (*listener)(*std::unique_ptr<Message>(clone()));  // OH, DEAR!
   }
 
  protected:
@@ -51,7 +51,7 @@ class Data : public Broadcaster<const Message&> {
   virtual bool writeToFile() = 0;
   virtual void update() = 0;
 
-  ptr<Message> message_;
+  std::unique_ptr<Message> message_;
 
   bool changed_;
   const bool isEmpty_;
@@ -94,4 +94,3 @@ inline const VirtualFile& noData() {
 
 }  // namespace data
 }  // namespace rec
-

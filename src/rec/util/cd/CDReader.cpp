@@ -42,7 +42,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
 }
 
 AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track) {
-  ptr<AudioCDReader> r(reader);
+  std::unique_ptr<AudioCDReader> r(reader);
   int trackIndex = getAudioTrackIndex(*r, track);
   if (trackIndex == -1) {
     LOG(DFATAL) << "No track " << track << " in " << reader->getCDDBId();
@@ -55,7 +55,7 @@ AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track) {
 }
 
 AudioFormatReader* createCDTrackReader(const String& cdKey, int track) {
-  ptr<AudioCDReader> reader(getAudioCDReader(cdKey));
+  std::unique_ptr<AudioCDReader> reader(getAudioCDReader(cdKey));
   if (reader)
     return createCDTrackReader(reader.release(), track);
 

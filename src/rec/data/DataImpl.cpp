@@ -13,7 +13,7 @@ namespace data {
 DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
                    bool isEmpty, const string& key)
     : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s), key_(key) {
-  ptr<Message> original(m);
+  std::unique_ptr<Message> original(m);
   fileReadSuccess_ = false;
 
   if (!isEmpty) {
@@ -37,7 +37,7 @@ const string DataImpl::toString() const {
   return getTypeName() + ": " + message_->ShortDebugString();
 }
 
-#define CLONE() (*ptr<Message>(clone()))
+#define CLONE() (*std::unique_ptr<Message>(clone()))
 
 void DataImpl::pushOnUndoStack(const Message& before) {
   undoStack_->push(this, before, CLONE());

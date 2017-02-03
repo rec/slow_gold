@@ -19,14 +19,14 @@ struct Entry {
     message_.reset(m.New());
   }
 
-  unique_ptr<Message> makeMessage() const {
-    unique_ptr<Message> m(message_->New());
+  std::unique_ptr<Message> makeMessage() const {
+    std::unique_ptr<Message> m(message_->New());
     if (copyFrom_)
       m->CopyFrom(*message_);
     return std::move(m);
   }
 
-  unique_ptr<Message> message_;
+  std::unique_ptr<Message> message_;
   bool copyFrom_;
   AddressProto::Scope scope_;
 };
@@ -35,7 +35,7 @@ struct Entry {
 
 
 struct MessageRegistrarAndMaker::Impl {
-  std::unordered_map<string, unique_ptr<Entry>> registry_;
+  std::unordered_map<string, std::unique_ptr<Entry>> registry_;
 };
 
 MessageRegistrarAndMaker::MessageRegistrarAndMaker() : impl_(new Impl) {}
@@ -52,12 +52,12 @@ void MessageRegistrarAndMaker::registerInstance(
   impl_->registry_[typeName] = std::make_unique<Entry>(m, copy, scope);
 }
 
-unique_ptr<Message> MessageRegistrarAndMaker::makeMessage(const string& tn) const {
+std::unique_ptr<Message> MessageRegistrarAndMaker::makeMessage(const string& tn) const {
   try {
     return impl_->registry_.at(tn)->makeMessage();
   } catch (std::out_of_range&) {
     LOG(DFATAL) << "Couldn't find data type " << tn;
-    return unique_ptr<Message>();
+    return std::unique_ptr<Message>();
   }
 }
 

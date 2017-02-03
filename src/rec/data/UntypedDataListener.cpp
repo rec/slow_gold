@@ -40,7 +40,7 @@ void UntypedDataListener::operator()(const VirtualFile& df) {
     datafile = data::global();
   }
   Data* newData = data::getData(typeName_, datafile);
-  ptr<Message> msg;
+  std::unique_ptr<Message> msg;
   {
     Lock l(lock_);
     if (data_ == newData) {
@@ -65,7 +65,7 @@ void UntypedDataListener::setGlobalDataFile(const VirtualFile& datafile) {
 }
 
 void UntypedDataListener::updateCallback() {
-  ptr<Message> m;
+  std::unique_ptr<Message> m;
   {
     Lock l(lock_);
     if (!data_) {

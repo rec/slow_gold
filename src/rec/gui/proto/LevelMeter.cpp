@@ -11,10 +11,10 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeLevelMeter(const Context& context) {
+std::unique_ptr<Component> makeLevelMeter(const Context& context) {
   auto& component = context.component_;
   auto& level = component.level_meter();
-  return unique_ptr<Component>(new audio::LevelMeter(
+  return std::unique_ptr<Component>(new audio::LevelMeter(
       "(name)", "(tooltip)",
       level.orientation() == HORIZONTAL,
       level.type(), level.margin()));

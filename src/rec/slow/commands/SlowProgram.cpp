@@ -74,7 +74,7 @@ int navigator(Thread*) {
 int writeGui(Thread* thread) {
   if (thread->threadShouldExit())
     return thread::DONE;
-    
+
   MessageManagerLock l(thread);
   if (!l.lockWasGained())
     return thread::DONE;
@@ -138,16 +138,16 @@ void SlowProgram::registerAllCallbacks() {
   slow::addSlowCallbacks(this);
 }
 
-unique_ptr<Component> makeWaveform(const string&) {
-  return unique_ptr<Component>(new DropWaveform);
+std::unique_ptr<Component> makeWaveform(const string&) {
+  return std::unique_ptr<Component>(new DropWaveform);
 }
 
-unique_ptr<Component> makeTreeView(const string&) {
-  return unique_ptr<Component>(new widget::tree::TreeView);
+std::unique_ptr<Component> makeTreeView(const string&) {
+  return std::unique_ptr<Component>(new widget::tree::TreeView);
 }
 
-unique_ptr<Component> makeLoops(const string&) {
-  return unique_ptr<Component>(new gui::audio::Loops);
+std::unique_ptr<Component> makeLoops(const string&) {
+  return std::unique_ptr<Component>(new gui::audio::Loops);
 }
 
 void SlowProgram::registerCustomComponents(gui::Constants* constants) const {

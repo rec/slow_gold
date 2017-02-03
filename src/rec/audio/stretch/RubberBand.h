@@ -28,7 +28,7 @@ class RubberBand : public Implementation {
  private:
   virtual void stretchChanged();
 
-  ptr<RubberBandStretcher> stretcher_;
+  std::unique_ptr<RubberBandStretcher> stretcher_;
 
   SampleRate outputSampleRate_;
   double timeScale_;
@@ -43,4 +43,3 @@ class RubberBand : public Implementation {
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
-

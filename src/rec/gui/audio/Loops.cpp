@@ -55,7 +55,7 @@ Def<TableColumnList> dflt(
 }  // namespace
 
 Loops::Loops(const TableColumnList* desc, const Address* partAddress) {
-  unique_ptr<Address> address;
+  std::unique_ptr<Address> address;
   if (partAddress) {
     partAddress_ = *partAddress;
   } else {

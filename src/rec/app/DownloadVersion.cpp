@@ -3,6 +3,7 @@
 #include "rec/app/GenericApplication.h"
 #include "rec/app/SocketTimeoutTime.h"
 #include "rec/app/Files.h"
+#include "rec/base/make_unique.h"
 #include "rec/base/DropDead.h"
 #include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
@@ -46,7 +47,7 @@ bool isReadyForUpdate() {
 }
 
 String getVersion() {
-  ptr<InputStream> stream(VERSION_FILE.createInputStream(false, nullptr, nullptr, "",
+  std::unique_ptr<InputStream> stream(VERSION_FILE.createInputStream(false, nullptr, nullptr, "",
                                                          SOCKET_TIMEOUT_MS));
 
   return stream ? stream->readEntireStreamAsString() : String("");

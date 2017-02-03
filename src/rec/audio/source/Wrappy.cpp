@@ -41,7 +41,7 @@ PositionableAudioSource* Wrappy::getSource() const {
   return source_.get();
 }
 
-void Wrappy::swap(ptr<PositionableAudioSource>* other) {
+void Wrappy::swap(std::unique_ptr<PositionableAudioSource>* other) {
   Lock l(lock_);
   source_.swap(*other);
 }

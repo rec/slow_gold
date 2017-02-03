@@ -15,8 +15,8 @@ class LookAndFeel : public juce::LookAndFeel_V3 {
                                         int h, bool isPlus, bool isMouseOver);
 
  private:
-  ptr<juce::Drawable> open_;
-  ptr<juce::Drawable> close_;
+  std::unique_ptr<juce::Drawable> open_;
+  std::unique_ptr<juce::Drawable> close_;
 #endif
 
  private:
@@ -25,4 +25,3 @@ class LookAndFeel : public juce::LookAndFeel_V3 {
 
 }  // namespace gui
 }  // namespace rec
-

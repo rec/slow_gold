@@ -7,9 +7,9 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeTime(const Context& context) {
+std::unique_ptr<Component> makeTime(const Context& context) {
   using widget::status::time::TextComponent;
-  return unique_ptr<Component>(new TextComponent(context.component_.time()));
+  return std::unique_ptr<Component>(new TextComponent(context.component_.time()));
 }
 
 }  // namespace gui

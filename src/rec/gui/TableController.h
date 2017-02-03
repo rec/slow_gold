@@ -44,7 +44,7 @@ class TableController : public TableListBoxModel, public TableListBox,
  protected:
   virtual void update() { updateContent(); }
 
-  ptr<Message> message_;
+  std::unique_ptr<Message> message_;
   TableColumnList columns_;
   CriticalSection lock_;
 
@@ -54,4 +54,3 @@ class TableController : public TableListBoxModel, public TableListBox,
 
 }  // namespace gui
 }  // namespace rec
-

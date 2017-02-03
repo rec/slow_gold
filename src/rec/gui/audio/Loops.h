@@ -51,7 +51,7 @@ class Loops : public TableController,
 
   widget::waveform::Viewport viewport_;
   data::Address partAddress_;
-  ptr<Cuttable> cuttable_;
+  std::unique_ptr<Cuttable> cuttable_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Loops);
 };
@@ -59,4 +59,3 @@ class Loops : public TableController,
 }  // namespace rec
 }  // namespace gui
 }  // namespace audio
-

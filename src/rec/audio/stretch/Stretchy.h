@@ -32,7 +32,7 @@ class Stretchy : public source::Wrappy {
  private:
   double timeScale() const;
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
-  ptr<Implementation> implementation_;
+  std::unique_ptr<Implementation> implementation_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };
@@ -40,4 +40,3 @@ class Stretchy : public source::Wrappy {
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
-

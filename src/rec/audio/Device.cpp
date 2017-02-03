@@ -13,7 +13,7 @@ static File getDeviceFile() {
 Device::Device() {
   manager_.addChangeListener(this);
 
-  ptr<juce::XmlElement> state;
+  std::unique_ptr<juce::XmlElement> state;
   File f = getDeviceFile();
   if (f.exists())
     state.reset(juce::XmlDocument::parse(f));
@@ -28,7 +28,7 @@ Device::Device() {
 }
 
 void Device::saveState() {
-  ptr<juce::XmlElement> state(manager_.createStateXml());
+  std::unique_ptr<juce::XmlElement> state(manager_.createStateXml());
   if (state) {
     auto f = getDeviceFile();
     if (state->writeToFile(f, ""))

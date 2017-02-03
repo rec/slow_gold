@@ -35,7 +35,7 @@ class Components : public data::DataListener<audio::stretch::Stretch>,
   widget::tree::Root* directoryTree();
 
  private:
-  unique_ptr<Component> mainPanel_;
+  std::unique_ptr<Component> mainPanel_;
 
   widget::tree::TreeView* treeView_;
   widget::waveform::Waveform* waveform_;
@@ -46,4 +46,3 @@ class Components : public data::DataListener<audio::stretch::Stretch>,
 
 }  // namespace slow
 }  // namespace rec
-

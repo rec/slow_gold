@@ -21,7 +21,7 @@ class GuiListener
 
  private:
   CriticalSection lock_;
-  unique_ptr<juce::TooltipWindow> tooltipWindow_;
+  std::unique_ptr<juce::TooltipWindow> tooltipWindow_;
   bool displayHelpPane_;
   Component* lastComponent_;
 
@@ -30,4 +30,3 @@ class GuiListener
 
 }  // namespace slow
 }  // namespace rec
-

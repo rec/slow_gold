@@ -7,8 +7,7 @@ namespace gui {
 
 class Context;
 
-unique_ptr<Component> makeSwitcher(const Context&);
+std::unique_ptr<Component> makeSwitcher(const Context&);
 
 }  // namespace gui
 }  // namespace rec
-

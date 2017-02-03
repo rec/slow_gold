@@ -70,10 +70,9 @@ HelpPanel* HelpPanel::INSTANCE = nullptr;
 
 }  // namespace
 
-unique_ptr<Component> makeHelp(const Context& context) {
-  return unique_ptr<Component>(new HelpPanel(context));
+std::unique_ptr<Component> makeHelp(const Context& context) {
+  return std::unique_ptr<Component>(new HelpPanel(context));
 }
 
 }  // namespace gui
 }  // namespace rec
-

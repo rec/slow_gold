@@ -12,7 +12,7 @@ class ProgramBase : public Program {
   ProgramBase();
   virtual ~ProgramBase();
 
-  void addCallback(CommandID, unique_ptr<Callback>) override;
+  void addCallback(CommandID, std::unique_ptr<Callback>) override;
   Callback* getCallback(CommandID) const override;
   CallbackMap* getCallbackMap() override { return &callbackMap_; }
   bool isEnabled() const override;
@@ -33,4 +33,3 @@ class ProgramBase : public Program {
 
 }  // namespace program
 }  // namespace rec
-

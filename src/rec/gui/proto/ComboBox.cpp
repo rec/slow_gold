@@ -57,8 +57,8 @@ class ComboBoxSetter : public AddressListener,
 }  // namespace
 
 
-unique_ptr<Component> makeComboBox(const Context& context) {
-  return unique_ptr<Component>(new ComboBoxSetter(context));
+std::unique_ptr<Component> makeComboBox(const Context& context) {
+  return std::unique_ptr<Component>(new ComboBoxSetter(context));
 }
 
 }  // namespace gui

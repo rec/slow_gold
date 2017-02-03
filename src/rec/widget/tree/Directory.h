@@ -44,7 +44,7 @@ class Directory : public Node, public Listener<const VirtualFile&> {
 
   Node* createChildFile(const partition::Shard& shard) const;
 
-  ptr<FileArray> childrenDeleter_;
+  std::unique_ptr<FileArray> childrenDeleter_;
   CriticalSection lock_;
   bool isOpen_;
   bool childrenRequested_;
@@ -59,4 +59,3 @@ class Directory : public Node, public Listener<const VirtualFile&> {
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

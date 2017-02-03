@@ -43,7 +43,7 @@ struct TypeListDeleter {
 
 static TypeListDeleter deleter;
 
-class STyper : public ptr<Typer> {
+class STyper : public std::unique_ptr<Typer> {
  public:
   STyper(Message* m, const FieldDescriptor* f) {
     FieldDescriptor::Type t = f ? f->type() : FieldDescriptor::TYPE_MESSAGE;

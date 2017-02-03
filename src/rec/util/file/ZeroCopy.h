@@ -29,7 +29,7 @@ class Base : public Stream {
   void flush() { stream_->flush(); }
 
  protected:
-  ptr<JuceStream> stream_;
+  std::unique_ptr<JuceStream> stream_;
 
  private:
   vector<uint8> buffer_;
@@ -107,4 +107,3 @@ class Input : public InputBase {
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

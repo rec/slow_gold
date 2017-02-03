@@ -40,7 +40,7 @@ class JuceModelImpl {
   }
 
  private:
-  typedef vector<unique_ptr<SetterListener>> DataListeners;
+  typedef vector<std::unique_ptr<SetterListener>> DataListeners;
 
   void addSubMenu(PopupMenu* popup, const MenuEntry& menuEntry);
   void addCommands(PopupMenu* popup, const MenuEntry& menuEntry);
@@ -74,4 +74,3 @@ class JuceModelImpl {
 
 }  // namespace program
 }  // namespace rec
-

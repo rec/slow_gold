@@ -11,7 +11,7 @@ namespace gui {
 
 namespace {
 
-unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
+std::unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
   auto& component = context.component_;
   data::Address address;
   string minValue;
@@ -23,7 +23,7 @@ unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
     address = component.address();
     minValue = component.full_resizer().min_value();
   }
-  return unique_ptr<Component>(
+  return std::unique_ptr<Component>(
       new SetterResizer(address,
                         dynamic_cast<Panel*>(context.parent_),
                         context.parent_->getNumChildComponents(),
@@ -32,11 +32,11 @@ unique_ptr<Component> makeResizer(const Context& context, bool isSimple) {
 
 }  // namespace
 
-unique_ptr<Component> makeResizer(const Context& context) {
+std::unique_ptr<Component> makeResizer(const Context& context) {
   return makeResizer(context, false);
 }
 
-unique_ptr<Component> makeSimpleResizer(const Context& context) {
+std::unique_ptr<Component> makeSimpleResizer(const Context& context) {
   return makeResizer(context, true);
 }
 

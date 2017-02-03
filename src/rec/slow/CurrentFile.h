@@ -21,7 +21,7 @@ class CurrentFile : public util::file::CurrentFileBase {
   void beforeFileChange() override;
   void suspend() override;
   void resume() override;
-  unique_ptr<Message> getFileDescription() override;
+  std::unique_ptr<Message> getFileDescription() override;
 
   SampleTime length_;
 
@@ -30,4 +30,3 @@ class CurrentFile : public util::file::CurrentFileBase {
 
 }  // namespace slow
 }  // namespace rec
-

@@ -34,7 +34,7 @@ class CurrentFileBase : public Listener<const VirtualFile&>,
   virtual void beforeFileChange() = 0;
   virtual void suspend() = 0;
   virtual void resume() = 0;
-  virtual unique_ptr<Message> getFileDescription() = 0;
+  virtual std::unique_ptr<Message> getFileDescription() = 0;
 
   bool empty_;
   CriticalSection lock_;
@@ -47,4 +47,3 @@ class CurrentFileBase : public Listener<const VirtualFile&>,
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

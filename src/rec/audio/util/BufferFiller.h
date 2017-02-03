@@ -26,13 +26,13 @@ class BufferFiller {
  private:
   CriticalSection lock_;
 
-  ptr<CachedThumbnail> thumbnail_;
-  ptr<BufferedReader> reader_;
+  std::unique_ptr<CachedThumbnail> thumbnail_;
+  std::unique_ptr<BufferedReader> reader_;
   File file_;
 
   AudioSampleBuffer updateBuffer_;
   AudioSourceChannelInfo updateInfo_;
-  ptr<audio::Source> updateSource_;
+  std::unique_ptr<audio::Source> updateSource_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(BufferFiller);
 };
@@ -40,4 +40,3 @@ class BufferFiller {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

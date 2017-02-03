@@ -7,8 +7,7 @@ namespace gui {
 
 class Context;
 
-unique_ptr<Component> makeLevelMeter(const Context&);
+std::unique_ptr<Component> makeLevelMeter(const Context&);
 
 }  // namespace gui
 }  // namespace rec
-

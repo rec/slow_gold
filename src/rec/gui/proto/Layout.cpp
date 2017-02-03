@@ -14,9 +14,9 @@ namespace gui {
 
 namespace {
 
-unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
+std::unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
                                  const string& oldName) {
-  unique_ptr<Component> comp;
+  std::unique_ptr<Component> comp;
   auto& constants = juceModel()->constants();
   auto& addr = getProgram()->resizerAddress();
   string name;
@@ -60,8 +60,8 @@ unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
 
 }  // namespace
 
-unique_ptr<Component> makeLayout(const string& name, Component* parent) {
-  unique_ptr<Component> comp;
+std::unique_ptr<Component> makeLayout(const string& name, Component* parent) {
+  std::unique_ptr<Component> comp;
   try {
     comp = makeLayout(program::juceModel()->getLayout(name), parent, name);
   } catch (std::out_of_range&) {
@@ -70,7 +70,7 @@ unique_ptr<Component> makeLayout(const string& name, Component* parent) {
   return std::move(comp);
 }
 
-unique_ptr<Component> makeLayoutComp(const Context& context) {
+std::unique_ptr<Component> makeLayoutComp(const Context& context) {
   return makeLayout(context.component_.layout(), context.parent_);
 }
 

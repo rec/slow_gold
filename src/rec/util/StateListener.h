@@ -51,7 +51,7 @@ class StateBroadcaster {
   }
 
  private:
-  std::unordered_map<string, unique_ptr<Deletable>> broadcasters_;
+  std::unordered_map<string, std::unique_ptr<Deletable>> broadcasters_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(StateBroadcaster);
@@ -75,4 +75,3 @@ class StateListener : public Listener<Type> {
 
 }  // namespace util
 }  // namespace rec
-

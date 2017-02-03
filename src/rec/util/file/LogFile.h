@@ -17,7 +17,7 @@ class Input {
   bool read(Message*);
 
  private:
-  ptr<InputImpl> impl_;
+  std::unique_ptr<InputImpl> impl_;
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Input);
 };
 
@@ -30,11 +30,10 @@ class Output {
   void flush();
 
  private:
-  ptr<OutputImpl> impl_;
+  std::unique_ptr<OutputImpl> impl_;
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Output);
 };
 
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

@@ -16,7 +16,7 @@ class TreeView : public TreeViewDropAll, public Disableable {
   Root* root() { return root_.get(); }
 
  private:
-  unique_ptr<Root> root_;
+  std::unique_ptr<Root> root_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TreeView);
 };
@@ -24,4 +24,3 @@ class TreeView : public TreeViewDropAll, public Disableable {
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

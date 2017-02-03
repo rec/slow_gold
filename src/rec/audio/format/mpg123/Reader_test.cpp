@@ -19,8 +19,8 @@ namespace mpg123 {
 using rec::util::testFile;
 
 TEST(Reader, All) {
-  ptr<AudioFormatReader> wav(createReader(testFile("test1.wav")));
-  ptr<AudioFormatReader> mp3(createReader(testFile("test1.mp3")));
+  std::unique_ptr<AudioFormatReader> wav(createReader(testFile("test1.wav")));
+  std::unique_ptr<AudioFormatReader> mp3(createReader(testFile("test1.mp3")));
 
   ASSERT_TRUE(!!wav);
   ASSERT_TRUE(!!mp3);

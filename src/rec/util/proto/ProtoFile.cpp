@@ -8,7 +8,7 @@ namespace rec {
 namespace util {
 
 Message* readProtoFile(const File& file, const MessageMaker& maker) {
-  unique_ptr<Message> msg;
+  std::unique_ptr<Message> msg;
   StringArray lines;
   file.readLines(lines);
   if (lines.size()) {

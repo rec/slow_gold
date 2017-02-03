@@ -31,7 +31,7 @@ static juce::Image getZoomCursor() {
   juce::Image img(
       juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT, true);
   Graphics g(img);
-  ptr<Drawable> drawable(BINARY_DATA(ZoomInCursor_svg, Drawable));
+  std::unique_ptr<Drawable> drawable(BINARY_DATA(ZoomInCursor_svg, Drawable));
   drawable->draw(g, 1.0f);
   return img;
 }

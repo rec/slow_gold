@@ -11,7 +11,7 @@ class ConstantProtos;
 
 class Constants {
  public:
-  typedef unique_ptr<Component> (*ComponentMaker)(const string&);
+  typedef std::unique_ptr<Component> (*ComponentMaker)(const string&);
 
   Constants() {}
   Constants(const ConstantProtos&);
@@ -27,4 +27,3 @@ class Constants {
 
 }  // namespace gui
 }  // namespace rec
-

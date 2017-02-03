@@ -20,7 +20,7 @@ class FileWriter : public Thread {
       LOG(DFATAL) << "Can't delete file " << file;
 
     } else {
-      ::ptr<OutputStream> out(file_.createOutputStream());
+      ::std::unique_ptr<OutputStream> out(file_.createOutputStream());
       if (out) {
         (*out) << memory_;
         VLOG(1) << "Saved to file " << file;
@@ -43,4 +43,3 @@ class FileWriter : public Thread {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

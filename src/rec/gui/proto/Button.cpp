@@ -16,7 +16,7 @@ namespace gui {
 
 namespace {
 
-void construct(unique_ptr<Drawable>* drawable, const string& name) {
+void construct(std::unique_ptr<Drawable>* drawable, const string& name) {
   drawable->reset(constructName<Drawable>(name + "_svg"));
   DCHECK(drawable->get()) << "Couldn't create " << name;
 }
@@ -53,11 +53,11 @@ class ModalButton : public LanguageButton, public data::AddressListener,
 
 }  // namespace
 
-unique_ptr<Component> makeButton(const Context& context) {
+std::unique_ptr<Component> makeButton(const Context& context) {
   auto& component = context.component_;
   const ButtonProto& proto = component.button();
   auto style = static_cast<DrawableButton::ButtonStyle>(proto.style());
-  unique_ptr<LanguageButton> button(
+  std::unique_ptr<LanguageButton> button(
       (proto.behavior() == ButtonProto::MODE) ?
       new ModalButton(component.name(), component.tooltip(), style,
                       component.address(),
@@ -71,7 +71,7 @@ unique_ptr<Component> makeButton(const Context& context) {
 
   const string& imageName = component.name();
   const ButtonProto::State& state = proto.state();
-  unique_ptr<Drawable> normal, over, pressed, disabled;
+  std::unique_ptr<Drawable> normal, over, pressed, disabled;
   construct(&normal, imageName);
 
   if (state.over())
@@ -84,7 +84,7 @@ unique_ptr<Component> makeButton(const Context& context) {
     construct(&disabled, imageName + "Disabled");
 
   const ButtonProto::State& stateOn = proto.state_on();
-  unique_ptr<Drawable> normalOn, overOn, pressedOn, disabledOn;
+  std::unique_ptr<Drawable> normalOn, overOn, pressedOn, disabledOn;
   if (isToggle or stateOn.normal())
     construct(&normalOn, imageName + "On");
 
@@ -108,7 +108,7 @@ unique_ptr<Component> makeButton(const Context& context) {
         not component.has_tooltip());
   }
 
-  return unique_ptr<Component>(button.release());
+  return std::unique_ptr<Component>(button.release());
 }
 
 }  // namespace gui

@@ -30,7 +30,7 @@ class Reader {
 
  protected:
   Data* const data_;
-  ptr<Lock> locker_;
+  std::unique_ptr<Lock> locker_;
   Proto* proto_;
 
  private:
@@ -42,4 +42,3 @@ class Reader {
 
 }  // namespace data
 }  // namespace rec
-

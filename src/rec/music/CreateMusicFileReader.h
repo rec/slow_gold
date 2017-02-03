@@ -25,11 +25,10 @@ class MusicFileReader {
   }
 
  private:
-  ptr<AudioFormatReader> reader_;
+  std::unique_ptr<AudioFormatReader> reader_;
   String errorTitle_;
   String errorDetails_;
 };
 
 }  // namespace music
 }  // namespace rec
-

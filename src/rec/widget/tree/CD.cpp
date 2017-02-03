@@ -15,7 +15,7 @@ void CD::computeChildren() {
   vector<string> tracks;
 
   const string& cdKey = virtualFile_.volume_name();
-  ptr<AudioCDReader> reader(cd::getAudioCDReader(str(cdKey)));
+  std::unique_ptr<AudioCDReader> reader(cd::getAudioCDReader(str(cdKey)));
   if (reader) {
     cd::TrackOffsets trackOffsets = reader->getTrackOffsets();
     music::Album album = cd::getCachedAlbum(virtualFile_, trackOffsets);
@@ -46,7 +46,7 @@ void CD::computeChildren() {
   string* path = vf.add_path();
   for (uint32 i = 0; i < tracks.size(); ++i) {
     *path = str(String(i + 1));
-    ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
+    std::unique_ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
     node->addListener(this);
 
     MessageManagerLock l;

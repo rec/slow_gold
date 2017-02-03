@@ -86,7 +86,7 @@ bool file(const File &f, const File& t, Style /* readable */) {
 
 bool file(const File &file, string *s, Style /* readable */) {
   try {
-    ptr<FileInputStream> in(file.createInputStream());
+    std::unique_ptr<FileInputStream> in(file.createInputStream());
     if (!in)
       return false;
     uint length = static_cast<uint>(in->getTotalLength());
@@ -117,7 +117,7 @@ bool file(const string &from, const File &to, Style /* readable */) {
         LOG(DFATAL) << "Couldn't rename to backup file: " << str(backupFile);
     }
 
-    ptr<FileOutputStream> out(to.createOutputStream());
+    std::unique_ptr<FileOutputStream> out(to.createOutputStream());
     if (!out)
       LOG(DFATAL) << "Couldn't make OutputStream for " << str(to);
 
@@ -196,7 +196,7 @@ bool merge(const string &f,  Message *t, Style s) {
   if (s)
     return TextFormat::MergeFromString(f, t);
 
-  unique_ptr<Message> m(t->New());
+  std::unique_ptr<Message> m(t->New());
   if (not m->ParseFromString(f))
     return false;
   t->MergeFrom(*m);
@@ -205,4 +205,3 @@ bool merge(const string &f,  Message *t, Style s) {
 
 }  // namespace copy
 }  // namespace rec
-

@@ -9,8 +9,7 @@ class ComponentProto;
 class Constants;
 class Context;
 
-unique_ptr<Component> makeTimeDial(const Context&);
+std::unique_ptr<Component> makeTimeDial(const Context&);
 
 }  // namespace gui
 }  // namespace rec
-

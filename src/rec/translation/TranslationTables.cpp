@@ -22,7 +22,7 @@ string makeHash(const TranslatedString& s) {
 StringMap* makeStringMap(const string& desc) {
   TranslatedStrings ts;
   copy::copy(desc, &ts);
-  ptr<StringMap> map(new StringMap);
+  std::unique_ptr<StringMap> map(new StringMap);
   for (auto& s: ts.str())
     (*map)[makeHash(s)] = s.translation();
 

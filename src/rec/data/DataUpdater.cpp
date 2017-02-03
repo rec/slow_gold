@@ -24,7 +24,7 @@ void DataUpdater::reportChange(Data* data) {
 }
 
 bool DataUpdater::update() {
-  ptr<DataSet::Set> updates(update_->release());
+  std::unique_ptr<DataSet::Set> updates(update_->release());
   if (!updates)
     return false;
 
@@ -40,7 +40,7 @@ bool DataUpdater::hasUpdates() const {
 }
 
 bool DataUpdater::write() {
-  ptr<DataSet::Set> toWrite(write_->release());
+  std::unique_ptr<DataSet::Set> toWrite(write_->release());
   if (toWrite) {
     for (DataSet::Set::iterator i = toWrite->begin(); i != toWrite->end(); ++i)
       (*i)->writeToFile();

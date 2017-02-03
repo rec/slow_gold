@@ -38,7 +38,7 @@ MapItem::MapItem(Editor* editor, CommandID id, const String& name)
 }
 
 Component* MapItem::createItemComponent() {
-  ptr<Component> c(new MapItemComponent(editor_, id_, name_));
+  std::unique_ptr<Component> c(new MapItemComponent(editor_, id_, name_));
   return c.release();
 }
 

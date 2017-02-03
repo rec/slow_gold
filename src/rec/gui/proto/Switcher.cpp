@@ -23,7 +23,7 @@ struct Part {
   double max_;
   double pref_;
 
-  unique_ptr<Component> component_;
+  std::unique_ptr<Component> component_;
 };
 
 void layoutRepaint(Component* comp) {
@@ -71,8 +71,8 @@ class Switcher : public Panel, public AddressListener {
 
 }  // namespace
 
-unique_ptr<Component> makeSwitcher(const Context& context) {
-  return unique_ptr<Component>(new Switcher(context));
+std::unique_ptr<Component> makeSwitcher(const Context& context) {
+  return std::unique_ptr<Component>(new Switcher(context));
 }
 
 }  // namespace gui

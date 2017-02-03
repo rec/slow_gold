@@ -27,12 +27,11 @@ class DataUpdater {
 
  private:
   DataMap* map_;
-  ptr<DataSet> update_;
-  ptr<DataSet> write_;
+  std::unique_ptr<DataSet> update_;
+  std::unique_ptr<DataSet> write_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataUpdater);
 };
 
 }  // namespace data
 }  // namespace rec
-

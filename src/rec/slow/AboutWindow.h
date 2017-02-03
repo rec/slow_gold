@@ -23,10 +23,9 @@ class AboutWindow : public Component,
   void close();
 
   Component* parent_;
-  unique_ptr<AboutPane> aboutPane_;
+  std::unique_ptr<AboutPane> aboutPane_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
 };
 
 }  // namespace slow
 }  // namespace rec
-

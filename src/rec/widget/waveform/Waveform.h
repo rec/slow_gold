@@ -101,8 +101,8 @@ class Waveform : public Component,
 
   CriticalSection lock_;
   juce::AudioThumbnail* thumbnail_;
-  ptr<WaveformModel> model_;
-  ptr<WaveformPainter> painter_;
+  std::unique_ptr<WaveformModel> model_;
+  std::unique_ptr<WaveformPainter> painter_;
 
   CursorList cursors_;
   Cursor* timeCursor_;
@@ -121,4 +121,3 @@ typedef gui::DropTarget<Waveform> DropWaveform;
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

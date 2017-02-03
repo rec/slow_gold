@@ -27,7 +27,7 @@ namespace gui {
 
 namespace {
 
-typedef unique_ptr<Component> (*ComponentMaker)(const Context&);
+typedef std::unique_ptr<Component> (*ComponentMaker)(const Context&);
 
 ComponentMaker make(const ComponentProto& c) {
   if (c.has_button())
@@ -80,9 +80,9 @@ ComponentMaker make(const ComponentProto& c) {
 
 }  // namespace
 
-unique_ptr<Component> makeComponent(const Context& context) {
+std::unique_ptr<Component> makeComponent(const Context& context) {
   auto& comp = context.component_;
-  unique_ptr<Component> component;
+  std::unique_ptr<Component> component;
   if (ComponentMaker maker = make(comp)) {
     component = maker(context);
     const string* name = &comp.name();

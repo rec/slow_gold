@@ -9,10 +9,10 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeLabel(const Context& context) {
+std::unique_ptr<Component> makeLabel(const Context& context) {
   auto& component = context.component_;
   auto& proto = component.label();
-  unique_ptr<SimpleLabel> label(new SimpleLabel("", proto.text()));
+  std::unique_ptr<SimpleLabel> label(new SimpleLabel("", proto.text()));
 
   // TODO: prevent simplelable from setting the name.
   // TODO: font.

@@ -28,7 +28,7 @@ class AddressListener : public Listener<const Value&> {
 
   void receiveMessage(const Message&);
 
-  ptr<UntypedListener> untypedListener_;
+  std::unique_ptr<UntypedListener> untypedListener_;
   const Address address_;
   bool failOnError_;
 
@@ -37,4 +37,3 @@ class AddressListener : public Listener<const Value&> {
 
 }  // namespace data
 }  // namespace rec
-

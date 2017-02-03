@@ -30,11 +30,10 @@ class Switcher {
   }
 
  private:
-  ptr<Type> current_, next_;
+  std::unique_ptr<Type> current_, next_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Switcher);
 };
 
 }  // namespace util
 }  // namespace rec
-

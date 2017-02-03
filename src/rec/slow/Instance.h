@@ -56,23 +56,23 @@ class Instance {
   app::Window* window_;
   CriticalSection lock_;
 
-  ptr<audio::Device> device_;
-  ptr<audio::util::BufferFiller> bufferFiller_;
-  ptr<CurrentFile> currentFile_;
+  std::unique_ptr<audio::Device> device_;
+  std::unique_ptr<audio::util::BufferFiller> bufferFiller_;
+  std::unique_ptr<CurrentFile> currentFile_;
 
-  ptr<audio::source::Player> player_;
-  ptr<CurrentTime> currentTime_;
+  std::unique_ptr<audio::source::Player> player_;
+  std::unique_ptr<CurrentTime> currentTime_;
 
-  ptr<MouseListener> mouseListener_;
-  ptr<GuiListener> guiListener_;
+  std::unique_ptr<MouseListener> mouseListener_;
+  std::unique_ptr<GuiListener> guiListener_;
   thread_ptr<Thread> fillerThread_;
-  ptr<gui::LookAndFeel> lookAndFeel_;
-  ptr<command::MidiCommandMap> midiCommandMap_;
-  ptr<Components> components_;
+  std::unique_ptr<gui::LookAndFeel> lookAndFeel_;
+  std::unique_ptr<command::MidiCommandMap> midiCommandMap_;
+  std::unique_ptr<Components> components_;
 
  private:
-  unique_ptr<SlowProgram> slowProgram_;
-  unique_ptr<program::JuceModel> juceModel_;
+  std::unique_ptr<SlowProgram> slowProgram_;
+  std::unique_ptr<program::JuceModel> juceModel_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Instance);
 };
@@ -82,4 +82,3 @@ const VirtualFile getInstanceFile();
 
 }  // namespace slow
 }  // namespace rec
-

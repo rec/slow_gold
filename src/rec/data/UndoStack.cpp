@@ -58,8 +58,8 @@ class UndoStack::Entry {
 
   Data* data_;
 
-  ptr<Message> undo_;
-  ptr<Message> redo_;
+  std::unique_ptr<Message> undo_;
+  std::unique_ptr<Message> redo_;
   int64 timestamp_;
 };
 
@@ -107,7 +107,7 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
     if (!enabled_)
       return;
 
-    ptr<Entry> ue(new Entry(e, before, after));
+    std::unique_ptr<Entry> ue(new Entry(e, before, after));
     if (popRedos() || !stack_.size() ||
         !stack_.back()->mergeInto(ue.get(), group_)) {
       stack_.push_back(ue.release());

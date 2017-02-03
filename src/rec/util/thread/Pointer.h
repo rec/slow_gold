@@ -37,12 +37,12 @@ class OwnedPointer : public Pointer<Operator*> {
 }  // namespace thread
 
 template <typename Operator>
-unique_ptr<Callback> makePointer(Operator op) {
+std::unique_ptr<Callback> makePointer(Operator op) {
   return std::make_unique<thread::callback::Pointer<Operator>>(op);
 }
 
 template <typename Operator, typename Value>
-unique_ptr<Callback> makePointer(Operator op, Value v) {
+std::unique_ptr<Callback> makePointer(Operator op, Value v) {
   return std::make_unique<thread::callback::CallbackFunc1<Operator, Value>>(op, v);
 }
 

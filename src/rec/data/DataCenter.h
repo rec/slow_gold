@@ -34,11 +34,11 @@ class DataCenter {
   const MessageMaker& messageMaker() const;
 
  private:
-  unique_ptr<MessageRegistrarAndMaker> registry_;
-  unique_ptr<DataUpdater> updater_;
-  unique_ptr<UndoStack> undo_;
-  unique_ptr<DataMaker> maker_;
-  unique_ptr<DataMap> map_;
+  std::unique_ptr<MessageRegistrarAndMaker> registry_;
+  std::unique_ptr<DataUpdater> updater_;
+  std::unique_ptr<UndoStack> undo_;
+  std::unique_ptr<DataMaker> maker_;
+  std::unique_ptr<DataMap> map_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataCenter);
 };
@@ -50,4 +50,3 @@ AddressProto::Scope getScope(const string& typeName);
 
 }  // namespace data
 }  // namespace rec
-

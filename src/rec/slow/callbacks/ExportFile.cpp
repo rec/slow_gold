@@ -184,7 +184,7 @@ class SaveThread : public ThreadWithProgressWindow {
   }
 
   bool writeFile() {
-    ptr<AudioFormatWriter> writer(audio::format::createWriter(file_));
+    std::unique_ptr<AudioFormatWriter> writer(audio::format::createWriter(file_));
     if (!writer) {
       LOG(DFATAL) << "Couldn't create AudioFormatWriter for " << str(file_);
       return false;
@@ -225,7 +225,7 @@ class SaveThread : public ThreadWithProgressWindow {
  private:
   Instance* const instance_;
   const File file_;
-  ptr<audio::Source> source_;
+  std::unique_ptr<audio::Source> source_;
   const Viewport viewport_;
   const SampleTime length_;
 
@@ -269,7 +269,7 @@ Viewport getViewport(Instance* instance, bool useSelection,
 
 void doExportFile(Instance* instance, bool useSelection) {
   using namespace juce;
-  ptr<audio::Source> s(instance->makeSource());
+  std::unique_ptr<audio::Source> s(instance->makeSource());
   s.reset(instance->player_->makeSourceCopy(s.release(), useSelection));
 
   SampleTime len = useSelection ?

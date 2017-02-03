@@ -271,7 +271,7 @@ void Cursor::operator()(const WaveformProto& wp) {
 
 Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
                    SampleTime time) {
-  ptr<Cursor> cursor(new Cursor(cp, w, index));
+  std::unique_ptr<Cursor> cursor(new Cursor(cp, w, index));
   cursor->init();
   cursor->setTime(time);
   cursor->languageChanged();

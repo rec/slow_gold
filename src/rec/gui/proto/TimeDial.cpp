@@ -6,9 +6,9 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeTimeDial(const Context& context) {
+std::unique_ptr<Component> makeTimeDial(const Context& context) {
   using widget::status::time::DialComponent;
-  return unique_ptr<Component>(new DialComponent(
+  return std::unique_ptr<Component>(new DialComponent(
       context.component_.time_dial()));
 }
 

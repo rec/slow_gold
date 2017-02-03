@@ -21,7 +21,7 @@ class DataSet : public HasLock {
  private:
   void notify();
 
-  ptr<Set> data_;
+  std::unique_ptr<Set> data_;
   Thread* thread_;
   CriticalSection lock_;
 
@@ -29,4 +29,3 @@ class DataSet : public HasLock {
 
 }  // namespace data
 }  // namespace rec
-

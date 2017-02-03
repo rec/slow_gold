@@ -52,7 +52,7 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata,
   int track = String(file.path(0).c_str()).getIntValue() - 1;
   String filename = str(file.volume_name());
   if (metadata) {
-    ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename, error));
+    std::unique_ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename, error));
     if (cdr) {
       Album album = cd::getCachedAlbum(file, cdr->getTrackOffsets());
       *metadata = rec::music::getTrack(album, track);
@@ -63,7 +63,7 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata,
 }
 
 AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata) {
-  ptr<AudioFormatReader> reader(createReader(toRealFile(file)));
+  std::unique_ptr<AudioFormatReader> reader(createReader(toRealFile(file)));
   if (metadata && reader)
     *metadata = music::getMetadata(reader->metadataValues);
 
@@ -81,12 +81,12 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
     return;
   }
 
-  ptr<Metadata> metadata;
+  std::unique_ptr<Metadata> metadata;
   data::Data* d = data::getData<Metadata>(file);
   if (!d->fileReadSuccess())
     metadata.reset(new Metadata);
 
-  ptr<AudioFormatReader> reader;
+  std::unique_ptr<AudioFormatReader> reader;
   if (file.type() == VirtualFile::CD) {
     String error;
     reader_.reset(createCDReader(file, metadata.get(), &error));

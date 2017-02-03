@@ -37,11 +37,11 @@ class SlowWindow : public app::Window  {
  private:
   void gotoNextFile();
 
-  unique_ptr<Instance> instance_;
-  ptr<Component> aboutWindow_;
+  std::unique_ptr<Instance> instance_;
+  std::unique_ptr<Component> aboutWindow_;
   bool startupFinished_;
   File nextFile_;
-  unique_ptr<Thread> shutdownThread_;
+  std::unique_ptr<Thread> shutdownThread_;
 
   CriticalSection lock_;
 
@@ -53,4 +53,3 @@ void shutdown(app::GenericApplication*);
 
 }  // namespace slow
 }  // namespace rec
-

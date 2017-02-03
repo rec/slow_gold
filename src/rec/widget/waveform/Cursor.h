@@ -77,7 +77,7 @@ class Cursor : public Component,
   juce::Rectangle<int> bounds_;
   int dragX_;
   int mouseDragX_;
-  ptr<OutlinedCursorLabel> caption_;
+  std::unique_ptr<OutlinedCursorLabel> caption_;
   int captionWidth_;
   bool showSelection_;
   WaveformProto waveDesc_;
@@ -94,4 +94,3 @@ typedef std::set<Cursor*, CompareCursors> CursorSet;
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

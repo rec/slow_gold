@@ -87,7 +87,7 @@ class Editor : public Component,
   bool wasChanged() const { return wasChanged_; }
 
  protected:
-  ptr<juce::AlertWindow> entryWindow_;
+  std::unique_ptr<juce::AlertWindow> entryWindow_;
 
  private:
   typedef std::map<CommandID, MapItem*> MapItemMap;
@@ -108,7 +108,7 @@ class Editor : public Component,
 
   EditButton* lastEditButton_;
 
-  ptr<juce::TreeViewItem> topLevelItem_;
+  std::unique_ptr<juce::TreeViewItem> topLevelItem_;
   bool expectingExport_;
 
   string key_;
@@ -131,4 +131,3 @@ inline MidiMessage midiFromString(const string& s) {
 
 }  // namespace command
 }  // namespace rec
-
