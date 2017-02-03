@@ -18,4 +18,3 @@ class Deletable {
 
 }  // namespace util
 }  // namespace rec
-

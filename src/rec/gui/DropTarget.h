@@ -61,4 +61,3 @@ class DropTarget : public Interface, public Parent {
 
 }  // namespace gui
 }  // namespace rec
-

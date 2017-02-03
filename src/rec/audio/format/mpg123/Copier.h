@@ -20,4 +20,3 @@ Copier getCopier(int encoding);
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

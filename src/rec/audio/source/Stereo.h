@@ -28,4 +28,3 @@ void fixStereo(StereoProto*);
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

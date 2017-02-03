@@ -131,4 +131,3 @@ void CommandMap::removeKey(const string& key) {
 
 }  // namespace command
 }  // namespace rec
-

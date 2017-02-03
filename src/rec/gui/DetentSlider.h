@@ -40,4 +40,3 @@ class DetentSlider : public juce::Slider {
 
 }  // namespace gui
 }  // namespace rec
-

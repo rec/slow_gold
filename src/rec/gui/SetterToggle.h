@@ -52,4 +52,3 @@ class SetterToggle : public app::LanguageListener,
 
 }  // namespace gui
 }  // namespace rec
-

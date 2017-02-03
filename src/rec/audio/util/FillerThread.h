@@ -30,4 +30,3 @@ class FillerThread : public Thread {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

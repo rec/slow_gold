@@ -10,4 +10,3 @@ String midiName(const MidiMessage& msg);
 
 }  // namespace command
 }  // namespace rec
-

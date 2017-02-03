@@ -19,4 +19,3 @@ class HasLock {
 
 }  // namespace util
 }  // namespace rec
-

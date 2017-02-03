@@ -10,4 +10,3 @@ Font makeFont(const FontProto&, float baseHeight);
 
 }  // namespace gui
 }  // namespace rec
-

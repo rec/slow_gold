@@ -24,4 +24,3 @@ class Empty : public PositionableAudioSource {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

@@ -44,4 +44,3 @@ struct TimeFormat {
 
 }  // namespace util
 }  // namespace rec
-

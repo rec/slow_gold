@@ -24,4 +24,3 @@ void clear(const BufferTime& bt, SampleTime c);
 
 }  // namespace audio
 }  // namespace rec
-

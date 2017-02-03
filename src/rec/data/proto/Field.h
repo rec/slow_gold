@@ -12,4 +12,3 @@ MessageField createMessageField(const Address&, const Message&);
 
 }  // namespace data
 }  // namespace rec
-

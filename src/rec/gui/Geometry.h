@@ -46,4 +46,3 @@ String toString(const Point& p, bool isDimensions = false);
 
 }  // namespace gui
 }  // namespace rec
-

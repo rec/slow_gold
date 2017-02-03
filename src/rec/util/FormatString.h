@@ -25,4 +25,3 @@ class FormatString {
 
 }  // namespace util
 }  // namespace rec
-

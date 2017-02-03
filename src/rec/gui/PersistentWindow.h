@@ -46,4 +46,3 @@ class PersistentWindow : public DocumentWindow,
 
 }  // namespace gui
 }  // namespace rec
-

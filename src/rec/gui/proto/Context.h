@@ -30,4 +30,3 @@ struct Context {
 
 }  // namespace gui
 }  // namespace rec
-

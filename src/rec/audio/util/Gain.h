@@ -10,4 +10,3 @@ double getGain(const audio::Gain&);
 
 }  // namespace audio
 }  // namespace rec
-

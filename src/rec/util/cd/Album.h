@@ -14,4 +14,3 @@ music::Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off);
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
-

@@ -37,4 +37,3 @@ class SizeHintAccumulator : public HasSizeHints {
 
 }  // namespace gui
 }  // namespace rec
-

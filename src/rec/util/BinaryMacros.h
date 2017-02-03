@@ -20,4 +20,3 @@ namespace util {
 
 }  // namespace util
 }  // namespace rec
-

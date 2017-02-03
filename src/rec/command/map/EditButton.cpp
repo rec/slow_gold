@@ -58,4 +58,3 @@ void EditButton::fitToContent(const int h) noexcept {
 
 }  // namespace command
 }  // namespace rec
-

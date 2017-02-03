@@ -61,4 +61,3 @@ void insertRange(Type begin, Type end, Selection *selection) {
 
 }  // namespace util
 }  // namespace rec
-

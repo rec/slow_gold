@@ -34,4 +34,3 @@ bool equals(const Message& x, const Message& y, const Comparer& cmp);
 }  // namespace data
 }  // namespace typer
 }  // namespace rec
-

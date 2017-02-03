@@ -15,4 +15,3 @@ void reverseProto(google::protobuf::RepeatedPtrField<Type>* items) {
 
 }  // namespace util
 }  // namespace rec
-

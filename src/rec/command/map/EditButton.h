@@ -30,4 +30,3 @@ class EditButton : public juce::Button {
 
 }  // namespace command
 }  // namespace rec
-

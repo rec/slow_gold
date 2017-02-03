@@ -30,5 +30,3 @@ class SetterListener : public data::AddressListener {
 
 }  // namespace program
 }  // namespace rec
-
-

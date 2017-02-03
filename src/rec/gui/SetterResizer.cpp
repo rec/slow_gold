@@ -73,4 +73,3 @@ void SetterResizer::doWriteGui() {
 
 }  // namespace gui
 }  // namespace rec
-

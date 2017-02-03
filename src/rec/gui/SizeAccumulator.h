@@ -40,4 +40,3 @@ class SizeAccumulator {
 
 }  // namespace gui
 }  // namespace rec
-

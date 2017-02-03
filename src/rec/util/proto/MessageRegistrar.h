@@ -32,4 +32,3 @@ void registerProto(MessageRegistrar* registrar) {
 
 }  // namespace util
 }  // namespace rec
-

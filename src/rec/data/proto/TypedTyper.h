@@ -67,4 +67,3 @@ bool TypedTyper<Type>::Equals(const Message& m, uint32 i,
 }  // namespace typer
 }  // namespace data
 }  // namespace rec
-

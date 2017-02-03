@@ -25,4 +25,3 @@ class KeyStrokeEditor : public Editor, public juce::KeyListener {
 
 }  // namespace command
 }  // namespace rec
-

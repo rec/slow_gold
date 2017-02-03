@@ -90,4 +90,3 @@ class scoped_array {
     scoped_array(const scoped_array&);
     void operator=(const scoped_array&);
 };
-

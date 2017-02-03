@@ -15,4 +15,3 @@ Error newHandle(juce::InputStream* in, mpg123_handle** mh);
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

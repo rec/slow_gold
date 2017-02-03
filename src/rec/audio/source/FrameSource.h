@@ -58,4 +58,3 @@ class FrameSource : public PositionableAudioSource {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

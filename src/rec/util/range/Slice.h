@@ -37,4 +37,3 @@ Selection wrap(const Selection& selection, Type t) {
 
 }  // namespace util
 }  // namespace rec
-

@@ -21,4 +21,3 @@ class HasSizeHints {
 
 }  // namespace gui
 }  // namespace rec
-

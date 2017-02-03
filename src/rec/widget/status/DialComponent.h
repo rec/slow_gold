@@ -61,4 +61,3 @@ class DialComponent : public Component,
 }  // namespace status
 }  // namespace widget
 }  // namespace rec
-

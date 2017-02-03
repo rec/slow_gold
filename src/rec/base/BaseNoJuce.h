@@ -30,4 +30,3 @@ using util::file::VirtualFileList;
 class None {};
 
 }  // namespace rec
-

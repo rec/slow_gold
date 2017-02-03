@@ -27,4 +27,3 @@ class DefBinary : public Def<Proto> {
 
 }  // namespace util
 }  // namespace rec
-

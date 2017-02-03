@@ -54,4 +54,3 @@ class WaveformModel {
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

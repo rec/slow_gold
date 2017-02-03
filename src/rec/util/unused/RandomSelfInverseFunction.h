@@ -18,4 +18,3 @@ ByteFunction randomSelfInverseFunction(unsigned seed);
 
 }  // namespace util
 }  // namespace rec
-

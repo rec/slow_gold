@@ -16,4 +16,3 @@ struct SampleRate {
 };
 
 }  // namespace rec
-

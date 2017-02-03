@@ -40,4 +40,3 @@ String getCDKey(AudioCDReader* reader);
 }  // Namespace cd
 }  // namespace util
 }  // namespace rec
-

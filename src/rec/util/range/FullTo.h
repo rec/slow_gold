@@ -13,4 +13,3 @@ Type fullTo(const Container& c) {
 
 }  // namespace util
 }  // namespace rec
-

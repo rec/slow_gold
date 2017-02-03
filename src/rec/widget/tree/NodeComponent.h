@@ -21,4 +21,3 @@ class NodeComponent : public juce::Component {
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

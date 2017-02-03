@@ -27,4 +27,3 @@ class Callback0 : public Callback {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

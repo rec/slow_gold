@@ -46,4 +46,3 @@ class Timer : public Wrappy, public StateListener<Thread*> {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

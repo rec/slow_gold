@@ -20,4 +20,3 @@ typename Range<Type>::Vector split(const Range<Type>& range,
 
 }  // namespace util
 }  // namespace rec
-

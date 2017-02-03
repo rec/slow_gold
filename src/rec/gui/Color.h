@@ -18,4 +18,3 @@ Colour makeColour(const Color&, const ColourMap&);
 }  // namespace color
 }  // namespace gui
 }  // namespace rec
-

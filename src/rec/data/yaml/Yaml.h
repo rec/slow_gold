@@ -10,4 +10,3 @@ bool read(const string& from, Message* to);
 
 }  // namespace yaml
 }  // namespace rec
-

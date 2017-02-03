@@ -14,4 +14,3 @@ VirtualFile::Type getFileType(const File&);
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

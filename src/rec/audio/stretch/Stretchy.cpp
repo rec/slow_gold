@@ -59,4 +59,3 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
-

@@ -36,4 +36,3 @@ class DataMapImpl : public DataMap {
 
 }  // namespace data
 }  // namespace rec
-

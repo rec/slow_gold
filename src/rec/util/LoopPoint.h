@@ -39,4 +39,3 @@ Range<SampleTime > contiguousSelectionContaining(const LoopPointList&,
 
 }  // namespace audio
 }  // namespace rec
-

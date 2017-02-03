@@ -58,4 +58,3 @@ void shutdownDialog();
 }  // namespace dialog
 }  // namespace gui
 }  // namespace rec
-

@@ -68,4 +68,3 @@ class MapItemComponent  : public Component {
 
 }  // namespace command
 }  // namespace rec
-

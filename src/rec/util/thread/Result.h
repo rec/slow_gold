@@ -16,4 +16,3 @@ enum Result {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

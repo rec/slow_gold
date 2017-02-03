@@ -31,4 +31,3 @@ class Frames {
 
 }  // namespace data
 }  // namespace rec
-

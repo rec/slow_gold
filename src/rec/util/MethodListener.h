@@ -40,4 +40,3 @@ Listener<Type>* addMethodListener(
 
 }  // namespace util
 }  // namespace rec
-

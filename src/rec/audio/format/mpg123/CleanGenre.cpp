@@ -161,4 +161,3 @@ string cleanGenre(const string& s) {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

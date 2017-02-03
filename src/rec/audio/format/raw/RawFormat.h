@@ -37,4 +37,3 @@ class RawFormat : public juce::AudioFormat {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

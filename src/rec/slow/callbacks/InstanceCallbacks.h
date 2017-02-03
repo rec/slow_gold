@@ -12,4 +12,3 @@ void addInstanceCallbacks(program::Program*);
 
 }  // namespace slow
 }  // namespace rec
-

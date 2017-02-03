@@ -53,4 +53,3 @@ class Implementation {
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
-

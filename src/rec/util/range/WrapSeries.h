@@ -35,4 +35,3 @@ Container getUnfilledBlocks(const Container& selection, Type pos, Type len, Fill
 
 }  // namespace util
 }  // namespace rec
-

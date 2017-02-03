@@ -32,4 +32,3 @@ List rangeToList(const Range<int>& range) {
 
 }  // namespace util
 }  // namespace rec
-

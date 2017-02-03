@@ -47,4 +47,3 @@ class Value : public ValueProto {
 
 }  // namespace data
 }  // namespace rec
-

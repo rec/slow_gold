@@ -73,4 +73,3 @@ typename Container::mapped_type getDefault(
 
 }  // namespace stl
 }  // namespace rec
-

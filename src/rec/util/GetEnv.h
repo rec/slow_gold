@@ -10,4 +10,3 @@ String getEnv(const String& name, const String& dflt = EMPTY_ENV_VARIABLE);
 
 }  // namespace util
 }  // namespace rec
-

@@ -31,4 +31,3 @@ class Shard : public Directory {
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

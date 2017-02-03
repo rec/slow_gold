@@ -21,4 +21,3 @@ void addCallback(program::Program* c, CommandID id, Function f, X x) {
 
 }  // namespace slow
 }  // namespace rec
-

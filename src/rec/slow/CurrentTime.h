@@ -78,4 +78,3 @@ class CurrentTime : public audio::util::CurrentTimeBase,
 
 }  // namespace slow
 }  // namespace rec
-

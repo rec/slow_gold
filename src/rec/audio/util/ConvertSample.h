@@ -21,4 +21,3 @@ template <typename From, typename To> void convertSample(From f, To* t);
 
 }  // namespace audio
 }  // namespace rec
-

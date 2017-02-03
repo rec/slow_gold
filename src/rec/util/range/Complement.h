@@ -24,4 +24,3 @@ Selection complement(const Selection& con, Type length) {
 
 }  // namespace util
 }  // namespace rec
-

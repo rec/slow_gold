@@ -41,4 +41,3 @@ class Format : public juce::AudioFormat {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

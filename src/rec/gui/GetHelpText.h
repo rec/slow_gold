@@ -11,4 +11,3 @@ void refreshHelpText();
 
 }  // namespace gui
 }  // namespace rec
-

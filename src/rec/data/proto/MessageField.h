@@ -42,4 +42,3 @@ int getSize(const MessageField& mf);
 
 }  // namespace data
 }  // namespace rec
-

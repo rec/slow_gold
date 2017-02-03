@@ -39,4 +39,3 @@ class RegisterProgram : public Thread {
 
 }  // namespace app
 }  // namespace rec
-

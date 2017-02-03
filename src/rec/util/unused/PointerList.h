@@ -63,4 +63,3 @@ class PointerList {
 
 }  // namespace util
 }  // namespace rec
-

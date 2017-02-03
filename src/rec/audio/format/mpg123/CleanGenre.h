@@ -14,4 +14,3 @@ string cleanGenre(const string&);
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

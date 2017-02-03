@@ -16,4 +16,3 @@ StringPair splitLine(const string& s, int ch);
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
-

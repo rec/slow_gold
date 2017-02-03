@@ -76,4 +76,3 @@ class Panel : public Component,
 
 }  // namespace gui
 }  // namespace rec
-

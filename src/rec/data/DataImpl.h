@@ -38,4 +38,3 @@ class DataImpl : public Data {
 
 }  // namespace data
 }  // namespace rec
-

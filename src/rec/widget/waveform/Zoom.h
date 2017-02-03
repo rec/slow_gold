@@ -26,4 +26,3 @@ void constrainZoom(Zoom* z, SampleTime length, SampleRate rate);
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

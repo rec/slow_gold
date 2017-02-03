@@ -17,4 +17,3 @@ class Comparer {
 
 }  // namespace data
 }  // namespace rec
-

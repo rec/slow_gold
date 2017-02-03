@@ -50,4 +50,3 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
 
 }  // namespace app
 }  // namespace rec
-

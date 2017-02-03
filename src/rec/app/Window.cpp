@@ -50,4 +50,3 @@ void Window::shutdown() {
 
 }  // namespace app
 }  // namespace rec
-

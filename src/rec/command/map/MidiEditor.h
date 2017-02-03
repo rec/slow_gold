@@ -28,4 +28,3 @@ class MidiEditor : public Editor,
 
 }  // namespace command
 }  // namespace rec
-

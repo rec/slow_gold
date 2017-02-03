@@ -26,4 +26,3 @@ typedef thread::callback::Callback Callback;
 
 }  // namespace util
 }  // namespace rec
-

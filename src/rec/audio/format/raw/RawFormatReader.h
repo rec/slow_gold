@@ -66,4 +66,3 @@ class RawFormatReader : public AudioFormatReader {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

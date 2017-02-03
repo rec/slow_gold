@@ -49,4 +49,3 @@ class NameToProto {
 }  // namespace proto
 }  // namespace data
 }  // namespace rec
-

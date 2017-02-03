@@ -41,4 +41,3 @@ class Reader : public juce::AudioFormatReader {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

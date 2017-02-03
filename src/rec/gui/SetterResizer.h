@@ -51,4 +51,3 @@ class SetterResizer : public data::AddressListener,
 
 }  // namespace gui
 }  // namespace rec
-

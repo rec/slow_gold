@@ -150,4 +150,3 @@ String FormatString::format(const String& s1, const String& s2, const String& s3
 
 }  // namespace util
 }  // namespace rec
-

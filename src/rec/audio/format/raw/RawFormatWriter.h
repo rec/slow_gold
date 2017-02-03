@@ -51,4 +51,3 @@ class RawFormatWriter : public AudioFormatWriter {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

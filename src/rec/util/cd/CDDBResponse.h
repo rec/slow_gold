@@ -19,4 +19,3 @@ StringArray getCDData(Socket* sock, const String& line);
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
-

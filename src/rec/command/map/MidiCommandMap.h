@@ -22,4 +22,3 @@ class MidiCommandMap : public CommandMap,
 
 }  // namespace command
 }  // namespace rec
-

@@ -76,4 +76,3 @@ Container symmetricDifference(const Container& x, const Container& y) {
 
 }  // namespace util
 }  // namespace rec
-

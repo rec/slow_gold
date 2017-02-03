@@ -83,4 +83,3 @@ class Infinite {
 }  // namespace infinite
 }  // namespace audio
 }  // namespace rec
-

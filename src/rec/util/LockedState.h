@@ -66,4 +66,3 @@ class StateLocker {
 
 }  // namespace util
 }  // namespace rec
-

@@ -25,4 +25,3 @@ inline State invert(State s) { return s ? STOPPED : RUNNING; }
 
 }  // namespace audio
 }  // namespace rec
-

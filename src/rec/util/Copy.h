@@ -70,4 +70,3 @@ bool merge(const string& from, Message* to, Style r = DEFAULT_STYLE);
 
 }  // namespace copy
 }  // namespace rec
-

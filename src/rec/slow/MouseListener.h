@@ -55,4 +55,3 @@ class MouseListener : public juce::MouseListener,
 
 }  // namespace slow
 }  // namespace rec
-

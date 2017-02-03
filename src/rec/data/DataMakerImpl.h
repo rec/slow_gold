@@ -28,4 +28,3 @@ class DataMakerImpl : public DataMaker {
 
 }  // namespace data
 }  // namespace rec
-

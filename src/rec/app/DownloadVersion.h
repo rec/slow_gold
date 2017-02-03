@@ -19,4 +19,3 @@ extern const String WOODSHED;
 
 }  // namespace app
 }  // namespace rec
-

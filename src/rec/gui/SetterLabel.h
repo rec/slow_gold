@@ -38,4 +38,3 @@ class SetterLabel : public SimpleLabel, public data::AddressListener {
 
 }  // namespace gui
 }  // namespace rec
-

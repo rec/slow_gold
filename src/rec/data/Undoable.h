@@ -9,4 +9,3 @@ enum Undoable { CANT_UNDO, CAN_UNDO };
 
 }  // namespace data
 }  // namespace rec
-

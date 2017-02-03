@@ -39,4 +39,3 @@ const Proto getProto() {
 
 }  // namespace data
 }  // namespace rec
-

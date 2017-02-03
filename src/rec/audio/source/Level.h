@@ -46,4 +46,3 @@ class Level : public Wrappy {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

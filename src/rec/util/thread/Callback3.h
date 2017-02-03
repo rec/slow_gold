@@ -47,4 +47,3 @@ class CallbackFunc3 : public Callback {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

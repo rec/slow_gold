@@ -29,4 +29,3 @@ bool BufferedReader::coversTime(SampleTime time) const {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

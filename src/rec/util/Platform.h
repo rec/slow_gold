@@ -12,4 +12,3 @@ inline void* reallocf(void *ptr, size_t size) {
 }
 
 #endif // JUCE_MAC
-

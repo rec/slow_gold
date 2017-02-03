@@ -18,4 +18,3 @@ struct MouseWheelEvent {
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

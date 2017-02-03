@@ -14,4 +14,3 @@ Error getMp3Tags(mpg123_handle* mh, juce::StringPairArray* metadata);
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

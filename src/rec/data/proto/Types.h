@@ -63,4 +63,3 @@ typedef data::ValueProto ValueProto;
 
 }  // namespace proto
 }  // namespace rec
-

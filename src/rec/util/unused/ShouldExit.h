@@ -12,4 +12,3 @@ bool shouldExit(Thread* thread) {
 
 }  // namespace util
 }  // namespace rec
-

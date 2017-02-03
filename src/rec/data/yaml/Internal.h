@@ -46,4 +46,3 @@ struct MessageFieldIndex : public MessageField {
 
 }  // namespace yaml
 }  // namespace rec
-

@@ -65,4 +65,3 @@ SampleTime reallocateBest(vector<Frame>* frames, SampleTime length,
 
 }  // namespace audio
 }  // namespace rec
-

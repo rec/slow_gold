@@ -16,4 +16,3 @@ class DropFiles {
 
 }  // namespace gui
 }  // namespace rec
-

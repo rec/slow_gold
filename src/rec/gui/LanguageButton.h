@@ -27,4 +27,3 @@ class LanguageButton : public DrawableButton,
 
 }  // namespace gui
 }  // namespace rec
-

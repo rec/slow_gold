@@ -48,4 +48,3 @@ const String MidiEditor::getWindowTitle() const {
 
 }  // namespace command
 }  // namespace rec
-

@@ -46,4 +46,3 @@ class LevelMeter : public Component,
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec
-

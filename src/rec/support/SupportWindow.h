@@ -41,4 +41,3 @@ void shutdown(app::GenericApplication*);
 }  // namespace support
 
 }  // namespace rec
-

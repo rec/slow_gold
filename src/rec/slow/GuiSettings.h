@@ -12,4 +12,3 @@ File browseForFile(const String& msg, const File& startFile, SaveOrOpen save,
 
 }  // namespace slow
 }  // namespace rec
-

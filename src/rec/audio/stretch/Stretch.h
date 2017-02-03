@@ -14,4 +14,3 @@ double pitchSemitones(const StretchParameters&);
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
-

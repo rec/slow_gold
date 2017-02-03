@@ -17,4 +17,3 @@ Type toX(const Range<Type>& r, Type y, Type ySize) {
 
 }  // namespace util
 }  // namespace rec
-

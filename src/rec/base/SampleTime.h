@@ -56,4 +56,3 @@ struct SampleTime {
 };
 
 }  // namespace rec
-

@@ -44,4 +44,3 @@ class CommandMap : public ChangeBroadcaster {
 
 }  // namespace command
 }  // namespace rec
-

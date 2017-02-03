@@ -31,4 +31,3 @@ string getTitle(const T1& t1, const T2& t2, const T3& t3) {
 
 }  // namespace music
 }  // namespace rec
-

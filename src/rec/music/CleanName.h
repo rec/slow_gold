@@ -10,4 +10,3 @@ String cleanName(const String&);
 
 }  // namespace music
 }  // namespace rec
-

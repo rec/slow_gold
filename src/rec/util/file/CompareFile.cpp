@@ -44,4 +44,3 @@ void sort(VirtualFileList* v) {
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

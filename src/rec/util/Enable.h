@@ -9,4 +9,3 @@ enum Enable { DISABLE, ENABLE };
 
 }  // namespace util
 }  // namespace rec
-

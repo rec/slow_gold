@@ -15,4 +15,3 @@ Broadcaster<SampleRate>* getOutputSampleRateBroadcaster();
 
 }  // namespace audio
 }  // namespace rec
-

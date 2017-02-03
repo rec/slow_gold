@@ -23,4 +23,3 @@ AudioFormatManager* createAudioFormatManager(ReadWrite rw);
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

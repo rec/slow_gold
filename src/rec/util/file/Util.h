@@ -25,4 +25,3 @@ const String& audioFilePatterns();
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

@@ -48,4 +48,3 @@ String getTranslatedName();
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

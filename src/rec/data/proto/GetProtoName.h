@@ -9,4 +9,3 @@ namespace proto {
 }  // namespace proto
 }  // namespace data
 }  // namespace rec
-

@@ -12,4 +12,3 @@ typedef SampleRange::Vector SampleRangeVector;
 
 }  // namespace util
 }  // namespace rec
-

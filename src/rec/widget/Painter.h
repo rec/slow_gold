@@ -79,4 +79,3 @@ class Restorer {
 
 }  // namespace widget
 }  // namespace rec
-

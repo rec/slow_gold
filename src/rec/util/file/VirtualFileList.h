@@ -13,4 +13,3 @@ VirtualFileList toVirtualFileList(const juce::Array<File>&);
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

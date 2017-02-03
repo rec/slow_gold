@@ -28,4 +28,3 @@ class SetupPage : public Component {
 }  // namespace rec
 }  // namespace gui
 }  // namespace audio
-

@@ -31,4 +31,3 @@ class LoopsCuttable : public Cuttable {
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec
-

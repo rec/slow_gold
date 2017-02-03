@@ -41,4 +41,3 @@ class Typer {
 }  // namespace typer
 }  // namespace data
 }  // namespace rec
-

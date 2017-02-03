@@ -9,4 +9,3 @@ enum Loading { NOT_LOADING, LOADING };
 
 }  // namespace util
 }  // namespace rec
-

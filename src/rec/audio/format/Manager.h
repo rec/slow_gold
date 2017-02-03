@@ -16,4 +16,3 @@ AudioFormatWriter* createWriter(const File&);
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

@@ -60,4 +60,3 @@ bool Reader::readSamples(int** dest, int destChannels, int destOffset,
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

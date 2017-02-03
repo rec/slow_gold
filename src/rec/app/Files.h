@@ -16,4 +16,3 @@ File getAppFile(const String&);
 
 }  // namespace app
 }  // namespace rec
-

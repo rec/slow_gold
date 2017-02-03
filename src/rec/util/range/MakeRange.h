@@ -23,4 +23,3 @@ Range<Type> makeRange(const typename Range<Type>::Vector& x) {
 
 }  // namespace util
 }  // namespace rec
-

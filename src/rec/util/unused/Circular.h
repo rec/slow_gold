@@ -47,4 +47,3 @@ struct Circular : public Range<Type> {
 
 }  // namespace util
 }  // namespace rec
-

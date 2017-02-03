@@ -16,4 +16,3 @@ const char* keyboardFileName();
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

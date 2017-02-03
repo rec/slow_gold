@@ -42,4 +42,3 @@ class OutlinedCursorLabel : public gui::SimpleLabel,
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

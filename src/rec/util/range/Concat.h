@@ -8,4 +8,3 @@ namespace util {
 }  // namespace range
 }  // namespace util
 }  // namespace rec
-

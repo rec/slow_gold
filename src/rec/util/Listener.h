@@ -131,4 +131,3 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
 
 }  // namespace util
 }  // namespace rec
-

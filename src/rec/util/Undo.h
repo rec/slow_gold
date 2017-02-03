@@ -20,4 +20,3 @@ void redo();
 
 }  // namespace util
 }  // namespace rec
-

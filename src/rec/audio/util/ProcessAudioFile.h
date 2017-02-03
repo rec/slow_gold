@@ -19,4 +19,3 @@ SourceAndWriter makeSourceAndWriter(const File& in, const File& out);
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

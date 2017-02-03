@@ -20,4 +20,3 @@ const TypeMap& getTypeMap();
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

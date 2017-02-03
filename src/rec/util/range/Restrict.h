@@ -12,4 +12,3 @@ Type restrict(const Range<Type>& r, Type x) {
 
 }  // namespace util
 }  // namespace rec
-

@@ -150,6 +150,3 @@ string write(const Message& from) {
 
 }  // namespace yaml
 }  // namespace rec
-
-
-

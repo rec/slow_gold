@@ -40,4 +40,3 @@ class ListenerAdaptor : public Listener<Type1> {
 
 }  // namespace util
 }  // namespace rec
-

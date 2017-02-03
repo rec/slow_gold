@@ -14,4 +14,3 @@ void addSlowCallbacks(program::Program*, int repeat = REPEATED_COUNT);
 
 }  // namespace slow
 }  // namespace rec
-

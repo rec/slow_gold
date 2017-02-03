@@ -55,4 +55,3 @@ class DataSlider : public Panel,
 
 }  // namespace gui
 }  // namespace rec
-

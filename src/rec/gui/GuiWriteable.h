@@ -35,4 +35,3 @@ class GuiWriteable {
 
 }  // namespace gui
 }  // namespace rec
-

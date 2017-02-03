@@ -24,4 +24,3 @@ class HasThread {
 
 }  // namespace util
 }  // namespace rec
-

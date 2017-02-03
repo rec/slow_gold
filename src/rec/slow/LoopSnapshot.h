@@ -30,4 +30,3 @@ struct LoopSnapshot {
 
 }  // namespace slow
 }  // namespace rec
-

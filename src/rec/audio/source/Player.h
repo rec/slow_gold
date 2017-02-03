@@ -96,4 +96,3 @@ class Player : public DataListener<AudioSettings>,
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

@@ -25,5 +25,3 @@
 #define DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TypeName) \
     DISALLOW_COPY_ASSIGN_AND_EMPTY(TypeName);            \
     JUCE_LEAK_DETECTOR(TypeName)
-
-

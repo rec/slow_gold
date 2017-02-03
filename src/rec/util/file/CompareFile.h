@@ -15,4 +15,3 @@ void sort(VirtualFileList*);
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

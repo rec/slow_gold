@@ -19,4 +19,3 @@ class CurrentTimeBase {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

@@ -27,4 +27,3 @@ LanguageListener::~LanguageListener() {}
 
 }  // namespace app
 }  // namespace rec
-

@@ -35,4 +35,3 @@ class Disableable {
 
 }  // namespace util
 }  // namespace rec
-

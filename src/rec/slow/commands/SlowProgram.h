@@ -51,4 +51,3 @@ string mapTypeName(const string&);
 
 }  // namespace slow
 }  // namespace rec
-

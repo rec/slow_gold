@@ -44,4 +44,3 @@ class UndoStack {
 
 }  // namespace data
 }  // namespace rec
-

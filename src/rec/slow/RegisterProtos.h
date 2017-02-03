@@ -9,4 +9,3 @@ void registerProtos();
 
 }  // namespace slow
 }  // namespace rec
-

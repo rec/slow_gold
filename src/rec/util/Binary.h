@@ -36,4 +36,3 @@ Type* constructName(const string& name) {
 
 }  // namespace util
 }  // namespace rec
-

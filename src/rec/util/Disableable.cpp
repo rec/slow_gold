@@ -29,4 +29,3 @@ void Disableable::disable(bool isDisabled) {
 
 }  // namespace util
 }  // namespace rec
-

@@ -40,4 +40,3 @@ class Selection : public Wrappy {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

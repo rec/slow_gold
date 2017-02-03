@@ -18,4 +18,3 @@ void setMessageFieldOrDie(const Address&, Message*, const ValueProto&);
 
 }  // namespace data
 }  // namespace rec
-

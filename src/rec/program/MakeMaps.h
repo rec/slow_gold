@@ -20,4 +20,3 @@ gui::Constants makeConstants();
 
 }  // namespace program
 }  // namespace rec
-

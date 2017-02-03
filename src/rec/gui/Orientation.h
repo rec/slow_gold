@@ -12,4 +12,3 @@ static const auto VERTICAL = OrientationProto::VERTICAL;
 
 }  // namespace gui
 }  // namespace rec
-

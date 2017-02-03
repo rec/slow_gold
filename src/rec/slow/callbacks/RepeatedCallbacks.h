@@ -13,4 +13,3 @@ void addSelectionCallbacks(program::Program*);
 
 }  // namespace slow
 }  // namespace rec
-

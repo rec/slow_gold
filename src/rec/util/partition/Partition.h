@@ -29,4 +29,3 @@ ShardArray partitionList(const Collection& collection,
 }  // namespace partition
 }  // namespace util
 }  // namespace rec
-

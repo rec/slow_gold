@@ -43,4 +43,3 @@ void setDefaultCuttable(HasCuttable*);
 
 }  // namespace util
 }  // namespace rec
-

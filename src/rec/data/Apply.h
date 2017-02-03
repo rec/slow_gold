@@ -28,4 +28,3 @@ bool applyToData(Functor functor, Data* data) {
 
 }  // namespace data
 }  // namespace rec
-

@@ -53,4 +53,3 @@ class Format : public AudioFormat {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-

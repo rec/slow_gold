@@ -35,4 +35,3 @@ const Address makeAddress(const string& x) {
 
 }  // namespace data
 }  // namespace rec
-

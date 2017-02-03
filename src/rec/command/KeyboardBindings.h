@@ -16,4 +16,3 @@ CommandMapProto getKeyboardBindings();
 
 }  // namespace command
 }  // namespace rec
-

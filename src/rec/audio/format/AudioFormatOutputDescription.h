@@ -38,4 +38,3 @@ class AudioFormat
 #endif
 
 }  // namespace juce
-

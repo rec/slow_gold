@@ -60,4 +60,3 @@ juce::Font getFont(const Proto& proto) {
 
 }  // namespace gui
 }  // namespace rec
-

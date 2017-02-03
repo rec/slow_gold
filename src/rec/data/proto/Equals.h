@@ -17,4 +17,3 @@ inline bool operator==(const Message& x, const Message& y) {
 inline bool operator!=(const Message& x, const Message& y) { return !(x == y); }
 
 }  // namespace rec
-

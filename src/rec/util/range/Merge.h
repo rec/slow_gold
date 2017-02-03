@@ -43,4 +43,3 @@ Container merge(const Container& x, const Range<Type>& y) {
 
 }  // namespace util
 }  // namespace rec
-

@@ -25,4 +25,3 @@ class RegisterInstance : public app::RegisterProgram {
 
 }  // namespace app
 }  // namespace rec
-

@@ -15,4 +15,3 @@ LoopSnapshot::LoopSnapshot(Instance* i)
 
 }  // namespace slow
 }  // namespace rec
-

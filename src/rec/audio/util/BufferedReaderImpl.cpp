@@ -80,4 +80,3 @@ template BufferedReader* makeBufferedReader<short, 2>(int);
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

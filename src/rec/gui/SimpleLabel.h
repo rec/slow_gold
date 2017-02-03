@@ -28,4 +28,3 @@ class SimpleLabel : public juce::Label, public Disableable {
 
 }  // namespace gui
 }  // namespace rec
-

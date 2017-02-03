@@ -17,4 +17,3 @@ inline const string toString(const VirtualFile& f) {
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

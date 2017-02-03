@@ -18,4 +18,3 @@ class DataMaker {
 
 }  // namespace data
 }  // namespace rec
-

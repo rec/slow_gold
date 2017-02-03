@@ -25,4 +25,3 @@ bool recentFilesEmpty();
 
 }  // namespace gui
 }  // namespace rec
-

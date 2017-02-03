@@ -59,4 +59,3 @@ void SetterListener::setValue() {
 
 }  // namespace program
 }  // namespace rec
-

@@ -18,4 +18,3 @@ Return delegateToList(Method method, HasMethod hasMethod,
 
 }  // namespace util
 }  // namespace rec
-

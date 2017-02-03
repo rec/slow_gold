@@ -55,4 +55,3 @@ class TextComponent : public gui::SimpleLabel,
 }  // namespace status
 }  // namespace widget
 }  // namespace rec
-

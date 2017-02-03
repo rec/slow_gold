@@ -140,4 +140,3 @@ inline void beep( ) {
 }
 
 }  // namespace rec
-

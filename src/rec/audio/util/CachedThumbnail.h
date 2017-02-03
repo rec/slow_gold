@@ -32,4 +32,3 @@ class CachedThumbnail {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

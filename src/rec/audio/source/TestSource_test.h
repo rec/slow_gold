@@ -14,4 +14,3 @@ void testSource(PositionableAudioSource* source,
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-

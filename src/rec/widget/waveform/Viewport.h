@@ -18,4 +18,3 @@ double selectionInZoom(const Viewport&);
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
-

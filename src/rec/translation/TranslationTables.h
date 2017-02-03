@@ -11,4 +11,3 @@ Language getLanguage();
 
 }  // namespace translation
 }  // namespace rec
-

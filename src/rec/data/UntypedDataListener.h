@@ -37,4 +37,3 @@ class UntypedDataListener : public Listener<const Message&>,
 
 }  // namespace data
 }  // namespace rec
-

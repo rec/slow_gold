@@ -9,4 +9,3 @@ const int SOCKET_TIMEOUT_MS = 2000;
 
 }  // namespace app
 }  // namespace rec
-

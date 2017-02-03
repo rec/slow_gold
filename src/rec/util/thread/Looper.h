@@ -35,4 +35,3 @@ class Looper : public Thread {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
-

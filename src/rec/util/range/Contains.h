@@ -27,4 +27,3 @@ bool intersects(const Range<Type>& x, const Range<Type>& y) {
 
 }  // namespace util
 }  // namespace rec
-

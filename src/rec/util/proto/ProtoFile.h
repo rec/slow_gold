@@ -12,4 +12,3 @@ void writeProtoFile(const Message&, const File&);
 
 }  // namespace util
 }  // namespace rec
-

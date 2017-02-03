@@ -76,4 +76,3 @@ class Node : public juce::TreeViewItem,
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-

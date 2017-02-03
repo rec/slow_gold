@@ -15,4 +15,3 @@ inline File testFile(const String& filename) {
 
 }  // namespace util
 }  // namespace rec
-

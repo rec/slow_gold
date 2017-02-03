@@ -16,4 +16,3 @@ const Colors& getColors(const State& state,
 
 }  // namespace widget
 }  // namespace rec
-

@@ -35,4 +35,3 @@ bool compareFiles(const File& f, const File& g);
 
 }  // namespace util
 }  // namespace rec
-

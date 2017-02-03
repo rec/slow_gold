@@ -87,4 +87,3 @@ inline int isnan( double arg ) {
 
 }  // namespace util
 }  // namespace rec
-

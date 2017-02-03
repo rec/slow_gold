@@ -21,4 +21,3 @@ class DataMap {
 
 }  // namespace data
 }  // namespace rec
-

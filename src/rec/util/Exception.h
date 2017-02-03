@@ -22,4 +22,3 @@ class Exception : public std::exception {
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
-

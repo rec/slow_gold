@@ -35,4 +35,3 @@ const uint MAX_SHADOW_DIRECTORY_LENGTH =
 }  // namespace file
 }  // namespace util
 }  // namespace rec
-

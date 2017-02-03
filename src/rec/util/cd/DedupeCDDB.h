@@ -24,4 +24,3 @@ void addIfNotSimilar(music::AlbumList* albums, const music::Album& album);
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
-

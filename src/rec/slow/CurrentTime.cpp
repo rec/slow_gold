@@ -205,5 +205,3 @@ void CurrentTime::checkTimeIsCloseToLoopPoint() {
 
 }  // namespace slow
 }  // namespace rec
-
-
