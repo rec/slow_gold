@@ -1,21 +1,21 @@
 package rec.gui;
 
 message FontDesc {
-  optional string name = 1;
-  optional float font_height = 2 [default = 18];
+    optional string name = 1;
+    optional float font_height = 2 [default = 18];
 
-  message Style {
-    optional bool bold = 1;
-    optional bool italic = 2;
-    optional bool underlined = 3;
-  };
-  optional Style style = 3;
+    message Style {
+        optional bool bold = 1;
+        optional bool italic = 2;
+        optional bool underlined = 3;
+    };
+    optional Style style = 3;
 
-  enum Type {
-    SANS_SERIF = 1;
-    SERIF = 2;
-    MONOSPACE = 3;
-  };
+    enum Type {
+        SANS_SERIF = 1;
+        SERIF = 2;
+        MONOSPACE = 3;
+    };
 
-  optional Type type = 4;
+    optional Type type = 4;
 };

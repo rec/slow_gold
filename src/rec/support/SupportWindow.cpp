@@ -11,8 +11,8 @@ namespace slow {
 using namespace juce;
 
 SupportWindow::SupportWindow(app::GenericApplication* application)
-    : app::Window(application, "SupportRequest", Colours::azure,
-                  DocumentWindow::allButtons, true) {
+        : app::Window(application, "SupportRequest", Colours::azure,
+                                    DocumentWindow::allButtons, true) {
 }
 
 }  // namespace slow
@@ -22,8 +22,8 @@ namespace support {
 using namespace rec::data;
 
 void initialize(app::GenericApplication* app) {
-  requestSupport();
-  app->quit();
+    requestSupport();
+    app->quit();
 }
 
 void shutdown(app::GenericApplication*) {}

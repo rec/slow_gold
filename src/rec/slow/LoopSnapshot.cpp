@@ -8,9 +8,9 @@ namespace rec {
 namespace slow {
 
 LoopSnapshot::LoopSnapshot(Instance* i)
-  : instance_(i),
-    viewport_(data::getProto<widget::waveform::Viewport>(i->file())),
-    loops_(viewport_.mutable_loop_points()) {
+    : instance_(i),
+        viewport_(data::getProto<widget::waveform::Viewport>(i->file())),
+        loops_(viewport_.mutable_loop_points()) {
 }
 
 }  // namespace slow

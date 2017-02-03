@@ -4,28 +4,28 @@ import "rec/data/proto/Address.proto";
 import "rec/data/proto/Value.proto";
 
 message Operation {
-  enum Command {
-    APPEND = 0;
-    CLEAR = 1;
-    REMOVE = 2;
-    SET = 3;
-    SWAP = 4;
-    COMMAND_COUNT = 5;
-  };
+    enum Command {
+        APPEND = 0;
+        CLEAR = 1;
+        REMOVE = 2;
+        SET = 3;
+        SWAP = 4;
+        COMMAND_COUNT = 5;
+    };
 
-  optional Command command = 1;
-  optional AddressProto address = 2;
-  repeated ValueProto value = 3;
+    optional Command command = 1;
+    optional AddressProto address = 2;
+    repeated ValueProto value = 3;
 
-  // Number of entries to remove from the end.
-  optional uint32 remove = 4 [default = 1];
+    // Number of entries to remove from the end.
+    optional uint32 remove = 4 [default = 1];
 
-  // Used as an index for SWAP commands only.
-  optional uint32 swap1 = 5;
-  optional uint32 swap2 = 6;
+    // Used as an index for SWAP commands only.
+    optional uint32 swap1 = 5;
+    optional uint32 swap2 = 6;
 };
 
 message Operations {
-  repeated Operation operation = 1;
-  optional bool undoable = 2 [default = true];
+    repeated Operation operation = 1;
+    optional bool undoable = 2 [default = true];
 };

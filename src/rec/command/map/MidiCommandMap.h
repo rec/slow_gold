@@ -6,18 +6,18 @@ namespace rec {
 namespace command {
 
 class MidiCommandMap : public CommandMap,
-                       public juce::MidiInputCallback {
- public:
-  MidiCommandMap();
-  virtual void handleIncomingMidiMessage(juce::MidiInput*, const MidiMessage&);
-  void requestOneMessage(Listener<const MidiMessage&>* lst);
+                                              public juce::MidiInputCallback {
+  public:
+    MidiCommandMap();
+    virtual void handleIncomingMidiMessage(juce::MidiInput*, const MidiMessage&);
+    void requestOneMessage(Listener<const MidiMessage&>* lst);
 
- private:
-  CriticalSection lock_;
-  Listener<const juce::MidiMessage&>* listener_;
-  bool enable_;
+  private:
+    CriticalSection lock_;
+    Listener<const juce::MidiMessage&>* listener_;
+    bool enable_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(MidiCommandMap);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(MidiCommandMap);
 };
 
 }  // namespace command

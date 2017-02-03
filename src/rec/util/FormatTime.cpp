@@ -16,36 +16,36 @@ namespace util {
 #endif
 
 String TimeFormat::format(RealTime time) const {
-  RealTime secR(floor(time));
-  RealTime fraction(time - secR);
-  int sec = static_cast<int>(secR);
+    RealTime secR(floor(time));
+    RealTime fraction(time - secR);
+    int sec = static_cast<int>(secR);
 
-  int minutes = sec / 60;
-  int hours = minutes / 60;
-  sec %= 60;
-  double sf = sec + fraction;
+    int minutes = sec / 60;
+    int hours = minutes / 60;
+    sec %= 60;
+    double sf = sec + fraction;
 
-  char buffer[64];
-  char ch = ':';
-  if (flash_ == FLASH && (sec & 1))
-    ch = ' ';
+    char buffer[64];
+    char ch = ':';
+    if (flash_ == FLASH && (sec & 1))
+        ch = ' ';
 
-  bool useHours = displayHours_ == DISPLAY_HOURS or
-      (displayHours_ == PERHAPS_DISPLAY_HOURS and hours);
+    bool useHours = displayHours_ == DISPLAY_HOURS or
+            (displayHours_ == PERHAPS_DISPLAY_HOURS and hours);
 
-  if (useHours) {
-    PRINT(buffer, ARGS, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals_, sf);
-  } else {
-    minutes += 60 * hours;
-    const char* zero = (sec < 10 && decimals_)  ? "0" : "";
-    if (leadingZeros_ == LEADING_ZEROS) {
-      PRINT(buffer, ARGS, "%02d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
+    if (useHours) {
+        PRINT(buffer, ARGS, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals_, sf);
     } else {
-      PRINT(buffer, ARGS, "%d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
+        minutes += 60 * hours;
+        const char* zero = (sec < 10 && decimals_)  ? "0" : "";
+        if (leadingZeros_ == LEADING_ZEROS) {
+            PRINT(buffer, ARGS, "%02d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
+        } else {
+            PRINT(buffer, ARGS, "%d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
+        }
     }
-  }
 
-  return buffer;
+    return buffer;
 }
 
 }  // namespace util

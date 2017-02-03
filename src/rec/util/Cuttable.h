@@ -17,26 +17,26 @@ const string cuttableName();
 class Cuttable;
 
 class HasCuttable {
- public:
-  HasCuttable() {}
-  virtual ~HasCuttable() {}
-  virtual Cuttable* cuttable() = 0;
+  public:
+    HasCuttable() {}
+    virtual ~HasCuttable() {}
+    virtual Cuttable* cuttable() = 0;
 };
 
 class Cuttable : public HasCuttable {
- public:
-  Cuttable() {}
-  virtual ~Cuttable() {}
+  public:
+    Cuttable() {}
+    virtual ~Cuttable() {}
 
-  virtual Cuttable* cuttable() { return this; }
+    virtual Cuttable* cuttable() { return this; }
 
-  virtual bool canCopy() const = 0;
-  virtual bool canCut() const = 0;
-  virtual bool canPaste(const string&) const = 0;
-  virtual bool paste(const string&) = 0;
-  virtual const string cuttableName() const = 0;
-  virtual string copy() const = 0;
-  virtual void cut() = 0;
+    virtual bool canCopy() const = 0;
+    virtual bool canCut() const = 0;
+    virtual bool canPaste(const string&) const = 0;
+    virtual bool paste(const string&) = 0;
+    virtual const string cuttableName() const = 0;
+    virtual string copy() const = 0;
+    virtual void cut() = 0;
 };
 
 void setDefaultCuttable(HasCuttable*);

@@ -11,8 +11,8 @@ namespace audio {
 namespace stretch {
 
 TEST(RecAudioSource, Stretchy) {
-  std::unique_ptr<Stretchy> stretchy(Stretchy::create(new Testy()));
-  Testy::expectNear(stretchy.get(), 0.0086, 2);
+    std::unique_ptr<Stretchy> stretchy(Stretchy::create(new Testy()));
+    Testy::expectNear(stretchy.get(), 0.0086, 2);
 }
 
 }  // namespace stretch

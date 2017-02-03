@@ -15,35 +15,35 @@ namespace command {
 namespace {
 
 string toString(const MidiMessage& msg) {
-  string r = midiToString(msg);
-  if (msg.isNoteOn())
-    r[2] = 127;
+    string r = midiToString(msg);
+    if (msg.isNoteOn())
+        r[2] = 127;
 
-  if (msg.isController())
-    r[2] = (r[2] < 64) ? 0 : 127;
+    if (msg.isController())
+        r[2] = (r[2] < 64) ? 0 : 127;
 
-  return r;
+    return r;
 }
 
 }  // namespace
 
 const String MidiEditor::name() const {
-  return t_MIDI;
+    return t_MIDI;
 }
 
 const String MidiEditor::getDescription(const string& key) const {
-  return midiName(midiFromString(key));
+    return midiName(midiFromString(key));
 }
 
 void MidiEditor::operator()(const MidiMessage& m) {
-  if (entryWindow_ &&
-      (m.isNoteOn() || m.isProgramChange() || m.isController())) {
-    setKey(toString(m));
-  }
+    if (entryWindow_ &&
+            (m.isNoteOn() || m.isProgramChange() || m.isController())) {
+        setKey(toString(m));
+    }
 }
 
 const String MidiEditor::getWindowTitle() const {
-  return t_WAITING;
+    return t_WAITING;
 }
 
 }  // namespace command

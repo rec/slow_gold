@@ -10,19 +10,19 @@ namespace gui {
 class ConstantProtos;
 
 class Constants {
- public:
-  typedef std::unique_ptr<Component> (*ComponentMaker)(const string&);
+  public:
+    typedef std::unique_ptr<Component> (*ComponentMaker)(const string&);
 
-  Constants() {}
-  Constants(const ConstantProtos&);
-  double getDouble(const string&) const;
+    Constants() {}
+    Constants(const ConstantProtos&);
+    double getDouble(const string&) const;
 
-  ComponentMaker getMaker(const string&) const;
-  void addMaker(const string&, ComponentMaker);
+    ComponentMaker getMaker(const string&) const;
+    void addMaker(const string&, ComponentMaker);
 
- private:
-  std::unordered_map<string, double> doubleMap_;
-  std::unordered_map<string, ComponentMaker> componentMakerMap_;
+  private:
+    std::unordered_map<string, double> doubleMap_;
+    std::unordered_map<string, ComponentMaker> componentMakerMap_;
 };
 
 }  // namespace gui

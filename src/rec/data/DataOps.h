@@ -22,19 +22,19 @@ Message* cloneMessage(Data* data);
 
 template <typename Proto>
 const Proto getProto(const VirtualFile& vf) {
-  return getProto<Proto>(getData(getTypeName<Proto>(), vf));
+    return getProto<Proto>(getData(getTypeName<Proto>(), vf));
 }
 
 template <typename Proto>
 const Proto getProto(Data* data) {
-  Proto proto;
-  proto.CopyFrom(*Reader<Proto>(data));
-  return proto;
+    Proto proto;
+    proto.CopyFrom(*Reader<Proto>(data));
+    return proto;
 }
 
 template <typename Proto>
 const Proto getProto() {
-  return getProto<Proto>(global());
+    return getProto<Proto>(global());
 }
 
 }  // namespace data

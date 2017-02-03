@@ -20,7 +20,7 @@ TRAN(CLEAR_EDITOR, "Clear Changes");
 TRAN(EXPORT_EDITOR, "Export...");
 TRAN(IMPORT_EDITOR, "Import...");
 TRAN(SURE_YOU_RESET, "Are you sure you want to reset all the command "
-     "assignments to their default state?");
+          "assignments to their default state?");
 TRAN(SURE_YOU_CLEAR, "Are you sure you want to clear all your changes?");
 TRAN(RESET, "Reset");
 TRAN(CHOOSE_EXPORT_FILE, "Choose A New File For Export");
@@ -45,21 +45,21 @@ const double MAX_BUTTON_PADDING = 8.0;
 const int TOP_RIGHT_PADDING = 10;
 
 String currentlyAssignedTo(const String& commandName) {
-  return str("\n\n(" + t_CURRENTLY_ASSIGNED + " \"" + commandName + "\")");
+    return str("\n\n(" + t_CURRENTLY_ASSIGNED + " \"" + commandName + "\")");
 }
 
 bool showCommandMapBox(const String& command, Component* comp,
-                       ModalComponentManager::Callback* cb) {
-  return AlertWindow::showOkCancelBox(
-      AlertWindow::WarningIcon,
-      t_CHANGE_KEY_MAPPING,
-      str(t_THIS_KEY_ASSIGNED + " \"" + command +
-          "\"\n\n" + t_WANT_TO_REASSIGN),
-      t_REASSIGN, t_CANCEL, comp, cb);
+                                              ModalComponentManager::Callback* cb) {
+    return AlertWindow::showOkCancelBox(
+            AlertWindow::WarningIcon,
+            t_CHANGE_KEY_MAPPING,
+            str(t_THIS_KEY_ASSIGNED + " \"" + command +
+                    "\"\n\n" + t_WANT_TO_REASSIGN),
+            t_REASSIGN, t_CANCEL, comp, cb);
 }
 
 void addTextButton(Editor* editor, TextButton* button) {
-  editor->addAndMakeVisible(button);
+    editor->addAndMakeVisible(button);
 }
 
 const CommandID RECENT = slow::Command::RECENT_FILES;
@@ -69,353 +69,353 @@ const CommandID END = RECENT + 100;
 }
 
 Editor::Editor(ApplicationCommandManager* manager, CommandMap* map)
-    : commandManager_(manager),
-      commandMap_(map),
-      resetButton_(t_RESET_TO_DEFAULTS),
-      clearButton_(t_CLEAR_EDITOR),
-      exportButton_(t_EXPORT_EDITOR),
-      importButton_(t_IMPORT_EDITOR),
-      okButton_(t_OK),
-      wasChanged_(false) {
+        : commandManager_(manager),
+            commandMap_(map),
+            resetButton_(t_RESET_TO_DEFAULTS),
+            clearButton_(t_CLEAR_EDITOR),
+            exportButton_(t_EXPORT_EDITOR),
+            importButton_(t_IMPORT_EDITOR),
+            okButton_(t_OK),
+            wasChanged_(false) {
 }
 
 void Editor::initialize() {
-  addTextButton(this, &resetButton_);
-  addTextButton(this, &clearButton_);
-  addTextButton(this, &exportButton_);
-  addTextButton(this, &importButton_);
-  addTextButton(this, &okButton_);
+    addTextButton(this, &resetButton_);
+    addTextButton(this, &clearButton_);
+    addTextButton(this, &exportButton_);
+    addTextButton(this, &importButton_);
+    addTextButton(this, &okButton_);
 
-  fillTopLevelItem();
+    fillTopLevelItem();
 
-  addAndMakeVisible(&tree_);
-  tree_.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
-  tree_.setRootItemVisible(false);
-  tree_.setDefaultOpenness(false);
+    addAndMakeVisible(&tree_);
+    tree_.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
+    tree_.setRootItemVisible(false);
+    tree_.setDefaultOpenness(false);
 
 }
 
 Editor::~Editor() {}
 
 void Editor::setColours(const Colour& mainBackground,
-                                   const Colour& textColour) {
-  setColour(backgroundColourId, mainBackground);
-  setColour(textColourId, textColour);
-  tree_.setColour(TreeView::backgroundColourId, mainBackground);
+                                                                      const Colour& textColour) {
+    setColour(backgroundColourId, mainBackground);
+    setColour(textColourId, textColour);
+    tree_.setColour(TreeView::backgroundColourId, mainBackground);
 }
 
 juce::AlertWindow* Editor::newWindow() {
-  std::unique_ptr<juce::AlertWindow> window(new juce::AlertWindow(t_NEW_COMMAND_MAPPING,
-                                                      getWindowTitle(),
-                                                      AlertWindow::NoIcon));
+    std::unique_ptr<juce::AlertWindow> window(new juce::AlertWindow(t_NEW_COMMAND_MAPPING,
+                                                                                                            getWindowTitle(),
+                                                                                                            AlertWindow::NoIcon));
 
-  window->addButton(t_OK, 1);
-  window->addButton(t_CANCEL, 0);
+    window->addButton(t_OK, 1);
+    window->addButton(t_CANCEL, 0);
 
-  // Probably not needed in the general case but no harm...
-  // (avoid return + escape keys getting processed by the buttons..)
-  for (int i = window->getNumChildComponents(); --i >= 0;)
-    window->getChildComponent(i)->setWantsKeyboardFocus(false);
+    // Probably not needed in the general case but no harm...
+    // (avoid return + escape keys getting processed by the buttons..)
+    for (int i = window->getNumChildComponents(); --i >= 0;)
+        window->getChildComponent(i)->setWantsKeyboardFocus(false);
 
-  window->setWantsKeyboardFocus(true);
-  window->grabKeyboardFocus();
-  return window.release();
+    window->setWantsKeyboardFocus(true);
+    window->grabKeyboardFocus();
+    return window.release();
 }
 
 void Editor::parentHierarchyChanged() {
-  // topLevelItem_->changeListenerCallback(nullptr); // TODO
+    // topLevelItem_->changeListenerCallback(nullptr); // TODO
 }
 
 void Editor::resized() {
-  int h = getHeight(), w = getWidth();
+    int h = getHeight(), w = getWidth();
 
-  TextButton* button[] = {
-    &resetButton_,
-    &importButton_,
-    &exportButton_,
-    &clearButton_,
-    &okButton_,
-  };
+    TextButton* button[] = {
+        &resetButton_,
+        &importButton_,
+        &exportButton_,
+        &clearButton_,
+        &okButton_,
+    };
 
-  double totalWidth = 0.0;
-  for (uint i = 0; i < arraysize(button); ++i) {
-    button[i]->changeWidthToFitText(BUTTON_HEIGHT);
-    totalWidth += button[i]->getWidth();
-  }
+    double totalWidth = 0.0;
+    for (uint i = 0; i < arraysize(button); ++i) {
+        button[i]->changeWidthToFitText(BUTTON_HEIGHT);
+        totalWidth += button[i]->getWidth();
+    }
 
-  double padCount = arraysize(button) + 1;
-  double padding = juce::jmin((w - totalWidth) / padCount, MAX_BUTTON_PADDING);
-  double consumed = totalWidth + padCount * padding;
-  double x = juce::jmax(padding + (w - consumed) / 2, 0.0);
-  int buttonY = h - TOP_RIGHT_PADDING - BUTTON_HEIGHT;
+    double padCount = arraysize(button) + 1;
+    double padding = juce::jmin((w - totalWidth) / padCount, MAX_BUTTON_PADDING);
+    double consumed = totalWidth + padCount * padding;
+    double x = juce::jmax(padding + (w - consumed) / 2, 0.0);
+    int buttonY = h - TOP_RIGHT_PADDING - BUTTON_HEIGHT;
 
-  for (uint i = 0; i < arraysize(button); ++i) {
-    button[i]->setTopLeftPosition(lround(x), buttonY);
-    x += (button[i]->getWidth() + padding);
-  }
+    for (uint i = 0; i < arraysize(button); ++i) {
+        button[i]->setTopLeftPosition(lround(x), buttonY);
+        x += (button[i]->getWidth() + padding);
+    }
 
-  tree_.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
+    tree_.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
 }
 
 namespace {
 
 struct CompareCommands {
-  explicit CompareCommands(ApplicationCommandManager* manager = nullptr)
-      : manager_(manager) {
-  }
+    explicit CompareCommands(ApplicationCommandManager* manager = nullptr)
+            : manager_(manager) {
+    }
 
-  bool operator()(const CommandID& x, const CommandID& y) const {
-    return name(x) > name(y);
-  }
+    bool operator()(const CommandID& x, const CommandID& y) const {
+        return name(x) > name(y);
+    }
 
-  String name(CommandID id) const {
-    const ApplicationCommandInfo* info = manager_->getCommandForID(id);
-    return info ? info->shortName : String("");
-  }
-  ApplicationCommandManager *manager_;
+    String name(CommandID id) const {
+        const ApplicationCommandInfo* info = manager_->getCommandForID(id);
+        return info ? info->shortName : String("");
+    }
+    ApplicationCommandManager *manager_;
 };
 
 }  // namespace
 
 void Editor::fillTopLevelItem() {
-  topLevelItem_.reset(new Item("top", "", true));
-  topLevelItem_->setLinesDrawnForSubItems(false);
-  tree_.setRootItem(topLevelItem_.get());
+    topLevelItem_.reset(new Item("top", "", true));
+    topLevelItem_->setLinesDrawnForSubItems(false);
+    tree_.setRootItem(topLevelItem_.get());
 
-  StringArray categories(commandManager_->getCommandCategories());
-  categories.sort(false);
+    StringArray categories(commandManager_->getCommandCategories());
+    categories.sort(false);
 
-  for (int i = 0; i < categories.size(); ++i) {
-    const String& cat = categories[i];
-    Array<CommandID> commands(commandManager_->getCommandsInCategory(cat));
-    std::sort(commands.begin(), commands.end(),
-              CompareCommands(commandManager_));
-    TreeViewItem* categoryItem = nullptr;
+    for (int i = 0; i < categories.size(); ++i) {
+        const String& cat = categories[i];
+        Array<CommandID> commands(commandManager_->getCommandsInCategory(cat));
+        std::sort(commands.begin(), commands.end(),
+                            CompareCommands(commandManager_));
+        TreeViewItem* categoryItem = nullptr;
 
-    for (int j = commands.size() - 1; j >= 0; --j) {
-      CommandID id = commands[j];
-      if ((id >= BEGIN && id <= END) ||
-          commandHasFlags(id, ApplicationCommandInfo::hiddenFromKeyEditor)) {
-        continue;
-      }
-      const ApplicationCommandInfo* info = commandManager_->getCommandForID(id);
-      if (!categoryItem) {
-        categoryItem = new CategoryItem(cat, this);
-        topLevelItem_->addSubItem(categoryItem);
-      }
-      MapItem* mapItem(new MapItem(this, id, info->shortName));
-      categoryItem->addSubItem(mapItem);
-      mapItemMap_[id] = mapItem;
+        for (int j = commands.size() - 1; j >= 0; --j) {
+            CommandID id = commands[j];
+            if ((id >= BEGIN && id <= END) ||
+                    commandHasFlags(id, ApplicationCommandInfo::hiddenFromKeyEditor)) {
+                continue;
+            }
+            const ApplicationCommandInfo* info = commandManager_->getCommandForID(id);
+            if (!categoryItem) {
+                categoryItem = new CategoryItem(cat, this);
+                topLevelItem_->addSubItem(categoryItem);
+            }
+            MapItem* mapItem(new MapItem(this, id, info->shortName));
+            categoryItem->addSubItem(mapItem);
+            mapItemMap_[id] = mapItem;
+        }
     }
-  }
 }
 
 bool Editor::commandHasFlags(CommandID id, int flags) const {
-  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
-  DCHECK(ci);
-  return ci && (ci->flags & flags);
+    const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
+    DCHECK(ci);
+    return ci && (ci->flags & flags);
 }
 
 // TODO: this isn't hooked in.
 void Editor::buttonClicked(Button* button) {
-  if (button == &resetButton_)
-    resetButton();
-  else if (button == &clearButton_)
-    clearButton();
-  else if (button == &exportButton_)
-    exportButton();
-  else if (button == &importButton_)
-    importButton();
-  else if (button == &okButton_)
-    okButton();
+    if (button == &resetButton_)
+        resetButton();
+    else if (button == &clearButton_)
+        clearButton();
+    else if (button == &exportButton_)
+        exportButton();
+    else if (button == &importButton_)
+        importButton();
+    else if (button == &okButton_)
+        okButton();
 }
 
 void Editor::okButton() {
-  using namespace juce;
-  if (DocumentWindow* dw = dynamic_cast<DocumentWindow*>(getParentComponent()))
-    dw->closeButtonPressed();
-  else
-    LOG(DFATAL) << "Parent window wasn't a document window!";
+    using namespace juce;
+    if (DocumentWindow* dw = dynamic_cast<DocumentWindow*>(getParentComponent()))
+        dw->closeButtonPressed();
+    else
+        LOG(DFATAL) << "Parent window wasn't a document window!";
 }
 
 using namespace rec::gui::dialog;
 
 void Editor::exportButton() {
-  expectingExport_ = true;
-  gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_EXPORT_FILE,
-                               "*.slow");
+    expectingExport_ = true;
+    gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_EXPORT_FILE,
+                                                              "*.slow");
 
-  // TODO: one of these must be wrong.
+    // TODO: one of these must be wrong.
 }
 
 void Editor::importButton() {
-  expectingExport_ = false;
-  gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_IMPORT_FILE,
-                               "*.slow");
-  wasChanged_ = false;
+    expectingExport_ = false;
+    gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_IMPORT_FILE,
+                                                              "*.slow");
+    wasChanged_ = false;
 }
 
 void Editor::operator()(const File& f) {
-  if (expectingExport_)
-    exportToFile(f);
-  else
-    importFromFile(f);
+    if (expectingExport_)
+        exportToFile(f);
+    else
+        importFromFile(f);
 }
 
 void Editor::exportToFile(const File&) {
-  // TODO
+    // TODO
 }
 
 void Editor::importFromFile(const File&) {
-  // TODO
-  wasChanged_ = false;
+    // TODO
+    wasChanged_ = false;
 }
 
 
 void Editor::reset(int returnValue) {
-  if (returnValue) {
-    // TODO
-    wasChanged_ = false;
-  }
+    if (returnValue) {
+        // TODO
+        wasChanged_ = false;
+    }
 }
 void Editor::clear(int returnValue) {
-  if (returnValue) {
-    // TODO
-    wasChanged_ = false;
-  }
+    if (returnValue) {
+        // TODO
+        wasChanged_ = false;
+    }
 }
 
 void Editor::resetButton() {
-  AlertWindow::showOkCancelBox(
-      AlertWindow::QuestionIcon,
-      t_RESET_TO_DEFAULTS,
-      t_SURE_YOU_RESET,
-      t_RESET,
-      t_CANCEL,
-      this,
-      thread::modalCallback(this, &Editor::reset).release());
+    AlertWindow::showOkCancelBox(
+            AlertWindow::QuestionIcon,
+            t_RESET_TO_DEFAULTS,
+            t_SURE_YOU_RESET,
+            t_RESET,
+            t_CANCEL,
+            this,
+            thread::modalCallback(this, &Editor::reset).release());
 }
 
 void Editor::clearButton() {
-  AlertWindow::showOkCancelBox(
-      AlertWindow::QuestionIcon,
-      t_CLEAR_EDITOR,
-      t_SURE_YOU_CLEAR,
-      t_CLEAR_EDITOR,
-      t_CANCEL,
-      this,
-      thread::modalCallback(this, &Editor::clear).release());
+    AlertWindow::showOkCancelBox(
+            AlertWindow::QuestionIcon,
+            t_CLEAR_EDITOR,
+            t_SURE_YOU_CLEAR,
+            t_CLEAR_EDITOR,
+            t_CANCEL,
+            this,
+            thread::modalCallback(this, &Editor::clear).release());
 }
 
 const String Editor::getKeyMessage(const string& key) {
-  String message(name() + ": " + getDescription(key));
-  const CommandID previousCommand = getCommand(key);
-  if (previousCommand) {
-    String pn = getCommandManager()->getNameOfCommand(previousCommand);
-    message += currentlyAssignedTo(pn);
-  }
+    String message(name() + ": " + getDescription(key));
+    const CommandID previousCommand = getCommand(key);
+    if (previousCommand) {
+        String pn = getCommandManager()->getNameOfCommand(previousCommand);
+        message += currentlyAssignedTo(pn);
+    }
 
-  return message;
+    return message;
 }
 
 void Editor::addChildren(MapItemComponent* comp) {
-  CommandID id = comp->commandID_;
-  bool isReadOnly = commandHasFlags(
-     id, ApplicationCommandInfo::readOnlyInKeyEditor);
-  KeyArray keys = getKeys(id);
-  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
-  comp->createEditButton(String::empty, -1, isReadOnly);
+    CommandID id = comp->commandID_;
+    bool isReadOnly = commandHasFlags(
+          id, ApplicationCommandInfo::readOnlyInKeyEditor);
+    KeyArray keys = getKeys(id);
+    for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
+        comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
+    comp->createEditButton(String::empty, -1, isReadOnly);
 }
 
 void Editor::assignNewKey(EditButton* button, const string& key, int result) {
-  if (result) {
-    removeKey(key);
-    if (button->keyNum_ >= 0)
-      removeKeyAtIndex(button->id_, button->keyNum_);
-    addKey(button->id_, key, button->keyNum_);
-    wasChanged_ = true;
-  }
+    if (result) {
+        removeKey(key);
+        if (button->keyNum_ >= 0)
+            removeKeyAtIndex(button->id_, button->keyNum_);
+        addKey(button->id_, key, button->keyNum_);
+        wasChanged_ = true;
+    }
 }
 
 void Editor::setNewKey(EditButton* button, const string& key) {
-  if (isValid(key)) {
-    const CommandID previousCommand = getCommand(key);
-    if (previousCommand == 0) {
-      assignNewKey(button, key);
-    } else {
-      showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
-                        this,
-                        thread::modalCallback(this, &Editor::assignNewKey,
-                                              button, key).release());
+    if (isValid(key)) {
+        const CommandID previousCommand = getCommand(key);
+        if (previousCommand == 0) {
+            assignNewKey(button, key);
+        } else {
+            showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
+                                                this,
+                                                thread::modalCallback(this, &Editor::assignNewKey,
+                                                                                            button, key).release());
+        }
     }
-  }
 }
 
 void Editor::keyChosen(EditButton* button, int result) {
-  if (result) {
-    setNewKey(button, key_);
-    if (entryWindow_)
-      entryWindow_.reset();
-  }
+    if (result) {
+        setNewKey(button, key_);
+        if (entryWindow_)
+            entryWindow_.reset();
+    }
 }
 
 void Editor::buttonMenuCallback(EditButton* button, int result) {
-  if (result == 1) {
-    entryWindow_.reset(newWindow());
-    entryWindow_->enterModalState(true, thread::modalCallback(
-        this, &Editor::keyChosen, button).release());
+    if (result == 1) {
+        entryWindow_.reset(newWindow());
+        entryWindow_->enterModalState(true, thread::modalCallback(
+                this, &Editor::keyChosen, button).release());
 
-  } else if (result == 2) {
-    removeKeyAtIndex(button->id_, button->keyNum_);
-  }
+    } else if (result == 2) {
+        removeKeyAtIndex(button->id_, button->keyNum_);
+    }
 }
 
 void Editor::setKey(const string& key) {
-  key_ = key;
-  if (entryWindow_) {
-    String msg = getKeyMessage(key);
-    thread::callAsync(entryWindow_.get(), &AlertWindow::setMessage, msg);
-  } else {
-    LOG(DFATAL) << "Tried to set last key with no window up";
-  }
+    key_ = key;
+    if (entryWindow_) {
+        String msg = getKeyMessage(key);
+        thread::callAsync(entryWindow_.get(), &AlertWindow::setMessage, msg);
+    } else {
+        LOG(DFATAL) << "Tried to set last key with no window up";
+    }
 }
 
 CommandID Editor::getCommand(const string& key) {
-  return commandMap_->getCommand(key);
+    return commandMap_->getCommand(key);
 }
 
 ChangeBroadcaster* Editor::getChangeBroadcaster() {
-  return commandMap_;
+    return commandMap_;
 }
 
 void Editor::removeKeyAtIndex(CommandID id, int keyNum) {
-  commandMap_->removeCommand(id, keyNum);
-  commandMap_->sendChangeMessage();
-  wasChanged_ = true;
+    commandMap_->removeCommand(id, keyNum);
+    commandMap_->sendChangeMessage();
+    wasChanged_ = true;
 }
 
 void Editor::removeKey(const string& key) {
-  commandMap_->removeKey(key);
-  commandMap_->sendChangeMessage();
+    commandMap_->removeKey(key);
+    commandMap_->sendChangeMessage();
 }
 
 void Editor::addKey(CommandID cmd, const string& key, int keyIndex) {
-  DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
-  if (keyIndex >= 0)
-    commandMap_->addAtIndex(key, cmd, keyIndex);
-  commandMap_->sendChangeMessage();
-  wasChanged_ = true;
+    DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
+    if (keyIndex >= 0)
+        commandMap_->addAtIndex(key, cmd, keyIndex);
+    commandMap_->sendChangeMessage();
+    wasChanged_ = true;
 }
 
 Editor::KeyArray Editor::getKeys(CommandID id) {
-  // TODO: needs to take the index into account...
-  vector<string> keys(commandMap_->getKeys(id));
-  KeyArray result;
+    // TODO: needs to take the index into account...
+    vector<string> keys(commandMap_->getKeys(id));
+    KeyArray result;
 
-  for (uint i = 0; i != keys.size(); ++i)
-    result.add(keys[i]);
-  return result;
+    for (uint i = 0; i != keys.size(); ++i)
+        result.add(keys[i]);
+    return result;
 }
 
 }  // namespace command

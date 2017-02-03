@@ -25,7 +25,7 @@
 // its way into the language in the future.
 template<typename To, typename From>
 inline To implicit_cast(From const &f) {
-  return f;
+    return f;
 }
 
 // bit_cast<Dest,Source> is a template function that implements the
@@ -85,11 +85,11 @@ inline To implicit_cast(From const &f) {
 
 template <class Dest, class Source>
 inline Dest bit_cast(const Source& source) {
-  // Compile time assertion: sizeof(Dest) == sizeof(Source)
-  // A compile error here means your Dest and Source have different sizes.
-  typedef char VerifySizesAreEqual [sizeof(Dest) == sizeof(Source) ? 1 : -1];
+    // Compile time assertion: sizeof(Dest) == sizeof(Source)
+    // A compile error here means your Dest and Source have different sizes.
+    typedef char VerifySizesAreEqual [sizeof(Dest) == sizeof(Source) ? 1 : -1];
 
-  Dest dest;
-  memcpy(&dest, &source, sizeof(dest));
-  return dest;
+    Dest dest;
+    memcpy(&dest, &source, sizeof(dest));
+    return dest;
 }

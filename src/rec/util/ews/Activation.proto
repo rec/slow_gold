@@ -1,7 +1,7 @@
 package rec.util.ews;
 
 message Activation {
-  optional string samples = 1;  // Actually holds the serial number, crypted.
-  optional string rate = 2;  // Actually holds the timestamp, crypted.
-  optional string frame = 3;  // Actually holds the user name, crypted.
+    optional string samples = 1;  // Actually holds the serial number, crypted.
+    optional string rate = 2;  // Actually holds the timestamp, crypted.
+    optional string frame = 3;  // Actually holds the user name, crypted.
 };

@@ -8,12 +8,12 @@ namespace rec {
 namespace util {
 
 class Deletable {
- public:
-  Deletable() {}
-  virtual ~Deletable() {}
+  public:
+    Deletable() {}
+    virtual ~Deletable() {}
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Deletable);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Deletable);
 };
 
 }  // namespace util

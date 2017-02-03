@@ -6,9 +6,9 @@ namespace rec {
 namespace app {
 
 enum DownloadStatus {
-  DOWNLOAD_NOT_FOUND,
-  DOWNLOAD_SUCCEEDED,
-  DOWNLOAD_CANCELLED_OR_FAILED
+    DOWNLOAD_NOT_FOUND,
+    DOWNLOAD_SUCCEEDED,
+    DOWNLOAD_CANCELLED_OR_FAILED
 };
 
 // Returns true if a new version was downloaded.

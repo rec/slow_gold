@@ -10,18 +10,18 @@ namespace gui {
 namespace audio {
 
 class SetupPage : public Component {
- public:
-  explicit SetupPage(rec::audio::Device* device);
-  void paint(Graphics& g);
+  public:
+    explicit SetupPage(rec::audio::Device* device);
+    void paint(Graphics& g);
 
-  void resized();
-  void show(Component* comp);
+    void resized();
+    void show(Component* comp);
 
- private:
-  juce::AudioDeviceSelectorComponent deviceSelector_;
-  rec::audio::Device* device_;
+  private:
+    juce::AudioDeviceSelectorComponent deviceSelector_;
+    rec::audio::Device* device_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetupPage);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetupPage);
 };
 
 

@@ -6,30 +6,30 @@ import "rec/util/thread/Thread.proto";
 package rec.widget.waveform;
 
 message WaveformProto {
-  optional Widget widget = 1;
-  optional uint32 cursor_thickness = 2                    [default = 1];
-  optional uint32 source_samples_per_thumbnail_sample = 4 [default = 512];
-  optional util.thread.ThreadDescription cursor_thread = 6;
-  optional uint32 tic_height = 8                          [default = 8];
-  optional uint32 subtic_height = 9                       [default = 3];
-  optional bool use_captions = 10                         [default = true];
-  optional bool tics_at_bottom = 11                       [default = true];
-  optional double selection_frame_in_seconds = 12         [default = 5];
-  optional bool show_grid = 13                            [default = true];
-  optional bool parallel_waveforms = 14                   [default = false];
-  optional bool show_names_in_waveform = 15               [default = true];
-  optional Layout layout = 16;
-  optional bool show_selection_buttons = 17               [default = true];
-  optional bool show_cursor_labels = 18                   [default = true];
-  optional bool show_times_at_top = 19                    [default = false];
-  optional bool show_labels_at_top = 20                   [default = true];
-  optional bool modes_at_left = 21                        [default = true];
-  optional bool modes_at_top = 22                         [default = true];
-  optional bool command_bar_at_left = 23                  [default = true];
-  optional bool command_bar_at_top = 24                   [default = true];
+    optional Widget widget = 1;
+    optional uint32 cursor_thickness = 2                    [default = 1];
+    optional uint32 source_samples_per_thumbnail_sample = 4 [default = 512];
+    optional util.thread.ThreadDescription cursor_thread = 6;
+    optional uint32 tic_height = 8                          [default = 8];
+    optional uint32 subtic_height = 9                       [default = 3];
+    optional bool use_captions = 10                         [default = true];
+    optional bool tics_at_bottom = 11                       [default = true];
+    optional double selection_frame_in_seconds = 12         [default = 5];
+    optional bool show_grid = 13                            [default = true];
+    optional bool parallel_waveforms = 14                   [default = false];
+    optional bool show_names_in_waveform = 15               [default = true];
+    optional Layout layout = 16;
+    optional bool show_selection_buttons = 17               [default = true];
+    optional bool show_cursor_labels = 18                   [default = true];
+    optional bool show_times_at_top = 19                    [default = false];
+    optional bool show_labels_at_top = 20                   [default = true];
+    optional bool modes_at_left = 21                        [default = true];
+    optional bool modes_at_top = 22                         [default = true];
+    optional bool command_bar_at_left = 23                  [default = true];
+    optional bool command_bar_at_top = 24                   [default = true];
 
-  enum Layout {
-    STACKED = 1;
-    PARALLEL = 2;
-  };
+    enum Layout {
+        STACKED = 1;
+        PARALLEL = 2;
+    };
 };

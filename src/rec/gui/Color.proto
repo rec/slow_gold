@@ -3,21 +3,21 @@ package rec.gui;
 // Represents one JUCE color.  If argb is set, this takes precedence over the
 // individual components.
 message Color {
-  optional uint32 rgb    = 1 [default = 0x0];
+    optional uint32 rgb    = 1 [default = 0x0];
 
-  optional uint32 alpha  = 2 [default = 0xFF];
-  optional uint32 red    = 3 [default = 0];
-  optional uint32 green  = 4 [default = 0];
-  optional uint32 blue   = 5 [default = 0];
+    optional uint32 alpha  = 2 [default = 0xFF];
+    optional uint32 red    = 3 [default = 0];
+    optional uint32 green  = 4 [default = 0];
+    optional uint32 blue   = 5 [default = 0];
 
-  optional uint32 argb   = 6 [default = 0xFF000000];
+    optional uint32 argb   = 6 [default = 0xFF000000];
 
-  // Retrieve by Juce name.
-  optional string name   = 7;
+    // Retrieve by Juce name.
+    optional string name   = 7;
 };
 
 // Lists the colors used by an object, from back to from, so color(0) will be
 // the background and the last color() the foreground.
 message Colors {
-  repeated Color color = 1;
+    repeated Color color = 1;
 };

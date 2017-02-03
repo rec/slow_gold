@@ -57,7 +57,7 @@
 
 
 #if defined(OS_LINUX) || defined(OS_FREEBSD) || defined(OS_OPENBSD) || \
-  defined(OS_SOLARIS)
+    defined(OS_SOLARIS)
 
 #define USE_NSS 1  // Use NSS for crypto.
 #define USE_X11 1  // Use X for graphics.
@@ -68,7 +68,7 @@
 // For access to standard POSIXish features, use OS_POSIX instead of a
 // more specific macro.
 #if defined(OS_MACOSX) || defined(OS_LINUX) || defined(OS_FREEBSD) || \
-  defined(OS_OPENBSD) || defined(OS_SOLARIS)
+    defined(OS_OPENBSD) || defined(OS_SOLARIS)
 
 #define OS_POSIX 1
 // Use base::DataPack for name/value pairs.
@@ -140,12 +140,12 @@
 #if defined(OS_WIN)
 #define WCHAR_T_IS_UTF16
 #elif defined(OS_POSIX) && defined(COMPILER_GCC) && \
-  defined(__WCHAR_MAX__) && \
-  (__WCHAR_MAX__ == 0x7fffffff || __WCHAR_MAX__ == 0xffffffff)
+    defined(__WCHAR_MAX__) && \
+    (__WCHAR_MAX__ == 0x7fffffff || __WCHAR_MAX__ == 0xffffffff)
 #define WCHAR_T_IS_UTF32
 #elif defined(OS_POSIX) && defined(COMPILER_GCC) && \
-  defined(__WCHAR_MAX__) && \
-  (__WCHAR_MAX__ == 0x7fff || __WCHAR_MAX__ == 0xffff)
+    defined(__WCHAR_MAX__) && \
+    (__WCHAR_MAX__ == 0x7fff || __WCHAR_MAX__ == 0xffff)
 // On Posix, we'll detect short wchar_t, but projects aren't guaranteed to
 // compile in this mode (in particular, Chrome doesn't). This is intended for
 // other projects using base who manage their own dependencies and make sure

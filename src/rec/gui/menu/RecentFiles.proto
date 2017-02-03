@@ -4,14 +4,14 @@ import "rec/music/Metadata.proto";
 import "rec/util/file/VirtualFile.proto";
 
 message RecentFile {
-  optional int64 timestamp = 1;
-  optional util.file.VirtualFile file = 2;
-  optional music.Metadata metadata = 3;
-  optional string metadata_string = 4;
+    optional int64 timestamp = 1;
+    optional util.file.VirtualFile file = 2;
+    optional music.Metadata metadata = 3;
+    optional string metadata_string = 4;
 };
 
 message RecentFiles {
-  repeated RecentFile file = 3;
-  optional int32 max_files = 4 [default = 16];
-  optional bool reload_most_recent = 5 [default = true];
+    repeated RecentFile file = 3;
+    optional int32 max_files = 4 [default = 16];
+    optional bool reload_most_recent = 5 [default = true];
 };

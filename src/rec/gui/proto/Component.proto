@@ -17,38 +17,38 @@ import "rec/gui/proto/ToggleButton.proto";
 import "rec/widget/status/Time.proto";
 
 message ComponentProto {
-  optional string name = 1;
-  optional string tooltip = 2;
-  optional Size size = 3;
-  optional string address = 4;
+    optional string name = 1;
+    optional string tooltip = 2;
+    optional Size size = 3;
+    optional string address = 4;
 
-  repeated Color color = 5;
+    repeated Color color = 5;
 
-  optional FontProto font = 6;
+    optional FontProto font = 6;
 
-  // A reference to the item in the Layout Table.
-  optional string layout = 7;
+    // A reference to the item in the Layout Table.
+    optional string layout = 7;
 
-  // Shorthand for a resizer and address.
-  optional string resizer = 8;
-  optional string min_resizer = 9 [default = "0.0"];
+    // Shorthand for a resizer and address.
+    optional string resizer = 8;
+    optional string min_resizer = 9 [default = "0.0"];
 
-  // A list of properties, any one of which will disable this component.
-  // This is only for components that do not send CommandIDs.
-  repeated string disabled = 10;
+    // A list of properties, any one of which will disable this component.
+    // This is only for components that do not send CommandIDs.
+    repeated string disabled = 10;
 
-  optional ButtonProto button = 11;
-  optional ComboBoxProto combo_box = 12;
-  optional CustomProto custom = 13;
-  optional HelpProto help = 14;
-  optional LabelProto label = 15;
-  optional LevelMeterProto level_meter = 16;
-  optional ResizerProto full_resizer = 17;
-  optional SliderProto slider = 18;
-  optional SwitcherProto switcher = 19;
-  optional TextProto text = 20;
-  optional widget.status.time.Dial time_dial = 21;
-  optional widget.status.time.Text time = 22;
-  optional ToggleButtonProto toggle_button = 23;
+    optional ButtonProto button = 11;
+    optional ComboBoxProto combo_box = 12;
+    optional CustomProto custom = 13;
+    optional HelpProto help = 14;
+    optional LabelProto label = 15;
+    optional LevelMeterProto level_meter = 16;
+    optional ResizerProto full_resizer = 17;
+    optional SliderProto slider = 18;
+    optional SwitcherProto switcher = 19;
+    optional TextProto text = 20;
+    optional widget.status.time.Dial time_dial = 21;
+    optional widget.status.time.Text time = 22;
+    optional ToggleButtonProto toggle_button = 23;
 };
 

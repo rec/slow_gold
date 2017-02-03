@@ -8,21 +8,21 @@ namespace audio {
 namespace util {
 
 class BufferedReader : public Fillable {
- public:
-  BufferedReader() {}
-  virtual ~BufferedReader() {}
+  public:
+    BufferedReader() {}
+    virtual ~BufferedReader() {}
 
-  void setReader(AudioFormatReader* reader);
+    void setReader(AudioFormatReader* reader);
 
-  virtual Source* makeSource() const = 0;
-  virtual bool setLength(int64 length) = 0;
-  virtual SampleTime doFillNextBlock(const SampleRange&) = 0;
+    virtual Source* makeSource() const = 0;
+    virtual bool setLength(int64 length) = 0;
+    virtual SampleTime doFillNextBlock(const SampleRange&) = 0;
 
-  bool coversTime(SampleTime time) const;
-  AudioFormatReader* reader() { return reader_.get(); }
+    bool coversTime(SampleTime time) const;
+    AudioFormatReader* reader() { return reader_.get(); }
 
- protected:
-  std::unique_ptr<AudioFormatReader> reader_;
+  protected:
+    std::unique_ptr<AudioFormatReader> reader_;
 };
 
 }  // namespace util

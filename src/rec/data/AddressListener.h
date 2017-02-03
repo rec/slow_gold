@@ -9,30 +9,30 @@ namespace rec {
 namespace data {
 
 class AddressListener : public Listener<const Value&> {
- public:
-  AddressListener(const Address& a);
-  virtual ~AddressListener();
+  public:
+    AddressListener(const Address& a);
+    virtual ~AddressListener();
 
-  virtual void operator()(const Value&) = 0;
+    virtual void operator()(const Value&) = 0;
 
-  virtual void setValue(const Value& v, Undoable undoable = CAN_UNDO) const;
-  const Value getValue(const Message& m) const;
-  const Value getValue() const;
-  const Address& address() const { return address_; }
+    virtual void setValue(const Value& v, Undoable undoable = CAN_UNDO) const;
+    const Value getValue(const Message& m) const;
+    const Value getValue() const;
+    const Address& address() const { return address_; }
 
-  void setFailOnError(bool f) { failOnError_ = f; }
-  void updateCallback();
+    void setFailOnError(bool f) { failOnError_ = f; }
+    void updateCallback();
 
- private:
-  struct UntypedListener;
+  private:
+    struct UntypedListener;
 
-  void receiveMessage(const Message&);
+    void receiveMessage(const Message&);
 
-  std::unique_ptr<UntypedListener> untypedListener_;
-  const Address address_;
-  bool failOnError_;
+    std::unique_ptr<UntypedListener> untypedListener_;
+    const Address address_;
+    bool failOnError_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(AddressListener);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(AddressListener);
 };
 
 }  // namespace data

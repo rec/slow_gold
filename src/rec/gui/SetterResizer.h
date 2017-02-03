@@ -15,38 +15,38 @@ namespace data { class Data; }
 namespace gui {
 
 class SetterResizer : public data::AddressListener,
-                      public app::LanguageListener,
-                      public Disableable,
-                      public StretchableLayoutResizerBar,
-                      public SettableTooltipClient,
-                      public GuiWriteable {
- public:
-  SetterResizer(const data::Address& address,
-                Panel* layout,
-                int itemIndexInPanel,
-                uint32 minValue = 20);
+                                            public app::LanguageListener,
+                                            public Disableable,
+                                            public StretchableLayoutResizerBar,
+                                            public SettableTooltipClient,
+                                            public GuiWriteable {
+  public:
+    SetterResizer(const data::Address& address,
+                                Panel* layout,
+                                int itemIndexInPanel,
+                                uint32 minValue = 20);
 
-  virtual void operator()(const data::Value&);
-  virtual void moved();
-  virtual void paint(Graphics& g);
-  virtual void languageChanged();
+    virtual void operator()(const data::Value&);
+    virtual void moved();
+    virtual void paint(Graphics& g);
+    virtual void languageChanged();
 
- protected:
-  virtual void doWriteGui();
-  uint32 get() const;
+  protected:
+    virtual void doWriteGui();
+    uint32 get() const;
 
- private:
-  Panel* const layout_;
-  const int index_;
-  const uint32 minValue_;
+  private:
+    Panel* const layout_;
+    const int index_;
+    const uint32 minValue_;
 
-  data::Address address_;
-  bool active_;
-  bool needsWrite_;
-  uint32 lastValue_;
-  CriticalSection lock_;
+    data::Address address_;
+    bool active_;
+    bool needsWrite_;
+    uint32 lastValue_;
+    CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);
 };
 
 }  // namespace gui

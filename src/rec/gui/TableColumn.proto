@@ -3,39 +3,39 @@ package rec.gui;
 import "rec/data/proto/Address.proto";
 
 message TableColumn {
-  enum Properties {
-    VISIBLE = 0x01;
-    RESIZABLE = 0x02;
-    DRAGGABLE = 0x04;
-    APPEARS_ON_COLUMN_MENU = 0x08;
-    SORTABLE = 0x10;
-    SORTED_FORWARDS = 0x20;
-    SORTED_BACKWARDS = 0x40;
-    EDITABLE = 0x80;
+    enum Properties {
+        VISIBLE = 0x01;
+        RESIZABLE = 0x02;
+        DRAGGABLE = 0x04;
+        APPEARS_ON_COLUMN_MENU = 0x08;
+        SORTABLE = 0x10;
+        SORTED_FORWARDS = 0x20;
+        SORTED_BACKWARDS = 0x40;
+        EDITABLE = 0x80;
 
-    DEFAULT = 0x8F;
-    DEFAULT_NOT_EDITABLE = 0x0F;
-    // DEFAULT = VISIBLE + RESIZABLE + DRAGGABLE + APPEARS_ON_COLUMN_MENU
-    //   + EDITABLE
-  };
+        DEFAULT = 0x8F;
+        DEFAULT_NOT_EDITABLE = 0x0F;
+        // DEFAULT = VISIBLE + RESIZABLE + DRAGGABLE + APPEARS_ON_COLUMN_MENU
+        //   + EDITABLE
+    };
 
-  enum Type {
-    STRING = 1;
-    TIME = 2;
-    UINT32 = 3;
-    DOUBLE = 4;
-  };
+    enum Type {
+        STRING = 1;
+        TIME = 2;
+        UINT32 = 3;
+        DOUBLE = 4;
+    };
 
-  optional string name = 7;
-  optional uint32 width = 1 [default = 60];
-  optional uint32 minimum_width = 2 [default = 60];
-  optional int32 maximum_width = 3 [default = -1];
+    optional string name = 7;
+    optional uint32 width = 1 [default = 60];
+    optional uint32 minimum_width = 2 [default = 60];
+    optional int32 maximum_width = 3 [default = -1];
 
-  optional Properties property_flags = 4 [default = DEFAULT];
-  optional data.AddressProto address = 5;
-  optional Type type = 6;
+    optional Properties property_flags = 4 [default = DEFAULT];
+    optional data.AddressProto address = 5;
+    optional Type type = 6;
 };
 
 message TableColumnList {
-  repeated TableColumn column = 1;
+    repeated TableColumn column = 1;
 };

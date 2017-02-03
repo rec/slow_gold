@@ -12,57 +12,57 @@ namespace rec {
 namespace app {
 
 GenericApplication::GenericApplication(ApplicationFunction i,
-                                       ApplicationFunction s)
-    : initializer_(i), shutdown_(s), enable_(ENABLE),
-      autoCheckForUpdates_(true) {
+                                                                              ApplicationFunction s)
+        : initializer_(i), shutdown_(s), enable_(ENABLE),
+            autoCheckForUpdates_(true) {
 }
 
 GenericApplication::~GenericApplication() {}
 
 void GenericApplication::initialise(const String&) {
-  setApplicationName(name());
+    setApplicationName(name());
 
-  audio::format::mpg123::initializeOnce();
-  if (initializer_)
-    initializer_(this);
-  window_.reset(createWindow());
-  window_->initialise();
-  gui::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+    audio::format::mpg123::initializeOnce();
+    if (initializer_)
+        initializer_(this);
+    window_.reset(createWindow());
+    window_->initialise();
+    gui::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
 
-  if (autoCheckForUpdates())
-    downloadNewVersionIfNeeded(version(), name());
+    if (autoCheckForUpdates())
+        downloadNewVersionIfNeeded(version(), name());
 
-  thread::runInNewThread("startup thread",
-                         STARTUP_THREAD_PRIORITY,
-                         window_.get(),
-                         &Window::startup);
-  LOG(INFO) << name() << ": initialise finished.";
+    thread::runInNewThread("startup thread",
+                                                  STARTUP_THREAD_PRIORITY,
+                                                  window_.get(),
+                                                  &Window::startup);
+    LOG(INFO) << name() << ": initialise finished.";
 
-  // FLAGS_log_dir = str(File::getSpecialLocation(
-  //     File::userApplicationDataDirectory).getChildFile("Logs"));
+    // FLAGS_log_dir = str(File::getSpecialLocation(
+    //     File::userApplicationDataDirectory).getChildFile("Logs"));
 }
 
 void GenericApplication::shutdown() {
-  gui::dialog::shutdownDialog();
-  if (window_) {
-    window_->shutdown();
-    window_.reset();
-  }
+    gui::dialog::shutdownDialog();
+    if (window_) {
+        window_->shutdown();
+        window_.reset();
+    }
 
-  util::thread::trash::waitForAllThreadsToExit(1000);
-  if (shutdown_)
-    shutdown_(this);
+    util::thread::trash::waitForAllThreadsToExit(1000);
+    if (shutdown_)
+        shutdown_(this);
 
-  LOG(INFO) << name() << ": shutdown finished.";
+    LOG(INFO) << name() << ": shutdown finished.";
 }
 
 void GenericApplication::systemRequestedQuit() {
-  if (enable_ == ENABLE)
-    window_->systemRequestedQuit();
+    if (enable_ == ENABLE)
+        window_->systemRequestedQuit();
 }
 
 void GenericApplication::anotherInstanceStarted(const String& s) {
-  window_->anotherInstanceStarted(s);
+    window_->anotherInstanceStarted(s);
 }
 
 }  // namespace app

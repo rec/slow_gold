@@ -10,33 +10,33 @@ namespace cd {
 static const int BUFFER_SIZE = 4096;
 
 void writeSocket(Socket* sock, const String& s) {
-  // There's an extra copy here that could be removed.
-  int w = sock->write(str(s).c_str(), s.length());
-  if (w != s.length()) {
-    throw Exception(string("Wrote ") + String(w) + " of " + String(s.length()) + " chars.");
-  }
+    // There's an extra copy here that could be removed.
+    int w = sock->write(str(s).c_str(), s.length());
+    if (w != s.length()) {
+        throw Exception(string("Wrote ") + String(w) + " of " + String(s.length()) + " chars.");
+    }
 }
 
 string readSocket(Socket* sock, int timeout) {
-  char buffer[BUFFER_SIZE];
+    char buffer[BUFFER_SIZE];
 
-  int error = sock->waitUntilReady(true, timeout);
-  if (error <= 0)
-    throw Exception("Socket wait error " + String(error));
+    int error = sock->waitUntilReady(true, timeout);
+    if (error <= 0)
+        throw Exception("Socket wait error " + String(error));
 
 
-  int read = sock->read(buffer, BUFFER_SIZE, false);
-  if (read <= 0)
-    throw Exception("Socket read error " + String(read));
+    int read = sock->read(buffer, BUFFER_SIZE, false);
+    if (read <= 0)
+        throw Exception("Socket read error " + String(read));
 
-  return string(buffer, read);
+    return string(buffer, read);
 }
 
 void connect(Socket* s, const String& server, int port, int timeout) {
-  if (!s->connect(server, port, timeout)) {
-    throw Exception(str("Couldn't open socket to " +
-                    server + ":" + String(port)));
-  }
+    if (!s->connect(server, port, timeout)) {
+        throw Exception(str("Couldn't open socket to " +
+                                        server + ":" + String(port)));
+    }
 }
 
 }  // namespace cd

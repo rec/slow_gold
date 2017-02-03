@@ -1,22 +1,22 @@
 package rec.gui;
 
 message Point {
-  optional int32 x = 1;
-  optional int32 y = 2;
+    optional int32 x = 1;
+    optional int32 y = 2;
 };
 
 message Rectangle {
-  optional Point top_left = 1;
-  optional Point dimensions = 2;
+    optional Point top_left = 1;
+    optional Point dimensions = 2;
 };
 
 message Line {
-  optional Rectangle bounds = 1;
-  optional float thickness = 2 [default = 1];
-  repeated float dashing = 3;
+    optional Rectangle bounds = 1;
+    optional float thickness = 2 [default = 1];
+    repeated float dashing = 3;
 };
 
 message Layer {
-  optional Rectangle bounds = 1;
-  optional int32 zOrder = 2 [default = -1];  // Same as the Juce value.
+    optional Rectangle bounds = 1;
+    optional int32 zOrder = 2 [default = -1];  // Same as the Juce value.
 };

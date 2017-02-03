@@ -9,11 +9,11 @@ namespace rec {
 namespace slow {
 
 void addSlowCallbacks(program::Program* table, int repeat) {
-  addGlobalCallbacks(table);
-  addInstanceCallbacks(table);
-  addApplyCallbacks(table);
-  addSelectionCallbacks(table);
-  addRepeatedCallbacks(table, repeat);
+    addGlobalCallbacks(table);
+    addInstanceCallbacks(table);
+    addApplyCallbacks(table);
+    addSelectionCallbacks(table);
+    addRepeatedCallbacks(table, repeat);
 }
 
 }  // namespace slow

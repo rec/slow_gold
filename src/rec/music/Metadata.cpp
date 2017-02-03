@@ -7,67 +7,67 @@ namespace rec {
 namespace music {
 
 Metadata getTrack(const Album& album, int i) {
-  Metadata track = album.album();
-  if (i >= 0 && i < album.track_size())
-    track.MergeFrom(album.track(i));
+    Metadata track = album.album();
+    if (i >= 0 && i < album.track_size())
+        track.MergeFrom(album.track(i));
 
-  return track;
+    return track;
 }
 
 Metadata getMetadata(const StringPairArray& metadata) {
-  Metadata t;
-  const StringArray& keys = metadata.getAllKeys();
-  string albumArtist;
-  for (int i = 0; i < keys.size(); ++i) {
-    const String& k = keys[i];
-    const string& v = str(metadata[k]);
+    Metadata t;
+    const StringArray& keys = metadata.getAllKeys();
+    string albumArtist;
+    for (int i = 0; i < keys.size(); ++i) {
+        const String& k = keys[i];
+        const string& v = str(metadata[k]);
 
-    if (k < "TALB" || k > "TRCK") continue;
-    else if (k == "TALB") t.set_album_title(v);
-    else if (k == "TCON") t.set_genre(audio::format::mpg123::cleanGenre(v));
-    else if (k == "TDRC") t.set_year(v);
-    else if (k == "TIT2") t.set_track_title(v);
-    else if (k == "TPE1") t.set_artist(v);
-    else if (k == "TPE2") albumArtist = v;
-    else if (k == "TRCK") t.set_track_number(v);
-  }
+        if (k < "TALB" || k > "TRCK") continue;
+        else if (k == "TALB") t.set_album_title(v);
+        else if (k == "TCON") t.set_genre(audio::format::mpg123::cleanGenre(v));
+        else if (k == "TDRC") t.set_year(v);
+        else if (k == "TIT2") t.set_track_title(v);
+        else if (k == "TPE1") t.set_artist(v);
+        else if (k == "TPE2") albumArtist = v;
+        else if (k == "TRCK") t.set_track_number(v);
+    }
 
-  if (t.artist().empty())
-    t.set_artist(albumArtist);
+    if (t.artist().empty())
+        t.set_artist(albumArtist);
 
-  return t;
+    return t;
 
-  // What's the difference between TPE1 and TPE2?
+    // What's the difference between TPE1 and TPE2?
 }
 
 string getTitle(const Metadata& md) {
-  string result;
+    string result;
 
-  if (md.has_track_title())
-    result = "\"" + md.track_title() + "\"";
+    if (md.has_track_title())
+        result = "\"" + md.track_title() + "\"";
 
-  if (md.has_album_title()) {
-    if (result.empty())
-      result = md.album_title();
-    else
-      result += " - " + md.album_title();
-  }
+    if (md.has_album_title()) {
+        if (result.empty())
+            result = md.album_title();
+        else
+            result += " - " + md.album_title();
+    }
 
-  if (md.has_artist() && !result.empty())
-    result += " (" + md.artist() + ")";
+    if (md.has_artist() && !result.empty())
+        result += " (" + md.artist() + ")";
 
-  return result;
+    return result;
 }
 
 string getTitle(const VirtualFile& f) {
-  string result;
-  if (f.path_size())
-    result = f.path(f.path_size() - 1);
-  return result;
+    string result;
+    if (f.path_size())
+        result = f.path(f.path_size() - 1);
+    return result;
 }
 
 string getTitle(const File& f) {
-  return str(f.getFileName());
+    return str(f.getFileName());
 }
 
 }  // namespace music

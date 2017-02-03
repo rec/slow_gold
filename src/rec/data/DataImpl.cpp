@@ -11,52 +11,52 @@ namespace rec {
 namespace data {
 
 DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
-                   bool isEmpty, const string& key)
-    : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s), key_(key) {
-  std::unique_ptr<Message> original(m);
-  fileReadSuccess_ = false;
+                                      bool isEmpty, const string& key)
+        : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s), key_(key) {
+    std::unique_ptr<Message> original(m);
+    fileReadSuccess_ = false;
 
-  if (!isEmpty) {
-    message_.reset(m->New());
+    if (!isEmpty) {
+        message_.reset(m->New());
 #ifndef SLOWGOLD_SAVE_DISABLED
-    fileReadSuccess_ = copy::copy(file_, message_.get());
+        fileReadSuccess_ = copy::copy(file_, message_.get());
 #endif
-  }
+    }
 
-  if (!fileReadSuccess_)
-    message_.swap(original);
+    if (!fileReadSuccess_)
+        message_.swap(original);
 }
 
 void DataImpl::reportChange() {
-  // DLOG(INFO) << "Reporting change " << str(file_);
-  dataUpdater_->reportChange(this);
+    // DLOG(INFO) << "Reporting change " << str(file_);
+    dataUpdater_->reportChange(this);
 }
 
 const string DataImpl::toString() const {
-  Lock l(lock_);
-  return getTypeName() + ": " + message_->ShortDebugString();
+    Lock l(lock_);
+    return getTypeName() + ": " + message_->ShortDebugString();
 }
 
 #define CLONE() (*std::unique_ptr<Message>(clone()))
 
 void DataImpl::pushOnUndoStack(const Message& before) {
-  undoStack_->push(this, before, CLONE());
+    undoStack_->push(this, before, CLONE());
 }
 
 bool DataImpl::writeToFile() {
 #ifndef SLOWGOLD_SAVE_DISABLED
-  if (isEmpty_) {
-    LOG(DFATAL) << "Tried to write an empty value.";
-    return false;
-  }
-  return copy::copy(CLONE(), file_);
+    if (isEmpty_) {
+        LOG(DFATAL) << "Tried to write an empty value.";
+        return false;
+    }
+    return copy::copy(CLONE(), file_);
 #else
-  return true;
+    return true;
 #endif
 }
 
 void DataImpl::update() {
-  broadcast(CLONE());
+    broadcast(CLONE());
 }
 
 }  // namespace data

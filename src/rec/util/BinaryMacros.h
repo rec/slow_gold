@@ -7,16 +7,16 @@ namespace rec {
 namespace util {
 
 #define BINARY_STRING(NAME) \
-  string(BinaryData::NAME, BinaryData::NAME ## Size)
+    string(BinaryData::NAME, BinaryData::NAME ## Size)
 
 #define BINARY_DATA(NAME, TYPE) \
-  construct<TYPE>(BINARY_STRING(NAME))
+    construct<TYPE>(BINARY_STRING(NAME))
 
 #define BINARY_PROTO(NAME, PROTO) \
-  binaryProto<PROTO>(BINARY_STRING(NAME ## _def))
+    binaryProto<PROTO>(BINARY_STRING(NAME ## _def))
 
 #define BINARY_PROTO_MERGED(NAME, TYPE) \
-  binaryProtoMerged<TYPE>(BINARY_STRING(NAME ## _def))
+    binaryProtoMerged<TYPE>(BINARY_STRING(NAME ## _def))
 
 }  // namespace util
 }  // namespace rec

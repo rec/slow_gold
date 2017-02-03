@@ -16,38 +16,38 @@ using namespace rec::data;
 namespace {
 
 void fillKeyPressMappingSet(const CommandMapProto& commandMap,
-                            KeyPressMappingSet* mappings) {
-  mappings->clearAllKeyPresses();
-  for (int i = 0; i < commandMap.entry_size(); ++i) {
-    const CommandMapEntry& m = commandMap.entry(i);
-    for (int j = 0; j < m.key_size(); ++j) {
-      if (m.id() != juce::StandardApplicationCommandIDs::quit)
-        mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
+                                                        KeyPressMappingSet* mappings) {
+    mappings->clearAllKeyPresses();
+    for (int i = 0; i < commandMap.entry_size(); ++i) {
+        const CommandMapEntry& m = commandMap.entry(i);
+        for (int j = 0; j < m.key_size(); ++j) {
+            if (m.id() != juce::StandardApplicationCommandIDs::quit)
+                mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
+        }
     }
-  }
 }
 
 }  // namespace
 
 CommandMapProto getKeyboardBindings() {
-  data::Data* d = data::getData<KeyStrokeCommandMapProto>(data::global());
-  if (d->fileReadSuccess())
-    return getProto<KeyStrokeCommandMapProto>(d).map();
-  else
-    return BINARY_PROTO(KeyStrokeMap, CommandMapProto);
+    data::Data* d = data::getData<KeyStrokeCommandMapProto>(data::global());
+    if (d->fileReadSuccess())
+        return getProto<KeyStrokeCommandMapProto>(d).map();
+    else
+        return BINARY_PROTO(KeyStrokeMap, CommandMapProto);
 }
 
 void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
-  // getKeyboardBindings(),
+    // getKeyboardBindings(),
 
-  fillKeyPressMappingSet(program::juceModel()->keyMap(),
-                         commandManager->getKeyMappings());
+    fillKeyPressMappingSet(program::juceModel()->keyMap(),
+                                                  commandManager->getKeyMappings());
 }
 
 void saveKeyboardBindings(const CommandMapProto& map) {
-  KeyStrokeCommandMapProto mapProto;
-  mapProto.mutable_map()->CopyFrom(map);
-  data::setProto(mapProto, global());
+    KeyStrokeCommandMapProto mapProto;
+    mapProto.mutable_map()->CopyFrom(map);
+    data::setProto(mapProto, global());
 }
 
 }  // namespace command

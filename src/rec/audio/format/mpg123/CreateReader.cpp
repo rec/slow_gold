@@ -14,18 +14,18 @@ namespace mpg123 {
 namespace {
 
 Error setFormat(mpg123_handle* mh,
-                OutputFormat* begin,
-                OutputFormat* end) {
-  if (begin != end) {
-    if (Error e = mpg123_format_none(mh))
-      return e;
+                                OutputFormat* begin,
+                                OutputFormat* end) {
+    if (begin != end) {
+        if (Error e = mpg123_format_none(mh))
+            return e;
 
-    for (OutputFormat* i = begin; i != end; ++i) {
-      if (Error e = mpg123_format(mh, i->rate_, i->channels_, i->encoding_))
-        return e;
+        for (OutputFormat* i = begin; i != end; ++i) {
+            if (Error e = mpg123_format(mh, i->rate_, i->channels_, i->encoding_))
+                return e;
+        }
     }
-  }
-  return MPG123_OK;
+    return MPG123_OK;
 }
 
 }  // namespace
@@ -35,39 +35,39 @@ Error setFormat(mpg123_handle* mh,
 #endif
 
 Error createReader(InputStream* in,
-                   AudioFormatReader** reader,
-                   OutputFormat* begin,
-                   OutputFormat* end) {
-  mpg123_handle *mh = nullptr;
+                                      AudioFormatReader** reader,
+                                      OutputFormat* begin,
+                                      OutputFormat* end) {
+    mpg123_handle *mh = nullptr;
 
-  long sampleRate;
-  int numChannels, encoding;
-  int bitsPerSample;
-  Copier copier;
+    long sampleRate;
+    int numChannels, encoding;
+    int bitsPerSample;
+    Copier copier;
 
-  Error e;
-  if ((e = newHandle(in, &mh)) ||
-      (e = setFormat(mh, begin, end)) ||
-      (e = mpg123_scan(mh)) ||
-      (e = mpg123_getformat(mh, &sampleRate, &numChannels, &encoding)) ||
-      !(bitsPerSample = getBitsPerSample(encoding)) ||
-      !(copier = getCopier(encoding)) ||
-      numChannels > MPG123_STEREO) {  // Failure.
-    mpg123_delete(mh);
+    Error e;
+    if ((e = newHandle(in, &mh)) ||
+            (e = setFormat(mh, begin, end)) ||
+            (e = mpg123_scan(mh)) ||
+            (e = mpg123_getformat(mh, &sampleRate, &numChannels, &encoding)) ||
+            !(bitsPerSample = getBitsPerSample(encoding)) ||
+            !(copier = getCopier(encoding)) ||
+            numChannels > MPG123_STEREO) {  // Failure.
+        mpg123_delete(mh);
 
-  } else {
-    *reader = new Reader(in, getTranslatedName(), mh, copier);
-    AudioFormatReader &r = **reader;
-    r.bitsPerSample = bitsPerSample;
-    r.sampleRate = int(sampleRate);
-    r.lengthInSamples = mpg123_length(mh);
-    r.usesFloatingPointData = (encoding & MPG123_ENC_FLOAT) != 0;
-    r.numChannels = numChannels;
+    } else {
+        *reader = new Reader(in, getTranslatedName(), mh, copier);
+        AudioFormatReader &r = **reader;
+        r.bitsPerSample = bitsPerSample;
+        r.sampleRate = int(sampleRate);
+        r.lengthInSamples = mpg123_length(mh);
+        r.usesFloatingPointData = (encoding & MPG123_ENC_FLOAT) != 0;
+        r.numChannels = numChannels;
 
-    getMp3Tags(mh, &r.metadataValues);
-  }
+        getMp3Tags(mh, &r.metadataValues);
+    }
 
-  return e;
+    return e;
 }
 
 }  // namespace mpg123

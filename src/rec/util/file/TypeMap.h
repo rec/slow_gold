@@ -9,7 +9,7 @@ namespace file {
 typedef VirtualFile::Type Type;
 
 struct Compare {
-  bool operator()(Type x, Type y) const { return x > y; }
+    bool operator()(Type x, Type y) const { return x > y; }
 };
 
 typedef std::pair<File, const char*> SpecialLocation;

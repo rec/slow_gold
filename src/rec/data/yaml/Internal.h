@@ -25,22 +25,22 @@ typedef google::protobuf::Reflection Reflection;
 typedef FieldDescriptor FD;
 
 struct MessageField {
-  MessageField(const Message* m, const FieldDescriptor* f)
-      : message_(m), field_(f) {
-  }
-  const Message* message_;
-  const FieldDescriptor* field_;
+    MessageField(const Message* m, const FieldDescriptor* f)
+            : message_(m), field_(f) {
+    }
+    const Message* message_;
+    const FieldDescriptor* field_;
 };
 
 struct MessageFieldIndex : public MessageField {
-  MessageFieldIndex(const Message* m, const FieldDescriptor* f)
-      : MessageField(m, f) {
-  }
+    MessageFieldIndex(const Message* m, const FieldDescriptor* f)
+            : MessageField(m, f) {
+    }
 
-  MessageFieldIndex(const MessageField& mf, int i)
-      : MessageField(mf), index_(i) {
-  }
-  int index_;
+    MessageFieldIndex(const MessageField& mf, int i)
+            : MessageField(mf), index_(i) {
+    }
+    int index_;
 };
 
 

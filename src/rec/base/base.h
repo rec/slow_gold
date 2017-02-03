@@ -20,10 +20,10 @@ namespace rec {
 inline void doLog(const String& s) {
 // For very hard to debug problems.
 #ifdef NEVER_DO_THIS_EVER_DAMMIT
-  File f = File::getSpecialLocation(File::userDesktopDirectory).
-    getChildFile("SlowGold.log");
-  f.appendText(s);
-  f.appendText("\n");
+    File f = File::getSpecialLocation(File::userDesktopDirectory).
+        getChildFile("SlowGold.log");
+    f.appendText(s);
+    f.appendText("\n");
 #endif
 };
 

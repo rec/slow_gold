@@ -19,60 +19,60 @@ namespace gui {
 namespace {
 
 struct Part {
-  double min_;
-  double max_;
-  double pref_;
+    double min_;
+    double max_;
+    double pref_;
 
-  std::unique_ptr<Component> component_;
+    std::unique_ptr<Component> component_;
 };
 
 void layoutRepaint(Component* comp) {
-  if (Panel* panel = dynamic_cast<Panel*>(comp))
-    panel->layout();
-  else
-    comp->repaint();
+    if (Panel* panel = dynamic_cast<Panel*>(comp))
+        panel->layout();
+    else
+        comp->repaint();
 }
 
 class Switcher : public Panel, public AddressListener {
- public:
-  explicit Switcher(const Context& context)
-  : Panel(context.component_.name()),
-    AddressListener(context.component_.address()),
-    index_(-1) {
-  }
+  public:
+    explicit Switcher(const Context& context)
+    : Panel(context.component_.name()),
+        AddressListener(context.component_.address()),
+        index_(-1) {
+    }
 
-  void operator()(const data::Value& value) override {
-    int index;
-    if (value.has_bool_f())
-      index = value.bool_f();
-    else if (value.has_enum_f())
-      index = value.enum_f();
+    void operator()(const data::Value& value) override {
+        int index;
+        if (value.has_bool_f())
+            index = value.bool_f();
+        else if (value.has_enum_f())
+            index = value.enum_f();
 
-    if (index == index_)
-      return;
-    index_ = index;
-    MessageManagerLock l;
-    for (auto i = 0; i < getNumChildComponents(); ++i)
-      getChildComponent(i)->setVisible(i == index_);
-  }
+        if (index == index_)
+            return;
+        index_ = index;
+        MessageManagerLock l;
+        for (auto i = 0; i < getNumChildComponents(); ++i)
+            getChildComponent(i)->setVisible(i == index_);
+    }
 
-  void layout() override {
-    auto bounds = getLocalBounds();
-    for (auto i = 0; i < getNumChildComponents(); ++i)
-      getChildComponent(i)->setBounds(bounds);
-    repaint();
-  }
+    void layout() override {
+        auto bounds = getLocalBounds();
+        for (auto i = 0; i < getNumChildComponents(); ++i)
+            getChildComponent(i)->setBounds(bounds);
+        repaint();
+    }
 
- private:
-  int index_;
+  private:
+    int index_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Switcher);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Switcher);
 };
 
 }  // namespace
 
 std::unique_ptr<Component> makeSwitcher(const Context& context) {
-  return std::unique_ptr<Component>(new Switcher(context));
+    return std::unique_ptr<Component>(new Switcher(context));
 }
 
 }  // namespace gui

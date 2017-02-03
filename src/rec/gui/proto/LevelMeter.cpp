@@ -12,12 +12,12 @@ namespace rec {
 namespace gui {
 
 std::unique_ptr<Component> makeLevelMeter(const Context& context) {
-  auto& component = context.component_;
-  auto& level = component.level_meter();
-  return std::unique_ptr<Component>(new audio::LevelMeter(
-      "(name)", "(tooltip)",
-      level.orientation() == HORIZONTAL,
-      level.type(), level.margin()));
+    auto& component = context.component_;
+    auto& level = component.level_meter();
+    return std::unique_ptr<Component>(new audio::LevelMeter(
+            "(name)", "(tooltip)",
+            level.orientation() == HORIZONTAL,
+            level.type(), level.margin()));
 }
 
 }  // namespace gui

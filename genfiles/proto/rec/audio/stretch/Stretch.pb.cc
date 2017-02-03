@@ -40,7 +40,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       "rec/audio/stretch/Stretch.proto");
   GOOGLE_CHECK(file != NULL);
   Stretch_descriptor_ = file->message_type(0);
-  static const int Stretch_offsets_[19] = {
+  static const int Stretch_offsets_[18] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, strategy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_enabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_enabled_),
@@ -49,7 +49,6 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_percent_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, sample_rate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, channels_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_scale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, semitone_shift_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, detune_cents_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, bands_),
@@ -128,27 +127,26 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\211\005\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
+    "oto\"\361\004\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
     "audio.stretch.Stretch.Strategy:\nRUBBERBA"
     "ND\022\032\n\014time_enabled\030\002 \001(\010:\004true\022\033\n\rpitch_"
     "enabled\030\003 \001(\010:\004true\022\025\n\007enabled\030\024 \001(\010:\004tr"
     "ue\022(\n\031passthrough_when_disabled\030\004 \001(\010:\005f"
     "alse\022\031\n\014time_percent\030\006 \001(\001:\003100\022\032\n\013sampl"
     "e_rate\030\007 \001(\001:\00544100\022\023\n\010channels\030\010 \001(\r:\0012"
-    "\022\026\n\013pitch_scale\030\t \001(\001:\0011\022\026\n\016semitone_shi"
-    "ft\030\n \001(\001\022\024\n\014detune_cents\030\013 \001(\001\022\023\n\005bands\030"
-    "\014 \001(\r:\0042048\022\031\n\016filter_overlap\030\r \001(\r:\0011\022\030"
-    "\n\nchunk_size\030\016 \001(\r:\0041024\022\033\n\014prefill_size"
-    "\030\017 \001(\r:\00515000\022$\n\025next_buffer_fill_size\030\020"
-    " \001(\r:\00515000\022\036\n\022inactive_wait_time\030\021 \001(\005:"
-    "\002-1\022\032\n\017thread_priority\030\022 \001(\r:\0014\022\037\n\020max_p"
-    "rocess_size\030\023 \001(\r:\00516364\"E\n\010Strategy\022\010\n\004"
-    "NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nRUBBERBAND\020\002\022"
-    "\016\n\nSOUNDTOUCH\020\003\"\232\001\n\021StretchParameters\022+\n"
-    "\007stretch\030\001 \001(\0132\032.rec.audio.stretch.Stret"
-    "ch\022\023\n\013master_tune\030\002 \001(\001\022 \n\021input_sample_"
-    "rate\030\003 \001(\001:\00544100\022!\n\022output_sample_rate\030"
-    "\004 \001(\001:\00544100", 892);
+    "\022\026\n\016semitone_shift\030\n \001(\001\022\024\n\014detune_cents"
+    "\030\013 \001(\001\022\023\n\005bands\030\014 \001(\r:\0042048\022\031\n\016filter_ov"
+    "erlap\030\r \001(\r:\0011\022\030\n\nchunk_size\030\016 \001(\r:\0041024"
+    "\022\033\n\014prefill_size\030\017 \001(\r:\00515000\022$\n\025next_bu"
+    "ffer_fill_size\030\020 \001(\r:\00515000\022\036\n\022inactive_"
+    "wait_time\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022"
+    " \001(\r:\0014\022\037\n\020max_process_size\030\023 \001(\r:\00516364"
+    "\"E\n\010Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022"
+    "\016\n\nRUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003\"\232\001\n\021Stre"
+    "tchParameters\022+\n\007stretch\030\001 \001(\0132\032.rec.aud"
+    "io.stretch.Stretch\022\023\n\013master_tune\030\002 \001(\001\022"
+    " \n\021input_sample_rate\030\003 \001(\001:\00544100\022!\n\022out"
+    "put_sample_rate\030\004 \001(\001:\00544100", 868);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -201,7 +199,6 @@ const int Stretch::kPassthroughWhenDisabledFieldNumber;
 const int Stretch::kTimePercentFieldNumber;
 const int Stretch::kSampleRateFieldNumber;
 const int Stretch::kChannelsFieldNumber;
-const int Stretch::kPitchScaleFieldNumber;
 const int Stretch::kSemitoneShiftFieldNumber;
 const int Stretch::kDetuneCentsFieldNumber;
 const int Stretch::kBandsFieldNumber;
@@ -238,7 +235,6 @@ void Stretch::SharedCtor() {
   time_percent_ = 100;
   sample_rate_ = 44100;
   channels_ = 2u;
-  pitch_scale_ = 1;
   semitone_shift_ = 0;
   detune_cents_ = 0;
   bands_ = 2048u;
@@ -294,7 +290,6 @@ void Stretch::Clear() {
     channels_ = 2u;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    pitch_scale_ = 1;
     semitone_shift_ = 0;
     detune_cents_ = 0;
     bands_ = 2048u;
@@ -302,9 +297,9 @@ void Stretch::Clear() {
     chunk_size_ = 1024u;
     prefill_size_ = 15000u;
     next_buffer_fill_size_ = 15000u;
+    inactive_wait_time_ = -1;
   }
   if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
-    inactive_wait_time_ = -1;
     thread_priority_ = 4u;
     max_process_size_ = 16364u;
   }
@@ -427,22 +422,6 @@ bool Stretch::MergePartialFromCodedStream(
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &channels_)));
           set_has_channels();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(73)) goto parse_pitch_scale;
-        break;
-      }
-
-      // optional double pitch_scale = 9 [default = 1];
-      case 9: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_pitch_scale:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &pitch_scale_)));
-          set_has_pitch_scale();
         } else {
           goto handle_uninterpreted;
         }
@@ -680,11 +659,6 @@ void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->channels(), output);
   }
 
-  // optional double pitch_scale = 9 [default = 1];
-  if (has_pitch_scale()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(9, this->pitch_scale(), output);
-  }
-
   // optional double semitone_shift = 10;
   if (has_semitone_shift()) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(10, this->semitone_shift(), output);
@@ -782,11 +756,6 @@ void Stretch::SerializeWithCachedSizes(
   // optional uint32 channels = 8 [default = 2];
   if (has_channels()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->channels(), target);
-  }
-
-  // optional double pitch_scale = 9 [default = 1];
-  if (has_pitch_scale()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(9, this->pitch_scale(), target);
   }
 
   // optional double semitone_shift = 10;
@@ -900,11 +869,6 @@ int Stretch::ByteSize() const {
 
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional double pitch_scale = 9 [default = 1];
-    if (has_pitch_scale()) {
-      total_size += 1 + 8;
-    }
-
     // optional double semitone_shift = 10;
     if (has_semitone_shift()) {
       total_size += 1 + 8;
@@ -950,8 +914,6 @@ int Stretch::ByteSize() const {
           this->next_buffer_fill_size());
     }
 
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional int32 inactive_wait_time = 17 [default = -1];
     if (has_inactive_wait_time()) {
       total_size += 2 +
@@ -959,6 +921,8 @@ int Stretch::ByteSize() const {
           this->inactive_wait_time());
     }
 
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional uint32 thread_priority = 18 [default = 4];
     if (has_thread_priority()) {
       total_size += 2 +
@@ -1026,9 +990,6 @@ void Stretch::MergeFrom(const Stretch& from) {
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (from.has_pitch_scale()) {
-      set_pitch_scale(from.pitch_scale());
-    }
     if (from.has_semitone_shift()) {
       set_semitone_shift(from.semitone_shift());
     }
@@ -1050,11 +1011,11 @@ void Stretch::MergeFrom(const Stretch& from) {
     if (from.has_next_buffer_fill_size()) {
       set_next_buffer_fill_size(from.next_buffer_fill_size());
     }
-  }
-  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_inactive_wait_time()) {
       set_inactive_wait_time(from.inactive_wait_time());
     }
+  }
+  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_thread_priority()) {
       set_thread_priority(from.thread_priority());
     }
@@ -1092,7 +1053,6 @@ void Stretch::Swap(Stretch* other) {
     std::swap(time_percent_, other->time_percent_);
     std::swap(sample_rate_, other->sample_rate_);
     std::swap(channels_, other->channels_);
-    std::swap(pitch_scale_, other->pitch_scale_);
     std::swap(semitone_shift_, other->semitone_shift_);
     std::swap(detune_cents_, other->detune_cents_);
     std::swap(bands_, other->bands_);

@@ -5,43 +5,43 @@ import "rec/widget/Widget.proto";
 
 // Represents a text time display.
 message Text {
-  message Separator {
-    optional string separator = 1;
-    optional uint32 width = 2;
-    optional bool flash = 3 [default = false];
-    optional bool display_ms = 4 [default = true];
-  };
+    message Separator {
+        optional string separator = 1;
+        optional uint32 width = 2;
+        optional bool flash = 3 [default = false];
+        optional bool display_ms = 4 [default = true];
+    };
 
-  message Fields {
-    optional bool hours = 1 [default = false];
-    optional bool minutes = 2 [default = true];
-    optional bool seconds = 3 [default = true];
-    optional bool milliseconds = 4 [default = true];
-    optional bool frames = 5 [default = false];
-  };
+    message Fields {
+        optional bool hours = 1 [default = false];
+        optional bool minutes = 2 [default = true];
+        optional bool seconds = 3 [default = true];
+        optional bool milliseconds = 4 [default = true];
+        optional bool frames = 5 [default = false];
+    };
 
-  optional Widget widget = 1;
-  optional Separator separator = 2;
-  optional Fields fields = 3;
+    optional Widget widget = 1;
+    optional Separator separator = 2;
+    optional Fields fields = 3;
 
-  optional bool use_global_clock = 4 [default = true];
+    optional bool use_global_clock = 4 [default = true];
 };
 
 // Represents a dial-style time display.
 message Dial {
-  enum Direction {
-    CLOCKWISE = 1;
-    COUNTER_CLOCKWISE = 2;
-  };
+    enum Direction {
+        CLOCKWISE = 1;
+        COUNTER_CLOCKWISE = 2;
+    };
 
-  optional Widget widget = 1;
-  optional uint32 outline = 2;
-  optional Direction direction = 3 [default = CLOCKWISE];
-  optional bool display_lap_count = 4;
-  optional double zero_point = 7;
-  optional bool empty_on_zero = 8 [default = true];
+    optional Widget widget = 1;
+    optional uint32 outline = 2;
+    optional Direction direction = 3 [default = CLOCKWISE];
+    optional bool display_lap_count = 4;
+    optional double zero_point = 7;
+    optional bool empty_on_zero = 8 [default = true];
 
-  optional gui.Color from_color = 9;
-  optional gui.Color to_color = 10;
-  optional bool use_global_clock = 11 [default = true];
+    optional gui.Color from_color = 9;
+    optional gui.Color to_color = 10;
+    optional bool use_global_clock = 11 [default = true];
 };

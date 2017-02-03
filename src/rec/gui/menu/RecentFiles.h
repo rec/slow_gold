@@ -12,12 +12,12 @@ namespace gui {
 void addRecentFile(const VirtualFile&, const Message&);
 
 class RecentFilesStrategy {
- public:
-  RecentFilesStrategy() {}
-  virtual ~RecentFilesStrategy() {}
-  virtual string getTitle(const RecentFile&) const = 0;
-  virtual string getDupeSuffix(const RecentFile&, bool isFirst) const = 0;
-  virtual CommandID getRecentFileCommand() const = 0;
+  public:
+    RecentFilesStrategy() {}
+    virtual ~RecentFilesStrategy() {}
+    virtual string getTitle(const RecentFile&) const = 0;
+    virtual string getDupeSuffix(const RecentFile&, bool isFirst) const = 0;
+    virtual CommandID getRecentFileCommand() const = 0;
 };
 
 vector<string> getRecentFileNames();

@@ -16,44 +16,44 @@ namespace util {
 namespace file {
 
 void CurrentFileBase::operator()(const VirtualFileList& files) {
-  if (files.file_size() >= 1)
-    setVirtualFile(files.file(0), true);
+    if (files.file_size() >= 1)
+        setVirtualFile(files.file(0), true);
 }
 
 void CurrentFileBase::setFile(const File& f, bool showError) {
-  setVirtualFile(file::toVirtualFile(f), showError);
+    setVirtualFile(file::toVirtualFile(f), showError);
 }
 
 void CurrentFileBase::operator()(const VirtualFile& vf) {
-  setVirtualFile(vf, true);
+    setVirtualFile(vf, true);
 }
 
 void CurrentFileBase::setVirtualFile(const VirtualFile& f, bool showError) {
-  data::getDataCenter()->waitTillClear();
-  data::getDataCenter()->clearUndoes();
+    data::getDataCenter()->waitTillClear();
+    data::getDataCenter()->clearUndoes();
 
-  suspend();
-  if (file_.path_size())
-    gui::addRecentFile(file_, *getFileDescription());
+    suspend();
+    if (file_.path_size())
+        gui::addRecentFile(file_, *getFileDescription());
 
-  VirtualFile newFile = f;
-  file_.Swap(&newFile);
+    VirtualFile newFile = f;
+    file_.Swap(&newFile);
 
-  beforeFileChange();
+    beforeFileChange();
 
-  empty_ = determineIfFileEmpty(showError);
-  program::juceModel()->setProperty("empty", empty_);
-  if (empty_)
-    file_ = data::noData();
-  else
-    nonEmptyFileLoaded();
+    empty_ = determineIfFileEmpty(showError);
+    program::juceModel()->setProperty("empty", empty_);
+    if (empty_)
+        file_ = data::noData();
+    else
+        nonEmptyFileLoaded();
 
-  afterFileChange(newFile);
-  data::setProto(file_, data::CANT_UNDO);
-  data::UntypedDataListener::setGlobalDataFile(file_);
+    afterFileChange(newFile);
+    data::setProto(file_, data::CANT_UNDO);
+    data::UntypedDataListener::setGlobalDataFile(file_);
 
-  resume();
-  program::menuItemsChanged();
+    resume();
+    program::menuItemsChanged();
 }
 
 }  // namespace file

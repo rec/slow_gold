@@ -13,10 +13,10 @@ VirtualFileList getVolumes();
 namespace {
 
 TEST(GetVolumes, get) {
-  VirtualFileList list = getVolumes();
+    VirtualFileList list = getVolumes();
 #if 0
-  for (int i = 0; i < list.size(); ++i)
-    LOG(INFO) << list[i].ShortDebugString();
+    for (int i = 0; i < list.size(); ++i)
+        LOG(INFO) << list[i].ShortDebugString();
 #endif
 }
 

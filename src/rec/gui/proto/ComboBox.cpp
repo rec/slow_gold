@@ -16,49 +16,49 @@ namespace gui {
 namespace {
 
 class ComboBoxSetter : public AddressListener,
-                       public ComboBox,
-                       public ComboBox::Listener,
-                       public Disableable {
- public:
-  explicit ComboBoxSetter(const Context& context)
-      : AddressListener(context.component_.address()) {
-    auto& component = context.component_;
-    auto& combo = component.combo_box();
-    setEditableText(false);
-    setJustificationType(Justification::centredLeft);
+                                              public ComboBox,
+                                              public ComboBox::Listener,
+                                              public Disableable {
+  public:
+    explicit ComboBoxSetter(const Context& context)
+            : AddressListener(context.component_.address()) {
+        auto& component = context.component_;
+        auto& combo = component.combo_box();
+        setEditableText(false);
+        setJustificationType(Justification::centredLeft);
 
-    setTooltip(component.tooltip());
+        setTooltip(component.tooltip());
 
-    for (int i = 0; i < combo.item_size(); ++i)
-      addItem(combo.item(i), i + 1);
+        for (int i = 0; i < combo.item_size(); ++i)
+            addItem(combo.item(i), i + 1);
 
-    setTextWhenNothingSelected(combo.item(0));
-    setTextWhenNoChoicesAvailable(combo.item(0));
-    addListener(this);
-  }
-
-  void operator()(const data::Value& v) override {
-    setSelectedId(v.enum_f() + 1, juce::dontSendNotification);
-  }
-
-  void comboBoxChanged(ComboBox*) override {
-    if (int id = getSelectedId()) {
-      value_.set_enum_f(id - 1);
-      setValue(value_);
+        setTextWhenNothingSelected(combo.item(0));
+        setTextWhenNoChoicesAvailable(combo.item(0));
+        addListener(this);
     }
-  }
 
- private:
-  data::Value value_;
+    void operator()(const data::Value& v) override {
+        setSelectedId(v.enum_f() + 1, juce::dontSendNotification);
+    }
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(ComboBoxSetter);
+    void comboBoxChanged(ComboBox*) override {
+        if (int id = getSelectedId()) {
+            value_.set_enum_f(id - 1);
+            setValue(value_);
+        }
+    }
+
+  private:
+    data::Value value_;
+
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(ComboBoxSetter);
 };
 
 }  // namespace
 
 
 std::unique_ptr<Component> makeComboBox(const Context& context) {
-  return std::unique_ptr<Component>(new ComboBoxSetter(context));
+    return std::unique_ptr<Component>(new ComboBoxSetter(context));
 }
 
 }  // namespace gui

@@ -9,41 +9,41 @@ namespace gui {
 static const int CAPTION_SIZE = 50;
 
 class CaptionText : public Panel, public TextEditor::Listener {
- public:
-  CaptionText(const String& name,
-              const String& tip = String::empty,
-              const String& caption = String::empty,
-              bool useCaption = true,
-              int captionSize = CAPTION_SIZE);
-  virtual ~CaptionText() {}
+  public:
+    CaptionText(const String& name,
+                            const String& tip = String::empty,
+                            const String& caption = String::empty,
+                            bool useCaption = true,
+                            int captionSize = CAPTION_SIZE);
+    virtual ~CaptionText() {}
 
-  virtual void setTooltip(const String& newTooltip);
-  void setReadOnly(bool readOnly);
+    virtual void setTooltip(const String& newTooltip);
+    void setReadOnly(bool readOnly);
 
-  bool isReadOnly() const { return editor_->isReadOnly(); }
+    bool isReadOnly() const { return editor_->isReadOnly(); }
 
-  TextEditor* editor() { return editor_; }
+    TextEditor* editor() { return editor_; }
 
-  void textEditorTextChanged(TextEditor&) override {}
-  void textEditorReturnKeyPressed(TextEditor&) override {}
-  void textEditorEscapeKeyPressed(TextEditor&) override {}
-  void textEditorFocusLost(TextEditor&) override {}
+    void textEditorTextChanged(TextEditor&) override {}
+    void textEditorReturnKeyPressed(TextEditor&) override {}
+    void textEditorEscapeKeyPressed(TextEditor&) override {}
+    void textEditorFocusLost(TextEditor&) override {}
 
-  void setEditorBackground(const juce::Colour&);
+    void setEditorBackground(const juce::Colour&);
 
-  void setFont(const Font& font) {
-    caption_->setFont(font);
-    editor_->setFont(font);
-  }
+    void setFont(const Font& font) {
+        caption_->setFont(font);
+        editor_->setFont(font);
+    }
 
- protected:
-  void setEditorText(String);
+  protected:
+    void setEditorText(String);
 
-  SimpleLabel* caption_;
-  TextEditor* editor_;
+    SimpleLabel* caption_;
+    TextEditor* editor_;
 
- private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CaptionText);
+  private:
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CaptionText);
 };
 
 }  // namespace gui

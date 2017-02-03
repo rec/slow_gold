@@ -7,18 +7,18 @@ namespace util {
 namespace ews {
 
 struct Authentication {
-  int daysToExpiration;
-  string user;
-  string serialNumber;
-  bool authenticatedCouldntConnect;
+    int daysToExpiration;
+    string user;
+    string serialNumber;
+    bool authenticatedCouldntConnect;
 
-  bool authenticated() const {
-    return not user.empty();
-  }
+    bool authenticated() const {
+        return not user.empty();
+    }
 
-  bool expired() const {
-    return (not authenticated()) and daysToExpiration <= 0;
-  }
+    bool expired() const {
+        return (not authenticated()) and daysToExpiration <= 0;
+    }
 };
 
 Authentication testAuthenticated();

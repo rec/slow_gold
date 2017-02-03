@@ -6,21 +6,21 @@ namespace rec {
 namespace app {
 
 class LanguageListener::Updater : public DataListener<AppSettings> {
- public:
-  explicit Updater(LanguageListener* client) : client_(client) {}
+  public:
+    explicit Updater(LanguageListener* client) : client_(client) {}
 
-  virtual void operator()(const AppSettings&) {
-    client_->languageChanged();
-  }
+    virtual void operator()(const AppSettings&) {
+        client_->languageChanged();
+    }
 
- private:
-  LanguageListener* client_;
+  private:
+    LanguageListener* client_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Updater);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Updater);
 };
 
 LanguageListener::LanguageListener() {
-  updater_.reset(new Updater(this));
+    updater_.reset(new Updater(this));
 }
 
 LanguageListener::~LanguageListener() {}

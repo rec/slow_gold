@@ -8,12 +8,12 @@ namespace data {
 class Data;
 
 class DataMaker {
- public:
-  DataMaker() {}
-  virtual ~DataMaker() {}
+  public:
+    DataMaker() {}
+    virtual ~DataMaker() {}
 
-  virtual Data* makeData(Message*, const File&, bool isEmpty,
-                         const string& key) const = 0;
+    virtual Data* makeData(Message*, const File&, bool isEmpty,
+                                                  const string& key) const = 0;
 };
 
 }  // namespace data

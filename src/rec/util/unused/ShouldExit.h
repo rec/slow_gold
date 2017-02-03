@@ -7,7 +7,7 @@ namespace util {
 
 template <typename Thread>
 bool shouldExit(Thread* thread) {
-  return thread && thread->threadShouldExit();
+    return thread && thread->threadShouldExit();
 }
 
 }  // namespace util

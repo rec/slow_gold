@@ -8,66 +8,66 @@ namespace thread {
 
 template <typename Type = bool>
 class LockedFlag {
- public:
-  explicit LockedFlag(int intervalMs = 5, int intervalCount = 1000)
-      : flag_(0), intervalMs_(intervalMs), intervalCount_(intervalCount) {
-  }
-
-  bool tryToTakeSpin(Type t) {
-    Thread* thread = getCurrentThread();
-    for (int i = 0; intervalCount_ <= 0 || i < intervalCount; ++i) {
-      if (thread && thread->threadShouldExit())
-        return false;
-      if (set(t))
-        return true;
-      Thread::sleep(intervalMs);
+  public:
+    explicit LockedFlag(int intervalMs = 5, int intervalCount = 1000)
+            : flag_(0), intervalMs_(intervalMs), intervalCount_(intervalCount) {
     }
-    return false;
-  }
 
-  // You can only call reset if "tryToTakeSpin" returned true.
-  void reset() {
-    Lock l(lock_);
+    bool tryToTakeSpin(Type t) {
+        Thread* thread = getCurrentThread();
+        for (int i = 0; intervalCount_ <= 0 || i < intervalCount; ++i) {
+            if (thread && thread->threadShouldExit())
+                return false;
+            if (set(t))
+                return true;
+            Thread::sleep(intervalMs);
+        }
+        return false;
+    }
 
-  }
+    // You can only call reset if "tryToTakeSpin" returned true.
+    void reset() {
+        Lock l(lock_);
 
- private:
-  // Atomically sets the flag
-  bool set(Type f) {
-    Lock l(lock_);
-    if (flag_)
-      return false;
-    flag_ = f;
-    return true;
-  }
+    }
 
-  CriticalSection lock_;
-  Type flag_;
-  const int intervalMs_;
-  const int intervalCount_;
+  private:
+    // Atomically sets the flag
+    bool set(Type f) {
+        Lock l(lock_);
+        if (flag_)
+            return false;
+        flag_ = f;
+        return true;
+    }
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(LockedFlag);
+    CriticalSection lock_;
+    Type flag_;
+    const int intervalMs_;
+    const int intervalCount_;
+
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(LockedFlag);
 };
 
 template <typename Type = bool>
 class FlagLocker {
- public:
-  FlagLocker(LockedFlag* flag, Type t) : flag_(flag),
-                                         failed_(flag_->tryToTakeSpin(t)) {
-  }
+  public:
+    FlagLocker(LockedFlag* flag, Type t) : flag_(flag),
+                                                                                  failed_(flag_->tryToTakeSpin(t)) {
+    }
 
-  ~FlagLocker() {
-    if (!failed_)
-      flag_->reset();
-  }
+    ~FlagLocker() {
+        if (!failed_)
+            flag_->reset();
+    }
 
-  bool failed() const { return failed_; }
+    bool failed() const { return failed_; }
 
- private:
-    LockedFlag* const flag_;
-  const bool failed_;
+  private:
+        LockedFlag* const flag_;
+    const bool failed_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LockedFlag);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LockedFlag);
 };
 
 }  // namespace thread

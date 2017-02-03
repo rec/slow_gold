@@ -9,14 +9,14 @@ namespace util {
 namespace cd {
 
 class Exception : public std::exception {
- public:
-  explicit Exception(const string& m) : message_(m) {}
-  explicit Exception(const String& m) : message_(m.toStdString()) {}
-  virtual ~Exception() throw() {}
-  virtual const char* what() const throw() { return message_.c_str(); }
+  public:
+    explicit Exception(const string& m) : message_(m) {}
+    explicit Exception(const String& m) : message_(m.toStdString()) {}
+    virtual ~Exception() throw() {}
+    virtual const char* what() const throw() { return message_.c_str(); }
 
- private:
-  const string message_;
+  private:
+    const string message_;
 };
 
 }  // namespace cd

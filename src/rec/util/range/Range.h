@@ -9,54 +9,54 @@ namespace util {
 
 template <typename Type>
 struct Range {
-  Type begin_;
-  Type end_;
+    Type begin_;
+    Type end_;
 
-  Range() { clear(); }
-  Range(Type b, Type e) : begin_(b), end_(e) { DCHECK_LE(b, e); }
+    Range() { clear(); }
+    Range(Type b, Type e) : begin_(b), end_(e) { DCHECK_LE(b, e); }
 
-  typedef std::set<Range> Set;
-  typedef vector<Range> Vector;
+    typedef std::set<Range> Set;
+    typedef vector<Range> Vector;
 
-  void clear() { begin_ = end_ = Type(0); }
-  Type size() const { return end_ - begin_; }
-  bool empty() const { return !size(); }
+    void clear() { begin_ = end_ = Type(0); }
+    Type size() const { return end_ - begin_; }
+    bool empty() const { return !size(); }
 
-  bool operator<(const Range& x) const {
-    return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
-  }
+    bool operator<(const Range& x) const {
+        return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
+    }
 
-  bool operator<=(const Range& x) const { return !(x < *this); }
-  bool operator>(const Range& x) const { return x < *this; }
-  bool operator>=(const Range& x) const { return x <= *this; }
-  bool operator!=(const Range& x) const { return !(x == *this); }
+    bool operator<=(const Range& x) const { return !(x < *this); }
+    bool operator>(const Range& x) const { return x < *this; }
+    bool operator>=(const Range& x) const { return x <= *this; }
+    bool operator!=(const Range& x) const { return !(x == *this); }
 
-  bool operator==(const Range& x) const {
-    return begin_ == x.begin_ && end_ == x.end_;
-  }
+    bool operator==(const Range& x) const {
+        return begin_ == x.begin_ && end_ == x.end_;
+    }
 
-  const String toString() const {
-    return String(begin_) + "-" + String(end_);
-  }
+    const String toString() const {
+        return String(begin_) + "-" + String(end_);
+    }
 
- private:
-  JUCE_LEAK_DETECTOR(Range);
+  private:
+    JUCE_LEAK_DETECTOR(Range);
 };
 
 template <typename Type>
 Range<Type> makeRange(Type begin, Type end) {
-  return Range<Type>(begin, end);
+    return Range<Type>(begin, end);
 }
 
 template <typename Type, typename Selection>
 void insertRange(const Range<Type>& range, Selection *selection) {
-  if (!range.empty())
-    stl::insert(range, selection);
+    if (!range.empty())
+        stl::insert(range, selection);
 }
 
 template <typename Type, typename Selection>
 void insertRange(Type begin, Type end, Selection *selection) {
-  insertRange(makeRange(begin, end), selection);
+    insertRange(makeRange(begin, end), selection);
 }
 
 }  // namespace util

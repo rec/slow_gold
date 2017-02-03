@@ -4,5 +4,5 @@
 package rec.widget.tree;
 
 message Path {
-  repeated string step = 1;
+    repeated string step = 1;
 };

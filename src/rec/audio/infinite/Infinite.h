@@ -23,11 +23,11 @@ namespace infinite {
 
 template <typename Sample>
 struct SampleBlock {
-  vector<Sample*> samples_;  // Vector of sample pointers, one per channel.
-  int length_;                    // Number of samples in this block.
-  int skip_;                      // Number of samples to skip between frames.
+    vector<Sample*> samples_;  // Vector of sample pointers, one per channel.
+    int length_;                    // Number of samples in this block.
+    int skip_;                      // Number of samples to skip between frames.
 
-  int channels() const { return samples_.size(); }
+    int channels() const { return samples_.size(); }
 };
 
 template <typename Sample> long long getSampleCount();
@@ -61,23 +61,23 @@ template <> long long getSampleCount<int>() { return 0x100000000LL; }
 
 template <typename Sample>
 class Infinite {
- public:
-  Infinite() {}
+  public:
+    Infinite() {}
 
-  // The number of channels of output.  This won't change over the life of the
-  // Infinite, and all SampleBlocks will have this many channels.
-  virtual int channels() const = 0;
+    // The number of channels of output.  This won't change over the life of the
+    // Infinite, and all SampleBlocks will have this many channels.
+    virtual int channels() const = 0;
 
-  // initialize() fills the SampleBlock regardless of its current contents.
-  virtual void initialize(SampleBlock* blocks) const = 0;
+    // initialize() fills the SampleBlock regardless of its current contents.
+    virtual void initialize(SampleBlock* blocks) const = 0;
 
-  // increment() takes the current SampleBlock contents and changes them to the
-  // next SampleBlock state in sequence and returns true IF such a state exists,
-  // otherwise increment() returns false;
-  virtual bool increment(SampleBlock* blocks) const = 0;
+    // increment() takes the current SampleBlock contents and changes them to the
+    // next SampleBlock state in sequence and returns true IF such a state exists,
+    // otherwise increment() returns false;
+    virtual bool increment(SampleBlock* blocks) const = 0;
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Infinite);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Infinite);
 };
 
 }  // namespace infinite

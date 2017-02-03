@@ -10,14 +10,14 @@ namespace widget {
 namespace tree {
 
 class CD : public Directory {
- public:
-  CD(const NodeDesc& d, const VirtualFile& vf) : Directory(d, vf) {}
+  public:
+    CD(const NodeDesc& d, const VirtualFile& vf) : Directory(d, vf) {}
 
-  virtual int minPartition() const { return 100; }
-  virtual void computeChildren();
+    virtual int minPartition() const { return 100; }
+    virtual void computeChildren();
 
- private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CD);
+  private:
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CD);
 };
 
 }  // namespace tree

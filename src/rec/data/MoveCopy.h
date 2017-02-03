@@ -6,12 +6,12 @@ namespace rec {
 namespace data {
 
 VirtualFile move(const VirtualFile&,
-                 const string& dialogName,
-                 const String& dialogTitle);
+                                  const string& dialogName,
+                                  const String& dialogTitle);
 
 VirtualFile copy(const VirtualFile&,
-                 const string& dialogName,
-                 const String& dialogTitle);
+                                  const string& dialogName,
+                                  const String& dialogTitle);
 
 
 }  // namespace data

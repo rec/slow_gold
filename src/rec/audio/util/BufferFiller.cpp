@@ -15,57 +15,57 @@ using namespace rec::widget::waveform;
 static const char* FILENAME = "thumbnail.stream";
 
 BufferFiller::BufferFiller()
-    : thumbnail_(new CachedThumbnail),
-      reader_(makeBufferedReader<short, 2>()),
-      updateBuffer_(2, 1024),
-      updateSource_(reader_->makeSource()) {
-  updateInfo_.buffer = &updateBuffer_;
-  updateInfo_.startSample = 0;
+        : thumbnail_(new CachedThumbnail),
+            reader_(makeBufferedReader<short, 2>()),
+            updateBuffer_(2, 1024),
+            updateSource_(reader_->makeSource()) {
+    updateInfo_.buffer = &updateBuffer_;
+    updateInfo_.startSample = 0;
 }
 
 BufferFiller::~BufferFiller() {}
 
 bool BufferFiller::isFull() const {
-  return reader_->isFull();
+    return reader_->isFull();
 }
 
 AudioThumbnail* BufferFiller::thumbnail() {
-  return thumbnail_->thumbnail();
+    return thumbnail_->thumbnail();
 }
 
 SampleTime BufferFiller::length() const {
-  return reader_->length();
+    return reader_->length();
 }
 
 void BufferFiller::setReader(const VirtualFile& f,
-                                   AudioFormatReader* reader) {
-  Lock l(lock_);
-  DCHECK(reader);
-  DCHECK(reader->lengthInSamples);
-  file_ = getShadowDirectory(f).getChildFile(FILENAME);
-  thumbnail_->read(file_, reader->sampleRate, reader->lengthInSamples);
-  reader_->setReader(reader);
+                                                                      AudioFormatReader* reader) {
+    Lock l(lock_);
+    DCHECK(reader);
+    DCHECK(reader->lengthInSamples);
+    file_ = getShadowDirectory(f).getChildFile(FILENAME);
+    thumbnail_->read(file_, reader->sampleRate, reader->lengthInSamples);
+    reader_->setReader(reader);
 }
 
 SampleRange BufferFiller::fillOnce() {
-  SampleTime pos(reader_->position());
-  int filled = static_cast<int>(reader_->fillNextBlock());
+    SampleTime pos(reader_->position());
+    int filled = static_cast<int>(reader_->fillNextBlock());
 
-  if (filled) {
-    updateInfo_.numSamples = filled;
-    updateBuffer_.setSize(2, filled, false, false, true);
-    updateSource_->setNextReadPosition(pos);
-    updateSource_->getNextAudioBlock(updateInfo_);
-    thumbnail_->addBlock(pos, updateInfo_);
-  } else {
-    thumbnail_->write(file_);
-  }
+    if (filled) {
+        updateInfo_.numSamples = filled;
+        updateBuffer_.setSize(2, filled, false, false, true);
+        updateSource_->setNextReadPosition(pos);
+        updateSource_->getNextAudioBlock(updateInfo_);
+        thumbnail_->addBlock(pos, updateInfo_);
+    } else {
+        thumbnail_->write(file_);
+    }
 
-  return SampleRange(pos, pos + filled);
+    return SampleRange(pos, pos + filled);
 }
 
 void BufferFiller::reset() {
-  reader_->reset();
+    reader_->reset();
 }
 
 }  // namespace util

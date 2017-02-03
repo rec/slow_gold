@@ -8,14 +8,14 @@ namespace rec {
 namespace audio {
 
 TEST(Audio, Convert) {
-  for (int i = -32768; i <= 32767; ++i) {
-    int16 s = i, s2;
-    float f;
-    convertSample(s, &f);
-    convertSample(f, &s2);
+    for (int i = -32768; i <= 32767; ++i) {
+        int16 s = i, s2;
+        float f;
+        convertSample(s, &f);
+        convertSample(f, &s2);
 
-    EXPECT_EQ(s, s2) << i << ", " << s << ", " << s2;
-  }
+        EXPECT_EQ(s, s2) << i << ", " << s << ", " << s2;
+    }
 }
 
 }  // namespace audio

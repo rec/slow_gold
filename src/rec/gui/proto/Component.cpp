@@ -30,86 +30,86 @@ namespace {
 typedef std::unique_ptr<Component> (*ComponentMaker)(const Context&);
 
 ComponentMaker make(const ComponentProto& c) {
-  if (c.has_button())
-    return &makeButton;
+    if (c.has_button())
+        return &makeButton;
 
-  if (c.has_combo_box())
-    return &makeComboBox;
+    if (c.has_combo_box())
+        return &makeComboBox;
 
-  if (c.has_custom())
-    return &makeCustom;
+    if (c.has_custom())
+        return &makeCustom;
 
-  if (c.has_help())
-    return &makeHelp;
+    if (c.has_help())
+        return &makeHelp;
 
-  if (c.has_label())
-    return &makeLabel;
+    if (c.has_label())
+        return &makeLabel;
 
-  if (c.has_layout())
-    return &makeLayoutComp;
+    if (c.has_layout())
+        return &makeLayoutComp;
 
-  if (c.has_level_meter())
-    return &makeLevelMeter;
+    if (c.has_level_meter())
+        return &makeLevelMeter;
 
-  if (c.has_resizer())
-    return &makeSimpleResizer;
+    if (c.has_resizer())
+        return &makeSimpleResizer;
 
-  if (c.has_full_resizer())
-    return &makeResizer;
+    if (c.has_full_resizer())
+        return &makeResizer;
 
-  if (c.has_slider())
-    return &makeSlider;
+    if (c.has_slider())
+        return &makeSlider;
 
-  if (c.has_switcher())
-    return &makeSwitcher;
+    if (c.has_switcher())
+        return &makeSwitcher;
 
-  if (c.has_text())
-    return &makeText;
+    if (c.has_text())
+        return &makeText;
 
-  if (c.has_time())
-    return &makeTime;
+    if (c.has_time())
+        return &makeTime;
 
-  if (c.has_time_dial())
-    return &makeTimeDial;
+    if (c.has_time_dial())
+        return &makeTimeDial;
 
-  if (c.has_toggle_button())
-    return &makeToggleButton;
+    if (c.has_toggle_button())
+        return &makeToggleButton;
 
-  return nullptr;
+    return nullptr;
 }
 
 }  // namespace
 
 std::unique_ptr<Component> makeComponent(const Context& context) {
-  auto& comp = context.component_;
-  std::unique_ptr<Component> component;
-  if (ComponentMaker maker = make(comp)) {
-    component = maker(context);
-    const string* name = &comp.name();
-    if (name->empty())
-      name = &comp.layout();
-    if (name->empty())
-      name = &comp.resizer();
+    auto& comp = context.component_;
+    std::unique_ptr<Component> component;
+    if (ComponentMaker maker = make(comp)) {
+        component = maker(context);
+        const string* name = &comp.name();
+        if (name->empty())
+            name = &comp.layout();
+        if (name->empty())
+            name = &comp.resizer();
 
-    DCHECK(not name->empty()) << comp.ShortDebugString();
-    component->setName(str(*name));
-    Component* c = component.get();
-    if (SettableTooltipClient* tt = dynamic_cast<SettableTooltipClient*>(c))
-      tt->setTooltip(comp.tooltip());
+        DCHECK(not name->empty()) << comp.ShortDebugString();
+        component->setName(str(*name));
+        Component* c = component.get();
+        if (SettableTooltipClient* tt = dynamic_cast<SettableTooltipClient*>(c))
+            tt->setTooltip(comp.tooltip());
 
-    if (Disableable* dc = dynamic_cast<Disableable*>(c)) {
-      dc->addDisableProperties(comp.disabled());
-      program::juceModel()->addComponent(dc);
-      dc->disable(dc->getDisabledFromProperties());
+        if (Disableable* dc = dynamic_cast<Disableable*>(c)) {
+            dc->addDisableProperties(comp.disabled());
+            program::juceModel()->addComponent(dc);
+            dc->disable(dc->getDisabledFromProperties());
+        } else {
+            LOG(DFATAL) << comp.ShortDebugString() << " !!! " << component->getName();
+        }
     } else {
-      LOG(DFATAL) << comp.ShortDebugString() << " !!! " << component->getName();
+        LOG(DFATAL) << "No component in " << comp.ShortDebugString();
     }
-  } else {
-    LOG(DFATAL) << "No component in " << comp.ShortDebugString();
-  }
 
-  DCHECK(component->getName().length()) << comp.ShortDebugString();
-  return std::move(component);
+    DCHECK(component->getName().length()) << comp.ShortDebugString();
+    return std::move(component);
 }
 
 }  // namespace gui

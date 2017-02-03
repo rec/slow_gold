@@ -1,23 +1,23 @@
 package rec.data;
 
 message ValueProto {
-  // These field numbers are the same as the constants in FieldDescriptorProto.
-  optional double double_f = 1;
-  optional float float_f = 2;
-  optional int64 int64_f = 3;
-  optional uint64 uint64_f = 4;
-  optional int32 int32_f = 5;
-  optional fixed64 fixed64_f = 6;
-  optional fixed32 fixed32_f = 7;
-  optional bool bool_f = 8;
-  optional string string_f = 9;
-  optional bytes group_f = 10;
-  optional bytes message_f = 11;
-  optional bytes bytes_f = 12;
-  optional uint32 uint32_f = 13;
-  optional int32 enum_f = 14;
-  optional sfixed32 sfixed32_f = 15;
-  optional sfixed64 sfixed64_f = 16;
-  optional sint32 sint32_f = 17;
-  optional sint64 sint64_f = 18;
+    // These field numbers are the same as the constants in FieldDescriptorProto.
+    optional double double_f = 1;
+    optional float float_f = 2;
+    optional int64 int64_f = 3;
+    optional uint64 uint64_f = 4;
+    optional int32 int32_f = 5;
+    optional fixed64 fixed64_f = 6;
+    optional fixed32 fixed32_f = 7;
+    optional bool bool_f = 8;
+    optional string string_f = 9;
+    optional bytes group_f = 10;
+    optional bytes message_f = 11;
+    optional bytes bytes_f = 12;
+    optional uint32 uint32_f = 13;
+    optional int32 enum_f = 14;
+    optional sfixed32 sfixed32_f = 15;
+    optional sfixed64 sfixed64_f = 16;
+    optional sint32 sint32_f = 17;
+    optional sint64 sint64_f = 18;
 };

@@ -13,50 +13,50 @@ struct NullInterface {};
 
 template <typename Parent, class Interface = FileDragAndDropTarget>
 class DropTarget : public Interface, public Parent {
- public:
-  DropTarget() : draggingOver_(false) {}
-  virtual ~DropTarget() {}
+  public:
+    DropTarget() : draggingOver_(false) {}
+    virtual ~DropTarget() {}
 
-  virtual bool isInterestedInFileDrag(const StringArray& files) {
-    return (files.size() == 1 && file::isAudio(files[0]));
-  }
-
-  virtual void fileDragEnter(const StringArray& files, int, int) {
-    setDraggingOver(isInterestedInFileDrag(files));
-  }
-
-  virtual void fileDragExit(const StringArray&) {
-    setDraggingOver(false);
-  }
-
-  virtual void filesDropped(const StringArray& files, int, int) {
-    setDraggingOver(false);
-    if (isInterestedInFileDrag(files))
-      broadcastState<const VirtualFileList&>(file::toVirtualFileList(files));
-  }
-
-  virtual void paintOverChildren(Graphics& g) {
-    if (draggingOver_) {
-      g.setColour(juce::Colours::greenyellow);
-      g.drawRect(this->getLocalBounds(), 2);
+    virtual bool isInterestedInFileDrag(const StringArray& files) {
+        return (files.size() == 1 && file::isAudio(files[0]));
     }
-  }
 
-  void repaint() { Parent::repaint(); }
-  bool draggingOver() const { return draggingOver_; }
-
- private:
-  void setDraggingOver(bool d) {
-    if (d != draggingOver_) {
-      draggingOver_ = d;
-      repaint();
+    virtual void fileDragEnter(const StringArray& files, int, int) {
+        setDraggingOver(isInterestedInFileDrag(files));
     }
-  }
 
-  bool draggingOver_;
+    virtual void fileDragExit(const StringArray&) {
+        setDraggingOver(false);
+    }
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(DropTarget);
+    virtual void filesDropped(const StringArray& files, int, int) {
+        setDraggingOver(false);
+        if (isInterestedInFileDrag(files))
+            broadcastState<const VirtualFileList&>(file::toVirtualFileList(files));
+    }
+
+    virtual void paintOverChildren(Graphics& g) {
+        if (draggingOver_) {
+            g.setColour(juce::Colours::greenyellow);
+            g.drawRect(this->getLocalBounds(), 2);
+        }
+    }
+
+    void repaint() { Parent::repaint(); }
+    bool draggingOver() const { return draggingOver_; }
+
+  private:
+    void setDraggingOver(bool d) {
+        if (d != draggingOver_) {
+            draggingOver_ = d;
+            repaint();
+        }
+    }
+
+    bool draggingOver_;
+
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(DropTarget);
 };
 
 }  // namespace gui

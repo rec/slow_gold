@@ -9,51 +9,51 @@ namespace callback {
 
 template <typename Type, typename Method, typename Value>
 class Callback1 : public Callback {
- public:
-  Callback1(Type* o, Method m, Value v) : object_(o), method_(m), value_(v) {}
+  public:
+    Callback1(Type* o, Method m, Value v) : object_(o), method_(m), value_(v) {}
 
-  virtual bool operator()() {
-    (object_->*method_)(value_);
-    return true;
-  }
+    virtual bool operator()() {
+        (object_->*method_)(value_);
+        return true;
+    }
 
- private:
-  Type* object_;
-  Method method_;
-  Value value_;
+  private:
+    Type* object_;
+    Method method_;
+    Value value_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback1);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback1);
 };
 
 template <typename Type, typename Method, typename Value>
 class CallbackBool1 : public Callback {
- public:
-  CallbackBool1(Type* o, Method m, Value v)
-      : object_(o), method_(m), value_(v) {
-  }
+  public:
+    CallbackBool1(Type* o, Method m, Value v)
+            : object_(o), method_(m), value_(v) {
+    }
 
-  virtual bool operator()() { return (object_->*method_)(); }
+    virtual bool operator()() { return (object_->*method_)(); }
 
- private:
-  Type* object_;
-  Method method_;
-  Value value_;
+  private:
+    Type* object_;
+    Method method_;
+    Value value_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackBool1);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackBool1);
 };
 
 template <typename Functor, typename Value>
 class CallbackFunc1 : public Callback {
- public:
-  CallbackFunc1(Functor f, Value v) : functor_(f), value_(v) {}
+  public:
+    CallbackFunc1(Functor f, Value v) : functor_(f), value_(v) {}
 
-  virtual bool operator()() { (*functor_)(value_); return true; }
+    virtual bool operator()() { (*functor_)(value_); return true; }
 
- private:
-  Functor functor_;
-  Value value_;
+  private:
+    Functor functor_;
+    Value value_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackFunc1);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackFunc1);
 };
 
 }  // namespace callback

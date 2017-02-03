@@ -9,14 +9,14 @@ namespace callback {
 
 // A generic callback.
 class Callback : public Deletable {
- public:
-  Callback() {}
-  virtual ~Callback() {}
+  public:
+    Callback() {}
+    virtual ~Callback() {}
 
-  virtual bool operator()() = 0;
+    virtual bool operator()() = 0;
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Callback);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Callback);
 };
 
 }  // namespace callback

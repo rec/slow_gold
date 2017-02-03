@@ -1,8 +1,8 @@
 package rec.gui;
 
 message Size {
-  optional string fixed = 1;
-  optional string preferred = 2  [default = "-1.0"];
-  optional string min = 3;
-  optional string max = 4 [default = "-1.0"];
+    optional string fixed = 1;
+    optional string preferred = 2  [default = "-1.0"];
+    optional string min = 3;
+    optional string max = 4 [default = "-1.0"];
 };

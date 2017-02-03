@@ -14,7 +14,7 @@ import rec.audio.source.Stereo_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/audio/stretch/Stretch.proto',
   package='rec.audio.stretch',
-  serialized_pb='\n\x1frec/audio/stretch/Stretch.proto\x12\x11rec.audio.stretch\x1a\x1drec/audio/source/Stereo.proto\"\x89\x05\n\x07Stretch\x12\x41\n\x08strategy\x18\x01 \x01(\x0e\x32#.rec.audio.stretch.Stretch.Strategy:\nRUBBERBAND\x12\x1a\n\x0ctime_enabled\x18\x02 \x01(\x08:\x04true\x12\x1b\n\rpitch_enabled\x18\x03 \x01(\x08:\x04true\x12\x15\n\x07\x65nabled\x18\x14 \x01(\x08:\x04true\x12(\n\x19passthrough_when_disabled\x18\x04 \x01(\x08:\x05\x66\x61lse\x12\x19\n\x0ctime_percent\x18\x06 \x01(\x01:\x03\x31\x30\x30\x12\x1a\n\x0bsample_rate\x18\x07 \x01(\x01:\x05\x34\x34\x31\x30\x30\x12\x13\n\x08\x63hannels\x18\x08 \x01(\r:\x01\x32\x12\x16\n\x0bpitch_scale\x18\t \x01(\x01:\x01\x31\x12\x16\n\x0esemitone_shift\x18\n \x01(\x01\x12\x14\n\x0c\x64\x65tune_cents\x18\x0b \x01(\x01\x12\x13\n\x05\x62\x61nds\x18\x0c \x01(\r:\x04\x32\x30\x34\x38\x12\x19\n\x0e\x66ilter_overlap\x18\r \x01(\r:\x01\x31\x12\x18\n\nchunk_size\x18\x0e \x01(\r:\x04\x31\x30\x32\x34\x12\x1b\n\x0cprefill_size\x18\x0f \x01(\r:\x05\x31\x35\x30\x30\x30\x12$\n\x15next_buffer_fill_size\x18\x10 \x01(\r:\x05\x31\x35\x30\x30\x30\x12\x1e\n\x12inactive_wait_time\x18\x11 \x01(\x05:\x02-1\x12\x1a\n\x0fthread_priority\x18\x12 \x01(\r:\x01\x34\x12\x1f\n\x10max_process_size\x18\x13 \x01(\r:\x05\x31\x36\x33\x36\x34\"E\n\x08Strategy\x12\x08\n\x04NONE\x10\x00\x12\x0f\n\x0b\x41UDIO_MAGIC\x10\x01\x12\x0e\n\nRUBBERBAND\x10\x02\x12\x0e\n\nSOUNDTOUCH\x10\x03\"\x9a\x01\n\x11StretchParameters\x12+\n\x07stretch\x18\x01 \x01(\x0b\x32\x1a.rec.audio.stretch.Stretch\x12\x13\n\x0bmaster_tune\x18\x02 \x01(\x01\x12 \n\x11input_sample_rate\x18\x03 \x01(\x01:\x05\x34\x34\x31\x30\x30\x12!\n\x12output_sample_rate\x18\x04 \x01(\x01:\x05\x34\x34\x31\x30\x30')
+  serialized_pb='\n\x1frec/audio/stretch/Stretch.proto\x12\x11rec.audio.stretch\x1a\x1drec/audio/source/Stereo.proto\"\xf1\x04\n\x07Stretch\x12\x41\n\x08strategy\x18\x01 \x01(\x0e\x32#.rec.audio.stretch.Stretch.Strategy:\nRUBBERBAND\x12\x1a\n\x0ctime_enabled\x18\x02 \x01(\x08:\x04true\x12\x1b\n\rpitch_enabled\x18\x03 \x01(\x08:\x04true\x12\x15\n\x07\x65nabled\x18\x14 \x01(\x08:\x04true\x12(\n\x19passthrough_when_disabled\x18\x04 \x01(\x08:\x05\x66\x61lse\x12\x19\n\x0ctime_percent\x18\x06 \x01(\x01:\x03\x31\x30\x30\x12\x1a\n\x0bsample_rate\x18\x07 \x01(\x01:\x05\x34\x34\x31\x30\x30\x12\x13\n\x08\x63hannels\x18\x08 \x01(\r:\x01\x32\x12\x16\n\x0esemitone_shift\x18\n \x01(\x01\x12\x14\n\x0c\x64\x65tune_cents\x18\x0b \x01(\x01\x12\x13\n\x05\x62\x61nds\x18\x0c \x01(\r:\x04\x32\x30\x34\x38\x12\x19\n\x0e\x66ilter_overlap\x18\r \x01(\r:\x01\x31\x12\x18\n\nchunk_size\x18\x0e \x01(\r:\x04\x31\x30\x32\x34\x12\x1b\n\x0cprefill_size\x18\x0f \x01(\r:\x05\x31\x35\x30\x30\x30\x12$\n\x15next_buffer_fill_size\x18\x10 \x01(\r:\x05\x31\x35\x30\x30\x30\x12\x1e\n\x12inactive_wait_time\x18\x11 \x01(\x05:\x02-1\x12\x1a\n\x0fthread_priority\x18\x12 \x01(\r:\x01\x34\x12\x1f\n\x10max_process_size\x18\x13 \x01(\r:\x05\x31\x36\x33\x36\x34\"E\n\x08Strategy\x12\x08\n\x04NONE\x10\x00\x12\x0f\n\x0b\x41UDIO_MAGIC\x10\x01\x12\x0e\n\nRUBBERBAND\x10\x02\x12\x0e\n\nSOUNDTOUCH\x10\x03\"\x9a\x01\n\x11StretchParameters\x12+\n\x07stretch\x18\x01 \x01(\x0b\x32\x1a.rec.audio.stretch.Stretch\x12\x13\n\x0bmaster_tune\x18\x02 \x01(\x01\x12 \n\x11input_sample_rate\x18\x03 \x01(\x01:\x05\x34\x34\x31\x30\x30\x12!\n\x12output_sample_rate\x18\x04 \x01(\x01:\x05\x34\x34\x31\x30\x30')
 
 
 
@@ -43,8 +43,8 @@ _STRETCH_STRATEGY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=666,
-  serialized_end=735,
+  serialized_start=642,
+  serialized_end=711,
 )
 
 
@@ -112,77 +112,70 @@ _STRETCH = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='pitch_scale', full_name='rec.audio.stretch.Stretch.pitch_scale', index=8,
-      number=9, type=1, cpp_type=5, label=1,
-      has_default_value=True, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='semitone_shift', full_name='rec.audio.stretch.Stretch.semitone_shift', index=9,
+      name='semitone_shift', full_name='rec.audio.stretch.Stretch.semitone_shift', index=8,
       number=10, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='detune_cents', full_name='rec.audio.stretch.Stretch.detune_cents', index=10,
+      name='detune_cents', full_name='rec.audio.stretch.Stretch.detune_cents', index=9,
       number=11, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='bands', full_name='rec.audio.stretch.Stretch.bands', index=11,
+      name='bands', full_name='rec.audio.stretch.Stretch.bands', index=10,
       number=12, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=2048,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='filter_overlap', full_name='rec.audio.stretch.Stretch.filter_overlap', index=12,
+      name='filter_overlap', full_name='rec.audio.stretch.Stretch.filter_overlap', index=11,
       number=13, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='chunk_size', full_name='rec.audio.stretch.Stretch.chunk_size', index=13,
+      name='chunk_size', full_name='rec.audio.stretch.Stretch.chunk_size', index=12,
       number=14, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=1024,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='prefill_size', full_name='rec.audio.stretch.Stretch.prefill_size', index=14,
+      name='prefill_size', full_name='rec.audio.stretch.Stretch.prefill_size', index=13,
       number=15, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=15000,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='next_buffer_fill_size', full_name='rec.audio.stretch.Stretch.next_buffer_fill_size', index=15,
+      name='next_buffer_fill_size', full_name='rec.audio.stretch.Stretch.next_buffer_fill_size', index=14,
       number=16, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=15000,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='inactive_wait_time', full_name='rec.audio.stretch.Stretch.inactive_wait_time', index=16,
+      name='inactive_wait_time', full_name='rec.audio.stretch.Stretch.inactive_wait_time', index=15,
       number=17, type=5, cpp_type=1, label=1,
       has_default_value=True, default_value=-1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='thread_priority', full_name='rec.audio.stretch.Stretch.thread_priority', index=17,
+      name='thread_priority', full_name='rec.audio.stretch.Stretch.thread_priority', index=16,
       number=18, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=4,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='max_process_size', full_name='rec.audio.stretch.Stretch.max_process_size', index=18,
+      name='max_process_size', full_name='rec.audio.stretch.Stretch.max_process_size', index=17,
       number=19, type=13, cpp_type=3, label=1,
       has_default_value=True, default_value=16364,
       message_type=None, enum_type=None, containing_type=None,
@@ -199,7 +192,7 @@ _STRETCH = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=86,
-  serialized_end=735,
+  serialized_end=711,
 )
 
 
@@ -247,8 +240,8 @@ _STRETCHPARAMETERS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=738,
-  serialized_end=892,
+  serialized_start=714,
+  serialized_end=868,
 )
 
 _STRETCH.fields_by_name['strategy'].enum_type = _STRETCH_STRATEGY

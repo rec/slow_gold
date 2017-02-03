@@ -11,20 +11,20 @@ static UndoStack* undoStack() { return data::getDataCenter()->undoStack(); }
 
 // How many commands have been undone?
 int undoes() {
-  return undoStack()->undoes();
+    return undoStack()->undoes();
 }
 
 // How many commands can be undone?
 int undoable() {
-  return undoStack()->undoable();
+    return undoStack()->undoable();
 }
 
 void undo() {
-  undoStack()->undo();
+    undoStack()->undo();
 }
 
 void redo() {
-  undoStack()->redo();
+    undoStack()->redo();
 }
 
 }  // namespace util

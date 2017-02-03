@@ -7,9 +7,9 @@ namespace widget {
 namespace {
 
 TEST(Widget, someMethod) {
-  // Just make sure it compiles.
-  juce::MessageManager::getInstance();
-  status::time::TextComponent widget(status::time::Text());
+    // Just make sure it compiles.
+    juce::MessageManager::getInstance();
+    status::time::TextComponent widget(status::time::Text());
 }
 
 }  // namespace

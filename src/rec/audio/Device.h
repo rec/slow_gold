@@ -7,22 +7,22 @@ namespace rec {
 namespace audio {
 
 class Device : public juce::ChangeListener {
- public:
-  typedef gui::audio::SetupPage SetupPage;
+  public:
+    typedef gui::audio::SetupPage SetupPage;
 
-  Device();
+    Device();
 
-  mutable AudioDeviceManager manager_;
-  std::unique_ptr<SetupPage> setupPage_;
+    mutable AudioDeviceManager manager_;
+    std::unique_ptr<SetupPage> setupPage_;
 
-  void saveState();
-  void shutdown();
+    void saveState();
+    void shutdown();
 
-  virtual void changeListenerCallback(ChangeBroadcaster*);
-  SampleRate getSampleRate() const;
+    virtual void changeListenerCallback(ChangeBroadcaster*);
+    SampleRate getSampleRate() const;
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Device)
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Device)
 };
 
 }  // namespace audio

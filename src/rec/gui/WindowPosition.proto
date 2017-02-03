@@ -3,5 +3,5 @@ package rec.gui;
 import "rec/gui/Geometry.proto";
 
 message WindowPosition {
-  optional string juce_position = 1;
+    optional string juce_position = 1;
 };

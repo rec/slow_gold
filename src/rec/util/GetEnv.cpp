@@ -5,7 +5,7 @@ namespace util {
 
 const char* const EMPTY_ENV_VARIABLE = "NONE";
 String getEnv(const String& name, const String& dflt) {
-  return juce::SystemStats::getEnvironmentVariable(name, dflt);
+    return juce::SystemStats::getEnvironmentVariable(name, dflt);
 }
 
 }  // namespace util

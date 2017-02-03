@@ -16,45 +16,45 @@ namespace status {
 namespace time {
 
 class DialComponent : public Component,
-                      public Disableable,
-                      public StateListener<SampleTime>,
-                      public StateListener<Thread*>,
-                      public DataListener<waveform::Viewport>,
-                      public SettableTooltipClient,
-                      public HasThread {
- public:
-  explicit DialComponent(const Dial& desc);
+                                            public Disableable,
+                                            public StateListener<SampleTime>,
+                                            public StateListener<Thread*>,
+                                            public DataListener<waveform::Viewport>,
+                                            public SettableTooltipClient,
+                                            public HasThread {
+  public:
+    explicit DialComponent(const Dial& desc);
 
-  virtual void operator()(SampleTime t) { setTime(t); }
+    virtual void operator()(SampleTime t) { setTime(t); }
 
-  virtual void paint(juce::Graphics& g);
-  void setTime(SampleTime);
+    virtual void paint(juce::Graphics& g);
+    void setTime(SampleTime);
 
-  static const double PI;
-  static const double REDRAW_ANGLE;
+    static const double PI;
+    static const double REDRAW_ANGLE;
 
- protected:
-  void operator()(Thread* t) override { setThread(t); }
-  void operator()(const waveform::Viewport&) override;
+  protected:
+    void operator()(Thread* t) override { setThread(t); }
+    void operator()(const waveform::Viewport&) override;
 
- private:
-  void recomputeAngle();
-  bool doSetTime(SampleTime);
+  private:
+    void recomputeAngle();
+    bool doSetTime(SampleTime);
 
-  CriticalSection lock_;
-  Dial description_;
+    CriticalSection lock_;
+    Dial description_;
 
-  SampleTime time_;
-  SampleTime length_;
+    SampleTime time_;
+    SampleTime length_;
 
-  double zeroAngle_;
-  double timeAngle_;
-  double timeRatio_;
+    double zeroAngle_;
+    double timeAngle_;
+    double timeRatio_;
 
-  LoopPointList loops_;
-  bool empty_;
+    LoopPointList loops_;
+    bool empty_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DialComponent);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DialComponent);
 };
 
 }  // namespace time

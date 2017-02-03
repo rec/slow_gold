@@ -1,19 +1,19 @@
 package rec.audio;
 
 message AudioSettings {
-  enum FileType {
-    AIFF = 0;
-    FLAC = 1;
-    OGG = 2;
-    WAV = 3;
+    enum FileType {
+        AIFF = 0;
+        FLAC = 1;
+        OGG = 2;
+        WAV = 3;
 
-    COUNT = 4;
-  };
-  optional double master_tune = 1;
-  optional FileType file_type_for_save = 2 [default = WAV];
+        COUNT = 4;
+    };
+    optional double master_tune = 1;
+    optional FileType file_type_for_save = 2 [default = WAV];
 
-  optional double volume_nudge_db = 3 [default = 1.0];
-  optional double speed_nudge_percent = 4 [default = 10.0];
-  optional double time_nudge = 5 [default = 10.0];
-  optional bool autoplay = 6 [default = true];
+    optional double volume_nudge_db = 3 [default = 1.0];
+    optional double speed_nudge_percent = 4 [default = 10.0];
+    optional double time_nudge = 5 [default = 10.0];
+    optional bool autoplay = 6 [default = true];
 };

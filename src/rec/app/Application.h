@@ -7,19 +7,19 @@ namespace app {
 
 template <typename WindowImpl>
 class Application : public GenericApplication {
- public:
-  Application(ApplicationFunction init, ApplicationFunction shutdown)
-      : GenericApplication(init, shutdown) {
-    google::InitGoogleLogging(str(name()).c_str());
+  public:
+    Application(ApplicationFunction init, ApplicationFunction shutdown)
+            : GenericApplication(init, shutdown) {
+        google::InitGoogleLogging(str(name()).c_str());
 #if JUCE_DEBUG && JUCE_MAC
-    FLAGS_logtostderr = true;
+        FLAGS_logtostderr = true;
 #endif
-    LOG(INFO) << "Logging initialized";
-  }
-  virtual Window* createWindow() { return new WindowImpl(this); }
+        LOG(INFO) << "Logging initialized";
+    }
+    virtual Window* createWindow() { return new WindowImpl(this); }
 
- private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Application);
+  private:
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Application);
 };
 
 // START_REC_APPLICATION(CLASS, NAME, VERSION) wraps START_JUCE_APPLICATION.
@@ -30,15 +30,15 @@ class Application : public GenericApplication {
 //
 
 #define REC_APPLICATION_HELPER(CLASS, BASE, INIT, SHUTDOWN)             \
-  struct CLASS : public BASE {                                          \
-    CLASS() : BASE(INIT, SHUTDOWN) {}                                   \
-  };                                                                    \
-  START_JUCE_APPLICATION(CLASS)
+    struct CLASS : public BASE {                                          \
+        CLASS() : BASE(INIT, SHUTDOWN) {}                                   \
+    };                                                                    \
+    START_JUCE_APPLICATION(CLASS)
 
 #define START_REC_APPLICATION(WINDOW_CLASS, NAME, INIT, SHUTDOWN)       \
-  REC_APPLICATION_HELPER(NAME ## Application,                           \
-                         rec::app::Application<WINDOW_CLASS>,           \
-                         INIT, SHUTDOWN)
+    REC_APPLICATION_HELPER(NAME ## Application,                           \
+                                                  rec::app::Application<WINDOW_CLASS>,           \
+                                                  INIT, SHUTDOWN)
 
 }  // namespace app
 }  // namespace rec

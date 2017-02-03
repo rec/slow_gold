@@ -6,7 +6,7 @@ namespace rec {
 namespace data {
 
 bool equals(const Message& x, const Message& y, const Comparer& cmp) {
-  return typer::equals(x, y, cmp);
+    return typer::equals(x, y, cmp);
 }
 
 }  // namespace data

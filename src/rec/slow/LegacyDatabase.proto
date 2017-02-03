@@ -1,33 +1,33 @@
 package rec.slow;
 
 message LegacyLoopPoint {
-  optional uint64 start_time = 1;
-  optional uint64 end_time = 2;
-  optional string comment = 3;
-  optional string chords = 4;
-  optional string lyrics = 5;
-  optional string notation = 6;
+    optional uint64 start_time = 1;
+    optional uint64 end_time = 2;
+    optional string comment = 3;
+    optional string chords = 4;
+    optional string lyrics = 5;
+    optional string notation = 6;
 };
 
 message Track {
-  optional uint32 number = 1;
-  optional string name = 2;
-  optional string artist = 3;
-  optional string comments = 4;
-  optional string notation = 5;
-  optional uint32 last_pitch_change = 6;
-  repeated LegacyLoopPoint loop_point = 7;
+    optional uint32 number = 1;
+    optional string name = 2;
+    optional string artist = 3;
+    optional string comments = 4;
+    optional string notation = 5;
+    optional uint32 last_pitch_change = 6;
+    repeated LegacyLoopPoint loop_point = 7;
 };
 
 message CD {
-  optional uint64 cd_length = 1;
-  optional uint64 track_length = 2;
-  optional uint64 num_tracks = 3;
-  optional string title = 4;
-  optional string artist = 5;
-  repeated Track track = 6;
+    optional uint64 cd_length = 1;
+    optional uint64 track_length = 2;
+    optional uint64 num_tracks = 3;
+    optional string title = 4;
+    optional string artist = 5;
+    repeated Track track = 6;
 };
 
 message LegacyDatabase {
-  repeated CD cd = 1;
+    repeated CD cd = 1;
 };

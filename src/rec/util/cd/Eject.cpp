@@ -7,11 +7,11 @@ namespace cd {
 using juce::AudioCDBurner;
 
 void ejectAll() {
-  StringArray burners = AudioCDBurner::findAvailableDevices();
-  for (int i = 0; i < burners.size(); ++i) {
-    std::unique_ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
-    VLOG(1) << "Burner " << burners[i] << " ejected.";
-  }
+    StringArray burners = AudioCDBurner::findAvailableDevices();
+    for (int i = 0; i < burners.size(); ++i) {
+        std::unique_ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
+        VLOG(1) << "Burner " << burners[i] << " ejected.";
+    }
 }
 
 }  // namespace cd

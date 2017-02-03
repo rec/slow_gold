@@ -7,11 +7,11 @@ namespace rec {
 namespace gui {
 
 class DropFiles {
- public:
-  VirtualFileList files_;
-  Component* target_;
-  DropFiles() {}
-  DropFiles(const VirtualFileList& f, Component* t) : files_(f), target_(t) {}
+  public:
+    VirtualFileList files_;
+    Component* target_;
+    DropFiles() {}
+    DropFiles(const VirtualFileList& f, Component* t) : files_(f), target_(t) {}
 };
 
 }  // namespace gui

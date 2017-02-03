@@ -9,49 +9,49 @@ namespace {
 const char* const ACCEPTANCE = "SLOWGOLD-SUCCESS";
 
 String getTimestamp() {
-  return String(juce::Time::currentTimeMillis());
+    return String(juce::Time::currentTimeMillis());
 }
 
 String getVersion() {
-  return JUCEApplication::getInstance()->getApplicationVersion();
+    return JUCEApplication::getInstance()->getApplicationVersion();
 }
 
 const char* const VARS[] = {
-  "USERNAME",
-  "USERKEY",
+    "USERNAME",
+    "USERKEY",
 };
 
 const app::RegisterProgram::NamedFunction FUNCS[] = {
-  { "timestamp", &getTimestamp },
-  { "program", &getApplicationName },
-  { "version", &getVersion },
+    { "timestamp", &getTimestamp },
+    { "program", &getApplicationName },
+    { "version", &getVersion },
 };
 
 const char* const URLS[] = {
-  "http://woodshedadmin.com/registration/",
+    "http://woodshedadmin.com/registration/",
 };
 
 }  // namespace
 
 RegisterInstance::RegisterInstance() : RegisterProgram("RegisterInstance") {
-  setPriority(4);
+    setPriority(4);
 }
 
 Range<const char* const*> RegisterInstance::getEnvironmentVariables() const {
-  return Range<const char* const*>(VARS, VARS + arraysize(VARS));
+    return Range<const char* const*>(VARS, VARS + arraysize(VARS));
 }
 
 Range<const RegisterInstance::NamedFunction*>
 RegisterInstance::getNamedFunctions() const {
-  return Range<const NamedFunction*>(FUNCS, FUNCS + arraysize(FUNCS));
+    return Range<const NamedFunction*>(FUNCS, FUNCS + arraysize(FUNCS));
 }
 
 StringArray RegisterInstance::getBaseUrls() const {
-  return StringArray(URLS, arraysize(URLS));
+    return StringArray(URLS, arraysize(URLS));
 }
 
 String RegisterInstance::resultMatcher() const {
-  return ACCEPTANCE;
+    return ACCEPTANCE;
 }
 
 }  // namespace app

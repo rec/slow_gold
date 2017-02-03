@@ -9,43 +9,43 @@ namespace app {
 //static const int SLEEP_AFTER_STARTUP = 0;
 
 Window::Window(GenericApplication* application,
-               const String& name,
-               const Colour& bg,
-               int requiredButtons,
-               bool addToDesktop)
-    : PersistentWindow(name, bg, requiredButtons, addToDesktop),
-      application_(application) {
+                              const String& name,
+                              const Colour& bg,
+                              int requiredButtons,
+                              bool addToDesktop)
+        : PersistentWindow(name, bg, requiredButtons, addToDesktop),
+            application_(application) {
 }
 
 void Window::initialise() {
-  constructInstance();
+    constructInstance();
 
 #if JUCE_MAC
-  juce::MenuBarModel::setMacMainMenu(program::juceModel(), &menu_);
-  setMenuBar(nullptr);
+    juce::MenuBarModel::setMacMainMenu(program::juceModel(), &menu_);
+    setMenuBar(nullptr);
 #else
-  setMenuBar(program::juceModel());
+    setMenuBar(program::juceModel());
 #endif
 
-  setUsingNativeTitleBar(true);
-  setContentOwned(getMainComponent(), false);
+    setUsingNativeTitleBar(true);
+    setContentOwned(getMainComponent(), false);
 }
 
 Window::~Window() {}
 
 void Window::startup() {
-  doStartup();
-  GuiWriteable::setWriteableAll(true);
+    doStartup();
+    GuiWriteable::setWriteableAll(true);
 }
 
 void Window::shutdown() {
-  GuiWriteable::setWriteableAll(false);
+    GuiWriteable::setWriteableAll(false);
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
-    // Why isn't this in GenericApplication?
-  MenuBarModel::setMacMainMenu(nullptr);
+        // Why isn't this in GenericApplication?
+    MenuBarModel::setMacMainMenu(nullptr);
 #endif
-  setMenuBar(nullptr);
-  doShutdown();
+    setMenuBar(nullptr);
+    doShutdown();
 }
 
 }  // namespace app

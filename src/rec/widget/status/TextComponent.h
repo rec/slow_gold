@@ -18,37 +18,37 @@ namespace status {
 namespace time {
 
 class TextComponent : public gui::SimpleLabel,
-                      public app::LanguageListener,
-                      public DataListener<waveform::Viewport>,
-                      public StateListener<SampleTime>,
-                      public StateListener<Thread*>,
-                      public HasThread {
- public:
-  explicit TextComponent(const Text& desc = Text::default_instance());
-  virtual void operator()(SampleTime time) { setTime(time); }
+                                            public app::LanguageListener,
+                                            public DataListener<waveform::Viewport>,
+                                            public StateListener<SampleTime>,
+                                            public StateListener<Thread*>,
+                                            public HasThread {
+  public:
+    explicit TextComponent(const Text& desc = Text::default_instance());
+    virtual void operator()(SampleTime time) { setTime(time); }
 
-  SampleTime getTime() const;
-  void setTime(SampleTime time);
-  void setLength(SampleTime len) { length_ = len; }
-  void languageChanged() override;
+    SampleTime getTime() const;
+    void setTime(SampleTime time);
+    void setLength(SampleTime len) { length_ = len; }
+    void languageChanged() override;
 
- protected:
-  void operator()(const waveform::Viewport&) override;
-  void operator()(Thread* t) override { setThread(t); }
-  bool doSetTime(SampleTime time);
-  void redisplay();
+  protected:
+    void operator()(const waveform::Viewport&) override;
+    void operator()(Thread* t) override { setThread(t); }
+    bool doSetTime(SampleTime time);
+    void redisplay();
 
- private:
-  Text description_;
-  SampleTime time_;
-  String timeDisplay_;
-  SampleTime length_;
-  SampleRate sampleRate_;
-  bool empty_;
+  private:
+    Text description_;
+    SampleTime time_;
+    String timeDisplay_;
+    SampleTime length_;
+    SampleRate sampleRate_;
+    bool empty_;
 
-  CriticalSection lock_;
+    CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);
 };
 
 }  // namespace time

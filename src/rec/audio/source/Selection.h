@@ -10,31 +10,31 @@ namespace audio {
 namespace source {
 
 class Selection : public Wrappy {
- public:
-  Selection(PositionableAudioSource* source) : Wrappy(source) {}
+  public:
+    Selection(PositionableAudioSource* source) : Wrappy(source) {}
 
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
+    virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
-  virtual bool isLooping() const { return true; }
-  virtual void setLooping(bool looping) { DCHECK(looping); }
+    virtual bool isLooping() const { return true; }
+    virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  virtual void setSelection(const SampleRangeVector& s) {
-    Lock l(lock_);
-    selection_ = s;
-  }
+    virtual void setSelection(const SampleRangeVector& s) {
+        Lock l(lock_);
+        selection_ = s;
+    }
 
-  const SampleRangeVector selection() const {
-    Lock l(lock_);
-    return selection_;
-  }
+    const SampleRangeVector selection() const {
+        Lock l(lock_);
+        return selection_;
+    }
 
-  virtual int64 getTotalLength() const;
-  virtual int64 getCorrectTotalLength() const;
+    virtual int64 getTotalLength() const;
+    virtual int64 getCorrectTotalLength() const;
 
- private:
-  SampleRangeVector selection_;
+  private:
+    SampleRangeVector selection_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
 };
 
 }  // namespace source

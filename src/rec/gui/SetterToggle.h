@@ -10,44 +10,44 @@ namespace rec {
 namespace gui {
 
 class SetterToggle : public app::LanguageListener,
-                     public Disableable,
-                     public data::AddressListener,
-                     public juce::ToggleButton {
- public:
-  typedef data::AddressProto::Scope Scope;
+                                          public Disableable,
+                                          public data::AddressListener,
+                                          public juce::ToggleButton {
+  public:
+    typedef data::AddressProto::Scope Scope;
 
-  SetterToggle(const string& name,
-               const string& tooltip,
-               const data::Address& a)
-      : AddressListener(a),
-        juce::ToggleButton(str(name)),
-        name_(name),
-        tooltip_(tooltip) {
-  }
+    SetterToggle(const string& name,
+                              const string& tooltip,
+                              const data::Address& a)
+            : AddressListener(a),
+                juce::ToggleButton(str(name)),
+                name_(name),
+                tooltip_(tooltip) {
+    }
 
-  virtual void clicked() {
-    setValue(getToggleState());
-  }
+    virtual void clicked() {
+        setValue(getToggleState());
+    }
 
-  virtual void languageChanged() {
-    setName(Trans(name_));
-    setTooltip(Trans(tooltip_));
-  }
+    virtual void languageChanged() {
+        setName(Trans(name_));
+        setTooltip(Trans(tooltip_));
+    }
 
- protected:
-  void setToggle(bool state) {
-    setToggleState(state, juce::dontSendNotification);
-  }
+  protected:
+    void setToggle(bool state) {
+        setToggleState(state, juce::dontSendNotification);
+    }
 
-  virtual void operator()(const data::Value& v) {
-    setToggle(v.bool_f());
-  }
+    virtual void operator()(const data::Value& v) {
+        setToggle(v.bool_f());
+    }
 
- private:
-  string name_;
-  string tooltip_;
+  private:
+    string name_;
+    string tooltip_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterToggle);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterToggle);
 };
 
 }  // namespace gui

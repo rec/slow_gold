@@ -8,19 +8,19 @@ namespace rec {
 namespace app {
 
 class RegisterInstance : public app::RegisterProgram {
- public:
-  RegisterInstance();
+  public:
+    RegisterInstance();
 
-  virtual Range<const char* const*> getEnvironmentVariables() const;
-  virtual Range<const NamedFunction*> getNamedFunctions() const;
-  virtual String resultMatcher() const;
+    virtual Range<const char* const*> getEnvironmentVariables() const;
+    virtual Range<const NamedFunction*> getNamedFunctions() const;
+    virtual String resultMatcher() const;
 
-  virtual StringArray getBaseUrls() const;
+    virtual StringArray getBaseUrls() const;
 
-  virtual int timeOut() const { return SOCKET_TIMEOUT_MS; }
+    virtual int timeOut() const { return SOCKET_TIMEOUT_MS; }
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterInstance);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterInstance);
 };
 
 }  // namespace app

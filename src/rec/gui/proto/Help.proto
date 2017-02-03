@@ -3,7 +3,7 @@ package rec.gui;
 import "rec/gui/proto/Size.proto";
 
 message HelpProto {
-  optional Size caption_size = 1;
-  optional Size body_size = 2;
+    optional Size caption_size = 1;
+    optional Size body_size = 2;
 };
 

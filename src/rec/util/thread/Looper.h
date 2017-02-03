@@ -7,28 +7,28 @@ namespace util {
 namespace thread {
 
 class Looper : public Thread {
- public:
-  typedef int32 (*Function)(Thread*);
+  public:
+    typedef int32 (*Function)(Thread*);
 
-  explicit Looper(const string& name, Function f, uint32 period)
-      : Thread(str(name)), function_(f), period_(period) {
-  }
-
-  void run() override {
-    while (!threadShouldExit()) {
-      int32 r = function_(this);
-      switch (r) {
-        case thread::CONTINUE:  wait(period_); break;
-        case thread::YIELD:     yield(); break;
-        case thread::DONE:      return;
-        default:                wait(static_cast<int>(r)); break;
-      }
+    explicit Looper(const string& name, Function f, uint32 period)
+            : Thread(str(name)), function_(f), period_(period) {
     }
-  }
 
- private:
-  Function const function_;
-  int32 const period_;
+    void run() override {
+        while (!threadShouldExit()) {
+            int32 r = function_(this);
+            switch (r) {
+                case thread::CONTINUE:  wait(period_); break;
+                case thread::YIELD:     yield(); break;
+                case thread::DONE:      return;
+                default:                wait(static_cast<int>(r)); break;
+            }
+        }
+    }
+
+  private:
+    Function const function_;
+    int32 const period_;
 };
 
 

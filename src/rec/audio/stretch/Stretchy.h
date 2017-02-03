@@ -14,27 +14,27 @@ class StretchParameters;
 class Implementation;
 
 class Stretchy : public source::Wrappy {
- public:
-  explicit Stretchy(Source*);
-  Stretchy(Source*, const Stretchy&);
+  public:
+    explicit Stretchy(Source*);
+    Stretchy(Source*, const Stretchy&);
 
-  void init(SampleRate);
+    void init(SampleRate);
 
-  ~Stretchy();
+    ~Stretchy();
 
-  virtual int64 getTotalLength() const;
-  virtual void setNextReadPosition(int64);
-  virtual int64 getNextReadPosition() const;
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
+    virtual int64 getTotalLength() const;
+    virtual void setNextReadPosition(int64);
+    virtual int64 getNextReadPosition() const;
+    virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
-  Implementation* implementation() { return implementation_.get(); }
+    Implementation* implementation() { return implementation_.get(); }
 
- private:
-  double timeScale() const;
-  int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
-  std::unique_ptr<Implementation> implementation_;
+  private:
+    double timeScale() const;
+    int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
+    std::unique_ptr<Implementation> implementation_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };
 
 }  // namespace stretch

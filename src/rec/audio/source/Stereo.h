@@ -8,19 +8,19 @@ namespace audio {
 namespace source {
 
 class Stereo : public Wrappy {
- public:
-  Stereo(PositionableAudioSource* source,
-         const StereoProto& desc = StereoProto::default_instance());
+  public:
+    Stereo(PositionableAudioSource* source,
+                  const StereoProto& desc = StereoProto::default_instance());
 
-  void setStereo(const StereoProto&);
-  StereoProto getStereo() const;
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
+    void setStereo(const StereoProto&);
+    StereoProto getStereo() const;
+    virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
- private:
-  StereoProto desc_;
-  CriticalSection lock_;
+  private:
+    StereoProto desc_;
+    CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Stereo);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Stereo);
 };
 
 void fixStereo(StereoProto*);

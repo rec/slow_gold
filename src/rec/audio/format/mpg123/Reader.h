@@ -13,28 +13,28 @@ namespace format {
 namespace mpg123 {
 
 class Reader : public juce::AudioFormatReader {
- public:
-  ~Reader();
+  public:
+    ~Reader();
 
-  virtual bool readSamples(int** destSamples,
-                           int numDestChannels,
-                           int startOffsetInDestBuffer,
-                           int64 startSampleInFile,
-                           int numSamples);
+    virtual bool readSamples(int** destSamples,
+                                                      int numDestChannels,
+                                                      int startOffsetInDestBuffer,
+                                                      int64 startSampleInFile,
+                                                      int numSamples);
 
- private:
-  Reader(juce::InputStream* in, const String& name, mpg123_handle* mh,
-         Copier copier);
+  private:
+    Reader(juce::InputStream* in, const String& name, mpg123_handle* mh,
+                  Copier copier);
 
-  friend Error createReader(juce::InputStream*, juce::AudioFormatReader**,
-                            OutputFormat*, OutputFormat*);
+    friend Error createReader(juce::InputStream*, juce::AudioFormatReader**,
+                                                        OutputFormat*, OutputFormat*);
 
-  mpg123_handle* mh_;
-  uchar* buffer_;
-  int64 size_, allocated_;
-  Copier copier_;
+    mpg123_handle* mh_;
+    uchar* buffer_;
+    int64 size_, allocated_;
+    Copier copier_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Reader);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Reader);
 };
 
 }  // namespace mpg123

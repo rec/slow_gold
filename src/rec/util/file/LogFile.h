@@ -10,28 +10,28 @@ class InputImpl;
 class OutputImpl;
 
 class Input {
- public:
-  explicit Input(const File&, copy::Style s = copy::DEFAULT_STYLE);
-  ~Input();
+  public:
+    explicit Input(const File&, copy::Style s = copy::DEFAULT_STYLE);
+    ~Input();
 
-  bool read(Message*);
+    bool read(Message*);
 
- private:
-  std::unique_ptr<InputImpl> impl_;
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Input);
+  private:
+    std::unique_ptr<InputImpl> impl_;
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Input);
 };
 
 class Output {
- public:
-  explicit Output(const File&, copy::Style s = copy::DEFAULT_STYLE);
-  ~Output();
+  public:
+    explicit Output(const File&, copy::Style s = copy::DEFAULT_STYLE);
+    ~Output();
 
-  void write(const Message&);
-  void flush();
+    void write(const Message&);
+    void flush();
 
- private:
-  std::unique_ptr<OutputImpl> impl_;
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Output);
+  private:
+    std::unique_ptr<OutputImpl> impl_;
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Output);
 };
 
 }  // namespace file

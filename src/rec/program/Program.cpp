@@ -6,12 +6,12 @@ namespace program {
 static Program* PROGRAM = nullptr;
 
 void registerProgram(Program* program) {
-  CHECK(not (PROGRAM and program)) << "Only one Program per program.";
-  PROGRAM = program;
+    CHECK(not (PROGRAM and program)) << "Only one Program per program.";
+    PROGRAM = program;
 }
 
 Program* getProgram() {
-  return PROGRAM;
+    return PROGRAM;
 }
 
 }  // namespace program

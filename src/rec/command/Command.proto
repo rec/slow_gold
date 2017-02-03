@@ -3,77 +3,77 @@ package rec.command;
 import "rec/data/proto/Address.proto";
 
 message Description {
-  optional string name = 1;
-  repeated string menu = 2;  // Menu descriptions, which might cycle.
-  repeated string full = 3;  // Longer description, when editing.
-  optional string help = 4;  // Full help text for the command.
+    optional string name = 1;
+    repeated string menu = 2;  // Menu descriptions, which might cycle.
+    repeated string full = 3;  // Longer description, when editing.
+    optional string help = 4;  // Full help text for the command.
 };
 
 // A list of commands that the user can issue.
 message Command {
-  enum Id {
-    NONE = 0;
+    enum Id {
+        NONE = 0;
 
-    // Pre-defined by Juce.
-    QUIT = 0x1001;
-    DEL = 0x1002;
-    CUT = 0x1003;
-    COPY = 0x1004;
-    PASTE = 0x1005;
-    SELECT_ALL = 0x1006;
-    DESELECT_ALL = 0x1007;
+        // Pre-defined by Juce.
+        QUIT = 0x1001;
+        DEL = 0x1002;
+        CUT = 0x1003;
+        COPY = 0x1004;
+        PASTE = 0x1005;
+        SELECT_ALL = 0x1006;
+        DESELECT_ALL = 0x1007;
 
-    JUCE_START = 0x1000;
-    JUCE_END = 0x1008;
+        JUCE_START = 0x1000;
+        JUCE_END = 0x1008;
 
-    BANK_SIZE = 10000;
-  };
+        BANK_SIZE = 10000;
+    };
 
-  enum Index {
-    FIRST = 0;
-    PREVIOUS = 1;
-    CURRENT = 2;
-    NEXT = 3;
-    LAST = 4;
-  };
+    enum Index {
+        FIRST = 0;
+        PREVIOUS = 1;
+        CURRENT = 2;
+        NEXT = 3;
+        LAST = 4;
+    };
 
-  enum SetterType {
-    TOGGLE = 0;
-    SELECTION = 1;
-  };
+    enum SetterType {
+        TOGGLE = 0;
+        SELECTION = 1;
+    };
 
-  optional uint32 id = 1;
-  optional string id_string = 15;  // For serializing ids.
-  optional sint32 index = 2;  // For repeating commands.
+    optional uint32 id = 1;
+    optional string id_string = 15;  // For serializing ids.
+    optional sint32 index = 2;  // For repeating commands.
 
-  optional string category = 3;  // English language name of the JUCE category.
-  optional string submenu_name = 4;  // Name of this item if it's a submenu.
-  repeated uint32 submenu_separator = 14;  // Index of separator locations.
+    optional string category = 3;  // English language name of the JUCE category.
+    optional string submenu_name = 4;  // Name of this item if it's a submenu.
+    repeated uint32 submenu_separator = 14;  // Index of separator locations.
 
-  optional Description desc = 5;  // Localized descriptions.
-  repeated string keypress = 6;   // In Juce keyboard format.
-  optional uint32 flags = 7;
+    optional Description desc = 5;  // Localized descriptions.
+    repeated string keypress = 6;   // In Juce keyboard format.
+    optional uint32 flags = 7;
 
-  // If the purpose of this command is just to set a flag, this is the name
-  // of that flag setting.
-  optional string setter = 8;
-  optional SetterType setter_type = 16;
+    // If the purpose of this command is just to set a flag, this is the name
+    // of that flag setting.
+    optional string setter = 8;
+    optional SetterType setter_type = 16;
 
-  // Number of commands represented by this one command.
-  optional uint32 size = 9;
+    // Number of commands represented by this one command.
+    optional uint32 size = 9;
 
-  // The name of a function that actually makes the menu name given the Menu
-  // entry information.
-  optional bool callout = 10;
+    // The name of a function that actually makes the menu name given the Menu
+    // entry information.
+    optional bool callout = 10;
 
-  // Each string in 'hidden', 'disabled' or 'checked' names a condition.  If any
-  // of these conditions is true, the menu item is hidden, checked or disabled.
-  // The application itself defines what those conditions are.
-  repeated string hidden = 11;  // TODO: implement!
-  repeated string disabled = 12;
-  repeated string ticked = 13;
+    // Each string in 'hidden', 'disabled' or 'checked' names a condition.  If any
+    // of these conditions is true, the menu item is hidden, checked or disabled.
+    // The application itself defines what those conditions are.
+    repeated string hidden = 11;  // TODO: implement!
+    repeated string disabled = 12;
+    repeated string ticked = 13;
 };
 
 message Commands {
-  repeated Command command = 1;
+    repeated Command command = 1;
 };

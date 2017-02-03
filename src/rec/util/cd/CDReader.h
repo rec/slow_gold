@@ -20,7 +20,7 @@ namespace cd {
 // such CD exists in a CD drive.  If error is non-nullptr and there is an error,
 // store the error message into the string.
 AudioCDReader* getAudioCDReader(const String& cdKey,
-                                String* error = nullptr);
+                                                                String* error = nullptr);
 
 // Return a new AudioFormatReader for an audio cd track by audio track index.
 AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track);

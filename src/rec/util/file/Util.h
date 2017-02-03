@@ -13,7 +13,7 @@ bool isAudioOrDirectory(const File& file);
 typedef bool Filter(const File& file);
 
 bool sortedChildren(const File& f, juce::Array<File>* files,
-                    Filter* filter = &isAudioOrDirectory);
+                                        Filter* filter = &isAudioOrDirectory);
 
 void eraseVolumePrefix(string* name, bool diskToo = true);
 

@@ -28,69 +28,69 @@ class StereoProto;
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be nullptr if no stretch has been requested.
 class Player : public DataListener<AudioSettings>,
-               public DataListener<Gain>,
-               public DataListener<PlayState>,
-               public DataListener<StereoProto>,
-               public DataListener<stretch::Stretch>,
-               public DataListener<widget::waveform::Viewport>,
-               public Listener<SampleRate>,
-               public juce::ChangeListener {
- public:
-  Player(Device* d);
+                              public DataListener<Gain>,
+                              public DataListener<PlayState>,
+                              public DataListener<StereoProto>,
+                              public DataListener<stretch::Stretch>,
+                              public DataListener<widget::waveform::Viewport>,
+                              public Listener<SampleRate>,
+                              public juce::ChangeListener {
+  public:
+    Player(Device* d);
 
-  void init();
-  virtual ~Player();
+    void init();
+    virtual ~Player();
 
-  void setState(transport::State state);
+    void setState(transport::State state);
 
-  void broadcastTransportState();
-  void toggle() { setState(invert(state())); }
-  void start() { setState(transport::RUNNING); }
+    void broadcastTransportState();
+    void toggle() { setState(invert(state())); }
+    void start() { setState(transport::RUNNING); }
 
-  void setNextReadPosition(const SampleTime&);
-  SampleTime getNextReadPosition();
-  SampleTime getTime() { return getNextReadPosition(); }
+    void setNextReadPosition(const SampleTime&);
+    SampleTime getNextReadPosition();
+    SampleTime getTime() { return getNextReadPosition(); }
 
-  transport::State state() const;
-  Device* device() { return device_; }
-  Level* level() { return &level_; }
-  Timer* timer() { return timer_; }
-  stretch::Stretchy* stretchy() { return stretchy_; }
+    transport::State state() const;
+    Device* device() { return device_; }
+    Level* level() { return &level_; }
+    Timer* timer() { return timer_; }
+    stretch::Stretchy* stretchy() { return stretchy_; }
 
-  Source* makeSourceCopy(Source* s, bool useSelection);
+    Source* makeSourceCopy(Source* s, bool useSelection);
 
-  void changeListenerCallback(ChangeBroadcaster*) override;
-  void operator()(SampleRate outputSampleRate) override;
-  void operator()(const AudioSettings&) override;
-  void operator()(const Gain&) override;
-  void operator()(const PlayState& s) override;
-  void operator()(const StereoProto&) override;
-  void operator()(const stretch::Stretch&) override;
-  void operator()(const widget::waveform::Viewport&) override;
+    void changeListenerCallback(ChangeBroadcaster*) override;
+    void operator()(SampleRate outputSampleRate) override;
+    void operator()(const AudioSettings&) override;
+    void operator()(const Gain&) override;
+    void operator()(const PlayState& s) override;
+    void operator()(const StereoProto&) override;
+    void operator()(const stretch::Stretch&) override;
+    void operator()(const widget::waveform::Viewport&) override;
 
-  void setGain(double);
-  void setSource(Source*);
+    void setGain(double);
+    void setSource(Source*);
 
-  // Stop the player and reset the position to 0.
-  void reset();
+    // Stop the player and reset the position to 0.
+    void reset();
 
-  SampleTime getSelectionLength() const;
-  void setInputSampleRate(SampleRate);
+    SampleTime getSelectionLength() const;
+    void setInputSampleRate(SampleRate);
 
- private:
-  CriticalSection lock_;
+  private:
+    CriticalSection lock_;
 
-  AudioTransportSource transportSource_;
-  AudioSourcePlayer player_;
-  Device* device_;
+    AudioTransportSource transportSource_;
+    AudioSourcePlayer player_;
+    Device* device_;
 
-  Timer* timer_;
-  Selection* selection_;
-  stretch::Stretchy* stretchy_;
-  Stereo* stereo_;
-  Level level_;
+    Timer* timer_;
+    Selection* selection_;
+    stretch::Stretchy* stretchy_;
+    Stereo* stereo_;
+    Level level_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Player);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Player);
 };
 
 }  // namespace source

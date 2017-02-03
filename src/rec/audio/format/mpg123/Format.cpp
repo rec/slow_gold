@@ -12,23 +12,23 @@ Format::Format() : AudioFormat(getTranslatedName(), getMp3FileExtensions()) {}
 Format::~Format() {}
 
 AudioFormatReader* Format::createReaderFor(InputStream* sourceStream,
-                                           bool deleteStreamIfOpeningFails) {
-  AudioFormatReader* reader = nullptr;
-  if (Error e = createReader(sourceStream, &reader)) {
-    std::cerr << "mpg123 create error:" << mpg123_plain_strerror(e) << "\n";
-    if (deleteStreamIfOpeningFails)
-      delete sourceStream;
-  }
+                                                                                      bool deleteStreamIfOpeningFails) {
+    AudioFormatReader* reader = nullptr;
+    if (Error e = createReader(sourceStream, &reader)) {
+        std::cerr << "mpg123 create error:" << mpg123_plain_strerror(e) << "\n";
+        if (deleteStreamIfOpeningFails)
+            delete sourceStream;
+    }
 
-  return reader;
+    return reader;
 }
 
 Array<int> Format::getPossibleSampleRates() {
-  return getSampleRates();
+    return getSampleRates();
 }
 
 Array<int> Format::getPossibleBitDepths() {
-  return getBitDepths();
+    return getBitDepths();
 }
 
 }  // namespace mpg123

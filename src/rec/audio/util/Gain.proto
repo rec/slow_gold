@@ -1,12 +1,12 @@
 package rec.audio;
 
 message Gain {
-  optional double level = 1 [default = 1.0];  // Amplitude ratio.
-  optional double gain = 5 [default = 0.0];  // In decibels.
-  optional bool mute = 2;
-  optional bool dim = 3;
-  optional double dim_level = 4 [default = 0.2];  // Amplitude ratio.
+    optional double level = 1 [default = 1.0];  // Amplitude ratio.
+    optional double gain = 5 [default = 0.0];  // In decibels.
+    optional bool mute = 2;
+    optional bool dim = 3;
+    optional double dim_level = 4 [default = 0.2];  // Amplitude ratio.
 
-  // Do we display levels before or after the gain fader?
-  optional bool prefader_levels = 6;
+    // Do we display levels before or after the gain fader?
+    optional bool prefader_levels = 6;
 };

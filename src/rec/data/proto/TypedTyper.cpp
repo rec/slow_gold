@@ -14,54 +14,54 @@ namespace typer {
 // the protocol buffer classes uses for that type, but unfortunately we need it
 // lower case, upper case, and capitalized, thus LOWER, UPPER and CAP.
 #define METHODS_COMMON_TO_ALL(TYPE, LOWER, UPPER)                       \
-  template <> void TypedTyper<TYPE>::Clear() {                          \
-    ref().ClearField(msg_, field_);                                     \
-  }                                                                     \
-                                                                        \
-  template <> const FieldDescriptor::Type TypedTyper<TYPE>::TYPE_INDEX  \
-    = FieldDescriptor::TYPE_ ## UPPER;                                  \
-                                                                        \
-  template <> TYPE TypedTyper<TYPE>::copy(const Value& v) {             \
-    return v.LOWER ## _f();                                             \
-  }                                                                     \
-                                                                        \
-  template <> void TypedTyper<TYPE>::copy(TYPE t, ValueProto* v) {      \
-    v->set_ ## LOWER ## _f(t);                                          \
-  }                                                                     \
-                                                                        \
+    template <> void TypedTyper<TYPE>::Clear() {                          \
+        ref().ClearField(msg_, field_);                                     \
+    }                                                                     \
+                                                                                                                                                \
+    template <> const FieldDescriptor::Type TypedTyper<TYPE>::TYPE_INDEX  \
+        = FieldDescriptor::TYPE_ ## UPPER;                                  \
+                                                                                                                                                \
+    template <> TYPE TypedTyper<TYPE>::copy(const Value& v) {             \
+        return v.LOWER ## _f();                                             \
+    }                                                                     \
+                                                                                                                                                \
+    template <> void TypedTyper<TYPE>::copy(TYPE t, ValueProto* v) {      \
+        v->set_ ## LOWER ## _f(t);                                          \
+    }                                                                     \
+                                                                                                                                                \
 
 
 #define METHODS_COMMON_TO_MOST(TYPE, CAP)                               \
-  template <> void TypedTyper<TYPE>::Add(TYPE t) {                      \
-    ref().Add ## CAP(msg_, field_, t);                                  \
-  }                                                                     \
-                                                                        \
-  template <> TYPE TypedTyper<TYPE>::Get() const {                      \
-    return ref().Get ## CAP(*msg_, field_);                             \
-  }                                                                     \
-                                                                        \
-  template <> TYPE TypedTyper<TYPE>::GetRepeated(uint32 i) const {      \
-    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))        \
-      return ref().GetRepeated ## CAP(*msg_, field_, i);                \
-    LOG(DFATAL) << "Index " << i << " out of bounds for type " << #TYPE; \
-    return TYPE();                                                      \
-  }                                                                     \
-                                                                        \
-  template <> void TypedTyper<TYPE>::Set(TYPE t) {                      \
-    ref().Set ## CAP(msg_, field_, t);                                  \
-  }                                                                     \
-                                                                        \
-  template <> void TypedTyper<TYPE>::SetRepeated(uint32 i, TYPE t) {    \
-    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))        \
-      ref().SetRepeated ## CAP(msg_, field_, i, t);                     \
-    else                                                                \
-      LOG(DFATAL) << "Index " << i << " out of bounds for type " << #TYPE; \
-  }                                                                     \
-                                                                        \
+    template <> void TypedTyper<TYPE>::Add(TYPE t) {                      \
+        ref().Add ## CAP(msg_, field_, t);                                  \
+    }                                                                     \
+                                                                                                                                                \
+    template <> TYPE TypedTyper<TYPE>::Get() const {                      \
+        return ref().Get ## CAP(*msg_, field_);                             \
+    }                                                                     \
+                                                                                                                                                \
+    template <> TYPE TypedTyper<TYPE>::GetRepeated(uint32 i) const {      \
+        if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))        \
+            return ref().GetRepeated ## CAP(*msg_, field_, i);                \
+        LOG(DFATAL) << "Index " << i << " out of bounds for type " << #TYPE; \
+        return TYPE();                                                      \
+    }                                                                     \
+                                                                                                                                                \
+    template <> void TypedTyper<TYPE>::Set(TYPE t) {                      \
+        ref().Set ## CAP(msg_, field_, t);                                  \
+    }                                                                     \
+                                                                                                                                                \
+    template <> void TypedTyper<TYPE>::SetRepeated(uint32 i, TYPE t) {    \
+        if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))        \
+            ref().SetRepeated ## CAP(msg_, field_, i, t);                     \
+        else                                                                \
+            LOG(DFATAL) << "Index " << i << " out of bounds for type " << #TYPE; \
+    }                                                                     \
+                                                                                                                                                \
 
 #define SIMPLE_INSTANTIATION(TYPE, CAP, UPPER) \
-  METHODS_COMMON_TO_ALL(TYPE, TYPE, UPPER)     \
-  METHODS_COMMON_TO_MOST(TYPE, CAP)            \
+    METHODS_COMMON_TO_ALL(TYPE, TYPE, UPPER)     \
+    METHODS_COMMON_TO_MOST(TYPE, CAP)            \
 
 #undef TYPE_BOOL
 
@@ -86,89 +86,89 @@ METHODS_COMMON_TO_ALL(penum, enum, ENUM)
 
 template <>
 pmessage TypedTyper<pmessage>::Get() const {
-  pmessage p;
-  copy::copy(field_ ? ref().GetMessage(*msg_, field_) : *msg_, &p.value_);
-  return p;
+    pmessage p;
+    copy::copy(field_ ? ref().GetMessage(*msg_, field_) : *msg_, &p.value_);
+    return p;
 }
 
 template <>
 pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
-  pmessage p;
-  if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
-    copy::copy(field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_,
-               &p.value_);
-  } else {
-    LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage: "
-               << msg_->ShortDebugString();
-  }
-  return p;
+    pmessage p;
+    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
+        copy::copy(field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_,
+                              &p.value_);
+    } else {
+        LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage: "
+                              << msg_->ShortDebugString();
+    }
+    return p;
 }
 
 template <>
 void TypedTyper<pmessage>::Set(pmessage t) {
-  copy::copy(t, field_ ? ref().MutableMessage(msg_, field_) : msg_);
+    copy::copy(t, field_ ? ref().MutableMessage(msg_, field_) : msg_);
 }
 
 template <>
 void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
-  if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
-    copy::copy(t, field_ ? ref().MutableRepeatedMessage(msg_, field_, i) :
-               msg_);
-  } else {
-    LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage";
-  }
+    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
+        copy::copy(t, field_ ? ref().MutableRepeatedMessage(msg_, field_, i) :
+                              msg_);
+    } else {
+        LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage";
+    }
 }
 
 template <>
 void TypedTyper<pmessage>::Add(pmessage t) {
-  copy::copy(t, ref().AddMessage(msg_, field_));
+    copy::copy(t, ref().AddMessage(msg_, field_));
 }
 
 template <>
 inline bool TypedTyper<pmessage>::Equals(const rec::Message& m,
-                                         const Comparer& cmp) const {
-  // This method might not be returning the right value.
-  return typer::equals(*msg_, m, field_, cmp);
+                                                                                  const Comparer& cmp) const {
+    // This method might not be returning the right value.
+    return typer::equals(*msg_, m, field_, cmp);
 }
 
 template <>
 inline bool TypedTyper<pmessage>::Equals(const rec::Message& m, uint32 i,
-                                         const Comparer& cmp) const {
-  // This method might not be returning the right value.
-  return typer::equals(*msg_, m, field_, i, cmp);
+                                                                                  const Comparer& cmp) const {
+    // This method might not be returning the right value.
+    return typer::equals(*msg_, m, field_, i, cmp);
 }
 
 template <>
 penum TypedTyper<penum>::Get() const {
-  return ref().GetEnum(*msg_, field_)->number();
+    return ref().GetEnum(*msg_, field_)->number();
 }
 
 template <>
 penum TypedTyper<penum>::GetRepeated(uint32 i) const {
-  if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))
-    return ref().GetRepeatedEnum(*msg_, field_, i)->number();
-  LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage";
-  return penum();
+    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))
+        return ref().GetRepeatedEnum(*msg_, field_, i)->number();
+    LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage";
+    return penum();
 }
 
 template <>
 void TypedTyper<penum>::Set(penum t) {
-  ref().SetEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
+    ref().SetEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
 }
 
 template <>
 void TypedTyper<penum>::SetRepeated(uint32 i, penum t) {
-  if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
-    ref().SetRepeatedEnum(msg_, field_, i,
-                          field_->enum_type()->FindValueByNumber(t));
-  } else {
-    LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage";
-  }
+    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
+        ref().SetRepeatedEnum(msg_, field_, i,
+                                                    field_->enum_type()->FindValueByNumber(t));
+    } else {
+        LOG(DFATAL) << "Index " << i << " out of bounds for type pmessage";
+    }
 }
 
 template <>
 void TypedTyper<penum>::Add(penum t) {
-  ref().AddEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
+    ref().AddEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
 }
 
 }  // namespace typer

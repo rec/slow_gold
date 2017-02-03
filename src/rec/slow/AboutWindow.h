@@ -8,23 +8,23 @@ namespace slow {
 class AboutPane;
 
 class AboutWindow : public Component,
-                    public juce::ModalComponentManager::Callback {
- public:
-  AboutWindow(
-      Component* parent, const String& name, const String& versionNumber);
+                                        public juce::ModalComponentManager::Callback {
+  public:
+    AboutWindow(
+            Component* parent, const String& name, const String& versionNumber);
 
-  ~AboutWindow();
+    ~AboutWindow();
 
-  void paint(Graphics&) override {}
-  void mouseDown(const MouseEvent&) override;
-  void modalStateFinished(int returnValue) override { close(); }
+    void paint(Graphics&) override {}
+    void mouseDown(const MouseEvent&) override;
+    void modalStateFinished(int returnValue) override { close(); }
 
- private:
-  void close();
+  private:
+    void close();
 
-  Component* parent_;
-  std::unique_ptr<AboutPane> aboutPane_;
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
+    Component* parent_;
+    std::unique_ptr<AboutPane> aboutPane_;
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
 };
 
 }  // namespace slow

@@ -17,63 +17,63 @@ namespace rec {
 namespace slow {
 
 class CurrentTime : public audio::util::CurrentTimeBase,
-                    public DataListener<widget::waveform::Viewport>,
-                    public DataListener<GuiSettings>,
-                    public StateListener<SampleTime>,
-                    public StateListener<audio::transport::State> {
- public:
-  CurrentTime();
-  virtual ~CurrentTime() {}
+                                        public DataListener<widget::waveform::Viewport>,
+                                        public DataListener<GuiSettings>,
+                                        public StateListener<SampleTime>,
+                                        public StateListener<audio::transport::State> {
+  public:
+    CurrentTime();
+    virtual ~CurrentTime() {}
 
-  void setTime(SampleTime);
-  void setViewport(const widget::waveform::Viewport&);
+    void setTime(SampleTime);
+    void setViewport(const widget::waveform::Viewport&);
 
-  virtual void operator()(audio::transport::State);
-  virtual void operator()(SampleTime t) { setTime(t); }
-  virtual void operator()(const GuiSettings&);
-  virtual void operator()(const widget::waveform::Viewport& vp) {
-    setViewport(vp);
-  }
+    virtual void operator()(audio::transport::State);
+    virtual void operator()(SampleTime t) { setTime(t); }
+    virtual void operator()(const GuiSettings&);
+    virtual void operator()(const widget::waveform::Viewport& vp) {
+        setViewport(vp);
+    }
 
-  const SampleRangeVector timeSelection() const override {
-    Lock l(lock());
-    return timeSelection_;
-  }
+    const SampleRangeVector timeSelection() const override {
+        Lock l(lock());
+        return timeSelection_;
+    }
 
-  SampleTime length() const { Lock l(lock()); return length_; }
-  SampleTime time() const override { Lock l(lock()); return time_; }
-  SampleTime requestedTime() const override {
-    Lock l(lock());
-    return requestedTime_;
-  }
+    SampleTime length() const { Lock l(lock()); return length_; }
+    SampleTime time() const override { Lock l(lock()); return time_; }
+    SampleTime requestedTime() const override {
+        Lock l(lock());
+        return requestedTime_;
+    }
 
-  void jumpToTime(SampleTime) override;
-  void setLoopingSegment(int);
+    void jumpToTime(SampleTime) override;
+    void setLoopingSegment(int);
 
-  void reset();
+    void reset();
 
-  const CriticalSection& lock() const { return getInstance()->lock_; }
-  void zoomToCurrentTime() { zoomToTime(time()); }
-  void zoomToTime(SampleTime);
+    const CriticalSection& lock() const { return getInstance()->lock_; }
+    void zoomToCurrentTime() { zoomToTime(time()); }
+    void zoomToTime(SampleTime);
 
- private:
-  void zoomToCursor(SampleTime t);
-  void setViewportProto(const widget::waveform::Viewport&);
-  void checkTimeIsCloseToLoopPoint();
+  private:
+    void zoomToCursor(SampleTime t);
+    void setViewportProto(const widget::waveform::Viewport&);
+    void checkTimeIsCloseToLoopPoint();
 
-  SampleRangeVector timeSelection_;
-  SampleTime time_;
-  SampleTime requestedTime_;
-  SampleTime length_;
-  bool followCursor_;
-  bool isDragging_;
-  int loopingSegment_;
-  bool timeIsCloseToLoopPoint_;
-  double selectionInZoom_;
+    SampleRangeVector timeSelection_;
+    SampleTime time_;
+    SampleTime requestedTime_;
+    SampleTime length_;
+    bool followCursor_;
+    bool isDragging_;
+    int loopingSegment_;
+    bool timeIsCloseToLoopPoint_;
+    double selectionInZoom_;
 
-  widget::waveform::Viewport viewport_;
+    widget::waveform::Viewport viewport_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentTime);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentTime);
 };
 
 }  // namespace slow

@@ -3,28 +3,28 @@ package rec.program;
 import "rec/command/Command.proto";
 
 message MenuEntry {
-  repeated uint32 id = 1;
-  repeated string id_string = 4;
-  optional string submenu = 2;
-  optional string callout_function = 3;
+    repeated uint32 id = 1;
+    repeated string id_string = 4;
+    optional string submenu = 2;
+    optional string callout_function = 3;
 };
 
 message Menu {
-  optional command.Description description = 1;
-  optional string extends = 2;
-  repeated MenuEntry entry = 3;
+    optional command.Description description = 1;
+    optional string extends = 2;
+    repeated MenuEntry entry = 3;
 };
 
 message Menus {
-  repeated Menu menu = 1;
+    repeated Menu menu = 1;
 };
 
 message MenuBar {
-  optional command.Description description = 1;
-  repeated string menu = 2;
+    optional command.Description description = 1;
+    repeated string menu = 2;
 };
 
 message MenuCollection {
-  optional command.Description description = 1;
-  repeated MenuBar menu_bar = 2;
+    optional command.Description description = 1;
+    repeated MenuBar menu_bar = 2;
 };

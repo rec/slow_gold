@@ -7,12 +7,12 @@ namespace widget {
 namespace waveform {
 
 struct MouseWheelEvent {
-  const MouseEvent* event_;
-  float xIncrement_;
-  float yIncrement_;
+    const MouseEvent* event_;
+    float xIncrement_;
+    float yIncrement_;
 
- private:
-  JUCE_LEAK_DETECTOR(MouseWheelEvent);
+  private:
+    JUCE_LEAK_DETECTOR(MouseWheelEvent);
 };
 
 }  // namespace waveform

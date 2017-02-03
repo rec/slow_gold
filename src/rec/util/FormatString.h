@@ -6,21 +6,21 @@ namespace rec {
 namespace util {
 
 class FormatString {
- public:
-  FormatString(const String&);
+  public:
+    FormatString(const String&);
 
-  String format(const juce::StringArray&) const;
+    String format(const juce::StringArray&) const;
 
-  String format() const;
-  String format(const String&) const;
-  String format(const String&, const String&) const;
-  String format(const String&, const String&, const String&) const;
+    String format() const;
+    String format(const String&) const;
+    String format(const String&, const String&) const;
+    String format(const String&, const String&, const String&) const;
 
- private:
-  juce::StringArray parts_;
-  juce::Array<int> args_;
+  private:
+    juce::StringArray parts_;
+    juce::Array<int> args_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(FormatString);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(FormatString);
 };
 
 }  // namespace util

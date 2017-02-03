@@ -1,9 +1,9 @@
 package rec.gui;
 
 message OrientationProto {
-  enum Orientation {
-    HORIZONTAL = 0;
-    VERTICAL = 1;
-  };
+    enum Orientation {
+        HORIZONTAL = 0;
+        VERTICAL = 1;
+    };
 };
 

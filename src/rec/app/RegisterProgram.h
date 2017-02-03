@@ -6,35 +6,35 @@ namespace rec {
 namespace app {
 
 class RegisterProgram : public Thread {
- public:
-  struct NamedFunction {
-    typedef String (*StringFunction)();
+  public:
+    struct NamedFunction {
+        typedef String (*StringFunction)();
 
-    const char* name_;
-    StringFunction function_;
-  };
+        const char* name_;
+        StringFunction function_;
+    };
 
-  explicit RegisterProgram(const String& name) : Thread(name) {}
+    explicit RegisterProgram(const String& name) : Thread(name) {}
 
-  virtual ~RegisterProgram() {}
+    virtual ~RegisterProgram() {}
 
-  virtual Range<const char* const*> getEnvironmentVariables() const = 0;
-  virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
-  virtual StringArray getBaseUrls() const = 0;
-  virtual bool acceptResult(const String&) const;
-  virtual String resultMatcher() const = 0;
-  virtual void onSuccess() {}
-  virtual int timeOut() const = 0;
-  virtual URL::OpenStreamProgressCallback* progressCallback() const {
-    return nullptr;
-  }
+    virtual Range<const char* const*> getEnvironmentVariables() const = 0;
+    virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
+    virtual StringArray getBaseUrls() const = 0;
+    virtual bool acceptResult(const String&) const;
+    virtual String resultMatcher() const = 0;
+    virtual void onSuccess() {}
+    virtual int timeOut() const = 0;
+    virtual URL::OpenStreamProgressCallback* progressCallback() const {
+        return nullptr;
+    }
 
-  virtual void run();
+    virtual void run();
 
- private:
-  bool tryOneUrl(const String&);
+  private:
+    bool tryOneUrl(const String&);
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterProgram);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterProgram);
 };
 
 }  // namespace app

@@ -9,18 +9,18 @@ namespace callback {
 
 template <typename Type, typename Method>
 class Callback0 : public Callback {
- public:
-  Callback0(Type* o, Method m) : object_(o), method_(m) {}
-  virtual bool operator()() {
-    (object_->*method_)();
-    return true;
-  }
+  public:
+    Callback0(Type* o, Method m) : object_(o), method_(m) {}
+    virtual bool operator()() {
+        (object_->*method_)();
+        return true;
+    }
 
- private:
-  Type* object_;
-  Method method_;
+  private:
+    Type* object_;
+    Method method_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback0);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback0);
 };
 
 }  // namespace callback

@@ -14,7 +14,7 @@ void discard(Thread* t);
 
 template <typename ThreadClass>
 void discard(std::unique_ptr<ThreadClass>* t) {
-  discard(t->release());
+    discard(t->release());
 }
 
 Thread* add(Thread* t);
@@ -33,21 +33,21 @@ inline void discardAndEmpty(Thread* t) { discard(t); empty(); }
 template <typename Type>
 class thread_ptr : public std::unique_ptr<Type> {
 public:
-  explicit thread_ptr(Type* p = 0) : std::unique_ptr<Type>(p) {}
+    explicit thread_ptr(Type* p = 0) : std::unique_ptr<Type>(p) {}
 
-  ~thread_ptr() { reset(); }
+    ~thread_ptr() { reset(); }
 
-  void reset(Type* p = nullptr) {
-    if (p != this->get()) {
-      thread::trash::discard(this->release());
-      std::unique_ptr<Type>::reset(p);
+    void reset(Type* p = nullptr) {
+        if (p != this->get()) {
+            thread::trash::discard(this->release());
+            std::unique_ptr<Type>::reset(p);
+        }
     }
-  }
 
-  operator bool() const { return this->get(); }
-  bool operator!() const { return !this->get(); }
+    operator bool() const { return this->get(); }
+    bool operator!() const { return !this->get(); }
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(thread_ptr);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(thread_ptr);
 };
 
 }  // namespace util

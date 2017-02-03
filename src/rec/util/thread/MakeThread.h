@@ -9,107 +9,107 @@ namespace thread {
 namespace callback {
 
 class Thread : public juce::Thread, public OwnedPointer<Callback> {
- public:
-  Thread(const String& name, Callback* r, int waitTime = 0)
-      : juce::Thread(name), OwnedPointer<Callback>(r), waitTime_(waitTime) {
-  }
-
-  virtual void run() {
-    while (!threadShouldExit() && (*this)()) {
-      if (!waitTime_)
-        break;
-
-      if (!threadShouldExit())
-        wait(waitTime_);
+  public:
+    Thread(const String& name, Callback* r, int waitTime = 0)
+            : juce::Thread(name), OwnedPointer<Callback>(r), waitTime_(waitTime) {
     }
-  }
 
-  Thread* setWaitTime(int t) {
-    waitTime_ = t;
-    return this;
-  }
+    virtual void run() {
+        while (!threadShouldExit() && (*this)()) {
+            if (!waitTime_)
+                break;
 
- private:
-  int waitTime_;
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Thread);
+            if (!threadShouldExit())
+                wait(waitTime_);
+        }
+    }
+
+    Thread* setWaitTime(int t) {
+        waitTime_ = t;
+        return this;
+    }
+
+  private:
+    int waitTime_;
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Thread);
 };
 
 }  // namespace callback
 
 inline std::unique_ptr<callback::Thread> makeThread(const String& name, Callback* cb) {
-  return std::make_unique<callback::Thread>(name, cb);
+    return std::make_unique<callback::Thread>(name, cb);
 }
 
 template <typename Type>
 std::unique_ptr<callback::Thread> makeThread(const String& name, Type o) {
-  return std::make_unique<callback::Thread>(name, makeCallback<Type>>(o));
+    return std::make_unique<callback::Thread>(name, makeCallback<Type>>(o));
 }
 
 template <typename Type, typename Method>
 std::unique_ptr<callback::Thread> makeThread(const String& name, Type* o, Method m) {
-  return std::make_unique<callback::Thread>(name, methodCallback<Type, Method>>(o, m));
+    return std::make_unique<callback::Thread>(name, methodCallback<Type, Method>>(o, m));
 }
 
 template <typename Type, typename Method, typename Value>
 std::unique_ptr<callback::Thread> makeThread(const String& name, Type* o, Method m, Value v) {
-  return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, Value>>(o, m, v));
+    return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, Value>>(o, m, v));
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 std::unique_ptr<callback::Thread> makeThread(const String& name, Type* o, Method m, V1 v1, V2 v2) {
-  return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, V1, V2>>(o, m, v1, v2));
+    return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, V1, V2>>(o, m, v1, v2));
 }
 
 inline std::unique_ptr<callback::Thread> makeLoop(int waitTime, const String& name, Callback* cb) {
-  return std::make_unique<callback::Thread>(name, cb, waitTime);
+    return std::make_unique<callback::Thread>(name, cb, waitTime);
 }
 
 template <typename Type>
 std::unique_ptr<callback::Thread> makeLoop(int t, const String& name, Type o) {
-  return std::make_unique<callback::Thread>(name, makeCallback<Type>>(o), t);
+    return std::make_unique<callback::Thread>(name, makeCallback<Type>>(o), t);
 }
 
 template <typename Type, typename Method>
 std::unique_ptr<callback::Thread> makeLoop(int t, const String& name, Type* o, Method m) {
-  return std::make_unique<callback::Thread>(name, methodCallback<Type, Method>>(o, m), t);
+    return std::make_unique<callback::Thread>(name, methodCallback<Type, Method>>(o, m), t);
 }
 
 template <typename Type, typename Method, typename Value>
 std::unique_ptr<callback::Thread> makeLoop(int t, const String& name, Type* o, Method m, Value v) {
-  return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, Value>>(o, m, v), t);
+    return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, Value>>(o, m, v), t);
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 std::unique_ptr<callback::Thread> makeLoop(int t, const String& name, Type* o, Method m, V1 v1, V2 v2) {
-  return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, V1, V2>>(o, m, v1, v2), t);
+    return std::make_unique<callback::Thread>(name, methodCallback<Type, Method, V1, V2>>(o, m, v1, v2), t);
 }
 
 inline callback::Thread& runInNewThread(const String& n, int p, std::unique_ptr<Callback> cb) {
-  thread_ptr<callback::Thread> t(new callback::Thread(n, cb.release()));
-  t->setPriority(p);
-  t->startThread();
-  trash::add(t.get());
-  return *t.release();
+    thread_ptr<callback::Thread> t(new callback::Thread(n, cb.release()));
+    t->setPriority(p);
+    t->startThread();
+    trash::add(t.get());
+    return *t.release();
 }
 
 template <typename Type>
 callback::Thread& runInNewThread(const String& n, int p, Type o) {
-  return runInNewThread(n, p, makeCallback<Type>(o));
+    return runInNewThread(n, p, makeCallback<Type>(o));
 }
 
 template <typename Type, typename Method>
 callback::Thread& runInNewThread(const String& n, int p, Type* o, Method m) {
-  return runInNewThread(n, p, methodCallback<Type, Method>(o, m));
+    return runInNewThread(n, p, methodCallback<Type, Method>(o, m));
 }
 
 template <typename Type, typename Method, typename Value>
 callback::Thread& runInNewThread(const String& n, int p, Type* o, Method m, Value v) {
-  return runInNewThread(n, p, methodCallback<Type, Method, Value>(o, m, v));
+    return runInNewThread(n, p, methodCallback<Type, Method, Value>(o, m, v));
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 callback::Thread& runInNewThread(const String& n, int p, Type* o, Method m, V1 v1, V2 v2) {
-  return runInNewThread(n, p, methodCallback<Type, Method, V1, V2>(o, m, v1, v2));
+    return runInNewThread(n, p, methodCallback<Type, Method, V1, V2>(o, m, v1, v2));
 }
 
 }  // namespace thread

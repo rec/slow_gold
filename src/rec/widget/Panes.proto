@@ -9,29 +9,29 @@ import "rec/util/file/VirtualFile.proto";
 // The Navigation Pane is the top-level pane that lets you switch between
 // browsing your filesystem, the CD in the drive, or files on the network.
 message Navigation {
-  enum Tab {
-    FILE = 1;
-    CD = 2;
-    URL = 3;
-  };
+    enum Tab {
+        FILE = 1;
+        CD = 2;
+        URL = 3;
+    };
 
-  // See juce_TabbedButtonBar.h.
-  enum Orientation {
-    TABS_AT_TOP = 0;
-    TABS_AT_BOTTOM = 1;
-    TABS_AT_LEFT = 2;
-    TABS_AT_RIGHT = 3;
-  };
+    // See juce_TabbedButtonBar.h.
+    enum Orientation {
+        TABS_AT_TOP = 0;
+        TABS_AT_BOTTOM = 1;
+        TABS_AT_LEFT = 2;
+        TABS_AT_RIGHT = 3;
+    };
 
-  optional Widget widget = 1;
-  optional util.file.VirtualFile file = 2;
-  optional Tab tab = 3;
-  optional Orientation orientation = 4;
+    optional Widget widget = 1;
+    optional util.file.VirtualFile file = 2;
+    optional Tab tab = 3;
+    optional Orientation orientation = 4;
 };
 
 // The Directory Pane is used to show a directory that contains one or more
 // audio files, which are presumed to be "an album" or connected in some way.
 message Directory {
-  optional Widget widget = 1;
-  optional util.file.VirtualFile file = 2;
+    optional Widget widget = 1;
+    optional util.file.VirtualFile file = 2;
 };

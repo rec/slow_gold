@@ -71,5 +71,5 @@ char (&ArraySizeHelper(const TypeName (&array)[N]))[N];
 // size is 3 or greater than 4 will be (righteously) rejected.
 
 #define ARRAYSIZE_UNSAFE(a) \
-  ((sizeof(a) / sizeof(*(a))) / \
-   static_cast<size_t>(!(sizeof(a) % sizeof(*(a)))))
+    ((sizeof(a) / sizeof(*(a))) / \
+      static_cast<size_t>(!(sizeof(a) % sizeof(*(a)))))

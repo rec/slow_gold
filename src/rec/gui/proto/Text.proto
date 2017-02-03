@@ -1,6 +1,6 @@
 package rec.gui;
 
 message TextProto {
-  optional bool multiline = 1;
-  optional string caption = 2;
+    optional bool multiline = 1;
+    optional string caption = 2;
 };

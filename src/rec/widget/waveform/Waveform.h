@@ -34,86 +34,86 @@ typedef vector<Cursor*> CursorList;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
-                 public Disableable,
-                 public SettableTooltipClient,
-                 public DataListener<Viewport>,
-                 public app::LanguageListener,
-                 public DataListener<Mode>,
-                 public DataListener<WaveformProto>,
-                 public StateListener<Loading>,
-                 public StateListener<const SampleRange&>,
-                 public Broadcaster<const MouseWheelEvent&>,
-                 public Broadcaster<const TimeAndMouseEvent&> {
- public:
-  Waveform();
-  virtual ~Waveform();
-  void init();
+                                  public Disableable,
+                                  public SettableTooltipClient,
+                                  public DataListener<Viewport>,
+                                  public app::LanguageListener,
+                                  public DataListener<Mode>,
+                                  public DataListener<WaveformProto>,
+                                  public StateListener<Loading>,
+                                  public StateListener<const SampleRange&>,
+                                  public Broadcaster<const MouseWheelEvent&>,
+                                  public Broadcaster<const TimeAndMouseEvent&> {
+  public:
+    Waveform();
+    virtual ~Waveform();
+    void init();
 
-  void mouseDoubleClick(const MouseEvent&) override;
+    void mouseDoubleClick(const MouseEvent&) override;
 
-  static const CursorProto& defaultTimeCursor();
+    static const CursorProto& defaultTimeCursor();
 
-  void setAudioThumbnail(juce::AudioThumbnail*);
-  void resized() override;
+    void setAudioThumbnail(juce::AudioThumbnail*);
+    void resized() override;
 
-  void paint(Graphics&) override;
-  void operator()(const Mode&) override;
-  void operator()(const WaveformProto&) override;
-  void operator()(const Viewport& vp) override;
-  void operator()(const SampleRange& range) override {
-    repaintRange(range);
-  }
-  void operator()(Loading) override;
+    void paint(Graphics&) override;
+    void operator()(const Mode&) override;
+    void operator()(const WaveformProto&) override;
+    void operator()(const Viewport& vp) override;
+    void operator()(const SampleRange& range) override {
+        repaintRange(range);
+    }
+    void operator()(Loading) override;
 
-  void languageChanged() override;
+    void languageChanged() override;
 
-  Cursor* timeCursor() { return timeCursor_; }
+    Cursor* timeCursor() { return timeCursor_; }
 
-  const CursorList& getCursors() const { return cursors_; }
-  CursorList* getCursorsMutable() { return &cursors_; }
+    const CursorList& getCursors() const { return cursors_; }
+    CursorList* getCursorsMutable() { return &cursors_; }
 
-  void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&) override;
-  CriticalSection* lock() { return &lock_;}
-  int getCursorX(uint index) const;
-  void setCursorText(int index, const String& text);
-  void setIsDraggingCursor(bool d);
-  bool isDraggingCursor() const;
-  void repaintRange(const SampleRange&);
-  void repaintRanges(const SampleRangeVector&);
+    void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&) override;
+    CriticalSection* lock() { return &lock_;}
+    int getCursorX(uint index) const;
+    void setCursorText(int index, const String& text);
+    void setIsDraggingCursor(bool d);
+    bool isDraggingCursor() const;
+    void repaintRange(const SampleRange&);
+    void repaintRanges(const SampleRangeVector&);
 
-  void adjustCursors(const LoopPointList& loopPoints,
-                     const SampleRangeVector& dirty);
-  void setSelected(int index, bool selected);
-  const WaveformModel& model() { return *model_; }
-  void setLoading(bool loading);
-  void setSampleRate(SampleRate);
+    void adjustCursors(const LoopPointList& loopPoints,
+                                          const SampleRangeVector& dirty);
+    void setSelected(int index, bool selected);
+    const WaveformModel& model() { return *model_; }
+    void setLoading(bool loading);
+    void setSampleRate(SampleRate);
 
-  virtual void childrenChanged() override {
-    // TODO.
-  }
+    virtual void childrenChanged() override {
+        // TODO.
+    }
 
- private:
-  void layout();
-  void viewportChanged();
+  private:
+    void layout();
+    void viewportChanged();
 
-  void doClick(const juce::MouseEvent& e, int clickCount);
-  void cursorDragged(int index, int x);
+    void doClick(const juce::MouseEvent& e, int clickCount);
+    void cursorDragged(int index, int x);
 
-  CriticalSection lock_;
-  juce::AudioThumbnail* thumbnail_;
-  std::unique_ptr<WaveformModel> model_;
-  std::unique_ptr<WaveformPainter> painter_;
+    CriticalSection lock_;
+    juce::AudioThumbnail* thumbnail_;
+    std::unique_ptr<WaveformModel> model_;
+    std::unique_ptr<WaveformPainter> painter_;
 
-  CursorList cursors_;
-  Cursor* timeCursor_;
+    CursorList cursors_;
+    Cursor* timeCursor_;
 
-  juce::MouseCursor zoomCursor_;
-  Loading loading_;
+    juce::MouseCursor zoomCursor_;
+    Loading loading_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
-  friend class Cursor;
-  friend class WaveformPainter;
+    friend class Cursor;
+    friend class WaveformPainter;
 };
 
 typedef gui::DropTarget<Waveform> DropWaveform;

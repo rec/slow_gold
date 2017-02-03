@@ -14,53 +14,53 @@ namespace {
 using rec::widget::waveform::Viewport;
 
 const LoopPointList getSelected(const LoopPointList& lpl, bool sel) {
-  return rec::audio::getSelected(lpl, sel);
+    return rec::audio::getSelected(lpl, sel);
 }
 
 const LoopPointList getSelected(const Loops& loops, bool sel) {
-  return getSelected(loops.getDataValue().loop_points(), sel);
+    return getSelected(loops.getDataValue().loop_points(), sel);
 }
 
 }  // namespace
 
 string LoopsCuttable::copy() const {
-  return yaml::write(getSelected(*loops_, true));
+    return yaml::write(getSelected(*loops_, true));
 }
 
 bool LoopsCuttable::canCopy() const {
-  return getSelected(*loops_, true).loop_point_size() > 0;
+    return getSelected(*loops_, true).loop_point_size() > 0;
 }
 
 bool LoopsCuttable::canPaste(const string& s) const {
-  LoopPointList lpl;
-  return yaml::read(s, &lpl);
+    LoopPointList lpl;
+    return yaml::read(s, &lpl);
 }
 
 bool LoopsCuttable::canCut() const {
-  LoopPointList lpl = getSelected(*loops_, true);
-  int size = lpl.loop_point_size();
-  return (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
+    LoopPointList lpl = getSelected(*loops_, true);
+    int size = lpl.loop_point_size();
+    return (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
 }
 
 void LoopsCuttable::cut() {
-  Viewport vp = loops_->getDataValue();
-  LoopPointList lpl = rec::audio::cutSelected(vp.loop_points(), true);
-  vp.mutable_loop_points()->CopyFrom(lpl);
-  loops_->editViewport(vp);
+    Viewport vp = loops_->getDataValue();
+    LoopPointList lpl = rec::audio::cutSelected(vp.loop_points(), true);
+    vp.mutable_loop_points()->CopyFrom(lpl);
+    loops_->editViewport(vp);
 }
 
 bool LoopsCuttable::paste(const string& s) {
-  using rec::audio::addLoopPoints;
+    using rec::audio::addLoopPoints;
 
-  LoopPointList lpl;
-  if (!yaml::read(s, &lpl))
-    return false;
+    LoopPointList lpl;
+    if (!yaml::read(s, &lpl))
+        return false;
 
-  Viewport vp2 = loops_->getDataValue();
-  LoopPointList lpl2 = addLoopPoints(lpl, vp2.loop_points());
-  vp2.mutable_loop_points()->CopyFrom(lpl2);
-  loops_->setProto(vp2);
-  return true;
+    Viewport vp2 = loops_->getDataValue();
+    LoopPointList lpl2 = addLoopPoints(lpl, vp2.loop_points());
+    vp2.mutable_loop_points()->CopyFrom(lpl2);
+    loops_->setProto(vp2);
+    return true;
 }
 
 }  // namespace audio

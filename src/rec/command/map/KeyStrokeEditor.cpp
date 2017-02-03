@@ -10,30 +10,30 @@ namespace rec {
 namespace command {
 
 const String KeyStrokeEditor::name() const {
-  return t_KEY;
+    return t_KEY;
 }
 
 const String KeyStrokeEditor::getWindowTitle() const {
-  return t_PRESS_A_KEY;
+    return t_PRESS_A_KEY;
 }
 
 bool KeyStrokeEditor::isValid(const string& key) const {
-  return keyPressFromString(key).isValid();
+    return keyPressFromString(key).isValid();
 }
 
 const String KeyStrokeEditor::getDescription(const string& key) const {
-  return keyPressFromString(key).getTextDescriptionWithIcons();
+    return keyPressFromString(key).getTextDescriptionWithIcons();
 }
 
 juce::AlertWindow* KeyStrokeEditor::newWindow() {
-  std::unique_ptr<juce::AlertWindow> window(Editor::newWindow());
-  window->addKeyListener(this);
-  return window.release();
+    std::unique_ptr<juce::AlertWindow> window(Editor::newWindow());
+    window->addKeyListener(this);
+    return window.release();
 }
 
 bool KeyStrokeEditor::keyPressed(const KeyPress& kp, Component*) {
-  setKey(toString(kp));
-  return true;
+    setKey(toString(kp));
+    return true;
 }
 
 }  // namespace command

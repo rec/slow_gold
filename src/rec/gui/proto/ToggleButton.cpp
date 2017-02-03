@@ -8,12 +8,12 @@ namespace rec {
 namespace gui {
 
 std::unique_ptr<Component> makeToggleButton(const Context& context) {
-  auto& comp = context.component_;
+    auto& comp = context.component_;
 
-  std::unique_ptr<SetterToggle> st(
-      new SetterToggle(comp.name(), comp.tooltip(), comp.address()));
-  st->setButtonText(str(comp.toggle_button().caption()));
-  return std::unique_ptr<Component>(st.release());
+    std::unique_ptr<SetterToggle> st(
+            new SetterToggle(comp.name(), comp.tooltip(), comp.address()));
+    st->setButtonText(str(comp.toggle_button().caption()));
+    return std::unique_ptr<Component>(st.release());
 }
 
 

@@ -29,7 +29,7 @@ struct CompileAssert {
 
 #undef COMPILE_ASSERT
 #define COMPILE_ASSERT(expr, msg) \
-  typedef CompileAssert<(bool(expr))> msg[bool(expr) ? 1 : -1]
+    typedef CompileAssert<(bool(expr))> msg[bool(expr) ? 1 : -1]
 
 // Implementation details of COMPILE_ASSERT:
 //
@@ -130,13 +130,13 @@ struct CompileAssert {
 
 template <class Dest, class Source>
 inline Dest bit_cast(const Source& source) {
-  // Compile time assertion: sizeof(Dest) == sizeof(Source)
-  // A compile error here means your Dest and Source have different sizes.
-  typedef char VerifySizesAreEqual [sizeof(Dest) == sizeof(Source) ? 1 : -1];
+    // Compile time assertion: sizeof(Dest) == sizeof(Source)
+    // A compile error here means your Dest and Source have different sizes.
+    typedef char VerifySizesAreEqual [sizeof(Dest) == sizeof(Source) ? 1 : -1];
 
-  Dest dest;
-  memcpy(&dest, &source, sizeof(dest));
-  return dest;
+    Dest dest;
+    memcpy(&dest, &source, sizeof(dest));
+    return dest;
 }
 
 // Use implicit_cast as a safe version of static_cast or const_cast
@@ -158,5 +158,5 @@ inline Dest bit_cast(const Source& source) {
 // its way into the language in the future.
 template<typename To, typename From>
 inline To implicit_cast(From const &f) {
-  return f;
+    return f;
 }

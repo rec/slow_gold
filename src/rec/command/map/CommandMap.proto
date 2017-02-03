@@ -1,20 +1,20 @@
 package rec.command;
 
 message CommandMapEntry {
-  optional uint32 id = 1;
-  optional string id_string = 4;
-  optional int32 index = 2;
-  repeated bytes key = 3;  // TODO: this needs to be the same as the field in Command.
+    optional uint32 id = 1;
+    optional string id_string = 4;
+    optional int32 index = 2;
+    repeated bytes key = 3;  // TODO: this needs to be the same as the field in Command.
 };
 
 message CommandMapProto {
-  repeated CommandMapEntry entry = 1;
+    repeated CommandMapEntry entry = 1;
 };
 
 message KeyStrokeCommandMapProto {
-  optional CommandMapProto map = 1;
+    optional CommandMapProto map = 1;
 };
 
 message MidiCommandMapProto {
-  optional CommandMapProto map = 1;
+    optional CommandMapProto map = 1;
 };

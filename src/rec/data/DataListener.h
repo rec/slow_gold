@@ -14,56 +14,56 @@ class Data;
 
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
- public:
-  typedef AddressProto::Scope Scope;
+  public:
+    typedef AddressProto::Scope Scope;
 
-  explicit DataListener() : adaptor_(new Adaptor(this)) {}
-  virtual ~DataListener() {}
+    explicit DataListener() : adaptor_(new Adaptor(this)) {}
+    virtual ~DataListener() {}
 
-  virtual void operator()(const Proto&) = 0;
-  Data* getData() const { return adaptor_->getData(); }
+    virtual void operator()(const Proto&) = 0;
+    Data* getData() const { return adaptor_->getData(); }
 
-  const Proto getDataValue() const {
-    if (Data* data = getData())
-      return data::getProto<Proto>(data);
-    else
-      return Proto();
-  }
-
-  void setProto(const Proto& p, Undoable undoable = CAN_UNDO) {
-    if (Data* data = getData())
-      data::setProto(p, data, undoable);
-    else
-      LOG(DFATAL) << "No data";
-  }
-
-  void updateCallback() {
-    adaptor_->updateCallback();
-  }
-
- private:
-  class Adaptor : public UntypedDataListener {
-   public:
-    Adaptor(DataListener<Proto>* p)
-        : UntypedDataListener(getTypeName<Proto>()), parent_(p) {
+    const Proto getDataValue() const {
+        if (Data* data = getData())
+            return data::getProto<Proto>(data);
+        else
+            return Proto();
     }
 
-    virtual void operator()(const Message& m) {
-      Lock l(this->lock_);
-      if (const Proto* p = dynamic_cast<const Proto*>(&m))
-        (*parent_)(*p);
-      else
-        LOG(DFATAL) << m.GetTypeName() << " isn't type " << getTypeName<Proto>();
+    void setProto(const Proto& p, Undoable undoable = CAN_UNDO) {
+        if (Data* data = getData())
+            data::setProto(p, data, undoable);
+        else
+            LOG(DFATAL) << "No data";
     }
-    virtual ~Adaptor() {}
 
-   private:
-    DataListener<Proto>* const parent_;
-  };
+    void updateCallback() {
+        adaptor_->updateCallback();
+    }
 
-  std::unique_ptr<Adaptor> adaptor_;
+  private:
+    class Adaptor : public UntypedDataListener {
+      public:
+        Adaptor(DataListener<Proto>* p)
+                : UntypedDataListener(getTypeName<Proto>()), parent_(p) {
+        }
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
+        virtual void operator()(const Message& m) {
+            Lock l(this->lock_);
+            if (const Proto* p = dynamic_cast<const Proto*>(&m))
+                (*parent_)(*p);
+            else
+                LOG(DFATAL) << m.GetTypeName() << " isn't type " << getTypeName<Proto>();
+        }
+        virtual ~Adaptor() {}
+
+      private:
+        DataListener<Proto>* const parent_;
+    };
+
+    std::unique_ptr<Adaptor> adaptor_;
+
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };
 
 }  // namespace data

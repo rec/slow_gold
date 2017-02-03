@@ -11,41 +11,41 @@ namespace app {
 class GenericApplication;
 
 class Window : public gui::PersistentWindow, public Broadcaster<None> {
- public:
-  Window(GenericApplication* application,
-         const String& name,
-         const Colour& bg,
-         int requiredButtons,
-         bool addToDesktop = true);
-  virtual ~Window();
+  public:
+    Window(GenericApplication* application,
+                  const String& name,
+                  const Colour& bg,
+                  int requiredButtons,
+                  bool addToDesktop = true);
+    virtual ~Window();
 
-  virtual void initialise();
-  virtual void startup();
-  virtual void shutdown();
-  virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
-    broadcast(None());
-  }
-  GenericApplication* application() { return application_; }
-  PopupMenu* getAppleMenu() { return &menu_; }
+    virtual void initialise();
+    virtual void startup();
+    virtual void shutdown();
+    virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
+        broadcast(None());
+    }
+    GenericApplication* application() { return application_; }
+    PopupMenu* getAppleMenu() { return &menu_; }
 
-  virtual void stopAboutWindow() {}
-  virtual void startAboutWindow() {}
-  virtual void init() {}
+    virtual void stopAboutWindow() {}
+    virtual void startAboutWindow() {}
+    virtual void init() {}
 
-  virtual void anotherInstanceStarted(const String& s) {}
-  virtual void systemRequestedQuit() = 0;
+    virtual void anotherInstanceStarted(const String& s) {}
+    virtual void systemRequestedQuit() = 0;
 
- protected:
-  virtual void constructInstance() = 0;
-  virtual Component* getMainComponent() = 0;
-  virtual void doStartup() = 0;
-  virtual void doShutdown() = 0;
+  protected:
+    virtual void constructInstance() = 0;
+    virtual Component* getMainComponent() = 0;
+    virtual void doStartup() = 0;
+    virtual void doShutdown() = 0;
 
- private:
-  GenericApplication* application_;
-  PopupMenu menu_;
+  private:
+    GenericApplication* application_;
+    PopupMenu menu_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Window);
+    DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Window);
 };
 
 }  // namespace app

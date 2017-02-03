@@ -1,15 +1,15 @@
 package rec;
 
 message TranslatedString {
-  optional string original = 1;
-  optional string translation = 2;
-  optional string hint = 3;
-  optional string file = 4;
-  optional uint32 line = 5;
-  optional uint32 index = 6;
+    optional string original = 1;
+    optional string translation = 2;
+    optional string hint = 3;
+    optional string file = 4;
+    optional uint32 line = 5;
+    optional uint32 index = 6;
 };
 
 message TranslatedStrings {
-  repeated TranslatedString str = 1;
-  optional uint32 max_index = 2;
+    repeated TranslatedString str = 1;
+    optional uint32 max_index = 2;
 };

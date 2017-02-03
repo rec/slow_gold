@@ -10,48 +10,48 @@ namespace data {
 namespace {
 
 TEST(Equals, VirtualFile) {
-  VirtualFile x, y;
-  EXPECT_TRUE(equals(x, x));
+    VirtualFile x, y;
+    EXPECT_TRUE(equals(x, x));
 
-  y.set_type(VirtualFile::CD);
-  EXPECT_FALSE(equals(x, y));
+    y.set_type(VirtualFile::CD);
+    EXPECT_FALSE(equals(x, y));
 
-  x.CopyFrom(y);
-  EXPECT_TRUE(equals(x, x));
+    x.CopyFrom(y);
+    EXPECT_TRUE(equals(x, x));
 
-  y.add_path();
-  EXPECT_FALSE(equals(x, y));
+    y.add_path();
+    EXPECT_FALSE(equals(x, y));
 
-  x.add_path();
-  EXPECT_TRUE(equals(x, y));
+    x.add_path();
+    EXPECT_TRUE(equals(x, y));
 
-  x.add_path();
-  EXPECT_FALSE(equals(x, y));
+    x.add_path();
+    EXPECT_FALSE(equals(x, y));
 
-  y.add_path();
-  EXPECT_TRUE(equals(x, y));
+    y.add_path();
+    EXPECT_TRUE(equals(x, y));
 
-  *x.mutable_path(0) = "hello";
-  EXPECT_FALSE(equals(x, y));
+    *x.mutable_path(0) = "hello";
+    EXPECT_FALSE(equals(x, y));
 
-  *y.mutable_path(0) = "hello";
-  EXPECT_TRUE(equals(x, y));
+    *y.mutable_path(0) = "hello";
+    EXPECT_TRUE(equals(x, y));
 }
 
 #if 0
 TEST(Equals, Parameters) {
-  slow::Parameters x, y;
-  EXPECT_TRUE(equals(x, y));
+    slow::Parameters x, y;
+    EXPECT_TRUE(equals(x, y));
 
-  x.mutable_file()->set_type(VirtualFile::NONE);
-  EXPECT_FALSE(equals(x, y));
+    x.mutable_file()->set_type(VirtualFile::NONE);
+    EXPECT_FALSE(equals(x, y));
 
-  x.mutable_file()->clear_type();
-  EXPECT_TRUE(equals(x, y));
-  EXPECT_EQ(x.file().type(), VirtualFile::NONE);
+    x.mutable_file()->clear_type();
+    EXPECT_TRUE(equals(x, y));
+    EXPECT_EQ(x.file().type(), VirtualFile::NONE);
 
-  x.mutable_stretch()->set_disabled(true);
-  EXPECT_FALSE(equals(x, y));
+    x.mutable_stretch()->set_disabled(true);
+    EXPECT_FALSE(equals(x, y));
 }
 #endif
 

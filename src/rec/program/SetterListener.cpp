@@ -16,45 +16,45 @@ namespace rec {
 namespace program {
 
 SetterListener::SetterListener(CommandID id,
-                               const command::Command& command,
-                               JuceModel* model)
-    : AddressListener(command.setter()), model_(model) {
-  Program* p = model->program();
-  if (command.setter_type() == Command::TOGGLE) {
-    p->addCallback(id, methodCallback(this, &SetterListener::toggle));
-  } else {
-    CommandID index = id - command.id();
-    p->addCallback(id, methodCallback(this, &SetterListener::select, index));
-  }
+                                                              const command::Command& command,
+                                                              JuceModel* model)
+        : AddressListener(command.setter()), model_(model) {
+    Program* p = model->program();
+    if (command.setter_type() == Command::TOGGLE) {
+        p->addCallback(id, methodCallback(this, &SetterListener::toggle));
+    } else {
+        CommandID index = id - command.id();
+        p->addCallback(id, methodCallback(this, &SetterListener::select, index));
+    }
 }
 
 void SetterListener::toggle() {
-  {
-    Lock l(lock_);
-    value_.set_bool_f(not value_.bool_f());
-  }
-  setValue();
+    {
+        Lock l(lock_);
+        value_.set_bool_f(not value_.bool_f());
+    }
+    setValue();
 }
 
 void SetterListener::select(int index) {
-  {
-    Lock l(lock_);
-    value_.set_enum_f(index);
-  }
-  setValue();
+    {
+        Lock l(lock_);
+        value_.set_enum_f(index);
+    }
+    setValue();
 }
 
 void SetterListener::operator()(const Value& v) {
-  {
-    Lock l(lock_);
-    value_ = v;
-  }
-  model_->menuItemsChanged();
+    {
+        Lock l(lock_);
+        value_ = v;
+    }
+    model_->menuItemsChanged();
 }
 
 void SetterListener::setValue() {
-  AddressListener::setValue(value_);
-  model_->menuItemsChanged();
+    AddressListener::setValue(value_);
+    model_->menuItemsChanged();
 }
 
 }  // namespace program

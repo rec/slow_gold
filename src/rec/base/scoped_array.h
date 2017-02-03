@@ -13,81 +13,81 @@
 // Size: sizeof(scoped_array<C>) == sizeof(C*)
 template <class C>
 class scoped_array {
- public:
+  public:
 
-  // The element type
-  typedef C element_type;
+    // The element type
+    typedef C element_type;
 
-  // Constructor.  Defaults to intializing with nullptr.
-  // There is no way to create an uninitialized scoped_array.
-  // The input parameter must be allocated with new [].
-  explicit scoped_array(C* p = nullptr) : array_(p) { }
+    // Constructor.  Defaults to intializing with nullptr.
+    // There is no way to create an uninitialized scoped_array.
+    // The input parameter must be allocated with new [].
+    explicit scoped_array(C* p = nullptr) : array_(p) { }
 
-  // Destructor.  If there is a C object, delete it.
-  // We don't need to test ptr_ == nullptr because C++ does that for us.
-  ~scoped_array() {
-    enum { type_must_be_complete = sizeof(C) };
-    delete[] array_;
-  }
-
-  // Reset.  Deletes the current owned object, if any.
-  // Then takes ownership of a new object, if given.
-  // this->reset(this->get()) works.
-  void reset(C* p = nullptr) {
-    if (p != array_) {
-      enum { type_must_be_complete = sizeof(C) };
-      delete[] array_;
-      array_ = p;
+    // Destructor.  If there is a C object, delete it.
+    // We don't need to test ptr_ == nullptr because C++ does that for us.
+    ~scoped_array() {
+        enum { type_must_be_complete = sizeof(C) };
+        delete[] array_;
     }
-  }
 
-  // Get one element of the current object.
-  // Will DCHECK() if there is no current object, or index i is negative.
-  C& operator[](std::ptrdiff_t i) const {
-    DCHECK(i >= 0);
-    DCHECK(array_ != nullptr);
-    return array_[i];
-  }
+    // Reset.  Deletes the current owned object, if any.
+    // Then takes ownership of a new object, if given.
+    // this->reset(this->get()) works.
+    void reset(C* p = nullptr) {
+        if (p != array_) {
+            enum { type_must_be_complete = sizeof(C) };
+            delete[] array_;
+            array_ = p;
+        }
+    }
 
-  // Get a pointer to the zeroth element of the current object.
-  // If there is no current object, return nullptr.
-  C* get() const {
-    return array_;
-  }
+    // Get one element of the current object.
+    // Will DCHECK() if there is no current object, or index i is negative.
+    C& operator[](std::ptrdiff_t i) const {
+        DCHECK(i >= 0);
+        DCHECK(array_ != nullptr);
+        return array_[i];
+    }
 
-  // Comparison operators.
-  // These return whether two scoped_array refer to the same object, not just to
-  // two different but equal objects.
-  bool operator==(C* p) const { return array_ == p; }
-  bool operator!=(C* p) const { return array_ != p; }
+    // Get a pointer to the zeroth element of the current object.
+    // If there is no current object, return nullptr.
+    C* get() const {
+        return array_;
+    }
 
-  // Swap two scoped arrays.
-  void swap(scoped_array& p2) {
-    C* tmp = array_;
-    array_ = p2.array_;
-    p2.array_ = tmp;
-  }
+    // Comparison operators.
+    // These return whether two scoped_array refer to the same object, not just to
+    // two different but equal objects.
+    bool operator==(C* p) const { return array_ == p; }
+    bool operator!=(C* p) const { return array_ != p; }
 
-  // Release an array.
-  // The return value is the current pointer held by this object.
-  // If this object holds a nullptr pointer, the return value is nullptr.
-  // After this operation, this object will hold a nullptr pointer,
-  // and will not own the object any more.
-  C* release() {
-    C* retVal = array_;
-    array_ = nullptr;
-    return retVal;
-  }
+    // Swap two scoped arrays.
+    void swap(scoped_array& p2) {
+        C* tmp = array_;
+        array_ = p2.array_;
+        p2.array_ = tmp;
+    }
 
- private:
-  C* array_;
+    // Release an array.
+    // The return value is the current pointer held by this object.
+    // If this object holds a nullptr pointer, the return value is nullptr.
+    // After this operation, this object will hold a nullptr pointer,
+    // and will not own the object any more.
+    C* release() {
+        C* retVal = array_;
+        array_ = nullptr;
+        return retVal;
+    }
 
-  // Forbid comparison of different scoped_array types.
-  template <class C2> bool operator==(scoped_array<C2> const& p2) const;
-  template <class C2> bool operator!=(scoped_array<C2> const& p2) const;
+  private:
+    C* array_;
 
-  // Disallow evil constructors
-  scoped_array(const scoped_array&);
-  void operator=(const scoped_array&);
+    // Forbid comparison of different scoped_array types.
+    template <class C2> bool operator==(scoped_array<C2> const& p2) const;
+    template <class C2> bool operator!=(scoped_array<C2> const& p2) const;
+
+    // Disallow evil constructors
+    scoped_array(const scoped_array&);
+    void operator=(const scoped_array&);
 };
 

@@ -63,41 +63,41 @@ namespace {
 #if JUCE_WINDOWS
 
 struct FileAssociation {
-  String extension_, symbolicName_, fullName_;
-  void registerExtension(const String& exe) {
-    juce::WindowsRegistry::registerFileAssociation(
-        extension_, symbolicName_, fullName_, exe, 0, false);
-  }
+    String extension_, symbolicName_, fullName_;
+    void registerExtension(const String& exe) {
+        juce::WindowsRegistry::registerFileAssociation(
+                extension_, symbolicName_, fullName_, exe, 0, false);
+    }
 };
 
 FileAssociation FILES[] = {
-  { ".aif", "aiff", "Audio IFF files" },
-  { ".aiff", "aiff", "Audio IFF files" },
-  { ".mp3", "mp3", "MP3 files" },
-  { ".wav", "wave", "Microsoft WAVE documents" },
-  { ".wave", "wave", "Microsoft WAVE documents" },
-  { ".slow", "SlowGold", "World-Wide Woodshed SlowGold 8 documents" }
+    { ".aif", "aiff", "Audio IFF files" },
+    { ".aiff", "aiff", "Audio IFF files" },
+    { ".mp3", "mp3", "MP3 files" },
+    { ".wav", "wave", "Microsoft WAVE documents" },
+    { ".wave", "wave", "Microsoft WAVE documents" },
+    { ".slow", "SlowGold", "World-Wide Woodshed SlowGold 8 documents" }
 };
 
 #endif  // JUCE_WINDOWS
 
 class RegisterSlow : public app::RegisterInstance {
- public:
-  RegisterSlow() {}
+  public:
+    RegisterSlow() {}
 
-  virtual void onSuccess() {
-    data::Opener<AppSettings> settings(data::global(), data::CANT_UNDO);
-    settings->set_registered(true);
+    virtual void onSuccess() {
+        data::Opener<AppSettings> settings(data::global(), data::CANT_UNDO);
+        settings->set_registered(true);
 #if JUCE_WINDOWS
-    if (!settings->windows_registered()) {
-      String exe = File::getSpecialLocation(File::currentExecutableFile).
-        getFullPathName();
-      for (int i = 0; i < arraysize(FILES); ++i)
-        FILES[i].registerExtension(exe);
-      settings->set_windows_registered(true);
-    }
+        if (!settings->windows_registered()) {
+            String exe = File::getSpecialLocation(File::currentExecutableFile).
+                getFullPathName();
+            for (int i = 0; i < arraysize(FILES); ++i)
+                FILES[i].registerExtension(exe);
+            settings->set_windows_registered(true);
+        }
 #endif  // JUCE_WINDOWS
-  }
+    }
 };
 
 Instance* INSTANCE = nullptr;
@@ -105,167 +105,167 @@ Instance* INSTANCE = nullptr;
 }  // namespace
 
 Instance* getInstance() {
-  return INSTANCE;
+    return INSTANCE;
 }
 
 const VirtualFile getInstanceFile() {
-  return INSTANCE->file();
+    return INSTANCE->file();
 }
 
 Instance::Instance(app::Window* window) : window_(window) {
-  CHECK_DDD(51, 2193, int64, int32);
-  logDropDead();
-  DCHECK(!INSTANCE);
-  INSTANCE = this;
+    CHECK_DDD(51, 2193, int64, int32);
+    logDropDead();
+    DCHECK(!INSTANCE);
+    INSTANCE = this;
 }
 
 void Instance::init() {
-  slowProgram_.reset(new SlowProgram(this));
-  juceModel_.reset(new program::JuceModel(slowProgram_.get()));
-  juceModel_->init();
+    slowProgram_.reset(new SlowProgram(this));
+    juceModel_.reset(new program::JuceModel(slowProgram_.get()));
+    juceModel_->init();
 
-  window_->init();
-  device_.reset(new audio::Device);
-  currentFile_.reset(new CurrentFile);
+    window_->init();
+    device_.reset(new audio::Device);
+    currentFile_.reset(new CurrentFile);
 
-  player_.reset(new audio::source::Player(device_.get()));
+    player_.reset(new audio::source::Player(device_.get()));
 
-  player_->init();
-  components_.reset(new Components(window_));
-  components_->init();
+    player_->init();
+    components_.reset(new Components(window_));
+    components_->init();
 
-  currentTime_.reset(new CurrentTime);
-  bufferFiller_.reset(new BufferFiller);
-  lookAndFeel_.reset(new gui::LookAndFeel);
-  mouseListener_.reset(new MouseListener);
-  guiListener_.reset(new GuiListener);
-  fillerThread_.reset(
-      new FillerThread(currentTime_.get(), bufferFiller_.get()));
+    currentTime_.reset(new CurrentTime);
+    bufferFiller_.reset(new BufferFiller);
+    lookAndFeel_.reset(new gui::LookAndFeel);
+    mouseListener_.reset(new MouseListener);
+    guiListener_.reset(new GuiListener);
+    fillerThread_.reset(
+            new FillerThread(currentTime_.get(), bufferFiller_.get()));
 
-  midiCommandMap_.reset(new command::MidiCommandMap);
+    midiCommandMap_.reset(new command::MidiCommandMap);
 
-  device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
-  midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
+    device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
+    midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
-  program::applicationCommandManager()->setFirstCommandTarget(
-      juceModel_.get());
-  window_->addKeyListener(program::applicationCommandManager()->getKeyMappings());
+    program::applicationCommandManager()->setFirstCommandTarget(
+            juceModel_.get());
+    window_->addKeyListener(program::applicationCommandManager()->getKeyMappings());
 
-  fillerThread_->setPriority(FILLER_PRIORITY);
+    fillerThread_->setPriority(FILLER_PRIORITY);
 
-  program::applicationCommandManager()->registerAllCommandsForTarget(juceModel_.get());
-  command::loadKeyboardBindings(program::applicationCommandManager());
-  window_->getAppleMenu()->addCommandItem(program::applicationCommandManager(),
-                                          slow::Command::ABOUT_THIS_PROGRAM);
+    program::applicationCommandManager()->registerAllCommandsForTarget(juceModel_.get());
+    command::loadKeyboardBindings(program::applicationCommandManager());
+    window_->getAppleMenu()->addCommandItem(program::applicationCommandManager(),
+                                                                                    slow::Command::ABOUT_THIS_PROGRAM);
 
-  audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
+    audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
 
-  player_->setSource(makeSource());
-  components_->waveform()->setAudioThumbnail(bufferFiller_->thumbnail());
+    player_->setSource(makeSource());
+    components_->waveform()->setAudioThumbnail(bufferFiller_->thumbnail());
 
-  DialogLocker::getDisableBroadcaster()->addListener(juceModel_.get());
-  DialogLocker::getDisableBroadcaster()->addListener(window_->application());
+    DialogLocker::getDisableBroadcaster()->addListener(juceModel_.get());
+    DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
-  Mode mode = data::getProto<Mode>();
-  if (mode.click() == Mode::DRAW_LOOP_POINTS) {
-    mode.clear_click();
-    setProto(mode);
-  }
+    Mode mode = data::getProto<Mode>();
+    if (mode.click() == Mode::DRAW_LOOP_POINTS) {
+        mode.clear_click();
+        setProto(mode);
+    }
 #endif
 }
 
 Instance::~Instance() {
-  device_->manager_.removeMidiInputCallback("", midiCommandMap_.get());
-  player_->setState(audio::transport::STOPPED);
-  device_->shutdown();
+    device_->manager_.removeMidiInputCallback("", midiCommandMap_.get());
+    player_->setState(audio::transport::STOPPED);
+    device_->shutdown();
 }
 
 audio::Source* Instance::makeSource() const {
-  return bufferFiller_->reader()->makeSource();
+    return bufferFiller_->reader()->makeSource();
 }
 
 bool Instance::startup() {
-  juceModel_->menuItemsChanged();
+    juceModel_->menuItemsChanged();
 
-  VirtualFile vf = data::getProto<VirtualFile>();
-  if (vf.type() != VirtualFile::NONE) {
-    File f = file::toRealFile(vf);
-    vf = file::toVirtualFile(f);
-    data::setProto(vf);
-  }
+    VirtualFile vf = data::getProto<VirtualFile>();
+    if (vf.type() != VirtualFile::NONE) {
+        File f = file::toRealFile(vf);
+        vf = file::toVirtualFile(f);
+        data::setProto(vf);
+    }
 
-  {
-    MessageManagerLock l;
-    juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
+    {
+        MessageManagerLock l;
+        juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
 
-    window_->toFront(true);
-    currentFile_->setVirtualFile(vf, false);
-  }
+        window_->toFront(true);
+        currentFile_->setVirtualFile(vf, false);
+    }
 
-  thread::callAsync(window_, &DocumentWindow::setVisible, true);
-  juceModel_->startThreads();
-  broadcastState<Thread*>(juceModel_->getThread("timer"));
+    thread::callAsync(window_, &DocumentWindow::setVisible, true);
+    juceModel_->startThreads();
+    broadcastState<Thread*>(juceModel_->getThread("timer"));
 
-  data::getDataCenter()->undoStack()->setEnabled();
-  if (!data::getProto<AppSettings>().registered())
-    thread::trash::run<RegisterSlow>();
+    data::getDataCenter()->undoStack()->setEnabled();
+    if (!data::getProto<AppSettings>().registered())
+        thread::trash::run<RegisterSlow>();
 
-  auto unauthorized = not ews::testAuthenticated().authenticated();
-  program::juceModel()->setProperty("unauthorized", unauthorized);
+    auto unauthorized = not ews::testAuthenticated().authenticated();
+    program::juceModel()->setProperty("unauthorized", unauthorized);
 
-  if (data::getProto<GuiSettings>().show_about_on_startup() or unauthorized) {
-    MessageManagerLock l;
-    window_->startAboutWindow();
-  }
-  return true;
+    if (data::getProto<GuiSettings>().show_about_on_startup() or unauthorized) {
+        MessageManagerLock l;
+        window_->startAboutWindow();
+    }
+    return true;
 }
 
 const VirtualFile Instance::file() const {
-  return currentFile_->file();
+    return currentFile_->file();
 }
 
 void Instance::updateGui() {
-  guiListener_->update();
+    guiListener_->update();
 }
 
 SampleTime Instance::length() const {
-  return currentFile_->length();
+    return currentFile_->length();
 }
 
 SampleTime Instance::time() const {
-  return currentTime_->time();
+    return currentTime_->time();
 }
 
 bool Instance::isPlaying() const {
-  return player_ && player_->state();
+    return player_ && player_->state();
 }
 
 bool Instance::empty() const {
-  return currentFile_ && currentFile_->empty();
+    return currentFile_ && currentFile_->empty();
 }
 
 void Instance::setProto(const Message& m, data::Undoable undoable) {
-   data::setProto(m, file(), undoable);
-   juceModel_->menuItemsChanged();
+      data::setProto(m, file(), undoable);
+      juceModel_->menuItemsChanged();
 }
 
 static const int FILLER_THREAD_STOP_TIME = 60000;
 
 void Instance::reset() {
-  player_->reset();
-  fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
-  bufferFiller_->reset();
-  currentTime_->reset();
+    player_->reset();
+    fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
+    bufferFiller_->reset();
+    currentTime_->reset();
 }
 
 void Instance::shutdown() {
-  juceModel_->stopThreads();
-  reset();
+    juceModel_->stopThreads();
+    reset();
 }
 
 SampleRate Instance::getSourceSampleRate() const {
-  return data::getProto<Viewport>(file()).loop_points().sample_rate();
+    return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
 }  // namespace slow

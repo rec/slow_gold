@@ -199,13 +199,6 @@ class Stretch : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 channels() const;
   inline void set_channels(::google::protobuf::uint32 value);
 
-  // optional double pitch_scale = 9 [default = 1];
-  inline bool has_pitch_scale() const;
-  inline void clear_pitch_scale();
-  static const int kPitchScaleFieldNumber = 9;
-  inline double pitch_scale() const;
-  inline void set_pitch_scale(double value);
-
   // optional double semitone_shift = 10;
   inline bool has_semitone_shift() const;
   inline void clear_semitone_shift();
@@ -294,8 +287,6 @@ class Stretch : public ::google::protobuf::Message {
   inline void clear_has_sample_rate();
   inline void set_has_channels();
   inline void clear_has_channels();
-  inline void set_has_pitch_scale();
-  inline void clear_has_pitch_scale();
   inline void set_has_semitone_shift();
   inline void clear_has_semitone_shift();
   inline void set_has_detune_cents();
@@ -326,10 +317,9 @@ class Stretch : public ::google::protobuf::Message {
   bool passthrough_when_disabled_;
   double time_percent_;
   double sample_rate_;
-  double pitch_scale_;
+  double semitone_shift_;
   ::google::protobuf::uint32 channels_;
   ::google::protobuf::uint32 bands_;
-  double semitone_shift_;
   double detune_cents_;
   ::google::protobuf::uint32 filter_overlap_;
   ::google::protobuf::uint32 chunk_size_;
@@ -340,7 +330,7 @@ class Stretch : public ::google::protobuf::Message {
   ::google::protobuf::uint32 max_process_size_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(19 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
@@ -647,37 +637,15 @@ inline void Stretch::set_channels(::google::protobuf::uint32 value) {
   channels_ = value;
 }
 
-// optional double pitch_scale = 9 [default = 1];
-inline bool Stretch::has_pitch_scale() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void Stretch::set_has_pitch_scale() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void Stretch::clear_has_pitch_scale() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void Stretch::clear_pitch_scale() {
-  pitch_scale_ = 1;
-  clear_has_pitch_scale();
-}
-inline double Stretch::pitch_scale() const {
-  return pitch_scale_;
-}
-inline void Stretch::set_pitch_scale(double value) {
-  set_has_pitch_scale();
-  pitch_scale_ = value;
-}
-
 // optional double semitone_shift = 10;
 inline bool Stretch::has_semitone_shift() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void Stretch::set_has_semitone_shift() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void Stretch::clear_has_semitone_shift() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void Stretch::clear_semitone_shift() {
   semitone_shift_ = 0;
@@ -693,13 +661,13 @@ inline void Stretch::set_semitone_shift(double value) {
 
 // optional double detune_cents = 11;
 inline bool Stretch::has_detune_cents() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void Stretch::set_has_detune_cents() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void Stretch::clear_has_detune_cents() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void Stretch::clear_detune_cents() {
   detune_cents_ = 0;
@@ -715,13 +683,13 @@ inline void Stretch::set_detune_cents(double value) {
 
 // optional uint32 bands = 12 [default = 2048];
 inline bool Stretch::has_bands() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void Stretch::set_has_bands() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void Stretch::clear_has_bands() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void Stretch::clear_bands() {
   bands_ = 2048u;
@@ -737,13 +705,13 @@ inline void Stretch::set_bands(::google::protobuf::uint32 value) {
 
 // optional uint32 filter_overlap = 13 [default = 1];
 inline bool Stretch::has_filter_overlap() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void Stretch::set_has_filter_overlap() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void Stretch::clear_has_filter_overlap() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void Stretch::clear_filter_overlap() {
   filter_overlap_ = 1u;
@@ -759,13 +727,13 @@ inline void Stretch::set_filter_overlap(::google::protobuf::uint32 value) {
 
 // optional uint32 chunk_size = 14 [default = 1024];
 inline bool Stretch::has_chunk_size() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void Stretch::set_has_chunk_size() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void Stretch::clear_has_chunk_size() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void Stretch::clear_chunk_size() {
   chunk_size_ = 1024u;
@@ -781,13 +749,13 @@ inline void Stretch::set_chunk_size(::google::protobuf::uint32 value) {
 
 // optional uint32 prefill_size = 15 [default = 15000];
 inline bool Stretch::has_prefill_size() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void Stretch::set_has_prefill_size() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void Stretch::clear_has_prefill_size() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void Stretch::clear_prefill_size() {
   prefill_size_ = 15000u;
@@ -803,13 +771,13 @@ inline void Stretch::set_prefill_size(::google::protobuf::uint32 value) {
 
 // optional uint32 next_buffer_fill_size = 16 [default = 15000];
 inline bool Stretch::has_next_buffer_fill_size() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void Stretch::set_has_next_buffer_fill_size() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void Stretch::clear_has_next_buffer_fill_size() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void Stretch::clear_next_buffer_fill_size() {
   next_buffer_fill_size_ = 15000u;
@@ -825,13 +793,13 @@ inline void Stretch::set_next_buffer_fill_size(::google::protobuf::uint32 value)
 
 // optional int32 inactive_wait_time = 17 [default = -1];
 inline bool Stretch::has_inactive_wait_time() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void Stretch::set_has_inactive_wait_time() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void Stretch::clear_has_inactive_wait_time() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void Stretch::clear_inactive_wait_time() {
   inactive_wait_time_ = -1;
@@ -847,13 +815,13 @@ inline void Stretch::set_inactive_wait_time(::google::protobuf::int32 value) {
 
 // optional uint32 thread_priority = 18 [default = 4];
 inline bool Stretch::has_thread_priority() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void Stretch::set_has_thread_priority() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void Stretch::clear_has_thread_priority() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void Stretch::clear_thread_priority() {
   thread_priority_ = 4u;
@@ -869,13 +837,13 @@ inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
 
 // optional uint32 max_process_size = 19 [default = 16364];
 inline bool Stretch::has_max_process_size() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void Stretch::set_has_max_process_size() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 inline void Stretch::clear_has_max_process_size() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void Stretch::clear_max_process_size() {
   max_process_size_ = 16364u;

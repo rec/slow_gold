@@ -6,14 +6,14 @@ namespace rec {
 namespace audio {
 
 struct BufferTime {
-  Buffer* buffer_;
-  SampleTime time_;
+    Buffer* buffer_;
+    SampleTime time_;
 
-  BufferTime(Buffer* b, SampleTime t) : buffer_(b), time_(t) {}
-  BufferTime() {}
+    BufferTime(Buffer* b, SampleTime t) : buffer_(b), time_(t) {}
+    BufferTime() {}
 
- private:
-  JUCE_LEAK_DETECTOR(BufferTime);
+  private:
+    JUCE_LEAK_DETECTOR(BufferTime);
 };
 
 // Returns the number of samples actually copied.

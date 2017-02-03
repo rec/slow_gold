@@ -11,28 +11,28 @@ namespace gui {
 namespace audio {
 
 SetupPage::SetupPage(rec::audio::Device* dev)
-    : deviceSelector_(dev->manager_, 0, 0, 2, 2, true, false, true, true),
-      device_(dev) {
-  addAndMakeVisible(&deviceSelector_);
-  setSize(400, 300);
+        : deviceSelector_(dev->manager_, 0, 0, 2, 2, true, false, true, true),
+            device_(dev) {
+    addAndMakeVisible(&deviceSelector_);
+    setSize(400, 300);
 }
 
 void SetupPage::paint(Graphics& g) { g.fillAll(juce::Colours::lightgrey); }
 
 void SetupPage::resized() {
-  deviceSelector_.setBounds(8, 8, getWidth() - 16, getHeight() - 16);
+    deviceSelector_.setBounds(8, 8, getWidth() - 16, getHeight() - 16);
 }
 
 void SetupPage::show(Component* comp) {
-  DialogLocker locker;
-  if (!locker.isLocked())
-    return;
+    DialogLocker locker;
+    if (!locker.isLocked())
+        return;
 
-  locker.setModalComponent(comp);
-  juce::DialogWindow::showModalDialog(t_SET_AUDIO_PREFERENCES, this,
-                                      comp, juce::Colours::white, true);
+    locker.setModalComponent(comp);
+    juce::DialogWindow::showModalDialog(t_SET_AUDIO_PREFERENCES, this,
+                                                                            comp, juce::Colours::white, true);
 
-  device_->saveState();
+    device_->saveState();
 }
 
 }  // namespace audio

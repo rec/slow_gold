@@ -1,22 +1,22 @@
 package rec.music;
 
 message Metadata {
-  optional string discid = 1;
-  optional string year = 2;
-  optional string genre = 3;
-  optional string track_title = 4;
-  optional string album_title = 5;
-  optional string artist = 6;
-  optional string track_number = 7;
-  optional uint64 track_length = 8;  // in samples.
-  optional string notes = 9;  // User-created notes.
+    optional string discid = 1;
+    optional string year = 2;
+    optional string genre = 3;
+    optional string track_title = 4;
+    optional string album_title = 5;
+    optional string artist = 6;
+    optional string track_number = 7;
+    optional uint64 track_length = 8;  // in samples.
+    optional string notes = 9;  // User-created notes.
 };
 
 message Album {
-  optional Metadata album = 1;
-  repeated Metadata track = 2;
+    optional Metadata album = 1;
+    repeated Metadata track = 2;
 };
 
 message AlbumList {
-  repeated Album album = 1;
+    repeated Album album = 1;
 };

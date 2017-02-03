@@ -12,16 +12,16 @@ namespace rec {
 namespace data {
 
 TEST(Proto, Apply) {
-  LoopPointList loop_point;
-  loop_point.add_loop_point()->set_time(23);
+    LoopPointList loop_point;
+    loop_point.add_loop_point()->set_time(23);
 
-  Address address;
-  ASSERT_TRUE(fillFromDefault("part { name: \"loop_point\" } "
-                              "part { index: 0 } "
-                              "part { name: \"time\"}", &address));
-  Value v = getValue(address, loop_point);
-  EXPECT_TRUE(v.has_uint32_f());
-  EXPECT_EQ(v.uint32_f(), 23);
+    Address address;
+    ASSERT_TRUE(fillFromDefault("part { name: \"loop_point\" } "
+                                                            "part { index: 0 } "
+                                                            "part { name: \"time\"}", &address));
+    Value v = getValue(address, loop_point);
+    EXPECT_TRUE(v.has_uint32_f());
+    EXPECT_EQ(v.uint32_f(), 23);
 }
 
 }  // namespace data

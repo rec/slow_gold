@@ -31,58 +31,58 @@ namespace slow {
 namespace {
 
 void enableAllDrawableButtons(Component *c, bool enabled) {
-  if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
-    b->setEnabled(enabled);
-    b->buttonStateChanged();
-  } else {
-    for (int i = 0; i < c->getNumChildComponents(); ++i)
-      enableAllDrawableButtons(c->getChildComponent(i), enabled);
-  }
+    if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
+        b->setEnabled(enabled);
+        b->buttonStateChanged();
+    } else {
+        for (int i = 0; i < c->getNumChildComponents(); ++i)
+            enableAllDrawableButtons(c->getChildComponent(i), enabled);
+    }
 }
 
 }  // namespace
 
 Components::Components(Component* parent)
-    : mainPanel_(gui::makeLayout("MainPanel", nullptr)),
-      parent_(parent) {
-  parent->addChildComponent(mainPanel_.get());
+        : mainPanel_(gui::makeLayout("MainPanel", nullptr)),
+            parent_(parent) {
+    parent->addChildComponent(mainPanel_.get());
 }
 
 Components::~Components() {}
 
 void Components::init() {
-  auto top = getProgram()->getTopComponent();
+    auto top = getProgram()->getTopComponent();
 
-  treeView_ = findTypedComponent<widget::tree::TreeView>(top, "TreeView");
-  waveform_ = findTypedComponent<widget::waveform::Waveform>(top, "Waveform");
-  waveform_->init();
+    treeView_ = findTypedComponent<widget::tree::TreeView>(top, "TreeView");
+    waveform_ = findTypedComponent<widget::waveform::Waveform>(top, "Waveform");
+    waveform_->init();
 
-  auto loops = findTypedComponent<gui::audio::Loops>(top, "Loops");
-  loops->setModel(loops);
-  setDefaultCuttable(loops);
+    auto loops = findTypedComponent<gui::audio::Loops>(top, "Loops");
+    loops->setModel(loops);
+    setDefaultCuttable(loops);
 }
 
 void Components::operator()(const rec::audio::Gain& gain) {
-  program::juceModel()->setProperty("muted", gain.mute());
+    program::juceModel()->setProperty("muted", gain.mute());
 }
 
 void Components::operator()(const music::Metadata& md) {
-  String name = Trans("(no file loaded)");
-  auto currentFile = getInstance()->currentFile_.get();
-  if (currentFile && !currentFile->empty()) {
-    File file = data::DataListener<music::Metadata>::getData()->getFile();
-    name = str(music::getTitle(md, file.getParentDirectory()));
-  }
+    String name = Trans("(no file loaded)");
+    auto currentFile = getInstance()->currentFile_.get();
+    if (currentFile && !currentFile->empty()) {
+        File file = data::DataListener<music::Metadata>::getData()->getFile();
+        name = str(music::getTitle(md, file.getParentDirectory()));
+    }
 
-  thread::callAsync(getInstance()->window_, &SlowWindow::setName, name);
+    thread::callAsync(getInstance()->window_, &SlowWindow::setName, name);
 }
 
 void Components::operator()(const audio::stretch::Stretch& s) {
-  program::juceModel()->setProperty("speed_disabled", not s.time_enabled());
+    program::juceModel()->setProperty("speed_disabled", not s.time_enabled());
 }
 
 widget::tree::Root* Components::directoryTree() {
-  return treeView_->root();
+    return treeView_->root();
 }
 
 }  // namespace slow

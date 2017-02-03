@@ -11,7 +11,7 @@ const String getDisplayName(const VirtualFile&);
 const String getFullDisplayName(const VirtualFile&);
 
 inline const string toString(const VirtualFile& f) {
-  return str(getFullDisplayName(f));
+    return str(getFullDisplayName(f));
 }
 
 }  // namespace file

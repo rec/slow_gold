@@ -96,47 +96,47 @@ typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 using juce::Array;
 
 inline string str(const String& s) {
-  return s.toStdString();
+    return s.toStdString();
 }
 
 inline String str(const string& s) {
-  return String(s);
+    return String(s);
 }
 
 inline String str(const char* s) { return str(string(s)); }
 
 inline string str(const File& f) {
-  return str(f.getFullPathName());
+    return str(f.getFullPathName());
 }
 
 inline std::ostream& operator<<(std::ostream& os, const String& s) {
-  return os << str(s);
+    return os << str(s);
 }
 
 inline const string operator+(const String& s, const string& t) {
-  return str(s) + t;
+    return str(s) + t;
 }
 
 inline const string operator+(const string& s, const String& t) {
-  return s + str(t);
+    return s + str(t);
 }
 
 #if JUCE_WINDOWS
 
 inline const wchar_t* c_str(const String& s) {
-  return s.toWideCharPointer();
+    return s.toWideCharPointer();
 }
 
 #else
 
 inline const char* c_str(const String& s) {
-  return s.toUTF8().getAddress();
+    return s.toUTF8().getAddress();
 }
 
 #endif
 
 inline void beep( ) {
-  juce::LookAndFeel::getDefaultLookAndFeel().playAlertSound();
+    juce::LookAndFeel::getDefaultLookAndFeel().playAlertSound();
 }
 
 }  // namespace rec

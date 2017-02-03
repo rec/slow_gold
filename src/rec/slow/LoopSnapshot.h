@@ -14,18 +14,18 @@ namespace slow {
 class Instance;
 
 struct LoopSnapshot {
-  LoopSnapshot() {}
-  LoopSnapshot(Instance*);
+    LoopSnapshot() {}
+    LoopSnapshot(Instance*);
 
-  Instance* instance_;
-  widget::waveform::Viewport viewport_;
-  LoopPointList* loops_;
+    Instance* instance_;
+    widget::waveform::Viewport viewport_;
+    LoopPointList* loops_;
 
-  typedef bool (*Function)(LoopSnapshot*);
-  typedef std::map<int32, LoopSnapshot::Function> Map;
+    typedef bool (*Function)(LoopSnapshot*);
+    typedef std::map<int32, LoopSnapshot::Function> Map;
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(LoopSnapshot);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(LoopSnapshot);
 };
 
 }  // namespace slow

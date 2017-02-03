@@ -5,27 +5,27 @@ import "rec/gui/Font.proto";
 import "rec/gui/Geometry.proto";
 
 message State {
-  // Is this widget currently "selected" by the application?
-  optional bool selected = 1;
+    // Is this widget currently "selected" by the application?
+    optional bool selected = 1;
 
-  enum MouseState {
-    NONE = 0;
-    DOWN = 1;
-    HOVERING = 2;
-  };
-  optional MouseState mouse = 2;
+    enum MouseState {
+        NONE = 0;
+        DOWN = 1;
+        HOVERING = 2;
+    };
+    optional MouseState mouse = 2;
 };
 
 // Information common to all widgets.
 message Widget {
-  optional string name = 1;
-  optional gui.Colors colors = 2;
-  optional gui.FontDesc font = 3;
-  optional uint32 margin = 4 [default = 2];
+    optional string name = 1;
+    optional gui.Colors colors = 2;
+    optional gui.FontDesc font = 3;
+    optional uint32 margin = 4 [default = 2];
 
-  // If transparent is false, the Widget will start repainting by clearing its
-  // background to the background color.
-  optional bool transparent = 5;
-  optional gui.Layer layer = 6;
-  optional State state = 7;  // You might choose not to persist this.
+    // If transparent is false, the Widget will start repainting by clearing its
+    // background to the background color.
+    optional bool transparent = 5;
+    optional gui.Layer layer = 6;
+    optional State state = 7;  // You might choose not to persist this.
 };

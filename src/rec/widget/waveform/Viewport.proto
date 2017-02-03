@@ -4,6 +4,6 @@ import "rec/util/LoopPoint.proto";
 import "rec/widget/waveform/Zoom.proto";
 
 message Viewport {
-  optional util.LoopPointList loop_points = 1;
-  optional Zoom zoom = 2;
+    optional util.LoopPointList loop_points = 1;
+    optional Zoom zoom = 2;
 };

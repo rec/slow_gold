@@ -6,17 +6,17 @@ namespace rec {
 namespace gui {
 
 class HasSizeHints {
- public:
-  enum Hint { MIN, MAX, PREF, LAST };
+  public:
+    enum Hint { MIN, MAX, PREF, LAST };
 
-  HasSizeHints() {}
-  virtual ~HasSizeHints() {}
+    HasSizeHints() {}
+    virtual ~HasSizeHints() {}
 
-  virtual Orientation orientation() const = 0;
-  virtual int size(Hint) const = 0;
+    virtual Orientation orientation() const = 0;
+    virtual int size(Hint) const = 0;
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(HasSizeHints);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(HasSizeHints);
 };
 
 }  // namespace gui

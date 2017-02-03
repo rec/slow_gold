@@ -6,33 +6,33 @@ import "rec/gui/proto/Component.proto";
 import "rec/gui/proto/Size.proto";
 
 message Dimensions {
-  optional string width = 1;
-  optional string height = 2;
+    optional string width = 1;
+    optional string height = 2;
 };
 
 message Layout {
-  optional string name = 1;
-  optional OrientationProto.Orientation orientation = 2;
-  optional bool resize_other_dimension = 3 [default = true];
+    optional string name = 1;
+    optional OrientationProto.Orientation orientation = 2;
+    optional bool resize_other_dimension = 3 [default = true];
 
-  // The "main" window has, on Windows only, a thin black line above all the
-  // content.
-  optional bool is_main = 4;
-  optional bool is_opaque = 5;
+    // The "main" window has, on Windows only, a thin black line above all the
+    // content.
+    optional bool is_main = 4;
+    optional bool is_opaque = 5;
 
-  // If there is padding, the right-most component is NOT stretched to fit the
-  // full size of the layout.
-  optional bool has_padding = 6;
+    // If there is padding, the right-most component is NOT stretched to fit the
+    // full size of the layout.
+    optional bool has_padding = 6;
 
-  optional Size default_size = 7;
-  optional Dimensions dimensions = 8;
+    optional Size default_size = 7;
+    optional Dimensions dimensions = 8;
 
-  // If container is present, then no layout is created - instead the container
-  // component is created and used as a parent for the remaining components.
-  optional ComponentProto container = 9;
-  repeated ComponentProto component = 10;
+    // If container is present, then no layout is created - instead the container
+    // component is created and used as a parent for the remaining components.
+    optional ComponentProto container = 9;
+    repeated ComponentProto component = 10;
 };
 
 message Layouts {
-  repeated Layout layout = 1;
+    repeated Layout layout = 1;
 };

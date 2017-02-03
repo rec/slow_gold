@@ -15,22 +15,22 @@ const VirtualFile toVirtualFile(const File&, bool useSpecial = true);
 const File toRealFile(const VirtualFile&);
 
 inline const VirtualFile makeVirtualFile(VirtualFile::Type type) {
-  VirtualFile vf;
-  vf.set_type(type);
-  return vf;
+    VirtualFile vf;
+    vf.set_type(type);
+    return vf;
 }
 
 // Given a VirtualFile, return the actual directory that shadows it.
 const File getShadowDirectory(const VirtualFile&);
 
 inline File getShadowDirectory(VirtualFile::Type type) {
-  return getShadowDirectory(makeVirtualFile(type));
+    return getShadowDirectory(makeVirtualFile(type));
 }
 
 const uint MAX_WINDOWS_DIRECTORY_SIZE = 260;
 const uint MAX_FILENANE_LENGTH = 60;
 const uint MAX_SHADOW_DIRECTORY_LENGTH =
-  MAX_WINDOWS_DIRECTORY_SIZE - MAX_FILENANE_LENGTH;
+    MAX_WINDOWS_DIRECTORY_SIZE - MAX_FILENANE_LENGTH;
 
 }  // namespace file
 }  // namespace util

@@ -19,15 +19,15 @@ String getName(const Collection& v, int i) { return getName(v[i]); }
 
 template <typename List>
 void addRangeToList(const Range<int>& range, List* list) {
-  for (int i = range.begin_; i != range.end_; ++i)
-    add(list, i);
+    for (int i = range.begin_; i != range.end_; ++i)
+        add(list, i);
 }
 
 template <typename List>
 List rangeToList(const Range<int>& range) {
-  List list;
-  addRangeToList(range, &list);
-  return list;
+    List list;
+    addRangeToList(range, &list);
+    return list;
 }
 
 }  // namespace util

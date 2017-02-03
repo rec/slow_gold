@@ -1,11 +1,11 @@
 package rec.program;
 
 message ThreadProto {
-  optional string name = 1;
-  optional uint32 priority = 2 [default = 5];
-  optional uint32 period = 3;
+    optional string name = 1;
+    optional uint32 priority = 2 [default = 5];
+    optional uint32 period = 3;
 };
 
 message ThreadProtos {
-  repeated ThreadProto thread = 1;
+    repeated ThreadProto thread = 1;
 };

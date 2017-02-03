@@ -17,17 +17,17 @@ namespace gui {
 namespace {
 
 void construct(std::unique_ptr<Drawable>* drawable, const string& name) {
-  drawable->reset(constructName<Drawable>(name + "_svg"));
+    drawable->reset(constructName<Drawable>(name + "_svg"));
 }
 
 }  // namespace
 
 std::unique_ptr<Component> makeText(const Context& context) {
-  auto& component = context.component_;
-  const TextProto& proto = component.text();
-  return std::unique_ptr<Component>(
-      new SetterText("(name)", component.address(), "(tt)",
-                     proto.caption(), not proto.caption().empty()));
+    auto& component = context.component_;
+    const TextProto& proto = component.text();
+    return std::unique_ptr<Component>(
+            new SetterText("(name)", component.address(), "(tt)",
+                                          proto.caption(), not proto.caption().empty()));
 }
 
 }  // namespace gui

@@ -29,36 +29,36 @@ namespace rec {
 namespace slow {
 
 void registerProtos() {
-  using namespace rec::data;
-  MessageRegistrar* r = getDataCenter()->messageRegistrar();
+    using namespace rec::data;
+    MessageRegistrar* r = getDataCenter()->messageRegistrar();
 
-  registerProto<app::AppSettings>(r);
-  registerProto<audio::AudioSettings>(r);
-  registerProto<command::CommandMapProto>(r);
-  registerProto<command::Commands>(r);
-  registerProto<command::KeyStrokeCommandMapProto>(r);
-  registerProto<command::MidiCommandMapProto>(r);
-  registerProto<gui::DialogFiles>(r);
-  registerProto<gui::RecentFiles>(r);
-  registerProto<gui::WindowPosition>(r);
-  registerProto<slow::AppLayout>(r);
-  registerProto<slow::GuiSettings>(r);
-  registerProto<util::Mode>(r);
-  registerProto<util::SystemStats>(r);
-  registerProto<util::file::VirtualFile>(r);
-  registerProto<util::file::VirtualFileList>(r);
-  registerProto<widget::tree::NavigatorConfig>(r);
-  registerProto<widget::waveform::WaveformProto>(r);
+    registerProto<app::AppSettings>(r);
+    registerProto<audio::AudioSettings>(r);
+    registerProto<command::CommandMapProto>(r);
+    registerProto<command::Commands>(r);
+    registerProto<command::KeyStrokeCommandMapProto>(r);
+    registerProto<command::MidiCommandMapProto>(r);
+    registerProto<gui::DialogFiles>(r);
+    registerProto<gui::RecentFiles>(r);
+    registerProto<gui::WindowPosition>(r);
+    registerProto<slow::AppLayout>(r);
+    registerProto<slow::GuiSettings>(r);
+    registerProto<util::Mode>(r);
+    registerProto<util::SystemStats>(r);
+    registerProto<util::file::VirtualFile>(r);
+    registerProto<util::file::VirtualFileList>(r);
+    registerProto<widget::tree::NavigatorConfig>(r);
+    registerProto<widget::waveform::WaveformProto>(r);
 
-  registerFileProto<audio::Gain>(r);
-  registerFileProto<audio::PlayState>(r);
-  registerFileProto<audio::source::StereoProto>(r);
-  registerFileProto<audio::stretch::Stretch>(r);
-  registerFileProto<music::Metadata>(r);
-  registerFileProto<util::LoopPointList>(r);
-  registerFileProto<util::ews::Activation>(r);
-  registerFileProto<widget::waveform::Viewport>(r);
-  registerFileProto<widget::waveform::Zoom>(r);
+    registerFileProto<audio::Gain>(r);
+    registerFileProto<audio::PlayState>(r);
+    registerFileProto<audio::source::StereoProto>(r);
+    registerFileProto<audio::stretch::Stretch>(r);
+    registerFileProto<music::Metadata>(r);
+    registerFileProto<util::LoopPointList>(r);
+    registerFileProto<util::ews::Activation>(r);
+    registerFileProto<widget::waveform::Viewport>(r);
+    registerFileProto<widget::waveform::Zoom>(r);
 }
 
 }  // namespace slow

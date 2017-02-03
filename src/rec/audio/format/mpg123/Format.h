@@ -10,31 +10,31 @@ namespace format {
 namespace mpg123 {
 
 class Format : public juce::AudioFormat {
- public:
-  Format();
-  virtual ~Format();
+  public:
+    Format();
+    virtual ~Format();
 
-  virtual juce::AudioFormatReader* createReaderFor(juce::InputStream* source,
-                                                   bool deleteStreamOnFail);
+    virtual juce::AudioFormatReader* createReaderFor(juce::InputStream* source,
+                                                                                                      bool deleteStreamOnFail);
 
-  virtual juce::AudioFormatWriter* createWriterFor(juce::OutputStream* /* output */,
-                                                   double /* sampleRateToUse */,
-                                                   unsigned int /* numChannels */,
-                                                   int /* bitsPerSample */,
-                                                   const StringPairArray& /* meta */,
-                                                   int /* quality */) {
-    return nullptr;
-  }
+    virtual juce::AudioFormatWriter* createWriterFor(juce::OutputStream* /* output */,
+                                                                                                      double /* sampleRateToUse */,
+                                                                                                      unsigned int /* numChannels */,
+                                                                                                      int /* bitsPerSample */,
+                                                                                                      const StringPairArray& /* meta */,
+                                                                                                      int /* quality */) {
+        return nullptr;
+    }
 
-  juce::Array<int> getPossibleSampleRates();
-  juce::Array<int> getPossibleBitDepths();
+    juce::Array<int> getPossibleSampleRates();
+    juce::Array<int> getPossibleBitDepths();
 
-  virtual bool canDoStereo() { return true; }
-  virtual bool canDoMono() { return true; }
-  virtual bool isCompressed() { return true; }
+    virtual bool canDoStereo() { return true; }
+    virtual bool canDoMono() { return true; }
+    virtual bool isCompressed() { return true; }
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Format);
+  private:
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(Format);
 };
 
 }  // namespace mpg123

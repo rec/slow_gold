@@ -5,14 +5,14 @@
 namespace rec {
 
 struct SampleRate {
-  SampleRate() : rate_(0.0) {}
-  SampleRate(double r) : rate_(r) {}
-  operator double() const { return rate_; }
-  SampleRate& operator=(double r) { rate_ = r; return *this; }
-  SampleRate& operator=(SampleRate r) { rate_ = r.rate_; return *this; }
+    SampleRate() : rate_(0.0) {}
+    SampleRate(double r) : rate_(r) {}
+    operator double() const { return rate_; }
+    SampleRate& operator=(double r) { rate_ = r; return *this; }
+    SampleRate& operator=(SampleRate r) { rate_ = r.rate_; return *this; }
 
- private:
-  double rate_;
+  private:
+    double rate_;
 };
 
 }  // namespace rec

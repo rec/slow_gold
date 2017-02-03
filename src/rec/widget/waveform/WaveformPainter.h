@@ -16,32 +16,32 @@ class Waveform;
 class WaveformModel;
 
 class WaveformPainter {
- public:
-  WaveformPainter(Waveform* w);
-  ~WaveformPainter();
+  public:
+    WaveformPainter(Waveform* w);
+    ~WaveformPainter();
 
-  void paint(Graphics&, const Range<SampleTime >&, Loading);
+    void paint(Graphics&, const Range<SampleTime >&, Loading);
 
-  void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
+    void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 
- private:
-  SampleRate sampleRate() const;
+  private:
+    SampleRate sampleRate() const;
 
-  void drawWaveform();
-  void drawWaveform(bool isSelected);
+    void drawWaveform();
+    void drawWaveform(bool isSelected);
 
-  void drawGrid();
-  void drawEmpty(Graphics& g);
-  Painter* painter() { return painter_.get(); }
+    void drawGrid();
+    void drawEmpty(Graphics& g);
+    Painter* painter() { return painter_.get(); }
 
-  Waveform* waveform_;
-  juce::AudioThumbnail* thumbnail_;
-  const WaveformModel& model_;
-  Range<SampleTime> range_;
-  std::unique_ptr<Painter> painter_;
-  juce::Rectangle<int> bounds_;
+    Waveform* waveform_;
+    juce::AudioThumbnail* thumbnail_;
+    const WaveformModel& model_;
+    Range<SampleTime> range_;
+    std::unique_ptr<Painter> painter_;
+    juce::Rectangle<int> bounds_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
+    DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
 };
 
 }  // namespace waveform

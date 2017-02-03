@@ -10,16 +10,16 @@ bool isPunctuation(int c);
 int compareChars(int c, int d);
 
 struct CompareChars {
-  bool operator()(int c, int d) {
-    return compareChars(c, d) < 0;
-  }
+    bool operator()(int c, int d) {
+        return compareChars(c, d) < 0;
+    }
 };
 
 struct LessThanEqualChar {
-  LessThanEqualChar(int c) : c_(c) {}
-  bool operator()(int c) const { return c < c_; }
+    LessThanEqualChar(int c) : c_(c) {}
+    bool operator()(int c) const { return c < c_; }
 
-  int c_;
+    int c_;
 };
 
 template <typename Str>
