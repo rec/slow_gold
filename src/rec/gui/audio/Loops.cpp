@@ -166,12 +166,12 @@ bool Loops::selected(int r) const {
 
 void Loops::update() {
     int rows;
-    int columns;
     juce::SparseSet<int> sel;
     {
         Lock l(TableController::lock_);  // Perhaps simplify locking here?
         rows = getNumRows();
-        columns = columns_.column_size();
+        // columns = columns_.column_size();
+        // TODO: why was that there?
         for (int r = 0; r < rows; ++r) {
             bool selected = viewport_.loop_points().loop_point(r).selected();
             if (selected)

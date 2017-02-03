@@ -47,6 +47,8 @@ class Switcher : public Panel, public AddressListener {
             index = value.bool_f();
         else if (value.has_enum_f())
             index = value.enum_f();
+        else
+            return;  // TODO: can we recover?
 
         if (index == index_)
             return;
