@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_INFINITE_INFINITE__
-#define __REC_AUDIO_INFINITE_INFINITE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -85,4 +84,3 @@ class Infinite {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_INFINITE_INFINITE__

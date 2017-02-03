@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_LABEL__
-#define __REC_GUI_PROTO_LABEL__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -15,4 +14,3 @@ unique_ptr<Component> makeLabel(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_LABEL__

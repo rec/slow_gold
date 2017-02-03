@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FORMATSTRING__
-#define __REC_UTIL_FORMATSTRING__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -27,4 +26,3 @@ class FormatString {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FORMATSTRING__

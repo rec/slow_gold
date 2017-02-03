@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_SIZEACCUMULATOR__
-#define __REC_GUI_SIZEACCUMULATOR__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -42,4 +41,3 @@ class SizeAccumulator {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_SIZEACCUMULATOR__

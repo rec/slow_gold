@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_GEOMETRY__
-#define __REC_GUI_GEOMETRY__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/gui/Geometry.pb.h"
@@ -48,4 +47,3 @@ String toString(const Point& p, bool isDimensions = false);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_GEOMETRY__

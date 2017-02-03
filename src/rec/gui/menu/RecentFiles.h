@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_RECENTFILES__
-#define __REC_SLOW_RECENTFILES__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/gui/menu/RecentFiles.pb.h"
@@ -27,4 +26,3 @@ bool recentFilesEmpty();
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_SLOW_RECENTFILES__

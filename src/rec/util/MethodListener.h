@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_METHODLISTENER__
-#define __REC_UTIL_METHODLISTENER__
+#pragma once
 
 #include "rec/util/Listener.h"
 
@@ -42,4 +41,3 @@ Listener<Type>* addMethodListener(
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_METHODLISTENER__

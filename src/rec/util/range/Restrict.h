@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RESTRICTRANGE__
-#define __REC_UTIL_RESTRICTRANGE__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -14,4 +13,3 @@ Type restrict(const Range<Type>& r, Type x) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RESTRICTRANGE__

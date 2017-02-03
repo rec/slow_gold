@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_AUDIO_LOOPSCUTTABLE__
-#define __REC_GUI_AUDIO_LOOPSCUTTABLE__
+#pragma once
 
 #include "rec/util/Cuttable.h"
 
@@ -33,4 +32,3 @@ class LoopsCuttable : public Cuttable {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_AUDIO_LOOPSCUTTABLE__

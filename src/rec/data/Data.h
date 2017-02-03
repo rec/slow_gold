@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATA__
-#define __REC_DATA_DATA__
+#pragma once
 
 #include <google/protobuf/message.h>
 
@@ -96,4 +95,3 @@ inline const VirtualFile& noData() {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATA__

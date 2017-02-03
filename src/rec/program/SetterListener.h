@@ -1,5 +1,4 @@
-#ifndef __REC_PROGRAM_SETTERLISTENER__
-#define __REC_PROGRAM_SETTERLISTENER__
+#pragma once
 
 #include "rec/data/AddressListener.h"
 #include "rec/data/Value.h"
@@ -33,4 +32,3 @@ class SetterListener : public data::AddressListener {
 }  // namespace rec
 
 
-#endif  // __REC_PROGRAM_SETTERLISTENER__

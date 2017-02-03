@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DETENTSLIDER__
-#define __REC_GUI_DETENTSLIDER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -42,4 +41,3 @@ class DetentSlider : public juce::Slider {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_DETENTSLIDER__

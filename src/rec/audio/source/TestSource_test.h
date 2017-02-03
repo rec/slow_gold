@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_TESTSOURCE__
-#define __REC_AUDIO_SOURCE_TESTSOURCE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -16,4 +15,3 @@ void testSource(PositionableAudioSource* source,
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_TESTSOURCE__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_TRASH__
-#define __REC_UTIL_THREAD_TRASH__
+#pragma once
 
 #include <set>
 
@@ -54,4 +53,3 @@ public:
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_TRASH__

@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_JUCE__
-#define __REC_BASE_JUCE__
+#pragma once
 
 #include <iostream>
 
@@ -142,4 +141,3 @@ inline void beep( ) {
 
 }  // namespace rec
 
-#endif  // __REC_BASE_JUCE__

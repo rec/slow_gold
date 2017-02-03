@@ -1,3 +1,5 @@
+#pragma once
+
 // Copyright (c) 2006-2008 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -10,9 +12,6 @@
 //  Processor:
 //    ARCH_CPU_X86 / ARCH_CPU_X86_64 / ARCH_CPU_X86_FAMILY (X86 or X86_64)
 //    ARCH_CPU_32_BITS / ARCH_CPU_64_BITS
-
-#ifndef BUILD_BUILD_CONFIG_H_
-#define BUILD_BUILD_CONFIG_H_
 
 // A set of macros to use for platform detection.
 #if defined(__APPLE__)
@@ -155,5 +154,3 @@
 #else
 #error Please add support for your compiler in build/build_config.h
 #endif
-
-#endif  // BUILD_BUILD_CONFIG_H_

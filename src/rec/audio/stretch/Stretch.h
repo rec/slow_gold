@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_STRETCH_STRETCHY__
-#define __REC_AUDIO_STRETCH_STRETCHY__
+#pragma once
 
 #include "rec/base/SampleRate.h"
 #include "rec/audio/stretch/Stretch.pb.h"
@@ -16,4 +15,3 @@ double pitchSemitones(const StretchParameters&);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_STRETCH_STRETCHY__

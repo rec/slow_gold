@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_APPLY__
-#define __REC_DATA_APPLY__
+#pragma once
 
 #include "rec/data/Data.h"
 #include "rec/util/proto/Proto.h"
@@ -30,4 +29,3 @@ bool applyToData(Functor functor, Data* data) {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_APPLY__

@@ -1,5 +1,4 @@
-#ifndef __REC_SUPPORT_REQUESTSUPPORT__
-#define __REC_SUPPORT_REQUESTSUPPORT__
+#pragma once
 
 #include "rec/base/Trans.h"
 
@@ -13,4 +12,3 @@ void requestSupport();
 }  // namespace support
 }  // namespace rec
 
-#endif  // __REC_SUPPORT_REQUESTSUPPORT__

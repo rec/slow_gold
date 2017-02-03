@@ -1,5 +1,4 @@
-#ifndef __REC_MUSIC_CLEANNAME__
-#define __REC_MUSIC_CLEANNAME__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -12,4 +11,3 @@ String cleanName(const String&);
 }  // namespace music
 }  // namespace rec
 
-#endif  // __REC_MUSIC_CLEANNAME__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_RESULT__
-#define __REC_UTIL_THREAD_RESULT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -18,4 +17,3 @@ enum Result {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_RESULT__

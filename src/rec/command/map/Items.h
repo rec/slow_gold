@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_MAP_ITEMS__
-#define __REC_COMMAND_MAP_ITEMS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -70,4 +69,3 @@ class MapItemComponent  : public Component {
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_MAP_ITEMS__

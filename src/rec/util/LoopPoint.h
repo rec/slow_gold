@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_AUDIO_LOOPPOINT__
-#define __REC_GUI_AUDIO_LOOPPOINT__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/util/LoopPoint.pb.h"
@@ -41,4 +40,3 @@ Range<SampleTime > contiguousSelectionContaining(const LoopPointList&,
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_GUI_AUDIO_LOOPPOINT__

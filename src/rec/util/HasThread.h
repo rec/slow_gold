@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_HASTHREAD__
-#define __REC_UTIL_HASTHREAD__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -26,4 +25,3 @@ class HasThread {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_HASTHREAD__

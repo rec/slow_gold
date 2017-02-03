@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CIRCULAR__
-#define __REC_UTIL_CIRCULAR__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -49,4 +48,3 @@ struct Circular : public Range<Type> {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CIRCULAR__

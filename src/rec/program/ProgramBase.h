@@ -1,5 +1,4 @@
-#ifndef __REC_PROGRAM_PROGRAMBASE__
-#define __REC_PROGRAM_PROGRAMBASE__
+#pragma once
 
 #include <unordered_map>
 
@@ -35,4 +34,3 @@ class ProgramBase : public Program {
 }  // namespace program
 }  // namespace rec
 
-#endif  // __REC_PROGRAM_PROGRAMBASE__

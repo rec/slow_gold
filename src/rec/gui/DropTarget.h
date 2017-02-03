@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DROPTARGET__
-#define __REC_GUI_DROPTARGET__
+#pragma once
 
 #include "rec/gui/DropFiles.h"
 #include "rec/util/file/Util.h"
@@ -63,4 +62,3 @@ class DropTarget : public Interface, public Parent {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_DROPTARGET__

@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WIDGET__
-#define __REC_WIDGET_WIDGET__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/widget/Widget.pb.h"
@@ -18,4 +17,3 @@ const Colors& getColors(const State& state,
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WIDGET__

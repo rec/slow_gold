@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_FIELD__
-#define __REC_PROTO_FIELD__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ MessageField createMessageField(const Address&, const Message&);
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_PROTO_FIELD__

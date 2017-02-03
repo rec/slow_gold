@@ -1,5 +1,4 @@
-#ifndef __REC_APP_SOCKETTIMEOUTTIME__
-#define __REC_APP_SOCKETTIMEOUTTIME__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -11,4 +10,3 @@ const int SOCKET_TIMEOUT_MS = 2000;
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_SOCKETTIMEOUTTIME__

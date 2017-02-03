@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_GETPROTONAME__
-#define __REC_DATA_PROTO_GETPROTONAME__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -11,4 +10,3 @@ namespace proto {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_GETPROTONAME__

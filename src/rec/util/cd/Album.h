@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_ALBUM__
-#define __REC_UTIL_CD_ALBUM__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/music/Metadata.pb.h"
@@ -16,4 +15,3 @@ music::Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_ALBUM__

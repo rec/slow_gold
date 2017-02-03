@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FORMATTIME__
-#define __REC_UTIL_FORMATTIME__
+#pragma once
 
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
@@ -46,4 +45,3 @@ struct TimeFormat {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FORMATTIME__

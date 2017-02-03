@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_ADDRESS__
-#define __REC_PROTO_ADDRESS__
+#pragma once
 
 #include "rec/data/proto/Address.pb.h"
 #include "rec/util/proto/Proto.h"
@@ -37,4 +36,3 @@ const Address makeAddress(const string& x) {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_PROTO_ADDRESS__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_SOCKET__
-#define __REC_UTIL_CD_SOCKET__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -15,4 +14,3 @@ string readSocket(Socket* sock, int timeout);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_SOCKET__

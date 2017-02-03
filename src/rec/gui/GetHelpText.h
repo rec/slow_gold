@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_GETTOOLTIP__
-#define __REC_GUI_GETTOOLTIP__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -13,4 +12,3 @@ void refreshHelpText();
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_GETTOOLTIP__

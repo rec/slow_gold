@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATACENTER__
-#define __REC_DATA_DATACENTER__
+#pragma once
 
 #include "rec/data/proto/Address.pb.h"
 #include "rec/util/proto/Proto.h"
@@ -52,4 +51,3 @@ AddressProto::Scope getScope(const string& typeName);
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATACENTER__

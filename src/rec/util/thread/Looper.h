@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_LOOPER__
-#define __REC_UTIL_THREAD_LOOPER__
+#pragma once
 
 #include "rec/util/thread/Result.h"
 
@@ -37,4 +36,3 @@ class Looper : public Thread {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_LOOPER__

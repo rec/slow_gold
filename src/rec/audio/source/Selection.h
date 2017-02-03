@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_SELECTION__
-#define __REC_AUDIO_SOURCE_SELECTION__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 #include "rec/audio/source/Wrappy.h"
@@ -42,4 +41,3 @@ class Selection : public Wrappy {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_SELECTION__

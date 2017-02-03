@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_TYPES__
-#define __REC_PROTO_TYPES__
+#pragma once
 
 #include <string>
 
@@ -65,4 +64,3 @@ typedef data::ValueProto ValueProto;
 }  // namespace proto
 }  // namespace rec
 
-#endif  // __REC_PROTO_TYPES__

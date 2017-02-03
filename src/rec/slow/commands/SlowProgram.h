@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_COMMANDS_SLOWPROGRAM__
-#define __REC_SLOW_COMMANDS_SLOWPROGRAM__
+#pragma once
 
 #include "rec/program/ProgramBase.h"
 #include "rec/gui/menu/RecentFiles.h"
@@ -53,4 +52,3 @@ string mapTypeName(const string&);
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_COMMANDS_SLOWPROGRAM__

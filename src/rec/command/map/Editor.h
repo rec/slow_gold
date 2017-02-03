@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_MAP_EDITOR__
-#define __REC_COMMAND_MAP_EDITOR__
+#pragma once
 
 #include <map>
 
@@ -133,4 +132,3 @@ inline MidiMessage midiFromString(const string& s) {
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_MAP_EDITOR__

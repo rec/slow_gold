@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RANDOMSELFINVERSEFUNCTION__
-#define __REC_UTIL_RANDOMSELFINVERSEFUNCTION__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -20,4 +19,3 @@ ByteFunction randomSelfInverseFunction(unsigned seed);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RANDOMSELFINVERSEFUNCTION__

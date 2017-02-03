@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_TIMER__
-#define __REC_AUDIO_SOURCE_TIMER__
+#pragma once
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/thread/CallAsync.h"
@@ -48,4 +47,3 @@ class Timer : public Wrappy, public StateListener<Thread*> {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_TIMER__

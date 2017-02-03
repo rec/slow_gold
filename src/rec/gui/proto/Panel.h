@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_LAYOUT_LAYOUT__
-#define __REC_GUI_LAYOUT_LAYOUT__
+#pragma once
 
 #include "rec/util/Disableable.h"
 #include "rec/gui/Geometry.h"
@@ -78,4 +77,3 @@ class Panel : public Component,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_LAYOUT_LAYOUT__

@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_SETTERRESIZER__
-#define __REC_GUI_SETTERRESIZER__
+#pragma once
 
 #include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
@@ -53,4 +52,3 @@ class SetterResizer : public data::AddressListener,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_SETTERRESIZER__

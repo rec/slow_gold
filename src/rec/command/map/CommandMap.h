@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_COMMANDMAP__
-#define __REC_COMMAND_COMMANDMAP__
+#pragma once
 
 #include <map>
 
@@ -46,4 +45,3 @@ class CommandMap : public ChangeBroadcaster {
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_COMMANDMAP__

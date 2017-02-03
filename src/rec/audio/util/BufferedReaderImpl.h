@@ -1,3 +1,5 @@
+#pragma once
+
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/ConvertSample.h"

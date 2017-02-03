@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATABROADCASTER__
-#define __REC_DATA_DATABROADCASTER__
+#pragma once
 
 #include <typeinfo>
 #include <unordered_map>
@@ -77,4 +76,3 @@ class StateListener : public Listener<Type> {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_DATA_DATABROADCASTER__

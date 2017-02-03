@@ -1,11 +1,12 @@
+#pragma once
+
 // Copyright (c) 2006-2008 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef __REC_BASE_COMPILE_ASSERT_H_
-#define __REC_BASE_COMPILE_ASSERT_H_
-
 #include "rec/base/base.h"
+
+// TODO: replace with static_assert.
 
 // The COMPILE_ASSERT macro can be used to verify that a compile time
 // expression is true. For example, you could use it to verify the
@@ -159,5 +160,3 @@ template<typename To, typename From>
 inline To implicit_cast(From const &f) {
   return f;
 }
-
-#endif  // __REC_BASE_COMPILE_ASSERT_H_

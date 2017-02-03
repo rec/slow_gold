@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_MPG123_READER__
-#define __REC_AUDIO_FORMAT_MPG123_READER__
+#pragma once
 
 #include <stdlib.h>
 #include <sys/types.h>
@@ -43,4 +42,3 @@ class Reader : public juce::AudioFormatReader {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_FORMAT_MPG123_READER__

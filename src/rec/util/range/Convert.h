@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CONVERTRANGE__
-#define __REC_UTIL_CONVERTRANGE__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -19,4 +18,3 @@ Type toX(const Range<Type>& r, Type y, Type ySize) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CONVERTRANGE__

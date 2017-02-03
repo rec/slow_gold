@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_ADDRESSLISTENER__
-#define __REC_DATA_ADDRESSLISTENER__
+#pragma once
 
 #include "rec/data/Address.h"
 #include "rec/data/Undoable.h"
@@ -39,4 +38,3 @@ class AddressListener : public Listener<const Value&> {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_ADDRESSLISTENER__

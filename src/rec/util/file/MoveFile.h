@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILE_MOVEFILE__
-#define __REC_UTIL_FILE_MOVEFILE__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/util/file/VirtualFile.pb.h"
@@ -18,4 +17,3 @@ const char* keyboardFileName();
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILE_MOVEFILE__

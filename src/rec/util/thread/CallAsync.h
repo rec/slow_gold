@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_CALLASYNC__
-#define __REC_UTIL_THREAD_CALLASYNC__
+#pragma once
 
 #include "rec/util/thread/MakeCallback.h"
 
@@ -47,4 +46,3 @@ void callAsync(Type* o, Method m, V1 v1, V2 v2) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_CALLASYNC__

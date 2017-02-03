@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DISABLEABLECOMPONENT__
-#define __REC_GUI_DISABLEABLECOMPONENT__
+#pragma once
 
 #include <unordered_map>
 #include "rec/base/base.h"
@@ -37,4 +36,3 @@ class Disableable {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_GUI_DISABLEABLECOMPONENT__

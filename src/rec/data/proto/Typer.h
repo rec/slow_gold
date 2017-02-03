@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_TYPER__
-#define __REC_DATA_PROTO_TYPER__
+#pragma once
 
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/Comparer.h"
@@ -43,4 +42,3 @@ class Typer {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_TYPER__

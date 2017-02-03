@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CONTAINS__
-#define __REC_UTIL_CONTAINS__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -29,4 +28,3 @@ bool intersects(const Range<Type>& x, const Range<Type>& y) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CONTAINS__

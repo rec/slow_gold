@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_SLOWWINDOW__
-#define __REC_SLOW_SLOWWINDOW__
+#pragma once
 
 #include "rec/app/Window.h"
 
@@ -55,4 +54,3 @@ void shutdown(app::GenericApplication*);
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_SLOWWINDOW__

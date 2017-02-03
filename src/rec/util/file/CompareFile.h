@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILE_COMPAREFILE__
-#define __REC_UTIL_FILE_COMPAREFILE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -17,4 +16,3 @@ void sort(VirtualFileList*);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILE_COMPAREFILE__

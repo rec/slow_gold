@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_STL__
-#define __REC_BASE_STL__
+#pragma once
 
 #include <memory>
 
@@ -64,4 +63,3 @@ class ptr {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ptr);
 };
 
-#endif // __REC_BASE_STL__

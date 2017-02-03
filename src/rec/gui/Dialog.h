@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DIALOG__
-#define __REC_GUI_DIALOG__
+#pragma once
 
 #include "rec/util/Enable.h"
 #include "rec/util/Listener.h"
@@ -60,4 +59,3 @@ void shutdownDialog();
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_DIALOG__

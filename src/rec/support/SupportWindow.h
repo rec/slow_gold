@@ -1,5 +1,4 @@
-#ifndef __REC_SUPPORT_SUPPORTWINDOW__
-#define __REC_SUPPORT_SUPPORTWINDOW__
+#pragma once
 
 #include "rec/app/Window.h"
 
@@ -43,4 +42,3 @@ void shutdown(app::GenericApplication*);
 
 }  // namespace rec
 
-#endif  // __REC_SUPPORT_SUPPORTWINDOW__

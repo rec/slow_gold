@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_DEDUPECDDB__
-#define __REC_UTIL_CD_DEDUPECDDB__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -26,4 +25,3 @@ void addIfNotSimilar(music::AlbumList* albums, const music::Album& album);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_DEDUPECDDB__

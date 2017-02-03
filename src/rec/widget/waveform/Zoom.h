@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM_ZOOM__
-#define __REC_WIDGET_WAVEFORM_ZOOM__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 
@@ -28,4 +27,3 @@ void constrainZoom(Zoom* z, SampleTime length, SampleRate rate);
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM_ZOOM__

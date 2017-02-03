@@ -1,5 +1,4 @@
-#ifndef __REC_JUCE_GENERIC_APPLICATION
-#define __REC_JUCE_GENERIC_APPLICATION
+#pragma once
 
 #include <string>
 
@@ -61,4 +60,3 @@ class GenericApplication : public Listener<Enable>,
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_JUCE_GENERIC_APPLICATION

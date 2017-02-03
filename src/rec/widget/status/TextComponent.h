@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_TIME__
-#define __REC_GUI_TIME__
+#pragma once
 
 #include <stdio.h>
 
@@ -57,4 +56,3 @@ class TextComponent : public gui::SimpleLabel,
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_GUI_TIME__

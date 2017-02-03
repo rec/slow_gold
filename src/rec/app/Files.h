@@ -1,5 +1,4 @@
-#ifndef __REC_APP_APPDIRECTORY__
-#define __REC_APP_APPDIRECTORY__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -18,4 +17,3 @@ File getAppFile(const String&);
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_APPDIRECTORY__

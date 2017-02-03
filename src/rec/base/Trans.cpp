@@ -10,8 +10,6 @@ using namespace juce;
 TRAN(OK, "OK");
 TRAN(CANCEL, "Cancel");
 
-std::unique_ptr<int> foo;
-
 namespace rec {
 
 namespace {

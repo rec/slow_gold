@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_GAIN__
-#define __REC_AUDIO_UTIL_GAIN__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/audio/util/Gain.pb.h"
@@ -12,4 +11,3 @@ double getGain(const audio::Gain&);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_GAIN__

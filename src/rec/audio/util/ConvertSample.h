@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_CONVERTSAMPLE__
-#define __REC_AUDIO_UTIL_CONVERTSAMPLE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -23,4 +22,3 @@ template <typename From, typename To> void convertSample(From f, To* t);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_CONVERTSAMPLE__

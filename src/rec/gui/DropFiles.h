@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DROPFILES__
-#define __REC_GUI_DROPFILES__
+#pragma once
 
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/base/base.h"
@@ -18,4 +17,3 @@ class DropFiles {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_DROPFILES__

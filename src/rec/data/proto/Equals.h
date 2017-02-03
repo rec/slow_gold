@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_EQUAL__
-#define __REC_DATA_PROTO_EQUAL__
+#pragma once
 
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/Comparer.h"
@@ -19,4 +18,3 @@ inline bool operator!=(const Message& x, const Message& y) { return !(x == y); }
 
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_EQUAL__

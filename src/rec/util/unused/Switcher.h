@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_SWITCHER__
-#define __REC_UTIL_SWITCHER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -39,4 +38,3 @@ class Switcher {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_SWITCHER__

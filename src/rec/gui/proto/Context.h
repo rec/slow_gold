@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_CONTEXT__
-#define __REC_GUI_PROTO_CONTEXT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -32,4 +31,3 @@ struct Context {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_CONTEXT__

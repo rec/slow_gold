@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_KEYBOARDBINDINGS__
-#define __REC_COMMAND_KEYBOARDBINDINGS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -18,4 +17,3 @@ CommandMapProto getKeyboardBindings();
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_KEYBOARDBINDINGS__

@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATASET__
-#define __REC_DATA_DATASET__
+#pragma once
 
 #include <set>
 
@@ -31,4 +30,3 @@ class DataSet : public HasLock {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATASET__

@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATALISTENER__
-#define __REC_DATA_DATALISTENER__
+#pragma once
 
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
@@ -73,4 +72,3 @@ using data::DataListener;
 
 }  // namespace rec
 
-#endif  // __REC_DATA_DATALISTENER__

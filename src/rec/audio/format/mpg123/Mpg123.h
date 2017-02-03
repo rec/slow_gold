@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_MPG123_MPG123__
-#define __REC_AUDIO_FORMAT_MPG123_MPG123__
+#pragma once
 
 // Constants and static functions for the mpg123 library.
 
@@ -50,4 +49,3 @@ String getTranslatedName();
 }  // namespace audio
 }  // namespace rec
 
-#endif // __REC_AUDIO_FORMAT_MPG123_MPG123__

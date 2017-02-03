@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_MIDICOMMANDMAP__
-#define __REC_COMMAND_MIDICOMMANDMAP__
+#pragma once
 
 #include "rec/command/map/CommandMap.h"
 
@@ -24,4 +23,3 @@ class MidiCommandMap : public CommandMap,
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_MIDICOMMANDMAP__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RANGE_FILLABLE__
-#define __REC_UTIL_RANGE_FILLABLE__
+#pragma once
 
 #include "rec/util/LoopPoint.h"
 
@@ -45,4 +44,3 @@ class Fillable {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RANGE_FILLABLE__

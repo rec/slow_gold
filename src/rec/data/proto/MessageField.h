@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_MESSAGEFIELD__
-#define __REC_DATA_PROTO_MESSAGEFIELD__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -44,4 +43,3 @@ int getSize(const MessageField& mf);
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_MESSAGEFIELD__

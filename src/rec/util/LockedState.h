@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_LOCKEDSTATE__
-#define __REC_UTIL_LOCKEDSTATE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -68,4 +67,3 @@ class StateLocker {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_LOCKEDSTATE__

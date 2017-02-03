@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_MIDICOMMANDMAPEDITOR__
-#define __REC_COMMAND_MIDICOMMANDMAPEDITOR__
+#pragma once
 
 #include "rec/command/map/Editor.h"
 #include "rec/command/map/MidiCommandMap.h"
@@ -30,4 +29,3 @@ class MidiEditor : public Editor,
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_MIDICOMMANDMAPEDITOR__

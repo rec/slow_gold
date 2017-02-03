@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_COLORS__
-#define __REC_GUI_COLORS__
+#pragma once
 
 #include <unordered_map>
 
@@ -20,4 +19,3 @@ Colour makeColour(const Color&, const ColourMap&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_COLORS__#ifndef __REC_GUI_COLORS__

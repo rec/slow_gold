@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_AUDIO_LOOPS__
-#define __REC_GUI_AUDIO_LOOPS__
+#pragma once
 
 #include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
@@ -61,4 +60,3 @@ class Loops : public TableController,
 }  // namespace gui
 }  // namespace audio
 
-#endif  // __REC_GUI_AUDIO_LOOPS__

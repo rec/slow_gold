@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_MIDINAME__
-#define __REC_COMMAND_MIDINAME__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -12,4 +11,3 @@ String midiName(const MidiMessage& msg);
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_MIDINAME__

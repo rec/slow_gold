@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_NODE__
-#define __REC_WIDGET_TREE_NODE__
+#pragma once
 
 #include <set>
 
@@ -78,4 +77,3 @@ class Node : public juce::TreeViewItem,
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_NODE__

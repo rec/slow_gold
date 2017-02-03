@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_EMPTY__
-#define __REC_AUDIO_SOURCE_EMPTY__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/util/Clear.h"
@@ -26,4 +25,3 @@ class Empty : public PositionableAudioSource {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_EMPTY__

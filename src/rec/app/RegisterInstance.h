@@ -1,5 +1,4 @@
-#ifndef __REC_APP_REGISTERINSTANCE__
-#define __REC_APP_REGISTERINSTANCE__
+#pragma once
 
 #include "rec/app/RegisterProgram.h"
 #include "rec/app/SocketTimeoutTime.h"
@@ -27,4 +26,3 @@ class RegisterInstance : public app::RegisterProgram {
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_REGISTERINSTANCE__

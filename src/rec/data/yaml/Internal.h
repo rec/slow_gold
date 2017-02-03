@@ -1,5 +1,4 @@
-#ifndef __REC_YAML_INTERNAL__
-#define __REC_YAML_INTERNAL__
+#pragma once
 
 #include "rec/data/yaml/Yaml.h"
 #include "yaml-cpp/yaml.h"
@@ -48,4 +47,3 @@ struct MessageFieldIndex : public MessageField {
 }  // namespace yaml
 }  // namespace rec
 
-#endif  // __REC_YAML_INTERNAL__

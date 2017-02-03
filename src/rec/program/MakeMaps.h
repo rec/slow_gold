@@ -1,5 +1,4 @@
-#ifndef __REC_PROGRAM_MAKEMAPS__
-#define __REC_PROGRAM_MAKEMAPS__
+#pragma once
 
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/program/Types.h"
@@ -22,4 +21,3 @@ gui::Constants makeConstants();
 }  // namespace program
 }  // namespace rec
 
-#endif  // __REC_PROGRAM_MAKEMAPS__

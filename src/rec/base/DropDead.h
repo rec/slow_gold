@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_DROPDEAD__
-#define __REC_BASE_DROPDEAD__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -101,4 +100,3 @@ inline void logDropDead() {
 
 }  // namespace rec
 
-#endif  // __REC_BASE_DROPDEAD__

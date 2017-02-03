@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_SHOULDEXIT__
-#define __REC_UTIL_SHOULDEXIT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ bool shouldExit(Thread* thread) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_SHOULDEXIT__

@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_MPG123_TAGS__
-#define __REC_AUDIO_FORMAT_MPG123_TAGS__
+#pragma once
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 
@@ -16,4 +15,3 @@ Error getMp3Tags(mpg123_handle* mh, juce::StringPairArray* metadata);
 }  // namespace audio
 }  // namespace rec
 
-#endif // __REC_AUDIO_FORMAT_MPG123_TAGS__

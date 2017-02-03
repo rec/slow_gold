@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
-#define __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleRate.h"
@@ -45,4 +44,3 @@ class RubberBand : public Implementation {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__

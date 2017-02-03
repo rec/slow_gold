@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_WRAPSERIES__
-#define __REC_UTIL_WRAPSERIES__
+#pragma once
 
 #include "rec/util/range/Range.h"
 #include "rec/util/range/Merge.h"
@@ -37,4 +36,3 @@ Container getUnfilledBlocks(const Container& selection, Type pos, Type len, Fill
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_WRAPSERIES__

@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_SETTERTOGGLE__
-#define __REC_GUI_SETTERTOGGLE__
+#pragma once
 
 #include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
@@ -54,4 +53,3 @@ class SetterToggle : public app::LanguageListener,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_SETTERTOGGLE__

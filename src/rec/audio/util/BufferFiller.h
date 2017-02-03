@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_BUFFERFILLER__
-#define __REC_AUDIO_UTIL_BUFFERFILLER__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/util/LoopPoint.h"
@@ -42,4 +41,3 @@ class BufferFiller {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_BUFFERFILLER__

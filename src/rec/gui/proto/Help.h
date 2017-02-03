@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_HELP__
-#define __REC_GUI_PROTO_HELP__
+#pragma once
 
 #include "rec/gui/GetHelpText.h"
 
@@ -15,4 +14,3 @@ unique_ptr<Component> makeHelp(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_HELP__

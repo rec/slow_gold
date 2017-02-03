@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_NODECOMPONENT__
-#define __REC_WIDGET_TREE_NODECOMPONENT__
+#pragma once
 
 #include "rec/widget/tree/NodeItem.h"
 
@@ -23,4 +22,3 @@ class NodeComponent : public juce::Component {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_NODECOMPONENT__

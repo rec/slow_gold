@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_METHODS_FILEMETHODS__
-#define __REC_SLOW_METHODS_FILEMETHODS__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 #include "rec/util/file/CurrentFileBase.h"
@@ -32,4 +31,3 @@ class CurrentFile : public util::file::CurrentFileBase {
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_METHODS_FILEMETHODS__

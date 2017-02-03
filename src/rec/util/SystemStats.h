@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_SYSTEMSTATS__
-#define __REC_UTIL_SYSTEMSTATS__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/util/SystemStats.pb.h"
@@ -12,4 +11,3 @@ SystemStats getSystemStats();
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_SYSTEMSTATS__

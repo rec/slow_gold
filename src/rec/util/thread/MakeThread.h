@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_MAKETHREAD__
-#define __REC_UTIL_THREAD_MAKETHREAD__
+#pragma once
 
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/util/thread/Trash.h"
@@ -117,4 +116,3 @@ callback::Thread& runInNewThread(const String& n, int p, Type* o, Method m, V1 v
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_MAKETHREAD__

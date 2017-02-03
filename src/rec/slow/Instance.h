@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_INSTANCE__
-#define __REC_SLOW_INSTANCE__
+#pragma once
 
 #include "rec/app/Window.h"
 #include "rec/audio/Audio.h"
@@ -84,4 +83,3 @@ const VirtualFile getInstanceFile();
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_INSTANCE__

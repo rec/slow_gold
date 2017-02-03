@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_UNDO__
-#define __REC_UTIL_UNDO__
+#pragma once
 
 #include "rec/util/Listener.h"
 
@@ -22,4 +21,3 @@ void redo();
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_UNDO__

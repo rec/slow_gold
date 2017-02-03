@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_LOGFILE__
-#define __REC_PROTO_LOGFILE__
+#pragma once
 
 #include "rec/util/Copy.h"
 
@@ -39,4 +38,3 @@ class Output {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_PROTO_LOGFILE__

@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_ZEROCOPY__
-#define __REC_PROTO_ZEROCOPY__
+#pragma once
 
 #include "rec/base/base.h"
 #include "google/protobuf/io/coded_stream.h"
@@ -109,4 +108,3 @@ class Input : public InputBase {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_PROTO_ZEROCOPY__

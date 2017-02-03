@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM_CURSOR__
-#define __REC_WIDGET_WAVEFORM_CURSOR__
+#pragma once
 
 #include <set>
 
@@ -96,4 +95,3 @@ typedef std::set<Cursor*, CompareCursors> CursorSet;
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM_CURSOR__

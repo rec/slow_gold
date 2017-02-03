@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_LOADING__
-#define __REC_UTIL_LOADING__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -11,4 +10,3 @@ enum Loading { NOT_LOADING, LOADING };
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_LOADING__

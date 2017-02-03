@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_TABLEMODELBASE__
-#define __REC_GUI_TABLEMODELBASE__
+#pragma once
 
 #include "rec/util/Disableable.h"
 #include "rec/base/SampleTime.h"
@@ -56,4 +55,3 @@ class TableController : public TableListBoxModel, public TableListBox,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_TABLEMODELBASE__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILE_FIXLEGACYFILES__
-#define __REC_UTIL_FILE_FIXLEGACYFILES__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -13,4 +12,3 @@ void fixLegacyFiles();
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILE_FIXLEGACYFILES__

@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_AUDIO__
-#define __REC_AUDIO_AUDIO__
+#pragma once
 
 #include "rec/base/RealTime.h"
 #include "rec/base/SampleTime.h"
@@ -27,4 +26,3 @@ inline State invert(State s) { return s ? STOPPED : RUNNING; }
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_AUDIO__

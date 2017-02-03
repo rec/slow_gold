@@ -1,5 +1,4 @@
-#ifndef __REC_MUSIC_METADATA__
-#define __REC_MUSIC_METADATA__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/music/Metadata.pb.h"
@@ -33,4 +32,3 @@ string getTitle(const T1& t1, const T2& t2, const T3& t3) {
 }  // namespace music
 }  // namespace rec
 
-#endif  // __REC_MUSIC_METADATA__

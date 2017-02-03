@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_LEVEL__
-#define __REC_AUDIO_SOURCE_LEVEL__
+#pragma once
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/Audio.h"
@@ -48,4 +47,3 @@ class Level : public Wrappy {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_LEVEL__

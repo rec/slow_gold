@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_TYPEDTYPER__
-#define __REC_PROTO_TYPEDTYPER__
+#pragma once
 
 #include "rec/data/proto/Typer.h"
 #include "rec/data/proto/TypedOperations.h"
@@ -69,4 +68,3 @@ bool TypedTyper<Type>::Equals(const Message& m, uint32 i,
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_PROTO_TYPEDTYPER__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_COMPARERANGE__
-#define __REC_UTIL_COMPARERANGE__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -46,4 +45,3 @@ Type compareOrdered(const typename Range<Type>::Vector& x,
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_COMPARERANGE__

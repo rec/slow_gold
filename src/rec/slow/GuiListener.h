@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_GUILISTENER__
-#define __REC_SLOW_GUILISTENER__
+#pragma once
 
 #include "rec/data/DataListener.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -32,4 +31,3 @@ class GuiListener
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_GUILISTENER__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RANGE__
-#define __REC_UTIL_RANGE__
+#pragma once
 
 #include <set>
 
@@ -63,4 +62,3 @@ void insertRange(Type begin, Type end, Selection *selection) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RANGE__

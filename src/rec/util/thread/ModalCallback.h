@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_MODALCALLBACK__
-#define __REC_UTIL_THREAD_MODALCALLBACK__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -125,4 +124,3 @@ unique_ptr<ModalCallback> modalFunctionCallback(Operator op, Value v) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_MODALCALLBACK__

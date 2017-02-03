@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_DISALLOW__
-#define __REC_BASE_DISALLOW__
+#pragma once
 
 #include <stddef.h>
 
@@ -28,4 +27,3 @@
   JUCE_LEAK_DETECTOR(TypeName)
 
 
-#endif  // __REC_BASE_DISALLOW__

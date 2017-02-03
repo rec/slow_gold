@@ -1,5 +1,4 @@
-#ifndef __REC_APP_WINDOW__
-#define __REC_APP_WINDOW__
+#pragma once
 
 #include "rec/gui/PersistentWindow.h"
 #include "rec/util/Listener.h"
@@ -52,4 +51,3 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_WINDOW__

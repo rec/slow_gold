@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATAMAP__
-#define __REC_DATA_DATAMAP__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -23,4 +22,3 @@ class DataMap {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATAMAP__

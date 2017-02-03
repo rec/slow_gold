@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_SETTERLABEL__
-#define __REC_GUI_SETTERLABEL__
+#pragma once
 
 #include "rec/data/Value.h"
 #include "rec/gui/SimpleLabel.h"
@@ -40,4 +39,3 @@ class SetterLabel : public SimpleLabel, public data::AddressListener {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_SETTERLABEL__

@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_SAMPLERATE__
-#define __REC_BASE_SAMPLERATE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -18,4 +17,3 @@ struct SampleRate {
 
 }  // namespace rec
 
-#endif  // __REC_BASE_SAMPLERATE__

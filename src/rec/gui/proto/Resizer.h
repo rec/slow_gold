@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_RESIZER__
-#define __REC_GUI_PROTO_RESIZER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ unique_ptr<Component> makeSimpleResizer(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_RESIZER__

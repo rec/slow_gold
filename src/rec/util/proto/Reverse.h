@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_REVERSEPROTO__
-#define __REC_UTIL_REVERSEPROTO__
+#pragma once
 
 #include <google/protobuf/message.h>
 
@@ -17,4 +16,3 @@ void reverseProto(google::protobuf::RepeatedPtrField<Type>* items) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_REVERSEPROTO__

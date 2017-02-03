@@ -1,5 +1,4 @@
-#ifndef __REC_YAML_YAML__
-#define __REC_YAML_YAML__
+#pragma once
 
 #include "rec/base/BaseNoJuce.h"
 
@@ -12,4 +11,3 @@ bool read(const string& from, Message* to);
 }  // namespace yaml
 }  // namespace rec
 
-#endif  // __REC_YAML_YAML__

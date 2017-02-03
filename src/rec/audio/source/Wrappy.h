@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_WRAPPY__
-#define __REC_AUDIO_SOURCE_WRAPPY__
+#pragma once
 
 #include "rec/audio/Audio.h"
 
@@ -45,4 +44,3 @@ class Wrappy : public PositionableAudioSource {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_WRAPPY__

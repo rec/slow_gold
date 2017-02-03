@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_CDDBRESPONSE__
-#define __REC_UTIL_CD_CDDBRESPONSE__
+#pragma once
 
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/Socket.h"
@@ -21,4 +20,3 @@ StringArray getCDData(Socket* sock, const String& line);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_CDDBRESPONSE__

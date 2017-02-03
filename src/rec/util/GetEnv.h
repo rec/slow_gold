@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_GETENV__
-#define __REC_UTIL_GETENV__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -12,4 +11,3 @@ String getEnv(const String& name, const String& dflt = EMPTY_ENV_VARIABLE);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_GETENV__

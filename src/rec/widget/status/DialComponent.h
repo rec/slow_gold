@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_STATUS_DIALCOMPONENT__
-#define __REC_WIDGET_STATUS_DIALCOMPONENT__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
@@ -63,4 +62,3 @@ class DialComponent : public Component,
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_STATUS_DIALCOMPONENT__

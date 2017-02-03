@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_AUDIOFORMATMANAGER__
-#define __REC_AUDIO_AUDIOFORMATMANAGER__
+#pragma once
 
 #include "rec/audio/format/RegisterFormats.h"
 
@@ -18,4 +17,3 @@ AudioFormatWriter* createWriter(const File&);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_AUDIOFORMATMANAGER__

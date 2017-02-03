@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_CALLBACK_UTILS__
-#define __REC_COMMAND_CALLBACK_UTILS__
+#pragma once
 
 #include "rec/program/Program.h"
 #include "rec/slow/Instance.h"
@@ -23,4 +22,3 @@ void addCallback(program::Program* c, CommandID id, Function f, X x) {
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_COMMAND_CALLBACK_UTILS__

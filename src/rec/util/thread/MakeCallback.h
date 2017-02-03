@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_MAKECALLBACK__
-#define __REC_UTIL_THREAD_MAKECALLBACK__
+#pragma once
 
 #include "rec/util/thread/Callback0.h"
 #include "rec/util/thread/Callback1.h"
@@ -48,4 +47,3 @@ unique_ptr<Callback> methodCallback(Type* o, Method m, V1 v1, V2 v2, V3 v3, V4 v
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_MAKECALLBACK__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_PARTITION_COMPARE__
-#define __REC_UTIL_PARTITION_COMPARE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -37,4 +36,3 @@ bool compareFiles(const File& f, const File& g);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_PARTITION_COMPARE__

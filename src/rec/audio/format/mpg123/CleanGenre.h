@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_MPG123_CLEANGENRE__
-#define __REC_AUDIO_FORMAT_MPG123_CLEANGENRE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -16,4 +15,3 @@ string cleanGenre(const string&);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_FORMAT_MPG123_CLEANGENRE__

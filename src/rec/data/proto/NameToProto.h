@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_NAMETOPROTO__
-#define __REC_DATA_PROTO_NAMETOPROTO__
+#pragma once
 
 #include <map>
 
@@ -51,4 +50,3 @@ class NameToProto {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_NAMETOPROTO__

@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_MOUSELISTENER__
-#define __REC_SLOW_MOUSELISTENER__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 #include "rec/util/Mode.pb.h"
@@ -57,4 +56,3 @@ class MouseListener : public juce::MouseListener,
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_MOUSELISTENER__

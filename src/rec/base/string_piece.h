@@ -1,3 +1,5 @@
+#pragma once
+
 // Copyright (c) 2006-2008 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -14,9 +16,6 @@
 // Systematic usage of StringPiece is encouraged as it will reduce unnecessary
 // conversions from "const char*" to "string" and back again.
 //
-
-#ifndef BASE_STRING_PIECE_H_
-#define BASE_STRING_PIECE_H_
 
 #include <algorithm>
 #include <iosfwd>
@@ -199,5 +198,3 @@ inline bool operator>=(const StringPiece& x, const StringPiece& y) {
 extern std::ostream& operator<<(std::ostream& o, const StringPiece& piece);
 
 }  // namespace rec
-
-#endif  // BASE_STRING_PIECE_H_

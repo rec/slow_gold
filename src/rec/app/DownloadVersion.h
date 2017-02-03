@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_DOWNLOADVERSION__
-#define __REC_SLOW_DOWNLOADVERSION__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -21,4 +20,3 @@ extern const String WOODSHED;
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_SLOW_DOWNLOADVERSION__

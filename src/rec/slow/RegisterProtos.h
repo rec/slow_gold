@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_REGISTERPROTOS__
-#define __REC_SLOW_REGISTERPROTOS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -11,4 +10,3 @@ void registerProtos();
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_REGISTERPROTOS__

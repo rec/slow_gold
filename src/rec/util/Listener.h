@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_LISTENER_LISTENER__
-#define __REC_UTIL_LISTENER_LISTENER__
+#pragma once
 
 #include <map>
 #include <set>
@@ -133,4 +132,3 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_LISTENER_LISTENER__

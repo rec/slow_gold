@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_LOOKANDFEEL__
-#define __REC_GUI_LOOKANDFEEL__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -27,4 +26,3 @@ class LookAndFeel : public juce::LookAndFeel_V3 {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_LOOKANDFEEL__

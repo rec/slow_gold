@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_CONSTANTS__
-#define __REC_GUI_PROTO_CONSTANTS__
+#pragma once
 
 #include <unordered_map>
 
@@ -29,4 +28,3 @@ class Constants {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_CONSTANTS__

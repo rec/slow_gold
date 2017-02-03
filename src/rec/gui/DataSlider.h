@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DATASLIDER__
-#define __REC_GUI_DATASLIDER__
+#pragma once
 
 #include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
@@ -57,4 +56,3 @@ class DataSlider : public Panel,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_DATASLIDER__

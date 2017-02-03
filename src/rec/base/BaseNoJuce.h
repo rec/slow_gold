@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_BASE__
-#define __REC_BASE_BASE__
+#pragma once
 
 #include <string>
 #include <vector>
@@ -32,4 +31,3 @@ class None {};
 
 }  // namespace rec
 
-#endif  // __REC_BASE_BASENOJUCE__

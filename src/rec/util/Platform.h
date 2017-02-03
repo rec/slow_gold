@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_PLATFORM
-#define __REC_UTIL_PLATFORM
+#pragma once
 
 #include <stdlib.h>
 
@@ -14,4 +13,3 @@ inline void* reallocf(void *ptr, size_t size) {
 
 #endif // JUCE_MAC
 
-#endif  // __REC_UTIL_PLATFORM

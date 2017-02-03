@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILE_VIRTUALFILE__
-#define __REC_UTIL_FILE_VIRTUALFILE__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/util/file/VirtualFile.pb.h"
@@ -37,4 +36,3 @@ const uint MAX_SHADOW_DIRECTORY_LENGTH =
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILE_VIRTUALFILE__

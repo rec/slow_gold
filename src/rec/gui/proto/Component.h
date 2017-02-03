@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_COMPONENT__
-#define __REC_GUI_PROTO_COMPONENT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -13,4 +12,3 @@ unique_ptr<Component> makeComponent(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_COMPONENT__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_FUNCTIONCALLBACK__
-#define __REC_UTIL_THREAD_FUNCTIONCALLBACK__
+#pragma once
 
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/Callback1.h"
@@ -41,4 +40,3 @@ unique_ptr<Callback> functionCB(Function f, V1 v1, V2 v2, V3 v3, V4 v4) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_FUNCTIONCALLBACK__

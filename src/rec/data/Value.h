@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_VALUE__
-#define __REC_PROTO_VALUE__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/data/proto/Value.pb.h"
@@ -49,4 +48,3 @@ class Value : public ValueProto {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_PROTO_VALUE__

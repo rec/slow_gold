@@ -1,5 +1,4 @@
-#ifndef __REC_STRETCHY_AUDIO_SOURCE
-#define __REC_STRETCHY_AUDIO_SOURCE
+#pragma once
 
 // Wrap an incoming AudioSource, and time-stretch it.
 
@@ -42,4 +41,3 @@ class Stretchy : public source::Wrappy {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_STRETCHY_AUDIO_SOURCE

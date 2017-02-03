@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_ROOT__
-#define __REC_WIDGET_TREE_ROOT__
+#pragma once
 
 #include "rec/widget/tree/NodeItem.h"
 
@@ -67,4 +66,3 @@ class Root : public Broadcaster<const VirtualFile&>,
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_ROOT__

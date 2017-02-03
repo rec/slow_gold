@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_STRIPLINES__
-#define __REC_UTIL_CD_STRIPLINES__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -18,4 +17,3 @@ StringPair splitLine(const string& s, int ch);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_STRIPLINES__

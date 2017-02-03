@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_GLOBALCOMMANDS__
-#define __REC_SLOW_GLOBALCOMMANDS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -15,4 +14,3 @@ void requestSupport();
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_GLOBALCOMMANDS__

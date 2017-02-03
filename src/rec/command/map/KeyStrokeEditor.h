@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_KEYCOMMANDMAPEDITOR__
-#define __REC_COMMAND_KEYCOMMANDMAPEDITOR__
+#pragma once
 
 #include "rec/command/map/Editor.h"
 
@@ -27,4 +26,3 @@ class KeyStrokeEditor : public Editor, public juce::KeyListener {
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_KEYCOMMANDMAPEDITOR__

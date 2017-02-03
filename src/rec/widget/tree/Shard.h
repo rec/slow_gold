@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_SHARD__
-#define __REC_WIDGET_TREE_SHARD__
+#pragma once
 
 #include "rec/widget/tree/Directory.h"
 #include "rec/util/Compare.h"
@@ -33,4 +32,3 @@ class Shard : public Directory {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_SHARD__

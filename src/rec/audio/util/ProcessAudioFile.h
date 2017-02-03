@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_PROCESSAUDIOFILE__
-#define __REC_AUDIO_UTIL_PROCESSAUDIOFILE__
+#pragma once
 
 #include "rec/audio/Audio.h"
 
@@ -21,4 +20,3 @@ SourceAndWriter makeSourceAndWriter(const File& in, const File& out);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_PROCESSAUDIOFILE__

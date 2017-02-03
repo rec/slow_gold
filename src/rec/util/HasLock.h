@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_HASLOCK__
-#define __REC_UTIL_HASLOCK__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -21,4 +20,3 @@ class HasLock {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_HASLOCK__

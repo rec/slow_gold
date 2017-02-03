@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PERSISTENTWINDOW
-#define __REC_GUI_PERSISTENTWINDOW
+#pragma once
 
 #include "rec/data/Data.h"
 #include "rec/data/DataListener.h"
@@ -48,4 +47,3 @@ class PersistentWindow : public DocumentWindow,
 }  // namespace gui
 }  // namespace rec
 
-#endif   // __REC_GUI_PERSISTENTWINDOW

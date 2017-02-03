@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM_WAVEFORMMODEL__
-#define __REC_WIDGET_WAVEFORM_WAVEFORMMODEL__
+#pragma once
 
 #include "rec/util/LoopPoint.h"
 #include "rec/util/range/Range.h"
@@ -56,4 +55,3 @@ class WaveformModel {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM_WAVEFORMMODEL__

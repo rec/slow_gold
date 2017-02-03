@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_LANGUAGEBUTTON__
-#define __REC_GUI_LANGUAGEBUTTON__
+#pragma once
 
 #include "rec/app/LanguageListener.h"
 #include "rec/util/Disableable.h"
@@ -29,4 +28,3 @@ class LanguageButton : public DrawableButton,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_LANGUAGEBUTTON__

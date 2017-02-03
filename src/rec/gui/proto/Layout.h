@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_LAYOUT__
-#define __REC_GUI_PROTO_LAYOUT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ unique_ptr<Component> makeLayoutComp(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_LAYOUT__

@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_TOGGLEBUTTON__
-#define __REC_GUI_PROTO_TOGGLEBUTTON__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -16,4 +15,3 @@ unique_ptr<Component> makeToggleButton(const Context&);
 }  // namespace rec
 
 
-#endif  // __REC_GUI_PROTO_TOGGLEBUTTON__

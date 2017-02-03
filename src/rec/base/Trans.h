@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_TRANSLATEDSTRING__
-#define __REC_BASE_TRANSLATEDSTRING__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/app/AppSettings.pb.h"
@@ -25,7 +24,7 @@ class Trans {
   void registerTranslation() const;
 
  private:
-  unique_ptr<TranslatedString> string_;
+  std::unique_ptr<TranslatedString> string_;
   Language language_;
 
   void check(const string& s);
@@ -65,5 +64,3 @@ inline const char* c_str(const Trans& s) {
 }  // namespace rec
 
 extern const rec::Trans t_OK, t_CANCEL;
-
-#endif  // __REC_BASE_TRANSLATEDSTRING__

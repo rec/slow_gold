@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_FRAME__
-#define __REC_AUDIO_UTIL_FRAME__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 #include "rec/audio/Audio.h"
@@ -33,4 +32,3 @@ class Frames {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_FRAME__

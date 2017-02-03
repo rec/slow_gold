@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PERSIST_EDITABLEUPDATER__
-#define __REC_DATA_PERSIST_EDITABLEUPDATER__
+#pragma once
 
 #include "rec/data/UndoStack.h"
 #include "rec/util/thread/Trash.h"
@@ -37,4 +36,3 @@ class DataUpdater {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PERSIST_EDITABLEUPDATER__

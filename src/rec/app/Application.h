@@ -1,5 +1,4 @@
-#ifndef __REC_APP_APPLICATION__
-#define __REC_APP_APPLICATION__
+#pragma once
 
 #include "rec/app/GenericApplication.h"
 
@@ -44,4 +43,3 @@ class Application : public GenericApplication {
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_APPLICATION__

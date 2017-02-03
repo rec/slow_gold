@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CUTTABLECOMPONENT__
-#define __REC_UTIL_CUTTABLECOMPONENT__
+#pragma once
 
 #include "rec/util/Listener.h"
 
@@ -45,4 +44,3 @@ void setDefaultCuttable(HasCuttable*);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CUTTABLECOMPONENT__

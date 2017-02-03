@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_CLEAR__
-#define __REC_AUDIO_CLEAR__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -13,4 +12,3 @@ inline void clear(const AudioSourceChannelInfo& i, int offset = 0) {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_CLEAR__

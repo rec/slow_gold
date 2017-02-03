@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_SIMPLELABEL__
-#define __REC_GUI_SIMPLELABEL__
+#pragma once
 
 #include "rec/util/Disableable.h"
 
@@ -30,4 +29,3 @@ class SimpleLabel : public juce::Label, public Disableable {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_SIMPLELABEL__

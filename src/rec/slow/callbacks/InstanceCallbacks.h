@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_TARGETCOMMANDS__
-#define __REC_SLOW_TARGETCOMMANDS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ void addInstanceCallbacks(program::Program*);
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_TARGETCOMMANDS__

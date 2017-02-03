@@ -1,4 +1,4 @@
-#ifndef __REC_BASE_BASE__
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -28,5 +28,3 @@ inline void doLog(const String& s) {
 };
 
 }  // namespace
-
-#endif

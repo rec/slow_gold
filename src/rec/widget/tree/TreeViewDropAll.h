@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_TREEVIEWDROPALL__
-#define __REC_WIDGET_TREE_TREEVIEWDROPALL__
+#pragma once
 
 #include "rec/data/Data.h"
 #include "rec/gui/DropTarget.h"
@@ -44,4 +43,3 @@ class TreeViewDropAll : public TreeViewDropTarget
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_TREEVIEWDROPALL__

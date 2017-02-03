@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_RAW_RAWFORMATREADER__
-#define __REC_AUDIO_FORMAT_RAW_RAWFORMATREADER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -68,4 +67,3 @@ class RawFormatReader : public AudioFormatReader {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_FORMAT_RAW_RAWFORMATREADER__

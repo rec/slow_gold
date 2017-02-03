@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_AUDIO_SETUPPAGE__
-#define __REC_GUI_AUDIO_SETUPPAGE__
+#pragma once
 
 #include "rec/base/Base.h"
 
@@ -30,4 +29,3 @@ class SetupPage : public Component {
 }  // namespace gui
 }  // namespace audio
 
-#endif   // __REC_GUI_AUDIO_SETUPPAGE__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_DELEGATELIST__
-#define __REC_UTIL_DELEGATELIST__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -20,4 +19,3 @@ Return delegateToList(Method method, HasMethod hasMethod,
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_DELEGATELIST__

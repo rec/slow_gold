@@ -1,5 +1,4 @@
-#ifndef __REC_COMMAND_COMMANDMAPEDITBUTTON__
-#define __REC_COMMAND_COMMANDMAPEDITBUTTON__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -32,4 +31,3 @@ class EditButton : public juce::Button {
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_COMMANDMAPEDITBUTTON__

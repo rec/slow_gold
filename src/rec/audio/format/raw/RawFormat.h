@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_RAW_RAWFORMAT__
-#define __REC_AUDIO_FORMAT_RAW_RAWFORMAT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -39,4 +38,3 @@ class RawFormat : public juce::AudioFormat {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_FORMAT_RAW_RAWFORMAT__

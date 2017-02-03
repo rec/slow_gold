@@ -1,5 +1,4 @@
-#ifndef __REC_APP_REGISTERPROGRAM__
-#define __REC_APP_REGISTERPROGRAM__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -41,4 +40,3 @@ class RegisterProgram : public Thread {
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_REGISTERPROGRAM__

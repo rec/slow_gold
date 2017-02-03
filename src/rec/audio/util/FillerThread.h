@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_FILLERTHREAD__
-#define __REC_SLOW_FILLERTHREAD__
+#pragma once
 
 #include "rec/util/range/SampleRange.h"
 
@@ -32,4 +31,3 @@ class FillerThread : public Thread {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_SLOW_FILLERTHREAD__

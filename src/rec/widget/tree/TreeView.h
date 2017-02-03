@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_TREEVIEW__
-#define __REC_WIDGET_TREE_TREEVIEW__
+#pragma once
 
 #include "rec/util/Disableable.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
@@ -26,4 +25,3 @@ class TreeView : public TreeViewDropAll, public Disableable {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_TREEVIEW__

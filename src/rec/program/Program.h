@@ -1,5 +1,4 @@
-#ifndef __REC_APP_PROGRAM__
-#define __REC_APP_PROGRAM__
+#pragma once
 
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/program/Threads.pb.h"
@@ -62,4 +61,3 @@ Program* getProgram();
 }  // namespace program
 }  // namespace rec
 
-#endif  // __REC_APP_PROGRAM__

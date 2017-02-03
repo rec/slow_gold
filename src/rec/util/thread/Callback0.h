@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_CALLBACK0__
-#define __REC_UTIL_THREAD_CALLBACK0__
+#pragma once
 
 #include "rec/util/thread/Callback.h"
 
@@ -29,4 +28,3 @@ class Callback0 : public Callback {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_CALLBACK0__

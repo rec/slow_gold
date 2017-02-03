@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_GUIWRITEABLE__
-#define __REC_GUI_GUIWRITEABLE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -37,4 +36,3 @@ class GuiWriteable {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_GUIWRITEABLE__

@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_COMPARER__
-#define __REC_DATA_PROTO_COMPARER__
+#pragma once
 
 namespace rec {
 namespace data {
@@ -19,4 +18,3 @@ class Comparer {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_COMPARER__

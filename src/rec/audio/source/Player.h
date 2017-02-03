@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
-#define __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/AudioSettings.pb.h"
@@ -98,4 +97,3 @@ class Player : public DataListener<AudioSettings>,
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__

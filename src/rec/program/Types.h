@@ -1,5 +1,4 @@
-#ifndef __REC_PROGRAM_TYPES__
-#define __REC_PROGRAM_TYPES__
+#pragma once
 
 #include <unordered_map>
 
@@ -21,4 +20,3 @@ typedef std::unordered_map<string, gui::Layout> LayoutMap;
 }  // namespace program
 }  // namespace rec
 
-#endif  // __REC_PROGRAM_TYPES__

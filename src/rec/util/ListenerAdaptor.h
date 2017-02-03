@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_LISTENERADAPTOR__
-#define __REC_UTIL_LISTENERADAPTOR__
+#pragma once
 
 #include "rec/util/proto/MessageListener.h"
 
@@ -42,4 +41,3 @@ class ListenerAdaptor : public Listener<Type1> {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_LISTENERADAPTOR__

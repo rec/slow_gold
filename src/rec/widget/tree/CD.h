@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_CD__
-#define __REC_WIDGET_TREE_CD__
+#pragma once
 
 #include "rec/music/Metadata.h"
 #include "rec/util/cd/CDReader.h"
@@ -25,4 +24,3 @@ class CD : public Directory {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_CD__

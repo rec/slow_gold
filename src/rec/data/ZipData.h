@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_ZIPPER__
-#define __REC_DATA_ZIPPER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -15,4 +14,3 @@ bool unzipData(const File&);
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_ZIPPER__

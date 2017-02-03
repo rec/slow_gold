@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_MERGE__
-#define __REC_UTIL_MERGE__
+#pragma once
 
 #include "rec/util/range/Contains.h"
 #include "rec/util/range/Range.h"
@@ -45,4 +44,3 @@ Container merge(const Container& x, const Range<Type>& y) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_MERGE__

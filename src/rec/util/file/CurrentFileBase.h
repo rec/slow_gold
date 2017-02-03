@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILE_CURRENTFILEBASE__
-#define __REC_UTIL_FILE_CURRENTFILEBASE__
+#pragma once
 
 #include "rec/util/Listener.h"
 #include "rec/util/StateListener.h"
@@ -49,4 +48,3 @@ class CurrentFileBase : public Listener<const VirtualFile&>,
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILE_CURRENTFILEBASE__

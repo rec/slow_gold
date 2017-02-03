@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_SPLITRANGE__
-#define __REC_UTIL_SPLITRANGE__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -22,4 +21,3 @@ typename Range<Type>::Vector split(const Range<Type>& range,
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_SPLITRANGE__

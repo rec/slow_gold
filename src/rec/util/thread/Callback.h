@@ -1,5 +1,4 @@
-#ifndef __REC_THREAD_CALLBACK__
-#define __REC_THREAD_CALLBACK__
+#pragma once
 
 #include "rec/util/Deletable.h"
 
@@ -28,4 +27,3 @@ typedef thread::callback::Callback Callback;
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_THREAD_CALLBACK__

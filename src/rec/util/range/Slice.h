@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RANGE_SLICE__
-#define __REC_UTIL_RANGE_SLICE__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -39,4 +38,3 @@ Selection wrap(const Selection& selection, Type t) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RANGE_SLICE__

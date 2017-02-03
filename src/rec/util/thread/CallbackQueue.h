@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_CALLBACKQUEUE__
-#define __REC_UTIL_THREAD_CALLBACKQUEUE__
+#pragma once
 
 #include "rec/util/HasLock.h"
 #include "rec/util/thread/Callback.h"
@@ -29,4 +28,3 @@ class CallbackQueue : public HasLock {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_CALLBACKQUEUE__

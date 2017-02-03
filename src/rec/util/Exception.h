@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_EXCEPTION__
-#define __REC_UTIL_EXCEPTION__
+#pragma once
 
 #include <exception>
 
@@ -24,4 +23,3 @@ class Exception : public std::exception {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_EXCEPTION__

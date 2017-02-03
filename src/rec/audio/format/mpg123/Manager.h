@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_MPG123_MANAGER__
-#define __REC_AUDIO_FORMAT_MPG123_MANAGER__
+#pragma once
 
 #include "audio/audio_file_formats/juce_AudioFormat.h"
 
@@ -55,4 +54,3 @@ class Format : public AudioFormat {
 }  // namespace audio
 }  // namespace rec
 
-#endif // __REC_AUDIO_FORMAT_MPG123_MANAGER__

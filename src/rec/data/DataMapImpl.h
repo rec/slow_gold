@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATAMAPIMPL__
-#define __REC_DATA_DATAMAPIMPL__
+#pragma once
 
 #include <map>
 
@@ -38,4 +37,3 @@ class DataMapImpl : public DataMap {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATAMAPIMPL__

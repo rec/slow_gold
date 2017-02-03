@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_FONT__
-#define __REC_GUI_FONT__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/gui/Font.pb.h"
@@ -62,4 +61,3 @@ juce::Font getFont(const Proto& proto) {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_FONT__

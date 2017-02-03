@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_SAMPLERANGE__
-#define __REC_UTIL_SAMPLERANGE__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 #include "rec/util/range/Range.h"
@@ -14,4 +13,3 @@ typedef SampleRange::Vector SampleRangeVector;
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_SAMPLERANGE__

@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __REC_AUDIO_FORMAT_MPG123_CREATE_READER__
-#define __REC_AUDIO_FORMAT_MPG123_CREATE_READER__
-
 #include "rec/audio/format/mpg123/Mpg123.h"
 
 namespace rec {
@@ -29,5 +26,3 @@ Error createReader(juce::InputStream* sourceStream,
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
-
-#endif // __REC_AUDIO_FORMAT_MPG123_CREATE_READER__

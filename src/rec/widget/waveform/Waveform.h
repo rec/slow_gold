@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM__
-#define __REC_WIDGET_WAVEFORM__
+#pragma once
 
 #include <set>
 
@@ -123,4 +122,3 @@ typedef gui::DropTarget<Waveform> DropWaveform;
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM__

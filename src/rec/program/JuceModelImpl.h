@@ -1,5 +1,4 @@
-#ifndef __REC_APP_PROGRAMINSTANCEIMPL__
-#define __REC_APP_PROGRAMINSTANCEIMPL__
+#pragma once
 
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/gui/proto/Constants.h"
@@ -76,4 +75,3 @@ class JuceModelImpl {
 }  // namespace program
 }  // namespace rec
 
-#endif  // __REC_APP_PROGRAMINSTANCEIMPL__

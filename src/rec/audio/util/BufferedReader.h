@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_BUFFEREDREADER__
-#define __REC_AUDIO_UTIL_BUFFEREDREADER__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/util/range/Fillable.h"
@@ -30,4 +29,3 @@ class BufferedReader : public Fillable {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_BUFFEREDREADER__

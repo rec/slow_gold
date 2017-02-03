@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_PROTO_FIELDOPS__
-#define __REC_DATA_PROTO_FIELDOPS__
+#pragma once
 
 #include "rec/data/Value.h"
 
@@ -20,4 +19,3 @@ void setMessageFieldOrDie(const Address&, Message*, const ValueProto&);
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTO_FIELDOPS__

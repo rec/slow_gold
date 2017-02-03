@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_SIZEHINTACCUMULATOR__
-#define __REC_GUI_SIZEHINTACCUMULATOR__
+#pragma once
 
 #include "rec/gui/HasSizeHints.h"
 #include "rec/gui/Orientation.h"
@@ -39,4 +38,3 @@ class SizeHintAccumulator : public HasSizeHints {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_SIZEHINTACCUMULATOR__

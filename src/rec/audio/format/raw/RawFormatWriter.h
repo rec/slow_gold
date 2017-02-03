@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_RAW_RAWFORMATWRITER__
-#define __REC_AUDIO_FORMAT_RAW_RAWFORMATWRITER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -53,4 +52,3 @@ class RawFormatWriter : public AudioFormatWriter {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_FORMAT_RAW_RAWFORMATWRITER__

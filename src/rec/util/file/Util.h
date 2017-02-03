@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILEUTIL__
-#define __REC_UTIL_FILEUTIL__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -27,4 +26,3 @@ const String& audioFilePatterns();
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILEUTIL__

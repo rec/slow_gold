@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_AUDIOFORMATOUTPUTDESCRIPTION__
-#define __REC_AUDIO_FORMAT_AUDIOFORMATOUTPUTDESCRIPTION__
+#pragma once
 
 namespace juce {
 
@@ -40,4 +39,3 @@ class AudioFormat
 
 }  // namespace juce
 
-#endif  // __REC_AUDIO_FORMAT_AUDIOFORMATOUTPUTDESCRIPTION__

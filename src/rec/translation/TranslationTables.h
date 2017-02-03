@@ -1,5 +1,4 @@
-#ifndef __REC_TRANSLATION_TRANSLATIONTABLES__
-#define __REC_TRANSLATION_TRANSLATIONTABLES__
+#pragma once
 
 #include "rec/base/Trans.h"
 #include "rec/util/Listener.h"
@@ -13,4 +12,3 @@ Language getLanguage();
 }  // namespace translation
 }  // namespace rec
 
-#endif  // __REC_TRANSLATION_TRANSLATIONTABLES__

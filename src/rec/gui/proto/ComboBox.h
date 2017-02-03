@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_COMBOBOX__
-#define __REC_GUI_PROTO_COMBOBOX__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -13,4 +12,3 @@ unique_ptr<Component> makeComboBox(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_COMBOBOX__

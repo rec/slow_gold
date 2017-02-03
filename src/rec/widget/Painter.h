@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_PAINTER__
-#define __REC_WIDGET_PAINTER__
+#pragma once
 
 #include "rec/widget/Widget.h"
 #include "rec/gui/Color.h"
@@ -81,4 +80,3 @@ class Restorer {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_PAINTER__

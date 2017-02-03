@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_POINTER__
-#define __REC_UTIL_THREAD_POINTER__
+#pragma once
 
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/Callback1.h"
@@ -50,4 +49,3 @@ unique_ptr<Callback> makePointer(Operator op, Value v) {
 }  // namespace util
 }  // namespce rec
 
-#endif  // __REC_UTIL_THREAD_POINTER__

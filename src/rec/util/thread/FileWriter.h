@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_THREAD_FILEWRITER__
-#define __REC_UTIL_THREAD_FILEWRITER__
+#pragma once
 
 #include "rec/util/thread/Trash.h"
 
@@ -45,4 +44,3 @@ class FileWriter : public Thread {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_THREAD_FILEWRITER__

@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_READER__
-#define __REC_DATA_READER__
+#pragma once
 
 #include <google/protobuf/message.h>
 
@@ -44,4 +43,3 @@ class Reader {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_READER__

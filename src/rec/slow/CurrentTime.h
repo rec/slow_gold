@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_CURRENTTIME__
-#define __REC_SLOW_CURRENTTIME__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/AudioSettings.pb.h"
@@ -80,4 +79,3 @@ class CurrentTime : public audio::util::CurrentTimeBase,
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_CURRENTTIME__

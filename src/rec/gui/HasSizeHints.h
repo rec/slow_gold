@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_HASSIZEHINTS__
-#define __REC_GUI_HASSIZEHINTS__
+#pragma once
 
 #include "rec/gui/Orientation.h"
 
@@ -23,4 +22,3 @@ class HasSizeHints {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_HASSIZEHINTS__

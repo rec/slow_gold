@@ -1,9 +1,8 @@
+#pragma once
+
 // Copyright (c) 2006-2008 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
-#ifndef BASE_BASICTYPES_H_
-#define BASE_BASICTYPES_H_
 
 #include <limits.h>         // So we can set the bounds of our types
 #include <stddef.h>         // For size_t
@@ -70,5 +69,3 @@ const  int32 kint32min  = (( int32) 0x80000000);
 const  int32 kint32max  = (( int32) 0x7FFFFFFF);
 const  int64 kint64min  = (( int64) GG_LONGLONG(0x8000000000000000));
 const  int64 kint64max  = (( int64) GG_LONGLONG(0x7FFFFFFFFFFFFFFF));
-
-#endif  // BASE_BASICTYPES_H_

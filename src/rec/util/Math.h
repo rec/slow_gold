@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_MATH
-#define __REC_UTIL_MATH
+#pragma once
 
 #include "rec/base/base.h"
 #if !_MSC_VER
@@ -89,4 +88,3 @@ inline int isnan( double arg ) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_MATH

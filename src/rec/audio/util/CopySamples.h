@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_COPY__
-#define __REC_AUDIO_SOURCE_COPY__
+#pragma once
 
 #include "rec/audio/Audio.h"
 
@@ -26,4 +25,3 @@ void clear(const BufferTime& bt, SampleTime c);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_COPY__

@@ -1,5 +1,4 @@
-#ifndef __REC_EVENT_EVENTSTACK__
-#define __REC_EVENT_EVENTSTACK__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -46,4 +45,3 @@ class UndoStack {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_EVENT_EVENTSTACK__

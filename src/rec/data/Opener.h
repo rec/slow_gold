@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_OPENER__
-#define __REC_DATA_OPENER__
+#pragma once
 
 #include "rec/data/Reader.h"
 #include "rec/data/Undoable.h"
@@ -51,4 +50,3 @@ class Opener : public Reader<Proto> {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_OPENER__

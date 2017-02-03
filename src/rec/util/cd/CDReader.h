@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_CDREADER__
-#define __REC_UTIL_CD_CDREADER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -42,4 +41,3 @@ String getCDKey(AudioCDReader* reader);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_CDREADER__

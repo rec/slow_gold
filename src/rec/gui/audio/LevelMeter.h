@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_AUDIO_LEVELMETER__
-#define __REC_GUI_AUDIO_LEVELMETER__
+#pragma once
 
 #include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
@@ -48,4 +47,3 @@ class LevelMeter : public Component,
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_AUDIO_LEVELMETER__

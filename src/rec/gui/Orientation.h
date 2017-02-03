@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_ORIENTATION__
-#define __REC_GUI_ORIENTATION__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/gui/Orientation.pb.h"
@@ -14,4 +13,3 @@ static const auto VERTICAL = OrientationProto::VERTICAL;
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_ORIENTATION__

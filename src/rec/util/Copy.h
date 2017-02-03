@@ -1,5 +1,4 @@
-#ifndef __REC_PERSIST_COPY__
-#define __REC_PERSIST_COPY__
+#pragma once
 
 #include <string>
 #include <google/protobuf/message.h>
@@ -72,4 +71,3 @@ bool merge(const string& from, Message* to, Style r = DEFAULT_STYLE);
 }  // namespace copy
 }  // namespace rec
 
-#endif  // __REC_PERSIST_COPY__

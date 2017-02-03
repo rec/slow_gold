@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_DISABLEMAP__
-#define __REC_GUI_DISABLEMAP__
+#pragma once
 
 #include <unordered_map>
 #include <unordered_set>
@@ -32,4 +31,3 @@ class DisableMap {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_GUI_DISABLEMAP__

@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_FRAMESOURCE__
-#define __REC_AUDIO_SOURCE_FRAMESOURCE__
+#pragma once
 
 #include "rec/audio/util/Frame.h"
 #include "rec/util/Math.h"
@@ -60,4 +59,3 @@ class FrameSource : public PositionableAudioSource {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_FRAMESOURCE__

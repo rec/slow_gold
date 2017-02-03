@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_CURRENTTIMEBASE__
-#define __REC_AUDIO_UTIL_CURRENTTIMEBASE__
+#pragma once
 
 #include "rec/util/range/SampleRange.h"
 
@@ -21,4 +20,3 @@ class CurrentTimeBase {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_CURRENTTIMEBASE__

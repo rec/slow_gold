@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_UNTYPEDDATALISTENER__
-#define __REC_UTIL_UNTYPEDDATALISTENER__
+#pragma once
 
 #include "rec/data/proto/Address.pb.h"
 #include "rec/data/Data.h"
@@ -39,4 +38,3 @@ class UntypedDataListener : public Listener<const Message&>,
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_UTIL_UNTYPEDDATALISTENER__

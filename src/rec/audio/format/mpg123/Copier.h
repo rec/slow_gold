@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_FORMAT_MPG123_COPIER__
-#define __REC_AUDIO_FORMAT_MPG123_COPIER__
+#pragma once
 
 #include <stddef.h>
 
@@ -22,4 +21,3 @@ Copier getCopier(int encoding);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_FORMAT_MPG123_COPIER__

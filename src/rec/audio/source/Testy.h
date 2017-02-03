@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_TESTY__
-#define __REC_AUDIO_SOURCE_TESTY__
+#pragma once
 
 #include <gtest/gtest.h>
 
@@ -87,4 +86,3 @@ class Testy : public PositionableAudioSource {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_TESTY__

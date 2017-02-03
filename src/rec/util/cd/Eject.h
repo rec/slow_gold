@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_CD_EJECT__
-#define __REC_UTIL_CD_EJECT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -13,4 +12,3 @@ void ejectAll();
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_EJECT__

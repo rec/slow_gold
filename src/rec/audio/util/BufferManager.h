@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_BUFFERMANAGER__
-#define __REC_AUDIO_BUFFERMANAGER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -90,4 +89,3 @@ class BufferManager {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_BUFFERMANAGER__

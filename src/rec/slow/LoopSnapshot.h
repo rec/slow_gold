@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_LOOPSNAPSHOT__
-#define __REC_SLOW_LOOPSNAPSHOT__
+#pragma once
 
 #include <map>
 
@@ -32,4 +31,3 @@ struct LoopSnapshot {
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_LOOPSNAPSHOT__

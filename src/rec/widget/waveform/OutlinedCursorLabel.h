@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM_OUTLINEDCURSORLABEL__
-#define __REC_WIDGET_WAVEFORM_OUTLINEDCURSORLABEL__
+#pragma once
 
 #include "rec/gui/SimpleLabel.h"
 #include "rec/data/DataListener.h"
@@ -44,4 +43,3 @@ class OutlinedCursorLabel : public gui::SimpleLabel,
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM_OUTLINEDCURSORLABEL__

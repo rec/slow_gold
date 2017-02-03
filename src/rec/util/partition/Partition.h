@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_PARTITION_PARTITION__
-#define __REC_UTIL_PARTITION_PARTITION__
+#pragma once
 
 #include <set>
 
@@ -31,4 +30,3 @@ ShardArray partitionList(const Collection& collection,
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_PARTITION_PARTITION__

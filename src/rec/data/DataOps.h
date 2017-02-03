@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATAOPS__
-#define __REC_DATA_DATAOPS__
+#pragma once
 
 #include "rec/data/Data.h"
 #include "rec/data/Reader.h"
@@ -41,4 +40,3 @@ const Proto getProto() {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATAOPS__

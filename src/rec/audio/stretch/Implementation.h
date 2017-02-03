@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_STRETCH_IMPLEMENTATION__
-#define __REC_AUDIO_STRETCH_IMPLEMENTATION__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/stretch/Stretch.h"
@@ -55,4 +54,3 @@ class Implementation {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_STRETCH_IMPLEMENTATION__

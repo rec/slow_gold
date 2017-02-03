@@ -1,5 +1,4 @@
-#ifndef __REC_APP_PROGRAM_INSTANCE__
-#define __REC_APP_PROGRAM_INSTANCE__
+#pragma once
 
 #include <unordered_map>
 
@@ -85,4 +84,3 @@ inline ApplicationCommandManager* applicationCommandManager() {
 }  // namespace program
 }  // namespace rec
 
-#endif  // __REC_APP_PROGRAM_INSTANCE__

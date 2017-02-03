@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_TREE_DIRECTORY__
-#define __REC_WIDGET_TREE_DIRECTORY__
+#pragma once
 
 #include <algorithm>
 
@@ -61,4 +60,3 @@ class Directory : public Node, public Listener<const VirtualFile&> {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_DIRECTORY__

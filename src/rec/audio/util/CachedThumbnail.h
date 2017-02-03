@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_UTIL_CACHEDTHUMBNAIL__
-#define __REC_AUDIO_UTIL_CACHEDTHUMBNAIL__
+#pragma once
 
 #include "rec/base/SampleRate.h"
 #include "rec/audio/Audio.h"
@@ -34,4 +33,3 @@ class CachedThumbnail {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_CACHEDTHUMBNAIL__

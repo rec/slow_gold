@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_POINTERLIST__
-#define __REC_UTIL_POINTERLIST__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/util/Method.h"
@@ -65,4 +64,3 @@ class PointerList {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_POINTERLIST__

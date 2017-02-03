@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_GUISETTINGS__
-#define __REC_SLOW_GUISETTINGS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ File browseForFile(const String& msg, const File& startFile, SaveOrOpen save,
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_GUISETTINGS__

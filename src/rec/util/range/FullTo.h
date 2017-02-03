@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FULLTO__
-#define __REC_UTIL_FULLTO__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -15,4 +14,3 @@ Type fullTo(const Container& c) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FULLTO__

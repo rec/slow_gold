@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_REGISTERFORMATS__
-#define __REC_AUDIO_REGISTERFORMATS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -25,4 +24,3 @@ AudioFormatManager* createAudioFormatManager(ReadWrite rw);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_REGISTERFORMATS__

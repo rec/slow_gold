@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_ABOUTWINDOW__
-#define __REC_SLOW_ABOUTWINDOW__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -31,4 +30,3 @@ class AboutWindow : public Component,
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_ABOUTWINDOW__

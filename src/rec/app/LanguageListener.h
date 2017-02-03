@@ -1,5 +1,4 @@
-#ifndef __REC_APP_LANGUAGELISTENER__
-#define __REC_APP_LANGUAGELISTENER__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -23,4 +22,3 @@ class LanguageListener {
 }  // namespace app
 }  // namespace rec
 
-#endif  // __REC_APP_LANGUAGELISTENER__

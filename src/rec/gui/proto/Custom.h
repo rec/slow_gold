@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_CUSTOM__
-#define __REC_GUI_PROTO_CUSTOM__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -15,4 +14,3 @@ unique_ptr<Component> makeCustom(const Context&);
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_PROTO_CUSTOM__

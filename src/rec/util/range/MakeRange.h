@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_MAKERANGE__
-#define __REC_UTIL_MAKERANGE__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -25,4 +24,3 @@ Range<Type> makeRange(const typename Range<Type>::Vector& x) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_MAKERANGE__

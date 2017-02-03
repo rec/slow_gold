@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_MESSAGEREGISTRAR__
-#define __REC_DATA_MESSAGEREGISTRAR__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/data/proto/Address.pb.h"
@@ -34,4 +33,3 @@ void registerProto(MessageRegistrar* registrar) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_DATA_MESSAGEREGISTRAR__

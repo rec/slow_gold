@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_COMPONENTS__
-#define __REC_SLOW_COMPONENTS__
+#pragma once
 
 #include "rec/audio/Audio.h"
 #include "rec/data/DataListener.h"
@@ -48,4 +47,3 @@ class Components : public data::DataListener<audio::stretch::Stretch>,
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_COMPONENTS__

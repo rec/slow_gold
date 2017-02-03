@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_DATAMAKERIMPL__
-#define __REC_DATA_DATAMAKERIMPL__
+#pragma once
 
 #include "rec/data/DataImpl.h"
 #include "rec/data/DataMaker.h"
@@ -30,4 +29,3 @@ class DataMakerImpl : public DataMaker {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATAMAKERIMPL__

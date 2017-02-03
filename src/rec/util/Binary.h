@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_BINARY__
-#define __REC_UTIL_BINARY__
+#pragma once
 
 #include "rec/util/Binary.pb.h"
 #include "rec/util/Copy.h"
@@ -38,4 +37,3 @@ Type* constructName(const string& name) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_BINARY__

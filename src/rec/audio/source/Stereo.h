@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SOURCE_STEREO__
-#define __REC_AUDIO_SOURCE_STEREO__
+#pragma once
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/source/Stereo.pb.h"
@@ -30,4 +29,3 @@ void fixStereo(StereoProto*);
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_STEREO__

@@ -1,5 +1,4 @@
-#ifndef __REC_PROTO_TYPED_OPERATIONS__
-#define __REC_PROTO_TYPED_OPERATIONS__
+#pragma once
 
 #include "rec/data/proto/Comparer.h"
 
@@ -36,4 +35,3 @@ bool equals(const Message& x, const Message& y, const Comparer& cmp);
 }  // namespace typer
 }  // namespace rec
 
-#endif  // __REC_PROTO_TYPED_OPERATIONS__

@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM_VIEWPORT__
-#define __REC_WIDGET_WAVEFORM_VIEWPORT__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/base/SampleTime.h"
@@ -20,4 +19,3 @@ double selectionInZoom(const Viewport&);
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM_VIEWPORT__

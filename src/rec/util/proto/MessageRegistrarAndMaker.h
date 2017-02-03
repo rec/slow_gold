@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_MESSAGEREGISTRARANDMAKER__
-#define __REC_UTIL_MESSAGEREGISTRARANDMAKER__
+#pragma once
 
 #include "rec/data/proto/Address.pb.h"
 #include "rec/util/proto/MessageMaker.h"
@@ -27,4 +26,3 @@ class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_MESSAGEREGISTRARANDMAKER__

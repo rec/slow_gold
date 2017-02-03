@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_DEVICE2__
-#define __REC_AUDIO_DEVICE2__
+#pragma once
 
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/base/SampleRate.h"
@@ -29,4 +28,3 @@ class Device : public juce::ChangeListener {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_DEVICE__

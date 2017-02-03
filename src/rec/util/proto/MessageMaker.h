@@ -1,5 +1,4 @@
-#ifndef __REC_DATA_MESSAGEMAKER__
-#define __REC_DATA_MESSAGEMAKER__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/data/proto/Address.pb.h"
@@ -19,4 +18,3 @@ class MessageMaker {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_DATA_MESSAGEMAKER__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_FILE_VIRTUALFILELIST__
-#define __REC_UTIL_FILE_VIRTUALFILELIST__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/util/file/VirtualFile.pb.h"
@@ -15,4 +14,3 @@ VirtualFileList toVirtualFileList(const juce::Array<File>&);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_FILE_VIRTUALFILELIST__

@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_STL__
-#define __REC_UTIL_STL__
+#pragma once
 
 #include <set>
 
@@ -75,4 +74,3 @@ typename Container::mapped_type getDefault(
 }  // namespace stl
 }  // namespace rec
 
-#endif  // __REC_UTIL_STL__

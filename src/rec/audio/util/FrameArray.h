@@ -1,5 +1,4 @@
-#ifndef __REC_AUDIO_SAMPLES__
-#define __REC_AUDIO_SAMPLES__
+#pragma once
 
 #include "rec/base/SampleTime.h"
 
@@ -67,4 +66,3 @@ SampleTime reallocateBest(vector<Frame>* frames, SampleTime length,
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SAMPLES__

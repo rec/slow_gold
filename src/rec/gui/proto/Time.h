@@ -1,5 +1,4 @@
-#ifndef __REC_GUI_PROTO_TIME__
-#define __REC_GUI_PROTO_TIME__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -14,4 +13,3 @@ unique_ptr<Component> makeTime(const Context&);
 }  // namespace rec
 
 
-#endif  // __REC_GUI_PROTO_TIME__

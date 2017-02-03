@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_BINARY_MACROS__
-#define __REC_UTIL_BINARY_MACROS__
+#pragma once
 
 #include "BinaryData.h"
 #include "rec/util/Binary.h"
@@ -22,4 +21,3 @@ namespace util {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_BINARY_MACROS__

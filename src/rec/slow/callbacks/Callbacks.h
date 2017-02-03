@@ -1,5 +1,4 @@
-#ifndef __REC_SLOW_CALLBACKS__
-#define __REC_SLOW_CALLBACKS__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -16,4 +15,3 @@ void addSlowCallbacks(program::Program*, int repeat = REPEATED_COUNT);
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_CALLBACKS__

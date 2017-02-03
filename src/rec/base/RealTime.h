@@ -1,5 +1,4 @@
-#ifndef __REC_BASE_REALTIME__
-#define __REC_BASE_REALTIME__
+#pragma once
 
 #include "rec/base/SampleRate.h"
 
@@ -48,4 +47,3 @@ struct RealTime {
 
 }  // namespace rec
 
-#endif  // __REC_BASE_REALTIME__

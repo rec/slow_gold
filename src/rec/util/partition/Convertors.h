@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_PARTITION_CONVERTORS__
-#define __REC_UTIL_PARTITION_CONVERTORS__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -34,4 +33,3 @@ List rangeToList(const Range<int>& range) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_PARTITION_CONVERTORS__

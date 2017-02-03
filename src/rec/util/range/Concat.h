@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RANGE_CONCAT__
-#define __REC_UTIL_RANGE_CONCAT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -10,4 +9,3 @@ namespace util {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RANGE_CONCAT__

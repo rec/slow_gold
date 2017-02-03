@@ -1,5 +1,4 @@
-#ifndef __REC_WIDGET_WAVEFORM_MOUSEWHEELEVENT__
-#define __REC_WIDGET_WAVEFORM_MOUSEWHEELEVENT__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -20,4 +19,3 @@ struct MouseWheelEvent {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WAVEFORM_MOUSEWHEELEVENT__

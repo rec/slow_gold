@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_DIFFERENCE__
-#define __REC_UTIL_DIFFERENCE__
+#pragma once
 
 #include "rec/util/range/Merge.h"
 #include "rec/util/range/Range.h"
@@ -78,4 +77,3 @@ Container symmetricDifference(const Container& x, const Container& y) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_DIFFERENCE__

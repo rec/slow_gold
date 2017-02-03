@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_RANGE_COMPLEMENT__
-#define __REC_UTIL_RANGE_COMPLEMENT__
+#pragma once
 
 #include "rec/util/range/Range.h"
 
@@ -26,4 +25,3 @@ Selection complement(const Selection& con, Type length) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_RANGE_COMPLEMENT__

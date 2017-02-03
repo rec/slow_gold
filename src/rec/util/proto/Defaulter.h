@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_DEFAULTER__
-#define __REC_UTIL_DEFAULTER__
+#pragma once
 
 #include "rec/base/base.h"
 #include "rec/util/Binary.h"
@@ -29,4 +28,3 @@ class DefBinary : public Def<Proto> {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_DEFAULTER__

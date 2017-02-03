@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_PROTO__
-#define __REC_UTIL_PROTO__
+#pragma once
 
 #include <google/protobuf/message.h>
 
@@ -26,4 +25,3 @@ inline Message* clone(const Message* m) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_PROTO__

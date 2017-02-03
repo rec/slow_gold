@@ -1,5 +1,4 @@
-#ifndef __REC_UTIL_TESTDATA__
-#define __REC_UTIL_TESTDATA__
+#pragma once
 
 #include "rec/base/base.h"
 
@@ -17,4 +16,3 @@ inline File testFile(const String& filename) {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_TESTDATA__
