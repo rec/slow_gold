@@ -13,10 +13,10 @@ class GenericApplication;
 class Window : public gui::PersistentWindow, public Broadcaster<None> {
   public:
     Window(GenericApplication* application,
-                  const String& name,
-                  const Colour& bg,
-                  int requiredButtons,
-                  bool addToDesktop = true);
+           const String& name,
+           const Colour& bg,
+           int requiredButtons,
+           bool addToDesktop = true);
     virtual ~Window();
 
     virtual void initialise();

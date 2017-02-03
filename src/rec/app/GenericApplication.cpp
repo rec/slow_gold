@@ -12,7 +12,7 @@ namespace rec {
 namespace app {
 
 GenericApplication::GenericApplication(ApplicationFunction i,
-                                                                              ApplicationFunction s)
+                                       ApplicationFunction s)
         : initializer_(i), shutdown_(s), enable_(ENABLE),
             autoCheckForUpdates_(true) {
 }
@@ -33,9 +33,9 @@ void GenericApplication::initialise(const String&) {
         downloadNewVersionIfNeeded(version(), name());
 
     thread::runInNewThread("startup thread",
-                                                  STARTUP_THREAD_PRIORITY,
-                                                  window_.get(),
-                                                  &Window::startup);
+                           STARTUP_THREAD_PRIORITY,
+                           window_.get(),
+                           &Window::startup);
     LOG(INFO) << name() << ": initialise finished.";
 
     // FLAGS_log_dir = str(File::getSpecialLocation(

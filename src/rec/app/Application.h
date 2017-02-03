@@ -30,16 +30,15 @@ class Application : public GenericApplication {
 //
 
 #define REC_APPLICATION_HELPER(CLASS, BASE, INIT, SHUTDOWN)             \
-    struct CLASS : public BASE {                                          \
-        CLASS() : BASE(INIT, SHUTDOWN) {}                                   \
-    };                                                                    \
+    struct CLASS : public BASE {                                        \
+        CLASS() : BASE(INIT, SHUTDOWN) {}                               \
+    };                                                                  \
     START_JUCE_APPLICATION(CLASS)
 
 #define START_REC_APPLICATION(WINDOW_CLASS, NAME, INIT, SHUTDOWN)       \
-    REC_APPLICATION_HELPER(NAME ## Application,                           \
-                                                  rec::app::Application<WINDOW_CLASS>,           \
-                                                  INIT, SHUTDOWN)
+    REC_APPLICATION_HELPER(NAME ## Application,                         \
+                           rec::app::Application<WINDOW_CLASS>,         \
+                           INIT, SHUTDOWN)
 
 }  // namespace app
 }  // namespace rec
-

@@ -16,12 +16,12 @@ class Window;
 typedef void (*ApplicationFunction)(GenericApplication* app);
 
 class GenericApplication : public Listener<Enable>,
-                                                      public juce::JUCEApplication {
+                           public juce::JUCEApplication {
   public:
     static const int STARTUP_THREAD_PRIORITY = 4;
 
     GenericApplication(ApplicationFunction initializer,
-                                          ApplicationFunction shutdown);
+                       ApplicationFunction shutdown);
     ~GenericApplication() override;
 
     void initialise(const String& commandLine) override;

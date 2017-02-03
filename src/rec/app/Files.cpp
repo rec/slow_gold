@@ -20,8 +20,8 @@ String getApplicationName() {
 }
 
 File getCompanyDirectory() {
-    return File::getSpecialLocation(File::userApplicationDataDirectory).
-        getChildFile(COMPANY_NAME);
+    auto dir = File::getSpecialLocation(File::userApplicationDataDirectory);
+    return dir.getChildFile(COMPANY_NAME);
 }
 
 File getAppDirectory() {

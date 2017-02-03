@@ -42,14 +42,14 @@ const RelativeTime UPDATE(RelativeTime::days(1));
 bool isReadyForUpdate() {
     CHECK_DDD(1734, 1272, int32, int16);
 
-    int64 finished = data::getProto<AppSettings>().last_update_finished();
-    return (juce::Time::currentTimeMillis() - finished) > UPDATE.inMilliseconds();
+    auto finished = data::getProto<AppSettings>().last_update_finished();
+    auto elapsed = juce::Time::currentTimeMillis() - finished;
+    return elapsed > UPDATE.inMilliseconds();
 }
 
 String getVersion() {
-    std::unique_ptr<InputStream> stream(VERSION_FILE.createInputStream(false, nullptr, nullptr, "",
-                                                                                                                  SOCKET_TIMEOUT_MS));
-
+    auto stream = VERSION_FILE.createInputStream(
+        false, nullptr, nullptr, "", SOCKET_TIMEOUT_MS);
     return stream ? stream->readEntireStreamAsString() : String("");
 }
 
@@ -104,14 +104,14 @@ class DownloadThread : public Thread {
     }
 
     bool downloadNewVersion() const {
-        String msg = String::formatted(t_NEW_VERSION, c_str(newVersion_));
+        auto msg = String::formatted(t_NEW_VERSION, c_str(newVersion_));
 
         LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
-        bool ok = AlertWindow::showOkCancelBox(
-                AlertWindow::WarningIcon, msg,
-                msg + t_LIKE_TO_DOWNLOAD,
-                t_DOWNLOAD_AND_QUIT,
-                String::formatted(t_RUN_THIS_OLDER_VERSION, c_str(version_)));
+        auto ok = AlertWindow::showOkCancelBox(
+            AlertWindow::WarningIcon, msg,
+            msg + t_LIKE_TO_DOWNLOAD,
+            t_DOWNLOAD_AND_QUIT,
+            String::formatted(t_RUN_THIS_OLDER_VERSION, c_str(version_)));
 
         if (!ok) {
             LOG(INFO) << "New version download cancelled";
@@ -127,13 +127,14 @@ class DownloadThread : public Thread {
         ok = URL(urlName).launchInDefaultBrowser();
 
         if (ok) {
-            AppSettings appData = data::getProto<AppSettings>();
+            auto appData = data::getProto<AppSettings>();
             appData.set_last_update_finished(juce::Time::currentTimeMillis());
             data::setProto(appData);
         } else {
-            String error = String::formatted(t_COULDNT_UPDATE, c_str(newVersion_));
+            auto error = String::formatted(
+                t_COULDNT_UPDATE, c_str(newVersion_));
             AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                                                    t_CLICK_TO_CONTINUE);
+                                        t_CLICK_TO_CONTINUE);
         }
 
         return ok;
@@ -146,15 +147,14 @@ class DownloadThread : public Thread {
 
 }  // namespace
 
-void downloadNewVersionIfNeeded(const String& version,
-                                                                const String& name) {
+void downloadNewVersionIfNeeded(const String& version, const String& name) {
     thread::trash::run(new DownloadThread(version, name));
 }
 
 bool downloadNewVersionIfNeededBlocking() {
-    JUCEApplication* app = JUCEApplication::getInstance();
-    const String& version = app->getApplicationVersion();
-    const String& name = app->getApplicationName();
+    auto app = JUCEApplication::getInstance();
+    auto& version = app->getApplicationVersion();
+    auto& name = app->getApplicationName();
     return DownloadThread(version, name).checkForUpdates();
 }
 

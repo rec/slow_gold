@@ -9,12 +9,12 @@ namespace app {
 //static const int SLEEP_AFTER_STARTUP = 0;
 
 Window::Window(GenericApplication* application,
-                              const String& name,
-                              const Colour& bg,
-                              int requiredButtons,
-                              bool addToDesktop)
+               const String& name,
+               const Colour& bg,
+               int requiredButtons,
+               bool addToDesktop)
         : PersistentWindow(name, bg, requiredButtons, addToDesktop),
-            application_(application) {
+          application_(application) {
 }
 
 void Window::initialise() {
