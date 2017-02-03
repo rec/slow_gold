@@ -175,7 +175,7 @@ void CurrentTime::jumpToTime(SampleTime time) {
     requestedTime_ = -1;
   }
 
-	player->setNextReadPosition(time);
+    player->setNextReadPosition(time);
   zoomToTime(time);
 }
 

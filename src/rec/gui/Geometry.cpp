@@ -34,8 +34,8 @@ void copy(const juce::Rectangle<int>& from, Rectangle* to) {
 }
 
 void drawLine(Graphics& g, const Line& line, const juce::Rectangle<int>& r) {
-  drawLine(g, line, static_cast<float>(r.getX()), static_cast<float>(r.getY()), 
-	  static_cast<float>(r.getRight()), static_cast<float>(r.getBottom()));
+  drawLine(g, line, static_cast<float>(r.getX()), static_cast<float>(r.getY()),
+      static_cast<float>(r.getRight()), static_cast<float>(r.getBottom()));
 }
 
 juce::Rectangle<int> copy(const Rectangle& rect) {

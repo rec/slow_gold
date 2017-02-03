@@ -108,7 +108,7 @@ void Root::writeOpenness() {
 }
 
 void Root::operator()(const VirtualFile& file) {
-	broadcast(file);
+    broadcast(file);
 }
 
 void Root::operator()(const VirtualFileList& volumes) {

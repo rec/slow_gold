@@ -34,7 +34,7 @@ TRAN(CREATE_LOOPS, "Create loop points by pressing the L key.");
 TRAN(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
        "commands.");
 TRAN(CLOSE_TEXT, "Close");
-TRAN(COPYRIGHT, "Copyright © %d-%d");
+TRAN(COPYRIGHT, "Copyright \xc2\xa9 %d-%d");
 TRAN(REGISTERED_TO, "Registered To:");
 TRAN(SERIAL_NUMBER, "Serial Number:");
 TRAN(UNREGISTERED_START, "This unregistered copy expires in");

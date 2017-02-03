@@ -82,7 +82,7 @@ typedef vector<const FieldDescriptor*> FieldVector;
 #ifdef SHOULD_REMOVE
 static const unsigned int MAX_FIELD_COUNT = 5;
 static const int MAX_ARRAY_COUNT = 8;
-    
+
 bool isSmall(const Message& m) {
   FieldVector fields;
   m.GetReflection()->ListFields(m, &fields);

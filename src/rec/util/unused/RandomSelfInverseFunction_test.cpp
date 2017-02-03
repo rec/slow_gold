@@ -49,21 +49,21 @@ TEST(RandomSelfInverseFunction, All) {
   EXPECT_EQ(invariants(0), 4);
   EXPECT_EQ(invariants(1), 4);
 
-	for (int i = 0; i < 100; ++i)
+    for (int i = 0; i < 100; ++i)
     EXPECT_LE(invariants(i), 11) << "failed on " << i;
 
-	for (int i = 0; i < 100; ++i)
+    for (int i = 0; i < 100; ++i)
     testInvertible(i);
 
 #ifdef TIME_TO_BURN
-	for (int i = 0; i < 10000; ++i)
+    for (int i = 0; i < 10000; ++i)
     EXPECT_LE(invariants(i), 12) << "failed on " << i;
 
 
-	for (int i = 0; i < 100000; ++i)
+    for (int i = 0; i < 100000; ++i)
     EXPECT_LE(invariants(i), 13) << "failed on " << i;
 
-	for (int i = 0; i < 1000000; ++i) {
+    for (int i = 0; i < 1000000; ++i) {
     if (i == 173042)
       EXPECT_EQ(invariants(i), 16);
     else

@@ -161,7 +161,7 @@ VirtualFile SlowProgram::getCurrentFile() const {
 }
 
 void SlowProgram::beforeCommand(CommandID id) {
-	if (id != Command::ABOUT_THIS_PROGRAM && instance_->window_)
+    if (id != Command::ABOUT_THIS_PROGRAM && instance_->window_)
     thread::callAsync(instance_->window_, &app::Window::stopAboutWindow);
 }
 

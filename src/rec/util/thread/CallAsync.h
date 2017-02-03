@@ -12,7 +12,7 @@ class CallbackMessage : public juce::CallbackMessage,
  public:
   CallbackMessage(Callback* r) : OwnedPointer<Callback>(r) {}
   virtual void messageCallback() {
-  	(*this)();
+    (*this)();
   }
 };
 

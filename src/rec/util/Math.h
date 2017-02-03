@@ -2,9 +2,9 @@
 
 #include "rec/base/base.h"
 #if !_MSC_VER
-	#include <cmath>
+    #include <cmath>
 #else
-	#include <math.h>
+    #include <math.h>
 #endif
 
 namespace rec {
@@ -54,33 +54,33 @@ Number near(Number x, N2 y, N3 diff) {
 
 inline int isinf( float arg ) {
 #if !_MSC_VER
-	return std::isinf(arg);
+    return std::isinf(arg);
 #else
-	return (!_finite(arg));
+    return (!_finite(arg));
 #endif
 }
 
 inline int isinf( double arg ) {
 #if !_MSC_VER
-	return std::isinf(arg);
+    return std::isinf(arg);
 #else
-	return (!_finite(arg));
+    return (!_finite(arg));
 #endif
 }
 
 inline int isnan( float arg ) {
 #if !_MSC_VER
-	return std::isnan(arg);
+    return std::isnan(arg);
 #else
-	return _isnan(arg);
+    return _isnan(arg);
 #endif
 }
 
 inline int isnan( double arg ) {
 #if !_MSC_VER
-	return std::isinf(arg);
+    return std::isinf(arg);
 #else
-	return _isnan(arg);
+    return _isnan(arg);
 #endif
 }
 

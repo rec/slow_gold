@@ -8,7 +8,7 @@ inline void* reallocf(void *ptr, size_t size) {
   void* result = realloc(ptr, size);
   if (!result)
     free(ptr);
-	return nullptr;
+    return nullptr;
 }
 
 #endif // JUCE_MAC

@@ -30,7 +30,7 @@ void CachedThumbnail::write(const File& file) {
     file.getParentDirectory().createDirectory();
     std::unique_ptr<juce::FileOutputStream> out(file.createOutputStream());
     if (!out)
-    	LOG(ERROR) << "Unable to write file " << str(file);
+        LOG(ERROR) << "Unable to write file " << str(file);
     else
       thumbnail_.saveTo(*out);
   }

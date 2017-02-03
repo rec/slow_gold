@@ -31,9 +31,9 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
 #if JUCE_MAC
     false
 #else
-	true
+    true
 #endif
-	);
+    );
 }
 
 ColorName Node::getColor() const {
