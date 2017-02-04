@@ -12,7 +12,7 @@ namespace command {
 
 class CommandCallback : public Callback {
   public:
-    typedef void (*Function)();
+    using Function = void (*)();
 
     CommandCallback(CommandID id, Function f) : id_(id), function_(f) {}
 

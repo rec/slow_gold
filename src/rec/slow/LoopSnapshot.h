@@ -21,7 +21,7 @@ struct LoopSnapshot {
     widget::waveform::Viewport viewport_;
     LoopPointList* loops_;
 
-    typedef bool (*Function)(LoopSnapshot*);
+    using Function = bool (*)(LoopSnapshot*);
     using Map = std::map<int32, LoopSnapshot::Function>;
 
   private:

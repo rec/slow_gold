@@ -11,7 +11,7 @@ class ConstantProtos;
 
 class Constants {
   public:
-    typedef std::unique_ptr<Component> (*ComponentMaker)(const string&);
+    using ComponentMaker = std::unique_ptr<Component> (*)(const string&);
 
     Constants() {}
     Constants(const ConstantProtos&);

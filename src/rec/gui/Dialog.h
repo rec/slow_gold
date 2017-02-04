@@ -26,7 +26,7 @@ void setDirectoryForDialog(const string& dialogName, const File& directory);
 
 namespace dialog {
 
-typedef bool (*FileChooserFunction)(FileChooser*);
+using FileChooserFunction = bool (*)(FileChooser*);
 
 inline bool browseForFileToOpen(FileChooser* fc) {
     return fc->browseForFileToOpen();

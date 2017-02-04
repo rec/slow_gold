@@ -8,7 +8,7 @@ namespace thread {
 
 class Looper : public Thread {
   public:
-    typedef int32 (*Function)(Thread*);
+    using Function = int32 (*)(Thread*);
 
     explicit Looper(const string& name, Function f, uint32 period)
             : Thread(str(name)), function_(f), period_(period) {

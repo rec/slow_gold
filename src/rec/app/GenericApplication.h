@@ -13,7 +13,7 @@ namespace app {
 class GenericApplication;
 class Window;
 
-typedef void (*ApplicationFunction)(GenericApplication* app);
+using ApplicationFunction = void (*)(GenericApplication* app);
 
 class GenericApplication : public Listener<Enable>,
                            public juce::JUCEApplication {

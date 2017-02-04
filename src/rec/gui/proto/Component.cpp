@@ -27,7 +27,7 @@ namespace gui {
 
 namespace {
 
-typedef std::unique_ptr<Component> (*ComponentMaker)(const Context&);
+using ComponentMaker = std::unique_ptr<Component> (*)(const Context&);
 
 ComponentMaker make(const ComponentProto& c) {
     if (c.has_button())

@@ -8,7 +8,7 @@ namespace app {
 class RegisterProgram : public Thread {
   public:
     struct NamedFunction {
-        typedef String (*StringFunction)();
+        using StringFunction = String (*)();
 
         const char* name_;
         StringFunction function_;

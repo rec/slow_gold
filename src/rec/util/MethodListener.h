@@ -8,7 +8,7 @@ namespace util {
 template <typename Object, typename Type>
 class MethodListener : public Listener<Type> {
   public:
-    typedef void (Object::*Method)(Type);
+    using Method = void (Object::*)(Type);
 
     MethodListener(Object* o, Method m) : object_(o), method_(m) {}
 

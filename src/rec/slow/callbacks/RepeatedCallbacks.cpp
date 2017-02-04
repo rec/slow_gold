@@ -37,8 +37,8 @@ int toIndex(int position, int32 segment, int32 size) {
 
 using widget::waveform::Viewport;
 
-typedef void (*LoopSnapshotFunction)(LoopSnapshot*, int32);
-typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
+using LoopSnapshotFunction = void (*)(LoopSnapshot*, int32);
+using SelectorFunction = bool (*)(int index, int pos, bool selected, bool all);
 
 void loop(LoopSnapshotFunction lsf, int32 pos) {
     Instance* instance = getInstance();

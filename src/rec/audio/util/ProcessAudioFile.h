@@ -7,7 +7,7 @@ namespace audio {
 namespace util {
 
 // Filters a source to provide another source.
-typedef Source* (*SourceFilter)(Source*);
+using SourceFilter = Source* (*)(Source*);
 using SourceAndWriter = std::pair<Source*, AudioFormatWriter*>;
 
 void processAudioFile(const File& in, const File& out, SourceFilter f);
