@@ -13,7 +13,7 @@
 namespace rec {
 namespace data {
 
-typedef AddressProto::Scope Scope;
+using Scope = AddressProto::Scope;
 
 struct AddressListener::UntypedListener : public UntypedDataListener {
     UntypedListener(AddressListener* p, const string& typeName)

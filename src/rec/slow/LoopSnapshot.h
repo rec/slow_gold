@@ -22,7 +22,7 @@ struct LoopSnapshot {
     LoopPointList* loops_;
 
     typedef bool (*Function)(LoopSnapshot*);
-    typedef std::map<int32, LoopSnapshot::Function> Map;
+    using Map = std::map<int32, LoopSnapshot::Function>;
 
   private:
     DISALLOW_COPY_ASSIGN_AND_LEAKS(LoopSnapshot);

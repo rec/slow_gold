@@ -12,7 +12,7 @@ namespace data { class Value; }
 namespace data {
 namespace typer {
 
-typedef google::protobuf::FieldDescriptor FieldDescriptor;
+using FieldDescriptor = google::protobuf::FieldDescriptor;
 
 bool copyTo(const Message& m, const FieldDescriptor* f, data::ValueProto* v);
 bool copyTo(const Message& m, const FieldDescriptor* f, uint32 i,

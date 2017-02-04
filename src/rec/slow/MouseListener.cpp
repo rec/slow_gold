@@ -36,7 +36,7 @@ const double WHEEL_RATIO = 4.0;
 const double SMALL_RATIO = 0.1;
 const double BIG_RATIO = 2.0;
 
-typedef widget::waveform::OutlinedCursorLabel Label;
+using Label = widget::waveform::OutlinedCursorLabel;
 
 void toggleSelectionSegment(const VirtualFile& file, SampleTime t) {
     data::Opener<Viewport> opener(data::getData<Viewport>(file));

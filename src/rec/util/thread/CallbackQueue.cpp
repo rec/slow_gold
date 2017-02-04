@@ -25,7 +25,7 @@ struct OwnedCallback : public HasOwner {
 struct CallbackQueue::Queue {
     ~Queue() { stl::deletePointers(&list_); }
 
-    typedef std::list<OwnedCallback*> List;
+    using List = std::list<OwnedCallback*>;
     List list_;
 };
 

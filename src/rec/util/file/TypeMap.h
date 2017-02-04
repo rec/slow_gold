@@ -6,14 +6,14 @@ namespace rec {
 namespace util {
 namespace file {
 
-typedef VirtualFile::Type Type;
+using Type = VirtualFile::Type;
 
 struct Compare {
     bool operator()(Type x, Type y) const { return x > y; }
 };
 
-typedef std::pair<File, const char*> SpecialLocation;
-typedef std::map<Type, SpecialLocation, Compare> TypeMap;
+using SpecialLocation = std::pair<File, const char*>;
+using TypeMap = std::map<Type, SpecialLocation, Compare>;
 
 const TypeMap& getTypeMap();
 

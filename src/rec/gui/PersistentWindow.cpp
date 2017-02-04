@@ -19,7 +19,7 @@ static const int MIN_Y = 40;
 static const int START_WIDTH = 900;
 static const int START_HEIGHT = 650;
 
-typedef juce::Rectangle<int> Rect;
+using Rect = juce::Rectangle<int>;
 
 PersistentWindow::PersistentWindow(const String& name,
                                                                       const Colour& bg,

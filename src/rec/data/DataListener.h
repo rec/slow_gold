@@ -15,7 +15,7 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
   public:
-    typedef AddressProto::Scope Scope;
+    using Scope = AddressProto::Scope;
 
     explicit DataListener() : adaptor_(new Adaptor(this)) {}
     virtual ~DataListener() {}

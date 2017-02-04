@@ -24,7 +24,7 @@ class DataMapImpl : public DataMap {
 
   private:
     struct DataRecord;
-    typedef std::map<string, DataRecord*> Map;
+    using Map = std::map<string, DataRecord*>;
 
     MessageMaker* messageMaker_;
     DataMaker* dataMaker_;

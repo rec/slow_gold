@@ -65,7 +65,7 @@ class Trash {
   private:
     CriticalSection lock_;
 
-    typedef std::set<Thread*> ThreadSet;
+    using ThreadSet = std::set<Thread*>;
     ThreadSet threads_;
 
     DISALLOW_COPY_ASSIGN_AND_LEAKS(Trash);

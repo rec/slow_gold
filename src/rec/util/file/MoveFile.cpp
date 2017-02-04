@@ -7,7 +7,7 @@ namespace file {
 
 namespace {
 
-typedef VirtualFile::Type Type;
+using Type = VirtualFile::Type;
 
 const char* const OLD_KEYBOARD = "KeyPresses";
 const char* const NEW_KEYBOARD = "KeyboardBinding";

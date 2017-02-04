@@ -7,7 +7,7 @@ namespace {
 
 static int64 time() { return juce::Time::currentTimeMillis(); }
 
-typedef vector<GuiWriteable*> WriteableVector;
+using WriteableVector = vector<GuiWriteable*>;
 
 WriteableVector* getWriteableVector() {
     static WriteableVector v;

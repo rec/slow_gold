@@ -11,7 +11,7 @@ namespace data {
 class UntypedDataListener : public Listener<const Message&>,
                                                         public Listener<const VirtualFile&> {
   public:
-    typedef AddressProto::Scope Scope;
+    using Scope = AddressProto::Scope;
     explicit UntypedDataListener(const string& typeName);
     virtual ~UntypedDataListener();
 

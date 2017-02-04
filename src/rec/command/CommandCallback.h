@@ -9,7 +9,6 @@ namespace command {
     void NAMESPACE::FUNCTION(); \
     CommandCallback ID ## FUNCTION(ID, NAMESPACE::FUNCTION)
 
-typedef
 
 class CommandCallback : public Callback {
   public:

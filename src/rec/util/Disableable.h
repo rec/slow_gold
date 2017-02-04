@@ -6,7 +6,7 @@
 namespace rec {
 namespace util {
 
-typedef std::unordered_map<string, bool> PropertyMap;
+using PropertyMap = std::unordered_map<string, bool>;
 
 class Disableable {
   public:

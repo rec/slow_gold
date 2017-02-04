@@ -7,7 +7,7 @@ namespace rec {
 
 class TranslatedString;
 
-typedef app::AppSettings::Language Language;
+using Language = app::AppSettings::Language;
 
 class Trans {
   public:

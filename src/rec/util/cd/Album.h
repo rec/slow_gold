@@ -7,7 +7,7 @@ namespace rec {
 namespace util {
 namespace cd {
 
-typedef juce::Array<int> TrackOffsets;
+using TrackOffsets = juce::Array<int>;
 
 music::Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off);
 

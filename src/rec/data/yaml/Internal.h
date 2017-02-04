@@ -18,11 +18,11 @@ class Reflection;
 namespace rec {
 namespace yaml {
 
-typedef google::protobuf::EnumValueDescriptor EnumValueDescriptor;
-typedef google::protobuf::FieldDescriptor FieldDescriptor;
-typedef google::protobuf::Reflection Reflection;
+using EnumValueDescriptor = google::protobuf::EnumValueDescriptor;
+using FieldDescriptor = google::protobuf::FieldDescriptor;
+using Reflection = google::protobuf::Reflection;
 
-typedef FieldDescriptor FD;
+using FD = FieldDescriptor;
 
 struct MessageField {
     MessageField(const Message* m, const FieldDescriptor* f)

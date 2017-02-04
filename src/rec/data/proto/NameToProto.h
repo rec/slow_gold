@@ -38,7 +38,7 @@ class NameToProto {
     }
 
   private:
-    typedef std::map<string, const Message*> NameToProtoMap;
+    using NameToProtoMap = std::map<string, const Message*>;
 
     CriticalSection lock_;
     NameToProtoMap map_;

@@ -14,7 +14,7 @@ class SetterToggle : public app::LanguageListener,
                                           public data::AddressListener,
                                           public juce::ToggleButton {
   public:
-    typedef data::AddressProto::Scope Scope;
+    using Scope = data::AddressProto::Scope;
 
     SetterToggle(const string& name,
                               const string& tooltip,

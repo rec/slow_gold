@@ -5,7 +5,7 @@
 namespace rec {
 namespace gui {
 
-typedef std::pair<String, String> HelpText;
+using HelpText = std::pair<String, String>;
 
 void refreshHelpText();
 

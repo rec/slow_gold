@@ -6,7 +6,7 @@ namespace rec {
 namespace util {
 namespace thread {
 
-typedef juce::ModalComponentManager::Callback ModalCallback;
+using ModalCallback = juce::ModalComponentManager::Callback;
 
 template <typename Type, typename Method>
 class ModalCallback0 : public ModalCallback {

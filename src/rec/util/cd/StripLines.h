@@ -6,7 +6,7 @@ namespace rec {
 namespace util {
 namespace cd {
 
-typedef std::pair<string, string> StringPair;
+using StringPair = std::pair<string, string>;
 
 int stripLines(String* data, juce::StringArray* lines);
 bool stripLine(String* data, juce::StringArray* lines);

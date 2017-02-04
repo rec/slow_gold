@@ -12,7 +12,7 @@ class DataSet : public HasLock {
   public:
     DataSet() : thread_(nullptr) {}
 
-    typedef std::set<Data*> Set;
+    using Set = std::set<Data*>;
     Set* release();
     void insert(Data* data);
     int insert(Set* s);

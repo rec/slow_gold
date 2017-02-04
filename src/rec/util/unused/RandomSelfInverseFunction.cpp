@@ -7,7 +7,7 @@
 namespace rec {
 namespace util {
 
-typedef vector<uint8> ByteVector;
+using ByteVector = vector<uint8>;
 
 static int randomItemIndex(int size) {
     return static_cast<unsigned long>(rand()) % size;

@@ -17,7 +17,7 @@ string str(const YAML::Node& node) {
     return node.Read<string>();
 }
 
-typedef google::protobuf::FieldDescriptor FD;
+using FD = google::protobuf::FieldDescriptor;
 
 void read(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
     const Reflection& r = *m->GetReflection();

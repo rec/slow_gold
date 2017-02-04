@@ -10,12 +10,12 @@
 namespace rec {
 namespace program {
 
-typedef std::unordered_map<CommandID, command::Command> CommandMap;
-typedef std::unordered_map<string, Menu> MenuMap;
-typedef std::unordered_map<string, MenuBar> MenuBarMap;
-typedef std::unordered_map<CommandID, std::unique_ptr<Callback>> CallbackMap;
-typedef std::unordered_map<string, std::unique_ptr<Thread>> ThreadMap;
-typedef std::unordered_map<string, gui::Layout> LayoutMap;
+using CommandMap = std::unordered_map<CommandID, command::Command>;
+using MenuMap = std::unordered_map<string, Menu>;
+using MenuBarMap = std::unordered_map<string, MenuBar>;
+using CallbackMap = std::unordered_map<CommandID, std::unique_ptr<Callback>>;
+using ThreadMap = std::unordered_map<string, std::unique_ptr<Thread>>;
+using LayoutMap = std::unordered_map<string, gui::Layout>;
 
 }  // namespace program
 }  // namespace rec

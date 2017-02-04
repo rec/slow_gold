@@ -8,16 +8,16 @@
 namespace rec {
 namespace data {
 
-typedef uint32 Tag;
+using Tag = uint32;
 
 // Make fictitious types to correspond to the Google proto types that aren't
 // primitive C++ types.
-#define PROTO_MAKE_TYPE(OUT, IN)                       \
-    struct OUT {                                         \
+#define PROTO_MAKE_TYPE(OUT, IN)                           \
+    struct OUT {                                           \
         OUT() {}                                           \
         OUT(IN value) : value_(value) {}                   \
         operator IN() const { return value_; }             \
-                                                                                                              \
+                                                           \
         IN value_;                                         \
         JUCE_LEAK_DETECTOR(OUT);                           \
     };
@@ -59,7 +59,7 @@ struct pmessage {
 
 namespace proto {
 
-typedef data::ValueProto ValueProto;
+using ValueProto = data::ValueProto;
 
 }  // namespace proto
 }  // namespace rec

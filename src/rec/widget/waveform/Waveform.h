@@ -30,7 +30,7 @@ class WaveformModel;
 struct MouseWheelEvent;
 struct TimeAndMouseEvent;
 
-typedef vector<Cursor*> CursorList;
+using CursorList = vector<Cursor*>;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
@@ -116,7 +116,7 @@ class Waveform : public Component,
     friend class WaveformPainter;
 };
 
-typedef gui::DropTarget<Waveform> DropWaveform;
+using DropWaveform = gui::DropTarget<Waveform>;
 
 }  // namespace waveform
 }  // namespace widget

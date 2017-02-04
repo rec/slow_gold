@@ -19,12 +19,12 @@ struct Shard {
     JUCE_LEAK_DETECTOR(Shard);
 };
 
-typedef juce::Array<Shard> ShardArray;
+using ShardArray = juce::Array<Shard>;
 
 template <typename Collection>
 ShardArray partitionList(const Collection& collection,
-                                                  const Range<int>& range,
-                                                  int minimumPartition);
+                         const Range<int>& range,
+                         int minimumPartition);
 
 }  // namespace partition
 }  // namespace util

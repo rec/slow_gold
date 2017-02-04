@@ -22,7 +22,7 @@ class Callback : public Deletable {
 }  // namespace callback
 }  // namespace thread
 
-typedef thread::callback::Callback Callback;
+using Callback = thread::callback::Callback;
 
 }  // namespace util
 }  // namespace rec

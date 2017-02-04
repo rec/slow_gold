@@ -9,7 +9,7 @@ namespace rec {
 namespace data {
 
 using namespace juce;
-typedef ZipFile::Builder Builder;
+using Builder = ZipFile::Builder;
 
 namespace {
 

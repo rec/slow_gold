@@ -33,7 +33,7 @@ class Editor : public Component,
     virtual void removeKey(const string&);
     virtual void addKey(CommandID, const string&, int keyIndex);
 
-    typedef juce::Array<string> KeyArray;
+    using KeyArray = juce::Array<string>;
     virtual KeyArray getKeys(CommandID);
     virtual const String getWindowTitle() const = 0;
     virtual const String getKeyMessage(const string&);
@@ -90,7 +90,7 @@ class Editor : public Component,
     std::unique_ptr<juce::AlertWindow> entryWindow_;
 
   private:
-    typedef std::map<CommandID, MapItem*> MapItemMap;
+    using MapItemMap = std::map<CommandID, MapItem*>;
 
     void fillTopLevelItem();
     bool commandHasFlags(CommandID, int flags) const;

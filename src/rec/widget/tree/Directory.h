@@ -15,7 +15,7 @@ namespace tree {
 
 class Directory : public Node, public Listener<const VirtualFile&> {
   public:
-    typedef juce::Array<File> FileArray;
+    using FileArray = juce::Array<File>;
 
     Directory(const NodeDesc& d, const VirtualFile& vf);
     virtual ~Directory() {}
@@ -40,7 +40,7 @@ class Directory : public Node, public Listener<const VirtualFile&> {
     Range<int> range_;
 
   private:
-    typedef std::set<Node*> NodeSet;
+    using NodeSet = std::set<Node*>;
 
     Node* createChildFile(const partition::Shard& shard) const;
 

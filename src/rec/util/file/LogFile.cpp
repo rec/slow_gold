@@ -28,7 +28,7 @@ class Base {
     DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Base);
 };
 
-typedef Base<zerocopy::Input, CodedInputStream> InputBase;
+using InputBase = Base<zerocopy::Input, CodedInputStream>;
 
 class InputImpl : public InputBase {
   public:
@@ -52,7 +52,7 @@ class InputImpl : public InputBase {
     DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(InputImpl);
 };
 
-typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
+using OutputBase = Base<zerocopy::Output, CodedOutputStream>;
 
 class OutputImpl : public OutputBase {
   public:

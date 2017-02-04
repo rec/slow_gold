@@ -9,7 +9,7 @@ namespace rec {
 namespace gui {
 namespace color {
 
-typedef std::unordered_map<string, Colour> ColourMap;
+using ColourMap = std::unordered_map<string, Colour>;
 
 Colour get(const Colors& colors, int index);
 

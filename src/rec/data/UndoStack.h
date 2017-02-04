@@ -31,7 +31,7 @@ class UndoStack {
     int popRedos();
 
     class Entry;
-    typedef vector<Entry*> Stack;
+    using Stack = vector<Entry*>;
 
     Stack stack_;
     juce::CriticalSection lock_;

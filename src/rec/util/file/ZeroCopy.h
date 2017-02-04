@@ -11,8 +11,8 @@ namespace util {
 namespace file {
 namespace zerocopy {
 
-typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;
-typedef google::protobuf::io::ZeroCopyInputStream ZeroCopyInputStream;
+using ZeroCopyOutputStream = google::protobuf::io::ZeroCopyOutputStream;
+using ZeroCopyInputStream = google::protobuf::io::ZeroCopyInputStream;
 
 template <typename JuceStream, typename Stream>
 class Base : public Stream {
@@ -37,7 +37,8 @@ class Base : public Stream {
     DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Base);
 };
 
-typedef Base<FileOutputStream, google::protobuf::io::ZeroCopyOutputStream> OutputBase;
+using OutputBase = Base<FileOutputStream,
+                        google::protobuf::io::ZeroCopyOutputStream>;
 
 class Output : public OutputBase {
   public:
@@ -75,7 +76,8 @@ class Output : public OutputBase {
     DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Output);
 };
 
-typedef Base<FileInputStream, google::protobuf::io::ZeroCopyInputStream> InputBase;
+using InputBase = Base<FileInputStream,
+                       google::protobuf::io::ZeroCopyInputStream>;
 
 class Input : public InputBase {
   public:

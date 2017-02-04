@@ -137,7 +137,7 @@ bool file(const string &from, const File &to, Style /* readable */) {
     return false;
 }
 
-typedef MemoryBlock Memory;
+using Memory = MemoryBlock;
 
 bool memory(const string& in, Memory* out, Style /* readable */) {
     int size = in.size();

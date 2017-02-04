@@ -15,8 +15,8 @@ struct Range {
     Range() { clear(); }
     Range(Type b, Type e) : begin_(b), end_(e) { DCHECK_LE(b, e); }
 
-    typedef std::set<Range> Set;
-    typedef vector<Range> Vector;
+    using Set = std::set<Range>;
+    using Vector = vector<Range>;
 
     void clear() { begin_ = end_ = Type(0); }
     Type size() const { return end_ - begin_; }

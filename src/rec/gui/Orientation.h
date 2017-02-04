@@ -6,7 +6,7 @@
 namespace rec {
 namespace gui {
 
-typedef OrientationProto::Orientation Orientation;
+using Orientation = OrientationProto::Orientation;
 static const auto HORIZONTAL = OrientationProto::HORIZONTAL;
 static const auto VERTICAL = OrientationProto::VERTICAL;
 

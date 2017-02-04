@@ -8,7 +8,7 @@ namespace rec {
 namespace util {
 namespace thread {
 
-typedef std::function<void()> VoidFunction;
+using VoidFunction = std::function<void()>;
 
 class RunOnMessageThread : public CallbackMessage {
   public:

@@ -6,9 +6,9 @@
 namespace rec {
 namespace util {
 
-typedef Range<SampleTime> SampleRange;
-typedef SampleRange::Set SampleRangeSet;
-typedef SampleRange::Vector SampleRangeVector;
+using SampleRange = Range<SampleTime>;
+using SampleRangeSet = SampleRange::Set;
+using SampleRangeVector = SampleRange::Vector;
 
 }  // namespace util
 }  // namespace rec

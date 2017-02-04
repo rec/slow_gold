@@ -4,7 +4,7 @@ namespace rec {
 namespace util {
 
 SystemStats getSystemStats() {
-    typedef juce::SystemStats SS;
+    using SS = juce::SystemStats;
 
     SystemStats ss;
     ss.set_slow_version(str(juce::JUCEApplication::getInstance()->

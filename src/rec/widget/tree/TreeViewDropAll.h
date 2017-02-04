@@ -9,7 +9,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-typedef gui::DropTarget<TreeView, gui::NullInterface> TreeViewDropTarget;
+using TreeViewDropTarget = gui::DropTarget<TreeView, gui::NullInterface>;
 
 class TreeViewDropAll : public TreeViewDropTarget
 #ifdef TREE_VIEW_IS_CUTTABLE

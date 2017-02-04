@@ -12,8 +12,8 @@ class PointerList {
   public:
     PointerList() {}
 
-    typedef vector<Type*> List;
-    typedef util::Method<Type> Method;
+    using List = vector<Type*>;
+    using Method = util::Method<Type>;
 
     List* list() { return &list_; }
     const List& list() const { return list_; }

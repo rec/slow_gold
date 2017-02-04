@@ -77,7 +77,7 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const MessageField& mf) {
     }
 }
 
-typedef vector<const FieldDescriptor*> FieldVector;
+using FieldVector = vector<const FieldDescriptor*>;
 
 #ifdef SHOULD_REMOVE
 static const unsigned int MAX_FIELD_COUNT = 5;

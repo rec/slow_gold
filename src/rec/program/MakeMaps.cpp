@@ -21,7 +21,7 @@ CommandID fixId(const Program& program, Type* item) {
     return item->id();
 }
 
-typedef std::unordered_set<string> StringSet;
+using StringSet = std::unordered_set<string>;
 
 static void fixExtends(Menu* menu, MenuMap* map, StringSet* seen = nullptr) {
     if (menu->has_extends()) {

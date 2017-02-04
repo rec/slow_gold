@@ -36,8 +36,8 @@ struct Compare {
     }
 };
 
-typedef std::set<TranslatedString, Compare> TranslationSet;
-typedef vector<TranslatedString> TranslationList;
+using TranslationSet = std::set<TranslatedString, Compare>;
+using TranslationList = vector<TranslatedString>;
 
 TranslationList* translationList() {
     static TranslationList s;

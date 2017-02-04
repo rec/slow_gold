@@ -89,7 +89,7 @@ struct CompareCursors {
     bool operator()(Cursor* x, Cursor* y) { return x->getTime() < y->getTime(); }
 };
 
-typedef std::set<Cursor*, CompareCursors> CursorSet;
+using CursorSet = std::set<Cursor*, CompareCursors>;
 
 }  // namespace waveform
 }  // namespace widget

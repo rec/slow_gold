@@ -13,7 +13,7 @@ namespace translation {
 
 namespace {
 
-typedef std::map<string, string> StringMap;
+using StringMap = std::map<string, string>;
 
 string makeHash(const TranslatedString& s) {
     return s.original() + "###" + s.hint();
@@ -45,7 +45,7 @@ struct Translations {
     }
     ~Translations() { stl::deletePointers(&maps_); }
 
-    typedef vector<StringMap*> Maps;
+    using Maps = vector<StringMap*>;
     Maps maps_;
 };
 

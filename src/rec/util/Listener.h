@@ -14,8 +14,8 @@ template <typename Type> class Broadcaster;
 template <typename Type>
 class Listener : public HasLock, public Deletable {
   public:
-    typedef std::set<Broadcaster<Type>*> BroadcasterSet;
-    typedef typename BroadcasterSet::iterator iterator;
+    using BroadcasterSet = std::set<Broadcaster<Type>*>;
+    using iterator = typename BroadcasterSet::iterator;
 
     Listener() {}
     virtual ~Listener();
@@ -42,8 +42,8 @@ class Listener : public HasLock, public Deletable {
 template <typename Type>
 class Broadcaster : public Deletable {
   public:
-    typedef std::set<Listener<Type>*> ListenerSet;
-    typedef typename ListenerSet::iterator iterator;
+    using ListenerSet = std::set<Listener<Type>*>;
+    using iterator = typename ListenerSet::iterator;
 
     Broadcaster() {}
 

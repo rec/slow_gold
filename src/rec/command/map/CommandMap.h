@@ -10,7 +10,7 @@ namespace command {
 
 class CommandMap : public ChangeBroadcaster {
   public:
-    typedef vector<string> KeyVector;
+    using KeyVector = vector<string>;
 
     CommandMap() {}
     virtual ~CommandMap() {}
@@ -33,8 +33,8 @@ class CommandMap : public ChangeBroadcaster {
     bool addKey(const string& key, CommandID command);
     void dump() const;
 
-    typedef std::map<string, CommandID> KeyToCommand;
-    typedef std::map<CommandID, KeyVector> CommandToKeys;
+    using KeyToCommand = std::map<string, CommandID>;
+    using CommandToKeys = std::map<CommandID, KeyVector>;
 
     KeyToCommand toCommand_;
     CommandToKeys toKeys_;

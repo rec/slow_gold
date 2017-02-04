@@ -8,7 +8,7 @@ namespace command {
 class Editor;
 class EditButton;
 
-typedef std::pair<int, EditButton*> MenuCallback;
+using MenuCallback = std::pair<int, EditButton*>;
 
 class EditButton : public juce::Button {
   public:
