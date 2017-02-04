@@ -21,7 +21,7 @@ ssize_t read(void *inputStream, void *buf, size_t nbytes) {
     return static_cast<InputStream*>(inputStream)->read(buf, nbytes);
 }
 
-off_t seek(void *inputStream, off_t off, int whence) {
+off_t seek(void *inputStream, off_t off, int32 whence) {
     int64 offset = off;
     InputStream* in = static_cast<InputStream*>(inputStream);
 

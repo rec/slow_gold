@@ -7,7 +7,7 @@
 namespace rec {
 namespace util {
 
-typedef vector<byte> ByteVector;
+typedef vector<uint8> ByteVector;
 
 static int randomItemIndex(int size) {
     return static_cast<unsigned long>(rand()) % size;
@@ -30,10 +30,10 @@ ByteFunction randomSelfInverseFunction(unsigned seed) {
         bytes[i] = i;
 
     while (int size = bytes.size()) {
-        int x = randomItemIndex(size);
-        int y = randomItemIndex(size);
-        byte bx = bytes[x];
-        byte by = bytes[y];
+        auto x = randomItemIndex(size);
+        auto y = randomItemIndex(size);
+        auto bx = bytes[x];
+        auto by = bytes[y];
 
         func.function[bx] = by;
         func.function[by] = bx;

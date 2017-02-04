@@ -7,7 +7,7 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-string cleanGenre(int);
+string cleanGenre(int32);
 string cleanGenre(const string&);
 
 }  // namespace mpg123

@@ -43,8 +43,8 @@ Error createReader(InputStream* in,
     mpg123_handle *mh = nullptr;
 
     long sampleRate;
-    int numChannels, encoding;
-    int bitsPerSample;
+    int32 numChannels, encoding;
+    int32 bitsPerSample;
     Copier copier;
 
     Error e;
@@ -61,7 +61,7 @@ Error createReader(InputStream* in,
         *reader = new Reader(in, getTranslatedName(), mh, copier);
         AudioFormatReader &r = **reader;
         r.bitsPerSample = bitsPerSample;
-        r.sampleRate = int(sampleRate);
+        r.sampleRate = int32(sampleRate);
         r.lengthInSamples = mpg123_length(mh);
         r.usesFloatingPointData = (encoding & MPG123_ENC_FLOAT) != 0;
         r.numChannels = numChannels;

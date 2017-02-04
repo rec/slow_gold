@@ -23,11 +23,11 @@ AudioFormatReader* Format::createReaderFor(InputStream* sourceStream,
     return reader;
 }
 
-Array<int> Format::getPossibleSampleRates() {
+Array<int32> Format::getPossibleSampleRates() {
     return getSampleRates();
 }
 
-Array<int> Format::getPossibleBitDepths() {
+Array<int32> Format::getPossibleBitDepths() {
     return getBitDepths();
 }
 

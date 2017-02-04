@@ -30,7 +30,7 @@ class Reader : public juce::AudioFormatReader {
                               OutputFormat*, OutputFormat*);
 
     mpg123_handle* mh_;
-    uchar* buffer_;
+    uint8* buffer_;
     int64 size_, allocated_;
     Copier copier_;
 

@@ -7,7 +7,7 @@ namespace mpg123 {
 
 namespace {
 
-static const int GENRE_COUNT = 126;  // Makes sure I didn't miss any...
+static const auto GENRE_COUNT = 126;  // Makes sure I didn't miss any...
 
 static const char* GENRES[GENRE_COUNT] = {
     "Blues",
@@ -140,7 +140,7 @@ static const char* GENRES[GENRE_COUNT] = {
 
 }  // namespace
 
-string cleanGenre(int index) {
+string cleanGenre(int32 index) {
     return (index >= 0 && index < GENRE_COUNT) ? GENRES[index] : "";
 }
 

@@ -10,7 +10,7 @@ namespace mpg123 {
 // Represents a specific rate/channel/encoding we accept.
 struct OutputFormat {
     long rate_;
-    int channels_;
+    int32 channels_;
     mpg123_enc_enum encoding_;
 };
 

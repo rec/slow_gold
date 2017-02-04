@@ -9,7 +9,7 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-static void setData(mpg123_text* text, int size, StringPairArray* data) {
+static void setData(mpg123_text* text, int32 size, StringPairArray* data) {
     for (mpg123_text* t = text; t != text + size; ++t) {
         String name(t->id, 4);
         for (; (*data)[name] != ""; name += "+");

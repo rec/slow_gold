@@ -11,10 +11,6 @@ namespace format {
 namespace mpg123 {
 
 typedef int Error;
-typedef long long int64;
-typedef unsigned char uchar;
-typedef unsigned short ushort;
-typedef int int32;
 
 // initializeOnce() initializes mpg123 and returns an error code.  As long as you
 // have never called exitOnce(), you can call initializeOnce() as often as you

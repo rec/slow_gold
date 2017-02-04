@@ -7,8 +7,8 @@ namespace util {
 
 struct ByteFunction {
     static const int COUNT = 256;
-    byte function[COUNT];
-    byte operator()(byte b) const { return function[b]; }
+    uint8 function[COUNT];
+    uint8 operator()(uint8 b) const { return function[b]; }
 
   private:
     JUCE_LEAK_DETECTOR(ByteFunction);

@@ -42,7 +42,7 @@ bool Reader::readSamples(int** dest, int destChannels, int destOffset,
         if (buffer_)
             free(buffer_);
 
-        buffer_ = static_cast<uchar*>(malloc(intSize));
+        buffer_ = static_cast<uint8*>(malloc(intSize));
         allocated_ = size_;
     }
 
