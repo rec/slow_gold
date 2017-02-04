@@ -4,94 +4,95 @@
 
 namespace rec {
 
-typedef juce::ScopedLock Lock;
+using Lock = juce::ScopedLock;
 
 // I only want to bring in some subset of the Juce namespace here...
 //
-typedef juce::ApplicationCommandInfo ApplicationCommandInfo;
-typedef juce::ApplicationCommandManager ApplicationCommandManager;
-typedef juce::ApplicationCommandTarget ApplicationCommandTarget;
-typedef juce::AsyncUpdater AsyncUpdater;
-typedef juce::AudioCDReader AudioCDReader;
-typedef juce::AudioDeviceManager AudioDeviceManager;
-typedef juce::AudioFormat AudioFormat;
-typedef juce::AudioFormatManager AudioFormatManager;
-typedef juce::AudioFormatReader AudioFormatReader;
-typedef juce::AudioFormatReaderSource AudioFormatReaderSource;
-typedef juce::AudioFormatWriter AudioFormatWriter;
-typedef juce::AudioSampleBuffer AudioSampleBuffer;
-typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
-typedef juce::AudioSourcePlayer AudioSourcePlayer;
-typedef juce::AudioTransportSource AudioTransportSource;
-typedef juce::AudioThumbnail AudioThumbnail;
-typedef juce::AudioThumbnailCache AudioThumbnailCache;
 
-typedef juce::CallbackMessage CallbackMessage;
-typedef juce::ChangeBroadcaster ChangeBroadcaster;
-typedef juce::ChangeListener ChangeListener;
-typedef juce::CriticalSection CriticalSection;
-typedef juce::CharPointer_UTF8 CharPointer_UTF8;
-typedef juce::Colour Colour;
-typedef juce::Colours Colours;
-typedef juce::CommandID CommandID;
-typedef juce::Component Component;
+using juce::ApplicationCommandInfo;
+using juce::ApplicationCommandManager;
+using juce::ApplicationCommandTarget;
+using juce::AsyncUpdater;
+using juce::AudioCDReader;
+using juce::AudioDeviceManager;
+using juce::AudioFormat;
+using juce::AudioFormatManager;
+using juce::AudioFormatReader;
+using juce::AudioFormatReaderSource;
+using juce::AudioFormatWriter;
+using juce::AudioSampleBuffer;
+using juce::AudioSourceChannelInfo;
+using juce::AudioSourcePlayer;
+using juce::AudioTransportSource;
+using juce::AudioThumbnail;
+using juce::AudioThumbnailCache;
 
-typedef juce::Desktop Desktop;
-typedef juce::DocumentWindow DocumentWindow;
-typedef juce::DirectoryIterator DirectoryIterator;
-typedef juce::Drawable Drawable;
-typedef juce::DrawableButton DrawableButton;
+using juce::CallbackMessage;
+using juce::ChangeBroadcaster;
+using juce::ChangeListener;
+using juce::CriticalSection;
+using juce::CharPointer_UTF8;
+using juce::Colour;
+using juce::Colours;
+using juce::CommandID;
+using juce::Component;
 
-typedef juce::File File;
-typedef juce::FileChooser FileChooser;
-typedef juce::FileDragAndDropTarget FileDragAndDropTarget;
-typedef juce::Font Font;
+using juce::Desktop;
+using juce::DocumentWindow;
+using juce::DirectoryIterator;
+using juce::Drawable;
+using juce::DrawableButton;
 
-typedef juce::Graphics Graphics;
+using juce::File;
+using juce::FileChooser;
+using juce::FileDragAndDropTarget;
+using juce::Font;
 
-typedef juce::InputStream InputStream;
-typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;
+using juce::Graphics;
 
-typedef juce::JUCEApplication JUCEApplication;
-typedef juce::Justification Justification;
+using juce::InputStream;
+using InvocationInfo = ApplicationCommandTarget::InvocationInfo;
 
-typedef juce::KeyPress KeyPress;
+using juce::JUCEApplication;
+using juce::Justification;
 
-typedef juce::MenuBarModel MenuBarModel;
-typedef juce::MemoryBlock MemoryBlock;
-typedef juce::MessageManagerLock MessageManagerLock;
-typedef juce::MidiMessage MidiMessage;
-typedef juce::ModifierKeys ModifierKeys;
-typedef juce::MouseEvent MouseEvent;
-typedef juce::MouseListener MouseListener;
+using juce::KeyPress;
 
-typedef juce::OutputStream OutputStream;
+using juce::MenuBarModel;
+using juce::MemoryBlock;
+using juce::MessageManagerLock;
+using juce::MidiMessage;
+using juce::ModifierKeys;
+using juce::MouseEvent;
+using juce::MouseListener;
 
-typedef juce::PopupMenu PopupMenu;
-typedef juce::PositionableAudioSource PositionableAudioSource;
+using juce::OutputStream;
 
-typedef juce::ScopedUnlock ScopedUnlock;
-typedef juce::SettableTooltipClient SettableTooltipClient;
-typedef juce::Slider Slider;
-typedef juce::StreamingSocket Socket;
-typedef juce::StretchableLayoutManager StretchableLayoutManager;
-typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
-typedef juce::String String;
-typedef juce::StringArray StringArray;
-typedef juce::StringPairArray StringPairArray;
-typedef juce::SystemStats SystemStats;
+using juce::PopupMenu;
+using juce::PositionableAudioSource;
 
-typedef juce::TableHeaderComponent TableHeaderComponent;
-typedef juce::TableListBox TableListBox;
-typedef juce::TableListBoxModel TableListBoxModel;
-typedef juce::TextEditor TextEditor;
-typedef juce::Thread Thread;
-typedef juce::TreeView TreeView;
+using juce::ScopedUnlock;
+using juce::SettableTooltipClient;
+using juce::Slider;
+using Socket = juce::StreamingSocket;
+using juce::StretchableLayoutManager;
+using juce::StretchableLayoutResizerBar;
+using juce::String;
+using juce::StringArray;
+using juce::StringPairArray;
+using juce::SystemStats;
 
-typedef juce::URL URL;
-typedef juce::WildcardFileFilter WildcardFileFilter;
+using juce::TableHeaderComponent;
+using juce::TableListBox;
+using juce::TableListBoxModel;
+using juce::TextEditor;
+using juce::Thread;
+using juce::TreeView;
 
-typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
+using juce::URL;
+using juce::WildcardFileFilter;
+
+using AudioDeviceSetup = juce::AudioDeviceManager::AudioDeviceSetup;
 
 using juce::Array;
 
