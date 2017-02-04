@@ -248,16 +248,16 @@ void loopNextSegment() {
     VirtualFile vf = instance->file();
     Viewport vp(data::getProto<Viewport>(vf));
     LoopPointList* lpl = vp.mutable_loop_points();
-    uint size = lpl->loop_point_size();
+    uint32 size = lpl->loop_point_size();
     if (size <= 1) {
         beep();
         return;
     }
 
     bool isPlaying = instance->isPlaying();
-    uint selected = audio::getSegment(*lpl, instance->time());
-    uint next = mod(selected + 1, size);
-    for (uint i = 0; i < size; ++i)
+    uint32 selected = audio::getSegment(*lpl, instance->time());
+    uint32 next = mod(selected + 1, size);
+    for (uint32 i = 0; i < size; ++i)
         lpl->mutable_loop_point(i)->set_selected(false);
 
     lpl->mutable_loop_point(next)->set_selected(true);

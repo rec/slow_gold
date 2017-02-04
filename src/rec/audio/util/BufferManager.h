@@ -25,14 +25,14 @@ class TimeMap {
     }
 
   private:
-    typedef Range<SampleTime> TimeRange;
+    using TimeRange = Range<SampleTime>;
     class Compare {
         bool operator()(const TimeRange& x, const TimeRange& y) {
             return x > y;
         }
     };
 
-    typedef std::map<SampleTime, TimeRange, Compare> RangeMap;
+    using RangeMap = std::map<SampleTime, TimeRange, Compare>;
 
     static SampleTime get(const RangeMap& map, SampleTime time) {
         // Get the first element with a start time not less than the given time.

@@ -50,7 +50,7 @@ void read(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
 void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f) {
     const Reflection& r = *m->GetReflection();
 
-    for (uint i = 0; i < node.size(); ++i) {
+    for (uint32 i = 0; i < node.size(); ++i) {
         const YAML::Node& n = node[i];
         switch (f->type()) {
         case FD::TYPE_DOUBLE: r.AddDouble(m, f, double(n));  break;

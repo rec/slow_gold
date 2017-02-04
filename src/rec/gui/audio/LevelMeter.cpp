@@ -38,7 +38,7 @@ void LevelMeter::operator()(const rec::audio::LevelVector& levels) {
     {
         Lock l(lock_);
         levels_ = levels;
-        for (uint i = 0; i < levels_.size(); ++i) {
+        for (uint32 i = 0; i < levels_.size(); ++i) {
             // DCHECK(!std::isinf(levels_[i]));
             if (isinf(levels_[i]))
                 levels_[i] = 1.0f;

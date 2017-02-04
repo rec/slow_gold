@@ -45,11 +45,11 @@ void CurrentTime::setTime(SampleTime t) {
         checkTimeIsCloseToLoopPoint();
 
         if (loopingSegment_ > NO_SEGMENT) {
-            uint current = audio::getSegment(viewport_.loop_points(), time());
+            uint32 current = audio::getSegment(viewport_.loop_points(), time());
             if (static_cast<int>(current) == loopingSegment_) {
                 LoopPointList* lpl = viewport_.mutable_loop_points();
-                uint size = lpl->loop_point_size();
-                for (uint i = 0; i < size; ++i)
+                uint32 size = lpl->loop_point_size();
+                for (uint32 i = 0; i < size; ++i)
                     lpl->mutable_loop_point(i)->set_selected(i == current);
                 setViewportProto(viewport_);
                 loopingSegment_ = NO_SEGMENT;

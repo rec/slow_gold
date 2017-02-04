@@ -10,7 +10,7 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-typedef int Error;
+using Error = int;
 
 // initializeOnce() initializes mpg123 and returns an error code.  As long as you
 // have never called exitOnce(), you can call initializeOnce() as often as you

@@ -12,7 +12,7 @@ struct SampleTime {
     SampleTime(int64 p) : position_(p) {}
     SampleTime(uint64 p) : position_(static_cast<int64>(p)) {}
     SampleTime(int p) : position_(p) {}
-    SampleTime(uint p) : position_(p) {}
+    SampleTime(uint32 p) : position_(p) {}
     SampleTime(short p) : position_(p) {}
 
     SampleTime(RealTime t, SampleRate rate)
@@ -32,8 +32,8 @@ struct SampleTime {
     const SampleTime operator-(SampleTime p) { return position_ - p; }
     const SampleTime operator+(int p) { return position_ + p; }
     const SampleTime operator-(int p) { return position_ - p; }
-    const SampleTime operator+(uint p) { return position_ + p; }
-    const SampleTime operator-(uint p) { return position_ - p; }
+    const SampleTime operator+(uint32 p) { return position_ + p; }
+    const SampleTime operator-(uint32 p) { return position_ - p; }
     const SampleTime operator+(int64 p) { return position_ + p; }
     const SampleTime operator-(int64 p) { return position_ - p; }
     const SampleTime operator+(uint64 p) { return position_ + p; }

@@ -35,7 +35,7 @@ void processAudioFile(const File& in, const File& out,
                                  static_cast<int>(src->getTotalLength()), 4096);
 }
 
-typedef std::pair<Source*, AudioFormatWriter*> SourceAndWriter;
+using SourceAndWriter = std::pair<Source*, AudioFormatWriter*>;
 
 SourceAndWriter makeSourceAndWriter(const File& in, const File& out) {
     CHECK(in.exists()) << "File " << str(in) << " doesn't exist";

@@ -89,7 +89,7 @@ bool file(const File &file, string *s, Style /* readable */) {
         std::unique_ptr<FileInputStream> in(file.createInputStream());
         if (!in)
             return false;
-        uint length = static_cast<uint>(in->getTotalLength());
+        uint32 length = static_cast<uint32>(in->getTotalLength());
         s->resize(length);
         int bytesRead = in->read((void*)s->data(), length);
         LOG_IF(ERROR, bytesRead < 0) << "negative bytes read.";

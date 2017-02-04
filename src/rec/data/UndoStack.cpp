@@ -89,8 +89,8 @@ int UndoStack::popRedos() {
     if (!undoes_)
         return 0;
 
-    uint newSize = stack_.size() - undoes_;
-    for (uint i = newSize; i < stack_.size(); ++i)
+    uint32 newSize = stack_.size() - undoes_;
+    for (uint32 i = newSize; i < stack_.size(); ++i)
         delete stack_[i];
 
     stack_.resize(newSize);

@@ -15,11 +15,10 @@ namespace rec {
 namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
-typedef unsigned int uint;
+using Message = google::protobuf::Message;
+using string = std::string;
 
-typedef google::protobuf::Message Message;
-typedef std::string string;
-
+// TODO: get rid of this!
 using namespace util;
 
 using std::pair;

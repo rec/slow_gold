@@ -23,7 +23,7 @@ class CommandMap : public ChangeBroadcaster {
 
     bool invokeAsync(const string&, ApplicationCommandManager*) const;
 
-    void removeCommand(CommandID command, uint keyIndex);
+    void removeCommand(CommandID command, uint32 keyIndex);
     void removeKey(const string& key);
 
     bool addAtIndex(const string& key, CommandID command, int index);

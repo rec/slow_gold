@@ -138,7 +138,7 @@ void Editor::resized() {
     };
 
     double totalWidth = 0.0;
-    for (uint i = 0; i < arraysize(button); ++i) {
+    for (uint32 i = 0; i < arraysize(button); ++i) {
         button[i]->changeWidthToFitText(BUTTON_HEIGHT);
         totalWidth += button[i]->getWidth();
     }
@@ -149,7 +149,7 @@ void Editor::resized() {
     double x = juce::jmax(padding + (w - consumed) / 2, 0.0);
     int buttonY = h - TOP_RIGHT_PADDING - BUTTON_HEIGHT;
 
-    for (uint i = 0; i < arraysize(button); ++i) {
+    for (uint32 i = 0; i < arraysize(button); ++i) {
         button[i]->setTopLeftPosition(lround(x), buttonY);
         x += (button[i]->getWidth() + padding);
     }
@@ -413,7 +413,7 @@ Editor::KeyArray Editor::getKeys(CommandID id) {
     vector<string> keys(commandMap_->getKeys(id));
     KeyArray result;
 
-    for (uint i = 0; i != keys.size(); ++i)
+    for (uint32 i = 0; i != keys.size(); ++i)
         result.add(keys[i]);
     return result;
 }

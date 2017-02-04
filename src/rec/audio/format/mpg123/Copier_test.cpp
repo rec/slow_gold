@@ -7,7 +7,7 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-typedef unsigned char uint8;
+using uint8 = unsigned char;
 
 template <typename In, typename Out>
 void testCopier(int32 encoding, Out mult = 1, Out offset = 0) {
@@ -37,7 +37,7 @@ TEST(RecAudioFormatMpg123Copier, Float) {
 }
 
 TEST(RecAudioFormatMpg123Copier, Unsigned) {
-    testCopier<uint, int32>(MPG123_ENC_UNSIGNED_32, 1, 0x80000000L);
+    testCopier<uint32, int32>(MPG123_ENC_UNSIGNED_32, 1, 0x80000000L);
     testCopier<uint16, int32>(MPG123_ENC_UNSIGNED_16, 0x10000, 0x8000);
     testCopier<uint8, int32>(MPG123_ENC_UNSIGNED_8, 0x1000000, 0x80);
 }

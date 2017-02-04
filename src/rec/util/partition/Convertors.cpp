@@ -12,7 +12,7 @@ template <> String toLowerCase(const String& s) { return s.toLowerCase(); }
 
 template <> string toLowerCase(const string& s) {
     string t = s;
-    for (uint i = 0; i < t.size(); ++i)
+    for (uint32 i = 0; i < t.size(); ++i)
         t[i] = static_cast<char>(tolower(t[i]));
     return t;
 }

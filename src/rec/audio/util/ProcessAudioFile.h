@@ -8,11 +8,9 @@ namespace util {
 
 // Filters a source to provide another source.
 typedef Source* (*SourceFilter)(Source*);
+using SourceAndWriter = std::pair<Source*, AudioFormatWriter*>;
 
 void processAudioFile(const File& in, const File& out, SourceFilter f);
-
-typedef std::pair<Source*, AudioFormatWriter*> SourceAndWriter;
-
 SourceAndWriter makeSourceAndWriter(const File& in, const File& out);
 
 }  // namespace util

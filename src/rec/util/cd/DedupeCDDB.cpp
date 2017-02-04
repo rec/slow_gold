@@ -22,7 +22,7 @@ string normalize(const string& s) {
     for (; start < length && isspace(s[length - 1]); --length);
 
     string result(s, start, length);
-    for (uint i = 0; i < result.size(); ++i)
+    for (uint32 i = 0; i < result.size(); ++i)
         result[i] = static_cast<char>(tolower(result[i]));
 
     return result;

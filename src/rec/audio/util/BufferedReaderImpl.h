@@ -32,8 +32,8 @@ class BufferedReaderImpl : public BufferedReader {
     // Returns the length in samples, or 0 if there's an error.
     virtual SampleTime doFillNextBlock(const SampleRange& b);
 
-    typedef InterleavedFrame<Sample, CHANNELS> OneFrame;
-    typedef Frames<OneFrame> InterleavedFrames;
+    using OneFrame = InterleavedFrame<Sample, CHANNELS>;
+    using InterleavedFrames = Frames<OneFrame>;
 
     virtual Source* makeSource() const;
     virtual bool setLength(int64 length);

@@ -11,7 +11,7 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-typedef ::RubberBand::RubberBandStretcher RubberBandStretcher;
+using RubberBandStretcher = ::RubberBand::RubberBandStretcher;
 
 class RubberBand : public Implementation {
   public:

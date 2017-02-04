@@ -12,7 +12,7 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
                          SampleTime inOffset,
                          float **out, int outOffset,
                          int numSamples) {
-    typedef InterleavedFrame<Sample, CHANNELS> Frame;
+    using Frame = InterleavedFrame<Sample, CHANNELS>;
     Frame* frame = in + inOffset.toInt();
     for (int i = 0, s = outOffset; i < numSamples; ++i, ++frame, ++s) {
         for (int ch = 0; ch < CHANNELS; ++ch)

@@ -15,7 +15,7 @@ Container getUnfilledBlocks(const Container& selection, Type pos, Type len, Fill
         typename Container::const_iterator i = selection.begin();
         for (; i != selection.end() && (i->end_ <= pos); ++i);
 
-        for (uint j = 0; len > 0 && (w == WRAP || j < selection.size()); ++i, ++j) {
+        for (uint32 j = 0; len > 0 && (w == WRAP || j < selection.size()); ++i, ++j) {
             if (i == selection.end()) {
                 i = selection.begin();
                 pos = i->begin_;

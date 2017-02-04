@@ -8,7 +8,7 @@ namespace audio {
 
 class Device : public juce::ChangeListener {
   public:
-    typedef gui::audio::SetupPage SetupPage;
+    using SetupPage = gui::audio::SetupPage;
 
     Device();
 

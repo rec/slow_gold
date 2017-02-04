@@ -99,7 +99,7 @@ const CommandMap::KeyVector& CommandMap::getKeys(CommandID c) const {
     return (i != toKeys_.end()) ? i->second : empty;
 }
 
-void CommandMap::removeCommand(CommandID c, uint keyIndex) {
+void CommandMap::removeCommand(CommandID c, uint32 keyIndex) {
     CommandToKeys::iterator i = toKeys_.find(c);
     if (i == toKeys_.end()) {
         LOG(DFATAL) << "Couldn't remove message";
@@ -118,7 +118,7 @@ void CommandMap::removeKey(const string& key) {
         if (i == toKeys_.end()) {
             LOG(DFATAL) << "Couldn't remove message";
         } else {
-            for (uint j = 0; j < i->second.size(); ++j) {
+            for (uint32 j = 0; j < i->second.size(); ++j) {
                 if (i->second[j] == key) {
                     i->second.erase(i->second.begin() + j);
                     return;

@@ -10,8 +10,8 @@ namespace source {
 template <typename Sample, int CHANNELS>
 class FrameSource : public PositionableAudioSource {
   public:
-    typedef InterleavedFrame<Sample, CHANNELS> SourceFrame;
-    typedef Frames<SourceFrame> SourceFrames;
+    using SourceFrame = InterleavedFrame<Sample, CHANNELS>;
+    using SourceFrames = Frames<SourceFrame>;
 
     explicit FrameSource(const SourceFrames& b) : buffer_(b), position_(0) {}
     virtual ~FrameSource() {}

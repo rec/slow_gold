@@ -27,9 +27,9 @@ inline File getShadowDirectory(VirtualFile::Type type) {
     return getShadowDirectory(makeVirtualFile(type));
 }
 
-const uint MAX_WINDOWS_DIRECTORY_SIZE = 260;
-const uint MAX_FILENANE_LENGTH = 60;
-const uint MAX_SHADOW_DIRECTORY_LENGTH =
+const uint32 MAX_WINDOWS_DIRECTORY_SIZE = 260;
+const uint32 MAX_FILENANE_LENGTH = 60;
+const uint32 MAX_SHADOW_DIRECTORY_LENGTH =
     MAX_WINDOWS_DIRECTORY_SIZE - MAX_FILENANE_LENGTH;
 
 }  // namespace file

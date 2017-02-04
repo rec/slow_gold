@@ -8,11 +8,10 @@
 namespace rec {
 namespace audio {
 
-typedef AudioSampleBuffer Buffer;
-typedef AudioSourceChannelInfo Info;
-typedef PositionableAudioSource Source;
-
-typedef vector<float> LevelVector;
+using Buffer = AudioSampleBuffer;
+using Info = AudioSourceChannelInfo;
+using Source = PositionableAudioSource;
+using LevelVector = vector<float>;
 
 const RealTime MINIMUM_FILE_SIZE = 1.0;
 

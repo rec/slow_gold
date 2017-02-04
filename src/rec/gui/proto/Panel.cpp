@@ -78,7 +78,7 @@ void Panel::clear(bool free) {
     SizeHintAccumulator::clear();
     layoutManager_.clearAllItems();
     components_.clear();
-    while (uint size = getNumChildComponents()) {
+    while (uint32 size = getNumChildComponents()) {
         Component* c = getChildComponent(size - 1);
         removeChildComponent(c);
         if (free)

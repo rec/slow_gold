@@ -99,7 +99,7 @@ File getBaseFile(Instance* instance, const String& suffix,
 static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav", ".aif", ".wave"};
 
 static bool isLegalSuffix(const String& suffix) {
-    for (uint i = 0; i < arraysize(SUFFIXES); ++i) {
+    for (uint32 i = 0; i < arraysize(SUFFIXES); ++i) {
         if (suffix == SUFFIXES[i])
             return true;
     }
@@ -240,8 +240,8 @@ Viewport getViewport(Instance* instance, bool useSelection,
     if (useSelection) {
         SampleTime start = 0;
         const LoopPointList& lpl = original.loop_points();
-        uint size = lpl.loop_point_size();
-        for (uint i = 0; i < size; ++i) {
+        uint32 size = lpl.loop_point_size();
+        for (uint32 i = 0; i < size; ++i) {
             const LoopPoint& loop = lpl.loop_point(i);
             if (loop.selected()) {
                 if (!start)

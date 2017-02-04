@@ -152,8 +152,8 @@ void Waveform::viewportChanged() {
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints,
                                                           const SampleRangeVector& dirty) {
-    uint size = loopPoints.loop_point_size();
-    for (uint i = 0; i < size; ++i) {
+    uint32 size = loopPoints.loop_point_size();
+    for (uint32 i = 0; i < size; ++i) {
         SampleTime time = loopPoints.loop_point(i).time();
         Cursor* c;
         if (i < cursors_.size()) {
@@ -216,7 +216,7 @@ void Waveform::mouseWheelMove(const MouseEvent& e,
     Broadcaster<const MouseWheelEvent&>::broadcast(we);
 }
 
-int Waveform::getCursorX(uint index) const {
+int Waveform::getCursorX(uint32 index) const {
     return (index < cursors_.size()) ? cursors_[index]->getX() : getWidth();
 }
 

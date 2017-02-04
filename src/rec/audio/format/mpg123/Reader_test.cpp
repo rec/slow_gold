@@ -35,7 +35,7 @@ TEST(Reader, All) {
     const int CHUNK_SIZE = 1024;
     const int BITS_LOST = 18;  // Why not 16?
 
-    typedef int Sample;
+    using Sample = int;
 
     Sample wavRootSamples[CHUNK_SIZE];
     Sample mp3RootSamples[CHUNK_SIZE];

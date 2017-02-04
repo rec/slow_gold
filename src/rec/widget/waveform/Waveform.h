@@ -74,7 +74,7 @@ class Waveform : public Component,
 
     void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&) override;
     CriticalSection* lock() { return &lock_;}
-    int getCursorX(uint index) const;
+    int getCursorX(uint32 index) const;
     void setCursorText(int index, const String& text);
     void setIsDraggingCursor(bool d);
     bool isDraggingCursor() const;
