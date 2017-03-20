@@ -53,7 +53,7 @@ bool isHidden(const File& file) {
     };
 
     static std::set<string> nameSet(names, names + arraysize(names));
-    string name = str(file.getFullPathName());
+    auto name = str(file.getFullPathName());
 
 #if JUCE_MAC
     eraseVolumePrefix(&name);
@@ -78,8 +78,8 @@ const char** const audioExtensions() { return AUDIO_EXTENSIONS; }
 int audioExtensionCount() { return arraysize(AUDIO_EXTENSIONS); }
 
 bool isAudio(const File& file) {
-    String extension = file.getFileExtension().toLowerCase().
-        trimCharactersAtStart(".");
+    auto extension = file.getFileExtension().toLowerCase().
+            trimCharactersAtStart(".");
     for (int i = 0; i < audioExtensionCount(); ++i) {
         if (String(audioExtensions()[i]) == extension)
             return true;
@@ -105,17 +105,17 @@ bool isAudioOrDirectory(const File& file) {
 }
 
 bool sortedChildren(const File& f, Array<File>* kids, Filter* filter) {
-    Thread* thread = Thread::getCurrentThread();
+    auto thread = Thread::getCurrentThread();
     DirectoryIterator i(f, false, "*", File::findFilesAndDirectories);
     while (!shouldExit(thread) && i.next()) {
-        File f(i.getFile());
+        auto f = i.getFile();
         if (filter(f))
             kids->add(f);
     }
 
     if (!shouldExit(thread)) {
-        File* begin = kids->getRawDataPointer();
-        File* end = begin + kids->size();
+        auto begin = kids->getRawDataPointer(),
+             end = begin + kids->size();
         std::sort(begin, end, compareFiles);
     }
 
@@ -123,9 +123,9 @@ bool sortedChildren(const File& f, Array<File>* kids, Filter* filter) {
 }
 
 void eraseVolumePrefix(string* name, bool diskToo) {
-    static const int len = strlen("/Volumes/");
+    static const auto len = strlen("/Volumes/");
     if (name->find("/Volumes/") == 0) {
-        int pos = diskToo ? name->find("/", len) : len;
+        auto pos = diskToo ? name->find("/", len) : len;
         if (pos != -1)
             name->erase(0, pos);
     }

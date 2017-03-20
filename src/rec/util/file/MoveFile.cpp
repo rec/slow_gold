@@ -27,8 +27,10 @@ void mkdir(const File& f) {
 void moveFile(const File& source, const File& target) {
     if (source.exists()) {
         if (ENABLE_MOVE) {
-            if (!source.moveFileTo(target))
-                LOG(ERROR) << "Couldn't move file " << str(source) << " to " << str(target);
+            if (!source.moveFileTo(target)) {
+                LOG(ERROR) << "Couldn't move file" << str(source)
+                           << " to " << str(target);
+            }
         }
         LOG(INFO) << "Move " << str(source) << " to " << str(target);
     }
@@ -37,7 +39,7 @@ void moveFile(const File& source, const File& target) {
 }  // namespace
 
 void moveTypeDirectory(Type type, const File& special) {
-    VirtualFile sourcevf = file::toVirtualFile(special, false);
+    auto sourcevf = file::toVirtualFile(special, false);
     moveFile(file::getShadowDirectory(sourcevf), getShadow(type));
 }
 

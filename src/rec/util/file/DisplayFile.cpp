@@ -13,12 +13,12 @@ const String getFilename(const VirtualFile& file) {
 }
 
 const String getDisplayName(const VirtualFile& file) {
-    if (int size = file.path_size())
+    if (auto size = file.path_size())
         return str(file.path(size - 1));
 
-    VirtualFile::Type type = file.type();
+    auto type = file.type();
     if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
-        string name = file.volume_name();
+        auto name = file.volume_name();
         eraseVolumePrefix(&name, false);
         return name.empty() ? String(Trans("<Root>")) : str("/" + name);
     } else {
@@ -27,7 +27,7 @@ const String getDisplayName(const VirtualFile& file) {
 }
 
 const String getFullDisplayName(const VirtualFile& file) {
-    String result = getDisplayName(file) + ":";
+    auto result = getDisplayName(file) + ":";
     for (int i = 0; i < file.path_size(); ++i)
         result += str(file.path(i) + "/");
     return result;

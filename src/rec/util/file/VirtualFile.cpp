@@ -23,11 +23,11 @@ String removeColon(const String& p) {
 #endif
 
 void readVolumeName(const File& f, VirtualFile* vf) {
-    int last = vf->path_size() - 1;
-    const string& root = vf->path(last);
+    auto last = vf->path_size() - 1;
+    auto& root = vf->path(last);
 
 #if JUCE_WINDOWS
-    String s = f.getFileName();
+    auto s = f.getFileName();
     if (!s.length())
         LOG(DFATAL) << "Empty " << vf->ShortDebugString();
     else
@@ -44,10 +44,10 @@ void readVolumeName(const File& f, VirtualFile* vf) {
 }
 
 static File getRoot(const VirtualFile& vf) {
-    VirtualFile::Type type = vf.type();
+    auto type = vf.type();
     if (type != VirtualFile::VOLUME)
         return getFileTypeDirectory(type);
-    const String& volume = str(vf.volume_name());
+    auto volume = str(vf.volume_name());
 
 #if JUCE_WINDOWS
     return File(volume + ":\\");
@@ -59,12 +59,12 @@ static File getRoot(const VirtualFile& vf) {
 }  // namespace
 
 const File getShadowDirectory(const VirtualFile& vf) {
-    String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
-    File f = app::getAppFile(name);
+    auto name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
+    auto f = app::getAppFile(name);
     if (vf.volume_name().size())
         f = f.getChildFile(str(vf.volume_name()));
 
-    int len = f.getFullPathName().length();
+    auto len = f.getFullPathName().length();
     for (int i = 0; i < vf.path_size(); ++i)
         len += (vf.path(i).size() + 1);  // Include one for the path separator.
 
@@ -81,15 +81,15 @@ const File getShadowDirectory(const VirtualFile& vf) {
 }
 
 const VirtualFile toVirtualFile(const File& file, bool useSpecial) {
-    VirtualFile::Type type = useSpecial ? getFileType(file) : VirtualFile::VOLUME;
-    bool isAbsolutePath = (type == VirtualFile::VOLUME);
-    File parent = isAbsolutePath ? File() : getFileTypeDirectory(type);
+    auto type = useSpecial ? getFileType(file) : VirtualFile::VOLUME;
+    auto isAbsolutePath = (type == VirtualFile::VOLUME);
+    auto parent = isAbsolutePath ? File() : getFileTypeDirectory(type);
 
     VirtualFile vf;
     vf.set_type(type);
 
-    File f = file;
-    for (File g = f; f != parent && f != (g = g.getParentDirectory()); f = g)
+    auto f = file;
+    for (auto g = f; f != parent && f != (g = g.getParentDirectory()); f = g)
         vf.add_path(str(f.getFileName()));
 
     if (isAbsolutePath)

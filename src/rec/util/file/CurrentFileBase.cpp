@@ -36,7 +36,7 @@ void CurrentFileBase::setVirtualFile(const VirtualFile& f, bool showError) {
     if (file_.path_size())
         gui::addRecentFile(file_, *getFileDescription());
 
-    VirtualFile newFile = f;
+    auto newFile = f;
     file_.Swap(&newFile);
 
     beforeFileChange();

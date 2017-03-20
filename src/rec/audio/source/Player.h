@@ -44,12 +44,22 @@ class Player : public DataListener<AudioSettings>,
     void setState(transport::State state);
 
     void broadcastTransportState();
-    void toggle() { setState(invert(state())); }
-    void start() { setState(transport::RUNNING); }
+
+    void toggle() {
+        setState(invert(state()));
+    }
+
+    void start() {
+        setState(transport::RUNNING);
+    }
 
     void setNextReadPosition(const SampleTime&);
+
     SampleTime getNextReadPosition();
-    SampleTime getTime() { return getNextReadPosition(); }
+
+    SampleTime getTime() {
+        return getNextReadPosition();
+    }
 
     transport::State state() const;
     Device* device() { return device_; }

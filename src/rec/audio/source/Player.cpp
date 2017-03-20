@@ -29,7 +29,6 @@ void Player::init() {
     player_.setSource(&transportSource_);
 }
 
-
 Player::~Player() {
     transportSource_.setSource(nullptr);
 }
@@ -108,13 +107,13 @@ State Player::state() const {
 }
 
 void Player::operator()(const PlayState& s) {
-        if (s.is_playing()) {
-                if (s.has_time())
-                        setNextReadPosition(s.time());
-                setState(RUNNING);
-        } else {
-                setState(STOPPED);
-        }
+    if (s.is_playing()) {
+        if (s.has_time())
+            setNextReadPosition(s.time());
+        setState(RUNNING);
+    } else {
+        setState(STOPPED);
+    }
 }
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {

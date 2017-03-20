@@ -1,6 +1,6 @@
 ROOT=/development/rec/projects/slow/Builds/MacOSX
 CONFIG=Release
-VERSION=8.1.1
+VERSION=8.1.2
 
 BUILD_DIR=build/$CONFIG
 
