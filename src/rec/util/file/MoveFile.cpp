@@ -39,8 +39,9 @@ void moveFile(const File& source, const File& target) {
 }  // namespace
 
 void moveTypeDirectory(Type type, const File& special) {
-    auto sourcevf = file::toVirtualFile(special, false);
-    moveFile(file::getShadowDirectory(sourcevf), getShadow(type));
+    auto sourcevf = file::toVirtualFile(special, false, false);
+    if (sourcevf.path_size())
+        moveFile(file::getShadowDirectory(sourcevf), getShadow(type));
 }
 
 void moveGlobalFiles() {

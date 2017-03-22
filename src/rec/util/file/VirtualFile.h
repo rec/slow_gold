@@ -9,7 +9,9 @@ namespace file {
 
 // Converts a file on the file system to a virtual file reference, which might
 // be relative to one of the special directories.
-const VirtualFile toVirtualFile(const File&, bool useSpecial = true);
+const VirtualFile toVirtualFile(const File&,
+                                bool useSpecial = true,
+                                bool failOnError = true);
 
 // The inverse of toVirtualFile.
 const File toRealFile(const VirtualFile&);

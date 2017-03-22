@@ -22,16 +22,18 @@ String removeColon(const String& p) {
 }
 #endif
 
-void readVolumeName(const File& f, VirtualFile* vf) {
+bool readVolumeName(const File& f, VirtualFile* vf, bool failOnError) {
     auto last = vf->path_size() - 1;
     auto& root = vf->path(last);
 
 #if JUCE_WINDOWS
     auto s = f.getFileName();
-    if (!s.length())
-        LOG(DFATAL) << "Empty " << vf->ShortDebugString();
-    else
-        vf->set_volume_name(str(removeColon(s)));
+    if (!s.length()) {
+        if (failOnError)
+            LOG(DFATAL) << "Empty " << vf->ShortDebugString();
+        return false;
+    }
+    vf->set_volume_name(str(removeColon(s)));
 
 #elif JUCE_MAC
     DCHECK(!f.getFileName().length());
@@ -41,6 +43,7 @@ void readVolumeName(const File& f, VirtualFile* vf) {
         vf->mutable_path()->RemoveLast();
     }
 #endif
+    return true;
 }
 
 static File getRoot(const VirtualFile& vf) {
@@ -80,7 +83,8 @@ const File getShadowDirectory(const VirtualFile& vf) {
     return f;
 }
 
-const VirtualFile toVirtualFile(const File& file, bool useSpecial) {
+const VirtualFile toVirtualFile(const File& file, bool useSpecial,
+                                bool failOnError) {
     auto type = useSpecial ? getFileType(file) : VirtualFile::VOLUME;
     auto isAbsolutePath = (type == VirtualFile::VOLUME);
     auto parent = isAbsolutePath ? File() : getFileTypeDirectory(type);
@@ -92,8 +96,10 @@ const VirtualFile toVirtualFile(const File& file, bool useSpecial) {
     for (auto g = f; f != parent && f != (g = g.getParentDirectory()); f = g)
         vf.add_path(str(f.getFileName()));
 
-    if (isAbsolutePath)
-        readVolumeName(f, &vf);
+    if (isAbsolutePath) {
+        if (not readVolumeName(f, &vf, failOnError))
+            return {};
+    }
 
     reverseProto(vf.mutable_path());
     return vf;
