@@ -129,8 +129,8 @@ void Root::mouseDoubleClick(const juce::MouseEvent&) {
 
     addDialogOpen_ = true;
     juce::FileChooser chooser(
-            "Please choose files or directories to add", File::nonexistent,
-            file::audioFilePatterns(), true);
+        "Please choose files or directories to add", File(),
+        file::audioFilePatterns(), true);
 
     if (chooser.browseForMultipleFilesOrDirectories()) {
         StringArray s;

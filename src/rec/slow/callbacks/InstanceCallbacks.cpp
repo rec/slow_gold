@@ -119,11 +119,13 @@ void open() {
     gui::dialog::openOneAudioFile(i->currentFile_.get());
 }
 
+#ifdef UNUSED_CODE
 void toggleStartStop() {
     Instance* i = getInstance();
     if (!i->empty())
         i->player_->toggle();
 }
+#endif
 
 void checkForUpdates() {
     Instance* i = getInstance();

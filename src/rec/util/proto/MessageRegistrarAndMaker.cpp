@@ -23,7 +23,7 @@ struct Entry {
         std::unique_ptr<Message> m(message_->New());
         if (copyFrom_)
             m->CopyFrom(*message_);
-        return std::move(m);
+        return m;
     }
 
     std::unique_ptr<Message> message_;

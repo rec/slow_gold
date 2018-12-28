@@ -76,7 +76,7 @@ void TableController::resized() {
 
     if (lastC) {
         int newWidth = lastWidth + getWidth() - width;
-        if (getViewport()->getVerticalScrollBar()->isVisible())
+        if (getViewport()->getVerticalScrollBar().isVisible())
             newWidth -= getViewport()->getScrollBarThickness();
 
         header.setColumnWidth(lastC, std::max(10, newWidth));

@@ -6,9 +6,9 @@ namespace rec {
 namespace util {
 namespace file {
 
-const File& getFileTypeDirectory(VirtualFile::Type type) {
+const File getFileTypeDirectory(VirtualFile::Type type) {
     auto i = getTypeMap().find(type);
-    return (i == getTypeMap().end()) ? File::nonexistent : i->second.first;
+    return (i == getTypeMap().end()) ? File() : i->second.first;
 }
 
 const char* getFileTypeName(VirtualFile::Type type) {

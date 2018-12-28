@@ -57,7 +57,7 @@ void alert(const String& title, const String& msg) {
 void requestSupport() {
     String key = randomKey();
     File f = data::zipData(key);
-    if (f == File::nonexistent) {
+    if (f == File()) {
         alert(t_CANT_SUPPORT, t_CANT_SUPPORT_FULL + String("\n") +
                     t_PLEASE_CONTACT + String("\n") + SUPPORT);
     } else {

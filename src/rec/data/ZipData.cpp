@@ -45,14 +45,14 @@ File writeZipFile(const Builder& builder, const String& name) {
         return f;
 
     LOG(ERROR) << "Couldn't write to " << str(f);
-    return File::nonexistent;
+    return {};
 }
 #endif
 
 File writeZipFile(const Builder& builder, const File& file) {
     File f = file.withFileExtension(".zip");
     FileOutputStream output(f);
-    return builder.writeToStream(output, nullptr) ? f : File::nonexistent;
+    return builder.writeToStream(output, nullptr) ? f : File();
 }
 
 }  // namespace

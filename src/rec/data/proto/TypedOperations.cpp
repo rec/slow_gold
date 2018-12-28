@@ -1,6 +1,6 @@
 #include <google/protobuf/descriptor.h>
 
-#include "rec/base/arraysize.h"
+#include "rec/base/ArraySize.h"
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/TypedTyper.h"

@@ -10,8 +10,8 @@ namespace rec {
 namespace slow {
 
 class AboutPane : public Component,
-                                    public TextEditor::Listener,
-                                    public juce::ButtonListener {
+                  public TextEditor::Listener,
+                  public juce::Button::Listener {
   public:
     AboutPane(const String& name, const String& versionNumber,
                         juce::ModalComponentManager::Callback* callback);
@@ -23,7 +23,7 @@ class AboutPane : public Component,
     void textEditorFocusLost(TextEditor&) override {}
     void buttonClicked(juce::Button*) override;
 
-    void paint(Graphics& g);
+    void paint(Graphics& g) override;
     void visibilityChanged() override;
     bool expired() const;
     bool authenticated() const;

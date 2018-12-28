@@ -25,9 +25,11 @@ class DialComponent : public Component,
   public:
     explicit DialComponent(const Dial& desc);
 
-    virtual void operator()(SampleTime t) { setTime(t); }
+    virtual void operator()(SampleTime t) override {
+        setTime(t);
+    }
 
-    virtual void paint(juce::Graphics& g);
+    virtual void paint(juce::Graphics& g) override;
     void setTime(SampleTime);
 
     static const double PI;

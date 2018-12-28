@@ -17,8 +17,8 @@ class MapItem;
 class MapItemComponent;
 
 class Editor : public Component,
-                              public ButtonListener,
-                              public Listener<const File&> {
+    public Button::Listener,
+    public Listener<const File&> {
   public:
     Editor(ApplicationCommandManager*, CommandMap*);
     virtual ~Editor();

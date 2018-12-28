@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-#include "rec/Program/Program.h"
+#include "rec/program/Program.h"
 
 namespace rec {
 namespace program {

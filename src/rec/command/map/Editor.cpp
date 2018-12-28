@@ -325,7 +325,7 @@ void Editor::addChildren(MapItemComponent* comp) {
     KeyArray keys = getKeys(id);
     for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
         comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
-    comp->createEditButton(String::empty, -1, isReadOnly);
+    comp->createEditButton(String(), -1, isReadOnly);
 }
 
 void Editor::assignNewKey(EditButton* button, const string& key, int result) {

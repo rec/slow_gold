@@ -31,9 +31,11 @@ namespace {
 const char TEST_SERIAL_NUMBER[] =
     "000016-12NGVJ-2VHWCD-QRH6YA-BR1635-0XB5MC-XDX6FV-JCNU3F-E7G3A6-02R2AK";
 
+#ifdef UNUSED_CODE
 bool isSystemCompatible() {
     return eWeb_IsSystemCompatible();
 }
+#endif
 
 const char* publisherId() {
       return program::getProgram()->getPublisherId();
@@ -55,10 +57,12 @@ inline Time daysAfterNow(int days) {
     return Time::getCurrentTime() + RelativeTime::days(days);
 }
 
+#ifdef UNUSED_CODE
 inline string fromTime(const RelativeTime& t) {
     return fromTime(Time::getCurrentTime() + t);
 }
-
+#endif
+    
 inline string fromTimeDays(int days) {
     return fromTime(daysAfterNow(days));
 }

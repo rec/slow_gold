@@ -37,6 +37,7 @@ void portKeyboardFile() {
         auto& command = commands.command(i);
         auto type = command.id();
         // TODO: https://github.com/rec/rec/issues/621
+#ifdef UNUSED_CODE
         if (false) { // command.has_start_index()) {
             int32 index = 0; // command.start_index();
             for (int j = 0; j < command.keypress_size(); ++j, ++index) {
@@ -45,10 +46,11 @@ void portKeyboardFile() {
                 entry->add_key(command.keypress(j));
             }
         } else {
-            auto entry = newEntry(type, &keyMap);
-            for (int j = 0; j < command.keypress_size(); ++j)
-                entry->add_key(command.keypress(j));
         }
+#endif
+        auto entry = newEntry(type, &keyMap);
+        for (int j = 0; j < command.keypress_size(); ++j)
+            entry->add_key(command.keypress(j));
     }
 
     data::setProto(keyMap, data::global());

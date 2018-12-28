@@ -7,8 +7,7 @@ namespace gui {
 
 class SimpleLabel : public juce::Label, public Disableable {
   public:
-    SimpleLabel(const String& name = String::empty,
-                            const String& labelText = String::empty)
+    SimpleLabel(const String& name = {}, const String& labelText = {})
             : juce::Label(name, labelText.length() ? labelText : name) {
         setFont(Font(12.0000f, Font::bold));
         setJustificationType(Justification::centredRight);

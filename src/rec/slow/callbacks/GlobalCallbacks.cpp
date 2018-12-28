@@ -77,11 +77,11 @@ void exportSettings() {
     File start = File::getSpecialLocation(File::userDesktopDirectory).
         getChildFile("SlowGold Export.zip");
     File file = browseForFile(t_SELECT_EXPORT_FILE, start, SAVE_FILE);
-    if (file == File::nonexistent)
+    if (file == File())
         return;
 
     file = data::zipData(file);
-    if (file == File::nonexistent)
+    if (file == File())
         return;  // TODO: report error - very unlikely.
     else
         file.revealToUser();
@@ -93,7 +93,7 @@ void findMissingLoopPoints() {
 void importSettings() {
     File start = File::getSpecialLocation(File::userDesktopDirectory);
     File file = browseForFile(t_SELECT_IMPORT_FILE, start, OPEN_FILE);
-    if (file != File::nonexistent)
+    if (file != File())
         data::unzipData(file);
 }
 

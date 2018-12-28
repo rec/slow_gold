@@ -25,6 +25,7 @@ struct CompareRecentFiles {
     }
 };
 
+#ifdef UNUSED_CODE
 void fixRecentFiles(RecentFiles* rf) {
     for (auto& file: *rf->mutable_file()) {
         if (file.has_metadata()) {
@@ -33,6 +34,7 @@ void fixRecentFiles(RecentFiles* rf) {
         }
     }
 }
+#endif
 
 }  // namespace
 

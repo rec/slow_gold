@@ -1,4 +1,4 @@
-#include "rec/util/math.h"
+#include "rec/util/Math.h"
 
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/util/LimitPitch.h"

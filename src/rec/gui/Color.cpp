@@ -25,6 +25,7 @@ std::pair<Colour*, Colour*> getColours() {
     return std::make_pair(COLORS, COLORS + arraysize(COLORS));
 }
 
+#ifdef UNUSED_CODE
 Colors getDefaultInternal() {
     Colors colors;
     std::pair<Colour*, Colour*> colours = getColours();
@@ -37,6 +38,7 @@ const Colors& getDefaultColors() {
     static Colors colors = getDefaultInternal();
     return colors;
 }
+#endif
 
 ColourMap emptyMap_;
 

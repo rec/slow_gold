@@ -51,7 +51,8 @@ StringArray readCDDBResponse(Socket *sock) {
 }
 
 StringArray makeCDDBRequest(const String& request, Socket *s) {
-    return (writeSocket(s, request + "\n"), readCDDBResponse(s));
+    writeSocket(s, request + "\n");
+    return readCDDBResponse(s);
 }
 
 const int SAMPLES_PER_SECOND = 44100;

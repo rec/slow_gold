@@ -18,7 +18,7 @@ SystemStats getSystemStats() {
     ss.set_full_user_name(str(SS::getFullUserName()));
     ss.set_computer_name(str(SS::getComputerName()));
     ss.set_num_cpus(SS::getNumCpus());
-    ss.set_cpu_speed_in_megahertz(SS::getCpuSpeedInMegaherz());
+    ss.set_cpu_speed_in_megahertz(SS::getCpuSpeedInMegahertz());
     ss.set_cpu_vendor(str(SS::getCpuVendor()));
     ss.set_has_mmx(SS::hasMMX());
     ss.set_has_sse(SS::hasSSE());

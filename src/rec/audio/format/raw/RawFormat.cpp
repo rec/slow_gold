@@ -1,7 +1,7 @@
 #include "rec/audio/format/raw/RawFormat.h"
 #include "rec/audio/format/raw/RawFormatReader.h"
 #include "rec/audio/format/raw/RawFormatWriter.h"
-#include "rec/base/Arraysize.h"
+#include "rec/base/ArraySize.h"
 
 namespace rec {
 namespace audio {

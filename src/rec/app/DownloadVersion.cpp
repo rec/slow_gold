@@ -68,9 +68,9 @@ class DownloadThread : public Thread {
 
         if (!isNew) {
             LOG(INFO) << "Current: "  << version_ << " new: " << newVersion_;
-        } else if (downloadNewVersion() && false) {
-            LOG(INFO) << "Quitting because we downloaded " << newVersion_;
-            JUCEApplication::quit();
+        } else if (downloadNewVersion()) {
+            // LOG(INFO) << "Quitting because we downloaded " << newVersion_;
+            // JUCEApplication::quit();
             return true;
         }
 

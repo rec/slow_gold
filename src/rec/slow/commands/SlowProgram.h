@@ -34,8 +34,8 @@ class SlowProgram : public program::ProgramBase {
     string mapTypeName(const string&) const override;
     const char* getPublisherId() const override;
     const char* getActivationId() const override;
-    int demoExpirationDays() const { return EXPIRATION_DAYS; }
-    int unauthorizedExpirationDays() const {
+    int demoExpirationDays() const override { return EXPIRATION_DAYS; }
+    int unauthorizedExpirationDays() const override {
         return UNAUTHORIZED_EXPIRATION_DAYS;
     }
 

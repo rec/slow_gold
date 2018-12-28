@@ -12,13 +12,13 @@ class Timer : public Wrappy, public StateListener<Thread*> {
   public:
     explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(nullptr) {}
 
-    virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
+    virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) override {
         Wrappy::getNextAudioBlock(i);
         if (isRunning())
             thread_->notify();
     }
 
-    virtual void setNextReadPosition(int64 time) {
+    virtual void setNextReadPosition(int64 time) override {
         DCHECK_GE(time, 0);
         Wrappy::setNextReadPosition(time);
         if (isRunning())

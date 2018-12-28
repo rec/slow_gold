@@ -10,7 +10,7 @@
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/FillerThread.h"
-#include "rec/base/Arraysize.h"
+#include "rec/base/ArraySize.h"
 #include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
 #include "rec/command/Command.pb.h"

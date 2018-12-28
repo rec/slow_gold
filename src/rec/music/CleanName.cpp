@@ -1,5 +1,5 @@
 #include "rec/music/CleanName.h"
-#include "rec/base/Arraysize.h"
+#include "rec/base/ArraySize.h"
 
 namespace rec {
 namespace music {

@@ -109,7 +109,7 @@ std::unique_ptr<Component> makeComponent(const Context& context) {
     }
 
     DCHECK(component->getName().length()) << comp.ShortDebugString();
-    return std::move(component);
+    return component;
 }
 
 }  // namespace gui

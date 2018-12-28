@@ -33,7 +33,10 @@ using namespace rec::widget::waveform;
 
 namespace {
 
+#ifdef UNUSED_CODE
 const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
+#endif
+    
 const juce::Colour SELECTED_COLOR(0xffefef80);
 
 Def<TableColumnList> dflt(

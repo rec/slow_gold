@@ -22,16 +22,16 @@ void construct(std::unique_ptr<Drawable>* drawable, const string& name) {
 }
 
 class ModalButton : public LanguageButton, public data::AddressListener,
-                                        public juce::ButtonListener {
+                    public juce::Button::Listener {
   public:
     ModalButton(const string& name,
-                            const string& tooltip,
-                            DrawableButton::ButtonStyle style,
-                            const data::Address& address,
-                            uint32 modeIndex)
+                const string& tooltip,
+                DrawableButton::ButtonStyle style,
+                const data::Address& address,
+                uint32 modeIndex)
             : LanguageButton(name, tooltip, style),
-                AddressListener(address),
-                modeIndex_(modeIndex) {
+              AddressListener(address),
+              modeIndex_(modeIndex) {
         addListener(this);
     }
 
@@ -39,7 +39,7 @@ class ModalButton : public LanguageButton, public data::AddressListener,
         setToggleState(value.enum_f() == modeIndex_, juce::dontSendNotification);
     }
 
-    void buttonClicked(Button*) {
+    void buttonClicked(Button*) override {
         value_.set_enum_f(modeIndex_);
         setValue(value_);
     }

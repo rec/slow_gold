@@ -70,7 +70,14 @@ juce::Array<int> getSampleRates() {
 
 juce::Array<int> getBitDepths() {
     static const int depths[] = {8, 16, 32, 64, 0};
-    return Array<int>(depths);
+#if 0
+    juce::Array<int> result(depths);
+#else
+    juce::Array<int> result;
+    for (auto i : depths)
+        result.add(i);
+#endif
+    return result;
 }
 
 int getBitsPerSample(int encoding) {

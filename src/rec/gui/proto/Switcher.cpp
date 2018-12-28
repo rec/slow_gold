@@ -26,13 +26,15 @@ struct Part {
     std::unique_ptr<Component> component_;
 };
 
+#ifdef UNUSED_CODE
 void layoutRepaint(Component* comp) {
     if (Panel* panel = dynamic_cast<Panel*>(comp))
         panel->layout();
     else
         comp->repaint();
 }
-
+#endif
+    
 class Switcher : public Panel, public AddressListener {
   public:
     explicit Switcher(const Context& context)

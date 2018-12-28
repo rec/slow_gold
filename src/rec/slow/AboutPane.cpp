@@ -167,9 +167,13 @@ void AboutPane::buttonClicked(Button* button) {
                     AlertWindow::InfoIcon, t_AUTHENTICATED_TITLE, t_AUTHENTICATED, "",
                     nullptr, callback_);
         } else {
+            String s = t_COULDNT_AUTHENTICATE;
+            s += String("\n");
+            s += String(error);
+            
             AlertWindow::showMessageBoxAsync(
                     AlertWindow::WarningIcon, t_COULDNT_AUTHENTICATE_TITLE,
-                    String(t_COULDNT_AUTHENTICATE + String("\n") + error));
+                    s);
         }
     } else {
         if (not expired())
@@ -245,10 +249,12 @@ void AboutPane::getRightSide() {
             right_.append(t_EXPIRED, font, Colours::red);
         }
     } else {
-          center_.append(String("\n") + t_REGISTERED_TO + " " + user + "\n\n",
+        center_.append(String("\n") + t_REGISTERED_TO + " " + user + "\n\n",
                                       font);
-        center_.append(t_SERIAL_NUMBER + String(" ") +
-                                      authentication_->serialNumber, serialFont());
+        String s(t_SERIAL_NUMBER), sn(authentication_->serialNumber);
+        s += " ";
+        s += sn;
+        center_.append(s, serialFont());
     }
 }
 

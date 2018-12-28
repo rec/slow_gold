@@ -25,7 +25,9 @@ class TextComponent : public gui::SimpleLabel,
                                             public HasThread {
   public:
     explicit TextComponent(const Text& desc = Text::default_instance());
-    virtual void operator()(SampleTime time) { setTime(time); }
+    virtual void operator()(SampleTime time) override {
+        setTime(time);
+    }
 
     SampleTime getTime() const;
     void setTime(SampleTime time);

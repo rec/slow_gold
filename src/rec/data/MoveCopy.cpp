@@ -43,10 +43,10 @@ struct MoveCopy : Listener<const File&> {
 };
 
 VirtualFile moveCopy(bool isCopy,
-                                          const VirtualFile& file,
-                                          const string& dialogName,
-                                          const String& dialogTitle) {
-        MoveCopy mc{isCopy, file, dialogName, dialogTitle, File::nonexistent
+                     const VirtualFile& file,
+                     const string& dialogName,
+                     const String& dialogTitle) {
+    MoveCopy mc{isCopy, file, dialogName, dialogTitle, {}};
 }
 
 } // namespace
@@ -54,7 +54,7 @@ VirtualFile moveCopy(bool isCopy,
 VirtualFile move(const VirtualFile& file,
                                   const string& dialogName,
                                   const String& dialogTitle) {
-        return MoveCopy{false, file, dialogName, dialogTitle, File::nonexistent}.run();
+        return MoveCopy{false, file, dialogName, dialogTitle, {}}.run();
 }
 
 VirtualFile copy(const VirtualFile& file,

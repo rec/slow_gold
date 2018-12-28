@@ -40,7 +40,7 @@ File getDirectoryForDialog(const string& dialogName) {
             return File(str(df.dialog_file(i).file_name()));
     }
 
-    return File::nonexistent;
+    return {};
 }
 
 void setDirectoryForDialog(const string& dialogName, const File& directory) {

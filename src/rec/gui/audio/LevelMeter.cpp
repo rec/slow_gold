@@ -15,7 +15,7 @@ static const float GAP_WIDTH = 2.0f;
 static const int SEGMENT_COUNT = 32;
 
 LevelMeter::LevelMeter(const string& name, const string& tooltip,
-                                              bool horiz, bool rms, int margin)
+                                                bool horiz, bool rms, int margin)
         : Component(str(name)),
             tooltip_(tooltip),
             horizontal_(horiz),
@@ -23,11 +23,10 @@ LevelMeter::LevelMeter(const string& name, const string& tooltip,
             gain_(1.0f),
             margin_(margin),
             preFaderLevels_(false) {
-    if (false)
-    DLOG(INFO)
-            << horizontal_ << ", "
-            << rms_ << ", "
-            << margin_ << ", ";
+    // DLOG(INFO)
+    //         << horizontal_ << ", "
+    //         << rms_ << ", "
+    //         << margin_ << ", ";
 }
 
 void LevelMeter::languageChanged() {

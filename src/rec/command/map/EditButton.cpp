@@ -25,9 +25,9 @@ EditButton::EditButton(Editor* editor, CommandID id, const String& keyName, int 
 
 void EditButton::paintButton(Graphics& g, bool, bool) {
     getLookAndFeel().drawKeymapChangeButton(g, getWidth(), getHeight(),
-                                                                                    *this,
-                                                                                    (keyNum_ >= 0) ? getName() :
-                                                                                    String::empty);
+                                            *this,
+                                            (keyNum_ >= 0) ? getName() :
+                                            String());
 }
 
 void EditButton::clicked() {
@@ -38,9 +38,10 @@ void EditButton::clicked() {
         m.addSeparator();
         m.addItem(2, t_REMOVE_COMMAND_MAPPING);
 
-        m.showMenuAsync(PopupMenu::Options(),
-                                        thread::modalCallback(editor_, &Editor::buttonMenuCallback,
-                                                                                    this).release());
+        m.showMenuAsync(
+            PopupMenu::Options(),
+            thread::modalCallback(editor_, &Editor::buttonMenuCallback,
+                                  this).release());
 
     } else {
         // addCommand();  // + button pressed..  // TODO:

@@ -34,7 +34,7 @@ class GenericApplication : public Listener<Enable>,
     void anotherInstanceStarted(const String& s) override;
     void systemRequestedQuit() override;
 
-    virtual void operator()(Enable enable) {
+    virtual void operator()(Enable enable) override {
         Lock l(lock_);
         enable_ = enable;
     }

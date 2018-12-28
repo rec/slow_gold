@@ -7,8 +7,10 @@ namespace rec {
 namespace gui {
 
 namespace {
-
+    
+#ifdef UNUSED_CODE
 HelpText getHelpText(Component* c);
+#endif
 
 inline Component* getComponentUnderMouse() {
     return Desktop::getInstance().getMainMouseSource().getComponentUnderMouse();

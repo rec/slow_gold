@@ -28,10 +28,10 @@ class CurrentTime : public audio::util::CurrentTimeBase,
     void setTime(SampleTime);
     void setViewport(const widget::waveform::Viewport&);
 
-    virtual void operator()(audio::transport::State);
-    virtual void operator()(SampleTime t) { setTime(t); }
-    virtual void operator()(const GuiSettings&);
-    virtual void operator()(const widget::waveform::Viewport& vp) {
+    virtual void operator()(audio::transport::State) override;
+    virtual void operator()(SampleTime t) override { setTime(t); }
+    virtual void operator()(const GuiSettings&) override;
+    virtual void operator()(const widget::waveform::Viewport& vp) override {
         setViewport(vp);
     }
 

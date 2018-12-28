@@ -7,7 +7,7 @@ namespace gui {
 
 class DetentSlider : public juce::Slider {
   public:
-    explicit DetentSlider(const String& name = String::empty) :
+    explicit DetentSlider(const String& name = {}) :
             Slider(name), detentRadius_(0.05f), detentSet_(false) {
         setTextBoxIsEditable(true);
     }

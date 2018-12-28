@@ -153,6 +153,7 @@ void loadRecentFile(int i) {
                                                   rf.file(i).file(), true);
 }
 
+#ifdef UNUSED_CODE
 void setSaveFileType(int i) {
     using audio::AudioSettings;
 
@@ -168,7 +169,7 @@ void setLanguage(int i) {
     data::setProto(inter);
     program::menuItemsChanged();
 }
-
+#endif
 void openPreviousFile() {
     gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
     int size = rf.file_size();

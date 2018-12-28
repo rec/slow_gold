@@ -15,7 +15,7 @@ File browseForFileNoTreeView(const String& msg, const File& startFile,
     FileChooser c(msg, startFile, filter);
     bool success = (save == SAVE_FILE) ? c.browseForFileToSave(true) :
         c.browseForFileToOpen();
-    return success ? c.getResult() : File::nonexistent;
+    return success ? c.getResult() : File();
 }
 
 File browseForFileTreeView(const String& msg, const File& startFile,
@@ -29,7 +29,7 @@ File browseForFileTreeView(const String& msg, const File& startFile,
 
     FileBrowserComponent fileBrowser(flags, startFile, &wildFilter, nullptr);
     FileChooserDialogBox dialogBox(msg, "", fileBrowser, true, Colours::white);
-    return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
+    return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File();
 }
 
 }

@@ -2,7 +2,7 @@
 
 #include "rec/util/file/VirtualFile.h"
 #include "rec/app/Files.h"
-#include "rec/base/Arraysize.h"
+#include "rec/base/ArraySize.h"
 #include "rec/util/proto/Reverse.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/file/Util.h"
@@ -55,7 +55,7 @@ static File getRoot(const VirtualFile& vf) {
 #if JUCE_WINDOWS
     return File(volume + ":\\");
 #elif JUCE_MAC
-    return File("/" + (volume.length() ? ("Volumes/" + volume) : String::empty));
+    return File("/" + (volume.length() ? ("Volumes/" + volume) : String()));
 #endif
 }
 

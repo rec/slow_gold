@@ -112,7 +112,7 @@ File getExportFile(Instance* instance, audio::AudioSettings::FileType t) {
     DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
     if (instance->empty())
-        return File::nonexistent;
+        return {};
 
     String suffix = SUFFIXES[t];
     File file;
@@ -134,7 +134,7 @@ File getExportFile(Instance* instance, audio::AudioSettings::FileType t) {
     while (true) {
         file = slow::browseForFile(t_SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
 
-        if (file == File::nonexistent)
+        if (file == File())
             return file;
         String newSuffix = file.getFileExtension();
         if (!isLegalSuffix(newSuffix)) {
@@ -288,7 +288,7 @@ void doExportFile(Instance* instance, bool useSelection) {
     AudioSettings::FileType t = data::getProto<AudioSettings>().
         file_type_for_save();
     File file = getExportFile(instance, t);
-    if (file != File::nonexistent) {
+    if (file != File()) {
         String name = String::formatted(t_SAVING_FILE, c_str(file.getFileName()));
         Viewport viewport = getViewport(instance, useSelection, len);
         SaveThread(name, instance, file, s.release(), viewport).runThread();

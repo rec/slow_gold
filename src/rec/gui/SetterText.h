@@ -10,11 +10,11 @@ namespace gui {
 class SetterText : public CaptionText, public data::AddressListener {
   public:
     SetterText(const String& name,
-                          const data::Address& address,
-                          const String& tip = String::empty,
-                          const String& caption = String::empty,
-                          bool useCaption = true,
-                          int captionSize = CAPTION_SIZE);
+               const data::Address& address,
+               const String& tip = {},
+               const String& caption = {},
+               bool useCaption = true,
+               int captionSize = CAPTION_SIZE);
     ~SetterText() override {}
 
     void operator()(const data::Value& v) override;

@@ -55,7 +55,7 @@ std::unique_ptr<Component> makeLayout(const Layout& layout, Component* parent,
                                     constants.getDouble(layout.dimensions().height()));
     }
 
-    return std::move(comp);
+    return comp;
 }
 
 }  // namespace
@@ -67,7 +67,7 @@ std::unique_ptr<Component> makeLayout(const string& name, Component* parent) {
     } catch (std::out_of_range&) {
         LOG(DFATAL) << "Can't make layout " << name;
     }
-    return std::move(comp);
+    return comp;
 }
 
 std::unique_ptr<Component> makeLayoutComp(const Context& context) {

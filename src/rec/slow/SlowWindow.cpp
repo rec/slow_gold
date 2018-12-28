@@ -125,7 +125,7 @@ void SlowWindow::doStartup() {
 }
 
 void SlowWindow::gotoNextFile() {
-    if (nextFile_ != File::nonexistent) {
+    if (nextFile_ != File()) {
         if (nextFile_.hasFileExtension(WOODSHED_SUFFIX)) {
             const MessageMaker& maker = data::getDataCenter()->messageMaker();
             std::unique_ptr<Message> msg(readProtoFile(nextFile_, maker));

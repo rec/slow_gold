@@ -30,6 +30,7 @@ namespace slow {
 
 namespace {
 
+#ifdef UNUSED_CODE
 void enableAllDrawableButtons(Component *c, bool enabled) {
     if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
         b->setEnabled(enabled);
@@ -39,7 +40,7 @@ void enableAllDrawableButtons(Component *c, bool enabled) {
             enableAllDrawableButtons(c->getChildComponent(i), enabled);
     }
 }
-
+#endif 
 }  // namespace
 
 Components::Components(Component* parent)

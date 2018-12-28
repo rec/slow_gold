@@ -11,7 +11,7 @@ std::unique_ptr<Component> makeCustom(const Context& context) {
     std::unique_ptr<Component> component;
     if (auto maker = context.constants_.getMaker(custom.type_name()))
         component = maker(custom.data());
-    return std::move(component);
+    return component;
 }
 
 }  // namespace gui
