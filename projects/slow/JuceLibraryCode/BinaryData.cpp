@@ -14059,11 +14059,11 @@ static const unsigned char temp_binary_data_72[] =
 const char* idTranslatedStrings_def = (const char*) temp_binary_data_72;
 
 
-const char* getNamedResource (const char*, int&) throw();
-const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw()
+const char* getNamedResource (const char* resourceNameUTF8, int& numBytes)
 {
     unsigned int hash = 0;
-    if (resourceNameUTF8 != 0)
+
+    if (resourceNameUTF8 != nullptr)
         while (*resourceNameUTF8 != 0)
             hash = 31 * hash + (unsigned int) *resourceNameUTF8++;
 
@@ -14146,7 +14146,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     }
 
     numBytes = 0;
-    return 0;
+    return nullptr;
 }
 
 const char* namedResourceList[] =
@@ -14225,5 +14225,93 @@ const char* namedResourceList[] =
     "frTranslatedStrings_def",
     "idTranslatedStrings_def"
 };
+
+const char* originalFilenames[] =
+{
+    "Colors.def",
+    "Audio.def",
+    "Commands.def",
+    "File.def",
+    "Gui.def",
+    "Help.def",
+    "LoopPoints.def",
+    "Selection.def",
+    "Settings.def",
+    "Transport.def",
+    "KeyStrokeMap.def",
+    "CommandBar.def",
+    "Constants.def",
+    "GainPanel.def",
+    "HelpPanel.def",
+    "Layout.def",
+    "LeftTransformPanel.def",
+    "MainPanel.def",
+    "ModeSelector.def",
+    "NavigationPanel.def",
+    "PlaybackPanel.def",
+    "RightTransformPanel.def",
+    "RightTransformPanelMasterTune.def",
+    "RightTransformPanelNoMasterTune.def",
+    "SongData.def",
+    "TimeController.def",
+    "TransformController.def",
+    "TransportButtonsPanel.def",
+    "TransportController.def",
+    "Waveform.def",
+    "MenuCollection.def",
+    "Menus.def",
+    "Threads.def",
+    "AddLoopPointButton.svg",
+    "AddLoopPointButtonDisabled.svg",
+    "AddLoopPointButtonPressed.svg",
+    "AddLoopPointMode.svg",
+    "AddLoopPointModeDisabled.svg",
+    "DragMode.svg",
+    "DragModeDisabled.svg",
+    "JumpBackButton.svg",
+    "JumpBackButtonDisabled.svg",
+    "JumpBackButtonPressed.svg",
+    "JumpForwardButton.svg",
+    "JumpForwardButtonDisabled.svg",
+    "JumpForwardButtonPressed.svg",
+    "JumpToStartButton.svg",
+    "JumpToStartButtonDisabled.svg",
+    "JumpToStartButtonPressed.svg",
+    "MacFolderCloseButton.svg",
+    "MacFolderOpenButton.svg",
+    "SetTimeMode.svg",
+    "SetTimeModeDisabled.svg",
+    "StartStopButton.svg",
+    "StartStopButtonDisabled.svg",
+    "StartStopButtonOn.svg",
+    "StartStopButtonOnDisabled.svg",
+    "ZoomInCursor.svg",
+    "ZoomMode.svg",
+    "ZoomModeDisabled.svg",
+    "ZoomOutButton.svg",
+    "ZoomOutButtonDisabled.svg",
+    "ZoomOutButtonPressed.svg",
+    "ZoomToSelectionButton.svg",
+    "ZoomToSelectionButtonDisabled.svg",
+    "ZoomToSelectionButtonPressed.svg",
+    "big-icon.png",
+    "icon.png",
+    "de-TranslatedStrings.def",
+    "en-TranslatedStrings.def",
+    "es-TranslatedStrings.def",
+    "fr-TranslatedStrings.def",
+    "id-TranslatedStrings.def"
+};
+
+const char* getNamedResourceOriginalFilename (const char* resourceNameUTF8)
+{
+    for (unsigned int i = 0; i < (sizeof (namedResourceList) / sizeof (namedResourceList[0])); ++i)
+    {
+        if (namedResourceList[i] == resourceNameUTF8)
+            return originalFilenames[i];
+    }
+
+    return nullptr;
+}
 
 }
