@@ -1,0 +1,24 @@
+1. Create a directory at the root of your file system called /development that
+is owned by the user account
+
+2. Download the JUCE and rec repositories.
+
+3. Transfer them to the /development directory
+
+3. cd /development/rec
+
+4. scripts/build_osx.sh
+
+5. Unfortunately, the updated version doesn't put in the icon - I haven't
+figured out why this stopped working.  Doing this by hand is trivial.  Find a
+version of the application with an icon.  Use the Mac's Command-I to get info.
+Click on the icon in the top left hand corner.  Command-C to copy it.  Command-I
+on the binary.  Click on the icon in the top left hand corner.  Command-V.
+
+6. To make a demo version, go into the file src/rec/base/DropDead.h and
+uncomment line 15:
+
+    // #define DROP_DEAD_DATE 2017, 5, 1
+
+Replace the date by the date you want the program to die on and run steps 3 and
+4 again.
